@@ -1,0 +1,547 @@
+[
+  {
+    "id": 2391065985,
+    "name": "CECOF Loncura",
+    "amenity": "doctors",
+    "lat": -32.788325,
+    "lon": -71.503992,
+    "tags": {
+      "addr:country": "CL",
+      "amenity": "doctors",
+      "name": "CECOF Loncura"
+    }
+  },
+  {
+    "id": 3636105936,
+    "name": "Jardín Infantil",
+    "amenity": "kindergarten",
+    "lat": -32.729387,
+    "lon": -71.408448,
+    "tags": {
+      "addr:city": "Puchuncavi",
+      "addr:housenumber": "986",
+      "addr:street": "San Agustín",
+      "amenity": "kindergarten",
+      "name": "Jardín Infantil"
+    }
+  },
+  {
+    "id": 4422227481,
+    "name": "Posta salud rural Horcón",
+    "amenity": "doctors",
+    "lat": -32.711267,
+    "lon": -71.48871,
+    "tags": {
+      "addr:country": "CL",
+      "amenity": "doctors",
+      "healthcare": "doctor",
+      "name": "Posta salud rural Horcón"
+    }
+  },
+  {
+    "id": 5485694021,
+    "name": "Consultorio",
+    "amenity": "clinic",
+    "lat": -32.725809,
+    "lon": -71.415853,
+    "tags": {
+      "addr:country": "CL",
+      "amenity": "clinic",
+      "name": "Consultorio"
+    }
+  },
+  {
+    "id": 10989508026,
+    "name": "Escuela Especial de Lenguaje y Jardín Nuevo Mundo",
+    "amenity": "school",
+    "lat": -32.776616,
+    "lon": -71.531264,
+    "tags": {
+      "addr:city": "Quintero",
+      "addr:housenumber": "374",
+      "addr:street": "Balmaceda",
+      "amenity": "school",
+      "name": "Escuela Especial de Lenguaje y Jardín Nuevo Mundo"
+    }
+  },
+  {
+    "id": 10989739034,
+    "name": "Centro Educacional El Faro",
+    "amenity": "school",
+    "lat": -32.776888,
+    "lon": -71.530829,
+    "tags": {
+      "addr:city": "Quintero",
+      "addr:housenumber": "324",
+      "addr:street": "Balmaceda",
+      "amenity": "school",
+      "name": "Centro Educacional El Faro"
+    }
+  },
+  {
+    "id": 11004698894,
+    "name": "Escuela Juan José Tortel",
+    "amenity": "school",
+    "lat": -32.81167,
+    "lon": -71.440806,
+    "tags": {
+      "addr:street": "Ruta F-190",
+      "amenity": "school",
+      "name": "Escuela Juan José Tortel"
+    }
+  },
+  {
+    "id": 11380300837,
+    "name": "CESFAM Puchuncaví",
+    "amenity": "clinic",
+    "lat": -32.725774,
+    "lon": -71.415978,
+    "tags": {
+      "addr:country": "CL",
+      "alt_name": "Centro de Salud Familiar",
+      "amenity": "clinic",
+      "healthcare": "yes",
+      "name": "CESFAM Puchuncaví",
+      "official_name": "Centro de Salud Familiar"
+    }
+  },
+  {
+    "id": 11383810801,
+    "name": "SAPU Ventanas",
+    "amenity": "doctors",
+    "lat": -32.742342,
+    "lon": -71.483818,
+    "tags": {
+      "addr:country": "CL",
+      "alt_name": "Servicio de Atención Primaria de Urgencia",
+      "amenity": "doctors",
+      "emergency": "yes",
+      "healthcare": "doctor",
+      "name": "SAPU Ventanas"
+    }
+  },
+  {
+    "id": 11386269504,
+    "name": "Centro de Educación Especial Ann Sullivan",
+    "amenity": "school",
+    "lat": -32.77769,
+    "lon": -71.531626,
+    "tags": {
+      "addr:city": "Quintero",
+      "addr:housenumber": "1935",
+      "addr:street": "Luis Cousiño",
+      "amenity": "school",
+      "name": "Centro de Educación Especial Ann Sullivan"
+    }
+  },
+  {
+    "id": 11470153758,
+    "name": "Escuela de Lenguaje San Gabriel",
+    "amenity": "school",
+    "lat": -32.78919,
+    "lon": -71.529683,
+    "tags": {
+      "addr:city": "Quintero",
+      "addr:housenumber": "415",
+      "addr:street": "República Argentina",
+      "amenity": "school",
+      "name": "Escuela de Lenguaje San Gabriel"
+    }
+  },
+  {
+    "id": 11470347823,
+    "name": "Escuela de Párvulos Altamira",
+    "amenity": "kindergarten",
+    "lat": -32.787692,
+    "lon": -71.532615,
+    "tags": {
+      "addr:city": "Quintero",
+      "addr:housenumber": "660",
+      "addr:street": "Manuel Rodríguez",
+      "amenity": "kindergarten",
+      "name": "Escuela de Párvulos Altamira"
+    }
+  },
+  {
+    "id": 11470384127,
+    "name": "Colegio San Hernaldo",
+    "amenity": "school",
+    "lat": -32.728541,
+    "lon": -71.411281,
+    "tags": {
+      "addr:city": "Puchuncaví",
+      "addr:housenumber": "662",
+      "addr:street": "Alcalde Ruperto Bernal",
+      "amenity": "school",
+      "name": "Colegio San Hernaldo"
+    }
+  },
+  {
+    "id": 11508638364,
+    "name": "Posta salud rural Loncura",
+    "amenity": "doctors",
+    "lat": -32.789708,
+    "lon": -71.502156,
+    "tags": {
+      "amenity": "doctors",
+      "healthcare": "doctor",
+      "name": "Posta salud rural Loncura"
+    }
+  },
+  {
+    "id": 11601986400,
+    "name": "Centro Médico y Dental Quintero",
+    "amenity": "doctors",
+    "lat": -32.78279,
+    "lon": -71.528235,
+    "tags": {
+      "addr:housenumber": "1686",
+      "addr:street": "Francia",
+      "amenity": "doctors",
+      "name": "Centro Médico y Dental Quintero"
+    }
+  },
+  {
+    "id": 13271160707,
+    "name": "Cruz Roja Chilena",
+    "amenity": "hospital",
+    "lat": -32.787385,
+    "lon": -71.527323,
+    "tags": {
+      "addr:city": "Quintero",
+      "amenity": "hospital",
+      "healthcare": "hospital",
+      "name": "Cruz Roja Chilena",
+      "operator": "Cruz Roja",
+      "operator:type": "ngo",
+      "operator:wikidata": "Q7178"
+    }
+  },
+  {
+    "id": 149135780,
+    "name": "Colegio General José Velásquez Bórquez",
+    "amenity": "school",
+    "lat": -32.726495,
+    "lon": -71.417052,
+    "tags": {
+      "addr:city": "Puchuncaví",
+      "addr:housenumber": "265",
+      "addr:street": "Pablo Neruda",
+      "amenity": "school",
+      "name": "Colegio General José Velásquez Bórquez"
+    }
+  },
+  {
+    "id": 150951540,
+    "name": "Hospital Adriana Cousiño",
+    "amenity": "hospital",
+    "lat": -32.77931,
+    "lon": -71.531107,
+    "tags": {
+      "addr:city": "Quintero",
+      "addr:country": "CL",
+      "addr:housenumber": "380",
+      "addr:street": "Aranguiz Tudela",
+      "amenity": "hospital",
+      "healthcare": "hospital",
+      "name": "Hospital Adriana Cousiño",
+      "wikidata": "Q93742274"
+    }
+  },
+  {
+    "id": 150954925,
+    "name": "Liceo Politécnico de Quintero",
+    "amenity": "school",
+    "lat": -32.788239,
+    "lon": -71.527444,
+    "tags": {
+      "addr:city": "Quintero",
+      "addr:housenumber": "2298",
+      "addr:street": "Avenida Normandie",
+      "amenity": "school",
+      "name": "Liceo Politécnico de Quintero"
+    }
+  },
+  {
+    "id": 241188169,
+    "name": "Ann Sullivan",
+    "amenity": "school",
+    "lat": -32.785678,
+    "lon": -71.529703,
+    "tags": {
+      "amenity": "school",
+      "name": "Ann Sullivan"
+    }
+  },
+  {
+    "id": 568238166,
+    "name": "Colegio Don Orione",
+    "amenity": "school",
+    "lat": -32.785821,
+    "lon": -71.533909,
+    "tags": {
+      "addr:city": "Quintero",
+      "addr:housenumber": "702",
+      "addr:street": "Orione",
+      "amenity": "school",
+      "name": "Colegio Don Orione"
+    }
+  },
+  {
+    "id": 571429837,
+    "name": "Colegio Sargento Aldea",
+    "amenity": "school",
+    "lat": -32.742413,
+    "lon": -71.485693,
+    "tags": {
+      "addr:city": "Puchuncaví",
+      "addr:housenumber": "372",
+      "addr:street": "Bellavista",
+      "amenity": "school",
+      "name": "Colegio Sargento Aldea"
+    }
+  },
+  {
+    "id": 571429839,
+    "name": "CESFAM Las Ventanas",
+    "amenity": "clinic",
+    "lat": -32.742325,
+    "lon": -71.484575,
+    "tags": {
+      "addr:country": "CL",
+      "alt_name": "Centro de Salud Familiar",
+      "amenity": "clinic",
+      "name": "CESFAM Las Ventanas",
+      "official_name": "Centro de Salud Familiar",
+      "short_name": "CESFAM Las Ventanas"
+    }
+  },
+  {
+    "id": 641320562,
+    "name": "Escuela República de Francia",
+    "amenity": "school",
+    "lat": -32.791122,
+    "lon": -71.530809,
+    "tags": {
+      "addr:housenumber": "501",
+      "addr:street": "Guardiamarina Ernesto Riquelme",
+      "amenity": "school",
+      "name": "Escuela República de Francia"
+    }
+  },
+  {
+    "id": 654626979,
+    "name": "Colegio Inglés",
+    "amenity": "school",
+    "lat": -32.783333,
+    "lon": -71.531017,
+    "tags": {
+      "addr:city": "Quintero",
+      "addr:country": "CL",
+      "addr:housenumber": "475",
+      "addr:street": "Alonso de Quintero",
+      "amenity": "school",
+      "name": "Colegio Inglés"
+    }
+  },
+  {
+    "id": 654628982,
+    "name": "Colegio Inglés",
+    "amenity": "school",
+    "lat": -32.781632,
+    "lon": -71.531588,
+    "tags": {
+      "addr:city": "Quintero",
+      "addr:country": "CL",
+      "addr:housenumber": "1547",
+      "addr:street": "General Manuel Baquedano",
+      "amenity": "school",
+      "name": "Colegio Inglés"
+    }
+  },
+  {
+    "id": 654628983,
+    "name": "Colegio Alonso de Quintero",
+    "amenity": "school",
+    "lat": -32.801792,
+    "lon": -71.531874,
+    "tags": {
+      "addr:housenumber": "3502",
+      "addr:street": "Santa Filomena",
+      "amenity": "school",
+      "name": "Colegio Alonso de Quintero"
+    }
+  },
+  {
+    "id": 654628987,
+    "name": "Escuela Valle de Narau",
+    "amenity": "school",
+    "lat": -32.794139,
+    "lon": -71.534055,
+    "tags": {
+      "addr:housenumber": "2865",
+      "addr:street": "Yungay",
+      "amenity": "school",
+      "name": "Escuela Valle de Narau"
+    }
+  },
+  {
+    "id": 688071292,
+    "name": "Escuela Básica El Rungue",
+    "amenity": "school",
+    "lat": -32.697141,
+    "lon": -71.406807,
+    "tags": {
+      "addr:street": "Ruta E-30-F",
+      "amenity": "school",
+      "name": "Escuela Básica El Rungue",
+      "nohousenumber": "yes"
+    }
+  },
+  {
+    "id": 801403673,
+    "name": "School sin nombre",
+    "amenity": "school",
+    "lat": -32.740037,
+    "lon": -71.486524,
+    "tags": {
+      "amenity": "school"
+    }
+  },
+  {
+    "id": 801753636,
+    "name": "Jardín Infantil Bambi",
+    "amenity": "kindergarten",
+    "lat": -32.797418,
+    "lon": -71.536773,
+    "tags": {
+      "addr:street": "Lazo",
+      "amenity": "kindergarten",
+      "name": "Jardín Infantil Bambi",
+      "nohousenumber": "yes",
+      "operator": "Fundación Integra"
+    }
+  },
+  {
+    "id": 911675195,
+    "name": "Escuela Básica La Greda",
+    "amenity": "school",
+    "lat": -32.736423,
+    "lon": -71.460807,
+    "tags": {
+      "amenity": "school",
+      "name": "Escuela Básica La Greda"
+    }
+  },
+  {
+    "id": 1237394916,
+    "name": "Escuela Especial Lourdes",
+    "amenity": "school",
+    "lat": -32.777271,
+    "lon": -71.53441,
+    "tags": {
+      "addr:city": "Quintero",
+      "addr:housenumber": "1156",
+      "addr:street": "Vicuña Mackenna",
+      "amenity": "school",
+      "name": "Escuela Especial Lourdes"
+    }
+  },
+  {
+    "id": 1237398455,
+    "name": "Colegio Santa Filomena",
+    "amenity": "school",
+    "lat": -32.780896,
+    "lon": -71.529165,
+    "tags": {
+      "addr:city": "Quintero",
+      "addr:housenumber": "1490",
+      "addr:street": "Avenida Francia",
+      "amenity": "school",
+      "name": "Colegio Santa Filomena"
+    }
+  },
+  {
+    "id": 1311125852,
+    "name": "Kindergarten sin nombre",
+    "amenity": "kindergarten",
+    "lat": -32.797952,
+    "lon": -71.536851,
+    "tags": {
+      "addr:housenumber": "820",
+      "addr:street": "18 de Septiembre",
+      "amenity": "kindergarten"
+    }
+  },
+  {
+    "id": 1313518955,
+    "name": "Escuela Campiche",
+    "amenity": "school",
+    "lat": -32.735326,
+    "lon": -71.451108,
+    "tags": {
+      "addr:city": "Puchuncaví",
+      "addr:country": "CL",
+      "addr:street": "Ruta F-170",
+      "amenity": "school",
+      "name": "Escuela Campiche",
+      "note": "Correcciones masivas a ortografía en nombres de importaciones hechas por equipo de gendarmería"
+    }
+  },
+  {
+    "id": 1380989970,
+    "name": "Escuela Básica de Horcón",
+    "amenity": "school",
+    "lat": -32.713264,
+    "lon": -71.488109,
+    "tags": {
+      "addr:city": "Puchuncaví",
+      "addr:housenumber": "500",
+      "addr:street": "Principal",
+      "amenity": "school",
+      "name": "Escuela Básica de Horcón"
+    }
+  },
+  {
+    "id": 1381832740,
+    "name": "Escuela La Chocota",
+    "amenity": "school",
+    "lat": -32.729684,
+    "lon": -71.487073,
+    "tags": {
+      "addr:housenumber": "2680",
+      "addr:street": "Camino Horcón-Ventanas",
+      "amenity": "school",
+      "name": "Escuela La Chocota"
+    }
+  },
+  {
+    "id": 1384796780,
+    "name": "CESFAM Quintero",
+    "amenity": "clinic",
+    "lat": -32.795313,
+    "lon": -71.534964,
+    "tags": {
+      "addr:housenumber": "2950",
+      "addr:street": "Yungay",
+      "amenity": "clinic",
+      "healthcare": "clinic",
+      "name": "CESFAM Quintero",
+      "official_name": "Centro de Salud Familiar Quintero"
+    }
+  },
+  {
+    "id": 1385840525,
+    "name": "Colegio Artístico Costa Mauco",
+    "amenity": "school",
+    "lat": -32.785358,
+    "lon": -71.530444,
+    "tags": {
+      "addr:city": "Quintero",
+      "addr:housenumber": "1918",
+      "addr:street": "Luis Cousiño",
+      "amenity": "school",
+      "name": "Colegio Artístico Costa Mauco"
+    }
+  }
+]

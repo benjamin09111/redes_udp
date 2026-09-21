@@ -1,0 +1,6900 @@
+{
+  "type": "FeatureCollection",
+  "name": "Red_Ciberfisica_Nodos_Resilientes_Bahia_Quintero_Full_Industrial",
+  "crs": {
+    "type": "name",
+    "properties": {
+      "name": "urn:ogc:def:crs:OGC:1.3:CRS84"
+    }
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "base_scer",
+        "name": "Aeródromo de Quintero (SCER)",
+        "category": "base",
+        "type": "base",
+        "role": "Base de Despacho Principal y Retorno Seguro (RTH)",
+        "icon": "✈",
+        "color": "#10b981",
+        "priority": 0,
+        "elevation_msnm": 28,
+        "pollutants": [],
+        "city": "Quintero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.5173,
+          -32.7842,
+          28
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "sinca_puchuncavi",
+        "name": "Estación SINCA Puchuncaví",
+        "category": "sinca",
+        "type": "station",
+        "role": "Monitoreo Oficial Calidad del Aire (MMA)",
+        "icon": "📡",
+        "color": "#0ea5e9",
+        "priority": 1,
+        "elevation_msnm": 95,
+        "pollutants": [
+          "SO2",
+          "PM10",
+          "PM2.5"
+        ],
+        "city": "Puchuncaví Centro"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.407326,
+          -32.718731,
+          95
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "sinca_campiche",
+        "name": "Estación SINCA Campiche",
+        "category": "sinca",
+        "type": "station",
+        "role": "Monitoreo Oficial Calidad del Aire (MMA)",
+        "icon": "📡",
+        "color": "#0ea5e9",
+        "priority": 2,
+        "elevation_msnm": 30,
+        "pollutants": [
+          "SO2",
+          "PM10",
+          "PM2.5"
+        ],
+        "city": "Las Salinas / Campiche"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.450857,
+          -32.736201,
+          30
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "sinca_ventanas",
+        "name": "Estación SINCA Ventanas",
+        "category": "sinca",
+        "type": "station",
+        "role": "Monitoreo Oficial Calidad del Aire (MMA)",
+        "icon": "📡",
+        "color": "#0ea5e9",
+        "priority": 3,
+        "elevation_msnm": 12,
+        "pollutants": [
+          "SO2",
+          "PM10",
+          "PM2.5"
+        ],
+        "city": "Las Ventanas"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.480844,
+          -32.741842,
+          12
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "sinca_la_greda",
+        "name": "Estación SINCA La Greda",
+        "category": "sinca",
+        "type": "station",
+        "role": "Monitoreo Oficial Calidad del Aire (MMA)",
+        "icon": "📡",
+        "color": "#0ea5e9",
+        "priority": 3,
+        "elevation_msnm": 35,
+        "pollutants": [
+          "SO2",
+          "PM10",
+          "PM2.5"
+        ],
+        "city": "La Greda"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.474214,
+          -32.748276,
+          35
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "sinca_los_maitenes",
+        "name": "Estación SINCA Los Maitenes",
+        "category": "sinca",
+        "type": "station",
+        "role": "Monitoreo Oficial Calidad del Aire (MMA)",
+        "icon": "📡",
+        "color": "#0ea5e9",
+        "priority": 2,
+        "elevation_msnm": 45,
+        "pollutants": [
+          "SO2",
+          "PM10"
+        ],
+        "city": "Puchuncaví"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.454509,
+          -32.764345,
+          45
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "sinca_quintero",
+        "name": "Estación SINCA Quintero",
+        "category": "sinca",
+        "type": "station",
+        "role": "Monitoreo Oficial Calidad del Aire (MMA)",
+        "icon": "📡",
+        "color": "#0ea5e9",
+        "priority": 2,
+        "elevation_msnm": 18,
+        "pollutants": [
+          "SO2",
+          "PM10",
+          "PM2.5",
+          "O3"
+        ],
+        "city": "Quintero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.535258,
+          -32.772321,
+          18
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "sinca_centro_quintero",
+        "name": "Estación SINCA Centro Quintero",
+        "category": "sinca",
+        "type": "station",
+        "role": "Monitoreo Oficial Calidad del Aire (MMA)",
+        "icon": "📡",
+        "color": "#0ea5e9",
+        "priority": 3,
+        "elevation_msnm": 22,
+        "pollutants": [
+          "SO2",
+          "PM10",
+          "PM2.5"
+        ],
+        "city": "Quintero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.532226,
+          -32.787721,
+          22
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "sinca_loncura",
+        "name": "Estación SINCA Loncura",
+        "category": "sinca",
+        "type": "station",
+        "role": "Monitoreo Oficial Calidad del Aire (MMA)",
+        "icon": "📡",
+        "color": "#0ea5e9",
+        "priority": 2,
+        "elevation_msnm": 15,
+        "pollutants": [
+          "SO2",
+          "PM10",
+          "PM2.5"
+        ],
+        "city": "Loncura"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.49642,
+          -32.794914,
+          15
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "sinca_sur",
+        "name": "Estación SINCA Sur",
+        "category": "sinca",
+        "type": "station",
+        "role": "Monitoreo Oficial Calidad del Aire (MMA)",
+        "icon": "📡",
+        "color": "#0ea5e9",
+        "priority": 2,
+        "elevation_msnm": 25,
+        "pollutants": [
+          "SO2",
+          "PM10",
+          "PM2.5"
+        ],
+        "city": "Quintero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.483406,
+          -32.801052,
+          25
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "ind_codelco",
+        "name": "Fundición Codelco Ventanas",
+        "category": "emission_source",
+        "type": "industry",
+        "role": "Fuente Industrial: Fundición de Cobre (Emisión SO2/MP)",
+        "icon": "🏭",
+        "color": "#dc2626",
+        "priority": 5,
+        "elevation_msnm": 15,
+        "pollutants": [],
+        "city": "Cordón Industrial Ventanas"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.48162,
+          -32.75961,
+          15
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "ind_termoelectrica",
+        "name": "Termoeléctrica Ventanas (AES Andes)",
+        "category": "emission_source",
+        "type": "industry",
+        "role": "Fuente Industrial: Generación Eléctrica a Carbón/Gas",
+        "icon": "🏭",
+        "color": "#dc2626",
+        "priority": 5,
+        "elevation_msnm": 10,
+        "pollutants": [],
+        "city": "Cordón Industrial Ventanas"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.4792,
+          -32.7445,
+          10
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "ind_gnl",
+        "name": "Terminal Marítimo GNL Quintero",
+        "category": "emission_source",
+        "type": "industry",
+        "role": "Fuente Industrial: Terminal Regasificadora de Gas Natural",
+        "icon": "🏭",
+        "color": "#dc2626",
+        "priority": 5,
+        "elevation_msnm": 5,
+        "pollutants": [],
+        "city": "Quintero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.48946,
+          -32.77869,
+          5
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "ind_enap",
+        "name": "Terminal y Refinería ENAP Quintero",
+        "category": "emission_source",
+        "type": "industry",
+        "role": "Fuente Industrial: Almacenamiento y Carga de Hidrocarburos",
+        "icon": "🏭",
+        "color": "#dc2626",
+        "priority": 5,
+        "elevation_msnm": 12,
+        "pollutants": [],
+        "city": "Loncura"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.49099,
+          -32.78265,
+          12
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "ind_oxiquim",
+        "name": "Planta Química Oxiquim",
+        "category": "emission_source",
+        "type": "industry",
+        "role": "Fuente Industrial: Terminal Químico y Graneles Líquidos",
+        "icon": "🏭",
+        "color": "#dc2626",
+        "priority": 5,
+        "elevation_msnm": 8,
+        "pollutants": [],
+        "city": "Cordón Industrial Ventanas"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.48796,
+          -32.76881,
+          8
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "ind_puerto_ventanas",
+        "name": "Puerto Ventanas",
+        "category": "emission_source",
+        "type": "industry",
+        "role": "Fuente Industrial: Terminal Portuario de Graneles Sólidos",
+        "icon": "🏭",
+        "color": "#dc2626",
+        "priority": 5,
+        "elevation_msnm": 5,
+        "pollutants": [],
+        "city": "Las Ventanas"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.48963,
+          -32.75269,
+          5
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "ind_asfalto_quintero",
+        "name": "Planta Asfaltos / Combustibles Quintero",
+        "category": "emission_source",
+        "type": "industry",
+        "role": "Fuente Industrial: Derivados de Petróleo y Asfaltos",
+        "icon": "🏭",
+        "color": "#dc2626",
+        "priority": 5,
+        "elevation_msnm": 10,
+        "pollutants": [],
+        "city": "Loncura"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.4935,
+          -32.7801,
+          10
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "health_hosp_adriana_cousino",
+        "name": "Hospital Adriana Cousiño (Quintero)",
+        "category": "health",
+        "type": "health",
+        "role": "Salud: Hospital Base Comunal Quintero",
+        "icon": "🏥",
+        "color": "#ef4444",
+        "priority": 5,
+        "elevation_msnm": 25,
+        "pollutants": [],
+        "city": "Quintero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.531107,
+          -32.77931,
+          25
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "health_cesfam_quintero",
+        "name": "CESFAM Quintero",
+        "category": "health",
+        "type": "health",
+        "role": "Salud: Centro de Salud Familiar Quintero",
+        "icon": "🏥",
+        "color": "#ef4444",
+        "priority": 5,
+        "elevation_msnm": 20,
+        "pollutants": [],
+        "city": "Quintero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.534964,
+          -32.795313,
+          20
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "health_cesfam_ventanas",
+        "name": "CESFAM Las Ventanas",
+        "category": "health",
+        "type": "health",
+        "role": "Salud: Centro de Salud Familiar Las Ventanas",
+        "icon": "🏥",
+        "color": "#ef4444",
+        "priority": 5,
+        "elevation_msnm": 14,
+        "pollutants": [],
+        "city": "Las Ventanas"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.484575,
+          -32.742325,
+          14
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "health_cesfam_puchuncavi",
+        "name": "CESFAM Puchuncaví",
+        "category": "health",
+        "type": "health",
+        "role": "Salud: Centro de Salud Familiar Puchuncaví Centro",
+        "icon": "🏥",
+        "color": "#ef4444",
+        "priority": 5,
+        "elevation_msnm": 90,
+        "pollutants": [],
+        "city": "Puchuncaví Centro"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.415978,
+          -32.725774,
+          90
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "health_sapu_ventanas",
+        "name": "SAPU Las Ventanas",
+        "category": "health",
+        "type": "health",
+        "role": "Salud: Servicio de Atención Primaria de Urgencia Ventanas",
+        "icon": "🏥",
+        "color": "#ef4444",
+        "priority": 5,
+        "elevation_msnm": 14,
+        "pollutants": [],
+        "city": "Las Ventanas"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.483818,
+          -32.742342,
+          14
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "health_cecof_loncura",
+        "name": "CECOF Loncura",
+        "category": "health",
+        "type": "health",
+        "role": "Salud: Centro Comunitario de Salud Familiar Loncura",
+        "icon": "🏥",
+        "color": "#ef4444",
+        "priority": 4,
+        "elevation_msnm": 15,
+        "pollutants": [],
+        "city": "Loncura"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.503992,
+          -32.788325,
+          15
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "health_posta_loncura",
+        "name": "Posta de Salud Rural Loncura",
+        "category": "health",
+        "type": "health",
+        "role": "Salud: Posta de Atención Rural Loncura",
+        "icon": "🏥",
+        "color": "#ef4444",
+        "priority": 4,
+        "elevation_msnm": 15,
+        "pollutants": [],
+        "city": "Loncura"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.502156,
+          -32.789708,
+          15
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "health_posta_horcon",
+        "name": "Posta de Salud Rural Horcón",
+        "category": "health",
+        "type": "health",
+        "role": "Salud: Posta Rural Caleta Horcón",
+        "icon": "🏥",
+        "color": "#ef4444",
+        "priority": 4,
+        "elevation_msnm": 10,
+        "pollutants": [],
+        "city": "Horcón"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.48871,
+          -32.711267,
+          10
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "health_cruz_roja",
+        "name": "Cruz Roja Chilena (Quintero)",
+        "category": "health",
+        "type": "health",
+        "role": "Salud y Rescate: Sede Comunal Cruz Roja",
+        "icon": "🏥",
+        "color": "#ef4444",
+        "priority": 4,
+        "elevation_msnm": 22,
+        "pollutants": [],
+        "city": "Quintero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.527323,
+          -32.787385,
+          22
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "health_centro_medico_quintero",
+        "name": "Centro Médico y Dental Quintero",
+        "category": "health",
+        "type": "health",
+        "role": "Salud: Centro Médico Ambulatorio Quintero",
+        "icon": "🏥",
+        "color": "#ef4444",
+        "priority": 4,
+        "elevation_msnm": 24,
+        "pollutants": [],
+        "city": "Quintero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.528235,
+          -32.78279,
+          24
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "health_cruz_verde_quintero",
+        "name": "Farmacia Cruz Verde (Quintero Centro)",
+        "category": "health",
+        "type": "health",
+        "role": "Salud y Farmacia: Dispensario Céntrico Alta Afluencia",
+        "icon": "💊",
+        "color": "#ef4444",
+        "priority": 3,
+        "elevation_msnm": 23,
+        "pollutants": [],
+        "city": "Quintero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.527475,
+          -32.784812,
+          23
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "health_ahumada_quintero",
+        "name": "Farmacias Ahumada (Quintero)",
+        "category": "health",
+        "type": "health",
+        "role": "Salud y Farmacia: Cadena Farmacéutica Principal",
+        "icon": "💊",
+        "color": "#ef4444",
+        "priority": 3,
+        "elevation_msnm": 23,
+        "pollutants": [],
+        "city": "Quintero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.527347,
+          -32.78546,
+          23
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "health_dr_simi_quintero",
+        "name": "Farmacia Dr. Simi (Quintero Plaza)",
+        "category": "health",
+        "type": "health",
+        "role": "Salud y Medicamentos: Farmacia Concurrida Plaza Quintero",
+        "icon": "💊",
+        "color": "#ef4444",
+        "priority": 3,
+        "elevation_msnm": 22,
+        "pollutants": [],
+        "city": "Quintero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.527098,
+          -32.786908,
+          22
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "health_farmacia_puchuncavi",
+        "name": "Farmacia La Plaza (Puchuncaví)",
+        "category": "health",
+        "type": "health",
+        "role": "Salud y Farmacia: Farmacia Comunal Puchuncaví Centro",
+        "icon": "💊",
+        "color": "#ef4444",
+        "priority": 3,
+        "elevation_msnm": 88,
+        "pollutants": [],
+        "city": "Puchuncaví Centro"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.414293,
+          -32.726414,
+          88
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "health_farmacia_horcon",
+        "name": "Farmacia Macarena (Horcón)",
+        "category": "health",
+        "type": "health",
+        "role": "Salud y Farmacia: Asistencia Farmacéutica Caleta Horcón",
+        "icon": "💊",
+        "color": "#ef4444",
+        "priority": 3,
+        "elevation_msnm": 12,
+        "pollutants": [],
+        "city": "Horcón"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.489941,
+          -32.709606,
+          12
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "edu_escuela_la_greda",
+        "name": "Escuela Básica La Greda",
+        "category": "education",
+        "type": "education",
+        "role": "Educación Crítica: Escuela La Greda (Zona PPDA)",
+        "icon": "🏫",
+        "color": "#f97316",
+        "priority": 5,
+        "elevation_msnm": 35,
+        "pollutants": [],
+        "city": "Las Salinas / Campiche"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.460807,
+          -32.736423,
+          35
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "edu_colegio_sargento_aldea",
+        "name": "Colegio Sargento Aldea (Ventanas)",
+        "category": "education",
+        "type": "education",
+        "role": "Educación: Colegio Básico Las Ventanas",
+        "icon": "🏫",
+        "color": "#f97316",
+        "priority": 5,
+        "elevation_msnm": 12,
+        "pollutants": [],
+        "city": "Las Ventanas"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.485693,
+          -32.742413,
+          12
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "edu_escuela_la_chocota",
+        "name": "Escuela La Chocota",
+        "category": "education",
+        "type": "education",
+        "role": "Educación: Escuela Básica Rural Chocota",
+        "icon": "🏫",
+        "color": "#f97316",
+        "priority": 5,
+        "elevation_msnm": 20,
+        "pollutants": [],
+        "city": "La Chocota"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.487073,
+          -32.729684,
+          20
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "edu_escuela_campiche",
+        "name": "Escuela Campiche",
+        "category": "education",
+        "type": "education",
+        "role": "Educación: Escuela Básica Rural Campiche",
+        "icon": "🏫",
+        "color": "#f97316",
+        "priority": 5,
+        "elevation_msnm": 30,
+        "pollutants": [],
+        "city": "Las Salinas / Campiche"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.451108,
+          -32.735326,
+          30
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "edu_escuela_horcon",
+        "name": "Escuela Básica de Horcón",
+        "category": "education",
+        "type": "education",
+        "role": "Educación: Escuela Básica Caleta Horcón",
+        "icon": "🏫",
+        "color": "#f97316",
+        "priority": 5,
+        "elevation_msnm": 18,
+        "pollutants": [],
+        "city": "Horcón"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.488109,
+          -32.713264,
+          18
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "edu_colegio_velasquez",
+        "name": "Complejo Educacional Gral. José Velásquez",
+        "category": "education",
+        "type": "education",
+        "role": "Educación Media y Técnico-Profesional Puchuncaví",
+        "icon": "🏫",
+        "color": "#f97316",
+        "priority": 5,
+        "elevation_msnm": 85,
+        "pollutants": [],
+        "city": "Puchuncaví Centro"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.417052,
+          -32.726495,
+          85
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "edu_colegio_san_hernaldo",
+        "name": "Colegio San Hernaldo (Puchuncaví)",
+        "category": "education",
+        "type": "education",
+        "role": "Educación: Colegio Particular Subvencionado Puchuncaví",
+        "icon": "🏫",
+        "color": "#f97316",
+        "priority": 5,
+        "elevation_msnm": 88,
+        "pollutants": [],
+        "city": "Puchuncaví Centro"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.411281,
+          -32.728541,
+          88
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "edu_escuela_el_rungue",
+        "name": "Escuela Básica El Rungue",
+        "category": "education",
+        "type": "education",
+        "role": "Educación: Escuela Rural Sector El Rungue",
+        "icon": "🏫",
+        "color": "#f97316",
+        "priority": 4,
+        "elevation_msnm": 95,
+        "pollutants": [],
+        "city": "El Rungue"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.406807,
+          -32.697141,
+          95
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "edu_escuela_tortel",
+        "name": "Escuela Juan José Tortel (Valle Alegre)",
+        "category": "education",
+        "type": "education",
+        "role": "Educación: Escuela Básica Valle Alegre",
+        "icon": "🏫",
+        "color": "#f97316",
+        "priority": 4,
+        "elevation_msnm": 70,
+        "pollutants": [],
+        "city": "Puchuncaví"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.440806,
+          -32.81167,
+          70
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "edu_liceo_politecnico_quintero",
+        "name": "Liceo Politécnico de Quintero",
+        "category": "education",
+        "type": "education",
+        "role": "Educación Media Técnico-Profesional (Enlace Educación Superior / Industrial)",
+        "icon": "🎓",
+        "color": "#f97316",
+        "priority": 5,
+        "elevation_msnm": 22,
+        "pollutants": [],
+        "city": "Quintero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.527444,
+          -32.788239,
+          22
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "edu_colegio_don_orione",
+        "name": "Colegio Don Orione (Quintero)",
+        "category": "education",
+        "type": "education",
+        "role": "Educación: Colegio Básico y Media Quintero",
+        "icon": "🏫",
+        "color": "#f97316",
+        "priority": 5,
+        "elevation_msnm": 24,
+        "pollutants": [],
+        "city": "Quintero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.533909,
+          -32.785821,
+          24
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "edu_colegio_ingles",
+        "name": "Colegio Inglés Quintero",
+        "category": "education",
+        "type": "education",
+        "role": "Educación: Colegio Inglés de Quintero",
+        "icon": "🏫",
+        "color": "#f97316",
+        "priority": 5,
+        "elevation_msnm": 22,
+        "pollutants": [],
+        "city": "Quintero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.531017,
+          -32.783333,
+          22
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "edu_colegio_alonso_quintero",
+        "name": "Colegio Alonso de Quintero",
+        "category": "education",
+        "type": "education",
+        "role": "Educación: Colegio Científico-Humanista Alonso de Quintero",
+        "icon": "🏫",
+        "color": "#f97316",
+        "priority": 5,
+        "elevation_msnm": 18,
+        "pollutants": [],
+        "city": "Quintero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.531874,
+          -32.801792,
+          18
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "edu_colegio_alonso_norte",
+        "name": "Colegio Alonso de Quintero (Sede Norte)",
+        "category": "education",
+        "type": "education",
+        "role": "Educación: Campus Escolar Norte Alonso de Quintero",
+        "icon": "🏫",
+        "color": "#f97316",
+        "priority": 5,
+        "elevation_msnm": 26,
+        "pollutants": [],
+        "city": "Quintero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.53282,
+          -32.775423,
+          26
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "edu_colegio_santa_filomena",
+        "name": "Colegio Santa Filomena (Quintero)",
+        "category": "education",
+        "type": "education",
+        "role": "Educación: Colegio Básico Santa Filomena",
+        "icon": "🏫",
+        "color": "#f97316",
+        "priority": 5,
+        "elevation_msnm": 25,
+        "pollutants": [],
+        "city": "Quintero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.529165,
+          -32.780896,
+          25
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "edu_escuela_francia",
+        "name": "Escuela República de Francia (Quintero)",
+        "category": "education",
+        "type": "education",
+        "role": "Educación: Escuela Básica Municipal Quintero",
+        "icon": "🏫",
+        "color": "#f97316",
+        "priority": 5,
+        "elevation_msnm": 20,
+        "pollutants": [],
+        "city": "Quintero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.530809,
+          -32.791122,
+          20
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "edu_escuela_narau",
+        "name": "Escuela Valle de Narau (Quintero)",
+        "category": "education",
+        "type": "education",
+        "role": "Educación: Escuela Básica Valle de Narau",
+        "icon": "🏫",
+        "color": "#f97316",
+        "priority": 5,
+        "elevation_msnm": 20,
+        "pollutants": [],
+        "city": "Quintero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.534055,
+          -32.794139,
+          20
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "edu_colegio_costa_mauco",
+        "name": "Colegio Artístico Costa Mauco",
+        "category": "education",
+        "type": "education",
+        "role": "Educación: Colegio Artístico Quintero",
+        "icon": "🏫",
+        "color": "#f97316",
+        "priority": 5,
+        "elevation_msnm": 23,
+        "pollutants": [],
+        "city": "Quintero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.530444,
+          -32.785358,
+          23
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "edu_centro_faro",
+        "name": "Centro Educacional El Faro",
+        "category": "education",
+        "type": "education",
+        "role": "Educación: Centro Educativo Quintero",
+        "icon": "🏫",
+        "color": "#f97316",
+        "priority": 4,
+        "elevation_msnm": 25,
+        "pollutants": [],
+        "city": "Quintero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.530829,
+          -32.776888,
+          25
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "edu_escuela_nuevo_mundo",
+        "name": "Escuela de Lenguaje Nuevo Mundo",
+        "category": "education",
+        "type": "education",
+        "role": "Educación Especial: Escuela de Lenguaje Quintero",
+        "icon": "🏫",
+        "color": "#f97316",
+        "priority": 4,
+        "elevation_msnm": 25,
+        "pollutants": [],
+        "city": "Quintero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.531264,
+          -32.776616,
+          25
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "edu_escuela_san_gabriel",
+        "name": "Escuela de Lenguaje San Gabriel",
+        "category": "education",
+        "type": "education",
+        "role": "Educación Especial: Escuela de Lenguaje San Gabriel",
+        "icon": "🏫",
+        "color": "#f97316",
+        "priority": 4,
+        "elevation_msnm": 22,
+        "pollutants": [],
+        "city": "Quintero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.529683,
+          -32.78919,
+          22
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "edu_escuela_ann_sullivan",
+        "name": "Centro de Educación Especial Ann Sullivan",
+        "category": "education",
+        "type": "education",
+        "role": "Educación Diferencial: Escuela Especial Ann Sullivan",
+        "icon": "🏫",
+        "color": "#f97316",
+        "priority": 4,
+        "elevation_msnm": 25,
+        "pollutants": [],
+        "city": "Quintero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.531626,
+          -32.77769,
+          25
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "edu_escuela_lourdes",
+        "name": "Escuela Especial Lourdes (Quintero)",
+        "category": "education",
+        "type": "education",
+        "role": "Educación Diferencial: Escuela Especial Lourdes",
+        "icon": "🏫",
+        "color": "#f97316",
+        "priority": 4,
+        "elevation_msnm": 20,
+        "pollutants": [],
+        "city": "Quintero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.53441,
+          -32.777271,
+          20
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "edu_parvulos_altamira",
+        "name": "Escuela de Párvulos Altamira",
+        "category": "education",
+        "type": "education",
+        "role": "Educación Parvularia: Kinder y Pre-Kinder Quintero",
+        "icon": "🏫",
+        "color": "#f97316",
+        "priority": 4,
+        "elevation_msnm": 22,
+        "pollutants": [],
+        "city": "Quintero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.532615,
+          -32.787692,
+          22
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "edu_jardin_bambi",
+        "name": "Jardín Infantil Bambi (JUNJI)",
+        "category": "education",
+        "type": "education",
+        "role": "Educación Inicial: Jardín Infantil Comunal Quintero",
+        "icon": "🏫",
+        "color": "#f97316",
+        "priority": 4,
+        "elevation_msnm": 18,
+        "pollutants": [],
+        "city": "Quintero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.536773,
+          -32.797418,
+          18
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "edu_jardin_puchuncavi",
+        "name": "Jardín Infantil San Agustín (Puchuncaví)",
+        "category": "education",
+        "type": "education",
+        "role": "Educación Parvularia: Red JUNJI/Integra Puchuncaví",
+        "icon": "🏫",
+        "color": "#f97316",
+        "priority": 4,
+        "elevation_msnm": 86,
+        "pollutants": [],
+        "city": "Puchuncaví Centro"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.408448,
+          -32.729387,
+          86
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "comm_unimarc_quintero_centro",
+        "name": "Supermercado Unimarc Quintero Centro",
+        "category": "commercial",
+        "type": "commercial",
+        "role": "Comercio de Abasto Mayor: Unimarc Estrella de Chile",
+        "icon": "🛒",
+        "color": "#eab308",
+        "priority": 4,
+        "elevation_msnm": 23,
+        "pollutants": [],
+        "city": "Quintero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.527081,
+          -32.785623,
+          23
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "comm_unimarc_normandie",
+        "name": "Supermercado Unimarc Normandie (Quintero)",
+        "category": "commercial",
+        "type": "commercial",
+        "role": "Comercio de Abasto Mayor: Unimarc Av. Normandie",
+        "icon": "🛒",
+        "color": "#eab308",
+        "priority": 4,
+        "elevation_msnm": 21,
+        "pollutants": [],
+        "city": "Quintero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.527169,
+          -32.792341,
+          21
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "comm_acuenta_quintero",
+        "name": "Super Bodega Acuenta (Quintero Sur)",
+        "category": "commercial",
+        "type": "commercial",
+        "role": "Comercio Mayorista / Retail Popular Quintero",
+        "icon": "🛒",
+        "color": "#eab308",
+        "priority": 4,
+        "elevation_msnm": 18,
+        "pollutants": [],
+        "city": "Quintero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.526812,
+          -32.798536,
+          18
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "comm_unimarc_puchuncavi",
+        "name": "Supermercado Unimarc Puchuncaví",
+        "category": "commercial",
+        "type": "commercial",
+        "role": "Comercio de Abasto Principal Comuna de Puchuncaví",
+        "icon": "🛒",
+        "color": "#eab308",
+        "priority": 4,
+        "elevation_msnm": 88,
+        "pollutants": [],
+        "city": "Puchuncaví Centro"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.410148,
+          -32.721627,
+          88
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "comm_el_descanso_loncura",
+        "name": "Supermercado El Descanso (Loncura)",
+        "category": "commercial",
+        "type": "commercial",
+        "role": "Comercio y Abastecimiento Balneario de Loncura",
+        "icon": "🛒",
+        "color": "#eab308",
+        "priority": 3,
+        "elevation_msnm": 15,
+        "pollutants": [],
+        "city": "Loncura"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.502803,
+          -32.789344,
+          15
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "comm_el_carolo_horcon",
+        "name": "Supermercado El Carolo (Horcón)",
+        "category": "commercial",
+        "type": "commercial",
+        "role": "Comercio de Abastecimiento Caleta Horcón",
+        "icon": "🛒",
+        "color": "#eab308",
+        "priority": 3,
+        "elevation_msnm": 14,
+        "pollutants": [],
+        "city": "Horcón"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.488973,
+          -32.710683,
+          14
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "comm_sdtodo_quintero",
+        "name": "Supermercado S´DTodo (Quintero)",
+        "category": "commercial",
+        "type": "commercial",
+        "role": "Comercio Local y Autoservicio Quintero Centro",
+        "icon": "🛒",
+        "color": "#eab308",
+        "priority": 3,
+        "elevation_msnm": 23,
+        "pollutants": [],
+        "city": "Quintero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.528224,
+          -32.786825,
+          23
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "comm_feria_quintero",
+        "name": "Feria Libre y Mercado de Abastos Quintero",
+        "category": "commercial",
+        "type": "commercial",
+        "role": "Mercado Abierto y Feria de Gran Concurrencia Matutina",
+        "icon": "🏪",
+        "color": "#eab308",
+        "priority": 4,
+        "elevation_msnm": 24,
+        "pollutants": [],
+        "city": "Quintero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.52651,
+          -32.78259,
+          24
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "comm_caleta_mercado_quintero",
+        "name": "Mercado y Caleta Pesquera de Quintero",
+        "category": "commercial",
+        "type": "commercial",
+        "role": "Mercado del Mar, Faena Pesquera y Polo Gastronómico",
+        "icon": "🐟",
+        "color": "#eab308",
+        "priority": 4,
+        "elevation_msnm": 5,
+        "pollutants": [],
+        "city": "Quintero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.527006,
+          -32.782067,
+          5
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "comm_caleta_mercado_loncura",
+        "name": "Mercado Pesquero Caleta Loncura",
+        "category": "commercial",
+        "type": "commercial",
+        "role": "Mercado Local de Productos del Mar y Gastronomía",
+        "icon": "🐟",
+        "color": "#eab308",
+        "priority": 3,
+        "elevation_msnm": 6,
+        "pollutants": [],
+        "city": "Loncura"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.507865,
+          -32.782724,
+          6
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "crowd_plaza_quintero",
+        "name": "Plaza Ignacio Carrera Pinto (Plaza de Armas Quintero)",
+        "category": "crowded_area",
+        "type": "crowd",
+        "role": "Núcleo Cívico Principal y Zona de Alta Densidad Peatonal",
+        "icon": "👥",
+        "color": "#ec4899",
+        "priority": 5,
+        "elevation_msnm": 23,
+        "pollutants": [],
+        "city": "Quintero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.528399,
+          -32.783928,
+          23
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "crowd_plaza_puchuncavi",
+        "name": "Plaza de Armas de Puchuncaví",
+        "category": "crowded_area",
+        "type": "crowd",
+        "role": "Plaza Mayor y Núcleo Cívico Comunal de Puchuncaví",
+        "icon": "👥",
+        "color": "#ec4899",
+        "priority": 5,
+        "elevation_msnm": 88,
+        "pollutants": [],
+        "city": "Puchuncaví Centro"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.415106,
+          -32.725987,
+          88
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "crowd_plaza_ventanas",
+        "name": "Plaza Central Las Ventanas (Plaza Vadinho)",
+        "category": "crowded_area",
+        "type": "crowd",
+        "role": "Espacio Público Central y Concurrencia Las Ventanas",
+        "icon": "👥",
+        "color": "#ec4899",
+        "priority": 4,
+        "elevation_msnm": 14,
+        "pollutants": [],
+        "city": "La Greda"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.475878,
+          -32.743039,
+          14
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "crowd_plaza_horcon",
+        "name": "Plaza Los Pescadores (Caleta Horcón)",
+        "category": "crowded_area",
+        "type": "crowd",
+        "role": "Polo Turístico, Feria Artesanal y Fuerte Concurrencia",
+        "icon": "👥",
+        "color": "#ec4899",
+        "priority": 4,
+        "elevation_msnm": 12,
+        "pollutants": [],
+        "city": "Horcón"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.489833,
+          -32.712876,
+          12
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "crowd_plaza_loncura",
+        "name": "Plaza Central de Loncura",
+        "category": "crowded_area",
+        "type": "crowd",
+        "role": "Punto de Reunión Comunitaria Balneario Loncura",
+        "icon": "👥",
+        "color": "#ec4899",
+        "priority": 3,
+        "elevation_msnm": 15,
+        "pollutants": [],
+        "city": "Loncura"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.50229,
+          -32.787705,
+          15
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "crowd_plaza_fuerza_aerea",
+        "name": "Plaza Fuerza Aérea (Quintero)",
+        "category": "crowded_area",
+        "type": "crowd",
+        "role": "Espacio Cívico Costero Quintero",
+        "icon": "👥",
+        "color": "#ec4899",
+        "priority": 3,
+        "elevation_msnm": 22,
+        "pollutants": [],
+        "city": "Quintero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.526616,
+          -32.782856,
+          22
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "crowd_plaza_bicentenario",
+        "name": "Plaza Bicentenario (Quintero Sur)",
+        "category": "crowded_area",
+        "type": "crowd",
+        "role": "Área Verde y Recreacional Residencial Quintero Sur",
+        "icon": "👥",
+        "color": "#ec4899",
+        "priority": 3,
+        "elevation_msnm": 18,
+        "pollutants": [],
+        "city": "Quintero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.52729,
+          -32.797636,
+          18
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "crowd_parque_cousino",
+        "name": "Parque Municipal Luisa Sebiré de Cousiño",
+        "category": "crowded_area",
+        "type": "crowd",
+        "role": "Gran Parque Comunal, Mirador y Eventos Masivos",
+        "icon": "🌳",
+        "color": "#ec4899",
+        "priority": 4,
+        "elevation_msnm": 30,
+        "pollutants": [],
+        "city": "Quintero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.530448,
+          -32.770174,
+          30
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "crowd_terminal_buses_quintero",
+        "name": "Terminal de Buses Rodoviario de Quintero",
+        "category": "crowded_area",
+        "type": "crowd",
+        "role": "Hub de Transporte Interurbano Sol del Pacífico / Cóndor Bus",
+        "icon": "🚌",
+        "color": "#ec4899",
+        "priority": 5,
+        "elevation_msnm": 24,
+        "pollutants": [],
+        "city": "Quintero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.526876,
+          -32.777165,
+          24
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "crowd_terminal_buses_sur",
+        "name": "Terminal de Buses Quintero Sur",
+        "category": "crowded_area",
+        "type": "crowd",
+        "role": "Estación de Buses Interurbanos Acceso Sur Quintero",
+        "icon": "🚌",
+        "color": "#ec4899",
+        "priority": 4,
+        "elevation_msnm": 18,
+        "pollutants": [],
+        "city": "Quintero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.527818,
+          -32.797389,
+          18
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "crowd_estadio_quintero",
+        "name": "Estadio Municipal Raúl Vargas Verdejo (Quintero)",
+        "category": "crowded_area",
+        "type": "crowd",
+        "role": "Complejo Deportivo y Eventos Masivos de Quintero",
+        "icon": "🏟",
+        "color": "#ec4899",
+        "priority": 4,
+        "elevation_msnm": 18,
+        "pollutants": [],
+        "city": "Quintero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.529555,
+          -32.799484,
+          18
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "crowd_gimnasio_quintero",
+        "name": "Gimnasio Municipal Techado de Quintero",
+        "category": "crowded_area",
+        "type": "crowd",
+        "role": "Polideportivo Techado y Asambleas Ciudadanas",
+        "icon": "🏟",
+        "color": "#ec4899",
+        "priority": 4,
+        "elevation_msnm": 23,
+        "pollutants": [],
+        "city": "Quintero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.52843,
+          -32.78557,
+          23
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "crowd_estadio_puchuncavi",
+        "name": "Estadio Municipal de Puchuncaví",
+        "category": "crowded_area",
+        "type": "crowd",
+        "role": "Recinto Deportivo Principal de Puchuncaví",
+        "icon": "🏟",
+        "color": "#ec4899",
+        "priority": 4,
+        "elevation_msnm": 85,
+        "pollutants": [],
+        "city": "Puchuncaví Centro"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.403188,
+          -32.719721,
+          85
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "crowd_estadio_ventanas",
+        "name": "Estadio Las Ventanas",
+        "category": "crowded_area",
+        "type": "crowd",
+        "role": "Cancha Deportiva Comunitaria Las Ventanas",
+        "icon": "🏟",
+        "color": "#ec4899",
+        "priority": 3,
+        "elevation_msnm": 22,
+        "pollutants": [],
+        "city": "La Greda"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.47435,
+          -32.74728,
+          22
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "crowd_medialuna_puchuncavi",
+        "name": "Medialuna de Puchuncaví",
+        "category": "crowded_area",
+        "type": "crowd",
+        "role": "Recinto Tradicional de Fiestas Costumbristas y Alta Concurrencia",
+        "icon": "🏟",
+        "color": "#ec4899",
+        "priority": 3,
+        "elevation_msnm": 86,
+        "pollutants": [],
+        "city": "Puchuncaví Centro"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.4122,
+          -32.727401,
+          86
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "crowd_club_valle_alegre",
+        "name": "Club Deportivo Valle Alegre",
+        "category": "crowded_area",
+        "type": "crowd",
+        "role": "Cancha y Espacio Deportivo Rural Valle Alegre",
+        "icon": "🏟",
+        "color": "#ec4899",
+        "priority": 3,
+        "elevation_msnm": 65,
+        "pollutants": [],
+        "city": "Puchuncaví"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.434059,
+          -32.808799,
+          65
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "crowd_muni_quintero",
+        "name": "Ilustre Municipalidad de Quintero",
+        "category": "crowded_area",
+        "type": "crowd",
+        "role": "Edificio Consistorial y Servicios Públicos Comunales",
+        "icon": "🏛",
+        "color": "#ec4899",
+        "priority": 5,
+        "elevation_msnm": 23,
+        "pollutants": [],
+        "city": "Quintero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.527692,
+          -32.785385,
+          23
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "crowd_muni_puchuncavi",
+        "name": "Ilustre Municipalidad de Puchuncaví",
+        "category": "crowded_area",
+        "type": "crowd",
+        "role": "Edificio Consistorial Comuna de Puchuncaví",
+        "icon": "🏛",
+        "color": "#ec4899",
+        "priority": 5,
+        "elevation_msnm": 88,
+        "pollutants": [],
+        "city": "Puchuncaví Centro"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.41611,
+          -32.725423,
+          88
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "crowd_subcomisaria_quintero",
+        "name": "Subcomisaría de Carabineros Quintero",
+        "category": "crowded_area",
+        "type": "crowd",
+        "role": "Cuartel Policial y Control Operativo de Emergencias",
+        "icon": "👮",
+        "color": "#ec4899",
+        "priority": 4,
+        "elevation_msnm": 22,
+        "pollutants": [],
+        "city": "Quintero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.528055,
+          -32.787698,
+          22
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "crowd_tenencia_puchuncavi",
+        "name": "Tenencia de Carabineros Puchuncaví",
+        "category": "crowded_area",
+        "type": "crowd",
+        "role": "Cuartel Policial Comunal Puchuncaví",
+        "icon": "👮",
+        "color": "#ec4899",
+        "priority": 4,
+        "elevation_msnm": 86,
+        "pollutants": [],
+        "city": "Puchuncaví Centro"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.408431,
+          -32.718983,
+          86
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "crowd_reten_ventanas",
+        "name": "Retén de Carabineros Las Ventanas",
+        "category": "crowded_area",
+        "type": "crowd",
+        "role": "Unidad Policial Sector Las Ventanas",
+        "icon": "👮",
+        "color": "#ec4899",
+        "priority": 4,
+        "elevation_msnm": 14,
+        "pollutants": [],
+        "city": "Las Ventanas"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.486238,
+          -32.743767,
+          14
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "crowd_reten_horcon",
+        "name": "Retén de Carabineros Horcón",
+        "category": "crowded_area",
+        "type": "crowd",
+        "role": "Unidad Policial Caleta Horcón",
+        "icon": "👮",
+        "color": "#ec4899",
+        "priority": 4,
+        "elevation_msnm": 16,
+        "pollutants": [],
+        "city": "Horcón"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.486523,
+          -32.715967,
+          16
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "crowd_capitania_puerto",
+        "name": "Capitanía de Puerto de Quintero (Directemar)",
+        "category": "crowded_area",
+        "type": "crowd",
+        "role": "Autoridad Marítima, Control Tráfico Marítimo y Seguridad Costera",
+        "icon": "⚓",
+        "color": "#ec4899",
+        "priority": 4,
+        "elevation_msnm": 8,
+        "pollutants": [],
+        "city": "Quintero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.52659,
+          -32.77647,
+          8
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "crowd_bomberos_quintero",
+        "name": "Cuerpo de Bomberos de Quintero (1ª Compañía)",
+        "category": "crowded_area",
+        "type": "crowd",
+        "role": "Cuartel Central de Bomberos y Respuesta Rápida a Emergencias",
+        "icon": "🚒",
+        "color": "#ec4899",
+        "priority": 4,
+        "elevation_msnm": 22,
+        "pollutants": [],
+        "city": "Quintero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.52757,
+          -32.78624,
+          22
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "crowd_juzgado_quintero",
+        "name": "Juzgado de Letras y Garantía de Quintero",
+        "category": "crowded_area",
+        "type": "crowd",
+        "role": "Tribunal de Justicia y Fiscalía Quintero",
+        "icon": "⚖",
+        "color": "#ec4899",
+        "priority": 3,
+        "elevation_msnm": 23,
+        "pollutants": [],
+        "city": "Quintero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.528229,
+          -32.786524,
+          23
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "crowd_caleta_ventanas",
+        "name": "Caleta de Pescadores Las Ventanas",
+        "category": "crowded_area",
+        "type": "crowd",
+        "role": "Caleta Pesquera, Embarcadero y Afluencia de Pescadores",
+        "icon": "⚓",
+        "color": "#ec4899",
+        "priority": 4,
+        "elevation_msnm": 5,
+        "pollutants": [],
+        "city": "Las Ventanas"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.49104,
+          -32.74298,
+          5
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "crowd_caleta_horcon",
+        "name": "Caleta de Horcón (Muelle y Borde Costero)",
+        "category": "crowded_area",
+        "type": "crowd",
+        "role": "Borde Costero Histórico, Polo Turístico y Gastronómico",
+        "icon": "⚓",
+        "color": "#ec4899",
+        "priority": 5,
+        "elevation_msnm": 6,
+        "pollutants": [],
+        "city": "Horcón"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.48971,
+          -32.70876,
+          6
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "crowd_parroquia_filomena",
+        "name": "Parroquia Santa Filomena (Quintero)",
+        "category": "crowded_area",
+        "type": "crowd",
+        "role": "Templo Principal y Centro de Culto Masivo Quintero",
+        "icon": "⛪",
+        "color": "#ec4899",
+        "priority": 4,
+        "elevation_msnm": 24,
+        "pollutants": [],
+        "city": "Quintero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.527985,
+          -32.781513,
+          24
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "crowd_parroquia_puchuncavi",
+        "name": "Parroquia Nuestra Señora del Rosario (Templo Histórico Colonial 1691)",
+        "category": "historic",
+        "type": "crowd",
+        "role": "Templo Colonial de 1691 - Hito Histórico y Religioso de Puchuncaví",
+        "icon": "🏛",
+        "color": "#d97706",
+        "priority": 4,
+        "elevation_msnm": 88,
+        "pollutants": [],
+        "city": "Puchuncaví Centro"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.415108,
+          -32.726716,
+          88
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "crowd_capilla_santa_ana",
+        "name": "Capilla de Santa Ana (Horcón)",
+        "category": "crowded_area",
+        "type": "crowd",
+        "role": "Templo Comunitario y Centro de Festividades Patronales",
+        "icon": "⛪",
+        "color": "#ec4899",
+        "priority": 3,
+        "elevation_msnm": 10,
+        "pollutants": [],
+        "city": "Horcón"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.49009,
+          -32.70974,
+          10
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "hub_puchuncavi",
+        "name": "Hub Auxiliar Puchuncaví (Bomberos/Estadio)",
+        "category": "auxiliary_hub",
+        "type": "hub",
+        "role": "Nido de Recarga Auxiliar y Baterías de Reemplazo (Sector Este)",
+        "icon": "🔋",
+        "color": "#06b6d4",
+        "priority": 2,
+        "elevation_msnm": 90,
+        "pollutants": [],
+        "city": "Puchuncaví Centro"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.412,
+          -32.723,
+          90
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "hub_loncura",
+        "name": "Hub Auxiliar Loncura (Punto de Apoyo Sur)",
+        "category": "auxiliary_hub",
+        "type": "hub",
+        "role": "Nido de Recarga y Mantenimiento Auxiliar (Sector Sur)",
+        "icon": "🔋",
+        "color": "#06b6d4",
+        "priority": 2,
+        "elevation_msnm": 15,
+        "pollutants": [],
+        "city": "Quintero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.488,
+          -32.793,
+          15
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "beach_playa_los_enamorados",
+        "name": "Playa Los Enamorados",
+        "category": "beach",
+        "type": "beach",
+        "role": "Balneario y Franja Costera: Playa Los Enamorados (Aglomeración de Bañistas)",
+        "icon": "🏖",
+        "color": "#06b6d4",
+        "priority": 4,
+        "elevation_msnm": 2,
+        "pollutants": [],
+        "city": "Quintero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.529716,
+          -32.76978,
+          2
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "beach_playa_las_conchitas",
+        "name": "Playa Las Conchitas",
+        "category": "beach",
+        "type": "beach",
+        "role": "Balneario y Franja Costera: Playa Las Conchitas (Aglomeración de Bañistas)",
+        "icon": "🏖",
+        "color": "#06b6d4",
+        "priority": 4,
+        "elevation_msnm": 2,
+        "pollutants": [],
+        "city": "Quintero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.527321,
+          -32.771316,
+          2
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "beach_playa_el_durazno",
+        "name": "Playa El Durazno",
+        "category": "beach",
+        "type": "beach",
+        "role": "Balneario y Franja Costera: Playa El Durazno (Aglomeración de Bañistas)",
+        "icon": "🏖",
+        "color": "#06b6d4",
+        "priority": 4,
+        "elevation_msnm": 2,
+        "pollutants": [],
+        "city": "Quintero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.526717,
+          -32.775683,
+          2
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "beach_playa_el_caleuche",
+        "name": "Playa El Caleuche",
+        "category": "beach",
+        "type": "beach",
+        "role": "Balneario y Franja Costera: Playa El Caleuche (Aglomeración de Bañistas)",
+        "icon": "🏖",
+        "color": "#06b6d4",
+        "priority": 4,
+        "elevation_msnm": 2,
+        "pollutants": [],
+        "city": "Quintero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.52666,
+          -32.77367,
+          2
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "beach_playa_waikiki",
+        "name": "Playa Waikiki",
+        "category": "beach",
+        "type": "beach",
+        "role": "Balneario y Franja Costera: Playa Waikiki (Aglomeración de Bañistas)",
+        "icon": "🏖",
+        "color": "#06b6d4",
+        "priority": 4,
+        "elevation_msnm": 2,
+        "pollutants": [],
+        "city": "Quintero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.527142,
+          -32.774595,
+          2
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "beach_playa_el_papagayo",
+        "name": "Playa El Papagayo",
+        "category": "beach",
+        "type": "beach",
+        "role": "Balneario y Franja Costera: Playa El Papagayo (Aglomeración de Bañistas)",
+        "icon": "🏖",
+        "color": "#06b6d4",
+        "priority": 4,
+        "elevation_msnm": 2,
+        "pollutants": [],
+        "city": "Quintero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.533915,
+          -32.780007,
+          2
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "beach_playa_el_libro",
+        "name": "Playa El Libro",
+        "category": "beach",
+        "type": "beach",
+        "role": "Balneario y Franja Costera: Playa El Libro (Aglomeración de Bañistas)",
+        "icon": "🏖",
+        "color": "#06b6d4",
+        "priority": 4,
+        "elevation_msnm": 2,
+        "pollutants": [],
+        "city": "Quintero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.537605,
+          -32.775621,
+          2
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "beach_playa_la_tortuga",
+        "name": "Playa La Tortuga",
+        "category": "beach",
+        "type": "beach",
+        "role": "Balneario y Franja Costera: Playa La Tortuga (Aglomeración de Bañistas)",
+        "icon": "🏖",
+        "color": "#06b6d4",
+        "priority": 4,
+        "elevation_msnm": 2,
+        "pollutants": [],
+        "city": "Quintero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.534502,
+          -32.778263,
+          2
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "beach_playa_las_cañitas",
+        "name": "Playa Las Cañitas",
+        "category": "beach",
+        "type": "beach",
+        "role": "Balneario y Franja Costera: Playa Las Cañitas (Aglomeración de Bañistas)",
+        "icon": "🏖",
+        "color": "#06b6d4",
+        "priority": 4,
+        "elevation_msnm": 2,
+        "pollutants": [],
+        "city": "Quintero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.537937,
+          -32.784669,
+          2
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "beach_playa_la_caleta",
+        "name": "Playa La Caleta",
+        "category": "beach",
+        "type": "beach",
+        "role": "Balneario y Franja Costera: Playa La Caleta (Aglomeración de Bañistas)",
+        "icon": "🏖",
+        "color": "#06b6d4",
+        "priority": 4,
+        "elevation_msnm": 2,
+        "pollutants": [],
+        "city": "Quintero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.53731,
+          -32.784541,
+          2
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "beach_playa_el_manzano",
+        "name": "Playa El Manzano",
+        "category": "beach",
+        "type": "beach",
+        "role": "Balneario y Franja Costera: Playa El Manzano (Aglomeración de Bañistas)",
+        "icon": "🏖",
+        "color": "#06b6d4",
+        "priority": 4,
+        "elevation_msnm": 2,
+        "pollutants": [],
+        "city": "Quintero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.526778,
+          -32.781522,
+          2
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "beach_playa_albatros",
+        "name": "Playa Albatros",
+        "category": "beach",
+        "type": "beach",
+        "role": "Balneario y Franja Costera: Playa Albatros (Aglomeración de Bañistas)",
+        "icon": "🏖",
+        "color": "#06b6d4",
+        "priority": 4,
+        "elevation_msnm": 2,
+        "pollutants": [],
+        "city": "Quintero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.5253,
+          -32.782378,
+          2
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "beach_playa_el_burrito",
+        "name": "Playa El Burrito",
+        "category": "beach",
+        "type": "beach",
+        "role": "Balneario y Franja Costera: Playa El Burrito (Aglomeración de Bañistas)",
+        "icon": "🏖",
+        "color": "#06b6d4",
+        "priority": 4,
+        "elevation_msnm": 2,
+        "pollutants": [],
+        "city": "Quintero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.535147,
+          -32.783419,
+          2
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "beach_playa_giligan",
+        "name": "Playa Giligan",
+        "category": "beach",
+        "type": "beach",
+        "role": "Balneario y Franja Costera: Playa Giligan (Aglomeración de Bañistas)",
+        "icon": "🏖",
+        "color": "#06b6d4",
+        "priority": 4,
+        "elevation_msnm": 2,
+        "pollutants": [],
+        "city": "Quintero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.535015,
+          -32.777449,
+          2
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "beach_playa_los_bolones",
+        "name": "Playa Los Bolones",
+        "category": "beach",
+        "type": "beach",
+        "role": "Balneario y Franja Costera: Playa Los Bolones (Aglomeración de Bañistas)",
+        "icon": "🏖",
+        "color": "#06b6d4",
+        "priority": 4,
+        "elevation_msnm": 2,
+        "pollutants": [],
+        "city": "Quintero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.530437,
+          -32.769104,
+          2
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "beach_playa_el_coronel",
+        "name": "Playa El Coronel",
+        "category": "beach",
+        "type": "beach",
+        "role": "Balneario y Franja Costera: Playa El Coronel (Aglomeración de Bañistas)",
+        "icon": "🏖",
+        "color": "#06b6d4",
+        "priority": 4,
+        "elevation_msnm": 2,
+        "pollutants": [],
+        "city": "Quintero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.52849,
+          -32.769572,
+          2
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "beach_playa_loncura",
+        "name": "Playa Loncura",
+        "category": "beach",
+        "type": "beach",
+        "role": "Balneario y Franja Costera: Playa Loncura (Aglomeración de Bañistas)",
+        "icon": "🏖",
+        "color": "#06b6d4",
+        "priority": 4,
+        "elevation_msnm": 2,
+        "pollutants": [],
+        "city": "Loncura"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.509192,
+          -32.779644,
+          2
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "beach_playa_ventanas",
+        "name": "Playa Ventanas",
+        "category": "beach",
+        "type": "beach",
+        "role": "Balneario y Franja Costera: Playa Ventanas (Aglomeración de Bañistas)",
+        "icon": "🏖",
+        "color": "#06b6d4",
+        "priority": 4,
+        "elevation_msnm": 2,
+        "pollutants": [],
+        "city": "Las Ventanas"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.488208,
+          -32.744452,
+          2
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "beach_playa_el_clarón",
+        "name": "Playa El Clarón",
+        "category": "beach",
+        "type": "beach",
+        "role": "Balneario y Franja Costera: Playa El Clarón (Aglomeración de Bañistas)",
+        "icon": "🏖",
+        "color": "#06b6d4",
+        "priority": 4,
+        "elevation_msnm": 2,
+        "pollutants": [],
+        "city": "Horcón"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.487815,
+          -32.71079,
+          2
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "beach_playa_cau_cau",
+        "name": "Playa Cau-Cau",
+        "category": "beach",
+        "type": "beach",
+        "role": "Balneario y Franja Costera: Playa Cau-Cau (Aglomeración de Bañistas)",
+        "icon": "🏖",
+        "color": "#06b6d4",
+        "priority": 4,
+        "elevation_msnm": 2,
+        "pollutants": [],
+        "city": "Horcón"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.496475,
+          -32.709927,
+          2
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "beach_playa_de_horcón",
+        "name": "Playa de Horcón",
+        "category": "beach",
+        "type": "beach",
+        "role": "Balneario y Franja Costera: Playa de Horcón (Aglomeración de Bañistas)",
+        "icon": "🏖",
+        "color": "#06b6d4",
+        "priority": 4,
+        "elevation_msnm": 2,
+        "pollutants": [],
+        "city": "Horcón"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.49099,
+          -32.709093,
+          2
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "beach_playa_larga_de_horcón",
+        "name": "Playa Larga de Horcón",
+        "category": "beach",
+        "type": "beach",
+        "role": "Balneario y Franja Costera: Playa Larga de Horcón (Aglomeración de Bañistas)",
+        "icon": "🏖",
+        "color": "#06b6d4",
+        "priority": 4,
+        "elevation_msnm": 2,
+        "pollutants": [],
+        "city": "Puchuncaví"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.473653,
+          -32.710284,
+          2
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "beach_playa_el_tebo",
+        "name": "Playa El Tebo",
+        "category": "beach",
+        "type": "beach",
+        "role": "Balneario y Franja Costera: Playa El Tebo (Aglomeración de Bañistas)",
+        "icon": "🏖",
+        "color": "#06b6d4",
+        "priority": 4,
+        "elevation_msnm": 2,
+        "pollutants": [],
+        "city": "Quintero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.502999,
+          -32.725604,
+          2
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "beach_playa_quirilluca",
+        "name": "Playa Quirilluca",
+        "category": "beach",
+        "type": "beach",
+        "role": "Balneario y Franja Costera: Playa Quirilluca (Aglomeración de Bañistas)",
+        "icon": "🏖",
+        "color": "#06b6d4",
+        "priority": 4,
+        "elevation_msnm": 2,
+        "pollutants": [],
+        "city": "Puchuncaví"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.458373,
+          -32.697404,
+          2
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "beach_playa_luna",
+        "name": "Playa Luna",
+        "category": "beach",
+        "type": "beach",
+        "role": "Balneario y Franja Costera: Playa Luna (Aglomeración de Bañistas)",
+        "icon": "🏖",
+        "color": "#06b6d4",
+        "priority": 4,
+        "elevation_msnm": 2,
+        "pollutants": [],
+        "city": "Puchuncaví"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.462585,
+          -32.702783,
+          2
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "beach_playa_el_barco",
+        "name": "Playa El Barco",
+        "category": "beach",
+        "type": "beach",
+        "role": "Balneario y Franja Costera: Playa El Barco (Aglomeración de Bañistas)",
+        "icon": "🏖",
+        "color": "#06b6d4",
+        "priority": 4,
+        "elevation_msnm": 2,
+        "pollutants": [],
+        "city": "Puchuncaví"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.452461,
+          -32.690244,
+          2
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "beach_playa_corral_de_los_perros",
+        "name": "Playa Corral de los Perros",
+        "category": "beach",
+        "type": "beach",
+        "role": "Balneario y Franja Costera: Playa Corral de los Perros (Aglomeración de Bañistas)",
+        "icon": "🏖",
+        "color": "#06b6d4",
+        "priority": 4,
+        "elevation_msnm": 2,
+        "pollutants": [],
+        "city": "Puchuncaví"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.454207,
+          -32.692525,
+          2
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "beach_playa_las_ágatas",
+        "name": "Playa Las Ágatas",
+        "category": "beach",
+        "type": "beach",
+        "role": "Balneario y Franja Costera: Playa Las Ágatas (Aglomeración de Bañistas)",
+        "icon": "🏖",
+        "color": "#06b6d4",
+        "priority": 4,
+        "elevation_msnm": 2,
+        "pollutants": [],
+        "city": "Puchuncaví"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.456398,
+          -32.694496,
+          2
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "hotel_1080551680",
+        "name": "Club de Yates",
+        "category": "hospitality",
+        "type": "hospitality",
+        "role": "Hospedaje Turístico: Club de Yates (Población Flotante y Descanso)",
+        "icon": "🏨",
+        "color": "#8b5cf6",
+        "priority": 3,
+        "elevation_msnm": 16,
+        "pollutants": [],
+        "city": "Quintero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.526966,
+          -32.780967,
+          16
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "hotel_1080559333",
+        "name": "Cabañas Rocas del Pirata",
+        "category": "hospitality",
+        "type": "hospitality",
+        "role": "Hospedaje Turístico: Cabañas Rocas del Pirata (Población Flotante y Descanso)",
+        "icon": "🏨",
+        "color": "#8b5cf6",
+        "priority": 3,
+        "elevation_msnm": 16,
+        "pollutants": [],
+        "city": "Quintero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.534888,
+          -32.766235,
+          16
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "hotel_1080559335",
+        "name": "Centro Turístico Don Isidro",
+        "category": "hospitality",
+        "type": "hospitality",
+        "role": "Hospedaje Turístico: Centro Turístico Don Isidro (Población Flotante y Descanso)",
+        "icon": "🏨",
+        "color": "#8b5cf6",
+        "priority": 3,
+        "elevation_msnm": 16,
+        "pollutants": [],
+        "city": "Quintero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.534405,
+          -32.767115,
+          16
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "hotel_1530433421",
+        "name": "Entre Bosques",
+        "category": "hospitality",
+        "type": "hospitality",
+        "role": "Hospedaje Turístico: Entre Bosques (Población Flotante y Descanso)",
+        "icon": "🏨",
+        "color": "#8b5cf6",
+        "priority": 3,
+        "elevation_msnm": 16,
+        "pollutants": [],
+        "city": "Las Salinas / Campiche"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.456897,
+          -32.735259,
+          16
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "hotel_1638096584",
+        "name": "Hotel Manutara",
+        "category": "hospitality",
+        "type": "hospitality",
+        "role": "Hospedaje Turístico: Hotel Manutara (Población Flotante y Descanso)",
+        "icon": "🏨",
+        "color": "#8b5cf6",
+        "priority": 3,
+        "elevation_msnm": 16,
+        "pollutants": [],
+        "city": "Quintero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.53162,
+          -32.775577,
+          16
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "hotel_1638096722",
+        "name": "Cabañas Copa de Agua",
+        "category": "hospitality",
+        "type": "hospitality",
+        "role": "Hospedaje Turístico: Cabañas Copa de Agua (Población Flotante y Descanso)",
+        "icon": "🏨",
+        "color": "#8b5cf6",
+        "priority": 3,
+        "elevation_msnm": 16,
+        "pollutants": [],
+        "city": "Quintero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.533958,
+          -32.771577,
+          16
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "hotel_1638117417",
+        "name": "Hotel Palermo",
+        "category": "hospitality",
+        "type": "hospitality",
+        "role": "Hospedaje Turístico: Hotel Palermo (Población Flotante y Descanso)",
+        "icon": "🏨",
+        "color": "#8b5cf6",
+        "priority": 3,
+        "elevation_msnm": 16,
+        "pollutants": [],
+        "city": "Quintero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.527146,
+          -32.786018,
+          16
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "hotel_4167933797",
+        "name": "Coopevem",
+        "category": "hospitality",
+        "type": "hospitality",
+        "role": "Hospedaje Turístico: Coopevem (Población Flotante y Descanso)",
+        "icon": "🏨",
+        "color": "#8b5cf6",
+        "priority": 3,
+        "elevation_msnm": 16,
+        "pollutants": [],
+        "city": "Quintero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.534011,
+          -32.778193,
+          16
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "hotel_4301570292",
+        "name": "Camping para ciclistas",
+        "category": "hospitality",
+        "type": "hospitality",
+        "role": "Hospedaje Turístico: Camping para ciclistas (Población Flotante y Descanso)",
+        "icon": "🏨",
+        "color": "#8b5cf6",
+        "priority": 3,
+        "elevation_msnm": 16,
+        "pollutants": [],
+        "city": "Horcón"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.486981,
+          -32.716308,
+          16
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "hotel_5320975821",
+        "name": "Camping Ebenezer",
+        "category": "hospitality",
+        "type": "hospitality",
+        "role": "Hospedaje Turístico: Camping Ebenezer (Población Flotante y Descanso)",
+        "icon": "🏨",
+        "color": "#8b5cf6",
+        "priority": 3,
+        "elevation_msnm": 16,
+        "pollutants": [],
+        "city": "Horcón"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.487892,
+          -32.716274,
+          16
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "hotel_5487533889",
+        "name": "Hostal Vista Mar - Vic Quintero",
+        "category": "hospitality",
+        "type": "hospitality",
+        "role": "Hospedaje Turístico: Hostal Vista Mar - Vic Quintero (Población Flotante y Descanso)",
+        "icon": "🏨",
+        "color": "#8b5cf6",
+        "priority": 3,
+        "elevation_msnm": 16,
+        "pollutants": [],
+        "city": "Quintero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.53606,
+          -32.767733,
+          16
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "hotel_5491856580",
+        "name": "Hostería Ventanas",
+        "category": "hospitality",
+        "type": "hospitality",
+        "role": "Hospedaje Turístico: Hostería Ventanas (Población Flotante y Descanso)",
+        "icon": "🏨",
+        "color": "#8b5cf6",
+        "priority": 3,
+        "elevation_msnm": 16,
+        "pollutants": [],
+        "city": "Las Ventanas"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.488067,
+          -32.74181,
+          16
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "hotel_5586221761",
+        "name": "Cabañas Roca Mar",
+        "category": "hospitality",
+        "type": "hospitality",
+        "role": "Hospedaje Turístico: Cabañas Roca Mar (Población Flotante y Descanso)",
+        "icon": "🏨",
+        "color": "#8b5cf6",
+        "priority": 3,
+        "elevation_msnm": 16,
+        "pollutants": [],
+        "city": "Quintero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.536263,
+          -32.767443,
+          16
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "hotel_6718345397",
+        "name": "Cabañas",
+        "category": "hospitality",
+        "type": "hospitality",
+        "role": "Hospedaje Turístico: Cabañas (Población Flotante y Descanso)",
+        "icon": "🏨",
+        "color": "#8b5cf6",
+        "priority": 3,
+        "elevation_msnm": 16,
+        "pollutants": [],
+        "city": "Quintero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.542595,
+          -32.790977,
+          16
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "hotel_7500802221",
+        "name": "Cabañas Rustik",
+        "category": "hospitality",
+        "type": "hospitality",
+        "role": "Hospedaje Turístico: Cabañas Rustik (Población Flotante y Descanso)",
+        "icon": "🏨",
+        "color": "#8b5cf6",
+        "priority": 3,
+        "elevation_msnm": 16,
+        "pollutants": [],
+        "city": "Quintero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.526371,
+          -32.821193,
+          16
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "hotel_10813080225",
+        "name": "Hostería Los Leones",
+        "category": "hospitality",
+        "type": "hospitality",
+        "role": "Hospedaje Turístico: Hostería Los Leones (Población Flotante y Descanso)",
+        "icon": "🏨",
+        "color": "#8b5cf6",
+        "priority": 3,
+        "elevation_msnm": 16,
+        "pollutants": [],
+        "city": "Las Ventanas"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.488752,
+          -32.740825,
+          16
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "hotel_11608355667",
+        "name": "Nuevo Hotel Quintero",
+        "category": "hospitality",
+        "type": "hospitality",
+        "role": "Hospedaje Turístico: Nuevo Hotel Quintero (Población Flotante y Descanso)",
+        "icon": "🏨",
+        "color": "#8b5cf6",
+        "priority": 3,
+        "elevation_msnm": 16,
+        "pollutants": [],
+        "city": "Quintero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.527476,
+          -32.783915,
+          16
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "hotel_124186183",
+        "name": "Centro Vacacional FACH",
+        "category": "hospitality",
+        "type": "hospitality",
+        "role": "Hospedaje Turístico: Centro Vacacional FACH (Población Flotante y Descanso)",
+        "icon": "🏨",
+        "color": "#8b5cf6",
+        "priority": 3,
+        "elevation_msnm": 16,
+        "pollutants": [],
+        "city": "Loncura"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.508129,
+          -32.784507,
+          16
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "hotel_492836839",
+        "name": "Hostal Borde del Mundo",
+        "category": "hospitality",
+        "type": "hospitality",
+        "role": "Hospedaje Turístico: Hostal Borde del Mundo (Población Flotante y Descanso)",
+        "icon": "🏨",
+        "color": "#8b5cf6",
+        "priority": 3,
+        "elevation_msnm": 16,
+        "pollutants": [],
+        "city": "Horcón"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.50801,
+          -32.71581,
+          16
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "hotel_637621112",
+        "name": "Olabonita Ritoque Lodge",
+        "category": "hospitality",
+        "type": "hospitality",
+        "role": "Hospedaje Turístico: Olabonita Ritoque Lodge (Población Flotante y Descanso)",
+        "icon": "🏨",
+        "color": "#8b5cf6",
+        "priority": 3,
+        "elevation_msnm": 16,
+        "pollutants": [],
+        "city": "Quintero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.529365,
+          -32.827809,
+          16
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "hotel_637621116",
+        "name": "La Ritoqueña",
+        "category": "hospitality",
+        "type": "hospitality",
+        "role": "Hospedaje Turístico: La Ritoqueña (Población Flotante y Descanso)",
+        "icon": "🏨",
+        "color": "#8b5cf6",
+        "priority": 3,
+        "elevation_msnm": 16,
+        "pollutants": [],
+        "city": "Quintero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.529634,
+          -32.827958,
+          16
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "hotel_801918061",
+        "name": "Yachting Hotel Quintero",
+        "category": "hospitality",
+        "type": "hospitality",
+        "role": "Hospedaje Turístico: Yachting Hotel Quintero (Población Flotante y Descanso)",
+        "icon": "🏨",
+        "color": "#8b5cf6",
+        "priority": 3,
+        "elevation_msnm": 16,
+        "pollutants": [],
+        "city": "Quintero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.533249,
+          -32.783293,
+          16
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "hotel_1005716613",
+        "name": "Cabañas Campo y Mar",
+        "category": "hospitality",
+        "type": "hospitality",
+        "role": "Hospedaje Turístico: Cabañas Campo y Mar (Población Flotante y Descanso)",
+        "icon": "🏨",
+        "color": "#8b5cf6",
+        "priority": 3,
+        "elevation_msnm": 16,
+        "pollutants": [],
+        "city": "Las Salinas / Campiche"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.464423,
+          -32.728147,
+          16
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "hotel_1381832768",
+        "name": "Cabañas Antuken",
+        "category": "hospitality",
+        "type": "hospitality",
+        "role": "Hospedaje Turístico: Cabañas Antuken (Población Flotante y Descanso)",
+        "icon": "🏨",
+        "color": "#8b5cf6",
+        "priority": 3,
+        "elevation_msnm": 16,
+        "pollutants": [],
+        "city": "Quintero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.498283,
+          -32.734384,
+          16
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "resto_1080551682",
+        "name": "Donde Moncho",
+        "category": "restaurant",
+        "type": "restaurant",
+        "role": "Gastronomía y Polo Turístico: Donde Moncho (Concurrencia en Horas Pico)",
+        "icon": "🍽",
+        "color": "#f59e0b",
+        "priority": 3,
+        "elevation_msnm": 15,
+        "pollutants": [],
+        "city": "Quintero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.526675,
+          -32.778341,
+          15
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "resto_1080551684",
+        "name": "Club de Yates",
+        "category": "restaurant",
+        "type": "restaurant",
+        "role": "Gastronomía y Polo Turístico: Club de Yates (Concurrencia en Horas Pico)",
+        "icon": "🍽",
+        "color": "#f59e0b",
+        "priority": 3,
+        "elevation_msnm": 15,
+        "pollutants": [],
+        "city": "Quintero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.526954,
+          -32.780831,
+          15
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "resto_1638107735",
+        "name": "La Cocina de Teuh",
+        "category": "restaurant",
+        "type": "restaurant",
+        "role": "Gastronomía y Polo Turístico: La Cocina de Teuh (Concurrencia en Horas Pico)",
+        "icon": "🍽",
+        "color": "#f59e0b",
+        "priority": 3,
+        "elevation_msnm": 15,
+        "pollutants": [],
+        "city": "Quintero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.533406,
+          -32.767517,
+          15
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "resto_2282613396",
+        "name": "Roty Shop",
+        "category": "restaurant",
+        "type": "restaurant",
+        "role": "Gastronomía y Polo Turístico: Roty Shop (Concurrencia en Horas Pico)",
+        "icon": "🍽",
+        "color": "#f59e0b",
+        "priority": 3,
+        "elevation_msnm": 15,
+        "pollutants": [],
+        "city": "Horcón"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.490459,
+          -32.70948,
+          15
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "resto_2282613397",
+        "name": "Los Duendes",
+        "category": "restaurant",
+        "type": "restaurant",
+        "role": "Gastronomía y Polo Turístico: Los Duendes (Concurrencia en Horas Pico)",
+        "icon": "🍽",
+        "color": "#f59e0b",
+        "priority": 3,
+        "elevation_msnm": 15,
+        "pollutants": [],
+        "city": "Horcón"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.493723,
+          -32.716002,
+          15
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "resto_2630715201",
+        "name": "Cafetería El Mirador",
+        "category": "restaurant",
+        "type": "restaurant",
+        "role": "Gastronomía y Polo Turístico: Cafetería El Mirador (Concurrencia en Horas Pico)",
+        "icon": "🍽",
+        "color": "#f59e0b",
+        "priority": 3,
+        "elevation_msnm": 15,
+        "pollutants": [],
+        "city": "Quintero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.534799,
+          -32.765743,
+          15
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "resto_2630715204",
+        "name": "Waikiki",
+        "category": "restaurant",
+        "type": "restaurant",
+        "role": "Gastronomía y Polo Turístico: Waikiki (Concurrencia en Horas Pico)",
+        "icon": "🍽",
+        "color": "#f59e0b",
+        "priority": 3,
+        "elevation_msnm": 15,
+        "pollutants": [],
+        "city": "Quintero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.526963,
+          -32.774162,
+          15
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "resto_3292297653",
+        "name": "Glotoninos",
+        "category": "restaurant",
+        "type": "restaurant",
+        "role": "Gastronomía y Polo Turístico: Glotoninos (Concurrencia en Horas Pico)",
+        "icon": "🍽",
+        "color": "#f59e0b",
+        "priority": 3,
+        "elevation_msnm": 15,
+        "pollutants": [],
+        "city": "Horcón"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.489821,
+          -32.709743,
+          15
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "resto_3292297656",
+        "name": "Rincón de Zeus",
+        "category": "restaurant",
+        "type": "restaurant",
+        "role": "Gastronomía y Polo Turístico: Rincón de Zeus (Concurrencia en Horas Pico)",
+        "icon": "🍽",
+        "color": "#f59e0b",
+        "priority": 3,
+        "elevation_msnm": 15,
+        "pollutants": [],
+        "city": "Horcón"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.489612,
+          -32.70927,
+          15
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "resto_3292297659",
+        "name": "La Pica de Romo",
+        "category": "restaurant",
+        "type": "restaurant",
+        "role": "Gastronomía y Polo Turístico: La Pica de Romo (Concurrencia en Horas Pico)",
+        "icon": "🍽",
+        "color": "#f59e0b",
+        "priority": 3,
+        "elevation_msnm": 15,
+        "pollutants": [],
+        "city": "Horcón"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.489172,
+          -32.709363,
+          15
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "resto_4208071089",
+        "name": "Restaurante Ritoque",
+        "category": "restaurant",
+        "type": "restaurant",
+        "role": "Gastronomía y Polo Turístico: Restaurante Ritoque (Concurrencia en Horas Pico)",
+        "icon": "🍽",
+        "color": "#f59e0b",
+        "priority": 3,
+        "elevation_msnm": 15,
+        "pollutants": [],
+        "city": "Quintero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.528349,
+          -32.827384,
+          15
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "resto_4421991212",
+        "name": "La Picá del Araña",
+        "category": "restaurant",
+        "type": "restaurant",
+        "role": "Gastronomía y Polo Turístico: La Picá del Araña (Concurrencia en Horas Pico)",
+        "icon": "🍽",
+        "color": "#f59e0b",
+        "priority": 3,
+        "elevation_msnm": 15,
+        "pollutants": [],
+        "city": "Horcón"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.489891,
+          -32.709418,
+          15
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "resto_4422042629",
+        "name": "Restaurante Nuevo Bahía",
+        "category": "restaurant",
+        "type": "restaurant",
+        "role": "Gastronomía y Polo Turístico: Restaurante Nuevo Bahía (Concurrencia en Horas Pico)",
+        "icon": "🍽",
+        "color": "#f59e0b",
+        "priority": 3,
+        "elevation_msnm": 15,
+        "pollutants": [],
+        "city": "Horcón"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.489826,
+          -32.709253,
+          15
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "resto_4422043642",
+        "name": "Restaurante AclaDos",
+        "category": "restaurant",
+        "type": "restaurant",
+        "role": "Gastronomía y Polo Turístico: Restaurante AclaDos (Concurrencia en Horas Pico)",
+        "icon": "🍽",
+        "color": "#f59e0b",
+        "priority": 3,
+        "elevation_msnm": 15,
+        "pollutants": [],
+        "city": "Horcón"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.489758,
+          -32.709059,
+          15
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "resto_4422044107",
+        "name": "Restaurante El Saturnino",
+        "category": "restaurant",
+        "type": "restaurant",
+        "role": "Gastronomía y Polo Turístico: Restaurante El Saturnino (Concurrencia en Horas Pico)",
+        "icon": "🍽",
+        "color": "#f59e0b",
+        "priority": 3,
+        "elevation_msnm": 15,
+        "pollutants": [],
+        "city": "Horcón"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.489675,
+          -32.708896,
+          15
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "resto_4422062857",
+        "name": "Comida al Paso",
+        "category": "restaurant",
+        "type": "restaurant",
+        "role": "Gastronomía y Polo Turístico: Comida al Paso (Concurrencia en Horas Pico)",
+        "icon": "🍽",
+        "color": "#f59e0b",
+        "priority": 3,
+        "elevation_msnm": 15,
+        "pollutants": [],
+        "city": "Horcón"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.489676,
+          -32.709478,
+          15
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "resto_4422085101",
+        "name": "Empanadas El Pierna",
+        "category": "restaurant",
+        "type": "restaurant",
+        "role": "Gastronomía y Polo Turístico: Empanadas El Pierna (Concurrencia en Horas Pico)",
+        "icon": "🍽",
+        "color": "#f59e0b",
+        "priority": 3,
+        "elevation_msnm": 15,
+        "pollutants": [],
+        "city": "Horcón"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.489024,
+          -32.710053,
+          15
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "resto_5491856582",
+        "name": "La Farola",
+        "category": "restaurant",
+        "type": "restaurant",
+        "role": "Gastronomía y Polo Turístico: La Farola (Concurrencia en Horas Pico)",
+        "icon": "🍽",
+        "color": "#f59e0b",
+        "priority": 3,
+        "elevation_msnm": 15,
+        "pollutants": [],
+        "city": "Las Ventanas"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.487783,
+          -32.742149,
+          15
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "resto_5491856583",
+        "name": "Los 13 Hermanos",
+        "category": "restaurant",
+        "type": "restaurant",
+        "role": "Gastronomía y Polo Turístico: Los 13 Hermanos (Concurrencia en Horas Pico)",
+        "icon": "🍽",
+        "color": "#f59e0b",
+        "priority": 3,
+        "elevation_msnm": 15,
+        "pollutants": [],
+        "city": "Las Ventanas"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.489704,
+          -32.740894,
+          15
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "resto_9066668997",
+        "name": "Tetería Alemana",
+        "category": "restaurant",
+        "type": "restaurant",
+        "role": "Gastronomía y Polo Turístico: Tetería Alemana (Concurrencia en Horas Pico)",
+        "icon": "🍽",
+        "color": "#f59e0b",
+        "priority": 3,
+        "elevation_msnm": 15,
+        "pollutants": [],
+        "city": "Quintero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.538003,
+          -32.773741,
+          15
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "resto_9543540434",
+        "name": "El Bajón del Hippie",
+        "category": "restaurant",
+        "type": "restaurant",
+        "role": "Gastronomía y Polo Turístico: El Bajón del Hippie (Concurrencia en Horas Pico)",
+        "icon": "🍽",
+        "color": "#f59e0b",
+        "priority": 3,
+        "elevation_msnm": 15,
+        "pollutants": [],
+        "city": "Horcón"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.485725,
+          -32.714157,
+          15
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "resto_9543568543",
+        "name": "Northern Breeze",
+        "category": "restaurant",
+        "type": "restaurant",
+        "role": "Gastronomía y Polo Turístico: Northern Breeze (Concurrencia en Horas Pico)",
+        "icon": "🍽",
+        "color": "#f59e0b",
+        "priority": 3,
+        "elevation_msnm": 15,
+        "pollutants": [],
+        "city": "Horcón"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.486514,
+          -32.715574,
+          15
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "resto_10813080224",
+        "name": "Restaurante El Cangrejo",
+        "category": "restaurant",
+        "type": "restaurant",
+        "role": "Gastronomía y Polo Turístico: Restaurante El Cangrejo (Concurrencia en Horas Pico)",
+        "icon": "🍽",
+        "color": "#f59e0b",
+        "priority": 3,
+        "elevation_msnm": 15,
+        "pollutants": [],
+        "city": "Las Ventanas"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.488009,
+          -32.741927,
+          15
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "resto_10813080226",
+        "name": "Grido",
+        "category": "restaurant",
+        "type": "restaurant",
+        "role": "Gastronomía y Polo Turístico: Grido (Concurrencia en Horas Pico)",
+        "icon": "🍽",
+        "color": "#f59e0b",
+        "priority": 3,
+        "elevation_msnm": 15,
+        "pollutants": [],
+        "city": "Las Ventanas"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.488907,
+          -32.740404,
+          15
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "resto_10813080228",
+        "name": "Roca's Café",
+        "category": "restaurant",
+        "type": "restaurant",
+        "role": "Gastronomía y Polo Turístico: Roca's Café (Concurrencia en Horas Pico)",
+        "icon": "🍽",
+        "color": "#f59e0b",
+        "priority": 3,
+        "elevation_msnm": 15,
+        "pollutants": [],
+        "city": "Las Ventanas"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.493287,
+          -32.742319,
+          15
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "resto_11598909643",
+        "name": "Gustito Playero",
+        "category": "restaurant",
+        "type": "restaurant",
+        "role": "Gastronomía y Polo Turístico: Gustito Playero (Concurrencia en Horas Pico)",
+        "icon": "🍽",
+        "color": "#f59e0b",
+        "priority": 3,
+        "elevation_msnm": 15,
+        "pollutants": [],
+        "city": "Quintero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.528312,
+          -32.781771,
+          15
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "resto_11608672207",
+        "name": "Alto Delicias",
+        "category": "restaurant",
+        "type": "restaurant",
+        "role": "Gastronomía y Polo Turístico: Alto Delicias (Concurrencia en Horas Pico)",
+        "icon": "🍽",
+        "color": "#f59e0b",
+        "priority": 3,
+        "elevation_msnm": 15,
+        "pollutants": [],
+        "city": "Quintero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.526417,
+          -32.776682,
+          15
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "resto_12044300570",
+        "name": "Hornitos del Valle",
+        "category": "restaurant",
+        "type": "restaurant",
+        "role": "Gastronomía y Polo Turístico: Hornitos del Valle (Concurrencia en Horas Pico)",
+        "icon": "🍽",
+        "color": "#f59e0b",
+        "priority": 3,
+        "elevation_msnm": 15,
+        "pollutants": [],
+        "city": "Puchuncaví"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.441694,
+          -32.811346,
+          15
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "resto_12348290795",
+        "name": "Royal Restaurant",
+        "category": "restaurant",
+        "type": "restaurant",
+        "role": "Gastronomía y Polo Turístico: Royal Restaurant (Concurrencia en Horas Pico)",
+        "icon": "🍽",
+        "color": "#f59e0b",
+        "priority": 3,
+        "elevation_msnm": 15,
+        "pollutants": [],
+        "city": "Puchuncaví Centro"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.415451,
+          -32.727093,
+          15
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "resto_12729383578",
+        "name": "La Lechería",
+        "category": "restaurant",
+        "type": "restaurant",
+        "role": "Gastronomía y Polo Turístico: La Lechería (Concurrencia en Horas Pico)",
+        "icon": "🍽",
+        "color": "#f59e0b",
+        "priority": 3,
+        "elevation_msnm": 15,
+        "pollutants": [],
+        "city": "Puchuncaví"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.442355,
+          -32.805996,
+          15
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "resto_1288213250",
+        "name": "Waldo",
+        "category": "restaurant",
+        "type": "restaurant",
+        "role": "Gastronomía y Polo Turístico: Waldo (Concurrencia en Horas Pico)",
+        "icon": "🍽",
+        "color": "#f59e0b",
+        "priority": 3,
+        "elevation_msnm": 15,
+        "pollutants": [],
+        "city": "Puchuncaví"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.40771,
+          -32.717977,
+          15
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "attr_1072806893",
+        "name": "Cueva del Pirata",
+        "category": "attraction",
+        "type": "attraction",
+        "role": "Atractivo Turístico y Mirador: Cueva del Pirata (Afluencia Visitantes)",
+        "icon": "📸",
+        "color": "#ec4899",
+        "priority": 3,
+        "elevation_msnm": 22,
+        "pollutants": [],
+        "city": "Quintero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.534536,
+          -32.765766,
+          22
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "attr_1080559334",
+        "name": "Estacionamiento Cueva del Pirata",
+        "category": "attraction",
+        "type": "attraction",
+        "role": "Atractivo Turístico y Mirador: Estacionamiento Cueva del Pirata (Afluencia Visitantes)",
+        "icon": "📸",
+        "color": "#ec4899",
+        "priority": 3,
+        "elevation_msnm": 22,
+        "pollutants": [],
+        "city": "Quintero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.534667,
+          -32.765913,
+          22
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "attr_1240452321",
+        "name": "Playa Luna",
+        "category": "attraction",
+        "type": "attraction",
+        "role": "Atractivo Turístico y Mirador: Playa Luna (Afluencia Visitantes)",
+        "icon": "📸",
+        "color": "#ec4899",
+        "priority": 3,
+        "elevation_msnm": 22,
+        "pollutants": [],
+        "city": "Puchuncaví"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.460452,
+          -32.700807,
+          22
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "attr_1347501721",
+        "name": "Vista Océano",
+        "category": "attraction",
+        "type": "attraction",
+        "role": "Atractivo Turístico y Mirador: Vista Océano (Afluencia Visitantes)",
+        "icon": "📸",
+        "color": "#ec4899",
+        "priority": 3,
+        "elevation_msnm": 22,
+        "pollutants": [],
+        "city": "Quintero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.542212,
+          -32.785797,
+          22
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "attr_2630715199",
+        "name": "Cueva del Pirata",
+        "category": "attraction",
+        "type": "attraction",
+        "role": "Atractivo Turístico y Mirador: Cueva del Pirata (Afluencia Visitantes)",
+        "icon": "📸",
+        "color": "#ec4899",
+        "priority": 3,
+        "elevation_msnm": 22,
+        "pollutants": [],
+        "city": "Quintero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.53408,
+          -32.765676,
+          22
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "attr_2630728206",
+        "name": "Puntilla Sanfuentes",
+        "category": "attraction",
+        "type": "attraction",
+        "role": "Atractivo Turístico y Mirador: Puntilla Sanfuentes (Afluencia Visitantes)",
+        "icon": "📸",
+        "color": "#ec4899",
+        "priority": 3,
+        "elevation_msnm": 22,
+        "pollutants": [],
+        "city": "Quintero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.541746,
+          -32.783744,
+          22
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "attr_4419376183",
+        "name": "Geositio Ventana de Horcón",
+        "category": "attraction",
+        "type": "attraction",
+        "role": "Atractivo Turístico y Mirador: Geositio Ventana de Horcón (Afluencia Visitantes)",
+        "icon": "📸",
+        "color": "#ec4899",
+        "priority": 3,
+        "elevation_msnm": 22,
+        "pollutants": [],
+        "city": "Horcón"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.493381,
+          -32.708465,
+          22
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "attr_4419383238",
+        "name": "San Pedro",
+        "category": "attraction",
+        "type": "attraction",
+        "role": "Atractivo Turístico y Mirador: San Pedro (Afluencia Visitantes)",
+        "icon": "📸",
+        "color": "#ec4899",
+        "priority": 3,
+        "elevation_msnm": 22,
+        "pollutants": [],
+        "city": "Horcón"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.489698,
+          -32.708663,
+          22
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "attr_4419400739",
+        "name": "Cerro de la Cruz",
+        "category": "attraction",
+        "type": "attraction",
+        "role": "Atractivo Turístico y Mirador: Cerro de la Cruz (Afluencia Visitantes)",
+        "icon": "📸",
+        "color": "#ec4899",
+        "priority": 3,
+        "elevation_msnm": 22,
+        "pollutants": [],
+        "city": "Horcón"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.489226,
+          -32.709523,
+          22
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "attr_4420622925",
+        "name": "Puente de los deseos",
+        "category": "attraction",
+        "type": "attraction",
+        "role": "Atractivo Turístico y Mirador: Puente de los deseos (Afluencia Visitantes)",
+        "icon": "📸",
+        "color": "#ec4899",
+        "priority": 3,
+        "elevation_msnm": 22,
+        "pollutants": [],
+        "city": "Horcón"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.492675,
+          -32.708919,
+          22
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "attr_4422257463",
+        "name": "Ruinas Muelle",
+        "category": "attraction",
+        "type": "attraction",
+        "role": "Atractivo Turístico y Mirador: Ruinas Muelle (Afluencia Visitantes)",
+        "icon": "📸",
+        "color": "#ec4899",
+        "priority": 3,
+        "elevation_msnm": 22,
+        "pollutants": [],
+        "city": "Horcón"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.485529,
+          -32.713768,
+          22
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "attr_4692936445",
+        "name": "Cueva del Pirata",
+        "category": "attraction",
+        "type": "attraction",
+        "role": "Atractivo Turístico y Mirador: Cueva del Pirata (Afluencia Visitantes)",
+        "icon": "📸",
+        "color": "#ec4899",
+        "priority": 3,
+        "elevation_msnm": 22,
+        "pollutants": [],
+        "city": "Puchuncaví"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.460885,
+          -32.700891,
+          22
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "attr_4692943872",
+        "name": "Mirador de Los Tebos",
+        "category": "attraction",
+        "type": "attraction",
+        "role": "Atractivo Turístico y Mirador: Mirador de Los Tebos (Afluencia Visitantes)",
+        "icon": "📸",
+        "color": "#ec4899",
+        "priority": 3,
+        "elevation_msnm": 22,
+        "pollutants": [],
+        "city": "Puchuncaví"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.471347,
+          -32.71249,
+          22
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "attr_5487536002",
+        "name": "Mural Reviviendo la Historia de Quintero",
+        "category": "attraction",
+        "type": "attraction",
+        "role": "Atractivo Turístico y Mirador: Mural Reviviendo la Historia de Quintero (Afluencia Visitantes)",
+        "icon": "📸",
+        "color": "#ec4899",
+        "priority": 3,
+        "elevation_msnm": 22,
+        "pollutants": [],
+        "city": "Quintero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.534176,
+          -32.765868,
+          22
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "attr_5586220814",
+        "name": "Mirador Piloto Juan Fernández",
+        "category": "attraction",
+        "type": "attraction",
+        "role": "Atractivo Turístico y Mirador: Mirador Piloto Juan Fernández (Afluencia Visitantes)",
+        "icon": "📸",
+        "color": "#ec4899",
+        "priority": 3,
+        "elevation_msnm": 22,
+        "pollutants": [],
+        "city": "Quintero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.529154,
+          -32.770121,
+          22
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "attr_7194575411",
+        "name": "Mirador Gabriel",
+        "category": "attraction",
+        "type": "attraction",
+        "role": "Atractivo Turístico y Mirador: Mirador Gabriel (Afluencia Visitantes)",
+        "icon": "📸",
+        "color": "#ec4899",
+        "priority": 3,
+        "elevation_msnm": 22,
+        "pollutants": [],
+        "city": "Puchuncaví"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.420966,
+          -32.779017,
+          22
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "attr_10776927882",
+        "name": "Mirador El Estuche",
+        "category": "attraction",
+        "type": "attraction",
+        "role": "Atractivo Turístico y Mirador: Mirador El Estuche (Afluencia Visitantes)",
+        "icon": "📸",
+        "color": "#ec4899",
+        "priority": 3,
+        "elevation_msnm": 22,
+        "pollutants": [],
+        "city": "Loncura"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.510289,
+          -32.785856,
+          22
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "attr_12136580404",
+        "name": "Población El Mirador",
+        "category": "attraction",
+        "type": "attraction",
+        "role": "Atractivo Turístico y Mirador: Población El Mirador (Afluencia Visitantes)",
+        "icon": "📸",
+        "color": "#ec4899",
+        "priority": 3,
+        "elevation_msnm": 22,
+        "pollutants": [],
+        "city": "Quintero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.535055,
+          -32.797943,
+          22
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "attr_12463695125",
+        "name": "Museo de Sitio Melinka-Puchuncaví",
+        "category": "historic",
+        "type": "attraction",
+        "role": "Museo de Memoria Histórica y Derechos Humanos Melinka-Puchuncaví",
+        "icon": "🏛",
+        "color": "#d97706",
+        "priority": 4,
+        "elevation_msnm": 22,
+        "pollutants": [],
+        "city": "Puchuncaví Centro"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.407579,
+          -32.72011,
+          22
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "attr_13271144993",
+        "name": "Museo Quintero Vive (Casa Estación)",
+        "category": "historic",
+        "type": "attraction",
+        "role": "Museo Histórico Municipal y Centro de Interpretación Patrimonial",
+        "icon": "🏛",
+        "color": "#d97706",
+        "priority": 4,
+        "elevation_msnm": 22,
+        "pollutants": [],
+        "city": "Quintero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.527953,
+          -32.784775,
+          22
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "attr_13271160722",
+        "name": "Buceador",
+        "category": "attraction",
+        "type": "attraction",
+        "role": "Atractivo Turístico y Mirador: Buceador (Afluencia Visitantes)",
+        "icon": "📸",
+        "color": "#ec4899",
+        "priority": 3,
+        "elevation_msnm": 22,
+        "pollutants": [],
+        "city": "Quintero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.527383,
+          -32.797734,
+          22
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "attr_13389344970",
+        "name": "San Pedro",
+        "category": "attraction",
+        "type": "attraction",
+        "role": "Atractivo Turístico y Mirador: San Pedro (Afluencia Visitantes)",
+        "icon": "📸",
+        "color": "#ec4899",
+        "priority": 3,
+        "elevation_msnm": 22,
+        "pollutants": [],
+        "city": "Horcón"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.489813,
+          -32.708297,
+          22
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "attr_13508076484",
+        "name": "Humedal El Bato",
+        "category": "attraction",
+        "type": "attraction",
+        "role": "Atractivo Turístico y Mirador: Humedal El Bato (Afluencia Visitantes)",
+        "icon": "📸",
+        "color": "#ec4899",
+        "priority": 3,
+        "elevation_msnm": 22,
+        "pollutants": [],
+        "city": "Loncura"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.498127,
+          -32.780572,
+          22
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "attr_13718823522",
+        "name": "ancla",
+        "category": "attraction",
+        "type": "attraction",
+        "role": "Atractivo Turístico y Mirador: ancla (Afluencia Visitantes)",
+        "icon": "📸",
+        "color": "#ec4899",
+        "priority": 3,
+        "elevation_msnm": 22,
+        "pollutants": [],
+        "city": "Puchuncaví"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.442711,
+          -32.806236,
+          22
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "attr_335422091",
+        "name": "Geositio de Fósiles",
+        "category": "attraction",
+        "type": "attraction",
+        "role": "Atractivo Turístico y Mirador: Geositio de Fósiles (Afluencia Visitantes)",
+        "icon": "📸",
+        "color": "#ec4899",
+        "priority": 3,
+        "elevation_msnm": 22,
+        "pollutants": [],
+        "city": "Puchuncaví"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.466624,
+          -32.769565,
+          22
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "attr_980749157",
+        "name": "Museo de Historia Natural de Puchuncaví",
+        "category": "historic",
+        "type": "attraction",
+        "role": "Museo Paleontológico y Arqueológico (Yacimiento Fósil y Cultura Bato)",
+        "icon": "🏛",
+        "color": "#d97706",
+        "priority": 4,
+        "elevation_msnm": 22,
+        "pollutants": [],
+        "city": "Puchuncaví Centro"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.416666,
+          -32.729969,
+          22
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "attr_1300318200",
+        "name": "Casa Museo Almirante Lord Thomas Cochrane (Valle Alegre)",
+        "category": "historic",
+        "type": "attraction",
+        "role": "Casona Histórica y Museo Colonial del Almirante Lord Cochrane",
+        "icon": "🏛",
+        "color": "#d97706",
+        "priority": 4,
+        "elevation_msnm": 22,
+        "pollutants": [],
+        "city": "Puchuncaví"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.442874,
+          -32.806204,
+          22
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "attr_1347402689",
+        "name": "Casa Museo Downey (Quintero)",
+        "category": "historic",
+        "type": "attraction",
+        "role": "Residencia Patrimonial Histórica y Museo de Arte y Tradición",
+        "icon": "🏛",
+        "color": "#d97706",
+        "priority": 4,
+        "elevation_msnm": 22,
+        "pollutants": [],
+        "city": "Quintero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.533006,
+          -32.779048,
+          22
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "attr_1374799616",
+        "name": "Hacienda Valle Alegre",
+        "category": "attraction",
+        "type": "attraction",
+        "role": "Atractivo Turístico y Mirador: Hacienda Valle Alegre (Afluencia Visitantes)",
+        "icon": "📸",
+        "color": "#ec4899",
+        "priority": 3,
+        "elevation_msnm": 22,
+        "pollutants": [],
+        "city": "Puchuncaví"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.442939,
+          -32.806845,
+          22
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "attr_1380989947",
+        "name": "Mirador de Quilén",
+        "category": "attraction",
+        "type": "attraction",
+        "role": "Atractivo Turístico y Mirador: Mirador de Quilén (Afluencia Visitantes)",
+        "icon": "📸",
+        "color": "#ec4899",
+        "priority": 3,
+        "elevation_msnm": 22,
+        "pollutants": [],
+        "city": "Puchuncaví"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.472011,
+          -32.714971,
+          22
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "church_10776927881",
+        "name": "Capilla San Alberto Hurtado",
+        "category": "crowded_area",
+        "type": "crowd",
+        "role": "Centro de Culto Religioso: Capilla San Alberto Hurtado (Congregación Masiva)",
+        "icon": "⛪",
+        "color": "#ec4899",
+        "priority": 4,
+        "elevation_msnm": 20,
+        "pollutants": [],
+        "city": "Loncura"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.504423,
+          -32.787931,
+          20
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "church_11610040021",
+        "name": "CFC Filadelfia",
+        "category": "crowded_area",
+        "type": "crowd",
+        "role": "Centro de Culto Religioso: CFC Filadelfia (Congregación Masiva)",
+        "icon": "⛪",
+        "color": "#ec4899",
+        "priority": 4,
+        "elevation_msnm": 20,
+        "pollutants": [],
+        "city": "Quintero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.529272,
+          -32.783433,
+          20
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "church_12348290759",
+        "name": "Nuestra Señora de Valle Alegre",
+        "category": "crowded_area",
+        "type": "crowd",
+        "role": "Centro de Culto Religioso: Nuestra Señora de Valle Alegre (Congregación Masiva)",
+        "icon": "⛪",
+        "color": "#ec4899",
+        "priority": 4,
+        "elevation_msnm": 20,
+        "pollutants": [],
+        "city": "Puchuncaví"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.441002,
+          -32.805732,
+          20
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "church_150951528",
+        "name": "Iglesia de Piedra (Monumento Arquitectónico Quintero)",
+        "category": "historic",
+        "type": "crowd",
+        "role": "Monumento Histórico y Arquitectónico Religioso de Piedra Tallada",
+        "icon": "🏛",
+        "color": "#d97706",
+        "priority": 4,
+        "elevation_msnm": 20,
+        "pollutants": [],
+        "city": "Quintero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.528541,
+          -32.77889,
+          20
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "church_654628986",
+        "name": "La Iglesia de Jesucristo de los Santos de los Últimos Días",
+        "category": "crowded_area",
+        "type": "crowd",
+        "role": "Centro de Culto Religioso: La Iglesia de Jesucristo de los Santos de los Últimos Días (Congregación Masiva)",
+        "icon": "⛪",
+        "color": "#ec4899",
+        "priority": 4,
+        "elevation_msnm": 20,
+        "pollutants": [],
+        "city": "Quintero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.530014,
+          -32.794358,
+          20
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "edu_escuela_la_quebrada",
+        "name": "Escuela Básica La Quebrada",
+        "category": "education",
+        "type": "education",
+        "role": "Educación Rural: Escuela La Quebrada (Puchuncaví)",
+        "icon": "🏫",
+        "color": "#f97316",
+        "priority": 4,
+        "elevation_msnm": 85,
+        "pollutants": [],
+        "city": "Puchuncaví"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.354472,
+          -32.681434,
+          85
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "edu_escuela_pucalan",
+        "name": "Escuela Básica Pucalán",
+        "category": "education",
+        "type": "education",
+        "role": "Educación Rural: Escuela Pucalán (Ruta F-220, Puchuncaví)",
+        "icon": "🏫",
+        "color": "#f97316",
+        "priority": 4,
+        "elevation_msnm": 110,
+        "pollutants": [],
+        "city": "Puchuncaví"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.344504,
+          -32.752103,
+          110
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "edu_escuela_el_rincon",
+        "name": "Escuela Básica El Rincón",
+        "category": "education",
+        "type": "education",
+        "role": "Educación Rural: Escuela El Rincón (Puchuncaví)",
+        "icon": "🏫",
+        "color": "#f97316",
+        "priority": 4,
+        "elevation_msnm": 90,
+        "pollutants": [],
+        "city": "El Rincón"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.368697,
+          -32.724875,
+          90
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "edu_colegio_pioneros",
+        "name": "Colegio Pioneros Costa (Puchuncaví)",
+        "category": "education",
+        "type": "education",
+        "role": "Educación: Colegio Particular Pioneros Costa (Alto Rungue)",
+        "icon": "🏫",
+        "color": "#f97316",
+        "priority": 4,
+        "elevation_msnm": 75,
+        "pollutants": [],
+        "city": "Puchuncaví"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.43079,
+          -32.6719,
+          75
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "edu_colegio_ingles_norte",
+        "name": "Colegio Inglés (Sede Básica)",
+        "category": "education",
+        "type": "education",
+        "role": "Educación: Colegio Inglés Quintero (Recinto Básica)",
+        "icon": "🏫",
+        "color": "#f97316",
+        "priority": 5,
+        "elevation_msnm": 22,
+        "pollutants": [],
+        "city": "Quintero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.531588,
+          -32.781632,
+          22
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "edu_jardin_ventanas",
+        "name": "Jardín y Sala Cuna Las Ventanas",
+        "category": "education",
+        "type": "education",
+        "role": "Educación Inicial: Jardín Infantil Bellavista Las Ventanas",
+        "icon": "🏫",
+        "color": "#f97316",
+        "priority": 4,
+        "elevation_msnm": 14,
+        "pollutants": [],
+        "city": "Las Ventanas"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.486524,
+          -32.740037,
+          14
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "crowd_cancha_horcon",
+        "name": "Cancha de Fútbol Horcón",
+        "category": "crowded_area",
+        "type": "crowd",
+        "role": "Complejo Deportivo y Cancha Comunitaria Caleta Horcón",
+        "icon": "🏟",
+        "color": "#ec4899",
+        "priority": 3,
+        "elevation_msnm": 15,
+        "pollutants": [],
+        "city": "La Chocota"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.488409,
+          -32.737281,
+          15
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "crowd_quintero_padel",
+        "name": "Club Quintero Pádel",
+        "category": "crowded_area",
+        "type": "crowd",
+        "role": "Centro Recreativo y Canchas Deportivas Quintero",
+        "icon": "🏟",
+        "color": "#ec4899",
+        "priority": 3,
+        "elevation_msnm": 18,
+        "pollutants": [],
+        "city": "Quintero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.527753,
+          -32.799943,
+          18
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "crowd_banco_chile_ventanas",
+        "name": "Banco de Chile (Sucursal Las Ventanas)",
+        "category": "crowded_area",
+        "type": "crowd",
+        "role": "Servicio Bancario y Punto de Afluencia Las Ventanas",
+        "icon": "🏦",
+        "color": "#ec4899",
+        "priority": 3,
+        "elevation_msnm": 12,
+        "pollutants": [],
+        "city": "Quintero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.480393,
+          -32.769736,
+          12
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "comm_copec_ventanas",
+        "name": "Estación de Servicio Copec Ventanas",
+        "category": "commercial",
+        "type": "commercial",
+        "role": "Abastecimiento de Combustible y Riesgo Inflamable (Ruta F-30E)",
+        "icon": "⛽",
+        "color": "#eab308",
+        "priority": 4,
+        "elevation_msnm": 15,
+        "pollutants": [],
+        "city": "La Greda"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.468597,
+          -32.741347,
+          15
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "comm_shell_puchuncavi",
+        "name": "Estación de Servicio Shell Puchuncaví",
+        "category": "commercial",
+        "type": "commercial",
+        "role": "Abastecimiento de Combustible y Punto Vial Puchuncaví",
+        "icon": "⛽",
+        "color": "#eab308",
+        "priority": 4,
+        "elevation_msnm": 88,
+        "pollutants": [],
+        "city": "Puchuncaví Centro"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.416752,
+          -32.723952,
+          88
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "infra_ruta_f210_quintero",
+        "name": "Eje Vial Ruta F-210 (Acceso Quintero - Loncura)",
+        "category": "crowded_area",
+        "type": "transport",
+        "role": "Nodo de Tránsito y Acceso Vial Principal F-210 (Quintero / Loncura)",
+        "icon": "🛣",
+        "color": "#ec4899",
+        "priority": 4,
+        "elevation_msnm": 18,
+        "pollutants": [],
+        "city": "Loncura"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.50896,
+          -32.79902,
+          18
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "attr_pista_4wd_quintero",
+        "name": "Pista Escuadrón 4WD Quintero (Off-Road Ritoque)",
+        "category": "attraction",
+        "type": "attraction",
+        "role": "Recinto Deportivo Motor Off-Road 4x4 / Dunas de Ritoque",
+        "icon": "🚙",
+        "color": "#d946ef",
+        "priority": 3,
+        "elevation_msnm": 15,
+        "pollutants": [],
+        "city": "Quintero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.5283,
+          -32.825,
+          15
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "crowd_parque_infantil_quintero",
+        "name": "Parque Infantil de Juegos (Quintero Centro)",
+        "category": "crowded_area",
+        "type": "crowd",
+        "role": "Zona de Juegos Infantiles y Concurrencia Familiar",
+        "icon": "🎠",
+        "color": "#ec4899",
+        "priority": 4,
+        "elevation_msnm": 23,
+        "pollutants": [],
+        "city": "Quintero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.528533,
+          -32.784815,
+          23
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "crowd_plaza_la_greda",
+        "name": "Plaza y Centro Comunitario La Greda",
+        "category": "crowded_area",
+        "type": "crowd",
+        "role": "Espacio Público Central y Concurrencia Sector La Greda",
+        "icon": "👥",
+        "color": "#ec4899",
+        "priority": 4,
+        "elevation_msnm": 32,
+        "pollutants": [],
+        "city": "La Greda"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.47561,
+          -32.74452,
+          32
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "crowd_plaza_las_salinas",
+        "name": "Punto Comunitario Las Salinas (Puchuncaví)",
+        "category": "crowded_area",
+        "type": "crowd",
+        "role": "Punto de Reunión y Conectividad Sector Las Salinas",
+        "icon": "👥",
+        "color": "#ec4899",
+        "priority": 3,
+        "elevation_msnm": 25,
+        "pollutants": [],
+        "city": "La Greda"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.47277,
+          -32.74518,
+          25
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "ind_termo_ventanas_1",
+        "name": "Central Termoeléctrica Ventanas I (AES Andes)",
+        "category": "emission_source",
+        "type": "energy",
+        "role": "Unidad de Generación a Carbón (Histórica/En Desmantelamiento) - Foco Emisor de SO2 y Cenizas",
+        "icon": "🏭",
+        "color": "#dc2626",
+        "priority": 5,
+        "city": "Cordón Industrial Ventanas",
+        "pollutants": "SO2, NOx, MP10, MP2.5, Cenizas"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.483289,
+          -32.751541,
+          15
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "ind_termo_ventanas_2",
+        "name": "Central Termoeléctrica Ventanas II (AES Andes)",
+        "category": "emission_source",
+        "type": "energy",
+        "role": "Generación Térmica a Carbón - Emisión de Gases de Combustión y Dispersión Atmosférica",
+        "icon": "🏭",
+        "color": "#dc2626",
+        "priority": 5,
+        "city": "Cordón Industrial Ventanas",
+        "pollutants": "SO2, NOx, MP2.5, Metales Pesados"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.483305,
+          -32.750955,
+          16
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "ind_termo_nueva_ventanas",
+        "name": "Central Nueva Ventanas (AES Andes)",
+        "category": "emission_source",
+        "type": "energy",
+        "role": "Unidad Térmica de Gran Escala - Monitoreo Crítico de Penacho Aéreo DAN 151",
+        "icon": "🏭",
+        "color": "#dc2626",
+        "priority": 5,
+        "city": "Cordón Industrial Ventanas",
+        "pollutants": "SO2, NOx, MP10"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.483151,
+          -32.74981,
+          16
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "ind_termo_campiche",
+        "name": "Central Termoeléctrica Campiche (AES Andes)",
+        "category": "emission_source",
+        "type": "energy",
+        "role": "Complejo Generador Térmico Campiche - Punto de Máxima Carga Emisora Costera",
+        "icon": "🏭",
+        "color": "#dc2626",
+        "priority": 5,
+        "city": "Cordón Industrial Ventanas",
+        "pollutants": "SO2, NOx, MP2.5, CO2"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.483297,
+          -32.748294,
+          17
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "ind_chimney_ventanas_1",
+        "name": "Chimenea Complejo Ventanas #1 (Altura ~110m)",
+        "category": "emission_source",
+        "type": "chimney",
+        "role": "Fuente Puntual de Alta Emisión y Obstáculo Vertical Severo para UAVs (DAN 151)",
+        "icon": "💨",
+        "color": "#b91c1c",
+        "priority": 5,
+        "city": "Cordón Industrial Ventanas",
+        "pollutants": "SO2, NOx, Pluma Térmica Ascendente"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.481487,
+          -32.749839,
+          110
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "ind_chimney_ventanas_2",
+        "name": "Chimenea Complejo Ventanas #2 (Altura ~115m)",
+        "category": "emission_source",
+        "type": "chimney",
+        "role": "Punto de Intercepción de Pluma de Emisión Industrial (50-110m AGL)",
+        "icon": "💨",
+        "color": "#b91c1c",
+        "priority": 5,
+        "city": "Cordón Industrial Ventanas",
+        "pollutants": "SO2, NOx, Turbulencia Térmica"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.482509,
+          -32.750788,
+          115
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "ind_chimney_ventanas_3",
+        "name": "Chimenea Complejo Ventanas #3 (Altura ~120m)",
+        "category": "emission_source",
+        "type": "chimney",
+        "role": "Fuente de Emisión y Límite Superior de Operación SORA",
+        "icon": "💨",
+        "color": "#b91c1c",
+        "priority": 5,
+        "city": "Cordón Industrial Ventanas",
+        "pollutants": "SO2, NOx, PM"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.482441,
+          -32.75141,
+          120
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "ind_chimney_campiche",
+        "name": "Chimenea Central Campiche (Altura ~140m)",
+        "category": "emission_source",
+        "type": "chimney",
+        "role": "Superestructura Vertical y Emisión Convectiva Principal Zona Norte",
+        "icon": "💨",
+        "color": "#b91c1c",
+        "priority": 5,
+        "city": "Cordón Industrial Ventanas",
+        "pollutants": "SO2, NOx, MP2.5"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.481684,
+          -32.748424,
+          140
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "ind_codelco_refineria",
+        "name": "Refinería Electrolítica Codelco Ventanas",
+        "category": "emission_source",
+        "type": "metallurgy",
+        "role": "Instalación Metalúrgica Activa (Electroobtención de Cobre y Subproductos)",
+        "icon": "🏭",
+        "color": "#ea580c",
+        "priority": 5,
+        "city": "Cordón Industrial Ventanas",
+        "pollutants": "Aerosoles Ácidos, Neblina Sulfúrica, Metales"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.479937,
+          -32.759468,
+          22
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "ind_chimney_codelco",
+        "name": "Chimenea Principal Ex-Fundición Codelco Ventanas (Altura ~152m)",
+        "category": "emission_source",
+        "type": "chimney",
+        "role": "Obstáculo Aéreo Crítico de Gran Altura e Hito de Monitoreo de Gases Residuales",
+        "icon": "💨",
+        "color": "#b91c1c",
+        "priority": 5,
+        "city": "Cordón Industrial Ventanas",
+        "pollutants": "Gases de Proceso, Dispersión Histórica"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.480864,
+          -32.762488,
+          152
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "ind_termo_quintero",
+        "name": "Central Termoeléctrica Quintero (Enel / Nehuenco)",
+        "category": "emission_source",
+        "type": "energy",
+        "role": "Central Térmica a Ciclo Combinado (Gas/Diésel) - Zona Sur Bahía",
+        "icon": "💨",
+        "color": "#dc2626",
+        "priority": 5,
+        "city": "Quintero",
+        "pollutants": "NOx, Gases Calientes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.486192,
+          -32.787826,
+          30
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "ind_chimney_quintero_1",
+        "name": "Chimenea Central Quintero #1",
+        "category": "emission_source",
+        "type": "chimney",
+        "role": "Descarga de Gases de Turbinas de Combustión Quintero Sur",
+        "icon": "💨",
+        "color": "#b91c1c",
+        "priority": 5,
+        "city": "Quintero",
+        "pollutants": "NOx, Pluma Convectiva"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.485904,
+          -32.787293,
+          75
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "ind_oxiquim_terminal",
+        "name": "Terminal Marítimo Quintero Oxiquim",
+        "category": "emission_source",
+        "type": "chemicals",
+        "role": "Recepción, Almacenamiento y Despacho de Sustancias Químicas y Graneles Líquidos",
+        "icon": "☣",
+        "color": "#ea580c",
+        "priority": 5,
+        "city": "Cordón Industrial Ventanas",
+        "pollutants": "Compuestos Orgánicos Volátiles (COVs), Solventes, Hidrocarburos"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.485765,
+          -32.768722,
+          14
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "ind_gnl_quintero",
+        "name": "Terminal de Regasificación GNL Quintero",
+        "category": "emission_source",
+        "type": "gas",
+        "role": "Terminal de Descarga y Regasificación de Gas Natural Licuado (Tanques Criogénicos)",
+        "icon": "⛽",
+        "color": "#f97316",
+        "priority": 5,
+        "city": "Quintero",
+        "pollutants": "Metano (CH4), COVs de Venteo, Riesgo Criogénico"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.489506,
+          -32.779035,
+          20
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "ind_gasmar_terminal",
+        "name": "Planta Terminal Gasmar",
+        "category": "emission_source",
+        "type": "gas",
+        "role": "Importación y Almacenamiento Refrigerado de Gas Licuado de Petróleo (GLP - Propano/Butano)",
+        "icon": "⛽",
+        "color": "#f97316",
+        "priority": 5,
+        "city": "Cordón Industrial Ventanas",
+        "pollutants": "Propano, Butano, Emisiones Fugitivas de GLP"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.482469,
+          -32.76866,
+          25
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "ind_enap_monoboya",
+        "name": "Terminal Marítimo Monoboya ENAP Quintero",
+        "category": "emission_source",
+        "type": "oil",
+        "role": "Recepción de Crudo y Combustibles por Monoboya Marina y Oleoductos",
+        "icon": "🛢",
+        "color": "#ea580c",
+        "priority": 5,
+        "city": "Quintero",
+        "pollutants": "Hidrocarburos Totales, Vapores de Crudo, H2S"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.486467,
+          -32.776094,
+          18
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "ind_enap_estanques",
+        "name": "Parque de Estanques Terminal ENAP Quintero",
+        "category": "emission_source",
+        "type": "oil_storage",
+        "role": "Almacenamiento Estratégico de Petróleo Crudo, Diésel y Kerosén de Aviación",
+        "icon": "🛢",
+        "color": "#ea580c",
+        "priority": 5,
+        "city": "Quintero",
+        "pollutants": "COVs, Vapores de Combustibles Líquidos"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.490998,
+          -32.782002,
+          28
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "ind_copec_lubricantes",
+        "name": "Planta de Lubricantes COPEC Quintero",
+        "category": "emission_source",
+        "type": "oil",
+        "role": "Producción, Mezcla y Envasado de Lubricantes Industriales y Automotrices",
+        "icon": "🛢",
+        "color": "#f59e0b",
+        "priority": 4,
+        "city": "Quintero",
+        "pollutants": "Aerosoles de Aceites, Hidrocarburos"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.498029,
+          -32.779321,
+          24
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "ind_copec_terminal_importados",
+        "name": "Planta Terminal de Productos Importados COPEC",
+        "category": "emission_source",
+        "type": "oil_storage",
+        "role": "Almacenamiento y Despacho Masivo de Combustibles Líquidos",
+        "icon": "🛢",
+        "color": "#f59e0b",
+        "priority": 4,
+        "city": "Quintero",
+        "pollutants": "Vapores de Gasolina y Diésel"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.495839,
+          -32.778925,
+          22
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "ind_combustible_marino",
+        "name": "Terminal de Combustible Marino Ventanas",
+        "category": "emission_source",
+        "type": "bunkering",
+        "role": "Abastecimiento de Combustible (Bunkering) a Buques y Naves de Carga",
+        "icon": "🚢",
+        "color": "#ea580c",
+        "priority": 4,
+        "city": "Las Ventanas",
+        "pollutants": "Heavy Fuel Oil, Diésel Marino"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.468947,
+          -32.746708,
+          12
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "ind_cemento_melon_ventanas",
+        "name": "Planta Molienda de Cemento - Melón Ventanas",
+        "category": "emission_source",
+        "type": "cement",
+        "role": "Molienda de Clinker, Puzolana y Despacho de Cemento - Emisión de Material Particulado",
+        "icon": "🏭",
+        "color": "#d97706",
+        "priority": 5,
+        "city": "Cordón Industrial Ventanas",
+        "pollutants": "MP10, MP2.5, Polvo Mineral de Sílice"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.475214,
+          -32.754565,
+          28
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "ind_cemento_melon_puchuncavi",
+        "name": "Planta Cemento Melón (Puchuncaví / Rungue)",
+        "category": "emission_source",
+        "type": "cement",
+        "role": "Instalación Industrial y Extracción de Minerales / Áridos - Sector Interior Puchuncaví",
+        "icon": "🏭",
+        "color": "#d97706",
+        "priority": 5,
+        "city": "El Rungue",
+        "pollutants": "MP10, Polvo en Suspensión de Canteras"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.40568,
+          -32.70584,
+          85
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "ind_subestacion_ventanas",
+        "name": "Subestación Eléctrica Ventanas (Transelec)",
+        "category": "emission_source",
+        "type": "substation",
+        "role": "Nodo de Transmisión Eléctrica de Alta Tensión (Campos Electromagnéticos y Riesgo SORA)",
+        "icon": "⚡",
+        "color": "#eab308",
+        "priority": 4,
+        "city": "Cordón Industrial Ventanas",
+        "pollutants": "Interferencia Electromagnética / Alta Tensión"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.481286,
+          -32.749333,
+          20
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "ind_subestacion_quintero",
+        "name": "Subestación Eléctrica Quintero",
+        "category": "emission_source",
+        "type": "substation",
+        "role": "Subestación de Distribución Eléctrica Seccional Quintero",
+        "icon": "⚡",
+        "color": "#eab308",
+        "priority": 4,
+        "city": "Quintero",
+        "pollutants": "Alta Tensión / Red de Transmisión"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.483856,
+          -32.751758,
+          22
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "ind_desalinizadora_pacifico",
+        "name": "Planta Desalinizadora Aguas Pacífico",
+        "category": "emission_source",
+        "type": "industrial",
+        "role": "Infraestructura Hídrica Industrial y Emisario Submarino de Salmuera",
+        "icon": "💧",
+        "color": "#0284c7",
+        "priority": 4,
+        "city": "Quintero",
+        "pollutants": "Salmuera Industrial, Consumo Energético"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.478991,
+          -32.78775,
+          25
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "ind_pfv_loncura",
+        "name": "Parque Solar Fotovoltaico Loncura (PMGD)",
+        "category": "emission_source",
+        "type": "solar",
+        "role": "Generación Fotovoltaica y Resplandor / Reflejo Óptico",
+        "icon": "☀️",
+        "color": "#eab308",
+        "priority": 3,
+        "city": "Loncura",
+        "pollutants": "Ninguno (Generación Renovable / Área de Exclusión)"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.496759,
+          -32.788246,
+          32
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "civic_rungue_centro",
+        "name": "Localidad y Centro de El Rungue",
+        "category": "crowded_area",
+        "type": "civic",
+        "role": "Poblado Rural y Concurrencia Central El Rungue",
+        "icon": "👥",
+        "color": "#6366f1",
+        "priority": 4,
+        "city": "El Rungue"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.406327,
+          -32.696091,
+          75
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "rest_caballito_de_palo_rungue",
+        "name": "Restaurante El Caballito de Palo",
+        "category": "restaurant",
+        "type": "restaurant",
+        "role": "Gastronomía Tradicional y Concurrencia de Visitantes El Rungue",
+        "icon": "🍽",
+        "color": "#f59e0b",
+        "priority": 3,
+        "city": "El Rungue"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.406087,
+          -32.696191,
+          75
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "comm_minimarket_tio_miky_rungue",
+        "name": "Minimarket Tío Miky",
+        "category": "commercial",
+        "type": "shop",
+        "role": "Abastecimiento y Comercio Local El Rungue",
+        "icon": "🛒",
+        "color": "#10b981",
+        "priority": 3,
+        "city": "El Rungue"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.406318,
+          -32.695817,
+          75
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "comm_comercio_san_esteban_rungue",
+        "name": "Comercio y Provisiones San Esteban",
+        "category": "commercial",
+        "type": "shop",
+        "role": "Comercio Minorista El Rungue",
+        "icon": "🛒",
+        "color": "#10b981",
+        "priority": 3,
+        "city": "El Rungue"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.405999,
+          -32.696404,
+          76
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "hosp_cabanas_victoria_rungue",
+        "name": "Cabañas Victoria (El Rungue)",
+        "category": "hospitality",
+        "type": "hospitality",
+        "role": "Alojamiento Turístico Rural y Descanso El Rungue",
+        "icon": "🏨",
+        "color": "#8b5cf6",
+        "priority": 3,
+        "city": "El Rungue"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.406844,
+          -32.69311,
+          72
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "sport_cancha_el_rungue",
+        "name": "Cancha y Complejo Deportivo El Rungue",
+        "category": "crowded_area",
+        "type": "sports",
+        "role": "Recinto Deportivo y Encuentro Comunitario El Rungue",
+        "icon": "⚽",
+        "color": "#6366f1",
+        "priority": 4,
+        "city": "El Rungue"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.407185,
+          -32.69718,
+          80
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "civic_el_rincon_centro",
+        "name": "Localidad y Centro Comunitario El Rincón",
+        "category": "crowded_area",
+        "type": "civic",
+        "role": "Poblado Rural El Rincón y Sector Residencial",
+        "icon": "👥",
+        "color": "#e11d48",
+        "priority": 4,
+        "city": "El Rincón"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.369826,
+          -32.724445,
+          120
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "leisure_plaza_el_rincon",
+        "name": "Plaza y Parque Recreativo El Rincón",
+        "category": "crowded_area",
+        "type": "park",
+        "role": "Espacio Público Verde y Juegos El Rincón",
+        "icon": "🌳",
+        "color": "#e11d48",
+        "priority": 4,
+        "city": "El Rincón"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.369422,
+          -32.724238,
+          120
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "sport_cancha_el_rincon",
+        "name": "Cancha de Fútbol El Rincón",
+        "category": "crowded_area",
+        "type": "sports",
+        "role": "Campo Deportivo y Concurrencia de Fin de Semana El Rincón",
+        "icon": "⚽",
+        "color": "#e11d48",
+        "priority": 4,
+        "city": "El Rincón"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.368945,
+          -32.723989,
+          121
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "civic_el_rincon_poniente",
+        "name": "Sector El Rincón Poniente",
+        "category": "crowded_area",
+        "type": "civic",
+        "role": "Poblado Rural y Conexión Agrícola Poniente",
+        "icon": "👥",
+        "color": "#e11d48",
+        "priority": 3,
+        "city": "El Rincón"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.391306,
+          -32.724888,
+          105
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "civic_la_estancilla_centro",
+        "name": "Comunidad La Estancilla",
+        "category": "crowded_area",
+        "type": "civic",
+        "role": "Asentamiento Rural Tradicional Comunidad La Estancilla",
+        "icon": "👥",
+        "color": "#f97316",
+        "priority": 4,
+        "city": "Comunidad La Estancilla"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.389997,
+          -32.743157,
+          135
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "civic_sede_la_estancilla",
+        "name": "Sede Social y Junta Vecinal La Estancilla",
+        "category": "crowded_area",
+        "type": "civic",
+        "role": "Centro de Encuentro Comunitario Rural La Estancilla",
+        "icon": "🏛",
+        "color": "#f97316",
+        "priority": 4,
+        "city": "Comunidad La Estancilla"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.3892,
+          -32.7441,
+          136
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "civic_los_tomes_centro",
+        "name": "Localidad Rural Los Tomes",
+        "category": "crowded_area",
+        "type": "civic",
+        "role": "Sector Rural Residencial y Turístico Los Tomes",
+        "icon": "👥",
+        "color": "#84cc16",
+        "priority": 4,
+        "city": "Los Tomes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.45,
+          -32.7167,
+          48
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "hosp_cabanas_los_tomes",
+        "name": "Complejo Turístico y Cabañas Los Tomes",
+        "category": "hospitality",
+        "type": "hospitality",
+        "role": "Alojamiento Turístico Campestre y Recreacional",
+        "icon": "🏨",
+        "color": "#84cc16",
+        "priority": 3,
+        "city": "Los Tomes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.448451,
+          -32.719319,
+          45
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "attr_estero_los_tomes",
+        "name": "Paseo y Ribera Estero Los Tomes",
+        "category": "attraction",
+        "type": "nature",
+        "role": "Corredor Ecológico y Natural Estero Los Tomes",
+        "icon": "🌿",
+        "color": "#84cc16",
+        "priority": 3,
+        "city": "Los Tomes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.449224,
+          -32.719885,
+          42
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "civic_el_alto_puchuncavi",
+        "name": "Sector Rural El Alto (Puchuncaví)",
+        "category": "crowded_area",
+        "type": "civic",
+        "role": "Poblado Rural y Conexión Vial Interior Puchuncaví Norte",
+        "icon": "👥",
+        "color": "#14b8a6",
+        "priority": 4,
+        "city": "El Alto"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.43063,
+          -32.715738,
+          70
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "attr_ecoturismo_vivo_el_alto",
+        "name": "Centro Ecoturismo Vivo (El Alto)",
+        "category": "attraction",
+        "type": "tourism",
+        "role": "Actividades de Ecoturismo, Senderismo y Recreación al Aire Libre",
+        "icon": "🏕",
+        "color": "#14b8a6",
+        "priority": 3,
+        "city": "El Alto"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.429188,
+          -32.711223,
+          72
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "sport_cancha_el_alto",
+        "name": "Cancha Deportiva El Alto",
+        "category": "crowded_area",
+        "type": "sports",
+        "role": "Recinto Deportivo Comunitario El Alto",
+        "icon": "⚽",
+        "color": "#14b8a6",
+        "priority": 3,
+        "city": "El Alto"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.424752,
+          -32.705568,
+          80
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "civic_las_catitas_el_alto",
+        "name": "Sector Las Catitas - El Alto",
+        "category": "crowded_area",
+        "type": "civic",
+        "role": "Asentamiento Rural y Agrario Las Catitas",
+        "icon": "👥",
+        "color": "#14b8a6",
+        "priority": 3,
+        "city": "El Alto"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.424176,
+          -32.726895,
+          65
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "civic_centro_civico_loncura",
+        "name": "Centro Cívico y Junta Vecinal Loncura",
+        "category": "crowded_area",
+        "type": "civic",
+        "role": "Sede Social y Trámites Comunitarios de Loncura",
+        "icon": "🏛",
+        "color": "#f59e0b",
+        "priority": 4,
+        "city": "Loncura"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.50349,
+          -32.788246,
+          14
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "attr_humedal_el_bato_loncura",
+        "name": "Humedal Urbano El Bato (Loncura / El Alto)",
+        "category": "attraction",
+        "type": "nature",
+        "role": "Santuario y Humedal Urbano Protegido por Ley 21.202",
+        "icon": "🌿",
+        "color": "#10b981",
+        "priority": 4,
+        "city": "Loncura"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.496777,
+          -32.780982,
+          8
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "civic_terminal_buses_campiche",
+        "name": "Terminal y Paradero Interurbano Campiche / Puchuncaví",
+        "category": "crowded_area",
+        "type": "transport",
+        "role": "Punto Neurálgico de Transporte de Pasajeros y Concurrencia",
+        "icon": "🚌",
+        "color": "#06b6d4",
+        "priority": 4,
+        "city": "Las Salinas / Campiche"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.451821,
+          -32.732211,
+          40
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "hist_fundo_ureta_222_campiche",
+        "name": "Sitio Histórico y Casona Fundo Cordero Contreras (Juan Manuel Ureta 222, Campiche)",
+        "category": "historic",
+        "type": "historic",
+        "role": "Lugar Histórico Rural, Casona y Fundo Patrimonial (Juan Manuel Ureta 222, Campiche)",
+        "icon": "🏛",
+        "color": "#d97706",
+        "priority": 4,
+        "city": "Las Salinas / Campiche"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.4485,
+          -32.7315,
+          45
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "hist_sitio_memoria_melinka",
+        "name": "Sitio de Memoria Balneario Popular y Campo Melinka (Monumento Nacional D.38)",
+        "category": "historic",
+        "type": "monument",
+        "role": "Monumento Histórico Nacional (Sitio de Memoria y Conciencia DDHH)",
+        "icon": "📜",
+        "color": "#d97706",
+        "priority": 5,
+        "city": "Puchuncaví"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.40808,
+          -32.719707,
+          85
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "hist_santuario_las_petras",
+        "name": "Santuario de la Naturaleza Bosque Las Petras (Loncura)",
+        "category": "historic",
+        "type": "sanctuary",
+        "role": "Santuario de la Naturaleza y Bosque Relicto Protegido por Decreto 1993",
+        "icon": "🌳",
+        "color": "#15803d",
+        "priority": 4,
+        "city": "Loncura"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.5035,
+          -32.783,
+          10
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "hist_conchal_bato_aconcagua",
+        "name": "Conchal Indígena Arqueológico Bato y Aconcagua (Loncura)",
+        "category": "historic",
+        "type": "archaeological_site",
+        "role": "Yacimiento Arqueológico Prehispánico - Asentamiento Tradición Bato",
+        "icon": "🏺",
+        "color": "#d97706",
+        "priority": 4,
+        "city": "Loncura"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.512628,
+          -32.791928,
+          14
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "hist_cruz_ermita_campiche",
+        "name": "Cruz y Ermita Devocional Histórica de Campiche",
+        "category": "historic",
+        "type": "shrine",
+        "role": "Monumento Devocional Campesino y Patrimonio Tradicional Campiche",
+        "icon": "✝",
+        "color": "#d97706",
+        "priority": 3,
+        "city": "Las Salinas / Campiche"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.452159,
+          -32.734692,
+          42
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "hist_faro_punta_condell",
+        "name": "Faro Punta Condell (Faro Histórico Bahía Quintero)",
+        "category": "historic",
+        "type": "lighthouse",
+        "role": "Hito Histórico de Navegación Marítima y Señalización Costera",
+        "icon": "🚨",
+        "color": "#d97706",
+        "priority": 4,
+        "city": "Quintero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.5338,
+          -32.7661,
+          30
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "hist_cueva_del_pirata",
+        "name": "Cueva del Pirata (Sitio Histórico y Legendario Quintero)",
+        "category": "historic",
+        "type": "historic",
+        "role": "Sitio Histórico-Cultural Asociado a Corsarios Ingleses del Siglo XVI",
+        "icon": "🏴‍☠️",
+        "color": "#d97706",
+        "priority": 3,
+        "city": "Quintero"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.5372,
+          -32.7758,
+          15
+        ]
+      }
+    }
+  ]
+}

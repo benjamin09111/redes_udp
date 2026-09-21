@@ -1,0 +1,156 @@
+[
+  {
+    "id": "codelco_ventanas",
+    "name": "Codelco Ventanas",
+    "category": "emission_source",
+    "role": "Fundición Codelco Ventanas (Alta Emisión SO2/MP)",
+    "coords": [
+      -71.481617,
+      -32.759608
+    ],
+    "display_name": "Ex Fundición Ventanas, Ruta E-30-F, Loncura Bajo, Quintero, Provincia de Valparaíso, Región de Valparaíso, 2490000, Chile"
+  },
+  {
+    "id": "gnl_quintero",
+    "name": "GNL Quintero",
+    "category": "emission_source",
+    "role": "Terminal Marítimo y Regasificadora GNL",
+    "coords": [
+      -71.489458,
+      -32.778694
+    ],
+    "display_name": "GNL Quintero, Loncura Bajo, Quintero, Provincia de Valparaíso, Región de Valparaíso, Chile"
+  },
+  {
+    "id": "enap_quintero",
+    "name": "ENAP Quintero",
+    "category": "emission_source",
+    "role": "Terminal y Almacenamiento de Combustibles ENAP",
+    "coords": [
+      -71.490995,
+      -32.782649
+    ],
+    "display_name": "Terminal Maritimo ENAP, Loncura Bajo, Quintero, Provincia de Valparaíso, Región de Valparaíso, Chile"
+  },
+  {
+    "id": "oxiquim_quintero",
+    "name": "Oxiquim Quintero",
+    "category": "emission_source",
+    "role": "Planta Química y Terminal de Graneles Líquidos",
+    "coords": [
+      -71.487958,
+      -32.768812
+    ],
+    "display_name": "Terminal Marítimo Quintero Oxiquim, Camino Playa El Bato, Loncura Bajo, Quintero, Provincia de Valparaíso, Región de Valparaíso, 2490000, Chile"
+  },
+  {
+    "id": "puerto_ventanas",
+    "name": "Puerto Ventanas",
+    "category": "emission_source",
+    "role": "Terminal Portuario Industrial Ventanas",
+    "coords": [
+      -71.489633,
+      -32.752692
+    ],
+    "display_name": "Puerto Ventanas, Ruta E-30-F, Ventanas, Puchuncaví, Provincia de Valparaíso, Región de Valparaíso, 2490000, Chile"
+  },
+  {
+    "id": "hospital_adriana_cousiño_quintero",
+    "name": "Hospital Adriana Cousiño Quintero",
+    "category": "sensitive_receptor",
+    "role": "Hospital Base Comunal",
+    "coords": [
+      -71.531103,
+      -32.779337
+    ],
+    "display_name": "Hospital Adriana Cousiño, 380, Aranguiz Tudela, Quintero, Provincia de Valparaíso, Región de Valparaíso, 2490000, Chile"
+  },
+  {
+    "id": "cesfam_quintero",
+    "name": "CESFAM Quintero",
+    "category": "sensitive_receptor",
+    "role": "Centro de Salud Familiar Quintero",
+    "coords": [
+      -71.534964,
+      -32.795313
+    ],
+    "display_name": "CESFAM Quintero, 2950, Yungay, Población El Mirador, Quintero, Provincia de Valparaíso, Región de Valparaíso, 8400000, Chile"
+  },
+  {
+    "id": "cesfam_las_ventanas_puchuncaví",
+    "name": "CESFAM Las Ventanas Puchuncaví",
+    "category": "sensitive_receptor",
+    "role": "Centro de Salud Familiar Ventanas",
+    "coords": [
+      -71.484562,
+      -32.742327
+    ],
+    "display_name": "CESFAM Las Ventanas, Unión, Villa Vista Hermosa, Ventanas, Puchuncaví, Provincia de Valparaíso, Región de Valparaíso, 2490000, Chile"
+  },
+  {
+    "id": "escuela_la_greda_puchuncaví",
+    "name": "Escuela La Greda Puchuncaví",
+    "category": "sensitive_receptor",
+    "role": "Escuela Básica La Greda (Zona Crítica)",
+    "coords": [
+      -71.460895,
+      -32.736273
+    ],
+    "display_name": "Escuela Básica La Greda, Ruta E-30-F, Los Perales, Campiche, Puchuncaví, Provincia de Valparaíso, Región de Valparaíso, Chile"
+  },
+  {
+    "id": "colegio_chocota_puchuncaví",
+    "name": "Colegio Chocota Puchuncaví",
+    "category": "sensitive_receptor",
+    "role": "Colegio Básico Chocota",
+    "coords": [
+      -71.48717,
+      -32.729573
+    ],
+    "display_name": "Escuela La Chocota, 2680, Camino Horcón-Ventanas, La Chocota, Ventanas, Puchuncaví, Provincia de Valparaíso, Región de Valparaíso, Chile"
+  },
+  {
+    "id": "liceo_politécnico_quintero",
+    "name": "Liceo Politécnico Quintero",
+    "category": "sensitive_receptor",
+    "role": "Liceo Politécnico Quintero",
+    "coords": [
+      -71.527468,
+      -32.78829
+    ],
+    "display_name": "Liceo Politécnico de Quintero, 2298, Avenida Normandie, Población Porvenir, Loncura, Quintero, Provincia de Valparaíso, Región de Valparaíso, 8400000, Chile"
+  },
+  {
+    "id": "colegio_general_velásquez_puchuncaví",
+    "name": "Colegio General Velásquez Puchuncaví",
+    "category": "sensitive_receptor",
+    "role": "Complejo Educacional Puchuncaví",
+    "coords": [
+      -71.417068,
+      -32.726595
+    ],
+    "display_name": "Colegio General José Velásquez Bórquez, 265, Pablo Neruda, Población Don Sergio, Las Catitas, Puchuncaví, Provincia de Valparaíso, Región de Valparaíso, Chile"
+  },
+  {
+    "id": "dunas_de_ritoque_quintero",
+    "name": "Dunas de Ritoque Quintero",
+    "category": "safe_landing",
+    "role": "Zona Dunar Despoblada (Safe Ditching Sur)",
+    "coords": [
+      -71.505194,
+      -32.847197
+    ],
+    "display_name": "Dunas de Ritoque, Santa Adela, Quintero, Provincia de Valparaíso, Región de Valparaíso, Chile"
+  },
+  {
+    "id": "estadio_municipal_de_puchuncaví",
+    "name": "Estadio Municipal de Puchuncaví",
+    "category": "safe_landing",
+    "role": "Espacio Abierto Despejado / Hub de Respaldo",
+    "coords": [
+      -71.402793,
+      -32.719539
+    ],
+    "display_name": "Estadio Municipal de Puchuncaví, Camino La Canela, El Paso, Puchuncaví, Provincia de Valparaíso, Región de Valparaíso, 2500000, Chile"
+  }
+]

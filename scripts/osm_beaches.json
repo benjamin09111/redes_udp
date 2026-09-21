@@ -1,0 +1,415 @@
+[
+  {
+    "id": 13389344971,
+    "name": "Playa El Clarón",
+    "lat": -32.71079,
+    "lon": -71.487815,
+    "tags": {
+      "addr:city": "Puchuncaví",
+      "addr:street": "Viña del Mar",
+      "leisure": "beach_resort",
+      "name": "Playa El Clarón"
+    }
+  },
+  {
+    "id": 28422833,
+    "name": "Playa Aguas Blancas",
+    "lat": -32.673069,
+    "lon": -71.444908,
+    "tags": {
+      "name": "Playa Aguas Blancas",
+      "natural": "beach",
+      "surface": "sand"
+    }
+  },
+  {
+    "id": 106160527,
+    "name": "Playa Las Cañitas",
+    "lat": -32.784669,
+    "lon": -71.537937,
+    "tags": {
+      "name": "Playa Las Cañitas",
+      "natural": "beach"
+    }
+  },
+  {
+    "id": 106160671,
+    "name": "Playa La Caleta",
+    "lat": -32.784541,
+    "lon": -71.53731,
+    "tags": {
+      "name": "Playa La Caleta",
+      "natural": "beach"
+    }
+  },
+  {
+    "id": 137578627,
+    "name": "Playa Los Enamorados",
+    "lat": -32.76978,
+    "lon": -71.529716,
+    "tags": {
+      "name": "Playa Los Enamorados",
+      "natural": "beach"
+    }
+  },
+  {
+    "id": 150935216,
+    "name": "Playa Ventanas",
+    "lat": -32.744452,
+    "lon": -71.488208,
+    "tags": {
+      "name": "Playa Ventanas",
+      "natural": "beach"
+    }
+  },
+  {
+    "id": 150942053,
+    "name": "Playa Cau Cau",
+    "lat": -32.709927,
+    "lon": -71.496475,
+    "tags": {
+      "name": "Playa Cau Cau",
+      "natural": "beach",
+      "surface": "sand",
+      "wikidata": "Q6078329",
+      "wikipedia": "es:Playa Cau Cau"
+    }
+  },
+  {
+    "id": 150942056,
+    "name": "Playa de Horcón",
+    "lat": -32.709093,
+    "lon": -71.49099,
+    "tags": {
+      "name": "Playa de Horcón",
+      "natural": "beach",
+      "surface": "sand"
+    }
+  },
+  {
+    "id": 150944269,
+    "name": "Playa Larga de Horcón",
+    "lat": -32.710284,
+    "lon": -71.473653,
+    "tags": {
+      "name": "Playa Larga de Horcón",
+      "natural": "beach",
+      "nudism": "no",
+      "surface": "sand"
+    }
+  },
+  {
+    "id": 152162971,
+    "name": "Playa Quirilluca",
+    "lat": -32.697404,
+    "lon": -71.458373,
+    "tags": {
+      "name": "Playa Quirilluca",
+      "natural": "beach",
+      "nudism": "no",
+      "surface": "sand"
+    }
+  },
+  {
+    "id": 152162972,
+    "name": "Playa El Barco",
+    "lat": -32.690244,
+    "lon": -71.452461,
+    "tags": {
+      "alt_name": "Playa El Sauce",
+      "name": "Playa El Barco",
+      "natural": "beach"
+    }
+  },
+  {
+    "id": 152162973,
+    "name": "Playa Luna",
+    "lat": -32.702783,
+    "lon": -71.462585,
+    "tags": {
+      "alt_name": "Playa Nudista de Horcón",
+      "camping": "no",
+      "clothing-optional": "yes",
+      "name": "Playa Luna",
+      "natural": "beach",
+      "nudism": "designated",
+      "source": "Wikipedia",
+      "surface": "sand",
+      "thong": "yes",
+      "topless": "yes",
+      "tourism": "attraction",
+      "wikidata": "Q6078462",
+      "wikimedia_commons": "File:Playa Luna, Chile's Nude Beach (32328003487).jpg",
+      "wikipedia": "es:Playa Luna"
+    }
+  },
+  {
+    "id": 257574645,
+    "name": "Playa El Durazno",
+    "lat": -32.775683,
+    "lon": -71.526717,
+    "tags": {
+      "name": "Playa El Durazno",
+      "natural": "beach"
+    }
+  },
+  {
+    "id": 257575770,
+    "name": "Playa sin nombre",
+    "lat": -32.774569,
+    "lon": -71.538589,
+    "tags": {
+      "natural": "beach"
+    }
+  },
+  {
+    "id": 257575771,
+    "name": "Playa El Libro",
+    "lat": -32.775621,
+    "lon": -71.537605,
+    "tags": {
+      "name": "Playa El Libro",
+      "natural": "beach"
+    }
+  },
+  {
+    "id": 257575772,
+    "name": "Playa El Papagallo",
+    "lat": -32.780007,
+    "lon": -71.533915,
+    "tags": {
+      "name": "Playa El Papagallo",
+      "natural": "beach"
+    }
+  },
+  {
+    "id": 257575778,
+    "name": "Playa La Tortuga",
+    "lat": -32.778263,
+    "lon": -71.534502,
+    "tags": {
+      "name": "Playa La Tortuga",
+      "natural": "beach"
+    }
+  },
+  {
+    "id": 257575780,
+    "name": "Playa Las Conchitas",
+    "lat": -32.771316,
+    "lon": -71.527321,
+    "tags": {
+      "name": "Playa Las Conchitas",
+      "natural": "beach"
+    }
+  },
+  {
+    "id": 257575782,
+    "name": "Playa Waikiki",
+    "lat": -32.774595,
+    "lon": -71.527142,
+    "tags": {
+      "name": "Playa Waikiki",
+      "natural": "beach"
+    }
+  },
+  {
+    "id": 257575785,
+    "name": "Playa El Caleuche",
+    "lat": -32.77367,
+    "lon": -71.52666,
+    "tags": {
+      "name": "Playa El Caleuche",
+      "natural": "beach"
+    }
+  },
+  {
+    "id": 257577720,
+    "name": "Playa Loncura",
+    "lat": -32.779644,
+    "lon": -71.509192,
+    "tags": {
+      "name": "Playa Loncura",
+      "natural": "beach"
+    }
+  },
+  {
+    "id": 257579660,
+    "name": "Playa Albatros",
+    "lat": -32.782378,
+    "lon": -71.5253,
+    "tags": {
+      "name": "Playa Albatros",
+      "natural": "beach"
+    }
+  },
+  {
+    "id": 257579662,
+    "name": "Playa sin nombre",
+    "lat": -32.769666,
+    "lon": -71.528926,
+    "tags": {
+      "natural": "beach"
+    }
+  },
+  {
+    "id": 257579664,
+    "name": "Playa Los Bolones",
+    "lat": -32.769104,
+    "lon": -71.530437,
+    "tags": {
+      "name": "Playa Los Bolones",
+      "natural": "beach"
+    }
+  },
+  {
+    "id": 257579665,
+    "name": "Playa El Coronel",
+    "lat": -32.769572,
+    "lon": -71.52849,
+    "tags": {
+      "name": "Playa El Coronel",
+      "natural": "beach"
+    }
+  },
+  {
+    "id": 257579667,
+    "name": "Playa El Manzano",
+    "lat": -32.781522,
+    "lon": -71.526778,
+    "tags": {
+      "name": "Playa El Manzano",
+      "natural": "beach"
+    }
+  },
+  {
+    "id": 257579669,
+    "name": "Playa El Burrito",
+    "lat": -32.783419,
+    "lon": -71.535147,
+    "tags": {
+      "name": "Playa El Burrito",
+      "natural": "beach"
+    }
+  },
+  {
+    "id": 492836827,
+    "name": "Club El Tebo",
+    "lat": -32.725179,
+    "lon": -71.500702,
+    "tags": {
+      "leisure": "beach_resort",
+      "name": "Club El Tebo",
+      "website": "https://clubeltebo.cl/"
+    }
+  },
+  {
+    "id": 492836830,
+    "name": "Playa El Tebo",
+    "lat": -32.725604,
+    "lon": -71.502999,
+    "tags": {
+      "access": "yes",
+      "lifeguard": "yes",
+      "name": "Playa El Tebo",
+      "natural": "beach",
+      "supervised": "yes",
+      "surface": "pebblestone"
+    }
+  },
+  {
+    "id": 636234824,
+    "name": "Playa Corral de los Perros",
+    "lat": -32.692525,
+    "lon": -71.454207,
+    "tags": {
+      "name": "Playa Corral de los Perros",
+      "natural": "beach"
+    }
+  },
+  {
+    "id": 636234825,
+    "name": "Playa sin nombre",
+    "lat": -32.69297,
+    "lon": -71.454726,
+    "tags": {
+      "natural": "beach"
+    }
+  },
+  {
+    "id": 636234826,
+    "name": "Playa sin nombre",
+    "lat": -32.693514,
+    "lon": -71.455415,
+    "tags": {
+      "natural": "beach"
+    }
+  },
+  {
+    "id": 636234827,
+    "name": "Playa Las Ágatas",
+    "lat": -32.694496,
+    "lon": -71.456398,
+    "tags": {
+      "name": "Playa Las Ágatas",
+      "natural": "beach"
+    }
+  },
+  {
+    "id": 636234828,
+    "name": "Playa sin nombre",
+    "lat": -32.688722,
+    "lon": -71.451305,
+    "tags": {
+      "natural": "beach"
+    }
+  },
+  {
+    "id": 636234830,
+    "name": "Playa sin nombre",
+    "lat": -32.687602,
+    "lon": -71.450085,
+    "tags": {
+      "natural": "beach"
+    }
+  },
+  {
+    "id": 654626978,
+    "name": "Playa Giligan",
+    "lat": -32.777449,
+    "lon": -71.535015,
+    "tags": {
+      "name": "Playa Giligan",
+      "natural": "beach"
+    }
+  },
+  {
+    "id": 1035826870,
+    "name": "Playa sin nombre",
+    "lat": -32.714284,
+    "lon": -71.484764,
+    "tags": {
+      "natural": "beach"
+    }
+  },
+  {
+    "id": 1177968145,
+    "name": "Playa sin nombre",
+    "lat": -32.758877,
+    "lon": -71.487585,
+    "tags": {
+      "natural": "beach",
+      "surface": "sand"
+    }
+  },
+  {
+    "id": 11039123,
+    "name": "Ritoque",
+    "lat": -32.87275,
+    "lon": -71.517273,
+    "tags": {
+      "name": "Ritoque",
+      "natural": "beach",
+      "type": "multipolygon"
+    }
+  }
+]

@@ -1,0 +1,50 @@
+[
+  {
+    "query": "Universidad Quintero",
+    "res": {
+      "place_id": 2117241,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "node",
+      "osm_id": 6360688590,
+      "lat": "-32.7754231",
+      "lon": "-71.5328196",
+      "class": "amenity",
+      "type": "college",
+      "place_rank": 30,
+      "importance": 5.018005645833551e-05,
+      "addresstype": "amenity",
+      "name": "Colegio Alonso de Quintero",
+      "display_name": "Colegio Alonso de Quintero, General Manuel Baquedano, Quintero, Provincia de Valparaíso, Región de Valparaíso, 2490000, Chile",
+      "boundingbox": [
+        "-32.7754731",
+        "-32.7753731",
+        "-71.5328696",
+        "-71.5327696"
+      ]
+    }
+  },
+  {
+    "query": "Instituto Quintero",
+    "res": {
+      "place_id": 2149673,
+      "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+      "osm_type": "node",
+      "osm_id": 13271160720,
+      "lat": "-32.7923031",
+      "lon": "-71.5268067",
+      "class": "office",
+      "type": "government",
+      "place_rank": 30,
+      "importance": 5.018005645833551e-05,
+      "addresstype": "office",
+      "name": "Instituto de Previsión Social",
+      "display_name": "Instituto de Previsión Social, Avenida Normandie, Las Brisas de Quintero, Loncura, Quintero, Provincia de Valparaíso, Región de Valparaíso, 8400000, Chile",
+      "boundingbox": [
+        "-32.7923531",
+        "-32.7922531",
+        "-71.5268567",
+        "-71.5267567"
+      ]
+    }
+  }
+]

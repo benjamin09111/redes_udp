@@ -1,0 +1,44 @@
+[
+  {
+    "q": "F-210, Quintero, Valparaíso",
+    "lat": -32.7990152,
+    "lon": -71.5089618,
+    "display": "Acceso a Quintero, Loncura, Quintero, Provincia de Valparaíso, Región de Valparaíso, 8400000, Chile"
+  },
+  {
+    "q": "Ruta F-210 Quintero",
+    "lat": -32.8964621,
+    "lon": -71.4504415,
+    "display": "Ruta F-190, Quillota, Provincia de Quillota, Región de Valparaíso, Chile"
+  },
+  {
+    "q": "Loncura, Quintero",
+    "lat": -32.7861696,
+    "lon": -71.5080585,
+    "display": "Loncura, Quintero, Provincia de Valparaíso, Región de Valparaíso, 8400000, Chile"
+  },
+  {
+    "q": "La Chocota, Puchuncaví",
+    "lat": -32.7301986,
+    "lon": -71.4874215,
+    "display": "La Chocota, Ventanas, Puchuncaví, Provincia de Valparaíso, Región de Valparaíso, Chile"
+  },
+  {
+    "q": "La Greda, Puchuncaví",
+    "lat": -32.7445227,
+    "lon": -71.4756055,
+    "display": "La Greda, Ventanas, Puchuncaví, Provincia de Valparaíso, Región de Valparaíso, 2490000, Chile"
+  },
+  {
+    "q": "Las Salinas, Puchuncaví",
+    "lat": -32.7451849,
+    "lon": -71.4727682,
+    "display": "Las Salinas, Ventanas, Puchuncaví, Provincia de Valparaíso, Región de Valparaíso, Chile"
+  },
+  {
+    "q": "Campiche, Puchuncaví",
+    "lat": -32.7321235,
+    "lon": -71.449013,
+    "display": "Campiche, Puchuncaví, Provincia de Valparaíso, Región de Valparaíso, Chile"
+  }
+]

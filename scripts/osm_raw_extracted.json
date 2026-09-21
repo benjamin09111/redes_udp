@@ -1,0 +1,656 @@
+{
+  "higher_education": [],
+  "commercial_supermarkets": [
+    {
+      "osm_id": 1638104080,
+      "osm_type": "node",
+      "name": "Caleta de Quintero",
+      "has_proper_name": true,
+      "group": "commercial",
+      "category_tag": "marketplace",
+      "lat": -32.782067,
+      "lon": -71.527006,
+      "tags": {
+        "amenity": "marketplace",
+        "name": "Caleta de Quintero"
+      }
+    },
+    {
+      "osm_id": 2391065988,
+      "osm_type": "node",
+      "name": "Caleta Loncura",
+      "has_proper_name": true,
+      "group": "commercial",
+      "category_tag": "marketplace",
+      "lat": -32.782724,
+      "lon": -71.507865,
+      "tags": {
+        "amenity": "marketplace",
+        "name": "Caleta Loncura"
+      }
+    },
+    {
+      "osm_id": 2630715210,
+      "osm_type": "node",
+      "name": "commercial (marketplace)",
+      "has_proper_name": false,
+      "group": "commercial",
+      "category_tag": "marketplace",
+      "lat": -32.77612,
+      "lon": -71.526554,
+      "tags": {
+        "amenity": "marketplace"
+      }
+    },
+    {
+      "osm_id": 3926189990,
+      "osm_type": "node",
+      "name": "Minimarket",
+      "has_proper_name": true,
+      "group": "commercial",
+      "category_tag": "supermarket",
+      "lat": -32.789602,
+      "lon": -71.527244,
+      "tags": {
+        "name": "Minimarket",
+        "shop": "supermarket"
+      }
+    },
+    {
+      "osm_id": 4130319990,
+      "osm_type": "node",
+      "name": "Supermercado El Descanso",
+      "has_proper_name": true,
+      "group": "commercial",
+      "category_tag": "supermarket",
+      "lat": -32.789344,
+      "lon": -71.502803,
+      "tags": {
+        "name": "Supermercado El Descanso",
+        "opening_hours": "Su-Th 09:00-21:00; Fr-Sa 09:00-22:00",
+        "shop": "supermarket"
+      }
+    },
+    {
+      "osm_id": 4422090879,
+      "osm_type": "node",
+      "name": "Supermercado El Carolo",
+      "has_proper_name": true,
+      "group": "commercial",
+      "category_tag": "supermarket",
+      "lat": -32.710683,
+      "lon": -71.488973,
+      "tags": {
+        "name": "Supermercado El Carolo",
+        "shop": "supermarket"
+      }
+    },
+    {
+      "osm_id": 6135005697,
+      "osm_type": "node",
+      "name": "Supermercado S´DTodo",
+      "has_proper_name": true,
+      "group": "commercial",
+      "category_tag": "supermarket",
+      "lat": -32.786825,
+      "lon": -71.528224,
+      "tags": {
+        "name": "Supermercado S´DTodo",
+        "shop": "supermarket"
+      }
+    },
+    {
+      "osm_id": 150953510,
+      "osm_type": "way",
+      "name": "Unimarc",
+      "has_proper_name": true,
+      "group": "commercial",
+      "category_tag": "supermarket",
+      "lat": -32.785623,
+      "lon": -71.527081,
+      "tags": {
+        "addr:housenumber": "169",
+        "addr:street": "Estrella de Chile",
+        "brand": "Unimarc",
+        "brand:wikidata": "Q6156244",
+        "building": "yes",
+        "name": "Unimarc",
+        "shop": "supermarket"
+      }
+    },
+    {
+      "osm_id": 545989506,
+      "osm_type": "way",
+      "name": "Unimarc",
+      "has_proper_name": true,
+      "group": "commercial",
+      "category_tag": "supermarket",
+      "lat": -32.721627,
+      "lon": -71.410148,
+      "tags": {
+        "brand": "Unimarc",
+        "brand:wikidata": "Q6156244",
+        "building": "yes",
+        "name": "Unimarc",
+        "operator": "Unimarc",
+        "shop": "supermarket"
+      }
+    },
+    {
+      "osm_id": 1311125863,
+      "osm_type": "way",
+      "name": "Unimarc",
+      "has_proper_name": true,
+      "group": "commercial",
+      "category_tag": "supermarket",
+      "lat": -32.792341,
+      "lon": -71.527169,
+      "tags": {
+        "addr:housenumber": "2680",
+        "addr:street": "Avenida Normandie",
+        "brand": "Unimarc",
+        "brand:wikidata": "Q6156244",
+        "building": "yes",
+        "name": "Unimarc",
+        "shop": "supermarket"
+      }
+    },
+    {
+      "osm_id": 1384796666,
+      "osm_type": "way",
+      "name": "Super Bodega Acuenta",
+      "has_proper_name": true,
+      "group": "commercial",
+      "category_tag": "supermarket",
+      "lat": -32.798536,
+      "lon": -71.526812,
+      "tags": {
+        "addr:city": "Quintero",
+        "building": "commercial",
+        "name": "Super Bodega Acuenta",
+        "shop": "supermarket"
+      }
+    }
+  ],
+  "crowded_places": [],
+  "health_additional": [],
+  "education_all": [
+    {
+      "osm_id": 3636105936,
+      "osm_type": "node",
+      "name": "Jardín Infantil",
+      "has_proper_name": true,
+      "group": "education",
+      "category_tag": "kindergarten",
+      "lat": -32.729387,
+      "lon": -71.408448,
+      "tags": {
+        "addr:city": "Puchuncavi",
+        "addr:housenumber": "986",
+        "addr:street": "San Agustín",
+        "amenity": "kindergarten",
+        "name": "Jardín Infantil"
+      }
+    },
+    {
+      "osm_id": 10989508026,
+      "osm_type": "node",
+      "name": "Escuela Especial de Lenguaje y Jardín Nuevo Mundo",
+      "has_proper_name": true,
+      "group": "education",
+      "category_tag": "school",
+      "lat": -32.776616,
+      "lon": -71.531264,
+      "tags": {
+        "addr:city": "Quintero",
+        "addr:housenumber": "374",
+        "addr:street": "Balmaceda",
+        "amenity": "school",
+        "name": "Escuela Especial de Lenguaje y Jardín Nuevo Mundo"
+      }
+    },
+    {
+      "osm_id": 10989739034,
+      "osm_type": "node",
+      "name": "Centro Educacional El Faro",
+      "has_proper_name": true,
+      "group": "education",
+      "category_tag": "school",
+      "lat": -32.776888,
+      "lon": -71.530829,
+      "tags": {
+        "addr:city": "Quintero",
+        "addr:housenumber": "324",
+        "addr:street": "Balmaceda",
+        "amenity": "school",
+        "name": "Centro Educacional El Faro"
+      }
+    },
+    {
+      "osm_id": 11004698894,
+      "osm_type": "node",
+      "name": "Escuela Juan José Tortel",
+      "has_proper_name": true,
+      "group": "education",
+      "category_tag": "school",
+      "lat": -32.81167,
+      "lon": -71.440806,
+      "tags": {
+        "addr:street": "Ruta F-190",
+        "amenity": "school",
+        "name": "Escuela Juan José Tortel"
+      }
+    },
+    {
+      "osm_id": 11386269504,
+      "osm_type": "node",
+      "name": "Centro de Educación Especial Ann Sullivan",
+      "has_proper_name": true,
+      "group": "education",
+      "category_tag": "school",
+      "lat": -32.77769,
+      "lon": -71.531626,
+      "tags": {
+        "addr:city": "Quintero",
+        "addr:housenumber": "1935",
+        "addr:street": "Luis Cousiño",
+        "amenity": "school",
+        "name": "Centro de Educación Especial Ann Sullivan"
+      }
+    },
+    {
+      "osm_id": 11470153758,
+      "osm_type": "node",
+      "name": "Escuela de Lenguaje San Gabriel",
+      "has_proper_name": true,
+      "group": "education",
+      "category_tag": "school",
+      "lat": -32.78919,
+      "lon": -71.529683,
+      "tags": {
+        "addr:city": "Quintero",
+        "addr:housenumber": "415",
+        "addr:street": "República Argentina",
+        "amenity": "school",
+        "name": "Escuela de Lenguaje San Gabriel"
+      }
+    },
+    {
+      "osm_id": 11470347823,
+      "osm_type": "node",
+      "name": "Escuela de Párvulos Altamira",
+      "has_proper_name": true,
+      "group": "education",
+      "category_tag": "kindergarten",
+      "lat": -32.787692,
+      "lon": -71.532615,
+      "tags": {
+        "addr:city": "Quintero",
+        "addr:housenumber": "660",
+        "addr:street": "Manuel Rodríguez",
+        "amenity": "kindergarten",
+        "name": "Escuela de Párvulos Altamira"
+      }
+    },
+    {
+      "osm_id": 11470384127,
+      "osm_type": "node",
+      "name": "Colegio San Hernaldo",
+      "has_proper_name": true,
+      "group": "education",
+      "category_tag": "school",
+      "lat": -32.728541,
+      "lon": -71.411281,
+      "tags": {
+        "addr:city": "Puchuncaví",
+        "addr:housenumber": "662",
+        "addr:street": "Alcalde Ruperto Bernal",
+        "amenity": "school",
+        "name": "Colegio San Hernaldo"
+      }
+    },
+    {
+      "osm_id": 149135780,
+      "osm_type": "way",
+      "name": "Colegio General José Velásquez Bórquez",
+      "has_proper_name": true,
+      "group": "education",
+      "category_tag": "school",
+      "lat": -32.726495,
+      "lon": -71.417052,
+      "tags": {
+        "addr:city": "Puchuncaví",
+        "addr:housenumber": "265",
+        "addr:street": "Pablo Neruda",
+        "amenity": "school",
+        "name": "Colegio General José Velásquez Bórquez"
+      }
+    },
+    {
+      "osm_id": 150954925,
+      "osm_type": "way",
+      "name": "Liceo Politécnico de Quintero",
+      "has_proper_name": true,
+      "group": "education",
+      "category_tag": "school",
+      "lat": -32.788239,
+      "lon": -71.527444,
+      "tags": {
+        "addr:city": "Quintero",
+        "addr:housenumber": "2298",
+        "addr:street": "Avenida Normandie",
+        "amenity": "school",
+        "name": "Liceo Politécnico de Quintero"
+      }
+    },
+    {
+      "osm_id": 241188169,
+      "osm_type": "way",
+      "name": "Ann Sullivan",
+      "has_proper_name": true,
+      "group": "education",
+      "category_tag": "school",
+      "lat": -32.785678,
+      "lon": -71.529703,
+      "tags": {
+        "amenity": "school",
+        "name": "Ann Sullivan"
+      }
+    },
+    {
+      "osm_id": 568238166,
+      "osm_type": "way",
+      "name": "Colegio Don Orione",
+      "has_proper_name": true,
+      "group": "education",
+      "category_tag": "school",
+      "lat": -32.785821,
+      "lon": -71.533909,
+      "tags": {
+        "addr:city": "Quintero",
+        "addr:housenumber": "702",
+        "addr:street": "Orione",
+        "amenity": "school",
+        "name": "Colegio Don Orione"
+      }
+    },
+    {
+      "osm_id": 571429837,
+      "osm_type": "way",
+      "name": "Colegio Sargento Aldea",
+      "has_proper_name": true,
+      "group": "education",
+      "category_tag": "school",
+      "lat": -32.742413,
+      "lon": -71.485693,
+      "tags": {
+        "addr:city": "Puchuncaví",
+        "addr:housenumber": "372",
+        "addr:street": "Bellavista",
+        "amenity": "school",
+        "name": "Colegio Sargento Aldea"
+      }
+    },
+    {
+      "osm_id": 641320562,
+      "osm_type": "way",
+      "name": "Escuela República de Francia",
+      "has_proper_name": true,
+      "group": "education",
+      "category_tag": "school",
+      "lat": -32.791122,
+      "lon": -71.530809,
+      "tags": {
+        "addr:housenumber": "501",
+        "addr:street": "Guardiamarina Ernesto Riquelme",
+        "amenity": "school",
+        "name": "Escuela República de Francia"
+      }
+    },
+    {
+      "osm_id": 654626979,
+      "osm_type": "way",
+      "name": "Colegio Inglés",
+      "has_proper_name": true,
+      "group": "education",
+      "category_tag": "school",
+      "lat": -32.783333,
+      "lon": -71.531017,
+      "tags": {
+        "addr:city": "Quintero",
+        "addr:country": "CL",
+        "addr:housenumber": "475",
+        "addr:street": "Alonso de Quintero",
+        "amenity": "school",
+        "name": "Colegio Inglés"
+      }
+    },
+    {
+      "osm_id": 654628982,
+      "osm_type": "way",
+      "name": "Colegio Inglés",
+      "has_proper_name": true,
+      "group": "education",
+      "category_tag": "school",
+      "lat": -32.781632,
+      "lon": -71.531588,
+      "tags": {
+        "addr:city": "Quintero",
+        "addr:country": "CL",
+        "addr:housenumber": "1547",
+        "addr:street": "General Manuel Baquedano",
+        "amenity": "school",
+        "name": "Colegio Inglés"
+      }
+    },
+    {
+      "osm_id": 654628983,
+      "osm_type": "way",
+      "name": "Colegio Alonso de Quintero",
+      "has_proper_name": true,
+      "group": "education",
+      "category_tag": "school",
+      "lat": -32.801792,
+      "lon": -71.531874,
+      "tags": {
+        "addr:housenumber": "3502",
+        "addr:street": "Santa Filomena",
+        "amenity": "school",
+        "name": "Colegio Alonso de Quintero"
+      }
+    },
+    {
+      "osm_id": 654628987,
+      "osm_type": "way",
+      "name": "Escuela Valle de Narau",
+      "has_proper_name": true,
+      "group": "education",
+      "category_tag": "school",
+      "lat": -32.794139,
+      "lon": -71.534055,
+      "tags": {
+        "addr:housenumber": "2865",
+        "addr:street": "Yungay",
+        "amenity": "school",
+        "name": "Escuela Valle de Narau"
+      }
+    },
+    {
+      "osm_id": 688071292,
+      "osm_type": "way",
+      "name": "Escuela Básica El Rungue",
+      "has_proper_name": true,
+      "group": "education",
+      "category_tag": "school",
+      "lat": -32.697141,
+      "lon": -71.406807,
+      "tags": {
+        "addr:street": "Ruta E-30-F",
+        "amenity": "school",
+        "name": "Escuela Básica El Rungue",
+        "nohousenumber": "yes"
+      }
+    },
+    {
+      "osm_id": 801403673,
+      "osm_type": "way",
+      "name": "education (school)",
+      "has_proper_name": false,
+      "group": "education",
+      "category_tag": "school",
+      "lat": -32.740037,
+      "lon": -71.486524,
+      "tags": {
+        "amenity": "school"
+      }
+    },
+    {
+      "osm_id": 801753636,
+      "osm_type": "way",
+      "name": "Jardín Infantil Bambi",
+      "has_proper_name": true,
+      "group": "education",
+      "category_tag": "kindergarten",
+      "lat": -32.797418,
+      "lon": -71.536773,
+      "tags": {
+        "addr:street": "Lazo",
+        "amenity": "kindergarten",
+        "name": "Jardín Infantil Bambi",
+        "nohousenumber": "yes",
+        "operator": "Fundación Integra"
+      }
+    },
+    {
+      "osm_id": 911675195,
+      "osm_type": "way",
+      "name": "Escuela Básica La Greda",
+      "has_proper_name": true,
+      "group": "education",
+      "category_tag": "school",
+      "lat": -32.736423,
+      "lon": -71.460807,
+      "tags": {
+        "amenity": "school",
+        "name": "Escuela Básica La Greda"
+      }
+    },
+    {
+      "osm_id": 1237394916,
+      "osm_type": "way",
+      "name": "Escuela Especial Lourdes",
+      "has_proper_name": true,
+      "group": "education",
+      "category_tag": "school",
+      "lat": -32.777271,
+      "lon": -71.53441,
+      "tags": {
+        "addr:city": "Quintero",
+        "addr:housenumber": "1156",
+        "addr:street": "Vicuña Mackenna",
+        "amenity": "school",
+        "name": "Escuela Especial Lourdes"
+      }
+    },
+    {
+      "osm_id": 1237398455,
+      "osm_type": "way",
+      "name": "Colegio Santa Filomena",
+      "has_proper_name": true,
+      "group": "education",
+      "category_tag": "school",
+      "lat": -32.780896,
+      "lon": -71.529165,
+      "tags": {
+        "addr:city": "Quintero",
+        "addr:housenumber": "1490",
+        "addr:street": "Avenida Francia",
+        "amenity": "school",
+        "name": "Colegio Santa Filomena"
+      }
+    },
+    {
+      "osm_id": 1311125852,
+      "osm_type": "way",
+      "name": "education (kindergarten)",
+      "has_proper_name": false,
+      "group": "education",
+      "category_tag": "kindergarten",
+      "lat": -32.797952,
+      "lon": -71.536851,
+      "tags": {
+        "addr:housenumber": "820",
+        "addr:street": "18 de Septiembre",
+        "amenity": "kindergarten"
+      }
+    },
+    {
+      "osm_id": 1313518955,
+      "osm_type": "way",
+      "name": "Escuela Campiche",
+      "has_proper_name": true,
+      "group": "education",
+      "category_tag": "school",
+      "lat": -32.735326,
+      "lon": -71.451108,
+      "tags": {
+        "addr:city": "Puchuncaví",
+        "addr:country": "CL",
+        "addr:street": "Ruta F-170",
+        "amenity": "school",
+        "name": "Escuela Campiche",
+        "note": "Correcciones masivas a ortografía en nombres de importaciones hechas por equipo de gendarmería"
+      }
+    },
+    {
+      "osm_id": 1380989970,
+      "osm_type": "way",
+      "name": "Escuela Básica de Horcón",
+      "has_proper_name": true,
+      "group": "education",
+      "category_tag": "school",
+      "lat": -32.713264,
+      "lon": -71.488109,
+      "tags": {
+        "addr:city": "Puchuncaví",
+        "addr:housenumber": "500",
+        "addr:street": "Principal",
+        "amenity": "school",
+        "name": "Escuela Básica de Horcón"
+      }
+    },
+    {
+      "osm_id": 1381832740,
+      "osm_type": "way",
+      "name": "Escuela La Chocota",
+      "has_proper_name": true,
+      "group": "education",
+      "category_tag": "school",
+      "lat": -32.729684,
+      "lon": -71.487073,
+      "tags": {
+        "addr:housenumber": "2680",
+        "addr:street": "Camino Horcón-Ventanas",
+        "amenity": "school",
+        "name": "Escuela La Chocota"
+      }
+    },
+    {
+      "osm_id": 1385840525,
+      "osm_type": "way",
+      "name": "Colegio Artístico Costa Mauco",
+      "has_proper_name": true,
+      "group": "education",
+      "category_tag": "school",
+      "lat": -32.785358,
+      "lon": -71.530444,
+      "tags": {
+        "addr:city": "Quintero",
+        "addr:housenumber": "1918",
+        "addr:street": "Luis Cousiño",
+        "amenity": "school",
+        "name": "Colegio Artístico Costa Mauco"
+      }
+    }
+  ]
+}

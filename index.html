@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simulador Ciberfísico de Ruteo Resiliente | Bahía de Quintero</title>
+  
+  <!-- Estilos Leaflet (GIS Web) -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+  
+  <!-- Estilos propios -->
+  <link rel="stylesheet" href="./src/styles/main.css">
+</head>
+<body>
+
+  <!-- Barra Superior -->
+  <header class="app-header">
+    <div class="header-brand">
+      <h1>Simulador Resiliente de Ruteo UAV</h1>
+      <span class="header-badge">DGAC DAN 151 &bull; 0–120m AGL</span>
+    </div>
+    <div class="header-meta">
+      <span>Zona: Bahía de Quintero, Ventanas y Puchuncaví</span>
+    </div>
+  </header>
+
+  <!-- Área de Trabajo -->
+  <div class="main-container">
+    
+    <!-- Barra Lateral GIS -->
+    <aside class="gis-sidebar">
+      
+      <!-- Métricas de Red Estratificada -->
+      <div class="panel-section">
+        <h3>Red Espacial Multicapa</h3>
+        <div class="metrics-grid">
+          <div class="metric-card">
+            <div class="metric-label">Total Nodos</div>
+            <div class="metric-value cyan" id="metricTotalNodes">-</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-label">Estaciones SINCA</div>
+            <div class="metric-value cyan" id="metricSincaNodes">-</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-label">Fábricas / Emisión</div>
+            <div class="metric-value red" id="metricIndustryNodes">-</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-label">Centros de Salud</div>
+            <div class="metric-value red" id="metricHealthNodes">-</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-label">Red Educación</div>
+            <div class="metric-value orange" id="metricEducationNodes">-</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-label">Comercio / Abasto</div>
+            <div class="metric-value yellow" id="metricCommercialNodes">-</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-label">Concurrencia Masiva</div>
+            <div class="metric-value pink" id="metricCrowdedNodes">-</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-label">Playas y Balnearios</div>
+            <div class="metric-value cyan" id="metricBeachNodes">-</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-label">Hospedaje (Hoteles/Cabañas)</div>
+            <div class="metric-value purple" id="metricHospitalityNodes">-</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-label">Gastronomía (Restaurantes)</div>
+            <div class="metric-value orange" id="metricRestaurantNodes">-</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-label">Miradores y Turismo</div>
+            <div class="metric-value pink" id="metricAttractionNodes">-</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-label">Sitios Históricos</div>
+            <div class="metric-value orange" id="metricHistoricNodes">-</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-label">Hubs de Batería</div>
+            <div class="metric-value green" id="metricHubNodes">-</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Resiliencia y Control -->
+      <div class="panel-section">
+        <h3>Protocolo Ciberfísico</h3>
+        <button id="btnRTH" class="btn-rth">
+          <span>⚡</span> Retorno Seguro a Base (RTH Sotavento)
+        </button>
+      </div>
+
+      <!-- Inspector y Filtros de Nodos -->
+      <div class="panel-section" style="flex: 1;">
+        <div class="section-header-row">
+          <h3>Explorador de Nodos</h3>
+          <label class="toggle-switch-label" title="Alternar entre nodos simples de grafo o íconos completos">
+            <span>Mostrar íconos</span>
+            <input type="checkbox" id="toggleShowIcons" class="toggle-switch-input">
+          </label>
+        </div>
+        <div class="filter-tabs" id="filterTabs">
+          <button class="filter-btn active" data-filter="all">Todos</button>
+          <button class="filter-btn" data-filter="sinca">📡 SINCA</button>
+          <button class="filter-btn" data-filter="emission_source">🏭 Industrias</button>
+          <button class="filter-btn" data-filter="health">🏥 Salud</button>
+          <button class="filter-btn" data-filter="education">🏫 Educación</button>
+          <button class="filter-btn" data-filter="commercial">🛒 Comercio</button>
+          <button class="filter-btn" data-filter="crowded_area">👥 Concurrencia</button>
+          <button class="filter-btn" data-filter="beach">🏖 Playas</button>
+          <button class="filter-btn" data-filter="hospitality">🏨 Hospedaje</button>
+          <button class="filter-btn" data-filter="restaurant">🍽 Gastronomía</button>
+          <button class="filter-btn" data-filter="attraction">📸 Atracciones</button>
+          <button class="filter-btn" data-filter="historic">🏛 Históricos</button>
+          <button class="filter-btn" data-filter="auxiliary_hub">🔋 Hubs</button>
+        </div>
+        <div id="nodesList" class="nodes-list">
+          <p style="color: var(--text-secondary); font-size: 0.8rem;">Cargando nodos multicapa...</p>
+        </div>
+
+
+      </div>
+
+    </aside>
+
+    <!-- Visor Cartográfico Tipo QGIS -->
+    <main id="map"></main>
+
+  </div>
+
+  <!-- Librería Leaflet -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  
+  <!-- Lógica modular ES6 -->
+  <script type="module" src="./src/main.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,577 @@
+[
+  {
+    "type": "node",
+    "id": 3636105936,
+    "lat": -32.729387,
+    "lon": -71.4084478,
+    "tags": {
+      "addr:city": "Puchuncavi",
+      "addr:housenumber": "986",
+      "addr:street": "San Agustín",
+      "amenity": "kindergarten",
+      "name": "Jardín Infantil"
+    }
+  },
+  {
+    "type": "node",
+    "id": 6360688590,
+    "lat": -32.7754231,
+    "lon": -71.5328196,
+    "tags": {
+      "addr:city": "Quintero",
+      "addr:street": "General Manuel Baquedano",
+      "amenity": "college",
+      "name": "Colegio Alonso de Quintero"
+    }
+  },
+  {
+    "type": "node",
+    "id": 10989508026,
+    "lat": -32.776616,
+    "lon": -71.5312643,
+    "tags": {
+      "addr:city": "Quintero",
+      "addr:housenumber": "374",
+      "addr:street": "Balmaceda",
+      "amenity": "school",
+      "name": "Escuela Especial de Lenguaje y Jardín Nuevo Mundo"
+    }
+  },
+  {
+    "type": "node",
+    "id": 10989739034,
+    "lat": -32.7768883,
+    "lon": -71.5308292,
+    "tags": {
+      "addr:city": "Quintero",
+      "addr:housenumber": "324",
+      "addr:street": "Balmaceda",
+      "amenity": "school",
+      "name": "Centro Educacional El Faro"
+    }
+  },
+  {
+    "type": "node",
+    "id": 11004698894,
+    "lat": -32.8116702,
+    "lon": -71.4408064,
+    "tags": {
+      "addr:street": "Ruta F-190",
+      "amenity": "school",
+      "name": "Escuela Juan José Tortel"
+    }
+  },
+  {
+    "type": "node",
+    "id": 11386269504,
+    "lat": -32.7776902,
+    "lon": -71.5316255,
+    "tags": {
+      "addr:city": "Quintero",
+      "addr:housenumber": "1935",
+      "addr:street": "Luis Cousiño",
+      "amenity": "school",
+      "name": "Centro de Educación Especial Ann Sullivan"
+    }
+  },
+  {
+    "type": "node",
+    "id": 11470153758,
+    "lat": -32.7891904,
+    "lon": -71.5296832,
+    "tags": {
+      "addr:city": "Quintero",
+      "addr:housenumber": "415",
+      "addr:street": "República Argentina",
+      "amenity": "school",
+      "name": "Escuela de Lenguaje San Gabriel"
+    }
+  },
+  {
+    "type": "node",
+    "id": 11470347823,
+    "lat": -32.7876925,
+    "lon": -71.5326149,
+    "tags": {
+      "addr:city": "Quintero",
+      "addr:housenumber": "660",
+      "addr:street": "Manuel Rodríguez",
+      "amenity": "kindergarten",
+      "name": "Escuela de Párvulos Altamira"
+    }
+  },
+  {
+    "type": "node",
+    "id": 11470384127,
+    "lat": -32.7285407,
+    "lon": -71.4112812,
+    "tags": {
+      "addr:city": "Puchuncaví",
+      "addr:housenumber": "662",
+      "addr:street": "Alcalde Ruperto Bernal",
+      "amenity": "school",
+      "name": "Colegio San Hernaldo"
+    }
+  },
+  {
+    "type": "way",
+    "id": 149135780,
+    "center": {
+      "lat": -32.7264952,
+      "lon": -71.417052
+    },
+    "tags": {
+      "addr:city": "Puchuncaví",
+      "addr:housenumber": "265",
+      "addr:street": "Pablo Neruda",
+      "amenity": "school",
+      "name": "Colegio General José Velásquez Bórquez"
+    }
+  },
+  {
+    "type": "way",
+    "id": 150954925,
+    "center": {
+      "lat": -32.7882387,
+      "lon": -71.5274443
+    },
+    "tags": {
+      "addr:city": "Quintero",
+      "addr:housenumber": "2298",
+      "addr:street": "Avenida Normandie",
+      "amenity": "school",
+      "name": "Liceo Politécnico de Quintero"
+    }
+  },
+  {
+    "type": "way",
+    "id": 241188169,
+    "center": {
+      "lat": -32.7856783,
+      "lon": -71.5297032
+    },
+    "tags": {
+      "amenity": "school",
+      "name": "Ann Sullivan"
+    }
+  },
+  {
+    "type": "way",
+    "id": 568238166,
+    "center": {
+      "lat": -32.785821,
+      "lon": -71.5339089
+    },
+    "tags": {
+      "addr:city": "Quintero",
+      "addr:housenumber": "702",
+      "addr:street": "Orione",
+      "amenity": "school",
+      "name": "Colegio Don Orione"
+    }
+  },
+  {
+    "type": "way",
+    "id": 571429837,
+    "center": {
+      "lat": -32.7424126,
+      "lon": -71.4856927
+    },
+    "tags": {
+      "addr:city": "Puchuncaví",
+      "addr:housenumber": "372",
+      "addr:street": "Bellavista",
+      "amenity": "school",
+      "name": "Colegio Sargento Aldea"
+    }
+  },
+  {
+    "type": "way",
+    "id": 604399972,
+    "center": {
+      "lat": -32.7264379,
+      "lon": -71.4173847
+    },
+    "tags": {
+      "addr:city": "Puchuncaví",
+      "addr:street": "Alcalde Ruperto Bernal",
+      "building": "school"
+    }
+  },
+  {
+    "type": "way",
+    "id": 604399973,
+    "center": {
+      "lat": -32.7268501,
+      "lon": -71.4168004
+    },
+    "tags": {
+      "building": "school",
+      "layer": "1"
+    }
+  },
+  {
+    "type": "way",
+    "id": 604399974,
+    "center": {
+      "lat": -32.7266638,
+      "lon": -71.4166258
+    },
+    "tags": {
+      "building": "school"
+    }
+  },
+  {
+    "type": "way",
+    "id": 604399975,
+    "center": {
+      "lat": -32.7268356,
+      "lon": -71.4171663
+    },
+    "tags": {
+      "building": "school"
+    }
+  },
+  {
+    "type": "way",
+    "id": 636259292,
+    "center": {
+      "lat": -32.7367136,
+      "lon": -71.4608075
+    },
+    "tags": {
+      "building": "school"
+    }
+  },
+  {
+    "type": "way",
+    "id": 636259293,
+    "center": {
+      "lat": -32.7365756,
+      "lon": -71.4610125
+    },
+    "tags": {
+      "building": "school"
+    }
+  },
+  {
+    "type": "way",
+    "id": 636259294,
+    "center": {
+      "lat": -32.736261,
+      "lon": -71.4610893
+    },
+    "tags": {
+      "building": "school"
+    }
+  },
+  {
+    "type": "way",
+    "id": 636259295,
+    "center": {
+      "lat": -32.7363059,
+      "lon": -71.4608331
+    },
+    "tags": {
+      "building": "school"
+    }
+  },
+  {
+    "type": "way",
+    "id": 636259296,
+    "center": {
+      "lat": -32.7360901,
+      "lon": -71.4607865
+    },
+    "tags": {
+      "building": "school"
+    }
+  },
+  {
+    "type": "way",
+    "id": 641320562,
+    "center": {
+      "lat": -32.7911217,
+      "lon": -71.5308088
+    },
+    "tags": {
+      "addr:housenumber": "501",
+      "addr:street": "Guardiamarina Ernesto Riquelme",
+      "amenity": "school",
+      "name": "Escuela República de Francia"
+    }
+  },
+  {
+    "type": "way",
+    "id": 654626979,
+    "center": {
+      "lat": -32.7833335,
+      "lon": -71.5310166
+    },
+    "tags": {
+      "addr:city": "Quintero",
+      "addr:country": "CL",
+      "addr:housenumber": "475",
+      "addr:street": "Alonso de Quintero",
+      "amenity": "school",
+      "name": "Colegio Inglés"
+    }
+  },
+  {
+    "type": "way",
+    "id": 654628982,
+    "center": {
+      "lat": -32.7816323,
+      "lon": -71.5315877
+    },
+    "tags": {
+      "addr:city": "Quintero",
+      "addr:country": "CL",
+      "addr:housenumber": "1547",
+      "addr:street": "General Manuel Baquedano",
+      "amenity": "school",
+      "name": "Colegio Inglés"
+    }
+  },
+  {
+    "type": "way",
+    "id": 654628983,
+    "center": {
+      "lat": -32.8017919,
+      "lon": -71.5318743
+    },
+    "tags": {
+      "addr:housenumber": "3502",
+      "addr:street": "Santa Filomena",
+      "amenity": "school",
+      "name": "Colegio Alonso de Quintero"
+    }
+  },
+  {
+    "type": "way",
+    "id": 654628987,
+    "center": {
+      "lat": -32.7941385,
+      "lon": -71.5340551
+    },
+    "tags": {
+      "addr:housenumber": "2865",
+      "addr:street": "Yungay",
+      "amenity": "school",
+      "name": "Escuela Valle de Narau"
+    }
+  },
+  {
+    "type": "way",
+    "id": 688071292,
+    "center": {
+      "lat": -32.6971407,
+      "lon": -71.4068072
+    },
+    "tags": {
+      "addr:street": "Ruta E-30-F",
+      "amenity": "school",
+      "name": "Escuela Básica El Rungue",
+      "nohousenumber": "yes"
+    }
+  },
+  {
+    "type": "way",
+    "id": 688071293,
+    "center": {
+      "lat": -32.6971342,
+      "lon": -71.4064675
+    },
+    "tags": {
+      "building": "school"
+    }
+  },
+  {
+    "type": "way",
+    "id": 801403673,
+    "center": {
+      "lat": -32.7400373,
+      "lon": -71.4865238
+    },
+    "tags": {
+      "amenity": "school"
+    }
+  },
+  {
+    "type": "way",
+    "id": 801753636,
+    "center": {
+      "lat": -32.7974179,
+      "lon": -71.5367727
+    },
+    "tags": {
+      "addr:street": "Lazo",
+      "amenity": "kindergarten",
+      "name": "Jardín Infantil Bambi",
+      "nohousenumber": "yes",
+      "operator": "Fundación Integra"
+    }
+  },
+  {
+    "type": "way",
+    "id": 911675195,
+    "center": {
+      "lat": -32.736423,
+      "lon": -71.460807
+    },
+    "tags": {
+      "amenity": "school",
+      "name": "Escuela Básica La Greda"
+    }
+  },
+  {
+    "type": "way",
+    "id": 961743405,
+    "center": {
+      "lat": -32.7248746,
+      "lon": -71.3686972
+    },
+    "tags": {
+      "addr:street": "Camino El Rincón",
+      "amenity": "school",
+      "name": "Escuela El Rincón"
+    }
+  },
+  {
+    "type": "way",
+    "id": 1237394916,
+    "center": {
+      "lat": -32.7772712,
+      "lon": -71.5344098
+    },
+    "tags": {
+      "addr:city": "Quintero",
+      "addr:housenumber": "1156",
+      "addr:street": "Vicuña Mackenna",
+      "amenity": "school",
+      "name": "Escuela Especial Lourdes"
+    }
+  },
+  {
+    "type": "way",
+    "id": 1237398455,
+    "center": {
+      "lat": -32.7808963,
+      "lon": -71.5291648
+    },
+    "tags": {
+      "addr:city": "Quintero",
+      "addr:housenumber": "1490",
+      "addr:street": "Avenida Francia",
+      "amenity": "school",
+      "name": "Colegio Santa Filomena"
+    }
+  },
+  {
+    "type": "way",
+    "id": 1311125852,
+    "center": {
+      "lat": -32.7979518,
+      "lon": -71.5368514
+    },
+    "tags": {
+      "addr:housenumber": "820",
+      "addr:street": "18 de Septiembre",
+      "amenity": "kindergarten"
+    }
+  },
+  {
+    "type": "way",
+    "id": 1311125853,
+    "center": {
+      "lat": -32.7979481,
+      "lon": -71.5368666
+    },
+    "tags": {
+      "building": "kindergarten"
+    }
+  },
+  {
+    "type": "way",
+    "id": 1313518955,
+    "center": {
+      "lat": -32.7353257,
+      "lon": -71.4511084
+    },
+    "tags": {
+      "addr:city": "Puchuncaví",
+      "addr:country": "CL",
+      "addr:street": "Ruta F-170",
+      "amenity": "school",
+      "name": "Escuela Campiche",
+      "note": "Correcciones masivas a ortografía en nombres de importaciones hechas por equipo de gendarmería"
+    }
+  },
+  {
+    "type": "way",
+    "id": 1353930789,
+    "center": {
+      "lat": -32.6719003,
+      "lon": -71.4307902
+    },
+    "tags": {
+      "amenity": "school",
+      "name": "Colegio Pioneros Costa"
+    }
+  },
+  {
+    "type": "way",
+    "id": 1380989970,
+    "center": {
+      "lat": -32.7132639,
+      "lon": -71.4881095
+    },
+    "tags": {
+      "addr:city": "Puchuncaví",
+      "addr:housenumber": "500",
+      "addr:street": "Principal",
+      "amenity": "school",
+      "name": "Escuela Básica de Horcón"
+    }
+  },
+  {
+    "type": "way",
+    "id": 1381832740,
+    "center": {
+      "lat": -32.7296839,
+      "lon": -71.4870729
+    },
+    "tags": {
+      "addr:housenumber": "2680",
+      "addr:street": "Camino Horcón-Ventanas",
+      "amenity": "school",
+      "name": "Escuela La Chocota"
+    }
+  },
+  {
+    "type": "way",
+    "id": 1385840525,
+    "center": {
+      "lat": -32.7853578,
+      "lon": -71.5304442
+    },
+    "tags": {
+      "addr:city": "Quintero",
+      "addr:housenumber": "1918",
+      "addr:street": "Luis Cousiño",
+      "amenity": "school",
+      "name": "Colegio Artístico Costa Mauco"
+    }
+  },
+  {
+    "type": "way",
+    "id": 1539516478,
+    "center": {
+      "lat": -32.7261567,
+      "lon": -71.4170975
+    },
+    "tags": {
+      "building": "school"
+    }
+  }
+]

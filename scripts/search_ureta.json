@@ -1,0 +1,129 @@
+[
+  {
+    "place_id": 2143567,
+    "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+    "osm_type": "way",
+    "osm_id": 1166057014,
+    "lat": "-32.7274837",
+    "lon": "-71.4504856",
+    "class": "highway",
+    "type": "unclassified",
+    "place_rank": 26,
+    "importance": 0.05338059128709846,
+    "addresstype": "road",
+    "name": "Juan Manuel Ureta",
+    "display_name": "Juan Manuel Ureta, Los Pescadores, Campiche, Puchuncaví, Provincia de Valparaíso, Región de Valparaíso, Chile",
+    "address": {
+      "road": "Juan Manuel Ureta",
+      "hamlet": "Los Pescadores",
+      "village": "Campiche",
+      "town": "Puchuncaví",
+      "county": "Provincia de Valparaíso",
+      "state": "Región de Valparaíso",
+      "ISO3166-2-lvl4": "CL-VS",
+      "country": "Chile",
+      "country_code": "cl"
+    },
+    "boundingbox": [
+      "-32.7298943",
+      "-32.7266106",
+      "-71.4562409",
+      "-71.4454406"
+    ]
+  },
+  {
+    "place_id": 2120254,
+    "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+    "osm_type": "way",
+    "osm_id": 46402592,
+    "lat": "-32.7338470",
+    "lon": "-71.4452116",
+    "class": "highway",
+    "type": "residential",
+    "place_rank": 26,
+    "importance": 0.05338059128709846,
+    "addresstype": "road",
+    "name": "Juan Manuel Ureta",
+    "display_name": "Juan Manuel Ureta, Los Pescadores, Campiche, Puchuncaví, Provincia de Valparaíso, Región de Valparaíso, Chile",
+    "address": {
+      "road": "Juan Manuel Ureta",
+      "hamlet": "Los Pescadores",
+      "village": "Campiche",
+      "town": "Puchuncaví",
+      "county": "Provincia de Valparaíso",
+      "state": "Región de Valparaíso",
+      "ISO3166-2-lvl4": "CL-VS",
+      "country": "Chile",
+      "country_code": "cl"
+    },
+    "boundingbox": [
+      "-32.7370392",
+      "-32.7306449",
+      "-71.4455183",
+      "-71.4451832"
+    ]
+  },
+  {
+    "place_id": 2141043,
+    "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+    "osm_type": "way",
+    "osm_id": 1380990055,
+    "lat": "-32.7375816",
+    "lon": "-71.4457711",
+    "class": "highway",
+    "type": "residential",
+    "place_rank": 26,
+    "importance": 0.05338059128709846,
+    "addresstype": "road",
+    "name": "Juan Manuel Ureta",
+    "display_name": "Juan Manuel Ureta, Campiche, Puchuncaví, Provincia de Valparaíso, Región de Valparaíso, Chile",
+    "address": {
+      "road": "Juan Manuel Ureta",
+      "village": "Campiche",
+      "town": "Puchuncaví",
+      "county": "Provincia de Valparaíso",
+      "state": "Región de Valparaíso",
+      "ISO3166-2-lvl4": "CL-VS",
+      "country": "Chile",
+      "country_code": "cl"
+    },
+    "boundingbox": [
+      "-32.7380342",
+      "-32.7370392",
+      "-71.4461021",
+      "-71.4455183"
+    ]
+  },
+  {
+    "place_id": 2137125,
+    "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+    "osm_type": "way",
+    "osm_id": 1380990056,
+    "lat": "-32.7302903",
+    "lon": "-71.4454888",
+    "class": "highway",
+    "type": "residential",
+    "place_rank": 26,
+    "importance": 0.05338059128709846,
+    "addresstype": "road",
+    "name": "Juan Manuel Ureta",
+    "display_name": "Juan Manuel Ureta, Donde Matus, Campiche, Puchuncaví, Provincia de Valparaíso, Región de Valparaíso, Chile",
+    "address": {
+      "road": "Juan Manuel Ureta",
+      "hamlet": "Donde Matus",
+      "village": "Campiche",
+      "town": "Puchuncaví",
+      "county": "Provincia de Valparaíso",
+      "state": "Región de Valparaíso",
+      "ISO3166-2-lvl4": "CL-VS",
+      "country": "Chile",
+      "country_code": "cl"
+    },
+    "boundingbox": [
+      "-32.7306449",
+      "-32.7299343",
+      "-71.4455366",
+      "-71.4454315"
+    ]
+  }
+]

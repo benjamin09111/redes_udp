@@ -1,0 +1,72 @@
+[
+  {
+    "name": "Plaza de Armas / Plaza Ignacio Carrera Pinto",
+    "cat": "crowded_area",
+    "lat": -32.7830132,
+    "lon": -71.5266175,
+    "display": "Plaza Fuerza Aérea, Loncura, Quintero, Provincia de Valparaíso, Región de Valparaíso, Chile"
+  },
+  {
+    "name": "Caleta El Manzano",
+    "cat": "crowded_area",
+    "lat": -40.4883633,
+    "lon": -73.7455467,
+    "display": "Caleta Manzano, San Juan de la Costa, Provincia de Osorno, Región de Los Lagos, Chile"
+  },
+  {
+    "name": "Feria y Comercio Ambulante Quintero",
+    "cat": "commercial",
+    "lat": -32.7825891,
+    "lon": -71.5265136,
+    "display": "Feria Artesanal Plaza Fuerza Aérea, Gregorio Arrieta, Loncura, Quintero, Provincia de Valparaíso, Región de Valparaíso, 2490000, Chile"
+  },
+  {
+    "name": "Plaza de Armas de Puchuncaví",
+    "cat": "crowded_area",
+    "lat": -32.7259868,
+    "lon": -71.4151059,
+    "display": "Plaza Puchuncaví, Las Catitas, Puchuncaví, Provincia de Valparaíso, Región de Valparaíso, Chile"
+  },
+  {
+    "name": "Cuerpo de Bomberos Puchuncaví",
+    "cat": "crowded_area",
+    "lat": -32.6461587,
+    "lon": -71.4326046,
+    "display": "3ra Compañía Bomberos Maitencillo, Padre Enrique del Río, Maitencillo, Puchuncaví, Provincia de Valparaíso, Región de Valparaíso, 2501119, Chile"
+  },
+  {
+    "name": "Escuela Básica Los Maitenes",
+    "cat": "education",
+    "lat": -32.9948755,
+    "lon": -71.2323197,
+    "display": "Escuela Los Maitenes, 1701, Avenida Eastman, Lo Chaparro, Limache, Provincia de Marga Marga, Región de Valparaíso, 2330020, Chile"
+  },
+  {
+    "name": "Posta de Salud Rural Los Maitenes",
+    "cat": "health",
+    "lat": -33.6720931,
+    "lon": -70.5323018,
+    "display": "Posta Santa Rita, Camino Alicia Valdés de Balmaceda, Los Maitenes, Pirque, El Principal, Provincia de Cordillera, Región Metropolitana de Santiago, 9480018, Chile"
+  },
+  {
+    "name": "CESFAM Puchuncaví",
+    "cat": "health",
+    "lat": -32.7257744,
+    "lon": -71.4159785,
+    "display": "CESFAM Puchuncaví, Avenida Bernardo O'Higgins, Población Don Sergio, Las Catitas, Puchuncaví, Provincia de Valparaíso, Región de Valparaíso, Chile"
+  },
+  {
+    "name": "Plaza Loncura",
+    "cat": "crowded_area",
+    "lat": -32.7840171,
+    "lon": -71.5284061,
+    "display": "Plaza Ignacio Carrera Pinto, Loncura, Quintero, Provincia de Valparaíso, Región de Valparaíso, Chile"
+  },
+  {
+    "name": "Plaza Las Ventanas",
+    "cat": "crowded_area",
+    "lat": -32.7128808,
+    "lon": -71.4898335,
+    "display": "Plaza Los Pescadores, Ventanas, Puchuncaví, Provincia de Valparaíso, Región de Valparaíso, Chile"
+  }
+]

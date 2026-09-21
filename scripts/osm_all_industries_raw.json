@@ -1,0 +1,2142 @@
+[
+  {
+    "type": "node",
+    "id": 4419411967,
+    "lat": -32.748294,
+    "lon": -71.483297,
+    "tags": {
+      "generator:method": "combustion",
+      "generator:output:electricity": "249 MW",
+      "generator:source": "coal",
+      "generator:type": "steam_turbine",
+      "name": "Campiche",
+      "operator": "Aes Andes",
+      "operator:wikidata": "Q4651363",
+      "power": "generator",
+      "source": "https://infotecnica.coordinador.cl/",
+      "start_date": "2013-03-15",
+      "wikidata": "Q5682329"
+    }
+  },
+  {
+    "type": "node",
+    "id": 7797684759,
+    "lat": -32.751541,
+    "lon": -71.483289,
+    "tags": {
+      "generator:method": "combustion",
+      "generator:output:electricity": "106 MW",
+      "generator:source": "coal",
+      "generator:type": "steam_turbine",
+      "name": "Ventanas I",
+      "operator": "Aes Andes",
+      "operator:wikidata": "Q4651363",
+      "power": "generator",
+      "source": "https://infotecnica.coordinador.cl/",
+      "start_date": "1964"
+    }
+  },
+  {
+    "type": "node",
+    "id": 7797684760,
+    "lat": -32.750955,
+    "lon": -71.483305,
+    "tags": {
+      "generator:method": "combustion",
+      "generator:output:electricity": "193 MW",
+      "generator:source": "coal",
+      "generator:type": "steam_turbine",
+      "name": "Ventanas II",
+      "operator": "Aes Andes",
+      "operator:wikidata": "Q4651363",
+      "power": "generator",
+      "source": "https://infotecnica.coordinador.cl/",
+      "start_date": "1977"
+    }
+  },
+  {
+    "type": "node",
+    "id": 7797684761,
+    "lat": -32.74981,
+    "lon": -71.483151,
+    "tags": {
+      "generator:method": "combustion",
+      "generator:output:electricity": "243 MW",
+      "generator:source": "coal",
+      "generator:type": "steam_turbine",
+      "name": "Nueva Ventanas",
+      "operator": "Aes Andes",
+      "operator:wikidata": "Q4651363",
+      "power": "generator",
+      "source": "https://infotecnica.coordinador.cl/",
+      "start_date": "2010-02-11"
+    }
+  },
+  {
+    "type": "node",
+    "id": 7797724155,
+    "lat": -32.787854,
+    "lon": -71.4861569,
+    "tags": {
+      "generator:method": "combustion",
+      "generator:output:electricity": "128 MW",
+      "generator:source": "gas;diesel",
+      "generator:type": "gas_turbine",
+      "power": "generator"
+    }
+  },
+  {
+    "type": "node",
+    "id": 7797724156,
+    "lat": -32.7873737,
+    "lon": -71.4857063,
+    "tags": {
+      "generator:method": "combustion",
+      "generator:output:electricity": "128 MW",
+      "generator:source": "gas;diesel",
+      "generator:type": "gas_turbine",
+      "power": "generator"
+    }
+  },
+  {
+    "type": "node",
+    "id": 8644692808,
+    "lat": -32.7498386,
+    "lon": -71.4814866,
+    "tags": {
+      "man_made": "chimney"
+    }
+  },
+  {
+    "type": "node",
+    "id": 8644692809,
+    "lat": -32.7507883,
+    "lon": -71.4825093,
+    "tags": {
+      "man_made": "chimney"
+    }
+  },
+  {
+    "type": "node",
+    "id": 8644692810,
+    "lat": -32.7514095,
+    "lon": -71.4824413,
+    "tags": {
+      "man_made": "chimney"
+    }
+  },
+  {
+    "type": "node",
+    "id": 8694279768,
+    "lat": -32.7872932,
+    "lon": -71.4859035,
+    "tags": {
+      "man_made": "chimney"
+    }
+  },
+  {
+    "type": "node",
+    "id": 8694279769,
+    "lat": -32.7878203,
+    "lon": -71.4863415,
+    "tags": {
+      "man_made": "chimney"
+    }
+  },
+  {
+    "type": "node",
+    "id": 13389697119,
+    "lat": -32.7484238,
+    "lon": -71.4816838,
+    "tags": {
+      "man_made": "chimney"
+    }
+  },
+  {
+    "type": "way",
+    "id": 92357477,
+    "center": {
+      "lat": -32.7467082,
+      "lon": -71.4689466
+    },
+    "tags": {
+      "landuse": "industrial",
+      "man_made": "works",
+      "name": "Terminal de Combustible Marino"
+    }
+  },
+  {
+    "type": "way",
+    "id": 92357487,
+    "center": {
+      "lat": -32.7422519,
+      "lon": -71.4694241
+    },
+    "tags": {
+      "landuse": "industrial",
+      "man_made": "works"
+    }
+  },
+  {
+    "type": "way",
+    "id": 92357488,
+    "center": {
+      "lat": -32.7594677,
+      "lon": -71.479937
+    },
+    "tags": {
+      "industrial": "cooling",
+      "landuse": "industrial",
+      "man_made": "works",
+      "name": "Ex Fundición Ventanas",
+      "official_name": "Codelco División Ventanas",
+      "operator": "CODELCO",
+      "wikidata": "Q112628332",
+      "wikipedia": "es:Fundición Ventanas"
+    }
+  },
+  {
+    "type": "way",
+    "id": 92413590,
+    "center": {
+      "lat": -32.7793209,
+      "lon": -71.4980286
+    },
+    "tags": {
+      "industrial": "oil",
+      "landuse": "industrial",
+      "name": "Planta de Lubricantes Copec"
+    }
+  },
+  {
+    "type": "way",
+    "id": 92415128,
+    "center": {
+      "lat": -32.7974208,
+      "lon": -71.5132839
+    },
+    "tags": {
+      "landuse": "industrial"
+    }
+  },
+  {
+    "type": "way",
+    "id": 93211377,
+    "center": {
+      "lat": -32.7878256,
+      "lon": -71.4861922
+    },
+    "tags": {
+      "landuse": "industrial",
+      "name": "Central Termoeléctrica Quintero",
+      "operator": "Enel",
+      "operator:wikidata": "Q651222",
+      "plant:method": "combustion",
+      "plant:output:electricity": "257 MW",
+      "plant:source": "gas;diesel",
+      "power": "plant",
+      "source": "https://infotecnica.coordinador.cl/;https://www.enel.cl/es/inversionistas/inversionistas-enel-generacion/nuestras-centrales/central-quintero.html",
+      "start_date": "2009-07-23"
+    }
+  },
+  {
+    "type": "way",
+    "id": 105884900,
+    "center": {
+      "lat": -32.7816661,
+      "lon": -71.4906717
+    },
+    "tags": {
+      "building": "yes",
+      "man_made": "storage_tank"
+    }
+  },
+  {
+    "type": "way",
+    "id": 105884903,
+    "center": {
+      "lat": -32.786141,
+      "lon": -71.4887054
+    },
+    "tags": {
+      "building": "yes",
+      "man_made": "storage_tank"
+    }
+  },
+  {
+    "type": "way",
+    "id": 105884904,
+    "center": {
+      "lat": -32.7823121,
+      "lon": -71.4926598
+    },
+    "tags": {
+      "building": "yes",
+      "man_made": "storage_tank"
+    }
+  },
+  {
+    "type": "way",
+    "id": 105884905,
+    "center": {
+      "lat": -32.7827049,
+      "lon": -71.4896186
+    },
+    "tags": {
+      "building": "yes",
+      "man_made": "storage_tank"
+    }
+  },
+  {
+    "type": "way",
+    "id": 105884906,
+    "center": {
+      "lat": -32.7832655,
+      "lon": -71.4916976
+    },
+    "tags": {
+      "building": "yes",
+      "man_made": "storage_tank"
+    }
+  },
+  {
+    "type": "way",
+    "id": 105884907,
+    "center": {
+      "lat": -32.7851984,
+      "lon": -71.4897204
+    },
+    "tags": {
+      "building": "yes",
+      "man_made": "storage_tank"
+    }
+  },
+  {
+    "type": "way",
+    "id": 105884908,
+    "center": {
+      "lat": -32.7842229,
+      "lon": -71.4907089
+    },
+    "tags": {
+      "building": "yes",
+      "man_made": "storage_tank"
+    }
+  },
+  {
+    "type": "way",
+    "id": 105884909,
+    "center": {
+      "lat": -32.7806367,
+      "lon": -71.4917353
+    },
+    "tags": {
+      "building": "yes",
+      "man_made": "storage_tank"
+    }
+  },
+  {
+    "type": "way",
+    "id": 105884910,
+    "center": {
+      "lat": -32.7837214,
+      "lon": -71.4885486
+    },
+    "tags": {
+      "building": "yes",
+      "man_made": "storage_tank"
+    }
+  },
+  {
+    "type": "way",
+    "id": 105884913,
+    "center": {
+      "lat": -32.7847687,
+      "lon": -71.4875067
+    },
+    "tags": {
+      "building": "yes",
+      "man_made": "storage_tank"
+    }
+  },
+  {
+    "type": "way",
+    "id": 150946408,
+    "center": {
+      "lat": -32.7392297,
+      "lon": -71.4687066
+    },
+    "tags": {
+      "landuse": "industrial"
+    }
+  },
+  {
+    "type": "way",
+    "id": 150946409,
+    "center": {
+      "lat": -32.7545648,
+      "lon": -71.4752141
+    },
+    "tags": {
+      "industrial": "cement",
+      "landuse": "industrial",
+      "man_made": "works",
+      "name": "Planta Industrial Molienda de Cemento - Cementos Melón"
+    }
+  },
+  {
+    "type": "way",
+    "id": 216249817,
+    "center": {
+      "lat": -32.7649879,
+      "lon": -71.4659211
+    },
+    "tags": {
+      "power": "substation"
+    }
+  },
+  {
+    "type": "way",
+    "id": 257575761,
+    "center": {
+      "lat": -32.7775753,
+      "lon": -71.5258318
+    },
+    "tags": {
+      "landuse": "industrial"
+    }
+  },
+  {
+    "type": "way",
+    "id": 520850478,
+    "center": {
+      "lat": -32.7738657,
+      "lon": -71.483817
+    },
+    "tags": {
+      "building": "yes",
+      "man_made": "storage_tank"
+    }
+  },
+  {
+    "type": "way",
+    "id": 520850479,
+    "center": {
+      "lat": -32.7799378,
+      "lon": -71.4882633
+    },
+    "tags": {
+      "building": "yes",
+      "man_made": "storage_tank"
+    }
+  },
+  {
+    "type": "way",
+    "id": 520850480,
+    "center": {
+      "lat": -32.7813551,
+      "lon": -71.4936795
+    },
+    "tags": {
+      "building": "yes",
+      "man_made": "storage_tank"
+    }
+  },
+  {
+    "type": "way",
+    "id": 520850482,
+    "center": {
+      "lat": -32.7786354,
+      "lon": -71.4952584
+    },
+    "tags": {
+      "building": "yes",
+      "man_made": "storage_tank"
+    }
+  },
+  {
+    "type": "way",
+    "id": 520850484,
+    "center": {
+      "lat": -32.7800246,
+      "lon": -71.4955452
+    },
+    "tags": {
+      "building": "yes",
+      "man_made": "storage_tank"
+    }
+  },
+  {
+    "type": "way",
+    "id": 520850489,
+    "center": {
+      "lat": -32.775324,
+      "lon": -71.4868154
+    },
+    "tags": {
+      "building": "yes",
+      "man_made": "storage_tank"
+    }
+  },
+  {
+    "type": "way",
+    "id": 520850494,
+    "center": {
+      "lat": -32.779572,
+      "lon": -71.4951042
+    },
+    "tags": {
+      "building": "yes",
+      "man_made": "storage_tank"
+    }
+  },
+  {
+    "type": "way",
+    "id": 520850496,
+    "center": {
+      "lat": -32.7781741,
+      "lon": -71.4957586
+    },
+    "tags": {
+      "building": "yes",
+      "man_made": "storage_tank"
+    }
+  },
+  {
+    "type": "way",
+    "id": 520850500,
+    "center": {
+      "lat": -32.7815642,
+      "lon": -71.4866621
+    },
+    "tags": {
+      "building": "yes",
+      "man_made": "storage_tank"
+    }
+  },
+  {
+    "type": "way",
+    "id": 520850501,
+    "center": {
+      "lat": -32.7728352,
+      "lon": -71.4835826
+    },
+    "tags": {
+      "building": "yes",
+      "man_made": "storage_tank"
+    }
+  },
+  {
+    "type": "way",
+    "id": 520850502,
+    "center": {
+      "lat": -32.7699602,
+      "lon": -71.4879481
+    },
+    "tags": {
+      "building": "yes",
+      "man_made": "storage_tank"
+    }
+  },
+  {
+    "type": "way",
+    "id": 520850503,
+    "center": {
+      "lat": -32.7748941,
+      "lon": -71.4840269
+    },
+    "tags": {
+      "building": "yes",
+      "man_made": "storage_tank"
+    }
+  },
+  {
+    "type": "way",
+    "id": 520850504,
+    "center": {
+      "lat": -32.7796041,
+      "lon": -71.4928229
+    },
+    "tags": {
+      "building": "yes",
+      "man_made": "storage_tank"
+    }
+  },
+  {
+    "type": "way",
+    "id": 520850513,
+    "center": {
+      "lat": -32.7752125,
+      "lon": -71.4889922
+    },
+    "tags": {
+      "building": "yes",
+      "man_made": "storage_tank"
+    }
+  },
+  {
+    "type": "way",
+    "id": 520850515,
+    "center": {
+      "lat": -32.7731793,
+      "lon": -71.4862744
+    },
+    "tags": {
+      "building": "yes",
+      "man_made": "storage_tank"
+    }
+  },
+  {
+    "type": "way",
+    "id": 520850516,
+    "center": {
+      "lat": -32.7717497,
+      "lon": -71.4875765
+    },
+    "tags": {
+      "building": "yes",
+      "man_made": "storage_tank"
+    }
+  },
+  {
+    "type": "way",
+    "id": 520850518,
+    "center": {
+      "lat": -32.7704495,
+      "lon": -71.4860953
+    },
+    "tags": {
+      "building": "yes",
+      "man_made": "storage_tank"
+    }
+  },
+  {
+    "type": "way",
+    "id": 520850529,
+    "center": {
+      "lat": -32.7785978,
+      "lon": -71.4962556
+    },
+    "tags": {
+      "building": "yes",
+      "man_made": "storage_tank"
+    }
+  },
+  {
+    "type": "way",
+    "id": 520850532,
+    "center": {
+      "lat": -32.778925,
+      "lon": -71.4958388
+    },
+    "tags": {
+      "industrial": "oil_storage",
+      "landuse": "industrial",
+      "name": "Planta Terminal de Productos Importados COPEC"
+    }
+  },
+  {
+    "type": "way",
+    "id": 520850535,
+    "center": {
+      "lat": -32.7750298,
+      "lon": -71.4874539
+    },
+    "tags": {
+      "building": "yes",
+      "man_made": "storage_tank"
+    }
+  },
+  {
+    "type": "way",
+    "id": 520850536,
+    "center": {
+      "lat": -32.7793121,
+      "lon": -71.4945581
+    },
+    "tags": {
+      "building": "yes",
+      "man_made": "storage_tank"
+    }
+  },
+  {
+    "type": "way",
+    "id": 520850538,
+    "center": {
+      "lat": -32.7734947,
+      "lon": -71.4851497
+    },
+    "tags": {
+      "building": "yes",
+      "man_made": "storage_tank"
+    }
+  },
+  {
+    "type": "way",
+    "id": 520850540,
+    "center": {
+      "lat": -32.7790635,
+      "lon": -71.4957596
+    },
+    "tags": {
+      "building": "yes",
+      "man_made": "storage_tank"
+    }
+  },
+  {
+    "type": "way",
+    "id": 520850548,
+    "center": {
+      "lat": -32.7789394,
+      "lon": -71.4946695
+    },
+    "tags": {
+      "building": "yes",
+      "man_made": "storage_tank"
+    }
+  },
+  {
+    "type": "way",
+    "id": 520850555,
+    "center": {
+      "lat": -32.7744618,
+      "lon": -71.4884397
+    },
+    "tags": {
+      "building": "yes",
+      "man_made": "storage_tank"
+    }
+  },
+  {
+    "type": "way",
+    "id": 520850556,
+    "center": {
+      "lat": -32.7671799,
+      "lon": -71.4864128
+    },
+    "tags": {
+      "building": "yes",
+      "man_made": "storage_tank"
+    }
+  },
+  {
+    "type": "way",
+    "id": 520850560,
+    "center": {
+      "lat": -32.7667006,
+      "lon": -71.4861021
+    },
+    "tags": {
+      "building": "yes",
+      "man_made": "storage_tank"
+    }
+  },
+  {
+    "type": "way",
+    "id": 520850562,
+    "center": {
+      "lat": -32.7722311,
+      "lon": -71.4848683
+    },
+    "tags": {
+      "building": "yes",
+      "man_made": "storage_tank"
+    }
+  },
+  {
+    "type": "way",
+    "id": 520850564,
+    "center": {
+      "lat": -32.7719926,
+      "lon": -71.4860646
+    },
+    "tags": {
+      "building": "yes",
+      "man_made": "storage_tank"
+    }
+  },
+  {
+    "type": "way",
+    "id": 520850566,
+    "center": {
+      "lat": -32.7728393,
+      "lon": -71.4873829
+    },
+    "tags": {
+      "building": "yes",
+      "man_made": "storage_tank"
+    }
+  },
+  {
+    "type": "way",
+    "id": 520850569,
+    "center": {
+      "lat": -32.77252,
+      "lon": -71.4885677
+    },
+    "tags": {
+      "building": "yes",
+      "man_made": "storage_tank"
+    }
+  },
+  {
+    "type": "way",
+    "id": 520850571,
+    "center": {
+      "lat": -32.7783731,
+      "lon": -71.4899052
+    },
+    "tags": {
+      "building": "yes",
+      "man_made": "storage_tank"
+    }
+  },
+  {
+    "type": "way",
+    "id": 520850573,
+    "center": {
+      "lat": -32.7700801,
+      "lon": -71.4868358
+    },
+    "tags": {
+      "building": "yes",
+      "man_made": "storage_tank"
+    }
+  },
+  {
+    "type": "way",
+    "id": 520850575,
+    "center": {
+      "lat": -32.7715236,
+      "lon": -71.4882468
+    },
+    "tags": {
+      "building": "yes",
+      "man_made": "storage_tank"
+    }
+  },
+  {
+    "type": "way",
+    "id": 584395097,
+    "center": {
+      "lat": -32.7713677,
+      "lon": -71.5347547
+    },
+    "tags": {
+      "content": "water",
+      "man_made": "storage_tank"
+    }
+  },
+  {
+    "type": "way",
+    "id": 584395098,
+    "center": {
+      "lat": -32.7713722,
+      "lon": -71.5345147
+    },
+    "tags": {
+      "content": "water",
+      "man_made": "storage_tank"
+    }
+  },
+  {
+    "type": "way",
+    "id": 630183878,
+    "center": {
+      "lat": -32.7641182,
+      "lon": -71.4804896
+    },
+    "tags": {
+      "landuse": "industrial"
+    }
+  },
+  {
+    "type": "way",
+    "id": 630183881,
+    "center": {
+      "lat": -32.7807057,
+      "lon": -71.4808475
+    },
+    "tags": {
+      "landuse": "industrial"
+    }
+  },
+  {
+    "type": "way",
+    "id": 655704288,
+    "center": {
+      "lat": -32.7687217,
+      "lon": -71.4857652
+    },
+    "tags": {
+      "industrial": "chemical",
+      "landuse": "industrial",
+      "man_made": "works",
+      "name": "Terminal Marítimo Quintero Oxiquim"
+    }
+  },
+  {
+    "type": "way",
+    "id": 655704289,
+    "center": {
+      "lat": -32.7760935,
+      "lon": -71.4864668
+    },
+    "tags": {
+      "industrial": "oil_storage",
+      "landuse": "industrial",
+      "name": "Terminal Maritimo ENAP"
+    }
+  },
+  {
+    "type": "way",
+    "id": 655704290,
+    "center": {
+      "lat": -32.7686595,
+      "lon": -71.4824692
+    },
+    "tags": {
+      "industrial": "gas_storage",
+      "landuse": "industrial",
+      "man_made": "works",
+      "name": "Planta Gasmar",
+      "website": "https://www.gasmar.cl/"
+    }
+  },
+  {
+    "type": "way",
+    "id": 675310286,
+    "center": {
+      "lat": -32.7624879,
+      "lon": -71.4808635
+    },
+    "tags": {
+      "man_made": "chimney"
+    }
+  },
+  {
+    "type": "way",
+    "id": 675310287,
+    "center": {
+      "lat": -32.7493334,
+      "lon": -71.481286
+    },
+    "tags": {
+      "name": "Ventanas",
+      "operator": "AES Andes",
+      "operator:wikidata": "Q4651363",
+      "power": "substation",
+      "substation": "industrial",
+      "voltage": "220000;110000"
+    }
+  },
+  {
+    "type": "way",
+    "id": 699020446,
+    "center": {
+      "lat": -32.7881407,
+      "lon": -71.485124
+    },
+    "tags": {
+      "name": "Central Quintero",
+      "operator": "Enel Generación",
+      "power": "substation",
+      "source": "https://infotecnica.coordinador.cl/",
+      "voltage": "220000;110000"
+    }
+  },
+  {
+    "type": "way",
+    "id": 699020596,
+    "center": {
+      "lat": -32.7652182,
+      "lon": -71.4825573
+    },
+    "tags": {
+      "name": "Codelco Ventanas 1",
+      "operator": "Codelco",
+      "power": "substation",
+      "source": "https://infotecnica.coordinador.cl/",
+      "voltage": "110000"
+    }
+  },
+  {
+    "type": "way",
+    "id": 835400819,
+    "center": {
+      "lat": -32.7601079,
+      "lon": -71.4842307
+    },
+    "tags": {
+      "name": "Codelco Ventanas 2",
+      "operator": "Codelco",
+      "power": "substation",
+      "source": "https://infotecnica.coordinador.cl/",
+      "voltage": "110000"
+    }
+  },
+  {
+    "type": "way",
+    "id": 835400820,
+    "center": {
+      "lat": -32.7517584,
+      "lon": -71.4838562
+    },
+    "tags": {
+      "name": "Quintero",
+      "power": "substation",
+      "voltage": "110000"
+    }
+  },
+  {
+    "type": "way",
+    "id": 835627741,
+    "center": {
+      "lat": -32.7496408,
+      "lon": -71.4818987
+    },
+    "tags": {
+      "landuse": "industrial",
+      "name": "Complejo termoeléctrico Ventanas",
+      "name:en": "Ventanas Power Plant",
+      "operator": "Quintero Energía",
+      "operator:wikidata": "Q4651363",
+      "plant:method": "combustion",
+      "plant:output:electricity": "791 MW",
+      "plant:source": "coal",
+      "power": "plant",
+      "source": "https://infotecnica.coordinador.cl/",
+      "start_date": "1964",
+      "wikidata": "Q7920230",
+      "wikipedia": "es:Complejo termoeléctrico Ventanas"
+    }
+  },
+  {
+    "type": "way",
+    "id": 980643104,
+    "center": {
+      "lat": -32.7599974,
+      "lon": -71.4507088
+    },
+    "tags": {
+      "landuse": "industrial"
+    }
+  },
+  {
+    "type": "way",
+    "id": 1157025553,
+    "center": {
+      "lat": -32.7866082,
+      "lon": -71.4778206
+    },
+    "tags": {
+      "power": "substation"
+    }
+  },
+  {
+    "type": "way",
+    "id": 1166258678,
+    "center": {
+      "lat": -32.7410146,
+      "lon": -71.3995296
+    },
+    "tags": {
+      "landuse": "industrial"
+    }
+  },
+  {
+    "type": "way",
+    "id": 1237398453,
+    "center": {
+      "lat": -32.7912859,
+      "lon": -71.5385069
+    },
+    "tags": {
+      "content": "water",
+      "man_made": "storage_tank"
+    }
+  },
+  {
+    "type": "way",
+    "id": 1237398454,
+    "center": {
+      "lat": -32.7911112,
+      "lon": -71.5385431
+    },
+    "tags": {
+      "content": "water",
+      "man_made": "storage_tank"
+    }
+  },
+  {
+    "type": "way",
+    "id": 1279095136,
+    "center": {
+      "lat": -32.7790346,
+      "lon": -71.4895061
+    },
+    "tags": {
+      "industrial": "gas_storage",
+      "landuse": "industrial",
+      "name": "GNL Quintero",
+      "website": "https://www.gnlquintero.com/"
+    }
+  },
+  {
+    "type": "way",
+    "id": 1279095137,
+    "center": {
+      "lat": -32.7820016,
+      "lon": -71.4909982
+    },
+    "tags": {
+      "industrial": "oil_storage",
+      "landuse": "industrial",
+      "name": "Terminal Maritimo ENAP"
+    }
+  },
+  {
+    "type": "way",
+    "id": 1279095138,
+    "center": {
+      "lat": -32.7877502,
+      "lon": -71.4789908
+    },
+    "tags": {
+      "check_date": "2025-05-17",
+      "construction": "industrial",
+      "landuse": "construction",
+      "man_made": "works",
+      "name": "Planta Desalinizadora Aguas Pacífico",
+      "opening_date": "2026",
+      "operator": "Aguas Pacífico SpA",
+      "website": "https://www.aguaspacifico.cl/planta-desalinizadora",
+      "wikidata": "Q129405847",
+      "wikipedia": "es:Desalinizadora Aguas Pacífico"
+    }
+  },
+  {
+    "type": "way",
+    "id": 1303698840,
+    "center": {
+      "lat": -32.7882457,
+      "lon": -71.4967585
+    },
+    "tags": {
+      "landuse": "industrial",
+      "name": "PMGD PFV Loncura",
+      "operator": "Tedlar Diemos SpA",
+      "plant:method": "photovoltaic",
+      "plant:output:electricity": "9 MW",
+      "plant:source": "solar",
+      "power": "plant",
+      "source": "https://infotecnica.coordinador.cl/instalaciones/centrales",
+      "start_date": "2024-06-01"
+    }
+  },
+  {
+    "type": "way",
+    "id": 1334389180,
+    "center": {
+      "lat": -32.8068483,
+      "lon": -71.4383452
+    },
+    "tags": {
+      "landuse": "industrial",
+      "name": "AES Gener"
+    }
+  },
+  {
+    "type": "way",
+    "id": 1348693795,
+    "center": {
+      "lat": -32.8173611,
+      "lon": -71.43895
+    },
+    "tags": {
+      "plant:method": "photovoltaic",
+      "plant:source": "solar",
+      "power": "plant"
+    }
+  },
+  {
+    "type": "way",
+    "id": 1353667146,
+    "center": {
+      "lat": -32.7238758,
+      "lon": -71.4813823
+    },
+    "tags": {
+      "man_made": "water_works"
+    }
+  },
+  {
+    "type": "way",
+    "id": 1380087335,
+    "center": {
+      "lat": -32.70584,
+      "lon": -71.4056802
+    },
+    "tags": {
+      "landuse": "industrial",
+      "man_made": "works",
+      "name": "Cemento Melón"
+    }
+  },
+  {
+    "type": "way",
+    "id": 1381832680,
+    "center": {
+      "lat": -32.7485261,
+      "lon": -71.469413
+    },
+    "tags": {
+      "man_made": "storage_tank"
+    }
+  },
+  {
+    "type": "way",
+    "id": 1381832681,
+    "center": {
+      "lat": -32.7461943,
+      "lon": -71.4683336
+    },
+    "tags": {
+      "man_made": "storage_tank"
+    }
+  },
+  {
+    "type": "way",
+    "id": 1381832682,
+    "center": {
+      "lat": -32.7482315,
+      "lon": -71.4696529
+    },
+    "tags": {
+      "man_made": "storage_tank"
+    }
+  },
+  {
+    "type": "way",
+    "id": 1381832683,
+    "center": {
+      "lat": -32.7480272,
+      "lon": -71.4690552
+    },
+    "tags": {
+      "man_made": "storage_tank"
+    }
+  },
+  {
+    "type": "way",
+    "id": 1381832684,
+    "center": {
+      "lat": -32.7476776,
+      "lon": -71.4690806
+    },
+    "tags": {
+      "man_made": "storage_tank"
+    }
+  },
+  {
+    "type": "way",
+    "id": 1381832685,
+    "center": {
+      "lat": -32.7474883,
+      "lon": -71.4690703
+    },
+    "tags": {
+      "man_made": "storage_tank"
+    }
+  },
+  {
+    "type": "way",
+    "id": 1381832686,
+    "center": {
+      "lat": -32.747664,
+      "lon": -71.4688499
+    },
+    "tags": {
+      "man_made": "storage_tank"
+    }
+  },
+  {
+    "type": "way",
+    "id": 1381832687,
+    "center": {
+      "lat": -32.7474002,
+      "lon": -71.4688339
+    },
+    "tags": {
+      "man_made": "storage_tank"
+    }
+  },
+  {
+    "type": "way",
+    "id": 1381832688,
+    "center": {
+      "lat": -32.7471497,
+      "lon": -71.4688315
+    },
+    "tags": {
+      "man_made": "storage_tank"
+    }
+  },
+  {
+    "type": "way",
+    "id": 1381832689,
+    "center": {
+      "lat": -32.7480825,
+      "lon": -71.4681647
+    },
+    "tags": {
+      "man_made": "storage_tank"
+    }
+  },
+  {
+    "type": "way",
+    "id": 1381832690,
+    "center": {
+      "lat": -32.7480736,
+      "lon": -71.4686608
+    },
+    "tags": {
+      "man_made": "storage_tank"
+    }
+  },
+  {
+    "type": "way",
+    "id": 1381832691,
+    "center": {
+      "lat": -32.7476111,
+      "lon": -71.4683819
+    },
+    "tags": {
+      "man_made": "storage_tank"
+    }
+  },
+  {
+    "type": "way",
+    "id": 1381832692,
+    "center": {
+      "lat": -32.7472118,
+      "lon": -71.4683873
+    },
+    "tags": {
+      "man_made": "storage_tank"
+    }
+  },
+  {
+    "type": "way",
+    "id": 1381832693,
+    "center": {
+      "lat": -32.7468169,
+      "lon": -71.4683376
+    },
+    "tags": {
+      "man_made": "storage_tank"
+    }
+  },
+  {
+    "type": "way",
+    "id": 1381832694,
+    "center": {
+      "lat": -32.7469907,
+      "lon": -71.4696586
+    },
+    "tags": {
+      "man_made": "storage_tank"
+    }
+  },
+  {
+    "type": "way",
+    "id": 1381832695,
+    "center": {
+      "lat": -32.7476579,
+      "lon": -71.4696243
+    },
+    "tags": {
+      "man_made": "storage_tank"
+    }
+  },
+  {
+    "type": "way",
+    "id": 1382642693,
+    "center": {
+      "lat": -32.7563083,
+      "lon": -71.482387
+    },
+    "tags": {
+      "man_made": "storage_tank"
+    }
+  },
+  {
+    "type": "way",
+    "id": 1382642694,
+    "center": {
+      "lat": -32.7561166,
+      "lon": -71.4821563
+    },
+    "tags": {
+      "man_made": "storage_tank"
+    }
+  },
+  {
+    "type": "way",
+    "id": 1382642695,
+    "center": {
+      "lat": -32.755891,
+      "lon": -71.4824152
+    },
+    "tags": {
+      "man_made": "storage_tank"
+    }
+  },
+  {
+    "type": "way",
+    "id": 1382642696,
+    "center": {
+      "lat": -32.7560852,
+      "lon": -71.4826462
+    },
+    "tags": {
+      "man_made": "storage_tank"
+    }
+  },
+  {
+    "type": "way",
+    "id": 1382642735,
+    "center": {
+      "lat": -32.7394453,
+      "lon": -71.4676525
+    },
+    "tags": {
+      "landuse": "industrial",
+      "man_made": "works"
+    }
+  },
+  {
+    "type": "way",
+    "id": 1382642739,
+    "center": {
+      "lat": -32.740349,
+      "lon": -71.4688271
+    },
+    "tags": {
+      "landuse": "industrial",
+      "man_made": "works"
+    }
+  },
+  {
+    "type": "way",
+    "id": 1382642772,
+    "center": {
+      "lat": -32.7497834,
+      "lon": -71.472326
+    },
+    "tags": {
+      "landuse": "industrial"
+    }
+  },
+  {
+    "type": "way",
+    "id": 1383566788,
+    "center": {
+      "lat": -32.7693864,
+      "lon": -71.4813209
+    },
+    "tags": {
+      "building": "yes",
+      "man_made": "storage_tank"
+    }
+  },
+  {
+    "type": "way",
+    "id": 1383566789,
+    "center": {
+      "lat": -32.769053,
+      "lon": -71.4808059
+    },
+    "tags": {
+      "building": "yes",
+      "man_made": "storage_tank"
+    }
+  },
+  {
+    "type": "way",
+    "id": 1383566790,
+    "center": {
+      "lat": -32.7689495,
+      "lon": -71.4817153
+    },
+    "tags": {
+      "building": "yes",
+      "man_made": "storage_tank"
+    }
+  },
+  {
+    "type": "way",
+    "id": 1383566791,
+    "center": {
+      "lat": -32.7685716,
+      "lon": -71.4811791
+    },
+    "tags": {
+      "building": "yes",
+      "man_made": "storage_tank"
+    }
+  },
+  {
+    "type": "way",
+    "id": 1383566792,
+    "center": {
+      "lat": -32.7699079,
+      "lon": -71.4840122
+    },
+    "tags": {
+      "building": "yes",
+      "man_made": "storage_tank"
+    }
+  },
+  {
+    "type": "way",
+    "id": 1386636264,
+    "center": {
+      "lat": -32.7886143,
+      "lon": -71.5279383
+    },
+    "tags": {
+      "landuse": "industrial"
+    }
+  },
+  {
+    "type": "way",
+    "id": 1387322225,
+    "center": {
+      "lat": -32.7962746,
+      "lon": -71.5004929
+    },
+    "tags": {
+      "man_made": "storage_tank"
+    }
+  },
+  {
+    "type": "way",
+    "id": 1387322268,
+    "center": {
+      "lat": -32.7791091,
+      "lon": -71.4943725
+    },
+    "tags": {
+      "man_made": "storage_tank"
+    }
+  },
+  {
+    "type": "way",
+    "id": 1387322269,
+    "center": {
+      "lat": -32.7799107,
+      "lon": -71.4963668
+    },
+    "tags": {
+      "man_made": "storage_tank"
+    }
+  },
+  {
+    "type": "way",
+    "id": 1387322270,
+    "center": {
+      "lat": -32.7794835,
+      "lon": -71.4968911
+    },
+    "tags": {
+      "man_made": "storage_tank"
+    }
+  },
+  {
+    "type": "way",
+    "id": 1387322271,
+    "center": {
+      "lat": -32.7796222,
+      "lon": -71.4967905
+    },
+    "tags": {
+      "man_made": "storage_tank"
+    }
+  },
+  {
+    "type": "way",
+    "id": 1387322272,
+    "center": {
+      "lat": -32.7797417,
+      "lon": -71.496946
+    },
+    "tags": {
+      "man_made": "storage_tank"
+    }
+  },
+  {
+    "type": "way",
+    "id": 1387322273,
+    "center": {
+      "lat": -32.7798703,
+      "lon": -71.497111
+    },
+    "tags": {
+      "man_made": "storage_tank"
+    }
+  },
+  {
+    "type": "way",
+    "id": 1387322274,
+    "center": {
+      "lat": -32.7799751,
+      "lon": -71.4972599
+    },
+    "tags": {
+      "man_made": "storage_tank"
+    }
+  },
+  {
+    "type": "way",
+    "id": 1387322275,
+    "center": {
+      "lat": -32.78009,
+      "lon": -71.4971379
+    },
+    "tags": {
+      "man_made": "storage_tank"
+    }
+  },
+  {
+    "type": "way",
+    "id": 1387322276,
+    "center": {
+      "lat": -32.7798883,
+      "lon": -71.4968482
+    },
+    "tags": {
+      "man_made": "storage_tank"
+    }
+  },
+  {
+    "type": "way",
+    "id": 1387322277,
+    "center": {
+      "lat": -32.7798071,
+      "lon": -71.4967476
+    },
+    "tags": {
+      "man_made": "storage_tank"
+    }
+  },
+  {
+    "type": "way",
+    "id": 1387322278,
+    "center": {
+      "lat": -32.7797281,
+      "lon": -71.4966376
+    },
+    "tags": {
+      "man_made": "storage_tank"
+    }
+  },
+  {
+    "type": "way",
+    "id": 1387322279,
+    "center": {
+      "lat": -32.7795658,
+      "lon": -71.4970118
+    },
+    "tags": {
+      "man_made": "storage_tank"
+    }
+  },
+  {
+    "type": "way",
+    "id": 1387322280,
+    "center": {
+      "lat": -32.7796661,
+      "lon": -71.4971527
+    },
+    "tags": {
+      "man_made": "storage_tank"
+    }
+  },
+  {
+    "type": "way",
+    "id": 1387322281,
+    "center": {
+      "lat": -32.7800123,
+      "lon": -71.4970292
+    },
+    "tags": {
+      "man_made": "storage_tank"
+    }
+  },
+  {
+    "type": "way",
+    "id": 1387322282,
+    "center": {
+      "lat": -32.7797316,
+      "lon": -71.4972398
+    },
+    "tags": {
+      "man_made": "storage_tank"
+    }
+  },
+  {
+    "type": "way",
+    "id": 1387322283,
+    "center": {
+      "lat": -32.7797992,
+      "lon": -71.4973283
+    },
+    "tags": {
+      "man_made": "storage_tank"
+    }
+  },
+  {
+    "type": "way",
+    "id": 1387322284,
+    "center": {
+      "lat": -32.7798595,
+      "lon": -71.4974174
+    },
+    "tags": {
+      "man_made": "storage_tank"
+    }
+  },
+  {
+    "type": "way",
+    "id": 1387838126,
+    "center": {
+      "lat": -32.7720932,
+      "lon": -71.4892977
+    },
+    "tags": {
+      "building": "yes",
+      "man_made": "storage_tank"
+    }
+  },
+  {
+    "type": "way",
+    "id": 1387838127,
+    "center": {
+      "lat": -32.7723098,
+      "lon": -71.4888847
+    },
+    "tags": {
+      "building": "yes",
+      "man_made": "storage_tank"
+    }
+  },
+  {
+    "type": "way",
+    "id": 1387838128,
+    "center": {
+      "lat": -32.7720616,
+      "lon": -71.4887774
+    },
+    "tags": {
+      "building": "yes",
+      "man_made": "storage_tank"
+    }
+  },
+  {
+    "type": "way",
+    "id": 1387838129,
+    "center": {
+      "lat": -32.7715159,
+      "lon": -71.4875168
+    },
+    "tags": {
+      "building": "yes",
+      "man_made": "storage_tank"
+    }
+  },
+  {
+    "type": "way",
+    "id": 1387838130,
+    "center": {
+      "lat": -32.7710907,
+      "lon": -71.4896384
+    },
+    "tags": {
+      "building": "yes",
+      "man_made": "storage_tank"
+    }
+  },
+  {
+    "type": "way",
+    "id": 1387838131,
+    "center": {
+      "lat": -32.7688659,
+      "lon": -71.4879647
+    },
+    "tags": {
+      "building": "yes",
+      "man_made": "storage_tank"
+    }
+  },
+  {
+    "type": "way",
+    "id": 1387838132,
+    "center": {
+      "lat": -32.7687768,
+      "lon": -71.4880519
+    },
+    "tags": {
+      "building": "yes",
+      "man_made": "storage_tank"
+    }
+  },
+  {
+    "type": "way",
+    "id": 1387838133,
+    "center": {
+      "lat": -32.7686111,
+      "lon": -71.4879513
+    },
+    "tags": {
+      "building": "yes",
+      "man_made": "storage_tank"
+    }
+  },
+  {
+    "type": "way",
+    "id": 1387838134,
+    "center": {
+      "lat": -32.7686945,
+      "lon": -71.4879996
+    },
+    "tags": {
+      "building": "yes",
+      "man_made": "storage_tank"
+    }
+  },
+  {
+    "type": "way",
+    "id": 1387838135,
+    "center": {
+      "lat": -32.7683934,
+      "lon": -71.4879955
+    },
+    "tags": {
+      "building": "yes",
+      "man_made": "storage_tank"
+    }
+  },
+  {
+    "type": "way",
+    "id": 1387838136,
+    "center": {
+      "lat": -32.768452,
+      "lon": -71.4878681
+    },
+    "tags": {
+      "building": "yes",
+      "man_made": "storage_tank"
+    }
+  },
+  {
+    "type": "way",
+    "id": 1387838137,
+    "center": {
+      "lat": -32.7684938,
+      "lon": -71.4877622
+    },
+    "tags": {
+      "building": "yes",
+      "man_made": "storage_tank"
+    }
+  },
+  {
+    "type": "way",
+    "id": 1387838138,
+    "center": {
+      "lat": -32.7684137,
+      "lon": -71.4877059
+    },
+    "tags": {
+      "building": "yes",
+      "man_made": "storage_tank"
+    }
+  },
+  {
+    "type": "way",
+    "id": 1387838139,
+    "center": {
+      "lat": -32.7683663,
+      "lon": -71.4878158
+    },
+    "tags": {
+      "building": "yes",
+      "man_made": "storage_tank"
+    }
+  },
+  {
+    "type": "way",
+    "id": 1387838140,
+    "center": {
+      "lat": -32.7683145,
+      "lon": -71.4879419
+    },
+    "tags": {
+      "building": "yes",
+      "man_made": "storage_tank"
+    }
+  },
+  {
+    "type": "way",
+    "id": 1387838141,
+    "center": {
+      "lat": -32.768257,
+      "lon": -71.4876347
+    },
+    "tags": {
+      "building": "yes",
+      "man_made": "storage_tank"
+    }
+  },
+  {
+    "type": "way",
+    "id": 1387838142,
+    "center": {
+      "lat": -32.7685941,
+      "lon": -71.4881029
+    },
+    "tags": {
+      "building": "yes",
+      "man_made": "storage_tank"
+    }
+  },
+  {
+    "type": "way",
+    "id": 1387838143,
+    "center": {
+      "lat": -32.7686787,
+      "lon": -71.4881659
+    },
+    "tags": {
+      "building": "yes",
+      "man_made": "storage_tank"
+    }
+  },
+  {
+    "type": "way",
+    "id": 1387838144,
+    "center": {
+      "lat": -32.7687711,
+      "lon": -71.487911
+    },
+    "tags": {
+      "building": "yes",
+      "man_made": "storage_tank"
+    }
+  },
+  {
+    "type": "way",
+    "id": 1387838145,
+    "center": {
+      "lat": -32.7686629,
+      "lon": -71.4878507
+    },
+    "tags": {
+      "building": "yes",
+      "man_made": "storage_tank"
+    }
+  },
+  {
+    "type": "way",
+    "id": 1387838146,
+    "center": {
+      "lat": -32.7702349,
+      "lon": -71.489334
+    },
+    "tags": {
+      "building": "yes",
+      "man_made": "storage_tank"
+    }
+  },
+  {
+    "type": "way",
+    "id": 1387838147,
+    "center": {
+      "lat": -32.7703454,
+      "lon": -71.4893957
+    },
+    "tags": {
+      "building": "yes",
+      "man_made": "storage_tank"
+    }
+  },
+  {
+    "type": "way",
+    "id": 1387838148,
+    "center": {
+      "lat": -32.7703961,
+      "lon": -71.489271
+    },
+    "tags": {
+      "building": "yes",
+      "man_made": "storage_tank"
+    }
+  },
+  {
+    "type": "way",
+    "id": 1387838149,
+    "center": {
+      "lat": -32.7702958,
+      "lon": -71.4892078
+    },
+    "tags": {
+      "building": "yes",
+      "man_made": "storage_tank"
+    }
+  },
+  {
+    "type": "way",
+    "id": 1387838150,
+    "center": {
+      "lat": -32.769052,
+      "lon": -71.4885963
+    },
+    "tags": {
+      "building": "yes",
+      "man_made": "storage_tank"
+    }
+  },
+  {
+    "type": "way",
+    "id": 1387838151,
+    "center": {
+      "lat": -32.7692989,
+      "lon": -71.488532
+    },
+    "tags": {
+      "building": "yes",
+      "man_made": "storage_tank"
+    }
+  },
+  {
+    "type": "way",
+    "id": 1387838152,
+    "center": {
+      "lat": -32.7689798,
+      "lon": -71.4887533
+    },
+    "tags": {
+      "building": "yes",
+      "man_made": "storage_tank"
+    }
+  },
+  {
+    "type": "way",
+    "id": 1387838153,
+    "center": {
+      "lat": -32.7691511,
+      "lon": -71.4888633
+    },
+    "tags": {
+      "building": "yes",
+      "man_made": "storage_tank"
+    }
+  },
+  {
+    "type": "way",
+    "id": 1387838154,
+    "center": {
+      "lat": -32.7692347,
+      "lon": -71.4886742
+    },
+    "tags": {
+      "building": "yes",
+      "man_made": "storage_tank"
+    }
+  },
+  {
+    "type": "way",
+    "id": 1387838155,
+    "center": {
+      "lat": -32.7692009,
+      "lon": -71.4882222
+    },
+    "tags": {
+      "building": "yes",
+      "man_made": "storage_tank"
+    }
+  },
+  {
+    "type": "way",
+    "id": 1387838156,
+    "center": {
+      "lat": -32.7691298,
+      "lon": -71.488418
+    },
+    "tags": {
+      "building": "yes",
+      "man_made": "storage_tank"
+    }
+  },
+  {
+    "type": "way",
+    "id": 1387838157,
+    "center": {
+      "lat": -32.7699202,
+      "lon": -71.4893876
+    },
+    "tags": {
+      "building": "yes",
+      "man_made": "storage_tank"
+    }
+  },
+  {
+    "type": "way",
+    "id": 1387838158,
+    "center": {
+      "lat": -32.7697648,
+      "lon": -71.489279
+    },
+    "tags": {
+      "building": "yes",
+      "man_made": "storage_tank"
+    }
+  },
+  {
+    "type": "way",
+    "id": 1387838159,
+    "center": {
+      "lat": -32.769464,
+      "lon": -71.4890322
+    },
+    "tags": {
+      "building": "yes",
+      "man_made": "storage_tank"
+    }
+  },
+  {
+    "type": "way",
+    "id": 1387838160,
+    "center": {
+      "lat": -32.7695648,
+      "lon": -71.4887652
+    },
+    "tags": {
+      "building": "yes",
+      "man_made": "storage_tank"
+    }
+  },
+  {
+    "type": "way",
+    "id": 1387838161,
+    "center": {
+      "lat": -32.7699255,
+      "lon": -71.4890156
+    },
+    "tags": {
+      "building": "yes",
+      "man_made": "storage_tank"
+    }
+  }
+]

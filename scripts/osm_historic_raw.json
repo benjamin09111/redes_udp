@@ -1,0 +1,229 @@
+[
+  {
+    "type": "node",
+    "id": 5420952335,
+    "lat": -32.6551428,
+    "lon": -71.4428247,
+    "tags": {
+      "historic": "memorial",
+      "name": "Bote"
+    }
+  },
+  {
+    "type": "node",
+    "id": 6247155429,
+    "lat": -32.7333028,
+    "lon": -71.452769,
+    "tags": {
+      "historic": "wayside_cross"
+    }
+  },
+  {
+    "type": "node",
+    "id": 6247155430,
+    "lat": -32.7346917,
+    "lon": -71.4521587,
+    "tags": {
+      "historic": "wayside_shrine"
+    }
+  },
+  {
+    "type": "node",
+    "id": 12463695125,
+    "lat": -32.7201097,
+    "lon": -71.4075788,
+    "tags": {
+      "addr:city": "Puchuncaví",
+      "addr:housenumber": "908",
+      "addr:street": "Avenida Presidente Ríos",
+      "museum": "history",
+      "name": "Museo de Sitio Melinka-Puchuncaví",
+      "operator": "Melinka Corporación de Memoria y Cultura de Puchuncaví",
+      "source": "https://www.registromuseoschile.cl/663/w3-article-105678.html",
+      "tourism": "museum",
+      "website": "https://www.melinkapuchuncavi.cl/"
+    }
+  },
+  {
+    "type": "node",
+    "id": 12463695126,
+    "lat": -32.7197072,
+    "lon": -71.4080802,
+    "tags": {
+      "historic": "memorial",
+      "memorial": "plaque",
+      "name": "Sitio de Memoria Balneario Popular y Campo de Prisioneros Melinka-Puchuncaví",
+      "website": "https://www.monumentos.gob.cl/monumentos/monumentos-monumentos/sitio-balneario-popular-campo-prisioneros-melinka-puchuncavi"
+    }
+  },
+  {
+    "type": "node",
+    "id": 13271144993,
+    "lat": -32.7847753,
+    "lon": -71.5279533,
+    "tags": {
+      "addr:city": "Quintero",
+      "addr:housenumber": "210",
+      "addr:street": "Estrella de Chile",
+      "museum": "local",
+      "name": "Museo Quintero Vive",
+      "tourism": "museum",
+      "website": "https://www.muniquintero.cl/index.php/museo-vive-quintero-interactivo/"
+    }
+  },
+  {
+    "type": "way",
+    "id": 46402592,
+    "center": {
+      "lat": -32.733842,
+      "lon": -71.4453508
+    },
+    "tags": {
+      "highway": "residential",
+      "lanes": "2",
+      "name": "Juan Manuel Ureta",
+      "surface": "unpaved"
+    }
+  },
+  {
+    "type": "way",
+    "id": 150951528,
+    "center": {
+      "lat": -32.7788903,
+      "lon": -71.5285406
+    },
+    "tags": {
+      "addr:housenumber": "1884",
+      "addr:street": "Avenida Francia",
+      "amenity": "place_of_worship",
+      "building": "yes",
+      "historic": "monument",
+      "name": "Iglesia de Piedra",
+      "religion": "christian"
+    }
+  },
+  {
+    "type": "way",
+    "id": 372275001,
+    "center": {
+      "lat": -32.7919275,
+      "lon": -71.5126277
+    },
+    "tags": {
+      "historic": "archaeological_site",
+      "name": "Conchal Indígena de Tradición Bato y Cultura Aconcagua"
+    }
+  },
+  {
+    "type": "way",
+    "id": 636259246,
+    "center": {
+      "lat": -32.7089225,
+      "lon": -71.492676
+    },
+    "tags": {
+      "historic": "bridge",
+      "man_made": "yes",
+      "name": "Puente de los deseos",
+      "source": "https://www.flickr.com/photos/125134384@N03/29075190498/in/album-72157692458144200/"
+    }
+  },
+  {
+    "type": "way",
+    "id": 980749157,
+    "center": {
+      "lat": -32.7299694,
+      "lon": -71.4166656
+    },
+    "tags": {
+      "addr:street": "Avenida General Velásquez",
+      "building": "yes",
+      "museum": "nature",
+      "name": "Museo de Historia Natural de Puchuncaví",
+      "opening_hours": "Tu-Fr 10:00-17:00",
+      "phone": "+56322791369",
+      "tourism": "museum",
+      "wikidata": "Q86277917"
+    }
+  },
+  {
+    "type": "way",
+    "id": 1166057014,
+    "center": {
+      "lat": -32.7282524,
+      "lon": -71.4508407
+    },
+    "tags": {
+      "highway": "unclassified",
+      "lanes": "2",
+      "name": "Juan Manuel Ureta",
+      "surface": "unpaved"
+    }
+  },
+  {
+    "type": "way",
+    "id": 1300318200,
+    "center": {
+      "lat": -32.8062037,
+      "lon": -71.4428735
+    },
+    "tags": {
+      "addr:city": "Valle Alegre",
+      "addr:street": "Ruta F-190",
+      "building": "yes",
+      "email": "museocochranevallealegre@gmail.com",
+      "museum": "history",
+      "name": "Casa Museo de Lord Cochrane",
+      "official_name": "Casa Museo Almirante Lord Thomas Alexander Cochrane",
+      "phone": "+56961932644",
+      "source": "https://www.registromuseoschile.cl/663/w3-article-98765.html",
+      "tourism": "museum",
+      "wikimedia_commons": "File:Casona Museo Lord Cochrane, Valle Alegre, Quintero 20220601 02.jpg"
+    }
+  },
+  {
+    "type": "way",
+    "id": 1347402689,
+    "center": {
+      "lat": -32.7790477,
+      "lon": -71.533006
+    },
+    "tags": {
+      "addr:city": "Quintero",
+      "addr:housenumber": "1325",
+      "addr:street": "Vicuña Mackenna",
+      "building": "yes",
+      "museum": "local",
+      "name": "Casa Museo Downey",
+      "tourism": "museum",
+      "website": "https://www.casamuseodowney.cl/"
+    }
+  },
+  {
+    "type": "way",
+    "id": 1380990055,
+    "center": {
+      "lat": -32.7375367,
+      "lon": -71.4458102
+    },
+    "tags": {
+      "highway": "residential",
+      "name": "Juan Manuel Ureta",
+      "surface": "unpaved"
+    }
+  },
+  {
+    "type": "way",
+    "id": 1380990056,
+    "center": {
+      "lat": -32.7302896,
+      "lon": -71.4454841
+    },
+    "tags": {
+      "highway": "residential",
+      "lanes": "2",
+      "name": "Juan Manuel Ureta",
+      "surface": "unpaved"
+    }
+  }
+]

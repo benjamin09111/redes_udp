@@ -1,0 +1,338 @@
+[
+  {
+    "id": "commercial_01",
+    "name": "Supermercado Unimarc Quintero Centro",
+    "query": "Unimarc Quintero",
+    "category": "commercial",
+    "role": "Supermercado Principal: Unimarc Quintero",
+    "icon": "🛒",
+    "coords": [
+      -71.527113,
+      -32.785626
+    ],
+    "display_name": "Unimarc, 169, Estrella de Chile, Loncura, Quintero, Provincia de Valparaíso, Región de Valparaíso, 8400000, Chile",
+    "in_bounds": true
+  },
+  {
+    "id": "commercial_02",
+    "name": "Super Bodega Acuenta Quintero",
+    "query": "Super Bodega Acuenta Quintero",
+    "category": "commercial",
+    "role": "Supermercado Mayorista / Retail: Acuenta",
+    "icon": "🛒",
+    "coords": [
+      -71.526812,
+      -32.798508
+    ],
+    "display_name": "Super Bodega Acuenta, Acceso a Quintero, Las Brisas de Quintero, Loncura, Quintero, Provincia de Valparaíso, Región de Valparaíso, 8400000, Chile",
+    "in_bounds": true
+  },
+  {
+    "id": "commercial_03",
+    "name": "Supermercado Unimarc Puchuncaví",
+    "query": "Unimarc Puchuncaví",
+    "category": "commercial",
+    "role": "Supermercado Comunal: Unimarc Puchuncaví",
+    "icon": "🛒",
+    "coords": [
+      -71.410148,
+      -32.721627
+    ],
+    "display_name": "Unimarc, Avenida Presidente Ríos, Mundo Nuevo, El Paso, Puchuncaví, Provincia de Valparaíso, Región de Valparaíso, 2500000, Chile",
+    "in_bounds": true
+  },
+  {
+    "id": "crowded_area_08",
+    "name": "Plaza Central Las Ventanas",
+    "query": "Plaza Las Ventanas Puchuncaví",
+    "category": "crowded_area",
+    "role": "Espacio Público Céntrico Las Ventanas",
+    "icon": "👥",
+    "coords": [
+      -71.47588,
+      -32.743031
+    ],
+    "display_name": "Plaza Vadinho, Ventanas, Puchuncaví, Provincia de Valparaíso, Región de Valparaíso, Chile",
+    "in_bounds": true
+  },
+  {
+    "id": "crowded_area_09",
+    "name": "Plaza Central Caleta Horcón",
+    "query": "Plaza Horcón Puchuncaví",
+    "category": "crowded_area",
+    "role": "Punto de Encuentro y Concurrencia Turística Horcón",
+    "icon": "👥",
+    "coords": [
+      -71.507575,
+      -32.716144
+    ],
+    "display_name": "Plaza Alcalde Vicencio, Ventanas, Puchuncaví, Provincia de Valparaíso, Región de Valparaíso, Chile",
+    "in_bounds": true
+  },
+  {
+    "id": "crowded_area_10",
+    "name": "Terminal de Buses Rodoviario Quintero",
+    "query": "Terminal de Buses Quintero",
+    "category": "crowded_area",
+    "role": "Hub de Transporte Interurbano y Alta Concurrencia",
+    "icon": "🚌",
+    "coords": [
+      -71.526876,
+      -32.777113
+    ],
+    "display_name": "Terminal de Buses de Quintero, 21 de Mayo, Loncura, Quintero, Provincia de Valparaíso, Región de Valparaíso, 2490000, Chile",
+    "in_bounds": true
+  },
+  {
+    "id": "crowded_area_12",
+    "name": "Estadio Municipal Raúl Vargas Verdejo (Quintero)",
+    "query": "Estadio Municipal Quintero",
+    "category": "crowded_area",
+    "role": "Estadio Deportivo y Eventos Masivos Quintero",
+    "icon": "🏟",
+    "coords": [
+      -71.529461,
+      -32.798893
+    ],
+    "display_name": "Estadio Municipal de Quintero, 401, Lazo, Las Brisas de Quintero, Loncura, Quintero, Provincia de Valparaíso, Región de Valparaíso, 8400000, Chile",
+    "in_bounds": true
+  },
+  {
+    "id": "crowded_area_13",
+    "name": "Gimnasio Municipal de Quintero",
+    "query": "Gimnasio Municipal Quintero",
+    "category": "crowded_area",
+    "role": "Complejo Polideportivo Techado",
+    "icon": "🏟",
+    "coords": [
+      -71.528426,
+      -32.785568
+    ],
+    "display_name": "Gimnasio Municipal, Arturo Prat, Población Porvenir, Loncura, Quintero, Provincia de Valparaíso, Región de Valparaíso, 8400000, Chile",
+    "in_bounds": true
+  },
+  {
+    "id": "crowded_area_14",
+    "name": "Estadio Municipal de Puchuncaví",
+    "query": "Estadio Municipal Puchuncaví",
+    "category": "crowded_area",
+    "role": "Estadio Principal Comuna de Puchuncaví",
+    "icon": "🏟",
+    "coords": [
+      -71.402793,
+      -32.719539
+    ],
+    "display_name": "Estadio Municipal de Puchuncaví, Camino La Canela, El Paso, Puchuncaví, Provincia de Valparaíso, Región de Valparaíso, 2500000, Chile",
+    "in_bounds": true
+  },
+  {
+    "id": "crowded_area_15",
+    "name": "Estadio Las Ventanas",
+    "query": "Estadio Las Ventanas",
+    "category": "crowded_area",
+    "role": "Cancha y Complejo Deportivo Comunitario",
+    "icon": "🏟",
+    "coords": [
+      -71.474348,
+      -32.747283
+    ],
+    "display_name": "Estadio, Las Salinas, Ventanas, Puchuncaví, Provincia de Valparaíso, Región de Valparaíso, 8400000, Chile",
+    "in_bounds": true
+  },
+  {
+    "id": "crowded_area_18",
+    "name": "Caleta Las Ventanas",
+    "query": "Caleta Las Ventanas",
+    "category": "crowded_area",
+    "role": "Caleta Pesquera e Interfaz Mar-Tierra",
+    "icon": "⚓",
+    "coords": [
+      -71.491036,
+      -32.74298
+    ],
+    "display_name": "Caleta Las Ventanas, Ventanas, 2490000, Chile",
+    "in_bounds": true
+  },
+  {
+    "id": "crowded_area_19",
+    "name": "Caleta de Horcón",
+    "query": "Caleta Horcón Puchuncaví",
+    "category": "crowded_area",
+    "role": "Polo Artesanal y Fuerte Aglomeración Turística",
+    "icon": "⚓",
+    "coords": [
+      -71.489708,
+      -32.708765
+    ],
+    "display_name": "Caleta de Horcón, Costanera, Horcón, Ventanas, Puchuncaví, Provincia de Valparaíso, Región de Valparaíso, 2500000, Chile",
+    "in_bounds": true
+  },
+  {
+    "id": "crowded_area_20",
+    "name": "Caleta Loncura",
+    "query": "Caleta Loncura",
+    "category": "crowded_area",
+    "role": "Caleta Pesquera y Balneario Loncura",
+    "icon": "⚓",
+    "coords": [
+      -71.507865,
+      -32.782724
+    ],
+    "display_name": "Caleta Loncura, Camino Costero, Villa Los Mellizos, Loncura Bajo, Quintero, Provincia de Valparaíso, Región de Valparaíso, 8400000, Chile",
+    "in_bounds": true
+  },
+  {
+    "id": "crowded_area_21",
+    "name": "Ilustre Municipalidad de Quintero",
+    "query": "Municipalidad de Quintero",
+    "category": "crowded_area",
+    "role": "Edificio Consistorial y Servicios Públicos",
+    "icon": "🏛",
+    "coords": [
+      -71.527692,
+      -32.785385
+    ],
+    "display_name": "Ilustre Municipalidad de Quintero, 1916, Avenida Normandie, Población Porvenir, Loncura, Quintero, Provincia de Valparaíso, Región de Valparaíso, 8400000, Chile",
+    "in_bounds": true
+  },
+  {
+    "id": "crowded_area_22",
+    "name": "Ilustre Municipalidad de Puchuncaví",
+    "query": "Municipalidad de Puchuncaví",
+    "category": "crowded_area",
+    "role": "Edificio Consistorial Comunal Puchuncaví",
+    "icon": "🏛",
+    "coords": [
+      -71.416081,
+      -32.725427
+    ],
+    "display_name": "Ilustre Municipalidad de Puchuncaví, 70, Avenida Bernardo O'Higgins, Población Don Sergio, Las Catitas, Puchuncaví, Provincia de Valparaíso, Región de Valparaíso, Chile",
+    "in_bounds": true
+  },
+  {
+    "id": "crowded_area_24",
+    "name": "Tenencia de Carabineros Puchuncaví",
+    "query": "Carabineros Puchuncaví",
+    "category": "crowded_area",
+    "role": "Cuartel Policial Puchuncaví",
+    "icon": "👮",
+    "coords": [
+      -71.409531,
+      -32.720367
+    ],
+    "display_name": "Carabineros de Chile, Avenida Presidente Ríos, Mundo Nuevo, El Paso, Puchuncaví, Provincia de Valparaíso, Región de Valparaíso, 2500000, Chile",
+    "in_bounds": true
+  },
+  {
+    "id": "crowded_area_25",
+    "name": "Capitanía de Puerto de Quintero (Armada)",
+    "query": "Capitanía de Puerto Quintero",
+    "category": "crowded_area",
+    "role": "Autoridad Marítima y Control Bahía (DGTM)",
+    "icon": "⚓",
+    "coords": [
+      -71.526587,
+      -32.776471
+    ],
+    "display_name": "Capitanía de Puerto de Quintero, Bulnes, Loncura, Quintero, Provincia de Valparaíso, Región de Valparaíso, 2490000, Chile",
+    "in_bounds": true
+  },
+  {
+    "id": "crowded_area_26",
+    "name": "Cuerpo de Bomberos de Quintero (1ª Cía)",
+    "query": "Bomberos Quintero",
+    "category": "crowded_area",
+    "role": "Cuartel General de Bomberos y Emergencias",
+    "icon": "🚒",
+    "coords": [
+      -71.527575,
+      -32.786235
+    ],
+    "display_name": "Segunda Compañía de Bomberos de Quintero, 1980, Avenida Normandie, Población Porvenir, Loncura, Quintero, Provincia de Valparaíso, Región de Valparaíso, 8400000, Chile",
+    "in_bounds": true
+  },
+  {
+    "id": "crowded_area_27",
+    "name": "Cuerpo de Bomberos Puchuncaví",
+    "query": "Bomberos Puchuncaví",
+    "category": "crowded_area",
+    "role": "Cuartel de Bomberos Comuna de Puchuncaví",
+    "icon": "🚒",
+    "coords": [
+      -71.432605,
+      -32.646159
+    ],
+    "display_name": "3ra Compañía Bomberos Maitencillo, Padre Enrique del Río, Maitencillo, Puchuncaví, Provincia de Valparaíso, Región de Valparaíso, 2501119, Chile",
+    "in_bounds": false
+  },
+  {
+    "id": "crowded_area_29",
+    "name": "Parroquia Santa Filomena (Quintero)",
+    "query": "Parroquia Santa Filomena Quintero",
+    "category": "crowded_area",
+    "role": "Templo Principal y Centro de Culto Masivo",
+    "icon": "⛪",
+    "coords": [
+      -71.528055,
+      -32.781543
+    ],
+    "display_name": "Parroquia Santa Filomena, 250, Gregorio Arrieta, Loncura, Quintero, Provincia de Valparaíso, Región de Valparaíso, 2490000, Chile",
+    "in_bounds": true
+  },
+  {
+    "id": "education_32",
+    "name": "Escuela Básica La Laguna (Puchuncaví)",
+    "query": "Escuela La Laguna Puchuncaví",
+    "category": "education",
+    "role": "Educación Rural: Escuela La Laguna",
+    "icon": "🏫",
+    "coords": [
+      -71.419193,
+      -32.632159
+    ],
+    "display_name": "Escuela La Laguna, Camino Principal, Maitencillo, Puchuncaví, Provincia de Valparaíso, Región de Valparaíso, 2501119, Chile",
+    "in_bounds": false
+  },
+  {
+    "id": "education_33",
+    "name": "Escuela Básica Pucalán (Puchuncaví)",
+    "query": "Escuela Pucalán Puchuncaví",
+    "category": "education",
+    "role": "Educación Rural: Escuela Pucalán",
+    "icon": "🏫",
+    "coords": [
+      -71.344504,
+      -32.752103
+    ],
+    "display_name": "Escuela Pucalán, Ruta F-220, Pucalán, Puchuncaví, Provincia de Valparaíso, Región de Valparaíso, Chile",
+    "in_bounds": false
+  },
+  {
+    "id": "education_35",
+    "name": "Jardín Infantil Rayito de Sol (Quintero)",
+    "query": "Jardín Infantil Quintero",
+    "category": "education",
+    "role": "Educación Inicial: Jardín y Sala Cuna Quintero",
+    "icon": "🏫",
+    "coords": [
+      -71.536772,
+      -32.797419
+    ],
+    "display_name": "Jardín Infantil Bambi, Lazo, Las Brisas de Quintero, Loncura, Quintero, Provincia de Valparaíso, Región de Valparaíso, 8400000, Chile",
+    "in_bounds": true
+  },
+  {
+    "id": "education_36",
+    "name": "Jardín Infantil Puchuncaví Centro",
+    "query": "Jardín Infantil Puchuncaví",
+    "category": "education",
+    "role": "Educación Parvularia: Red JUNJI/Integra Puchuncaví",
+    "icon": "🏫",
+    "coords": [
+      -71.408448,
+      -32.729387
+    ],
+    "display_name": "Jardín Infantil, 986, San Agustín, Puchuncaví, Provincia de Valparaíso, Región de Valparaíso, Chile",
+    "in_bounds": true
+  }
+]

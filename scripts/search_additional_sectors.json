@@ -1,0 +1,44 @@
+[
+  {
+    "sector": "El Alto Quintero",
+    "lat": -32.7828968,
+    "lon": -71.4984258,
+    "display": "El Alto, Loncura, Quintero, Provincia de Valparaíso, Región de Valparaíso, 8400000, Chile"
+  },
+  {
+    "sector": "El Alto Puchuncaví",
+    "lat": -32.715738,
+    "lon": -71.4306303,
+    "display": "El Alto, Campiche, Puchuncaví, Provincia de Valparaíso, Región de Valparaíso, 2500000, Chile"
+  },
+  {
+    "sector": "La Estancilla Puchuncaví",
+    "lat": -32.7431572,
+    "lon": -71.3899967,
+    "display": "Comunidad La Estancilla, Puchuncaví, Provincia de Valparaíso, Región de Valparaíso, Chile"
+  },
+  {
+    "sector": "Comunidad La Estancilla Puchuncaví",
+    "lat": -32.7431572,
+    "lon": -71.3899967,
+    "display": "Comunidad La Estancilla, Puchuncaví, Provincia de Valparaíso, Región de Valparaíso, Chile"
+  },
+  {
+    "sector": "El Rincón Puchuncaví",
+    "lat": -32.7244446,
+    "lon": -71.3698256,
+    "display": "El Rincón, Puchuncaví, Provincia de Valparaíso, Región de Valparaíso, Chile"
+  },
+  {
+    "sector": "El Rungue Puchuncaví",
+    "lat": -32.6960906,
+    "lon": -71.4063267,
+    "display": "El Rungue, Puchuncaví, Provincia de Valparaíso, Región de Valparaíso, 2500000, Chile"
+  },
+  {
+    "sector": "Rungue Puchuncaví",
+    "lat": -32.6960906,
+    "lon": -71.4063267,
+    "display": "El Rungue, Puchuncaví, Provincia de Valparaíso, Región de Valparaíso, 2500000, Chile"
+  }
+]

@@ -1,0 +1,508 @@
+{
+  "named": [
+    {
+      "id": 4419411967,
+      "type": "node",
+      "name": "Campiche",
+      "operator": "Aes Andes",
+      "man_made": null,
+      "power": "generator",
+      "industrial": null,
+      "landuse": null,
+      "tags": {
+        "generator:method": "combustion",
+        "generator:output:electricity": "249 MW",
+        "generator:source": "coal",
+        "generator:type": "steam_turbine",
+        "name": "Campiche",
+        "operator": "Aes Andes",
+        "operator:wikidata": "Q4651363",
+        "power": "generator",
+        "source": "https://infotecnica.coordinador.cl/",
+        "start_date": "2013-03-15",
+        "wikidata": "Q5682329"
+      },
+      "lat": -32.748294,
+      "lon": -71.483297
+    },
+    {
+      "id": 7797684759,
+      "type": "node",
+      "name": "Ventanas I",
+      "operator": "Aes Andes",
+      "man_made": null,
+      "power": "generator",
+      "industrial": null,
+      "landuse": null,
+      "tags": {
+        "generator:method": "combustion",
+        "generator:output:electricity": "106 MW",
+        "generator:source": "coal",
+        "generator:type": "steam_turbine",
+        "name": "Ventanas I",
+        "operator": "Aes Andes",
+        "operator:wikidata": "Q4651363",
+        "power": "generator",
+        "source": "https://infotecnica.coordinador.cl/",
+        "start_date": "1964"
+      },
+      "lat": -32.751541,
+      "lon": -71.483289
+    },
+    {
+      "id": 7797684760,
+      "type": "node",
+      "name": "Ventanas II",
+      "operator": "Aes Andes",
+      "man_made": null,
+      "power": "generator",
+      "industrial": null,
+      "landuse": null,
+      "tags": {
+        "generator:method": "combustion",
+        "generator:output:electricity": "193 MW",
+        "generator:source": "coal",
+        "generator:type": "steam_turbine",
+        "name": "Ventanas II",
+        "operator": "Aes Andes",
+        "operator:wikidata": "Q4651363",
+        "power": "generator",
+        "source": "https://infotecnica.coordinador.cl/",
+        "start_date": "1977"
+      },
+      "lat": -32.750955,
+      "lon": -71.483305
+    },
+    {
+      "id": 7797684761,
+      "type": "node",
+      "name": "Nueva Ventanas",
+      "operator": "Aes Andes",
+      "man_made": null,
+      "power": "generator",
+      "industrial": null,
+      "landuse": null,
+      "tags": {
+        "generator:method": "combustion",
+        "generator:output:electricity": "243 MW",
+        "generator:source": "coal",
+        "generator:type": "steam_turbine",
+        "name": "Nueva Ventanas",
+        "operator": "Aes Andes",
+        "operator:wikidata": "Q4651363",
+        "power": "generator",
+        "source": "https://infotecnica.coordinador.cl/",
+        "start_date": "2010-02-11"
+      },
+      "lat": -32.74981,
+      "lon": -71.483151
+    },
+    {
+      "id": 92357477,
+      "type": "way",
+      "name": "Terminal de Combustible Marino",
+      "operator": null,
+      "man_made": "works",
+      "power": null,
+      "industrial": null,
+      "landuse": "industrial",
+      "tags": {
+        "landuse": "industrial",
+        "man_made": "works",
+        "name": "Terminal de Combustible Marino"
+      },
+      "lat": -32.7467082,
+      "lon": -71.4689466
+    },
+    {
+      "id": 92357488,
+      "type": "way",
+      "name": "Ex Fundición Ventanas",
+      "operator": "CODELCO",
+      "man_made": "works",
+      "power": null,
+      "industrial": "cooling",
+      "landuse": "industrial",
+      "tags": {
+        "industrial": "cooling",
+        "landuse": "industrial",
+        "man_made": "works",
+        "name": "Ex Fundición Ventanas",
+        "official_name": "Codelco División Ventanas",
+        "operator": "CODELCO",
+        "wikidata": "Q112628332",
+        "wikipedia": "es:Fundición Ventanas"
+      },
+      "lat": -32.7594677,
+      "lon": -71.479937
+    },
+    {
+      "id": 92413590,
+      "type": "way",
+      "name": "Planta de Lubricantes Copec",
+      "operator": null,
+      "man_made": null,
+      "power": null,
+      "industrial": "oil",
+      "landuse": "industrial",
+      "tags": {
+        "industrial": "oil",
+        "landuse": "industrial",
+        "name": "Planta de Lubricantes Copec"
+      },
+      "lat": -32.7793209,
+      "lon": -71.4980286
+    },
+    {
+      "id": 93211377,
+      "type": "way",
+      "name": "Central Termoeléctrica Quintero",
+      "operator": "Enel",
+      "man_made": null,
+      "power": "plant",
+      "industrial": null,
+      "landuse": "industrial",
+      "tags": {
+        "landuse": "industrial",
+        "name": "Central Termoeléctrica Quintero",
+        "operator": "Enel",
+        "operator:wikidata": "Q651222",
+        "plant:method": "combustion",
+        "plant:output:electricity": "257 MW",
+        "plant:source": "gas;diesel",
+        "power": "plant",
+        "source": "https://infotecnica.coordinador.cl/;https://www.enel.cl/es/inversionistas/inversionistas-enel-generacion/nuestras-centrales/central-quintero.html",
+        "start_date": "2009-07-23"
+      },
+      "lat": -32.7878256,
+      "lon": -71.4861922
+    },
+    {
+      "id": 150946409,
+      "type": "way",
+      "name": "Planta Industrial Molienda de Cemento - Cementos Melón",
+      "operator": null,
+      "man_made": "works",
+      "power": null,
+      "industrial": "cement",
+      "landuse": "industrial",
+      "tags": {
+        "industrial": "cement",
+        "landuse": "industrial",
+        "man_made": "works",
+        "name": "Planta Industrial Molienda de Cemento - Cementos Melón"
+      },
+      "lat": -32.7545648,
+      "lon": -71.4752141
+    },
+    {
+      "id": 520850532,
+      "type": "way",
+      "name": "Planta Terminal de Productos Importados COPEC",
+      "operator": null,
+      "man_made": null,
+      "power": null,
+      "industrial": "oil_storage",
+      "landuse": "industrial",
+      "tags": {
+        "industrial": "oil_storage",
+        "landuse": "industrial",
+        "name": "Planta Terminal de Productos Importados COPEC"
+      },
+      "lat": -32.778925,
+      "lon": -71.4958388
+    },
+    {
+      "id": 655704288,
+      "type": "way",
+      "name": "Terminal Marítimo Quintero Oxiquim",
+      "operator": null,
+      "man_made": "works",
+      "power": null,
+      "industrial": "chemical",
+      "landuse": "industrial",
+      "tags": {
+        "industrial": "chemical",
+        "landuse": "industrial",
+        "man_made": "works",
+        "name": "Terminal Marítimo Quintero Oxiquim"
+      },
+      "lat": -32.7687217,
+      "lon": -71.4857652
+    },
+    {
+      "id": 655704289,
+      "type": "way",
+      "name": "Terminal Maritimo ENAP",
+      "operator": null,
+      "man_made": null,
+      "power": null,
+      "industrial": "oil_storage",
+      "landuse": "industrial",
+      "tags": {
+        "industrial": "oil_storage",
+        "landuse": "industrial",
+        "name": "Terminal Maritimo ENAP"
+      },
+      "lat": -32.7760935,
+      "lon": -71.4864668
+    },
+    {
+      "id": 655704290,
+      "type": "way",
+      "name": "Planta Gasmar",
+      "operator": null,
+      "man_made": "works",
+      "power": null,
+      "industrial": "gas_storage",
+      "landuse": "industrial",
+      "tags": {
+        "industrial": "gas_storage",
+        "landuse": "industrial",
+        "man_made": "works",
+        "name": "Planta Gasmar",
+        "website": "https://www.gasmar.cl/"
+      },
+      "lat": -32.7686595,
+      "lon": -71.4824692
+    },
+    {
+      "id": 675310287,
+      "type": "way",
+      "name": "Ventanas",
+      "operator": "AES Andes",
+      "man_made": null,
+      "power": "substation",
+      "industrial": null,
+      "landuse": null,
+      "tags": {
+        "name": "Ventanas",
+        "operator": "AES Andes",
+        "operator:wikidata": "Q4651363",
+        "power": "substation",
+        "substation": "industrial",
+        "voltage": "220000;110000"
+      },
+      "lat": -32.7493334,
+      "lon": -71.481286
+    },
+    {
+      "id": 699020446,
+      "type": "way",
+      "name": "Central Quintero",
+      "operator": "Enel Generación",
+      "man_made": null,
+      "power": "substation",
+      "industrial": null,
+      "landuse": null,
+      "tags": {
+        "name": "Central Quintero",
+        "operator": "Enel Generación",
+        "power": "substation",
+        "source": "https://infotecnica.coordinador.cl/",
+        "voltage": "220000;110000"
+      },
+      "lat": -32.7881407,
+      "lon": -71.485124
+    },
+    {
+      "id": 699020596,
+      "type": "way",
+      "name": "Codelco Ventanas 1",
+      "operator": "Codelco",
+      "man_made": null,
+      "power": "substation",
+      "industrial": null,
+      "landuse": null,
+      "tags": {
+        "name": "Codelco Ventanas 1",
+        "operator": "Codelco",
+        "power": "substation",
+        "source": "https://infotecnica.coordinador.cl/",
+        "voltage": "110000"
+      },
+      "lat": -32.7652182,
+      "lon": -71.4825573
+    },
+    {
+      "id": 835400819,
+      "type": "way",
+      "name": "Codelco Ventanas 2",
+      "operator": "Codelco",
+      "man_made": null,
+      "power": "substation",
+      "industrial": null,
+      "landuse": null,
+      "tags": {
+        "name": "Codelco Ventanas 2",
+        "operator": "Codelco",
+        "power": "substation",
+        "source": "https://infotecnica.coordinador.cl/",
+        "voltage": "110000"
+      },
+      "lat": -32.7601079,
+      "lon": -71.4842307
+    },
+    {
+      "id": 835400820,
+      "type": "way",
+      "name": "Quintero",
+      "operator": null,
+      "man_made": null,
+      "power": "substation",
+      "industrial": null,
+      "landuse": null,
+      "tags": {
+        "name": "Quintero",
+        "power": "substation",
+        "voltage": "110000"
+      },
+      "lat": -32.7517584,
+      "lon": -71.4838562
+    },
+    {
+      "id": 835627741,
+      "type": "way",
+      "name": "Complejo termoeléctrico Ventanas",
+      "operator": "Quintero Energía",
+      "man_made": null,
+      "power": "plant",
+      "industrial": null,
+      "landuse": "industrial",
+      "tags": {
+        "landuse": "industrial",
+        "name": "Complejo termoeléctrico Ventanas",
+        "name:en": "Ventanas Power Plant",
+        "operator": "Quintero Energía",
+        "operator:wikidata": "Q4651363",
+        "plant:method": "combustion",
+        "plant:output:electricity": "791 MW",
+        "plant:source": "coal",
+        "power": "plant",
+        "source": "https://infotecnica.coordinador.cl/",
+        "start_date": "1964",
+        "wikidata": "Q7920230",
+        "wikipedia": "es:Complejo termoeléctrico Ventanas"
+      },
+      "lat": -32.7496408,
+      "lon": -71.4818987
+    },
+    {
+      "id": 1279095136,
+      "type": "way",
+      "name": "GNL Quintero",
+      "operator": null,
+      "man_made": null,
+      "power": null,
+      "industrial": "gas_storage",
+      "landuse": "industrial",
+      "tags": {
+        "industrial": "gas_storage",
+        "landuse": "industrial",
+        "name": "GNL Quintero",
+        "website": "https://www.gnlquintero.com/"
+      },
+      "lat": -32.7790346,
+      "lon": -71.4895061
+    },
+    {
+      "id": 1279095137,
+      "type": "way",
+      "name": "Terminal Maritimo ENAP",
+      "operator": null,
+      "man_made": null,
+      "power": null,
+      "industrial": "oil_storage",
+      "landuse": "industrial",
+      "tags": {
+        "industrial": "oil_storage",
+        "landuse": "industrial",
+        "name": "Terminal Maritimo ENAP"
+      },
+      "lat": -32.7820016,
+      "lon": -71.4909982
+    },
+    {
+      "id": 1279095138,
+      "type": "way",
+      "name": "Planta Desalinizadora Aguas Pacífico",
+      "operator": "Aguas Pacífico SpA",
+      "man_made": "works",
+      "power": null,
+      "industrial": null,
+      "landuse": "construction",
+      "tags": {
+        "check_date": "2025-05-17",
+        "construction": "industrial",
+        "landuse": "construction",
+        "man_made": "works",
+        "name": "Planta Desalinizadora Aguas Pacífico",
+        "opening_date": "2026",
+        "operator": "Aguas Pacífico SpA",
+        "website": "https://www.aguaspacifico.cl/planta-desalinizadora",
+        "wikidata": "Q129405847",
+        "wikipedia": "es:Desalinizadora Aguas Pacífico"
+      },
+      "lat": -32.7877502,
+      "lon": -71.4789908
+    },
+    {
+      "id": 1303698840,
+      "type": "way",
+      "name": "PMGD PFV Loncura",
+      "operator": "Tedlar Diemos SpA",
+      "man_made": null,
+      "power": "plant",
+      "industrial": null,
+      "landuse": "industrial",
+      "tags": {
+        "landuse": "industrial",
+        "name": "PMGD PFV Loncura",
+        "operator": "Tedlar Diemos SpA",
+        "plant:method": "photovoltaic",
+        "plant:output:electricity": "9 MW",
+        "plant:source": "solar",
+        "power": "plant",
+        "source": "https://infotecnica.coordinador.cl/instalaciones/centrales",
+        "start_date": "2024-06-01"
+      },
+      "lat": -32.7882457,
+      "lon": -71.4967585
+    },
+    {
+      "id": 1334389180,
+      "type": "way",
+      "name": "AES Gener",
+      "operator": null,
+      "man_made": null,
+      "power": null,
+      "industrial": null,
+      "landuse": "industrial",
+      "tags": {
+        "landuse": "industrial",
+        "name": "AES Gener"
+      },
+      "lat": -32.8068483,
+      "lon": -71.4383452
+    },
+    {
+      "id": 1380087335,
+      "type": "way",
+      "name": "Cemento Melón",
+      "operator": null,
+      "man_made": "works",
+      "power": null,
+      "industrial": null,
+      "landuse": "industrial",
+      "tags": {
+        "landuse": "industrial",
+        "man_made": "works",
+        "name": "Cemento Melón"
+      },
+      "lat": -32.70584,
+      "lon": -71.4056802
+    }
+  ],
+  "unnamed_count": 151,
+  "named_count": 25
+}

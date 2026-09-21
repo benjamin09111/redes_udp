@@ -1,0 +1,32 @@
+[
+  {
+    "place_id": 5091048,
+    "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+    "osm_type": "node",
+    "osm_id": 10158257746,
+    "lat": "-31.4570753",
+    "lon": "-71.5059757",
+    "class": "place",
+    "type": "hamlet",
+    "place_rank": 20,
+    "importance": 0.13337799572747386,
+    "addresstype": "hamlet",
+    "name": "Los Tomes",
+    "display_name": "Los Tomes, Canela, Provincia de Choapa, Región de Coquimbo, Chile",
+    "address": {
+      "hamlet": "Los Tomes",
+      "city": "Canela",
+      "county": "Provincia de Choapa",
+      "state": "Región de Coquimbo",
+      "ISO3166-2-lvl4": "CL-CO",
+      "country": "Chile",
+      "country_code": "cl"
+    },
+    "boundingbox": [
+      "-31.4770753",
+      "-31.4370753",
+      "-71.5259757",
+      "-71.4859757"
+    ]
+  }
+]

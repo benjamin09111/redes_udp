@@ -1,0 +1,2429 @@
+{
+  "El Alto (Puchuncaví)": [
+    {
+      "name": "Ecoturismo vivo",
+      "dist_m": 519.8,
+      "coords": [
+        -71.4291883,
+        -32.7112231
+      ],
+      "tags": {
+        "addr:housenumber": "700",
+        "addr:postcode": "0908",
+        "addr:street": "Camino el medano",
+        "email": "igor@sch.cl",
+        "name": "Ecoturismo vivo",
+        "opening_hours": "24/7",
+        "phone": "+56976081365",
+        "shop": "travel_agency",
+        "website": "https://www.ecoturismovivo.cl/"
+      }
+    },
+    {
+      "name": "pitch",
+      "dist_m": 1257.5,
+      "coords": [
+        -71.4247523,
+        -32.7055681
+      ],
+      "tags": {
+        "leisure": "pitch",
+        "sport": "tennis"
+      }
+    },
+    {
+      "name": "Las Catitas",
+      "dist_m": 1379.7,
+      "coords": [
+        -71.4241764,
+        -32.7268949
+      ],
+      "tags": {
+        "name": "Las Catitas",
+        "place": "hamlet"
+      }
+    },
+    {
+      "name": "Parque Eucaliptus",
+      "dist_m": 1381.9,
+      "coords": [
+        -71.4171946,
+        -32.710575
+      ],
+      "tags": {
+        "name": "Parque Eucaliptus",
+        "place": "hamlet"
+      }
+    },
+    {
+      "name": "Donde Matus",
+      "dist_m": 1492.6,
+      "coords": [
+        -71.4436197,
+        -32.7235317
+      ],
+      "tags": {
+        "name": "Donde Matus",
+        "place": "hamlet",
+        "population": "12",
+        "population:date": "2017",
+        "source:population": "INE"
+      }
+    },
+    {
+      "name": "Mundo Nuevo",
+      "dist_m": 1547.5,
+      "coords": [
+        -71.4149011,
+        -32.7200457
+      ],
+      "tags": {
+        "name": "Mundo Nuevo",
+        "place": "neighbourhood"
+      }
+    },
+    {
+      "name": "Shell",
+      "dist_m": 1587.4,
+      "coords": [
+        -71.416752,
+        -32.7239524
+      ],
+      "tags": {
+        "amenity": "fuel",
+        "brand": "Shell",
+        "brand:wikidata": "Q110716465",
+        "name": "Shell"
+      }
+    },
+    {
+      "name": "atm",
+      "dist_m": 1609.7,
+      "coords": [
+        -71.4164427,
+        -32.7239296
+      ],
+      "tags": {
+        "amenity": "atm"
+      }
+    },
+    {
+      "name": "Población Don Sergio",
+      "dist_m": 1670.0,
+      "coords": [
+        -71.4196421,
+        -32.7275741
+      ],
+      "tags": {
+        "name": "Población Don Sergio",
+        "place": "neighbourhood"
+      }
+    },
+    {
+      "name": "swimming_pool",
+      "dist_m": 1703.3,
+      "coords": [
+        -71.4170126,
+        -32.7259064
+      ],
+      "tags": {
+        "access": "private",
+        "leisure": "swimming_pool"
+      }
+    },
+    {
+      "name": "park",
+      "dist_m": 1709.3,
+      "coords": [
+        -71.4197439,
+        -32.7280837
+      ],
+      "tags": {
+        "leisure": "park"
+      }
+    },
+    {
+      "name": "swimming_pool",
+      "dist_m": 1714.1,
+      "coords": [
+        -71.4484509,
+        -32.7193185
+      ],
+      "tags": {
+        "access": "private",
+        "leisure": "swimming_pool"
+      }
+    },
+    {
+      "name": "Ilustre Municipalidad de Puchuncaví",
+      "dist_m": 1733.4,
+      "coords": [
+        -71.4161103,
+        -32.7254229
+      ],
+      "tags": {
+        "addr:city": "Puchuncaví",
+        "addr:housenumber": "70",
+        "addr:street": "Avenida Bernardo O'Higgins",
+        "amenity": "townhall",
+        "building": "yes",
+        "name": "Ilustre Municipalidad de Puchuncaví"
+      }
+    },
+    {
+      "name": "pitch",
+      "dist_m": 1738.8,
+      "coords": [
+        -71.4170528,
+        -32.7264172
+      ],
+      "tags": {
+        "leisure": "pitch"
+      }
+    },
+    {
+      "name": "pitch",
+      "dist_m": 1740.5,
+      "coords": [
+        -71.4432469,
+        -32.7272418
+      ],
+      "tags": {
+        "leisure": "pitch",
+        "sport": "soccer"
+      }
+    },
+    {
+      "name": "Colegio General José Velásquez Bórquez",
+      "dist_m": 1744.8,
+      "coords": [
+        -71.417052,
+        -32.7264952
+      ],
+      "tags": {
+        "addr:city": "Puchuncaví",
+        "addr:housenumber": "265",
+        "addr:street": "Pablo Neruda",
+        "amenity": "school",
+        "name": "Colegio General José Velásquez Bórquez"
+      }
+    },
+    {
+      "name": "Juzgado Policía Local Puchuncaví",
+      "dist_m": 1744.9,
+      "coords": [
+        -71.4162187,
+        -32.7257007
+      ],
+      "tags": {
+        "addr:city": "Puchuncaví",
+        "addr:housenumber": "70",
+        "addr:street": "Avenida Bernardo O'Higgins",
+        "amenity": "courthouse",
+        "name": "Juzgado Policía Local Puchuncaví"
+      }
+    },
+    {
+      "name": "pitch",
+      "dist_m": 1761.0,
+      "coords": [
+        -71.4198199,
+        -32.7287036
+      ],
+      "tags": {
+        "leisure": "pitch"
+      }
+    },
+    {
+      "name": "Banco Estado",
+      "dist_m": 1763.0,
+      "coords": [
+        -71.4155221,
+        -32.7252152
+      ],
+      "tags": {
+        "addr:city": "Puchuncaví",
+        "addr:housenumber": "56",
+        "addr:street": "Avenida Bernardo O'Higgins",
+        "amenity": "bank",
+        "atm": "yes",
+        "brand": "Banco Estado",
+        "brand:en": "State Bank",
+        "brand:es": "Banco Estado",
+        "brand:wikidata": "Q5718188",
+        "brand:wikipedia": "es:Banco del Estado de Chile",
+        "name": "Banco Estado",
+        "name:en": "State Bank",
+        "name:es": "Banco Estado",
+        "official_name": "Banco del Estado de Chile",
+        "official_name:en": "Bank of the State of Chile",
+        "official_name:es": "Banco del Estado de Chile"
+      }
+    },
+    {
+      "name": "CESFAM Puchuncaví",
+      "dist_m": 1767.5,
+      "coords": [
+        -71.4159785,
+        -32.7257744
+      ],
+      "tags": {
+        "addr:country": "CL",
+        "alt_name": "Centro de Salud Familiar",
+        "amenity": "clinic",
+        "healthcare": "yes",
+        "name": "CESFAM Puchuncaví",
+        "official_name": "Centro de Salud Familiar"
+      }
+    },
+    {
+      "name": "Consultorio",
+      "dist_m": 1779.1,
+      "coords": [
+        -71.415853,
+        -32.7258091
+      ],
+      "tags": {
+        "addr:country": "CL",
+        "amenity": "clinic",
+        "name": "Consultorio"
+      }
+    },
+    {
+      "name": "Centro Cultural",
+      "dist_m": 1788.3,
+      "coords": [
+        -71.4160627,
+        -32.7261522
+      ],
+      "tags": {
+        "addr:street": "Avenida Bernardo O'Higgins",
+        "amenity": "community_centre",
+        "name": "Centro Cultural"
+      }
+    },
+    {
+      "name": "park",
+      "dist_m": 1788.5,
+      "coords": [
+        -71.4174806,
+        -32.7274141
+      ],
+      "tags": {
+        "leisure": "park"
+      }
+    },
+    {
+      "name": "swimming_pool",
+      "dist_m": 1799.6,
+      "coords": [
+        -71.4492237,
+        -32.7198845
+      ],
+      "tags": {
+        "access": "private",
+        "leisure": "swimming_pool"
+      }
+    },
+    {
+      "name": "parking",
+      "dist_m": 1803.3,
+      "coords": [
+        -71.4166606,
+        -32.7269129
+      ],
+      "tags": {
+        "access": "yes",
+        "amenity": "parking",
+        "parking": "surface"
+      }
+    },
+    {
+      "name": "Frutería",
+      "dist_m": 1822.3,
+      "coords": [
+        -71.4159294,
+        -32.7264911
+      ],
+      "tags": {
+        "addr:city": "Puchuncaví",
+        "addr:country": "CL",
+        "name": "Frutería",
+        "shop": "convenience"
+      }
+    },
+    {
+      "name": "Ferretería",
+      "dist_m": 1825.5,
+      "coords": [
+        -71.415093,
+        -32.7256709
+      ],
+      "tags": {
+        "addr:city": "Puchuncaví",
+        "addr:street": "Santiago Torres",
+        "building": "yes",
+        "name": "Ferretería",
+        "shop": "hardware"
+      }
+    },
+    {
+      "name": "swimming_pool",
+      "dist_m": 1833.5,
+      "coords": [
+        -71.419652,
+        -32.7293978
+      ],
+      "tags": {
+        "access": "private",
+        "leisure": "swimming_pool"
+      }
+    },
+    {
+      "name": "Plaza Puchuncaví",
+      "dist_m": 1846.0,
+      "coords": [
+        -71.4151059,
+        -32.7259868
+      ],
+      "tags": {
+        "leisure": "park",
+        "name": "Plaza Puchuncaví"
+      }
+    },
+    {
+      "name": "swimming_pool",
+      "dist_m": 1866.1,
+      "coords": [
+        -71.4174676,
+        -32.7283483
+      ],
+      "tags": {
+        "access": "private",
+        "leisure": "swimming_pool"
+      }
+    },
+    {
+      "name": "swimming_pool",
+      "dist_m": 1869.0,
+      "coords": [
+        -71.4146598,
+        -32.7258377
+      ],
+      "tags": {
+        "access": "private",
+        "leisure": "swimming_pool"
+      }
+    },
+    {
+      "name": "Chilexpress",
+      "dist_m": 1890.6,
+      "coords": [
+        -71.4142874,
+        -32.72574
+      ],
+      "tags": {
+        "addr:city": "Puchuncaví",
+        "addr:housenumber": "174",
+        "addr:street": "José Ramón Pérez",
+        "amenity": "post_office",
+        "brand": "Chilexpress",
+        "name": "Chilexpress",
+        "website": "https://www.chilexpress.cl/"
+      }
+    },
+    {
+      "name": "Iglesia de Puchuncaví",
+      "dist_m": 1897.0,
+      "coords": [
+        -71.4151077,
+        -32.7267158
+      ],
+      "tags": {
+        "addr:city": "Puchuncaví",
+        "amenity": "place_of_worship",
+        "building": "yes",
+        "denomination": "catholic",
+        "name": "Iglesia de Puchuncaví",
+        "religion": "christian"
+      }
+    },
+    {
+      "name": "Royal Restaurant",
+      "dist_m": 1900.1,
+      "coords": [
+        -71.4154514,
+        -32.727093
+      ],
+      "tags": {
+        "amenity": "restaurant",
+        "name": "Royal Restaurant",
+        "phone": "+56 (32) 279 1532"
+      }
+    },
+    {
+      "name": "Ferretería Higuerillas",
+      "dist_m": 1909.4,
+      "coords": [
+        -71.4113004,
+        -32.7212505
+      ],
+      "tags": {
+        "building": "yes",
+        "name": "Ferretería Higuerillas",
+        "shop": "hardware"
+      }
+    },
+    {
+      "name": "fitness_centre",
+      "dist_m": 1922.1,
+      "coords": [
+        -71.413995,
+        -32.7258832
+      ],
+      "tags": {
+        "building": "yes",
+        "leisure": "fitness_centre"
+      }
+    },
+    {
+      "name": "park",
+      "dist_m": 1926.2,
+      "coords": [
+        -71.4122999,
+        -32.7236273
+      ],
+      "tags": {
+        "leisure": "park"
+      }
+    },
+    {
+      "name": "swimming_pool",
+      "dist_m": 1932.4,
+      "coords": [
+        -71.4133326,
+        -32.7252371
+      ],
+      "tags": {
+        "access": "private",
+        "leisure": "swimming_pool"
+      }
+    },
+    {
+      "name": "parking",
+      "dist_m": 1932.9,
+      "coords": [
+        -71.4142588,
+        -32.7263433
+      ],
+      "tags": {
+        "access": "customers",
+        "amenity": "parking",
+        "fee": "no"
+      }
+    },
+    {
+      "name": "Farmacia La Plaza",
+      "dist_m": 1935.2,
+      "coords": [
+        -71.414293,
+        -32.7264136
+      ],
+      "tags": {
+        "addr:city": "Puchuncaví",
+        "addr:housenumber": "149",
+        "addr:street": "Santiago Torres",
+        "amenity": "pharmacy",
+        "healthcare": "pharmacy",
+        "name": "Farmacia La Plaza"
+      }
+    },
+    {
+      "name": "parking",
+      "dist_m": 1940.7,
+      "coords": [
+        -71.410977,
+        -32.7213251
+      ],
+      "tags": {
+        "access": "customers",
+        "amenity": "parking",
+        "fee": "no",
+        "parking": "surface"
+      }
+    },
+    {
+      "name": "Carnicería",
+      "dist_m": 1941.7,
+      "coords": [
+        -71.4140741,
+        -32.7262698
+      ],
+      "tags": {
+        "name": "Carnicería",
+        "shop": "butcher"
+      }
+    },
+    {
+      "name": "pitch",
+      "dist_m": 1964.4,
+      "coords": [
+        -71.415132,
+        -32.7276585
+      ],
+      "tags": {
+        "leisure": "pitch",
+        "sport": "soccer",
+        "surface": "grass"
+      }
+    },
+    {
+      "name": "Condominio Campo Alegre",
+      "dist_m": 1966.4,
+      "coords": [
+        -71.4117646,
+        -32.7235367
+      ],
+      "tags": {
+        "name": "Condominio Campo Alegre",
+        "place": "neighbourhood"
+      }
+    },
+    {
+      "name": "swimming_pool",
+      "dist_m": 1989.9,
+      "coords": [
+        -71.40982,
+        -32.7194421
+      ],
+      "tags": {
+        "access": "private",
+        "leisure": "swimming_pool"
+      }
+    },
+    {
+      "name": "parking",
+      "dist_m": 1992.0,
+      "coords": [
+        -71.4104558,
+        -32.7214671
+      ],
+      "tags": {
+        "access": "customers",
+        "amenity": "parking",
+        "fee": "no",
+        "operator": "Unimarc",
+        "parking": "surface"
+      }
+    },
+    {
+      "name": "pitch",
+      "dist_m": 1992.4,
+      "coords": [
+        -71.4105815,
+        -32.7217846
+      ],
+      "tags": {
+        "leisure": "pitch"
+      }
+    },
+    {
+      "name": "pitch",
+      "dist_m": 2002.3,
+      "coords": [
+        -71.4205776,
+        -32.7316357
+      ],
+      "tags": {
+        "leisure": "pitch",
+        "sport": "equestrian"
+      }
+    },
+    {
+      "name": "Unimarc",
+      "dist_m": 2025.0,
+      "coords": [
+        -71.4101477,
+        -32.7216272
+      ],
+      "tags": {
+        "brand": "Unimarc",
+        "brand:wikidata": "Q6156244",
+        "building": "yes",
+        "name": "Unimarc",
+        "operator": "Unimarc",
+        "shop": "supermarket"
+      }
+    },
+    {
+      "name": "swimming_pool",
+      "dist_m": 2031.9,
+      "coords": [
+        -71.4147809,
+        -32.7282322
+      ],
+      "tags": {
+        "access": "private",
+        "leisure": "swimming_pool"
+      }
+    },
+    {
+      "name": "Carabineros de Chile",
+      "dist_m": 2039.9,
+      "coords": [
+        -71.4095311,
+        -32.7203672
+      ],
+      "tags": {
+        "amenity": "police",
+        "name": "Carabineros de Chile",
+        "operator": "Carabineros de Chile",
+        "operator:wikidata": "Q2317752"
+      }
+    },
+    {
+      "name": "swimming_pool",
+      "dist_m": 2042.9,
+      "coords": [
+        -71.4094679,
+        -32.7202688
+      ],
+      "tags": {
+        "access": "private",
+        "leisure": "swimming_pool"
+      }
+    },
+    {
+      "name": "Gas Abastible",
+      "dist_m": 2043.4,
+      "coords": [
+        -71.4127879,
+        -32.7263384
+      ],
+      "tags": {
+        "name": "Gas Abastible",
+        "shop": "convenience"
+      }
+    },
+    {
+      "name": "Museo de Historia Natural de Puchuncaví",
+      "dist_m": 2052.0,
+      "coords": [
+        -71.4166656,
+        -32.7299694
+      ],
+      "tags": {
+        "addr:street": "Avenida General Velásquez",
+        "building": "yes",
+        "museum": "nature",
+        "name": "Museo de Historia Natural de Puchuncaví",
+        "opening_hours": "Tu-Fr 10:00-17:00",
+        "phone": "+56322791369",
+        "tourism": "museum",
+        "wikidata": "Q86277917"
+      }
+    },
+    {
+      "name": "Lipivecino",
+      "dist_m": 2084.8,
+      "coords": [
+        -71.4085017,
+        -32.7179513
+      ],
+      "tags": {
+        "name": "Lipivecino",
+        "shop": "gas"
+      }
+    },
+    {
+      "name": "pitch",
+      "dist_m": 2092.0,
+      "coords": [
+        -71.4125503,
+        -32.7268106
+      ],
+      "tags": {
+        "leisure": "pitch",
+        "sport": "equestrian"
+      }
+    },
+    {
+      "name": "police",
+      "dist_m": 2097.9,
+      "coords": [
+        -71.4085791,
+        -32.7191704
+      ],
+      "tags": {
+        "amenity": "police",
+        "building": "yes"
+      }
+    },
+    {
+      "name": "pitch",
+      "dist_m": 2099.5,
+      "coords": [
+        -71.4128441,
+        -32.7272528
+      ],
+      "tags": {
+        "leisure": "pitch",
+        "sport": "equestrian"
+      }
+    },
+    {
+      "name": "Tenencia Puchuncaví",
+      "dist_m": 2107.9,
+      "coords": [
+        -71.4084307,
+        -32.7189831
+      ],
+      "tags": {
+        "addr:city": "Puchuncaví",
+        "addr:street": "Avenida Presidente Ríos",
+        "amenity": "police",
+        "building": "yes",
+        "lit": "yes",
+        "name": "Tenencia Puchuncaví"
+      }
+    },
+    {
+      "name": "fast_food",
+      "dist_m": 2120.0,
+      "coords": [
+        -71.4081787,
+        -32.7183273
+      ],
+      "tags": {
+        "addr:city": "Puchuncaví",
+        "addr:street": "Avenida Presidente Ríos",
+        "amenity": "fast_food",
+        "building": "yes"
+      }
+    },
+    {
+      "name": "police",
+      "dist_m": 2123.6,
+      "coords": [
+        -71.4082827,
+        -32.7190877
+      ],
+      "tags": {
+        "amenity": "police",
+        "building": "yes"
+      }
+    },
+    {
+      "name": "Medialuna de Puchuncaví",
+      "dist_m": 2157.4,
+      "coords": [
+        -71.4122004,
+        -32.7274015
+      ],
+      "tags": {
+        "leisure": "sports_centre",
+        "name": "Medialuna de Puchuncaví"
+      }
+    },
+    {
+      "name": "Waldo",
+      "dist_m": 2158.6,
+      "coords": [
+        -71.4077104,
+        -32.7179771
+      ],
+      "tags": {
+        "addr:city": "Puchuncaví",
+        "addr:street": "Avenida Presidente Ríos",
+        "amenity": "restaurant",
+        "lit": "yes",
+        "name": "Waldo"
+      }
+    },
+    {
+      "name": "swimming_pool",
+      "dist_m": 2160.4,
+      "coords": [
+        -71.407799,
+        -32.7186514
+      ],
+      "tags": {
+        "access": "private",
+        "leisure": "swimming_pool"
+      }
+    }
+  ],
+  "El Alto (Quintero)": [
+    {
+      "name": "Humedal El Bato",
+      "dist_m": 260.0,
+      "coords": [
+        -71.4981271,
+        -32.780572
+      ],
+      "tags": {
+        "direction": "120",
+        "name": "Humedal El Bato",
+        "tourism": "viewpoint"
+      }
+    },
+    {
+      "name": "Humedal Urbano El Bato",
+      "dist_m": 262.9,
+      "coords": [
+        -71.4967769,
+        -32.7809816
+      ],
+      "tags": {
+        "access": "yes",
+        "boundary": "protected_area",
+        "description": "humedal continental palustre de 2,28 hectáreas protegidas que alberga 178 especies de flora endémica, fauna nativa y macrohongos. Emplazado en una zona de alta escasez hídrica, este ecosistema se sustenta de recursos hídricos subterráneos",
+        "dog": "no",
+        "leisure": "nature_reserve",
+        "name": "Humedal Urbano El Bato",
+        "natural": "wetland",
+        "operator": "Fundación Kennedy, Municipalidad de Quintero y Copec S.A.",
+        "operator:type": "association",
+        "protect_class": "7",
+        "protection_title": "Humedal Urbano",
+        "related_law": "https://bcn.cl/tB0NLK",
+        "source": "https://humedaleschile.mma.gob.cl/procesos-municipales-region-de-valparaiso/",
+        "start_date": "2026-01-19",
+        "website": "https://sistemahumedales.mma.gob.cl/HumedalesUrbanos/DetailsPublico/1237",
+        "wetland": "marsh"
+      }
+    },
+    {
+      "name": "P. Mahoma (Mauricio Carvacho)",
+      "dist_m": 297.9,
+      "coords": [
+        -71.5012887,
+        -32.7840734
+      ],
+      "tags": {
+        "addr:street": "Caja Cay",
+        "name": "P. Mahoma (Mauricio Carvacho)",
+        "shop": "convenience"
+      }
+    },
+    {
+      "name": "Almacen (Juana de los a. Orellana)",
+      "dist_m": 402.4,
+      "coords": [
+        -71.5024109,
+        -32.7842646
+      ],
+      "tags": {
+        "addr:street": "Caja Cay",
+        "name": "Almacen (Juana de los a. Orellana)",
+        "shop": "convenience"
+      }
+    },
+    {
+      "name": "convenience",
+      "dist_m": 642.3,
+      "coords": [
+        -71.5030038,
+        -32.7872046
+      ],
+      "tags": {
+        "shop": "convenience"
+      }
+    },
+    {
+      "name": "Plaza de Loncura",
+      "dist_m": 645.3,
+      "coords": [
+        -71.5022904,
+        -32.7877052
+      ],
+      "tags": {
+        "leisure": "park",
+        "name": "Plaza de Loncura"
+      }
+    },
+    {
+      "name": "Villa Germán Riesco",
+      "dist_m": 682.9,
+      "coords": [
+        -71.5018022,
+        -32.7883433
+      ],
+      "tags": {
+        "name": "Villa Germán Riesco",
+        "place": "neighbourhood"
+      }
+    },
+    {
+      "name": "pitch",
+      "dist_m": 736.7,
+      "coords": [
+        -71.5027658,
+        -32.788427
+      ],
+      "tags": {
+        "leisure": "pitch",
+        "sport": "soccer"
+      }
+    },
+    {
+      "name": "Centro Civil Loncura",
+      "dist_m": 760.2,
+      "coords": [
+        -71.5034895,
+        -32.7882461
+      ],
+      "tags": {
+        "amenity": "public_building",
+        "name": "Centro Civil Loncura"
+      }
+    },
+    {
+      "name": "Junta de Vecinos Unión y Progreso",
+      "dist_m": 778.5,
+      "coords": [
+        -71.5042135,
+        -32.7879307
+      ],
+      "tags": {
+        "addr:housenumber": "1953",
+        "addr:street": "Huaras",
+        "amenity": "community_centre",
+        "name": "Junta de Vecinos Unión y Progreso"
+      }
+    },
+    {
+      "name": "Capilla San Alberto Hurtado",
+      "dist_m": 792.2,
+      "coords": [
+        -71.5044227,
+        -32.7879307
+      ],
+      "tags": {
+        "amenity": "place_of_worship",
+        "building": "chapel",
+        "name": "Capilla San Alberto Hurtado",
+        "religion": "christian"
+      }
+    },
+    {
+      "name": "CECOF Loncura",
+      "dist_m": 796.9,
+      "coords": [
+        -71.5039922,
+        -32.7883251
+      ],
+      "tags": {
+        "addr:country": "CL",
+        "amenity": "doctors",
+        "name": "CECOF Loncura"
+      }
+    },
+    {
+      "name": "Supermercado El Descanso",
+      "dist_m": 825.4,
+      "coords": [
+        -71.5028026,
+        -32.7893441
+      ],
+      "tags": {
+        "name": "Supermercado El Descanso",
+        "opening_hours": "Su-Th 09:00-21:00; Fr-Sa 09:00-22:00",
+        "shop": "supermarket"
+      }
+    },
+    {
+      "name": "Posta salud rural Loncura",
+      "dist_m": 833.8,
+      "coords": [
+        -71.5021557,
+        -32.7897083
+      ],
+      "tags": {
+        "amenity": "doctors",
+        "healthcare": "doctor",
+        "name": "Posta salud rural Loncura"
+      }
+    },
+    {
+      "name": "Villa Los Mellizos",
+      "dist_m": 840.5,
+      "coords": [
+        -71.5071988,
+        -32.7845506
+      ],
+      "tags": {
+        "name": "Villa Los Mellizos",
+        "place": "neighbourhood"
+      }
+    },
+    {
+      "name": "Caleta Loncura",
+      "dist_m": 882.6,
+      "coords": [
+        -71.5078653,
+        -32.7827238
+      ],
+      "tags": {
+        "amenity": "marketplace",
+        "name": "Caleta Loncura"
+      }
+    },
+    {
+      "name": "Almacén Donde el Gastón",
+      "dist_m": 888.7,
+      "coords": [
+        -71.5037308,
+        -32.7895293
+      ],
+      "tags": {
+        "addr:housenumber": "2054",
+        "addr:street": "Pasaje Silvestre Ochagavía",
+        "amenity": "internet_cafe",
+        "name": "Almacén Donde el Gastón"
+      }
+    },
+    {
+      "name": "Villa Los Alerce",
+      "dist_m": 921.4,
+      "coords": [
+        -71.5025881,
+        -32.7904088
+      ],
+      "tags": {
+        "name": "Villa Los Alerce",
+        "place": "neighbourhood"
+      }
+    },
+    {
+      "name": "Centro Vacacional FACH",
+      "dist_m": 924.6,
+      "coords": [
+        -71.5081289,
+        -32.7845066
+      ],
+      "tags": {
+        "landuse": "military",
+        "name": "Centro Vacacional FACH",
+        "tourism": "hotel"
+      }
+    },
+    {
+      "name": "Loncura",
+      "dist_m": 971.2,
+      "coords": [
+        -71.5080585,
+        -32.7861696
+      ],
+      "tags": {
+        "is_in:city": "Quintero",
+        "name": "Loncura",
+        "place": "suburb",
+        "wikidata": "Q19551165",
+        "wikipedia": "es:Loncura"
+      }
+    },
+    {
+      "name": "Villa Manutara",
+      "dist_m": 1006.2,
+      "coords": [
+        -71.5008795,
+        -32.7917075
+      ],
+      "tags": {
+        "name": "Villa Manutara",
+        "place": "neighbourhood"
+      }
+    },
+    {
+      "name": "Botillería y Abarrotes \"Donde Mario\"",
+      "dist_m": 1015.8,
+      "coords": [
+        -71.5084125,
+        -32.7864988
+      ],
+      "tags": {
+        "name": "Botillería y Abarrotes \"Donde Mario\"",
+        "shop": "alcohol"
+      }
+    },
+    {
+      "name": "Mirador El Estuche",
+      "dist_m": 1156.8,
+      "coords": [
+        -71.5102887,
+        -32.7858562
+      ],
+      "tags": {
+        "name": "Mirador El Estuche",
+        "tourism": "viewpoint"
+      }
+    },
+    {
+      "name": "Loncura Bajo",
+      "dist_m": 1175.4,
+      "coords": [
+        -71.4903331,
+        -32.7748074
+      ],
+      "tags": {
+        "name": "Loncura Bajo",
+        "place": "hamlet"
+      }
+    },
+    {
+      "name": "pitch",
+      "dist_m": 1224.6,
+      "coords": [
+        -71.5111926,
+        -32.7853657
+      ],
+      "tags": {
+        "leisure": "pitch",
+        "sport": "soccer"
+      }
+    },
+    {
+      "name": "Santuario de la Naturaleza Bosque Las Petras",
+      "dist_m": 1847.4,
+      "coords": [
+        -71.5141373,
+        -32.7929746
+      ],
+      "tags": {
+        "leisure": "nature_reserve",
+        "name": "Santuario de la Naturaleza Bosque Las Petras"
+      }
+    },
+    {
+      "name": "vehicle_inspection",
+      "dist_m": 1887.6,
+      "coords": [
+        -71.5054326,
+        -32.7988183
+      ],
+      "tags": {
+        "amenity": "vehicle_inspection"
+      }
+    },
+    {
+      "name": "Skatepark Quintero",
+      "dist_m": 2029.3,
+      "coords": [
+        -71.5200539,
+        -32.7844548
+      ],
+      "tags": {
+        "covered": "no",
+        "indoor": "no",
+        "leisure": "pitch",
+        "name": "Skatepark Quintero",
+        "sport": "skateboard"
+      }
+    }
+  ],
+  "Los Tomes": [
+    {
+      "name": "swimming_pool",
+      "dist_m": 325.2,
+      "coords": [
+        -71.4484509,
+        -32.7193185
+      ],
+      "tags": {
+        "access": "private",
+        "leisure": "swimming_pool"
+      }
+    },
+    {
+      "name": "swimming_pool",
+      "dist_m": 361.5,
+      "coords": [
+        -71.4492237,
+        -32.7198845
+      ],
+      "tags": {
+        "access": "private",
+        "leisure": "swimming_pool"
+      }
+    },
+    {
+      "name": "Donde Matus",
+      "dist_m": 966.1,
+      "coords": [
+        -71.4436197,
+        -32.7235317
+      ],
+      "tags": {
+        "name": "Donde Matus",
+        "place": "hamlet",
+        "population": "12",
+        "population:date": "2017",
+        "source:population": "INE"
+      }
+    },
+    {
+      "name": "Los Pescadores",
+      "dist_m": 1261.4,
+      "coords": [
+        -71.4522028,
+        -32.7278912
+      ],
+      "tags": {
+        "name": "Los Pescadores",
+        "place": "hamlet",
+        "population": "20",
+        "population:date": "2017",
+        "source:population": "INE"
+      }
+    },
+    {
+      "name": "pitch",
+      "dist_m": 1331.6,
+      "coords": [
+        -71.4432469,
+        -32.7272418
+      ],
+      "tags": {
+        "leisure": "pitch",
+        "sport": "soccer"
+      }
+    },
+    {
+      "name": "place_of_worship",
+      "dist_m": 1645.7,
+      "coords": [
+        -71.4481449,
+        -32.7314178
+      ],
+      "tags": {
+        "amenity": "place_of_worship",
+        "religion": "christian"
+      }
+    },
+    {
+      "name": "pitch",
+      "dist_m": 1662.6,
+      "coords": [
+        -71.4535446,
+        -32.7313515
+      ],
+      "tags": {
+        "leisure": "pitch",
+        "sport": "soccer"
+      }
+    },
+    {
+      "name": "Campiche",
+      "dist_m": 1717.5,
+      "coords": [
+        -71.449013,
+        -32.7321235
+      ],
+      "tags": {
+        "name": "Campiche",
+        "place": "village",
+        "population": "819",
+        "population:date": "2017",
+        "source:population": "INE"
+      }
+    },
+    {
+      "name": "pitch",
+      "dist_m": 1719.5,
+      "coords": [
+        -71.4680355,
+        -32.7196823
+      ],
+      "tags": {
+        "leisure": "pitch"
+      }
+    },
+    {
+      "name": "bus_station",
+      "dist_m": 1733.1,
+      "coords": [
+        -71.4518212,
+        -32.7322105
+      ],
+      "tags": {
+        "amenity": "bus_station",
+        "bus": "yes",
+        "public_transport": "station"
+      }
+    },
+    {
+      "name": "playground",
+      "dist_m": 1749.7,
+      "coords": [
+        -71.4683591,
+        -32.7197023
+      ],
+      "tags": {
+        "leisure": "playground"
+      }
+    },
+    {
+      "name": "Quirilluca Sur",
+      "dist_m": 1790.7,
+      "coords": [
+        -71.46701,
+        -32.7093177
+      ],
+      "tags": {
+        "access": "private",
+        "amenity": "parking",
+        "name": "Quirilluca Sur",
+        "operator": "Private"
+      }
+    },
+    {
+      "name": null,
+      "dist_m": 1813.1,
+      "coords": [
+        -71.4671228,
+        -32.709063
+      ],
+      "tags": {
+        "tourism": "viewpoint"
+      }
+    },
+    {
+      "name": null,
+      "dist_m": 1829.9,
+      "coords": [
+        -71.4626727,
+        -32.7041647
+      ],
+      "tags": {
+        "tourism": "viewpoint"
+      }
+    },
+    {
+      "name": null,
+      "dist_m": 1832.1,
+      "coords": [
+        -71.4671888,
+        -32.7088069
+      ],
+      "tags": {
+        "tourism": "viewpoint"
+      }
+    },
+    {
+      "name": "toilets",
+      "dist_m": 1935.1,
+      "coords": [
+        -71.4621548,
+        -32.7026197
+      ],
+      "tags": {
+        "amenity": "toilets"
+      }
+    },
+    {
+      "name": "playground",
+      "dist_m": 1941.4,
+      "coords": [
+        -71.450144,
+        -32.7341587
+      ],
+      "tags": {
+        "leisure": "playground"
+      }
+    },
+    {
+      "name": "Playa Luna",
+      "dist_m": 1944.5,
+      "coords": [
+        -71.462585,
+        -32.7027834
+      ],
+      "tags": {
+        "alt_name": "Playa Nudista de Horcón",
+        "camping": "no",
+        "clothing-optional": "yes",
+        "name": "Playa Luna",
+        "natural": "beach",
+        "nudism": "designated",
+        "source": "Wikipedia",
+        "surface": "sand",
+        "thong": "yes",
+        "topless": "yes",
+        "tourism": "attraction",
+        "wikidata": "Q6078462",
+        "wikimedia_commons": "File:Playa Luna, Chile's Nude Beach (32328003487).jpg",
+        "wikipedia": "es:Playa Luna"
+      }
+    },
+    {
+      "name": "parking",
+      "dist_m": 1945.8,
+      "coords": [
+        -71.4569262,
+        -32.7002002
+      ],
+      "tags": {
+        "amenity": "parking"
+      }
+    },
+    {
+      "name": "Junta de Vecinos Campiche",
+      "dist_m": 1954.6,
+      "coords": [
+        -71.4498282,
+        -32.7342771
+      ],
+      "tags": {
+        "amenity": "community_centre",
+        "name": "Junta de Vecinos Campiche"
+      }
+    },
+    {
+      "name": "Playa Luna",
+      "dist_m": 2019.8,
+      "coords": [
+        -71.4604519,
+        -32.7008068
+      ],
+      "tags": {
+        "name": "Playa Luna",
+        "tourism": "viewpoint"
+      }
+    },
+    {
+      "name": "Ecoturismo vivo",
+      "dist_m": 2040.1,
+      "coords": [
+        -71.4291883,
+        -32.7112231
+      ],
+      "tags": {
+        "addr:housenumber": "700",
+        "addr:postcode": "0908",
+        "addr:street": "Camino el medano",
+        "email": "igor@sch.cl",
+        "name": "Ecoturismo vivo",
+        "opening_hours": "24/7",
+        "phone": "+56976081365",
+        "shop": "travel_agency",
+        "website": "https://www.ecoturismovivo.cl/"
+      }
+    },
+    {
+      "name": "Mirador de Los Tebos",
+      "dist_m": 2051.3,
+      "coords": [
+        -71.4713467,
+        -32.71249
+      ],
+      "tags": {
+        "name": "Mirador de Los Tebos",
+        "source": "Mirador de Los Tebos",
+        "tourism": "viewpoint"
+      }
+    },
+    {
+      "name": "Escuela Campiche",
+      "dist_m": 2073.7,
+      "coords": [
+        -71.4511084,
+        -32.7353257
+      ],
+      "tags": {
+        "addr:city": "Puchuncaví",
+        "addr:country": "CL",
+        "addr:street": "Ruta F-170",
+        "amenity": "school",
+        "name": "Escuela Campiche",
+        "note": "Correcciones masivas a ortografía en nombres de importaciones hechas por equipo de gendarmería"
+      }
+    },
+    {
+      "name": "swimming_pool",
+      "dist_m": 2084.9,
+      "coords": [
+        -71.4719668,
+        -32.7135444
+      ],
+      "tags": {
+        "access": "private",
+        "leisure": "swimming_pool"
+      }
+    },
+    {
+      "name": null,
+      "dist_m": 2110.8,
+      "coords": [
+        -71.4594126,
+        -32.6994481
+      ],
+      "tags": {
+        "tourism": "viewpoint"
+      }
+    },
+    {
+      "name": "Costa Quilén",
+      "dist_m": 2125.7,
+      "coords": [
+        -71.4726917,
+        -32.7157197
+      ],
+      "tags": {
+        "name": "Costa Quilén",
+        "place": "neighbourhood"
+      }
+    },
+    {
+      "name": "swimming_pool",
+      "dist_m": 2144.2,
+      "coords": [
+        -71.4725811,
+        -32.7133992
+      ],
+      "tags": {
+        "access": "private",
+        "leisure": "swimming_pool"
+      }
+    },
+    {
+      "name": null,
+      "dist_m": 2154.8,
+      "coords": [
+        -71.4600026,
+        -32.699245
+      ],
+      "tags": {
+        "tourism": "viewpoint"
+      }
+    },
+    {
+      "name": "swimming_pool",
+      "dist_m": 2158.8,
+      "coords": [
+        -71.4730344,
+        -32.7178615
+      ],
+      "tags": {
+        "access": "private",
+        "leisure": "swimming_pool"
+      }
+    },
+    {
+      "name": "Entre Bosques",
+      "dist_m": 2162.2,
+      "coords": [
+        -71.4568969,
+        -32.7352595
+      ],
+      "tags": {
+        "ele": "61.8901367",
+        "name": "Entre Bosques",
+        "tourism": "hotel"
+      }
+    },
+    {
+      "name": "swimming_pool",
+      "dist_m": 2194.2,
+      "coords": [
+        -71.4732215,
+        -32.7139304
+      ],
+      "tags": {
+        "access": "private",
+        "leisure": "swimming_pool"
+      }
+    },
+    {
+      "name": "pitch",
+      "dist_m": 2198.2,
+      "coords": [
+        -71.473488,
+        -32.7161588
+      ],
+      "tags": {
+        "access": "private",
+        "leisure": "pitch",
+        "sport": "soccer"
+      }
+    }
+  ],
+  "Comunidad La Estancilla": [
+    {
+      "name": "Comunidad La Estancilla",
+      "dist_m": 0.0,
+      "coords": [
+        -71.3899967,
+        -32.7431572
+      ],
+      "tags": {
+        "name": "Comunidad La Estancilla",
+        "place": "hamlet",
+        "population": "31",
+        "population:date": "2017",
+        "source:population": "INE"
+      }
+    },
+    {
+      "name": "swimming_pool",
+      "dist_m": 1197.5,
+      "coords": [
+        -71.3812358,
+        -32.7510105
+      ],
+      "tags": {
+        "leisure": "swimming_pool"
+      }
+    },
+    {
+      "name": "El Rincón Poniente",
+      "dist_m": 2035.1,
+      "coords": [
+        -71.3913059,
+        -32.7248878
+      ],
+      "tags": {
+        "name": "El Rincón Poniente",
+        "place": "hamlet",
+        "population": "12",
+        "population:date": "2017",
+        "source:population": "INE"
+      }
+    },
+    {
+      "name": "pitch",
+      "dist_m": 2157.4,
+      "coords": [
+        -71.4063466,
+        -32.7294714
+      ],
+      "tags": {
+        "leisure": "pitch"
+      }
+    },
+    {
+      "name": "park",
+      "dist_m": 2182.6,
+      "coords": [
+        -71.4066451,
+        -32.7294024
+      ],
+      "tags": {
+        "leisure": "park"
+      }
+    },
+    {
+      "name": "sports_centre",
+      "dist_m": 2191.6,
+      "coords": [
+        -71.4080486,
+        -32.7305918
+      ],
+      "tags": {
+        "leisure": "sports_centre"
+      }
+    }
+  ],
+  "El Rincón": [
+    {
+      "name": "El Rincón",
+      "dist_m": 0.1,
+      "coords": [
+        -71.3698256,
+        -32.7244446
+      ],
+      "tags": {
+        "name": "El Rincón",
+        "place": "hamlet",
+        "population": "204",
+        "population:date": "2017",
+        "source:population": "INE"
+      }
+    },
+    {
+      "name": "park",
+      "dist_m": 44.3,
+      "coords": [
+        -71.3694216,
+        -32.7242377
+      ],
+      "tags": {
+        "leisure": "park"
+      }
+    },
+    {
+      "name": "pitch",
+      "dist_m": 96.8,
+      "coords": [
+        -71.3689446,
+        -32.723989
+      ],
+      "tags": {
+        "leisure": "pitch"
+      }
+    },
+    {
+      "name": "Escuela El Rincón",
+      "dist_m": 115.9,
+      "coords": [
+        -71.3686972,
+        -32.7248746
+      ],
+      "tags": {
+        "addr:street": "Camino El Rincón",
+        "amenity": "school",
+        "name": "Escuela El Rincón"
+      }
+    },
+    {
+      "name": "pitch",
+      "dist_m": 119.9,
+      "coords": [
+        -71.3685568,
+        -32.7242967
+      ],
+      "tags": {
+        "leisure": "pitch"
+      }
+    },
+    {
+      "name": "pitch",
+      "dist_m": 462.5,
+      "coords": [
+        -71.3653693,
+        -32.7226443
+      ],
+      "tags": {
+        "leisure": "pitch",
+        "sport": "equestrian"
+      }
+    },
+    {
+      "name": "pitch",
+      "dist_m": 597.9,
+      "coords": [
+        -71.3649386,
+        -32.7209806
+      ],
+      "tags": {
+        "leisure": "pitch",
+        "sport": "equestrian"
+      }
+    },
+    {
+      "name": "Camino a La Canela",
+      "dist_m": 1535.3,
+      "coords": [
+        -71.3807756,
+        -32.7141599
+      ],
+      "tags": {
+        "name": "Camino a La Canela",
+        "place": "hamlet",
+        "population": "17",
+        "population:date": "2017",
+        "source:population": "INE"
+      }
+    },
+    {
+      "name": "San Antonio",
+      "dist_m": 1967.3,
+      "coords": [
+        -71.3743812,
+        -32.7071727
+      ],
+      "tags": {
+        "name": "San Antonio",
+        "place": "hamlet",
+        "population": "35",
+        "population:date": "2017",
+        "source:population": "INE"
+      }
+    },
+    {
+      "name": "El Rincón Poniente",
+      "dist_m": 2010.0,
+      "coords": [
+        -71.3913059,
+        -32.7248878
+      ],
+      "tags": {
+        "name": "El Rincón Poniente",
+        "place": "hamlet",
+        "population": "12",
+        "population:date": "2017",
+        "source:population": "INE"
+      }
+    }
+  ],
+  "Rungue / El Rungue": [
+    {
+      "name": "El Rungue",
+      "dist_m": 0.1,
+      "coords": [
+        -71.4063267,
+        -32.6960906
+      ],
+      "tags": {
+        "name": "El Rungue",
+        "place": "suburb"
+      }
+    },
+    {
+      "name": "El Caballito de Palo",
+      "dist_m": 25.0,
+      "coords": [
+        -71.4060874,
+        -32.6961906
+      ],
+      "tags": {
+        "addr:street": "F-30-E",
+        "amenity": "restaurant",
+        "name": "El Caballito de Palo"
+      }
+    },
+    {
+      "name": "Tio Miky",
+      "dist_m": 30.5,
+      "coords": [
+        -71.4063184,
+        -32.6958171
+      ],
+      "tags": {
+        "name": "Tio Miky",
+        "shop": "convenience"
+      }
+    },
+    {
+      "name": "San Esteban",
+      "dist_m": 46.4,
+      "coords": [
+        -71.4059993,
+        -32.696404
+      ],
+      "tags": {
+        "name": "San Esteban",
+        "shop": "convenience"
+      }
+    },
+    {
+      "name": "restaurant",
+      "dist_m": 76.8,
+      "coords": [
+        -71.4056105,
+        -32.6964277
+      ],
+      "tags": {
+        "amenity": "restaurant"
+      }
+    },
+    {
+      "name": "Escuela Básica El Rungue",
+      "dist_m": 125.1,
+      "coords": [
+        -71.4068072,
+        -32.6971407
+      ],
+      "tags": {
+        "addr:street": "Ruta E-30-F",
+        "amenity": "school",
+        "name": "Escuela Básica El Rungue",
+        "nohousenumber": "yes"
+      }
+    },
+    {
+      "name": "pitch",
+      "dist_m": 145.3,
+      "coords": [
+        -71.4071852,
+        -32.6971804
+      ],
+      "tags": {
+        "leisure": "pitch"
+      }
+    },
+    {
+      "name": "swimming_pool",
+      "dist_m": 228.6,
+      "coords": [
+        -71.406582,
+        -32.6940463
+      ],
+      "tags": {
+        "access": "private",
+        "leisure": "swimming_pool"
+      }
+    },
+    {
+      "name": "tyres",
+      "dist_m": 286.8,
+      "coords": [
+        -71.4061221,
+        -32.6986642
+      ],
+      "tags": {
+        "shop": "tyres"
+      }
+    },
+    {
+      "name": "swimming_pool",
+      "dist_m": 316.8,
+      "coords": [
+        -71.4063163,
+        -32.6989404
+      ],
+      "tags": {
+        "access": "private",
+        "leisure": "swimming_pool"
+      }
+    },
+    {
+      "name": "Cabañas Victoria",
+      "dist_m": 335.0,
+      "coords": [
+        -71.406844,
+        -32.6931098
+      ],
+      "tags": {
+        "name": "Cabañas Victoria",
+        "tourism": "motel"
+      }
+    },
+    {
+      "name": "pitch",
+      "dist_m": 432.1,
+      "coords": [
+        -71.4026994,
+        -32.6984952
+      ],
+      "tags": {
+        "leisure": "pitch",
+        "sport": "equestrian"
+      }
+    },
+    {
+      "name": "pitch",
+      "dist_m": 447.1,
+      "coords": [
+        -71.403607,
+        -32.6993963
+      ],
+      "tags": {
+        "leisure": "pitch",
+        "sport": "soccer",
+        "surface": "grass"
+      }
+    },
+    {
+      "name": "swimming_pool",
+      "dist_m": 482.4,
+      "coords": [
+        -71.4052014,
+        -32.7003247
+      ],
+      "tags": {
+        "access": "private",
+        "leisure": "swimming_pool"
+      }
+    },
+    {
+      "name": "swimming_pool",
+      "dist_m": 511.0,
+      "coords": [
+        -71.4066313,
+        -32.7006794
+      ],
+      "tags": {
+        "access": "private",
+        "leisure": "swimming_pool"
+      }
+    },
+    {
+      "name": "sports_centre",
+      "dist_m": 527.9,
+      "coords": [
+        -71.4060715,
+        -32.7008339
+      ],
+      "tags": {
+        "leisure": "sports_centre"
+      }
+    },
+    {
+      "name": "Cervecería Pelícano",
+      "dist_m": 622.2,
+      "coords": [
+        -71.4075987,
+        -32.6905991
+      ],
+      "tags": {
+        "amenity": "bar",
+        "name": "Cervecería Pelícano"
+      }
+    },
+    {
+      "name": "swimming_pool",
+      "dist_m": 660.9,
+      "coords": [
+        -71.4081929,
+        -32.6903583
+      ],
+      "tags": {
+        "access": "private",
+        "leisure": "swimming_pool"
+      }
+    },
+    {
+      "name": "swimming_pool",
+      "dist_m": 846.4,
+      "coords": [
+        -71.406312,
+        -32.6884793
+      ],
+      "tags": {
+        "access": "private",
+        "leisure": "swimming_pool"
+      }
+    },
+    {
+      "name": "sports_centre",
+      "dist_m": 952.5,
+      "coords": [
+        -71.4077887,
+        -32.6876142
+      ],
+      "tags": {
+        "leisure": "sports_centre",
+        "sport": "soccer"
+      }
+    },
+    {
+      "name": "Pub Oriol",
+      "dist_m": 1066.0,
+      "coords": [
+        -71.4089845,
+        -32.6867692
+      ],
+      "tags": {
+        "amenity": "nightclub",
+        "name": "Pub Oriol"
+      }
+    },
+    {
+      "name": "swimming_pool",
+      "dist_m": 1113.2,
+      "coords": [
+        -71.4103331,
+        -32.6866644
+      ],
+      "tags": {
+        "access": "private",
+        "leisure": "swimming_pool"
+      }
+    },
+    {
+      "name": "Minigolf",
+      "dist_m": 1125.4,
+      "coords": [
+        -71.4061251,
+        -32.7062107
+      ],
+      "tags": {
+        "leisure": "miniature_golf",
+        "name": "Minigolf"
+      }
+    },
+    {
+      "name": "pitch",
+      "dist_m": 1126.4,
+      "coords": [
+        -71.4069715,
+        -32.7062066
+      ],
+      "tags": {
+        "leisure": "pitch",
+        "sport": "tennis"
+      }
+    },
+    {
+      "name": "Los Troncos",
+      "dist_m": 1135.7,
+      "coords": [
+        -71.396783,
+        -32.6897814
+      ],
+      "tags": {
+        "name": "Los Troncos",
+        "place": "hamlet",
+        "population": "11",
+        "population:date": "2017",
+        "source:population": "INE"
+      }
+    },
+    {
+      "name": "Empanadas Tio Mario",
+      "dist_m": 1176.4,
+      "coords": [
+        -71.4094337,
+        -32.68584
+      ],
+      "tags": {
+        "amenity": "restaurant",
+        "name": "Empanadas Tio Mario"
+      }
+    },
+    {
+      "name": "swimming_pool",
+      "dist_m": 1197.7,
+      "coords": [
+        -71.4061573,
+        -32.7068614
+      ],
+      "tags": {
+        "access": "private",
+        "leisure": "swimming_pool"
+      }
+    },
+    {
+      "name": "pitch",
+      "dist_m": 1217.7,
+      "coords": [
+        -71.4086604,
+        -32.7068645
+      ],
+      "tags": {
+        "leisure": "pitch",
+        "sport": "equestrian"
+      }
+    },
+    {
+      "name": "swimming_pool",
+      "dist_m": 1248.7,
+      "coords": [
+        -71.4060487,
+        -32.7073187
+      ],
+      "tags": {
+        "access": "private",
+        "leisure": "swimming_pool"
+      }
+    },
+    {
+      "name": "swimming_pool",
+      "dist_m": 1290.5,
+      "coords": [
+        -71.4102429,
+        -32.6849628
+      ],
+      "tags": {
+        "access": "private",
+        "leisure": "swimming_pool"
+      }
+    },
+    {
+      "name": "swimming_pool",
+      "dist_m": 1314.1,
+      "coords": [
+        -71.405901,
+        -32.7079033
+      ],
+      "tags": {
+        "access": "private",
+        "leisure": "swimming_pool"
+      }
+    },
+    {
+      "name": "Cabañas La Flora",
+      "dist_m": 1316.7,
+      "coords": [
+        -71.4107251,
+        -32.6848433
+      ],
+      "tags": {
+        "name": "Cabañas La Flora",
+        "tourism": "motel"
+      }
+    },
+    {
+      "name": "Bike Chile Maitencillo",
+      "dist_m": 1558.7,
+      "coords": [
+        -71.4135818,
+        -32.6834727
+      ],
+      "tags": {
+        "brand": "Specialized",
+        "brand:wikidata": "Q124966655",
+        "email": "ventas@bikechile.cl",
+        "name": "Bike Chile Maitencillo",
+        "phone": "+56 9 9440 6967",
+        "service:bicycle:parts": "yes",
+        "service:bicycle:retail": "yes",
+        "service:bicycle:tools": "yes",
+        "shop": "bicycle",
+        "website": "https://www.bikechile.cl/"
+      }
+    },
+    {
+      "name": "El Leoncito",
+      "dist_m": 1583.5,
+      "coords": [
+        -71.3965898,
+        -32.6844448
+      ],
+      "tags": {
+        "name": "El Leoncito",
+        "place": "hamlet",
+        "population": "24",
+        "population:date": "2017",
+        "source:population": "INE"
+      }
+    },
+    {
+      "name": "Burgazo Maitencillo",
+      "dist_m": 1647.1,
+      "coords": [
+        -71.414742,
+        -32.6830812
+      ],
+      "tags": {
+        "amenity": "restaurant",
+        "name": "Burgazo Maitencillo"
+      }
+    },
+    {
+      "name": "swimming_pool",
+      "dist_m": 1757.3,
+      "coords": [
+        -71.4056469,
+        -32.7118847
+      ],
+      "tags": {
+        "access": "private",
+        "leisure": "swimming_pool"
+      }
+    },
+    {
+      "name": "swimming_pool",
+      "dist_m": 1779.6,
+      "coords": [
+        -71.4041138,
+        -32.7119867
+      ],
+      "tags": {
+        "access": "private",
+        "leisure": "swimming_pool"
+      }
+    },
+    {
+      "name": "Parque Eucaliptus",
+      "dist_m": 1904.7,
+      "coords": [
+        -71.4171946,
+        -32.710575
+      ],
+      "tags": {
+        "name": "Parque Eucaliptus",
+        "place": "hamlet"
+      }
+    },
+    {
+      "name": "pitch",
+      "dist_m": 1914.9,
+      "coords": [
+        -71.4072614,
+        -32.7132941
+      ],
+      "tags": {
+        "leisure": "pitch"
+      }
+    },
+    {
+      "name": "swimming_pool",
+      "dist_m": 1941.4,
+      "coords": [
+        -71.404611,
+        -32.7134904
+      ],
+      "tags": {
+        "access": "private",
+        "leisure": "swimming_pool"
+      }
+    },
+    {
+      "name": "pitch",
+      "dist_m": 2020.6,
+      "coords": [
+        -71.4247523,
+        -32.7055681
+      ],
+      "tags": {
+        "leisure": "pitch",
+        "sport": "tennis"
+      }
+    },
+    {
+      "name": "El Paso",
+      "dist_m": 2022.9,
+      "coords": [
+        -71.405476,
+        -32.7142693
+      ],
+      "tags": {
+        "name": "El Paso",
+        "place": "hamlet"
+      }
+    },
+    {
+      "name": "swimming_pool",
+      "dist_m": 2042.5,
+      "coords": [
+        -71.4052936,
+        -32.7144391
+      ],
+      "tags": {
+        "access": "private",
+        "leisure": "swimming_pool"
+      }
+    },
+    {
+      "name": "swimming_pool",
+      "dist_m": 2059.6,
+      "coords": [
+        -71.3869581,
+        -32.6872943
+      ],
+      "tags": {
+        "access": "private",
+        "leisure": "swimming_pool"
+      }
+    },
+    {
+      "name": "pitch",
+      "dist_m": 2065.0,
+      "coords": [
+        -71.3873066,
+        -32.6866756
+      ],
+      "tags": {
+        "leisure": "pitch",
+        "sport": "tennis"
+      }
+    },
+    {
+      "name": "Potrerillos",
+      "dist_m": 2127.4,
+      "coords": [
+        -71.3872879,
+        -32.6856368
+      ],
+      "tags": {
+        "name": "Potrerillos",
+        "place": "hamlet",
+        "population": "58",
+        "population:date": "2017",
+        "source:population": "INE"
+      }
+    }
+  ]
+}

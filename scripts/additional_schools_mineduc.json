@@ -1,0 +1,26 @@
+[
+  {
+    "name": "Escuela El Rincón Puchuncaví",
+    "lat": -32.724887,
+    "lon": -71.3686819,
+    "display": "Escuela El Rincón, Camino El Rincón, El Rincón, Puchuncaví, Provincia de Valparaíso, Región de Valparaíso, Chile"
+  },
+  {
+    "name": "Escuela La Laguna Puchuncaví",
+    "lat": -32.632159,
+    "lon": -71.4191928,
+    "display": "Escuela La Laguna, Camino Principal, Maitencillo, Puchuncaví, Provincia de Valparaíso, Región de Valparaíso, 2501119, Chile"
+  },
+  {
+    "name": "Escuela Pucalán Puchuncaví",
+    "lat": -32.7521033,
+    "lon": -71.3445039,
+    "display": "Escuela Pucalán, Ruta F-220, Pucalán, Puchuncaví, Provincia de Valparaíso, Región de Valparaíso, Chile"
+  },
+  {
+    "name": "Colegio Pioneros Costa Puchuncaví",
+    "lat": -32.6719707,
+    "lon": -71.4307774,
+    "display": "Colegio Pioneros Costa, Aguas Blancas, Tacna, Condominio Alto Rungue, Maitencillo, Puchuncaví, Provincia de Valparaíso, Región de Valparaíso, 2500000, Chile"
+  }
+]
