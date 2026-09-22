@@ -1,0 +1,23 @@
+{
+  "name": "redes_udp",
+  "version": "1.0.0",
+  "description": "Simulador Ciberfísico de Ruteo Resiliente UAV (Bahía de Quintero - Ventanas - Puchuncaví)",
+  "main": "src/main.js",
+  "type": "module",
+  "scripts": {
+    "dev": "python -m http.server 8000",
+    "start": "python -m http.server 8000",
+    "serve": "npx serve -l 8000 ."
+  },
+  "keywords": [
+    "uav",
+    "routing",
+    "resilience",
+    "leaflet",
+    "gis",
+    "sinca",
+    "quintero"
+  ],
+  "author": "Benjamin Morales, Benjamin Polanco, Benjamin Aceituno, Aldo Morales",
+  "license": "MIT"
+}
