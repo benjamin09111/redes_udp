@@ -16,6 +16,9 @@
   <!-- Barra Superior -->
   <header class="app-header">
     <div class="header-brand">
+      <button id="headerToggleSidebar" class="header-toggle-btn" title="Minimizar / Mostrar panel lateral">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="9" y1="3" x2="9" y2="21"></line></svg>
+      </button>
       <h1>Simulador Resiliente de Ruteo UAV</h1>
       <span class="header-badge">DGAC DAN 151 &bull; 0–120m AGL</span>
     </div>
@@ -28,7 +31,18 @@
   <div class="main-container">
     
     <!-- Barra Lateral GIS -->
-    <aside class="gis-sidebar">
+    <aside class="gis-sidebar" id="gisSidebar">
+      <!-- Barra de Encabezado del Panel con Minimizar -->
+      <div class="sidebar-header">
+        <div class="sidebar-title">
+          <span>📊</span>
+          <span>Panel de Red y Métricas</span>
+        </div>
+        <button id="btnCollapseSidebar" class="btn-sidebar-collapse" title="Minimizar panel (dejar solo el mapa)">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+          <span>Minimizar</span>
+        </button>
+      </div>
       
       <!-- Métricas de Red Estratificada -->
       <div class="panel-section">
@@ -129,6 +143,12 @@
       </div>
 
     </aside>
+
+    <!-- Botón flotante para restaurar/expandir panel cuando esté minimizado -->
+    <button id="btnExpandSidebar" class="sidebar-floating-toggle" title="Mostrar panel de red y métricas">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+      <span>Mostrar Panel</span>
+    </button>
 
     <!-- Visor Cartográfico Tipo QGIS -->
     <main id="map"></main>

@@ -184,6 +184,60 @@ class App {
         this.mapManager.setShowAllIcons(e.target.checked);
       });
     }
+
+    // 4. Minimizar / Restaurar Barra Lateral Completa (Sidebar)
+    const sidebar = document.getElementById('gisSidebar');
+    const btnCollapse = document.getElementById('btnCollapseSidebar');
+    const btnExpand = document.getElementById('btnExpandSidebar');
+    const btnHeaderToggle = document.getElementById('headerToggleSidebar');
+
+    const setSidebarCollapsed = (collapse) => {
+      if (!sidebar) return;
+      if (collapse) {
+        sidebar.classList.add('collapsed');
+        if (btnExpand) btnExpand.classList.add('visible');
+      } else {
+        sidebar.classList.remove('collapsed');
+        if (btnExpand) btnExpand.classList.remove('visible');
+      }
+
+      // Disparar recálculo de dimensiones en Leaflet durante y después de la transición
+      const triggerResize = () => {
+        if (this.mapManager && this.mapManager.map) {
+          this.mapManager.map.invalidateSize();
+        }
+      };
+
+      // Inmediato, a mitad de animación y al terminar
+      triggerResize();
+      setTimeout(triggerResize, 160);
+      setTimeout(triggerResize, 350);
+    };
+
+    if (btnCollapse) {
+      btnCollapse.addEventListener('click', () => setSidebarCollapsed(true));
+    }
+
+    if (btnExpand) {
+      btnExpand.addEventListener('click', () => setSidebarCollapsed(false));
+    }
+
+    if (btnHeaderToggle) {
+      btnHeaderToggle.addEventListener('click', () => {
+        const isCollapsed = sidebar.classList.contains('collapsed');
+        setSidebarCollapsed(!isCollapsed);
+      });
+    }
+
+    // Atajo de teclado: Tecla 'M' para minimizar/expandir
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'm' || e.key === 'M') {
+        if (e.target.tagName !== 'INPUT' && e.target.tagName !== 'TEXTAREA') {
+          const isCollapsed = sidebar.classList.contains('collapsed');
+          setSidebarCollapsed(!isCollapsed);
+        }
+      }
+    });
   }
 }
 

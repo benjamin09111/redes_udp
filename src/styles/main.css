@@ -50,6 +50,27 @@ body {
   z-index: 1000;
 }
 
+.header-toggle-btn {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.header-toggle-btn:hover {
+  background: rgba(56, 189, 248, 0.15);
+  border-color: rgba(56, 189, 248, 0.4);
+  color: var(--accent-cyan);
+  transform: scale(1.04);
+}
+
 .header-brand {
   display: flex;
   align-items: center;
@@ -84,6 +105,8 @@ body {
   display: flex;
   position: relative;
   overflow: hidden;
+  width: 100%;
+  height: calc(100vh - 52px);
 }
 
 /* Panel Lateral (Sidebar GIS) */
@@ -96,6 +119,116 @@ body {
   flex-direction: column;
   z-index: 1000;
   overflow-y: auto;
+  flex-shrink: 0;
+  transition: margin-left 0.32s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.32s ease;
+  position: relative;
+}
+
+/* Estado Colapsado / Minimizado */
+.gis-sidebar.collapsed {
+  margin-left: -380px;
+  box-shadow: none;
+}
+
+/* Encabezado fijo del Sidebar */
+.sidebar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 14px;
+  background: rgba(15, 23, 42, 0.96);
+  border-bottom: 1px solid var(--border-color);
+  position: sticky;
+  top: 0;
+  z-index: 25;
+}
+
+.sidebar-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  letter-spacing: 0.3px;
+}
+
+.btn-sidebar-collapse {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--border-color);
+  color: var(--text-secondary);
+  padding: 4px 9px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.72rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-sidebar-collapse:hover {
+  background: rgba(56, 189, 248, 0.16);
+  color: var(--accent-cyan);
+  border-color: rgba(56, 189, 248, 0.4);
+  transform: translateX(-2px);
+}
+
+/* Botón flotante para restaurar/expandir panel */
+.sidebar-floating-toggle {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  z-index: 1100;
+  background: rgba(17, 24, 39, 0.94);
+  border: 1.5px solid rgba(56, 189, 248, 0.5);
+  color: #fff;
+  padding: 8px 14px;
+  border-radius: 8px;
+  backdrop-filter: blur(14px);
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.65);
+  cursor: pointer;
+  display: none;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  animation: fadeInSlide 0.25s ease-out;
+}
+
+@keyframes fadeInSlide {
+  from {
+    opacity: 0;
+    transform: translateX(-15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.sidebar-floating-toggle:hover {
+  background: rgba(30, 41, 59, 0.98);
+  border-color: var(--accent-cyan);
+  box-shadow: 0 0 20px rgba(56, 189, 248, 0.45);
+  transform: translateY(-1px) scale(1.02);
+}
+
+.sidebar-floating-toggle.visible {
+  display: flex;
+}
+
+/* Visor del Mapa a pantalla completa */
+#map {
+  flex: 1;
+  height: 100%;
+  width: 100%;
+  position: relative;
+  z-index: 1;
+  background-color: #0b0f19;
 }
 
 .panel-section {
