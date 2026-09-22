@@ -3212,30 +3212,6 @@
     {
       "type": "Feature",
       "properties": {
-        "id": "hotel_7500802221",
-        "name": "Cabañas Rustik",
-        "category": "hospitality",
-        "type": "hospitality",
-        "role": "Hospedaje Turístico: Cabañas Rustik (Población Flotante y Descanso)",
-        "icon": "🏨",
-        "color": "#8b5cf6",
-        "priority": 3,
-        "elevation_msnm": 16,
-        "pollutants": [],
-        "city": "Quintero"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -71.526371,
-          -32.821193,
-          16
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
         "id": "hotel_10813080225",
         "name": "Hostería Los Leones",
         "category": "hospitality",
@@ -3325,54 +3301,6 @@
         "coordinates": [
           -71.50801,
           -32.71581,
-          16
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": "hotel_637621112",
-        "name": "Olabonita Ritoque Lodge",
-        "category": "hospitality",
-        "type": "hospitality",
-        "role": "Hospedaje Turístico: Olabonita Ritoque Lodge (Población Flotante y Descanso)",
-        "icon": "🏨",
-        "color": "#8b5cf6",
-        "priority": 3,
-        "elevation_msnm": 16,
-        "pollutants": [],
-        "city": "Quintero"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -71.529365,
-          -32.827809,
-          16
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": "hotel_637621116",
-        "name": "La Ritoqueña",
-        "category": "hospitality",
-        "type": "hospitality",
-        "role": "Hospedaje Turístico: La Ritoqueña (Población Flotante y Descanso)",
-        "icon": "🏨",
-        "color": "#8b5cf6",
-        "priority": 3,
-        "elevation_msnm": 16,
-        "pollutants": [],
-        "city": "Quintero"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -71.529634,
-          -32.827958,
           16
         ]
       }
@@ -3685,30 +3613,6 @@
         "coordinates": [
           -71.489172,
           -32.709363,
-          15
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": "resto_4208071089",
-        "name": "Restaurante Ritoque",
-        "category": "restaurant",
-        "type": "restaurant",
-        "role": "Gastronomía y Polo Turístico: Restaurante Ritoque (Concurrencia en Horas Pico)",
-        "icon": "🍽",
-        "color": "#f59e0b",
-        "priority": 3,
-        "elevation_msnm": 15,
-        "pollutants": [],
-        "city": "Quintero"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -71.528349,
-          -32.827384,
           15
         ]
       }
@@ -4934,30 +4838,6 @@
           -71.50896,
           -32.79902,
           18
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": "attr_pista_4wd_quintero",
-        "name": "Pista Escuadrón 4WD Quintero (Off-Road Ritoque)",
-        "category": "attraction",
-        "type": "attraction",
-        "role": "Recinto Deportivo Motor Off-Road 4x4 / Dunas de Ritoque",
-        "icon": "🚙",
-        "color": "#d946ef",
-        "priority": 3,
-        "elevation_msnm": 15,
-        "pollutants": [],
-        "city": "Quintero"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -71.5283,
-          -32.825,
-          15
         ]
       }
     },
