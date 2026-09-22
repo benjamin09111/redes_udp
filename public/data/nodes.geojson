@@ -4844,30 +4844,6 @@
     {
       "type": "Feature",
       "properties": {
-        "id": "attr_335422091",
-        "name": "Geositio de Fósiles",
-        "category": "attraction",
-        "type": "attraction",
-        "role": "Atractivo Turístico y Mirador: Geositio de Fósiles (Afluencia Visitantes)",
-        "icon": "📸",
-        "color": "#ec4899",
-        "priority": 3,
-        "elevation_msnm": 22,
-        "pollutants": [],
-        "city": "Puchuncaví"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -71.466624,
-          -32.769565,
-          22
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
         "id": "attr_980749157",
         "name": "Museo de Historia Natural de Puchuncaví",
         "category": "historic",
