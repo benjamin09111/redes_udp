@@ -22,7 +22,7 @@ class App {
 
   async loadNetworkData() {
     try {
-      const response = await fetch('./public/data/nodes.geojson');
+      const response = await fetch(`./public/data/nodes.geojson?t=${Date.now()}`, { cache: 'no-store' });
       if (!response.ok) {
         throw new Error(`Error al leer nodes.geojson: ${response.statusText}`);
       }

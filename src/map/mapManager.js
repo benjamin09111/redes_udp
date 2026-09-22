@@ -141,7 +141,7 @@ export class MapManager {
    */
   async loadUrbanZones() {
     try {
-      const resp = await fetch('./public/data/urban_zones.geojson');
+      const resp = await fetch(`./public/data/urban_zones.geojson?t=${Date.now()}`, { cache: 'no-store' });
       if (!resp.ok) return;
       const data = await resp.json();
 
