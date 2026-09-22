@@ -5,6 +5,7 @@
 
 import { NetworkGraph } from './core/NetworkGraph.js';
 import { MapManager } from './map/mapManager.js';
+import { CATEGORIES, getCategoryConfig } from './config/categories.js';
 
 class App {
   constructor() {
@@ -15,7 +16,7 @@ class App {
   }
 
   async init() {
-    this.mapManager.init();
+    await this.mapManager.init();
     await this.loadNetworkData();
     this.setupUI();
   }
@@ -30,7 +31,7 @@ class App {
       const geojsonData = await response.json();
       console.log('Datos GeoJSON cargados con éxito:', geojsonData);
 
-      // Ingresar nodos al grafo matemático
+      // Ingresar nodos al grafo matemático con proyección métrica UTM 19S automática
       geojsonData.features.forEach(feature => {
         const id = feature.properties.id;
         const coords = feature.geometry.coordinates; // [lng, lat, alt]
@@ -44,7 +45,7 @@ class App {
         console.log('Nodo seleccionado en mapa:', selectedNode);
       });
 
-      // Actualizar métricas del panel
+      // Actualizar métricas del panel y lista de nodos
       this.updateDashboardMetrics();
       this.populateNodesList(this.allNodes);
 
@@ -59,55 +60,36 @@ class App {
 
   updateDashboardMetrics() {
     const totalEl = document.getElementById('metricTotalNodes');
-    const sincaEl = document.getElementById('metricSincaNodes');
-    const indEl = document.getElementById('metricIndustryNodes');
-    const healthEl = document.getElementById('metricHealthNodes');
-    const eduEl = document.getElementById('metricEducationNodes');
-    const commEl = document.getElementById('metricCommercialNodes');
-    const crowdEl = document.getElementById('metricCrowdedNodes');
-    const beachEl = document.getElementById('metricBeachNodes');
-    const hospEl = document.getElementById('metricHospitalityNodes');
-    const restoEl = document.getElementById('metricRestaurantNodes');
-    const attrEl = document.getElementById('metricAttractionNodes');
-    const histEl = document.getElementById('metricHistoricNodes');
-    const hubEl = document.getElementById('metricHubNodes');
+    if (totalEl) totalEl.textContent = this.allNodes.length;
 
-    const counts = {
-      sinca: 0,
-      emission_source: 0,
-      health: 0,
-      education: 0,
-      commercial: 0,
-      crowded_area: 0,
-      beach: 0,
-      hospitality: 0,
-      restaurant: 0,
-      attraction: 0,
-      historic: 0,
-      auxiliary_hub: 0
-    };
+    const counts = {};
+    Object.keys(CATEGORIES).forEach(k => counts[k] = 0);
 
     this.allNodes.forEach(node => {
       const cat = node.properties.category;
       if (counts[cat] !== undefined) counts[cat]++;
     });
 
-    if (totalEl) totalEl.textContent = this.allNodes.length;
-    if (sincaEl) sincaEl.textContent = counts.sinca;
-    if (indEl) indEl.textContent = counts.emission_source;
-    if (healthEl) healthEl.textContent = counts.health;
-    if (eduEl) eduEl.textContent = counts.education;
-    if (commEl) commEl.textContent = counts.commercial;
-    if (crowdEl) crowdEl.textContent = counts.crowded_area;
-    if (beachEl) beachEl.textContent = counts.beach;
-    if (hospEl) hospEl.textContent = counts.hospitality;
-    if (restoEl) restoEl.textContent = counts.restaurant;
-    if (attrEl) attrEl.textContent = counts.attraction;
-    if (histEl) histEl.textContent = counts.historic;
-    if (hubEl) hubEl.textContent = counts.auxiliary_hub;
+    const metricIdMap = {
+      sinca: 'metricSincaNodes',
+      emission_source: 'metricIndustryNodes',
+      health: 'metricHealthNodes',
+      education: 'metricEducationNodes',
+      commercial: 'metricCommercialNodes',
+      crowded_area: 'metricCrowdedNodes',
+      beach: 'metricBeachNodes',
+      hospitality: 'metricHospitalityNodes',
+      restaurant: 'metricRestaurantNodes',
+      attraction: 'metricAttractionNodes',
+      historic: 'metricHistoricNodes',
+      auxiliary_hub: 'metricHubNodes'
+    };
+
+    Object.entries(metricIdMap).forEach(([catKey, elId]) => {
+      const el = document.getElementById(elId);
+      if (el) el.textContent = counts[catKey] || 0;
+    });
   }
-
-
 
   populateNodesList(nodes) {
     const listContainer = document.getElementById('nodesList');
@@ -125,9 +107,9 @@ class App {
     }
 
     filtered.forEach(node => {
-      const iconChar = node.properties.icon || '📍';
       const cat = node.properties.category || 'other';
-
+      const config = getCategoryConfig(cat);
+      const iconChar = node.properties.icon || config.icon || '📍';
       const cityText = node.properties.city ? `<span style="color: var(--accent-cyan); font-size: 0.68rem; margin-left: 4px;">• ${node.properties.city}</span>` : '';
 
       const item = document.createElement('div');
@@ -135,8 +117,8 @@ class App {
       item.innerHTML = `
         <div class="node-header">
           <span style="font-weight: 500;">${iconChar} ${node.properties.name}</span>
-          <span class="status-tag tag-${cat}">
-            ${node.properties.category}
+          <span class="status-tag ${config.tagClass}">
+            ${config.shortName}
           </span>
         </div>
         <div class="node-coords">
