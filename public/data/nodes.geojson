@@ -1007,30 +1007,6 @@
     {
       "type": "Feature",
       "properties": {
-        "id": "edu_escuela_tortel",
-        "name": "Escuela Juan José Tortel (Valle Alegre)",
-        "category": "education",
-        "type": "education",
-        "role": "Educación: Escuela Básica Valle Alegre",
-        "icon": "🏫",
-        "color": "#f97316",
-        "priority": 4,
-        "elevation_msnm": 70,
-        "pollutants": [],
-        "city": "Puchuncaví"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -71.440806,
-          -32.81167,
-          70
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
         "id": "edu_liceo_politecnico_quintero",
         "name": "Liceo Politécnico de Quintero",
         "category": "education",
@@ -2033,30 +2009,6 @@
           -71.4122,
           -32.727401,
           86
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": "crowd_club_valle_alegre",
-        "name": "Club Deportivo Valle Alegre",
-        "category": "crowded_area",
-        "type": "crowd",
-        "role": "Cancha y Espacio Deportivo Rural Valle Alegre",
-        "icon": "🏟",
-        "color": "#ec4899",
-        "priority": 3,
-        "elevation_msnm": 65,
-        "pollutants": [],
-        "city": "Puchuncaví"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -71.434059,
-          -32.808799,
-          65
         ]
       }
     },
@@ -4343,30 +4295,6 @@
     {
       "type": "Feature",
       "properties": {
-        "id": "resto_12044300570",
-        "name": "Hornitos del Valle",
-        "category": "restaurant",
-        "type": "restaurant",
-        "role": "Gastronomía y Polo Turístico: Hornitos del Valle (Concurrencia en Horas Pico)",
-        "icon": "🍽",
-        "color": "#f59e0b",
-        "priority": 3,
-        "elevation_msnm": 15,
-        "pollutants": [],
-        "city": "Puchuncaví"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -71.441694,
-          -32.811346,
-          15
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
         "id": "resto_12348290795",
         "name": "Royal Restaurant",
         "category": "restaurant",
@@ -4384,30 +4312,6 @@
         "coordinates": [
           -71.415451,
           -32.727093,
-          15
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": "resto_12729383578",
-        "name": "La Lechería",
-        "category": "restaurant",
-        "type": "restaurant",
-        "role": "Gastronomía y Polo Turístico: La Lechería (Concurrencia en Horas Pico)",
-        "icon": "🍽",
-        "color": "#f59e0b",
-        "priority": 3,
-        "elevation_msnm": 15,
-        "pollutants": [],
-        "city": "Puchuncaví"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -71.442355,
-          -32.805996,
           15
         ]
       }
@@ -4799,30 +4703,6 @@
     {
       "type": "Feature",
       "properties": {
-        "id": "attr_7194575411",
-        "name": "Mirador Gabriel",
-        "category": "attraction",
-        "type": "attraction",
-        "role": "Atractivo Turístico y Mirador: Mirador Gabriel (Afluencia Visitantes)",
-        "icon": "📸",
-        "color": "#ec4899",
-        "priority": 3,
-        "elevation_msnm": 22,
-        "pollutants": [],
-        "city": "Puchuncaví"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -71.420966,
-          -32.779017,
-          22
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
         "id": "attr_10776927882",
         "name": "Mirador El Estuche",
         "category": "attraction",
@@ -4991,30 +4871,6 @@
     {
       "type": "Feature",
       "properties": {
-        "id": "attr_13718823522",
-        "name": "ancla",
-        "category": "attraction",
-        "type": "attraction",
-        "role": "Atractivo Turístico y Mirador: ancla (Afluencia Visitantes)",
-        "icon": "📸",
-        "color": "#ec4899",
-        "priority": 3,
-        "elevation_msnm": 22,
-        "pollutants": [],
-        "city": "Puchuncaví"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -71.442711,
-          -32.806236,
-          22
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
         "id": "attr_335422091",
         "name": "Geositio de Fósiles",
         "category": "attraction",
@@ -5063,30 +4919,6 @@
     {
       "type": "Feature",
       "properties": {
-        "id": "attr_1300318200",
-        "name": "Casa Museo Almirante Lord Thomas Cochrane (Valle Alegre)",
-        "category": "historic",
-        "type": "attraction",
-        "role": "Casona Histórica y Museo Colonial del Almirante Lord Cochrane",
-        "icon": "🏛",
-        "color": "#d97706",
-        "priority": 4,
-        "elevation_msnm": 22,
-        "pollutants": [],
-        "city": "Puchuncaví"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -71.442874,
-          -32.806204,
-          22
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
         "id": "attr_1347402689",
         "name": "Casa Museo Downey (Quintero)",
         "category": "historic",
@@ -5104,30 +4936,6 @@
         "coordinates": [
           -71.533006,
           -32.779048,
-          22
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": "attr_1374799616",
-        "name": "Hacienda Valle Alegre",
-        "category": "attraction",
-        "type": "attraction",
-        "role": "Atractivo Turístico y Mirador: Hacienda Valle Alegre (Afluencia Visitantes)",
-        "icon": "📸",
-        "color": "#ec4899",
-        "priority": 3,
-        "elevation_msnm": 22,
-        "pollutants": [],
-        "city": "Puchuncaví"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -71.442939,
-          -32.806845,
           22
         ]
       }
@@ -5207,30 +5015,6 @@
     {
       "type": "Feature",
       "properties": {
-        "id": "church_12348290759",
-        "name": "Nuestra Señora de Valle Alegre",
-        "category": "crowded_area",
-        "type": "crowd",
-        "role": "Centro de Culto Religioso: Nuestra Señora de Valle Alegre (Congregación Masiva)",
-        "icon": "⛪",
-        "color": "#ec4899",
-        "priority": 4,
-        "elevation_msnm": 20,
-        "pollutants": [],
-        "city": "Puchuncaví"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -71.441002,
-          -32.805732,
-          20
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
         "id": "church_150951528",
         "name": "Iglesia de Piedra (Monumento Arquitectónico Quintero)",
         "category": "historic",
@@ -5273,102 +5057,6 @@
           -71.530014,
           -32.794358,
           20
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": "edu_escuela_la_quebrada",
-        "name": "Escuela Básica La Quebrada",
-        "category": "education",
-        "type": "education",
-        "role": "Educación Rural: Escuela La Quebrada (Puchuncaví)",
-        "icon": "🏫",
-        "color": "#f97316",
-        "priority": 4,
-        "elevation_msnm": 85,
-        "pollutants": [],
-        "city": "Puchuncaví"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -71.354472,
-          -32.681434,
-          85
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": "edu_escuela_pucalan",
-        "name": "Escuela Básica Pucalán",
-        "category": "education",
-        "type": "education",
-        "role": "Educación Rural: Escuela Pucalán (Ruta F-220, Puchuncaví)",
-        "icon": "🏫",
-        "color": "#f97316",
-        "priority": 4,
-        "elevation_msnm": 110,
-        "pollutants": [],
-        "city": "Puchuncaví"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -71.344504,
-          -32.752103,
-          110
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": "edu_escuela_el_rincon",
-        "name": "Escuela Básica El Rincón",
-        "category": "education",
-        "type": "education",
-        "role": "Educación Rural: Escuela El Rincón (Puchuncaví)",
-        "icon": "🏫",
-        "color": "#f97316",
-        "priority": 4,
-        "elevation_msnm": 90,
-        "pollutants": [],
-        "city": "El Rincón"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -71.368697,
-          -32.724875,
-          90
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": "edu_colegio_pioneros",
-        "name": "Colegio Pioneros Costa (Puchuncaví)",
-        "category": "education",
-        "type": "education",
-        "role": "Educación: Colegio Particular Pioneros Costa (Alto Rungue)",
-        "icon": "🏫",
-        "color": "#f97316",
-        "priority": 4,
-        "elevation_msnm": 75,
-        "pollutants": [],
-        "city": "Puchuncaví"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -71.43079,
-          -32.6719,
-          75
         ]
       }
     },
@@ -6387,138 +6075,6 @@
           -71.407185,
           -32.69718,
           80
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": "civic_el_rincon_centro",
-        "name": "Localidad y Centro Comunitario El Rincón",
-        "category": "crowded_area",
-        "type": "civic",
-        "role": "Poblado Rural El Rincón y Sector Residencial",
-        "icon": "👥",
-        "color": "#e11d48",
-        "priority": 4,
-        "city": "El Rincón"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -71.369826,
-          -32.724445,
-          120
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": "leisure_plaza_el_rincon",
-        "name": "Plaza y Parque Recreativo El Rincón",
-        "category": "crowded_area",
-        "type": "park",
-        "role": "Espacio Público Verde y Juegos El Rincón",
-        "icon": "🌳",
-        "color": "#e11d48",
-        "priority": 4,
-        "city": "El Rincón"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -71.369422,
-          -32.724238,
-          120
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": "sport_cancha_el_rincon",
-        "name": "Cancha de Fútbol El Rincón",
-        "category": "crowded_area",
-        "type": "sports",
-        "role": "Campo Deportivo y Concurrencia de Fin de Semana El Rincón",
-        "icon": "⚽",
-        "color": "#e11d48",
-        "priority": 4,
-        "city": "El Rincón"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -71.368945,
-          -32.723989,
-          121
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": "civic_el_rincon_poniente",
-        "name": "Sector El Rincón Poniente",
-        "category": "crowded_area",
-        "type": "civic",
-        "role": "Poblado Rural y Conexión Agrícola Poniente",
-        "icon": "👥",
-        "color": "#e11d48",
-        "priority": 3,
-        "city": "El Rincón"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -71.391306,
-          -32.724888,
-          105
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": "civic_la_estancilla_centro",
-        "name": "Comunidad La Estancilla",
-        "category": "crowded_area",
-        "type": "civic",
-        "role": "Asentamiento Rural Tradicional Comunidad La Estancilla",
-        "icon": "👥",
-        "color": "#f97316",
-        "priority": 4,
-        "city": "Comunidad La Estancilla"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -71.389997,
-          -32.743157,
-          135
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": "civic_sede_la_estancilla",
-        "name": "Sede Social y Junta Vecinal La Estancilla",
-        "category": "crowded_area",
-        "type": "civic",
-        "role": "Centro de Encuentro Comunitario Rural La Estancilla",
-        "icon": "🏛",
-        "color": "#f97316",
-        "priority": 4,
-        "city": "Comunidad La Estancilla"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -71.3892,
-          -32.7441,
-          136
         ]
       }
     },

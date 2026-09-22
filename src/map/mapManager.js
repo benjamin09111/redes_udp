@@ -37,20 +37,20 @@ export class MapManager {
    * Inicializa el visor cartográfico con amplia cobertura espacial y paneo fluido
    */
   init() {
-    // Cobertura amplia para abarcar toda la bahía y valles interiores sin cortes
+    // Cobertura focalizada en la Bahía de Quintero, Ventanas y Puchuncaví Centro
     const focusBounds = L.latLngBounds(
-      L.latLng(-32.8400, -71.5550), // Sur-oeste: Ritoque y Península de Quintero
-      L.latLng(-32.6850, -71.3550)  // Norte-este: El Rungue, El Rincón y La Estancilla
+      L.latLng(-32.8350, -71.5500), // Sur-oeste: Ritoque y Península de Quintero
+      L.latLng(-32.6850, -71.3980)  // Norte-este: Horcón, El Rungue y Puchuncaví Centro
     );
 
     // Margen exterior generoso para permitir desplazamiento natural sin bloqueos
     const regionalMaxBounds = L.latLngBounds(
       L.latLng(-32.9200, -71.6500),
-      L.latLng(-32.6200, -71.2800)
+      L.latLng(-32.6200, -71.3200)
     );
 
     this.map = L.map(this.containerId, {
-      center: [-32.7550, -71.4550],
+      center: [-32.7600, -71.4700],
       zoom: 12,
       minZoom: 10,
       maxZoom: 19,
@@ -59,7 +59,7 @@ export class MapManager {
       zoomControl: true
     });
 
-    this.map.fitBounds(focusBounds, { padding: [30, 30] });
+    this.map.fitBounds(focusBounds, { padding: [25, 25] });
 
     // 2. Capas Base Satelitales Continuas (sin recorte de teselas)
     const satelliteEsri = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
