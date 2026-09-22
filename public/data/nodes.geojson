@@ -956,30 +956,6 @@
     {
       "type": "Feature",
       "properties": {
-        "id": "edu_escuela_el_rungue",
-        "name": "Escuela Básica El Rungue",
-        "category": "education",
-        "type": "education",
-        "role": "Educación: Escuela Rural Sector El Rungue",
-        "icon": "🏫",
-        "color": "#f97316",
-        "priority": 4,
-        "elevation_msnm": 95,
-        "pollutants": [],
-        "city": "El Rungue"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -71.406807,
-          -32.697141,
-          95
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
         "id": "edu_liceo_politecnico_quintero",
         "name": "Liceo Politécnico de Quintero",
         "category": "education",
@@ -5783,29 +5759,6 @@
     {
       "type": "Feature",
       "properties": {
-        "id": "ind_cemento_melon_puchuncavi",
-        "name": "Planta Cemento Melón (Puchuncaví / Rungue)",
-        "category": "emission_source",
-        "type": "cement",
-        "role": "Instalación Industrial y Extracción de Minerales / Áridos - Sector Interior Puchuncaví",
-        "icon": "🏭",
-        "color": "#d97706",
-        "priority": 5,
-        "city": "El Rungue",
-        "pollutants": "MP10, Polvo en Suspensión de Canteras"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -71.40568,
-          -32.70584,
-          85
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
         "id": "ind_subestacion_ventanas",
         "name": "Subestación Eléctrica Ventanas (Transelec)",
         "category": "emission_source",
@@ -5898,138 +5851,6 @@
     {
       "type": "Feature",
       "properties": {
-        "id": "civic_rungue_centro",
-        "name": "Localidad y Centro de El Rungue",
-        "category": "crowded_area",
-        "type": "civic",
-        "role": "Poblado Rural y Concurrencia Central El Rungue",
-        "icon": "👥",
-        "color": "#6366f1",
-        "priority": 4,
-        "city": "El Rungue"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -71.406327,
-          -32.696091,
-          75
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": "rest_caballito_de_palo_rungue",
-        "name": "Restaurante El Caballito de Palo",
-        "category": "restaurant",
-        "type": "restaurant",
-        "role": "Gastronomía Tradicional y Concurrencia de Visitantes El Rungue",
-        "icon": "🍽",
-        "color": "#f59e0b",
-        "priority": 3,
-        "city": "El Rungue"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -71.406087,
-          -32.696191,
-          75
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": "comm_minimarket_tio_miky_rungue",
-        "name": "Minimarket Tío Miky",
-        "category": "commercial",
-        "type": "shop",
-        "role": "Abastecimiento y Comercio Local El Rungue",
-        "icon": "🛒",
-        "color": "#10b981",
-        "priority": 3,
-        "city": "El Rungue"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -71.406318,
-          -32.695817,
-          75
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": "comm_comercio_san_esteban_rungue",
-        "name": "Comercio y Provisiones San Esteban",
-        "category": "commercial",
-        "type": "shop",
-        "role": "Comercio Minorista El Rungue",
-        "icon": "🛒",
-        "color": "#10b981",
-        "priority": 3,
-        "city": "El Rungue"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -71.405999,
-          -32.696404,
-          76
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": "hosp_cabanas_victoria_rungue",
-        "name": "Cabañas Victoria (El Rungue)",
-        "category": "hospitality",
-        "type": "hospitality",
-        "role": "Alojamiento Turístico Rural y Descanso El Rungue",
-        "icon": "🏨",
-        "color": "#8b5cf6",
-        "priority": 3,
-        "city": "El Rungue"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -71.406844,
-          -32.69311,
-          72
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": "sport_cancha_el_rungue",
-        "name": "Cancha y Complejo Deportivo El Rungue",
-        "category": "crowded_area",
-        "type": "sports",
-        "role": "Recinto Deportivo y Encuentro Comunitario El Rungue",
-        "icon": "⚽",
-        "color": "#6366f1",
-        "priority": 4,
-        "city": "El Rungue"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -71.407185,
-          -32.69718,
-          80
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
         "id": "civic_los_tomes_centro",
         "name": "Localidad Rural Los Tomes",
         "category": "crowded_area",
@@ -6096,94 +5917,6 @@
     {
       "type": "Feature",
       "properties": {
-        "id": "civic_el_alto_puchuncavi",
-        "name": "Sector Rural El Alto (Puchuncaví)",
-        "category": "crowded_area",
-        "type": "civic",
-        "role": "Poblado Rural y Conexión Vial Interior Puchuncaví Norte",
-        "icon": "👥",
-        "color": "#14b8a6",
-        "priority": 4,
-        "city": "El Alto"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -71.43063,
-          -32.715738,
-          70
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": "attr_ecoturismo_vivo_el_alto",
-        "name": "Centro Ecoturismo Vivo (El Alto)",
-        "category": "attraction",
-        "type": "tourism",
-        "role": "Actividades de Ecoturismo, Senderismo y Recreación al Aire Libre",
-        "icon": "🏕",
-        "color": "#14b8a6",
-        "priority": 3,
-        "city": "El Alto"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -71.429188,
-          -32.711223,
-          72
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": "sport_cancha_el_alto",
-        "name": "Cancha Deportiva El Alto",
-        "category": "crowded_area",
-        "type": "sports",
-        "role": "Recinto Deportivo Comunitario El Alto",
-        "icon": "⚽",
-        "color": "#14b8a6",
-        "priority": 3,
-        "city": "El Alto"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -71.424752,
-          -32.705568,
-          80
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": "civic_las_catitas_el_alto",
-        "name": "Sector Las Catitas - El Alto",
-        "category": "crowded_area",
-        "type": "civic",
-        "role": "Asentamiento Rural y Agrario Las Catitas",
-        "icon": "👥",
-        "color": "#14b8a6",
-        "priority": 3,
-        "city": "El Alto"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -71.424176,
-          -32.726895,
-          65
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
         "id": "civic_centro_civico_loncura",
         "name": "Centro Cívico y Junta Vecinal Loncura",
         "category": "crowded_area",
@@ -6200,28 +5933,6 @@
           -71.50349,
           -32.788246,
           14
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": "attr_humedal_el_bato_loncura",
-        "name": "Humedal Urbano El Bato (Loncura / El Alto)",
-        "category": "attraction",
-        "type": "nature",
-        "role": "Santuario y Humedal Urbano Protegido por Ley 21.202",
-        "icon": "🌿",
-        "color": "#10b981",
-        "priority": 4,
-        "city": "Loncura"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -71.496777,
-          -32.780982,
-          8
         ]
       }
     },

@@ -561,39 +561,6 @@
     {
       "type": "Feature",
       "properties": {
-        "id": "urban_el_alto",
-        "name": "Sector Rural El Alto (Puchuncaví)",
-        "city": "El Alto",
-        "color": "#14b8a6",
-        "fillColor": "#0d9488"
-      },
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              -71.43102,
-              -32.71203
-            ],
-            [
-              -71.41788,
-              -32.71143
-            ],
-            [
-              -71.42485,
-              -32.70357
-            ],
-            [
-              -71.43102,
-              -32.71203
-            ]
-          ]
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
         "id": "urban_los_tomes",
         "name": "Localidad Rural Los Tomes",
         "city": "Los Tomes",
@@ -647,47 +614,6 @@
             [
               -71.45153,
               -32.72656
-            ]
-          ]
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": "urban_rungue",
-        "name": "Localidad de El Rungue",
-        "city": "El Rungue",
-        "color": "#6366f1",
-        "fillColor": "#4f46e5"
-      },
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              -71.41118,
-              -32.68485
-            ],
-            [
-              -71.40908,
-              -32.70882
-            ],
-            [
-              -71.40585,
-              -32.7099
-            ],
-            [
-              -71.39507,
-              -32.68876
-            ],
-            [
-              -71.41007,
-              -32.68394
-            ],
-            [
-              -71.41118,
-              -32.68485
             ]
           ]
         ]
