@@ -147,33 +147,6 @@
     {
       "type": "Feature",
       "properties": {
-        "id": "sinca_los_maitenes",
-        "name": "Estación SINCA Los Maitenes",
-        "category": "sinca",
-        "type": "station",
-        "role": "Monitoreo Oficial Calidad del Aire (MMA)",
-        "icon": "📡",
-        "color": "#0ea5e9",
-        "priority": 2,
-        "elevation_msnm": 45,
-        "pollutants": [
-          "SO2",
-          "PM10"
-        ],
-        "city": "Puchuncaví"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -71.454509,
-          -32.764345,
-          45
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
         "id": "sinca_quintero",
         "name": "Estación SINCA Quintero",
         "category": "sinca",
