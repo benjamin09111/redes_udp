@@ -1,0 +1,773 @@
+{
+ "type": "FeatureCollection",
+ "etl": {
+  "fuente": "Open-Meteo Forecast API (condiciones actuales)",
+  "url": "https://api.open-meteo.com/v1/forecast",
+  "generado": "2026-10-18T22:35:56+00:00",
+  "parametros": {
+   "aoi": [
+    -71.56,
+    -32.82,
+    -71.38,
+    -32.69
+   ],
+   "grilla": "4x4",
+   "umbral_rafaga_ms": 14.0
+  },
+  "total": 16
+ },
+ "features": [
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -71.56,
+       -32.82
+      ],
+      [
+       -71.515,
+       -32.82
+      ],
+      [
+       -71.515,
+       -32.7875
+      ],
+      [
+       -71.56,
+       -32.7875
+      ],
+      [
+       -71.56,
+       -32.82
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "external_id": "r0c0_2026-10-18T22:30",
+    "event_type": "viento",
+    "value": 7.4,
+    "unit": "m/s (ráfaga 10 m)",
+    "threshold": 14.0,
+    "exceeds": false,
+    "observed_at": "2026-10-18T22:30:00+00:00",
+    "lon": -71.5375,
+    "lat": -32.80375,
+    "cell": "r0c0",
+    "wind_speed_10m": 2.97,
+    "wind_direction_10m": 290,
+    "wind_speed_80m": 3.7,
+    "wind_speed_120m": 3.88,
+    "wind_direction_120m": 286
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -71.515,
+       -32.82
+      ],
+      [
+       -71.47,
+       -32.82
+      ],
+      [
+       -71.47,
+       -32.7875
+      ],
+      [
+       -71.515,
+       -32.7875
+      ],
+      [
+       -71.515,
+       -32.82
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "external_id": "r0c1_2026-10-18T22:30",
+    "event_type": "viento",
+    "value": 7.4,
+    "unit": "m/s (ráfaga 10 m)",
+    "threshold": 14.0,
+    "exceeds": false,
+    "observed_at": "2026-10-18T22:30:00+00:00",
+    "lon": -71.4925,
+    "lat": -32.80375,
+    "cell": "r0c1",
+    "wind_speed_10m": 2.97,
+    "wind_direction_10m": 290,
+    "wind_speed_80m": 3.7,
+    "wind_speed_120m": 3.88,
+    "wind_direction_120m": 286
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -71.47,
+       -32.82
+      ],
+      [
+       -71.425,
+       -32.82
+      ],
+      [
+       -71.425,
+       -32.7875
+      ],
+      [
+       -71.47,
+       -32.7875
+      ],
+      [
+       -71.47,
+       -32.82
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "external_id": "r0c2_2026-10-18T22:30",
+    "event_type": "viento",
+    "value": 6.0,
+    "unit": "m/s (ráfaga 10 m)",
+    "threshold": 14.0,
+    "exceeds": false,
+    "observed_at": "2026-10-18T22:30:00+00:00",
+    "lon": -71.4475,
+    "lat": -32.80375,
+    "cell": "r0c2",
+    "wind_speed_10m": 3.56,
+    "wind_direction_10m": 334,
+    "wind_speed_80m": 4.64,
+    "wind_speed_120m": 4.86,
+    "wind_direction_120m": 332
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -71.425,
+       -32.82
+      ],
+      [
+       -71.38,
+       -32.82
+      ],
+      [
+       -71.38,
+       -32.7875
+      ],
+      [
+       -71.425,
+       -32.7875
+      ],
+      [
+       -71.425,
+       -32.82
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "external_id": "r0c3_2026-10-18T22:30",
+    "event_type": "viento",
+    "value": 6.0,
+    "unit": "m/s (ráfaga 10 m)",
+    "threshold": 14.0,
+    "exceeds": false,
+    "observed_at": "2026-10-18T22:30:00+00:00",
+    "lon": -71.4025,
+    "lat": -32.80375,
+    "cell": "r0c3",
+    "wind_speed_10m": 3.56,
+    "wind_direction_10m": 334,
+    "wind_speed_80m": 4.64,
+    "wind_speed_120m": 4.86,
+    "wind_direction_120m": 332
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -71.56,
+       -32.7875
+      ],
+      [
+       -71.515,
+       -32.7875
+      ],
+      [
+       -71.515,
+       -32.755
+      ],
+      [
+       -71.56,
+       -32.755
+      ],
+      [
+       -71.56,
+       -32.7875
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "external_id": "r1c0_2026-10-18T22:30",
+    "event_type": "viento",
+    "value": 7.4,
+    "unit": "m/s (ráfaga 10 m)",
+    "threshold": 14.0,
+    "exceeds": false,
+    "observed_at": "2026-10-18T22:30:00+00:00",
+    "lon": -71.5375,
+    "lat": -32.77125,
+    "cell": "r1c0",
+    "wind_speed_10m": 2.97,
+    "wind_direction_10m": 290,
+    "wind_speed_80m": 3.7,
+    "wind_speed_120m": 3.88,
+    "wind_direction_120m": 286
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -71.515,
+       -32.7875
+      ],
+      [
+       -71.47,
+       -32.7875
+      ],
+      [
+       -71.47,
+       -32.755
+      ],
+      [
+       -71.515,
+       -32.755
+      ],
+      [
+       -71.515,
+       -32.7875
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "external_id": "r1c1_2026-10-18T22:30",
+    "event_type": "viento",
+    "value": 7.4,
+    "unit": "m/s (ráfaga 10 m)",
+    "threshold": 14.0,
+    "exceeds": false,
+    "observed_at": "2026-10-18T22:30:00+00:00",
+    "lon": -71.4925,
+    "lat": -32.77125,
+    "cell": "r1c1",
+    "wind_speed_10m": 2.97,
+    "wind_direction_10m": 290,
+    "wind_speed_80m": 3.7,
+    "wind_speed_120m": 3.88,
+    "wind_direction_120m": 286
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -71.47,
+       -32.7875
+      ],
+      [
+       -71.425,
+       -32.7875
+      ],
+      [
+       -71.425,
+       -32.755
+      ],
+      [
+       -71.47,
+       -32.755
+      ],
+      [
+       -71.47,
+       -32.7875
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "external_id": "r1c2_2026-10-18T22:30",
+    "event_type": "viento",
+    "value": 7.4,
+    "unit": "m/s (ráfaga 10 m)",
+    "threshold": 14.0,
+    "exceeds": false,
+    "observed_at": "2026-10-18T22:30:00+00:00",
+    "lon": -71.4475,
+    "lat": -32.77125,
+    "cell": "r1c2",
+    "wind_speed_10m": 2.97,
+    "wind_direction_10m": 290,
+    "wind_speed_80m": 3.7,
+    "wind_speed_120m": 3.88,
+    "wind_direction_120m": 286
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -71.425,
+       -32.7875
+      ],
+      [
+       -71.38,
+       -32.7875
+      ],
+      [
+       -71.38,
+       -32.755
+      ],
+      [
+       -71.425,
+       -32.755
+      ],
+      [
+       -71.425,
+       -32.7875
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "external_id": "r1c3_2026-10-18T22:30",
+    "event_type": "viento",
+    "value": 6.0,
+    "unit": "m/s (ráfaga 10 m)",
+    "threshold": 14.0,
+    "exceeds": false,
+    "observed_at": "2026-10-18T22:30:00+00:00",
+    "lon": -71.4025,
+    "lat": -32.77125,
+    "cell": "r1c3",
+    "wind_speed_10m": 3.56,
+    "wind_direction_10m": 334,
+    "wind_speed_80m": 4.64,
+    "wind_speed_120m": 4.86,
+    "wind_direction_120m": 332
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -71.56,
+       -32.755
+      ],
+      [
+       -71.515,
+       -32.755
+      ],
+      [
+       -71.515,
+       -32.7225
+      ],
+      [
+       -71.56,
+       -32.7225
+      ],
+      [
+       -71.56,
+       -32.755
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "external_id": "r2c0_2026-10-18T22:30",
+    "event_type": "viento",
+    "value": 7.4,
+    "unit": "m/s (ráfaga 10 m)",
+    "threshold": 14.0,
+    "exceeds": false,
+    "observed_at": "2026-10-18T22:30:00+00:00",
+    "lon": -71.5375,
+    "lat": -32.73875,
+    "cell": "r2c0",
+    "wind_speed_10m": 2.97,
+    "wind_direction_10m": 290,
+    "wind_speed_80m": 3.7,
+    "wind_speed_120m": 3.88,
+    "wind_direction_120m": 286
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -71.515,
+       -32.755
+      ],
+      [
+       -71.47,
+       -32.755
+      ],
+      [
+       -71.47,
+       -32.7225
+      ],
+      [
+       -71.515,
+       -32.7225
+      ],
+      [
+       -71.515,
+       -32.755
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "external_id": "r2c1_2026-10-18T22:30",
+    "event_type": "viento",
+    "value": 7.4,
+    "unit": "m/s (ráfaga 10 m)",
+    "threshold": 14.0,
+    "exceeds": false,
+    "observed_at": "2026-10-18T22:30:00+00:00",
+    "lon": -71.4925,
+    "lat": -32.73875,
+    "cell": "r2c1",
+    "wind_speed_10m": 2.97,
+    "wind_direction_10m": 290,
+    "wind_speed_80m": 3.7,
+    "wind_speed_120m": 3.88,
+    "wind_direction_120m": 286
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -71.47,
+       -32.755
+      ],
+      [
+       -71.425,
+       -32.755
+      ],
+      [
+       -71.425,
+       -32.7225
+      ],
+      [
+       -71.47,
+       -32.7225
+      ],
+      [
+       -71.47,
+       -32.755
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "external_id": "r2c2_2026-10-18T22:30",
+    "event_type": "viento",
+    "value": 5.7,
+    "unit": "m/s (ráfaga 10 m)",
+    "threshold": 14.0,
+    "exceeds": false,
+    "observed_at": "2026-10-18T22:30:00+00:00",
+    "lon": -71.4475,
+    "lat": -32.73875,
+    "cell": "r2c2",
+    "wind_speed_10m": 3.06,
+    "wind_direction_10m": 308,
+    "wind_speed_80m": 3.78,
+    "wind_speed_120m": 3.96,
+    "wind_direction_120m": 308
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -71.425,
+       -32.755
+      ],
+      [
+       -71.38,
+       -32.755
+      ],
+      [
+       -71.38,
+       -32.7225
+      ],
+      [
+       -71.425,
+       -32.7225
+      ],
+      [
+       -71.425,
+       -32.755
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "external_id": "r2c3_2026-10-18T22:30",
+    "event_type": "viento",
+    "value": 5.7,
+    "unit": "m/s (ráfaga 10 m)",
+    "threshold": 14.0,
+    "exceeds": false,
+    "observed_at": "2026-10-18T22:30:00+00:00",
+    "lon": -71.4025,
+    "lat": -32.73875,
+    "cell": "r2c3",
+    "wind_speed_10m": 3.06,
+    "wind_direction_10m": 308,
+    "wind_speed_80m": 3.78,
+    "wind_speed_120m": 3.96,
+    "wind_direction_120m": 308
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -71.56,
+       -32.7225
+      ],
+      [
+       -71.515,
+       -32.7225
+      ],
+      [
+       -71.515,
+       -32.69
+      ],
+      [
+       -71.56,
+       -32.69
+      ],
+      [
+       -71.56,
+       -32.7225
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "external_id": "r3c0_2026-10-18T22:30",
+    "event_type": "viento",
+    "value": 7.4,
+    "unit": "m/s (ráfaga 10 m)",
+    "threshold": 14.0,
+    "exceeds": false,
+    "observed_at": "2026-10-18T22:30:00+00:00",
+    "lon": -71.5375,
+    "lat": -32.70625,
+    "cell": "r3c0",
+    "wind_speed_10m": 2.97,
+    "wind_direction_10m": 290,
+    "wind_speed_80m": 3.7,
+    "wind_speed_120m": 3.88,
+    "wind_direction_120m": 286
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -71.515,
+       -32.7225
+      ],
+      [
+       -71.47,
+       -32.7225
+      ],
+      [
+       -71.47,
+       -32.69
+      ],
+      [
+       -71.515,
+       -32.69
+      ],
+      [
+       -71.515,
+       -32.7225
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "external_id": "r3c1_2026-10-18T22:30",
+    "event_type": "viento",
+    "value": 5.7,
+    "unit": "m/s (ráfaga 10 m)",
+    "threshold": 14.0,
+    "exceeds": false,
+    "observed_at": "2026-10-18T22:30:00+00:00",
+    "lon": -71.4925,
+    "lat": -32.70625,
+    "cell": "r3c1",
+    "wind_speed_10m": 3.06,
+    "wind_direction_10m": 308,
+    "wind_speed_80m": 3.78,
+    "wind_speed_120m": 3.96,
+    "wind_direction_120m": 308
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -71.47,
+       -32.7225
+      ],
+      [
+       -71.425,
+       -32.7225
+      ],
+      [
+       -71.425,
+       -32.69
+      ],
+      [
+       -71.47,
+       -32.69
+      ],
+      [
+       -71.47,
+       -32.7225
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "external_id": "r3c2_2026-10-18T22:30",
+    "event_type": "viento",
+    "value": 5.7,
+    "unit": "m/s (ráfaga 10 m)",
+    "threshold": 14.0,
+    "exceeds": false,
+    "observed_at": "2026-10-18T22:30:00+00:00",
+    "lon": -71.4475,
+    "lat": -32.70625,
+    "cell": "r3c2",
+    "wind_speed_10m": 3.06,
+    "wind_direction_10m": 308,
+    "wind_speed_80m": 3.78,
+    "wind_speed_120m": 3.96,
+    "wind_direction_120m": 308
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -71.425,
+       -32.7225
+      ],
+      [
+       -71.38,
+       -32.7225
+      ],
+      [
+       -71.38,
+       -32.69
+      ],
+      [
+       -71.425,
+       -32.69
+      ],
+      [
+       -71.425,
+       -32.7225
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "external_id": "r3c3_2026-10-18T22:30",
+    "event_type": "viento",
+    "value": 5.7,
+    "unit": "m/s (ráfaga 10 m)",
+    "threshold": 14.0,
+    "exceeds": false,
+    "observed_at": "2026-10-18T22:30:00+00:00",
+    "lon": -71.4025,
+    "lat": -32.70625,
+    "cell": "r3c3",
+    "wind_speed_10m": 3.06,
+    "wind_direction_10m": 308,
+    "wind_speed_80m": 3.78,
+    "wind_speed_120m": 3.96,
+    "wind_direction_120m": 308
+   }
+  }
+ ]
+}

@@ -1,0 +1,2 @@
+# Única dependencia externa. Los scripts de ETL usan solo la librería estándar.
+psycopg[binary]==3.2.13

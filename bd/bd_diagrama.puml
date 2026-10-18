@@ -1,0 +1,162 @@
+@startuml bd_diagrama
+' Fuente del diagrama bd_diagrama.png. Regenerar con:
+'   java -jar plantuml.jar bd/bd_diagrama.puml
+!pragma layout smetana
+hide circle
+hide methods
+skinparam linetype ortho
+skinparam shadowing false
+skinparam dpi 160
+skinparam defaultFontName Helvetica
+skinparam defaultFontSize 12
+skinparam class {
+  BorderColor #555555
+  BackgroundColor<<infra>> #DCEEFB
+  BackgroundColor<<meta>> #DDF5E4
+  BackgroundColor<<amenaza>> #FBE0E0
+  BackgroundColor<<etl>> #F2F2F2
+}
+title BD Ruteo Resiliente UAV - Quintero / Ventanas / Puchuncaví\nPostgreSQL 16 + PostGIS 3 + pgRouting 3 (SRID 4326)
+
+entity data_source <<etl>> {
+  * id : serial <<PK>>
+  --
+  * code : varchar <<UK>>  -- nombre del json
+  * layer : varchar  -- infraestructura | metadata | amenaza
+  * name : varchar
+  url : text
+  * kind : varchar  -- api | bd_geoespacial | dataset
+  fetched_at : timestamptz
+}
+
+entity infra_node <<infra>> {
+  * id : integer <<PK>>  -- vértice pgRouting
+  --
+  * code : varchar <<UK>>
+  * name : varchar
+  * category : varchar
+  type : varchar
+  role : varchar
+  priority : smallint
+  city : varchar
+  elevation_msnm : real
+  pollutants : text[]
+  * geom : Point
+}
+
+entity infra_edge <<infra>> {
+  * id : integer <<PK>>
+  --
+  * source : integer <<FK>>
+  * target : integer <<FK>>
+  * length_m : double
+  * cost : double  -- fase 2 = length_m
+  * reverse_cost : double
+  * geom : LineString
+}
+
+entity urban_zone <<infra>> {
+  * id : serial <<PK>>
+  --
+  * code : varchar <<UK>>
+  * name : varchar
+  city : varchar
+  area_km2 : real
+  * geom : MultiPolygon
+}
+
+entity meta_air_quality <<meta>> {
+  * id : bigserial <<PK>>
+  --
+  * source_id : integer <<FK>>
+  node_id : integer <<FK>>
+  * station_key : varchar
+  * station_name : varchar
+  commune, network, operator : varchar
+  * pollutant : varchar  -- SO2, PM2.5...
+  * value : double
+  unit, averaging, status : varchar
+  status_code, icap : smallint
+  * observed_at : timestamptz
+  * geom : Point
+}
+
+entity meta_edge_terrain <<meta>> {
+  * edge_id : integer <<PK, FK>>
+  --
+  * source_id : integer <<FK>>
+  * samples : smallint
+  * terrain_min_m / max_m / mean_m : real
+  * relief_m : real
+  * ascent_m / descent_m : real
+  * profile_m : real[]
+}
+
+entity meta_census_block <<meta>> {
+  * id : serial <<PK>>
+  --
+  * source_id : integer <<FK>>
+  * manzent : varchar <<UK>>
+  cut : integer
+  commune, district : varchar
+  * persons : integer
+  dwellings : integer
+  area_m2 : double
+  density_hab_km2 : double
+  * geom : MultiPolygon
+}
+
+entity meta_telecom_antenna <<meta>> {
+  * id : serial <<PK>>
+  --
+  * source_id : integer <<FK>>
+  * osm_id : varchar <<UK>>
+  name, operator, structure : varchar
+  mobile_phone : boolean
+  height_m : real
+  * coverage_radius_m : real
+  * geom : Point
+  * coverage_geom : Polygon
+}
+
+entity threat_event <<amenaza>> {
+  * id : bigserial <<PK>>
+  --
+  * source_id : integer <<FK>>
+  * external_id : varchar
+  * event_type : varchar  -- incendio | sismo | viento | lluvia
+  value : double
+  unit : varchar
+  threshold : double
+  * exceeds : boolean
+  * observed_at : timestamptz
+  valid_until : timestamptz
+  properties : jsonb
+  * point_geom : Point
+  * geom : Polygon  -- área de afectación
+}
+
+infra_node ||--o{ infra_edge : source
+infra_node ||--o{ infra_edge : target
+infra_node |o--o{ meta_air_quality : estación asociada
+infra_edge ||--o| meta_edge_terrain : perfil SRTM
+
+data_source ||--o{ meta_air_quality
+data_source ||--o{ meta_edge_terrain
+data_source ||--o{ meta_census_block
+data_source ||--o{ meta_telecom_antenna
+data_source ||--o{ threat_event
+
+note bottom of threat_event
+  Sin FK a la red: la afectación se calcula
+  espacialmente en la fase 3, p. ej.
+  ST_Intersects(infra_edge.geom, threat_event.geom)
+  AND threat_event.exceeds
+end note
+
+note bottom of infra_edge
+  pgr_dijkstra('SELECT id, source, target,
+    cost, reverse_cost FROM infra_edge',
+    origen, destino)
+end note
+@enduml

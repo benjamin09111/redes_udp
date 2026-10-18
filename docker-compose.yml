@@ -1,0 +1,51 @@
+# Servicios del proyecto. Se levantan con `python3 main.py` (o manualmente con `docker compose`).
+name: uav-ruteo
+
+services:
+  db:
+    # PostgreSQL 16.9 + PostGIS 3.5.2 + pgRouting 3.8.0
+    image: pgrouting/pgrouting:16-3.5-3.8.0
+    platform: linux/amd64
+    environment:
+      POSTGRES_USER: uav
+      POSTGRES_PASSWORD: uav
+      POSTGRES_DB: uav
+    ports:
+      - "5433:5432"
+    volumes:
+      - uav_pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U uav -d uav"]
+      interval: 3s
+      timeout: 3s
+      retries: 20
+
+  etl:
+    # Extracción, transformación, carga y ruteo. Se ejecuta con `docker compose run --rm etl <comando>`
+    build: .
+    image: uav-ruteo:local
+    working_dir: /app
+    volumes:
+      - ./:/app
+    environment:
+      DB_HOST: db
+      DB_PORT: "5432"
+      DB_NAME: uav
+      DB_USER: uav
+      DB_PASSWORD: uav
+    depends_on:
+      db:
+        condition: service_healthy
+
+  web:
+    # Sitio Leaflet. Sirve la raíz del repo para que el sitio lea los .geojson.
+    image: uav-ruteo:local
+    working_dir: /app
+    command: python -m http.server 8000 --bind 0.0.0.0 --directory /app
+    volumes:
+      - ./:/app:ro
+    ports:
+      - "8000:8000"
+
+volumes:
+  uav_pgdata:

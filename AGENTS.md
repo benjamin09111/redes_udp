@@ -28,7 +28,7 @@ Hasta este momento se ha completado con éxito la **Fase de Modelado Geoespacial
 1. **Base de Datos Geoespacial Master (`public/data/nodes.geojson`)**:
    - Red de nodos clasificada en 13 categorías temáticas:
      - `base`: Aeródromo de Quintero (despacho y base RTH principal).
-     - `sinca`: Las 9 estaciones oficiales de monitoreo de calidad del aire del SINCA.
+     - `sinca`: Las 8 estaciones SINCA que son nodos de la red (de las 10 estaciones SINCA del área de estudio).
      - `emission_source`: Fuentes emisoras del parque industrial de Ventanas (Codelco, AES Gener, Oxiquim, Enap, GNL Quintero, etc.).
      - `health`: Hospitales (Adriana Cousiño), CESFAMs y postas rurales.
      - `education`: Red de colegios, liceos y jardines infantiles.
@@ -43,6 +43,15 @@ Hasta este momento se ha completado con éxito la **Fase de Modelado Geoespacial
    - Botón inicial de RTH y filtros temáticos por categoría de nodo.
 4. **Scripts de Cosecha y Procesamiento (`scripts/`)**:
    - Scripts en Python con Overpass API, Nominatim y Open-Elevation para cosecha, enriquecimiento y validación de datos.
+
+**Fase 2 (ETL + BD + sitio), completa** — puntos 0 a 9 de la pauta, todo en Docker (ver `GUIA_PROYECTO.md` sección 13):
+1. **BD (`bd/`)**: `schema.sql` (PostGIS + pgRouting) y `bd_diagrama.png` (fuente `bd_diagrama.puml`).
+2. **ETL** en Python solo con librería estándar (corre en `python:3.12-slim` sin `pip install`). Cada script genera un `.geojson` documentado en un `.md` del mismo nombre:
+   - `infraestructura/extraer_infraestructura.py` → `nodos`, `aristas` (K vecinos, costo = longitud), `zonas_urbanas` (polígonos).
+   - `metadata/`: `sinca_calidad_aire` (API SINCA), `srtm_relieve` (SRTM vía OpenTopoData, perfil por arista), `ine_manzanas` (polígonos Censo 2017, IDE SMA ArcGIS REST), `osm_antenas` (Overpass; reemplaza a Subtel, que tiene reCAPTCHA).
+   - `amenazas/`: `firms_incendios` (NASA FIRMS), `csn_sismos` (EMSC FDSN, eventos autoría CSN), `openmeteo_viento` (grilla 4×4), `metno_lluvia` (MET Norway, grilla 4×4). Todas comparten las propiedades base de `threat_event`.
+3. **Carga, ruteo y sitio**: `bd/conexion.py` + 11 cargadores `cargar_*.py` (uno por `.geojson`), `ruteo/ruta_dijkstra.py` (pgr_dijkstra, costo = longitud), `sitio_web/` (Leaflet) y `main.py` (pipeline completo). Todo corre en Docker (`Dockerfile`, `docker-compose.yml`, versiones fijadas). `python3 tests/verificar.py` dentro del contenedor comprueba la pauta, los GeoJSON y la BD.
+4. **Convención de `exceeds`** en `threat_event`: `true` = zona activa. La fase 3 decide qué nodos y aristas bloquea cada tipo de zona.
 
 ---
 
@@ -73,6 +82,16 @@ ruteo_redes/
 │   └── data/
 │       ├── nodes.geojson        # Nodos clasificados (WGS84 3D)
 │       └── urban_zones.geojson  # Polígonos urbanos y zonas de amortiguamiento
+├── bd/                          # Fase 2: schema.sql + diagrama de la BD
+├── infraestructura/             # Fase 2: ETL nodos/aristas/zonas -> *.geojson + *.md
+├── metadata/                    # Fase 2: ETL de 4 fuentes de metadata -> *.geojson + *.md
+├── amenazas/                    # Fase 2: ETL de 4 fuentes de amenazas -> *.geojson + *.md
+├── ruteo/                       # Fase 2: ruta base con pgr_dijkstra -> sitio_web/data
+├── sitio_web/                   # Fase 2: mapa Leaflet (lee los .geojson y la ruta)
+├── tests/                       # Fase 2: verificación de la pauta, GeoJSON y BD
+├── main.py                      # Fase 2: pipeline completo (python3 main.py)
+├── Dockerfile                   # Fase 2: imagen Python fijada (ETL, cargadores, ruteo, web)
+├── docker-compose.yml           # Fase 2: servicios db (PostgreSQL 16 + PostGIS + pgRouting), etl y web
 └── scripts/                     # Herramientas auxiliares de datos (Python)
     ├── compile_expanded_network.py # Compilador maestro de nodes.geojson
     ├── build_all_urban_zones.py    # Compilador maestro de urban_zones.geojson
