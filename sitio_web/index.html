@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ruteo UAV · Quintero – Puchuncaví</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+  <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+  <header>
+    <h1>Ruteo resiliente UAV · Quintero – Ventanas – Puchuncaví</h1>
+    <p>Fase 2: infraestructura, metadata, amenazas y ruta base calculada con pgr_dijkstra.</p>
+  </header>
+
+  <main>
+    <div id="mapa" aria-label="Mapa de la red"></div>
+
+    <aside id="panel">
+      <section>
+        <h2>Ruta base (peor caso)</h2>
+        <label for="destino">Destino</label>
+        <select id="destino"></select>
+        <dl id="ruta-info"></dl>
+        <p class="nota">Costo = longitud de cada arista. No considera metadata ni amenazas (fase 3).</p>
+      </section>
+
+      <section>
+        <h2>Resumen de datos</h2>
+        <dl id="resumen"></dl>
+      </section>
+
+      <section>
+        <h2>Nodos por categoría</h2>
+        <ul id="leyenda" class="leyenda"></ul>
+      </section>
+
+      <section>
+        <h2>Estado de carga</h2>
+        <p id="estado">Cargando…</p>
+      </section>
+    </aside>
+  </main>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+          integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script src="app.js"></script>
+</body>
+</html>

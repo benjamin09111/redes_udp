@@ -1,0 +1,780 @@
+{
+ "type": "FeatureCollection",
+ "etl": {
+  "fuente": "SINCA - Ministerio del Medio Ambiente",
+  "url": "https://sinca.mma.gob.cl/index.php/json/listadomapa2k19/",
+  "generado": "2026-10-18T22:34:22+00:00",
+  "parametros": {
+   "aoi": [
+    -71.56,
+    -32.82,
+    -71.38,
+    -32.69
+   ],
+   "radio_asociacion_nodo_m": 500
+  },
+  "total": 10
+ },
+ "features": [
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -71.450827,
+     -32.736065
+    ]
+   },
+   "properties": {
+    "station_key": "501",
+    "station_name": "Campiche",
+    "commune": "Puchuncaví",
+    "network": "Puerto Ventanas",
+    "operator": "Empresa Nacional de Energía ENEX",
+    "ownership": "Privada",
+    "node_code": "sinca_campiche",
+    "node_distance_m": 15.4,
+    "worst_status": "bueno",
+    "worst_status_code": 1,
+    "measurements": [
+     {
+      "pollutant": "SO2",
+      "value": 9.01,
+      "unit": "µg/m3N",
+      "averaging": "concentración 1 h",
+      "status": "bueno",
+      "status_code": 1,
+      "icap": 2,
+      "observed_at": "2026-10-18T17:00:00-04:00"
+     },
+     {
+      "pollutant": "NO2",
+      "value": 5.6,
+      "unit": "ppbv",
+      "averaging": "concentración 1 h",
+      "status": "bueno",
+      "status_code": 1,
+      "icap": null,
+      "observed_at": "2026-10-18T17:00:00-04:00"
+     },
+     {
+      "pollutant": "CO",
+      "value": 0.1,
+      "unit": "ppmv",
+      "averaging": "media móvil 8 h",
+      "status": "bueno",
+      "status_code": 1,
+      "icap": null,
+      "observed_at": "2026-10-18T17:00:00-04:00"
+     },
+     {
+      "pollutant": "O3",
+      "value": 19,
+      "unit": "ppbv",
+      "averaging": "concentración 1 h",
+      "status": "bueno",
+      "status_code": 1,
+      "icap": null,
+      "observed_at": "2026-10-18T17:00:00-04:00"
+     }
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -71.474204,
+     -32.748154
+    ]
+   },
+   "properties": {
+    "station_key": "503",
+    "station_name": "La Greda",
+    "commune": "Puchuncaví",
+    "network": "Complejo Industrial Ventanas",
+    "operator": "Codelco División Ventanas- AESGENER.S.A",
+    "ownership": "no definida",
+    "node_code": "sinca_la_greda",
+    "node_distance_m": 13.6,
+    "worst_status": "bueno",
+    "worst_status_code": 1,
+    "measurements": [
+     {
+      "pollutant": "PM2.5",
+      "value": 10,
+      "unit": "µg/m3",
+      "averaging": "media móvil 24 h",
+      "status": "bueno",
+      "status_code": 1,
+      "icap": 20,
+      "observed_at": "2026-10-18T16:00:00-04:00"
+     },
+     {
+      "pollutant": "PM10",
+      "value": 25,
+      "unit": "µg/m3N",
+      "averaging": "media móvil 24 h",
+      "status": "bueno",
+      "status_code": 1,
+      "icap": 19,
+      "observed_at": "2026-10-18T16:00:00-04:00"
+     },
+     {
+      "pollutant": "SO2",
+      "value": 8.08,
+      "unit": "µg/m3N",
+      "averaging": "concentración 1 h",
+      "status": "bueno",
+      "status_code": 1,
+      "icap": 2,
+      "observed_at": "2026-10-18T16:00:00-04:00"
+     },
+     {
+      "pollutant": "NO2",
+      "value": 7.09,
+      "unit": "ppbv",
+      "averaging": "concentración 1 h",
+      "status": "bueno",
+      "status_code": 1,
+      "icap": null,
+      "observed_at": "2026-10-18T16:00:00-04:00"
+     },
+     {
+      "pollutant": "O3",
+      "value": 29,
+      "unit": "ppbv",
+      "averaging": "concentración 1 h",
+      "status": "bueno",
+      "status_code": 1,
+      "icap": null,
+      "observed_at": "2026-10-18T16:00:00-04:00"
+     }
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -71.454494,
+     -32.764139
+    ]
+   },
+   "properties": {
+    "station_key": "504",
+    "station_name": "Los Maitenes",
+    "commune": "Puchuncaví",
+    "network": "Complejo Industrial Ventanas",
+    "operator": "Codelco División Ventanas- AESGENER.S.A",
+    "ownership": "no definida",
+    "node_code": null,
+    "node_distance_m": 2551.8,
+    "worst_status": "bueno",
+    "worst_status_code": 1,
+    "measurements": [
+     {
+      "pollutant": "PM2.5",
+      "value": 8,
+      "unit": "µg/m3",
+      "averaging": "media móvil 24 h",
+      "status": "bueno",
+      "status_code": 1,
+      "icap": 16,
+      "observed_at": "2026-10-18T16:00:00-04:00"
+     },
+     {
+      "pollutant": "PM10",
+      "value": 15,
+      "unit": "µg/m3N",
+      "averaging": "media móvil 24 h",
+      "status": "bueno",
+      "status_code": 1,
+      "icap": 12,
+      "observed_at": "2026-10-18T16:00:00-04:00"
+     },
+     {
+      "pollutant": "SO2",
+      "value": 4.39,
+      "unit": "µg/m3N",
+      "averaging": "concentración 1 h",
+      "status": "bueno",
+      "status_code": 1,
+      "icap": 1,
+      "observed_at": "2026-10-18T16:00:00-04:00"
+     },
+     {
+      "pollutant": "NO2",
+      "value": 5.81,
+      "unit": "ppbv",
+      "averaging": "concentración 1 h",
+      "status": "bueno",
+      "status_code": 1,
+      "icap": null,
+      "observed_at": "2026-10-18T16:00:00-04:00"
+     },
+     {
+      "pollutant": "CO",
+      "value": 0.39,
+      "unit": "ppmv",
+      "averaging": "media móvil 8 h",
+      "status": "bueno",
+      "status_code": 1,
+      "icap": null,
+      "observed_at": "2026-10-18T16:00:00-04:00"
+     },
+     {
+      "pollutant": "O3",
+      "value": 38,
+      "unit": "ppbv",
+      "averaging": "concentración 1 h",
+      "status": "bueno",
+      "status_code": 1,
+      "icap": null,
+      "observed_at": "2026-10-18T16:00:00-04:00"
+     }
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -71.407961,
+     -32.718839
+    ]
+   },
+   "properties": {
+    "station_key": "505",
+    "station_name": "Puchuncaví",
+    "commune": "Puchuncaví",
+    "network": "Complejo Industrial Ventanas",
+    "operator": "Codelco División Ventanas- AESGENER.S.A",
+    "ownership": "Privada",
+    "node_code": "sinca_puchuncavi",
+    "node_distance_m": 60.6,
+    "worst_status": "bueno",
+    "worst_status_code": 1,
+    "measurements": [
+     {
+      "pollutant": "PM2.5",
+      "value": 10,
+      "unit": "µg/m3",
+      "averaging": "media móvil 24 h",
+      "status": "bueno",
+      "status_code": 1,
+      "icap": 20,
+      "observed_at": "2026-10-18T16:00:00-04:00"
+     },
+     {
+      "pollutant": "PM10",
+      "value": 33,
+      "unit": "µg/m3N",
+      "averaging": "media móvil 24 h",
+      "status": "bueno",
+      "status_code": 1,
+      "icap": 25,
+      "observed_at": "2026-10-18T16:00:00-04:00"
+     },
+     {
+      "pollutant": "SO2",
+      "value": 16.71,
+      "unit": "µg/m3N",
+      "averaging": "concentración 1 h",
+      "status": "bueno",
+      "status_code": 1,
+      "icap": 4,
+      "observed_at": "2026-10-18T16:00:00-04:00"
+     },
+     {
+      "pollutant": "NO2",
+      "value": 2.65,
+      "unit": "ppbv",
+      "averaging": "concentración 1 h",
+      "status": "bueno",
+      "status_code": 1,
+      "icap": null,
+      "observed_at": "2026-10-18T16:00:00-04:00"
+     },
+     {
+      "pollutant": "O3",
+      "value": 34,
+      "unit": "ppbv",
+      "averaging": "concentración 1 h",
+      "status": "bueno",
+      "status_code": 1,
+      "icap": null,
+      "observed_at": "2026-10-18T16:00:00-04:00"
+     }
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -71.484101,
+     -32.801441
+    ]
+   },
+   "properties": {
+    "station_key": "506",
+    "station_name": "Sur",
+    "commune": "Quintero",
+    "network": "Complejo Industrial Ventanas",
+    "operator": "Codelco División Ventanas- AESGENER.S.A",
+    "ownership": "no definida",
+    "node_code": "sinca_sur",
+    "node_distance_m": 78.0,
+    "worst_status": "bueno",
+    "worst_status_code": 1,
+    "measurements": [
+     {
+      "pollutant": "PM10",
+      "value": 22,
+      "unit": "µg/m3N",
+      "averaging": "media móvil 24 h",
+      "status": "bueno",
+      "status_code": 1,
+      "icap": 17,
+      "observed_at": "2026-10-18T16:00:00-04:00"
+     },
+     {
+      "pollutant": "SO2",
+      "value": 11.49,
+      "unit": "µg/m3N",
+      "averaging": "concentración 1 h",
+      "status": "bueno",
+      "status_code": 1,
+      "icap": 3,
+      "observed_at": "2026-10-18T16:00:00-04:00"
+     },
+     {
+      "pollutant": "NO2",
+      "value": 3.7,
+      "unit": "ppbv",
+      "averaging": "concentración 1 h",
+      "status": "bueno",
+      "status_code": 1,
+      "icap": null,
+      "observed_at": "2026-10-18T16:00:00-04:00"
+     },
+     {
+      "pollutant": "CO",
+      "value": 0.55,
+      "unit": "ppmv",
+      "averaging": "media móvil 8 h",
+      "status": "bueno",
+      "status_code": 1,
+      "icap": null,
+      "observed_at": "2026-10-18T16:00:00-04:00"
+     },
+     {
+      "pollutant": "O3",
+      "value": 34,
+      "unit": "ppbv",
+      "averaging": "concentración 1 h",
+      "status": "bueno",
+      "status_code": 1,
+      "icap": null,
+      "observed_at": "2026-10-18T16:00:00-04:00"
+     }
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -71.436274,
+     -32.807512
+    ]
+   },
+   "properties": {
+    "station_key": "507",
+    "station_name": "Valle Alegre",
+    "commune": "Quintero",
+    "network": "Complejo Industrial Ventanas",
+    "operator": "Codelco División Ventanas- AESGENER.S.A",
+    "ownership": "no definida",
+    "node_code": null,
+    "node_distance_m": 4463.2,
+    "worst_status": "bueno",
+    "worst_status_code": 1,
+    "measurements": [
+     {
+      "pollutant": "PM10",
+      "value": 24,
+      "unit": "µg/m3N",
+      "averaging": "media móvil 24 h",
+      "status": "bueno",
+      "status_code": 1,
+      "icap": 18,
+      "observed_at": "2026-10-18T16:00:00-04:00"
+     },
+     {
+      "pollutant": "SO2",
+      "value": 14.19,
+      "unit": "µg/m3N",
+      "averaging": "concentración 1 h",
+      "status": "bueno",
+      "status_code": 1,
+      "icap": 4,
+      "observed_at": "2026-10-18T16:00:00-04:00"
+     },
+     {
+      "pollutant": "NO2",
+      "value": 3.47,
+      "unit": "ppbv",
+      "averaging": "concentración 1 h",
+      "status": "bueno",
+      "status_code": 1,
+      "icap": null,
+      "observed_at": "2026-10-18T16:00:00-04:00"
+     },
+     {
+      "pollutant": "O3",
+      "value": 31,
+      "unit": "ppbv",
+      "averaging": "concentración 1 h",
+      "status": "bueno",
+      "status_code": 1,
+      "icap": null,
+      "observed_at": "2026-10-18T16:00:00-04:00"
+     }
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -71.532283,
+     -32.787776
+    ]
+   },
+   "properties": {
+    "station_key": "539",
+    "station_name": "Centro Quintero",
+    "commune": "Quintero",
+    "network": "Centro Quintero",
+    "operator": "GNL Quintero",
+    "ownership": "Privada",
+    "node_code": "sinca_centro_quintero",
+    "node_distance_m": 8.1,
+    "worst_status": "bueno",
+    "worst_status_code": 1,
+    "measurements": [
+     {
+      "pollutant": "PM2.5",
+      "value": 16,
+      "unit": "µg/m3",
+      "averaging": "media móvil 24 h",
+      "status": "bueno",
+      "status_code": 1,
+      "icap": 32,
+      "observed_at": "2026-10-18T17:00:00-04:00"
+     },
+     {
+      "pollutant": "PM10",
+      "value": 40,
+      "unit": "µg/m3N",
+      "averaging": "media móvil 24 h",
+      "status": "bueno",
+      "status_code": 1,
+      "icap": 31,
+      "observed_at": "2026-10-18T17:00:00-04:00"
+     },
+     {
+      "pollutant": "SO2",
+      "value": 3.69,
+      "unit": "µg/m3N",
+      "averaging": "concentración 1 h",
+      "status": "bueno",
+      "status_code": 1,
+      "icap": 1,
+      "observed_at": "2026-10-18T17:00:00-04:00"
+     },
+     {
+      "pollutant": "NO2",
+      "value": 4.2,
+      "unit": "ppbv",
+      "averaging": "concentración 1 h",
+      "status": "bueno",
+      "status_code": 1,
+      "icap": null,
+      "observed_at": "2026-10-18T17:00:00-04:00"
+     },
+     {
+      "pollutant": "CO",
+      "value": 0.26,
+      "unit": "ppmv",
+      "averaging": "media móvil 8 h",
+      "status": "bueno",
+      "status_code": 1,
+      "icap": null,
+      "observed_at": "2026-10-18T17:00:00-04:00"
+     },
+     {
+      "pollutant": "O3",
+      "value": 19,
+      "unit": "ppbv",
+      "averaging": "concentración 1 h",
+      "status": "bueno",
+      "status_code": 1,
+      "icap": null,
+      "observed_at": "2026-10-18T17:00:00-04:00"
+     }
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -71.535303,
+     -32.772516
+    ]
+   },
+   "properties": {
+    "station_key": "540",
+    "station_name": "Quintero",
+    "commune": "Quintero",
+    "network": "Complejo Industrial Ventanas",
+    "operator": "Codelco División Ventanas- AESGENER.S.A",
+    "ownership": "no definida",
+    "node_code": "sinca_quintero",
+    "node_distance_m": 22.1,
+    "worst_status": "bueno",
+    "worst_status_code": 1,
+    "measurements": [
+     {
+      "pollutant": "PM2.5",
+      "value": 7,
+      "unit": "µg/m3",
+      "averaging": "media móvil 24 h",
+      "status": "bueno",
+      "status_code": 1,
+      "icap": 14,
+      "observed_at": "2026-10-18T17:00:00-04:00"
+     },
+     {
+      "pollutant": "PM10",
+      "value": 21,
+      "unit": "µg/m3N",
+      "averaging": "media móvil 24 h",
+      "status": "bueno",
+      "status_code": 1,
+      "icap": 16,
+      "observed_at": "2026-10-18T17:00:00-04:00"
+     },
+     {
+      "pollutant": "SO2",
+      "value": 17.83,
+      "unit": "µg/m3N",
+      "averaging": "concentración 1 h",
+      "status": "bueno",
+      "status_code": 1,
+      "icap": 5,
+      "observed_at": "2026-10-18T17:00:00-04:00"
+     },
+     {
+      "pollutant": "NO2",
+      "value": 3.61,
+      "unit": "ppbv",
+      "averaging": "concentración 1 h",
+      "status": "bueno",
+      "status_code": 1,
+      "icap": null,
+      "observed_at": "2026-10-18T17:00:00-04:00"
+     },
+     {
+      "pollutant": "CO",
+      "value": 0.49,
+      "unit": "ppmv",
+      "averaging": "media móvil 8 h",
+      "status": "bueno",
+      "status_code": 1,
+      "icap": null,
+      "observed_at": "2026-10-18T17:00:00-04:00"
+     },
+     {
+      "pollutant": "O3",
+      "value": 27,
+      "unit": "ppbv",
+      "averaging": "concentración 1 h",
+      "status": "bueno",
+      "status_code": 1,
+      "icap": null,
+      "observed_at": "2026-10-18T17:00:00-04:00"
+     }
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -71.496099,
+     -32.794968
+    ]
+   },
+   "properties": {
+    "station_key": "547",
+    "station_name": "Loncura",
+    "commune": "Quintero",
+    "network": "Loncura - Quintero",
+    "operator": "ENEL CHILE S.A.",
+    "ownership": "Privada",
+    "node_code": "sinca_loncura",
+    "node_distance_m": 30.6,
+    "worst_status": "bueno",
+    "worst_status_code": 1,
+    "measurements": [
+     {
+      "pollutant": "PM2.5",
+      "value": 7,
+      "unit": "µg/m3",
+      "averaging": "media móvil 24 h",
+      "status": "bueno",
+      "status_code": 1,
+      "icap": 14,
+      "observed_at": "2026-10-18T17:00:00-04:00"
+     },
+     {
+      "pollutant": "PM10",
+      "value": 29,
+      "unit": "µg/m3N",
+      "averaging": "media móvil 24 h",
+      "status": "bueno",
+      "status_code": 1,
+      "icap": 22,
+      "observed_at": "2026-10-18T17:00:00-04:00"
+     },
+     {
+      "pollutant": "SO2",
+      "value": 1.7,
+      "unit": "µg/m3N",
+      "averaging": "concentración 1 h",
+      "status": "bueno",
+      "status_code": 1,
+      "icap": 0,
+      "observed_at": "2026-10-18T17:00:00-04:00"
+     },
+     {
+      "pollutant": "NO2",
+      "value": 8.75,
+      "unit": "ppbv",
+      "averaging": "concentración 1 h",
+      "status": "bueno",
+      "status_code": 1,
+      "icap": null,
+      "observed_at": "2026-10-18T17:00:00-04:00"
+     },
+     {
+      "pollutant": "CO",
+      "value": 0.2,
+      "unit": "ppmv",
+      "averaging": "media móvil 8 h",
+      "status": "bueno",
+      "status_code": 1,
+      "icap": null,
+      "observed_at": "2026-10-18T17:00:00-04:00"
+     },
+     {
+      "pollutant": "O3",
+      "value": 21,
+      "unit": "ppbv",
+      "averaging": "concentración 1 h",
+      "status": "bueno",
+      "status_code": 1,
+      "icap": null,
+      "observed_at": "2026-10-18T17:00:00-04:00"
+     }
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -71.480883,
+     -32.741816
+    ]
+   },
+   "properties": {
+    "station_key": "548",
+    "station_name": "Ventanas",
+    "commune": "Puchuncaví",
+    "network": null,
+    "operator": "Codelco División Ventanas- AESGENER.S.A",
+    "ownership": "no definida",
+    "node_code": "sinca_ventanas",
+    "node_distance_m": 4.6,
+    "worst_status": "bueno",
+    "worst_status_code": 1,
+    "measurements": [
+     {
+      "pollutant": "PM2.5",
+      "value": 10,
+      "unit": "µg/m3",
+      "averaging": "media móvil 24 h",
+      "status": "bueno",
+      "status_code": 1,
+      "icap": 20,
+      "observed_at": "2026-10-18T17:00:00-04:00"
+     },
+     {
+      "pollutant": "PM10",
+      "value": 36,
+      "unit": "µg/m3N",
+      "averaging": "media móvil 24 h",
+      "status": "bueno",
+      "status_code": 1,
+      "icap": 28,
+      "observed_at": "2026-10-18T17:00:00-04:00"
+     },
+     {
+      "pollutant": "SO2",
+      "value": 5.86,
+      "unit": "µg/m3N",
+      "averaging": "concentración 1 h",
+      "status": "bueno",
+      "status_code": 1,
+      "icap": 1,
+      "observed_at": "2026-10-18T17:00:00-04:00"
+     },
+     {
+      "pollutant": "NO2",
+      "value": 2.83,
+      "unit": "ppbv",
+      "averaging": "concentración 1 h",
+      "status": "bueno",
+      "status_code": 1,
+      "icap": null,
+      "observed_at": "2026-10-18T17:00:00-04:00"
+     },
+     {
+      "pollutant": "O3",
+      "value": 32,
+      "unit": "ppbv",
+      "averaging": "concentración 1 h",
+      "status": "bueno",
+      "status_code": 1,
+      "icap": null,
+      "observed_at": "2026-10-18T17:00:00-04:00"
+     }
+    ]
+   }
+  }
+ ]
+}
