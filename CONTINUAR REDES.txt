@@ -1,0 +1,9 @@
+ver nodos para medir contaminación que sean relevantes, y buscar nodos de mayor seguridad (poca gente) que a su vez tiene menor peso de medir contaminación, eso nutrirá los nodos.
+
+Por ahora los nodos solo es info, pero no tienen informacion que los nutre, como pesos o importnacia o características de cada nodo, como un valor que indica su grado de seguridad, grado de contaminación, etc.
+
+las conexiones, ahi ver por donde puede volar. zonas donde NO SE PUEDE VOLAR, para no trazar caminos por ahi, por ejemplo, las carreteras, qué hacemos con ellas? o los caminos por donde van autos, no se si hay temas legales ahi. necesitaré ayuda para trazar las conexiones.
+
+Empezar a considerar la ALTURA.
+
+El nodo debe ser interconectado? ya que el dron puede tener movimiento a cada nodo, creo que es más fácil para crear conexiones solo ahora hay que crear los nodos intermedios o caminos aereos.
