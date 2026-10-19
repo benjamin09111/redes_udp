@@ -12,7 +12,8 @@ Este documento es la **fuente única de verdad (Single Source of Truth)** para c
 2. **Restricción Normativa Aeronáutica**:
    - Norma **DAN 151 de la DGAC (Chile)**: Límite estricto de altitud de operación entre **0 y 120 metros AGL** (Above Ground Level).
    - Zona de intercepción estratégica: Plumas industriales (50 a 110 m) e inversión térmica costera (80 a 120 m).
-   - Prohibición estricta de sobrevuelo sobre aglomeraciones de personas y zonas de exclusión aérea (NOTAM).
+   - Sobrevuelo de zonas densamente pobladas: **penalizado en el costo** de las aristas, no prohibido. El informe de la fase 1 dice que los nodos cercanos a infraestructura crítica o zonas de alta densidad "cuestan más y requieren rutas más conservadoras". Las zonas de exclusión aérea (NOTAM) y las amenazas activas sí bloquean.
+   - Destinos de la misión: estaciones de monitoreo (SINCA) y fuentes emisoras. El resto de los nodos son de paso o factores de riesgo.
 3. **Métricas de Evaluación Cuantitativa (Estándar Paper)**:
    - Longitud de ruta ($LEN$).
    - Consumo Energético Estimado ($EEE$).

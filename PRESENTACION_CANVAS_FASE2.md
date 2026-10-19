@@ -109,7 +109,7 @@ Este documento contiene la estructura temática diapositiva por diapositiva para
   * $\Omega_f(e) \in \{0, 1\}$: Indicador de intersección espacial mediante muestreo de 5 puntos a lo largo del segmento de vuelo con los polígonos y radios de influencia.
   * **Factores de ponderación operacional ($\lambda_f$):**
     * $\lambda_{\text{incendio}} = 15.0$ (o $30.0$ ante foco de contingencia activo).
-    * $\lambda_{\text{urbano}} = 6.0$ (cumplimiento mandatorio de la norma DGAC DAN 151 sobre manzanas con densidad $> 2500\text{ hab/km}^2$).
+    * $\lambda_{\text{urbano}} = 6.0$ (penalización por sobrevuelo de manzanas con densidad $> 2500\text{ hab/km}^2$; criterio de riesgo poblacional, alineado con las restricciones de vuelo urbano de la DAN 151).
     * $\lambda_{\text{sismo}} = 4.0$ (penalización por evento sísmico en proximidad).
     * $\lambda_{\text{telecom}} = 2.5$ (vuelo fuera del cono de cobertura celular de antenas OSM, riesgo de pérdida C2).
     * $\lambda_{\text{viento}} = 2.0$ (celdas activas con ráfagas o vientos $> 14\text{ m/s}$).
@@ -119,11 +119,11 @@ Este documento contiene la estructura temática diapositiva por diapositiva para
 
 ### Diapositiva 8: Conversión de Metadata en Restricciones (Criterios 6.1 & 6.2 · 5 pts)
 * **Conversión de Metadata en Restricciones (Criterio 6.1):**
-  * **Población INE Censo 2017:** Cumplimiento de la norma **DGAC DAN 151** (prohibición de sobrevuelo sobre aglomeraciones). Se penalizan corredores sobre manzanas densas.
+  * **Población INE Censo 2017:** Riesgo poblacional en caso de caída: los corredores sobre manzanas densas **cuestan más** y el planificador busca rutas más conservadoras (no es una prohibición; la DAN 151 regula el vuelo urbano con distancias a infraestructura y personas).
   * **Antenas OSM:** Aristas sin cobertura celular sufren penalización para asegurar enlace de telemetría y telemando (Command & Control).
 * **Preferencias por Defecto del Sistema (Criterio 6.2):**
   * `evitar_incendios: TRUE` (Mandatorio por integridad física de la aeronave).
-  * `evitar_zonas_pobladas: TRUE` (Mandatorio por regulación aeronáutica DAN 151).
+  * `evitar_zonas_pobladas: TRUE` (activado por defecto: penaliza el sobrevuelo de manzanas densas).
   * `evitar_sismos_activos: TRUE`.
   * `garantizar_enlace_c2: TRUE` (Prioridad de enlace de comando).
   * `escenario_contingencia_simulado: FALSE` (Inactivo por defecto para observar la red basal; activable interactivamente para pruebas de estrés).
