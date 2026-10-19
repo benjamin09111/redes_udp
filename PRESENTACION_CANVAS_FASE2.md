@@ -203,7 +203,7 @@ Este documento contiene la estructura temática diapositiva por diapositiva para
 
 ### Diapositiva 13: Plataforma Web Interactiva en Leaflet (Criterio 11.1 · 4 pts)
 * **Capacidades Operacionales (`http://localhost:8000/sitio_web/`):**
-  * **Dupla (Inicio, Objetivo) Dinámica:** Selector categorizado de 94 nodos principales (Base, SINCA, Salud, Educación, Industrias, Comercial) o selección directa con clic sobre cualquier marcador del mapa.
+  * **Dupla (Inicio, Objetivo) Dinámica:** Selector categorizado con los 237 nodos de la red (13 categorías) o selección directa con clic sobre cualquier nodo del mapa (Shift + clic fija el origen).
   * **Recálculo Reactivo en Caliente:** Algoritmos ejecutados localmente en JavaScript en el navegador con tiempos de respuesta subsegundo (< 50 ms); cualquier cambio de nodo o preferencia recalcula y actualiza el trazado en vivo.
   * **Controles de Preferencias:** Checkboxes para evitar incendios, zonas pobladas (DAN 151), sismos, sombra telecom y foco de contingencia simulado, con botón de **"Valores por defecto"**.
   * **Capas Cartográficas Completas:** Visualización independiente de nodos, aristas, zonas urbanas, calidad del aire SINCA, relieve SRTM, manzanas INE, antenas OSM, sismos CSN, viento Open-Meteo, lluvia MET Norway y rutas `pgr_dijkstra` de la base de datos.
