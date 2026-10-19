@@ -412,7 +412,7 @@ function mostrarAvisoDestino(nodo) {
   aviso.hidden = esMedicion;
   if (!esMedicion) {
     const cat = NOMBRE_CATEGORIA[nodo.category] || nodo.category;
-    aviso.textContent = `⚠️ ${nodo.name} (${cat}) es un nodo de paso, no un punto de medición. ` +
+    aviso.textContent = `[AVISO] ${nodo.name} (${cat}) es un nodo de tránsito, no un punto de monitoreo. ` +
       'La ruta se muestra solo como exploración: la misión real apunta a estaciones SINCA o fuentes emisoras.';
   }
 }
@@ -482,7 +482,7 @@ function actualizarRutasEnVivo() {
   const resK2 = resK1 ? dijkstraCamino(origenId, destinoId, costoResiliente, 4.0, new Set(resK1.aristas)) : null;
 
   if (!dijK1 || !resK1) {
-    document.getElementById('badge-delta-resiliencia').textContent = 'Ruta no encontrada';
+    const b = document.getElementById('badge-delta-resiliencia'); if (b) b.textContent = 'Ruta no encontrada'; const dv = document.getElementById('diferencial-valor'); if (dv) dv.textContent = 'Ruta no encontrada';
     return;
   }
 
@@ -568,7 +568,7 @@ function actualizarRutasEnVivo() {
   const elemDelta = document.getElementById('diferencial-valor');
   if (elemDelta) {
     elemDelta.textContent = valDelta;
-    elemDelta.style.color = deltaR > 0 ? '#34d399' : (deltaR === 0 ? '#60a5fa' : '#f87171');
+    elemDelta.style.color = deltaR > 0 ? '#15803d' : (deltaR === 0 ? '#0f172a' : '#b91c1c');
   }
 
   const setTxt = (id, txt) => {
@@ -930,18 +930,16 @@ function configurarNavegacionModulos(d) {
   const tabBtnMeta = document.getElementById('tab-btn-metadata');
   const tabBtnAmenazas = document.getElementById('tab-btn-amenazas');
   const tabBtnDoc = document.getElementById('tab-btn-documentacion');
-  const tabBtnPauta = document.getElementById('tab-btn-pauta');
 
   const vistaSimulador = document.getElementById('vista-simulador');
   const vistaInfra = document.getElementById('vista-infraestructura');
   const vistaMeta = document.getElementById('vista-metadata');
   const vistaAmenazas = document.getElementById('vista-amenazas');
   const vistaDoc = document.getElementById('vista-documentacion');
-  const vistaPauta = document.getElementById('vista-pauta');
 
   function cambiarPestaña(tab) {
-    [tabBtnSimulador, tabBtnInfra, tabBtnMeta, tabBtnAmenazas, tabBtnDoc, tabBtnPauta].forEach(btn => btn?.classList.remove('active'));
-    [vistaSimulador, vistaInfra, vistaMeta, vistaAmenazas, vistaDoc, vistaPauta].forEach(v => { if (v) v.hidden = true; });
+    [tabBtnSimulador, tabBtnInfra, tabBtnMeta, tabBtnAmenazas, tabBtnDoc].forEach(btn => btn?.classList.remove('active'));
+    [vistaSimulador, vistaInfra, vistaMeta, vistaAmenazas, vistaDoc].forEach(v => { if (v) v.hidden = true; });
 
     if (tab === 'simulador') {
       tabBtnSimulador.classList.add('active');
@@ -974,9 +972,6 @@ function configurarNavegacionModulos(d) {
     } else if (tab === 'documentacion') {
       tabBtnDoc.classList.add('active');
       vistaDoc.hidden = false;
-    } else if (tab === 'pauta') {
-      tabBtnPauta?.classList.add('active');
-      if (vistaPauta) vistaPauta.hidden = false;
     }
   }
 
@@ -985,12 +980,6 @@ function configurarNavegacionModulos(d) {
   if (tabBtnMeta) tabBtnMeta.addEventListener('click', () => cambiarPestaña('metadata'));
   if (tabBtnAmenazas) tabBtnAmenazas.addEventListener('click', () => cambiarPestaña('amenazas'));
   if (tabBtnDoc) tabBtnDoc.addEventListener('click', () => cambiarPestaña('documentacion'));
-  if (tabBtnPauta) tabBtnPauta.addEventListener('click', () => cambiarPestaña('pauta'));
-
-  const btnPautaSim = document.getElementById('btn-pauta-ir-simulador');
-  if (btnPautaSim) {
-    btnPautaSim.addEventListener('click', () => cambiarPestaña('simulador'));
-  }
 }
 
 function inicializarModuloInfraestructura(d) {
@@ -1035,7 +1024,7 @@ function inicializarModuloInfraestructura(d) {
     const paquete = {
       descripcion: "Infraestructura Completa de Red UAV · Bahía de Quintero",
       metodologia: "K-vecinos (K=4) + Conectividad Union-Find + Zonas Urbanas DAN 151",
-      referencia_rubrica: "Ítem 1 Entrega 2",
+      norma_tecnica: "Pipeline ETL Geoespacial RFC 7946",
       fecha_exportacion: new Date().toISOString(),
       nodos: d.nodos,
       aristas: d.aristas,
@@ -1287,7 +1276,7 @@ function inicializarModuloMetadata(d) {
     btnDl.addEventListener('click', () => {
       const paqueteMeta = {
         descripcion: "Metadata Territorial y Operacional · Bahía de Quintero",
-        referencia_rubrica: "Criterios 2 y 3.1 Entrega 2",
+        norma_tecnica: "Ingesta de Metadata Geoespacial",
         fecha_exportacion: new Date().toISOString(),
         fuentes: {
           sinca_calidad_aire: d.aire,
@@ -1647,7 +1636,7 @@ function inicializarModuloAmenazas(d) {
       const paqueteAmenazas = {
         descripcion: "Amenazas Dinámicas y Eventos de Falla · Bahía de Quintero",
         marco_metodologico: "NASA FIRMS (incendios) + EMSC/CSN (sismos) + Open-Meteo (viento) + MET Norway (lluvia)",
-        referencia_rubrica: "Criterios 3, 4.1, 4.2, 5.1, 5.2 y 6 Entrega 2",
+        norma_tecnica: "Modelamiento de Amenazas y Fallas Dinámicas",
         modelo_bd: "PostgreSQL 16 + PostGIS 3.4 (tabla threat_event)",
         fecha_exportacion: new Date().toISOString(),
         fuentes: {
@@ -1905,7 +1894,7 @@ function montarMapaAmenazas(d) {
         'Umbral Crítico': `${p.threshold} m/s`,
         'Estado (exceeds)': isExceed ? '<span class="text-bad">ACTIVO (Bloquea aristas)</span>' : '<span class="text-good">OPERACIONAL</span>',
         'Fecha Observación': p.observed_at,
-        'Regla de Pesos (Criterio 5.2)': isExceed ? 'Inhabilita aristas que cruzan la celda (C = ∞)' : 'Modula velocidad terrestre v_g y consumo EEE por viento de frente',
+        'Regla de Ponderación de Costo': isExceed ? 'Inhabilita aristas que cruzan la celda (C = ∞)' : 'Modula velocidad terrestre v_g y consumo EEE por viento de frente',
       });
     });
     poly.addTo(layerViento);
@@ -1931,7 +1920,7 @@ function montarMapaAmenazas(d) {
         'Umbral Crítico': `${p.threshold} mm/h`,
         'Estado (exceeds)': isExceed ? '<span class="text-bad">ACTIVO (No-Go por agua)</span>' : '<span class="text-good">OPERACIONAL</span>',
         'Periodo Válido': `${p.observed_at} → ${p.valid_until || '—'}`,
-        'Regla de Pesos (Criterio 5.2)': isExceed ? 'Inhabilita aristas; activa retorno de emergencia LPP hacia sotavento' : 'Vuelo permitido con sensores ópticos en condiciones estándar',
+        'Regla de Ponderación de Costo': isExceed ? 'Inhabilita aristas; activa retorno de emergencia LPP hacia sotavento' : 'Vuelo permitido con sensores ópticos en condiciones estándar',
       });
     });
     poly.addTo(layerLluvia);
@@ -1971,7 +1960,7 @@ function montarMapaAmenazas(d) {
         'Afectación a Base': isBaseAffected ? '<span class="text-bad">Base dentro del radio de daño</span>' : 'Base fuera de zona crítica',
         'Estado (exceeds)': isExceed ? '<span class="text-bad">ACTIVO (M ≥ 5.0)</span>' : 'Baja intensidad (M < 5.0)',
         'Fecha Observación': p.observed_at,
-        'Regla de Pesos (Criterio 5.2)': isBaseAffected
+        'Regla de Ponderación de Costo': isBaseAffected
           ? 'Deshabilita base aérea de Quintero por corte eléctrico; fuerza desvío a vertipuerto auxiliar o RTH'
           : 'Monitoreo preventivo sin corte de nodos base',
       });
@@ -2017,7 +2006,7 @@ function montarMapaAmenazas(d) {
         'Radio de Exclusión': `${p.radius_m} m (humo, calor y turbulencia)`,
         'Estado (exceeds)': isExceed ? '<span class="text-bad">ACTIVO (Bloqueo Total)</span>' : 'Baja confianza',
         'Fecha Observación': p.observed_at,
-        'Regla de Pesos (Criterio 5.2)': 'Bloqueo estricto e insalvable (C = ∞) de todas las aristas que intersectan el radio de 2 km',
+        'Regla de Ponderación de Costo': 'Bloqueo estricto e insalvable (C = ∞) de todas las aristas que intersectan el radio de 2 km',
       });
     };
 
@@ -2261,21 +2250,14 @@ function inicializarModuloDocumentacion(d) {
   // 1. Poblar Tabla de Trazabilidad
   const tbody = document.getElementById('tabla-trazabilidad-body');
   if (tbody) {
-    const badgesColor = {
-      'Infraestructura': '#10b981',
-      'Metadata': '#0284c7',
-      'Amenazas': '#ef4444',
-      'Ruteo y Simulación': '#8b5cf6',
-    };
-
     tbody.innerHTML = Object.values(CATALOGO_ARCHIVOS).map(item => `
       <tr>
-        <td><span style="display:inline-block; padding:2px 8px; border-radius:4px; font-weight:700; font-size:0.75rem; background:rgba(255,255,255,0.06); color:${badgesColor[item.dominio] || '#38bdf8'}; border:1px solid ${badgesColor[item.dominio] || '#38bdf8'}33;">${item.dominio}</span></td>
-        <td><strong><a href="${item.archivoDatos}" download="${item.nombreDatos}" style="color:#f8fafc; text-decoration:none; border-bottom:1px dotted #38bdf8;">${item.nombreDatos}</a></strong></td>
-        <td><button class="btn-goto-doc" data-docid="${item.id}" type="button" style="background:transparent; border:none; color:#38bdf8; cursor:pointer; font-family:monospace; font-size:0.82rem; padding:0; text-decoration:underline;">${item.nombreDoc}</button></td>
-        <td><code style="color:#94a3b8; font-size:0.78rem;">${item.scriptGenerador}</code></td>
-        <td><code style="color:#f59e0b; font-size:0.78rem;">${item.tablaBD}</code></td>
-        <td><span style="color:#cbd5e1;">${item.entidades}</span> <span style="color:#64748b; font-size:0.75rem;">(${item.tipoGeom})</span></td>
+        <td><span style="display:inline-block; padding:2px 6px; border-radius:3px; font-weight:600; font-size:0.7rem; background:#f1f5f9; color:#334155; border:1px solid #e2e8f0; font-family:monospace;">${item.dominio}</span></td>
+        <td><strong><a href="${item.archivoDatos}" download="${item.nombreDatos}" style="color:#0f172a; text-decoration:none; border-bottom:1px solid #cbd5e1;">${item.nombreDatos}</a></strong></td>
+        <td><button class="btn-goto-doc" data-docid="${item.id}" type="button" style="background:transparent; border:none; color:#0f172a; cursor:pointer; font-family:monospace; font-size:0.78rem; padding:0; text-decoration:underline;">${item.nombreDoc}</button></td>
+        <td><code style="color:#475569; font-size:0.75rem;">${item.scriptGenerador}</code></td>
+        <td><code style="color:#0f172a; font-size:0.75rem; font-weight:600;">${item.tablaBD}</code></td>
+        <td><span style="color:#334155;">${item.entidades}</span> <span style="color:#64748b; font-size:0.72rem;">(${item.tipoGeom})</span></td>
       </tr>
     `).join('');
 
@@ -2298,10 +2280,10 @@ function inicializarModuloDocumentacion(d) {
   if (btnDlMatriz) {
     btnDlMatriz.addEventListener('click', () => {
       const matrizDoc = {
-        titulo: "Diccionario Maestro de Datos y Especificaciones (Criterio 4 de la Pauta)",
+        titulo: "Diccionario Maestro de Datos y Especificaciones de Red",
         total_archivos: Object.keys(CATALOGO_ARCHIVOS).length,
         norma_geoespacial: "RFC 7946 / EPSG:4326 (WGS84)",
-        referencia_pauta: "Ítem 4 Entrega 2: Archivo descriptivo .md por cada .json o .geojson",
+        norma_especificacion: "Archivo descriptivo .md por cada conjunto de datos .json o .geojson",
         fecha_exportacion: new Date().toISOString(),
         archivos: Object.values(CATALOGO_ARCHIVOS).map(a => ({
           dominio: a.dominio,
@@ -2575,7 +2557,7 @@ function actualizarAuditoriaDijkstraUI(dijK1, nodoOrig, nodoDest, metDijkstra, a
   const meterCaption = document.getElementById('hud-meter-caption');
 
   if (titleEl) {
-    titleEl.innerHTML = `Ruta Dijkstra (Peor Caso) &bull; <span style="color:#f87171;">${esc(nodoOrig.name)}</span> &rarr; <span style="color:#fb923c;">${esc(nodoDest.name)}</span>`;
+    titleEl.innerHTML = `Línea Base: Ruta Dijkstra &bull; <span style="color:#b91c1c; font-weight:700;">${esc(nodoOrig.name)} &rarr; ${esc(nodoDest.name)}</span>`;
   }
 
   // Desglose de cada tramo
@@ -2661,16 +2643,16 @@ function actualizarAuditoriaDijkstraUI(dijK1, nodoOrig, nodoDest, metDijkstra, a
 
     trackDang.style.width = '52%';
     if (tramosCriticos > 0) {
-      trackDang.textContent = `Peligro: ${tramosCriticos} tramo(s) inviables (Supervivencia: ${metDijkstra.supervivenciaK1Pct.toFixed(1)}%)`;
-      trackDang.style.background = 'linear-gradient(90deg, #ea580c, #dc2626)';
+      trackDang.textContent = `Vulnerabilidad: ${tramosCriticos} tramo(s) críticos (${metDijkstra.supervivenciaK1Pct.toFixed(1)}% sup.)`;
+      trackDang.style.background = '#b91c1c';
     } else {
-      trackDang.textContent = `Peligro: Sin resiliencia adaptativa (${metDijkstra.supervivenciaK1Pct.toFixed(1)}% supervivencia)`;
-      trackDang.style.background = 'linear-gradient(90deg, #f59e0b, #ea580c)';
+      trackDang.textContent = `Vulnerabilidad: Sin mitigación adaptativa (${metDijkstra.supervivenciaK1Pct.toFixed(1)}% sup.)`;
+      trackDang.style.background = '#b45309';
     }
   }
 
   if (meterCaption) {
-    meterCaption.innerHTML = `<strong>¿Por qué es el peor caso?</strong> Porque resuelve la conectividad matemática en el papel, pero en el mundo real el UAV se destruye al no considerar incendios, población ni cobertura C2.`;
+    meterCaption.innerHTML = `<strong>Línea Base Geométrica:</strong> Minimiza estrictamente distancia topológica sin integrar restricciones ambientales ni cobertura C2.`;
   }
 
   // Renderizar tarjetas del stepper paso a paso
@@ -2681,15 +2663,15 @@ function actualizarAuditoriaDijkstraUI(dijK1, nodoOrig, nodoDest, metDijkstra, a
       card.className = 'hud-step-card';
       card.dataset.stepIndex = t.index;
 
-      let riesgoBadgeHtml = '<span class="hud-step-risk risk-safe">✅ TRAMO DESPEJADO</span>';
+      let riesgoBadgeHtml = '<span class="hud-step-risk risk-safe">TRAMO NOMINAL</span>';
       if (t.hayFuego) {
-        riesgoBadgeHtml = '<span class="hud-step-risk risk-danger">🔥 FUEGO / PLUMA ACTIVA</span>';
+        riesgoBadgeHtml = '<span class="hud-step-risk risk-danger">RESTRICCIÓN CONVECTIVA / FUEGO</span>';
       } else if (t.hayPoblacion) {
-        riesgoBadgeHtml = '<span class="hud-step-risk risk-danger">🏢 DAN 151 URBANO</span>';
+        riesgoBadgeHtml = '<span class="hud-step-risk risk-danger">SOBREVUELO URBANO DAN 151</span>';
       } else if (t.sinTelecom) {
-        riesgoBadgeHtml = '<span class="hud-step-risk" style="background:rgba(139,92,246,0.2);color:#c4b5fd;border:1px solid rgba(139,92,246,0.4);">📡 SIN ENLACE C2</span>';
+        riesgoBadgeHtml = '<span class="hud-step-risk" style="background:#f1f5f9;color:#334155;border:1px solid #cbd5e1;">DEGRADACIÓN ENLACE C2</span>';
       } else if (t.haySismo) {
-        riesgoBadgeHtml = '<span class="hud-step-risk" style="background:rgba(234,179,8,0.2);color:#facc15;border:1px solid rgba(234,179,8,0.4);">⚠️ ALERTA SÍSMICA</span>';
+        riesgoBadgeHtml = '<span class="hud-step-risk" style="background:#fffbeb;color:#b45309;border:1px solid #fde68a;">ALERTA SÍSMICA</span>';
       }
 
       const nomU = t.uNode?.name || `Vértice ${t.edge?.source}`;
@@ -2700,7 +2682,7 @@ function actualizarAuditoriaDijkstraUI(dijK1, nodoOrig, nodoDest, metDijkstra, a
           <span>TRAMO ${String(t.index + 1).padStart(2, '0')}</span>
           <span class="hud-step-cost">+${fmt(Math.round(t.costoTramo))} m</span>
         </div>
-        <div style="font-size: 0.74rem; color: #f1f5f9; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;" title="${esc(nomU)} &rarr; ${esc(nomV)}">
+        <div style="font-size: 0.74rem; color: #0f172a; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;" title="${esc(nomU)} &rarr; ${esc(nomV)}">
           ${esc(nomU)} &rarr; ${esc(nomV)}
         </div>
         <div class="hud-step-acum">
@@ -2746,9 +2728,9 @@ function resaltarSegmentoEnMapa(t, fijarTooltip = false) {
   }).addTo(layerDijkstraAuditoria);
 
   const midpoint = latlngs[Math.floor(latlngs.length / 2)];
-  const riesgoTexto = t.hayFuego ? '🔥 Pluma de fuego / Incendio'
-    : (t.hayPoblacion ? '🏢 Zona urbana densa (DAN 151)'
-    : (t.sinTelecom ? '📡 Sin enlace de telemetría C2' : '✅ Nominal'));
+  const riesgoTexto = t.hayFuego ? 'Pluma térmica / Incendio activo'
+    : (t.hayPoblacion ? 'Zona urbana densa (DAN 151)'
+    : (t.sinTelecom ? 'Sin cobertura de enlace C2' : 'Condición nominal'));
 
   const tooltipHtml = `
     <div style="font-size:0.78rem;line-height:1.3;">
@@ -2852,9 +2834,9 @@ function simularVueloUav() {
   simulacionTimerId = setInterval(() => {
     if (!simulacionVueloActiva || pIdx >= puntosVuelo.length) {
       if (pIdx >= puntosVuelo.length) {
-        if (btnVuelo) btnVuelo.textContent = '↺ Reiniciar Vuelo';
+        if (btnVuelo) btnVuelo.textContent = 'Reiniciar Simulación';
         if (statusInfo) {
-          statusInfo.textContent = '🏁 Destino alcanzado (Misión fallida en peor caso)';
+          statusInfo.textContent = 'Destino alcanzado (Trayectoria de riesgo crítico)';
           statusInfo.className = 'text-bad';
         }
       }
@@ -2890,28 +2872,28 @@ function simularVueloUav() {
         if (telemBox) telemBox.classList.add('telemetry-alert');
         if (radarPulse) radarPulse.classList.add('danger-pulse');
         if (statusInfo) {
-          statusInfo.textContent = '🔥 ALERTA: FUEGO ACTIVO / PLUMA';
+          statusInfo.textContent = 'ALERTA: CRUCE DE PLUMA TÉRMICA';
           statusInfo.className = 'text-bad';
         }
       } else if (t.hayPoblacion) {
         if (telemBox) telemBox.classList.add('telemetry-alert');
         if (radarPulse) radarPulse.classList.add('danger-pulse');
         if (statusInfo) {
-          statusInfo.textContent = '🏢 ALERTA: ZONA URBANA (DAN 151)';
+          statusInfo.textContent = 'ALERTA: SOBREVUELO URBANO DAN 151';
           statusInfo.className = 'text-bad';
         }
       } else if (t.sinTelecom) {
         if (telemBox) telemBox.classList.add('telemetry-alert');
         if (radarPulse) radarPulse.classList.remove('danger-pulse');
         if (statusInfo) {
-          statusInfo.textContent = '📡 ALERTA: PÉRDIDA ENLACE C2';
+          statusInfo.textContent = 'ALERTA: PÉRDIDA DE ENLACE C2';
           statusInfo.className = 'text-warning';
         }
       } else {
         if (telemBox) telemBox.classList.remove('telemetry-alert');
         if (radarPulse) radarPulse.classList.remove('danger-pulse');
         if (statusInfo) {
-          statusInfo.textContent = '✅ Vuelo nominal';
+          statusInfo.textContent = 'Vuelo nominal';
           statusInfo.className = 'text-good';
         }
       }
