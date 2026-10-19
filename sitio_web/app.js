@@ -53,6 +53,9 @@ async function cargar(url) {
 // MAPA BASE LEAFLET
 // -----------------------------------------------------------------------------
 const mapa = L.map('mapa').setView([-32.76, -71.47], 12);
+// Panel propio para los nodos, sobre zonas, rutas y amenazas (overlayPane = 400),
+// para que el clic en un nodo siempre llegue al nodo.
+mapa.createPane('nodos').style.zIndex = 450;
 const capasBase = {
   'OpenStreetMap': L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19, attribution: '&copy; OpenStreetMap',
@@ -384,6 +387,22 @@ function evaluarConfiabilidadConjuntoExacta(aristasK1, aristasK2, aristasMap) {
 // -----------------------------------------------------------------------------
 // RECALCULO REACTIVO Y ACTUALIZACIÓN EN VIVO DEL MAPA
 // -----------------------------------------------------------------------------
+// Según el informe, el dron sale de la base hacia estaciones de monitoreo y zonas de contaminación.
+// El resto de los nodos se pueden elegir para explorar rutas, pero no son puntos de medición.
+const DESTINOS_MEDICION = new Set(['sinca', 'emission_source']);
+
+function mostrarAvisoDestino(nodo) {
+  const aviso = document.getElementById('aviso-destino');
+  if (!aviso) return;
+  const esMedicion = DESTINOS_MEDICION.has(nodo.category) || nodo.category === 'base';
+  aviso.hidden = esMedicion;
+  if (!esMedicion) {
+    const cat = NOMBRE_CATEGORIA[nodo.category] || nodo.category;
+    aviso.textContent = `⚠️ ${nodo.name} (${cat}) es un nodo de paso, no un punto de medición. ` +
+      'La ruta se muestra solo como exploración: la misión real apunta a estaciones SINCA o fuentes emisoras.';
+  }
+}
+
 function actualizarRutasEnVivo() {
   const selOrigen = document.getElementById('select-origen');
   const selDestino = document.getElementById('select-destino');
@@ -398,6 +417,7 @@ function actualizarRutasEnVivo() {
   if (!nodoOrig || !nodoDest || origenCode === destinoCode) {
     return;
   }
+  mostrarAvisoDestino(nodoDest);
 
   const origenId = nodoOrig.id;
   const destinoId = nodoDest.id;
@@ -580,6 +600,7 @@ function inicializarCapasCartograficas(d) {
   // 2. Capa Nodos clasificados
   const capaNodos = L.geoJSON(d.nodos, {
     pointToLayer: (f, ll) => L.circleMarker(ll, {
+      pane: 'nodos',
       radius: f.properties.category === 'base' ? 8 : (f.properties.category === 'sinca' ? 7 : 5),
       color: '#0f172a', weight: 1.5,
       fillColor: COLOR_CATEGORIA[f.properties.category] ?? '#94a3b8', fillOpacity: 0.95,
@@ -793,7 +814,7 @@ async function iniciar() {
   // Inicializar estructuras de grafo en memoria
   inicializarGrafo(d);
 
-  // Poblar selectores de Origen y Destino (94 nodos principales clasificados)
+  // Poblar selectores de Origen y Destino con todos los nodos de la red, agrupados por categoría
   const selOrigen = document.getElementById('select-origen');
   const selDestino = document.getElementById('select-destino');
 
@@ -805,10 +826,13 @@ async function iniciar() {
   });
 
   let htmlOptions = '';
-  ['base', 'sinca', 'health', 'education', 'emission_source', 'commercial'].forEach(cat => {
+  const ordenCategorias = [...new Set([...Object.keys(NOMBRE_CATEGORIA), ...Object.keys(categorias)])];
+  ordenCategorias.forEach(cat => {
     if (categorias[cat]) {
       const nombreCat = NOMBRE_CATEGORIA[cat] || cat;
-      htmlOptions += `<optgroup label="--- ${nombreCat} ---">`;
+      const etiqueta = DESTINOS_MEDICION.has(cat) ? `${nombreCat} · punto de medición`
+        : (cat === 'base' ? nombreCat : `${nombreCat} · nodo de paso`);
+      htmlOptions += `<optgroup label="--- ${etiqueta} ---">`;
       categorias[cat].sort((a, b) => a.name.localeCompare(b.name)).forEach(p => {
         htmlOptions += `<option value="${p.code}">${p.name} (${p.city || 'Quintero'})</option>`;
       });
