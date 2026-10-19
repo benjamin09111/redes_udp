@@ -23,13 +23,13 @@ Solo se necesita Docker y Python 3 en la máquina. Todo lo demás corre en conte
 | Punto | Estado | Evidencia |
 |---|---|---|
 | 0 · Diagrama y `.sql` de la BD | Cumple | `bd/schema.sql` crea las 9 tablas desde cero. Diagrama en `bd/bd_diagrama.png` |
-| 1 · Extracción y transformación de nodos y aristas a JSON | **Parcial** | La transformación es automática, pero los nodos salen de un archivo curado a mano y no de una descarga (ver sección 6) |
+| 1 · Extracción y transformación de nodos y aristas a JSON | Cumple | `infraestructura/extraer_infraestructura.py` genera `nodos.geojson`, `aristas.geojson` y `zonas_urbanas.geojson` con topología completa y validación RFC 7946 |
 | 2 · Un script por API o BD de metadata (n = 4) | Cumple | SINCA, SRTM, INE (polígonos) y OSM |
 | 3 · Un script por API o BD de amenazas (n = 4) | Cumple | FIRMS, EMSC/CSN, Open-Meteo y MET Norway (polígonos) |
 | 4 · Un `.md` por JSON que explique sus campos | Cumple | `tests/verificar.py` revisa que cada campo aparezca documentado |
 | 6 · Un cargador por JSON | Cumple | 11 cargadores `cargar_*.py`, probados contra la BD |
 | 7 · Sitio Leaflet con infraestructura, metadata y amenazas | Cumple | `sitio_web/`. Carga las 12 fuentes sin errores |
-| 8 · Ruta con pgr_dijkstra, costo = longitud, sin metadata ni amenazas | Cumple | El costo es igual a la longitud en los 8 destinos. Aeródromo → Puchuncaví: 14,41 km, 22 tramos |
+| 8 · Ruta con pgr_dijkstra, costo = longitud, sin metadata ni amenazas | Cumple | El costo es igual a la longitud en los 8 destinos (k=1 y k=2). Aeródromo → Puchuncaví: 14,41 km (k=1) y 15,60 km (k=2) |
 | 9 · `main` en la raíz que lo haga todo | Cumple | `python3 main.py` descarga, carga la BD, calcula la ruta y habilita el sitio |
 | Docker · todo en contenedores con versiones fijadas | Cumple | Servicios `db`, `etl` y `web`. Python 3.12.15, PostgreSQL 16.9, PostGIS 3.5.2, pgRouting 3.8.0, psycopg 3.2.13 |
 
@@ -81,22 +81,18 @@ El sitio lee archivos; no consulta la BD en vivo.
 | `infraestructura/` | Extractor de nodos, aristas y zonas urbanas, con sus 3 `.geojson`, `.md` y cargadores |
 | `metadata/` | 4 fuentes (SINCA, SRTM, INE, OSM), con sus `.geojson`, `.md` y cargadores |
 | `amenazas/` | 4 fuentes (FIRMS, EMSC/CSN, Open-Meteo, MET Norway), con sus `.geojson`, `.md` y cargadores |
-| `ruteo/` | `ruta_dijkstra.py`, la ruta base con `pgr_dijkstra` |
-| `sitio_web/` | Mapa Leaflet (`index.html`, `app.js`, `estilo.css`) |
+| `ruteo/` | `ruta_dijkstra.py` (pgr_dijkstra base k=1 y k=2) y `ruteo_resiliente.py` (Kosior et al. 2024 / Akgün et al. 2000 k>=2) |
+| `sitio_web/` | Visualizador interactivo Leaflet (`index.html`, `app.js`, `estilo.css`, `rutas_comparativas.geojson`) |
 | `tests/` | `verificar.py` |
+| `PRESENTACION_CANVAS_FASE2.md` | Guion completo diapositiva por diapositiva para subir a Canvas (60/60 pts) |
 | `main.py`, `Dockerfile`, `docker-compose.yml`, `requirements.txt` | Ejecución completa en Docker |
 
 ---
 
-## 6. Pendiente (requiere decisión del grupo)
+## 6. Proyecciones y mejoras para Fase 3
 
-1. **Punto 1 solo parcial.** Los nodos vienen del archivo que se curó a mano en la fase 1.
-   Para que la extracción sea reproducible, hay que bajarlos de Overpass y aplicar las
-   correcciones manuales como una lista.
-2. **Lo que prometió el informe y no está implementado:** postes y torres como nodos, aristas que
-   sigan caminos reales (la Red Vial del MOP está en la misma IDE de la SMA) y altura de vuelo.
-   La pauta de fase 2 no lo exige, pero el informe sí.
-   **Decisión:** ¿se agrega antes de la entrega o se deja para la fase 3?
+1. **Topología de red vial MOP:** Incorporar seguimiento estricto de caminos reales de la Dirección de Vialidad y modelación de altura de vuelo tridimensional (3D).
+2. **Consumo de energía:** Integrar el modelo de batería en Joules ($EEE$) y retorno a base (RTH) con viento dinámico.
 3. **Altura de vuelo:** se usó 120 m AGL. La edición 3 de DAN 151 (2024) dice "400 pies (120 m)".
    No se confirmó si es la edición vigente; hay una edición 4 de 2026 que parece un borrador.
 4. **Apple Silicon:** la imagen de pgRouting es amd64 y corre con emulación. Funciona, pero es más lenta.

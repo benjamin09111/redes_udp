@@ -3,42 +3,165 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Ruteo UAV · Quintero – Puchuncaví</title>
+  <title>Ruteo Resiliente UAV · Quintero – Ventanas – Puchuncaví</title>
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
         integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
   <link rel="stylesheet" href="estilo.css">
 </head>
 <body>
   <header>
-    <h1>Ruteo resiliente UAV · Quintero – Ventanas – Puchuncaví</h1>
-    <p>Fase 2: infraestructura, metadata, amenazas y ruta base calculada con pgr_dijkstra.</p>
+    <div class="header-main">
+      <h1>Plataforma de Ruteo Resiliente UAV · Bahía de Quintero</h1>
+      <span class="badge-tag">Akgün et al. (2000) &bull; Inspirado en GPP Kosior et al. (2024)</span>
+    </div>
+    <p>Evaluación comparativa multi-objetivo: Dijkstra (distancia pura) vs. Ruteo Resiliente Adaptativo ante amenazas y restricciones.</p>
   </header>
 
   <main>
-    <div id="mapa" aria-label="Mapa de la red"></div>
+    <div id="mapa" aria-label="Mapa de la red y rutas"></div>
 
     <aside id="panel">
-      <section>
-        <h2>Ruta base (peor caso)</h2>
-        <label for="destino">Destino</label>
-        <select id="destino"></select>
-        <dl id="ruta-info"></dl>
-        <p class="nota">Costo = longitud de cada arista. No considera metadata ni amenazas (fase 3).</p>
+      <!-- 1. Dupla (Inicio, Objetivo) -->
+      <section class="card">
+        <h2>1. Dupla (Inicio, Objetivo)</h2>
+        <div class="control-group">
+          <label for="select-origen">Nodo de Origen (Inicio)</label>
+          <select id="select-origen"></select>
+        </div>
+        <div class="control-group">
+          <label for="select-destino">Nodo Objetivo (Destino)</label>
+          <select id="select-destino"></select>
+        </div>
+        <p class="nota-hint">💡 Tip: Haz clic en cualquier nodo del mapa para fijarlo como destino.</p>
       </section>
 
-      <section>
-        <h2>Resumen de datos</h2>
+      <!-- 2. Restricciones del Usuario (Preferencias Dinámicas) -->
+      <section class="card">
+        <div class="card-header-toggle">
+          <h2>2. Restricciones del Usuario</h2>
+          <button id="btn-default-restricciones" type="button" class="btn-link" title="Restablecer valores recomendados">Valores por defecto</button>
+        </div>
+        <div class="checkbox-list">
+          <label class="check-item">
+            <input type="checkbox" id="check-incendios" checked>
+            <span>Evitar focos de incendio activos (FIRMS)</span>
+          </label>
+          <label class="check-item">
+            <input type="checkbox" id="check-poblacion" checked>
+            <span>Evitar zonas densamente pobladas (INE / DAN 151)</span>
+          </label>
+          <label class="check-item">
+            <input type="checkbox" id="check-sismos" checked>
+            <span>Evitar zonas de alerta sísmica (CSN)</span>
+          </label>
+          <label class="check-item">
+            <input type="checkbox" id="check-telecom" checked>
+            <span>Garantizar enlace de telemetría (Antenas OSM)</span>
+          </label>
+        </div>
+
+        <div class="escenario-box mt-2">
+          <label class="check-item text-warning">
+            <input type="checkbox" id="check-escenario-estres">
+            <strong>Escenario de contingencia simulado: Foco en Planta Asfaltos Quintero</strong>
+          </label>
+        </div>
+
+        <div class="control-group mt-2">
+          <label for="select-k-alternativa">Visualización de Rutas (k &ge; 2)</label>
+          <select id="select-k-alternativa">
+            <option value="1">k = 1 (Rutas Principales)</option>
+            <option value="2">k = 2 (Rutas de Contingencia / Respaldo)</option>
+            <option value="ambas">Mostrar k=1 y k=2 simultáneamente</option>
+          </select>
+        </div>
+      </section>
+
+      <!-- 3. Métrica de Resiliencia del Conjunto de k Rutas -->
+      <section class="card">
+        <h2>3. Comparación y Resiliencia de k Rutas</h2>
+        
+        <div class="comparativa-rutas">
+          <!-- Tarjeta Dijkstra -->
+          <div class="ruta-card dijkstra-card">
+            <div class="ruta-tag dijkstra-tag">
+              <span class="linea-muestra dijkstra-linea"></span>
+              <strong id="label-dijkstra-card">Dijkstra (Peor Caso)</strong>
+            </div>
+            <div class="stat-row">
+              <span>Distancia:</span>
+              <strong id="dijkstra-distancia">—</strong>
+            </div>
+            <div class="stat-row">
+              <span>Supervivencia ruta:</span>
+              <strong id="dijkstra-supervivencia" class="score-bad">—</strong>
+            </div>
+            <div class="stat-row">
+              <span>Amenazas cruzadas:</span>
+              <span id="dijkstra-amenazas" class="text-xs text-bad">—</span>
+            </div>
+          </div>
+
+          <!-- Tarjeta Resiliente -->
+          <div class="ruta-card resiliente-card">
+            <div class="ruta-tag resiliente-tag">
+              <span class="linea-muestra resiliente-linea"></span>
+              <strong id="label-resiliente-card">Algoritmo Resiliente</strong>
+            </div>
+            <div class="stat-row">
+              <span>Distancia:</span>
+              <strong id="resiliente-distancia">—</strong>
+            </div>
+            <div class="stat-row">
+              <span>Supervivencia ruta:</span>
+              <strong id="resiliente-supervivencia" class="score-good">—</strong>
+            </div>
+            <div class="stat-row">
+              <span>Amenazas evitadas:</span>
+              <span id="resiliente-amenazas" class="text-xs text-good">—</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Métrica Conjunta de k Rutas (Criterio 10) -->
+        <div class="metricas-conjunto">
+          <div class="conjunto-row">
+            <span>Diversidad de aristas (Disyunción):</span>
+            <strong id="resiliente-diversidad">—</strong>
+          </div>
+          <div class="conjunto-row">
+            <span>Resiliencia conjunta Dijkstra (k=2):</span>
+            <strong id="conjunto-dijkstra-res">—</strong>
+          </div>
+          <div class="conjunto-row">
+            <span>Resiliencia conjunta Resiliente (k=2):</span>
+            <strong id="conjunto-resiliente-res" class="text-good">—</strong>
+          </div>
+        </div>
+
+        <!-- Banner Diferencial de Resiliencia (Criterio 11.2) -->
+        <div class="diferencial-banner" id="diferencial-banner">
+          <div class="diferencial-label">Diferencial de Resiliencia (&Delta;R):</div>
+          <div class="diferencial-value" id="diferencial-valor">+0.0 p.p.</div>
+          <div class="diferencial-desc" id="diferencial-desc">La alternativa resiliente esquiva áreas críticas con una variación mínima de distancia.</div>
+        </div>
+      </section>
+
+      <!-- 4. Resumen de Capas y Red -->
+      <section class="card">
+        <h2>4. Red e Infraestructura Espacial</h2>
         <dl id="resumen"></dl>
       </section>
 
-      <section>
-        <h2>Nodos por categoría</h2>
+      <!-- 5. Leyenda de Nodos -->
+      <section class="card">
+        <h2>5. Clasificación de Nodos</h2>
         <ul id="leyenda" class="leyenda"></ul>
       </section>
 
-      <section>
-        <h2>Estado de carga</h2>
-        <p id="estado">Cargando…</p>
+      <section class="card">
+        <h2>Estado del Sistema</h2>
+        <p id="estado" class="text-sm">Iniciando motor reactivo…</p>
       </section>
     </aside>
   </main>

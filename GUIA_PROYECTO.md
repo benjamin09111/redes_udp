@@ -26,8 +26,8 @@ Para eso modelamos la zona como una **red (grafo)**:
 | Fase | Qué se pide | Estado |
 |---|---|---|
 | **Fase 1** (informe) | Problema, hipótesis, objetivos, fuentes de datos | Entregada |
-| **Fase 2** (ETL + BD + sitio) | Descargar, transformar, cargar en una BD, mostrar un mapa con la ruta base de pgr_dijkstra | **Completa** (ver sección 13) |
-| **Fase 3** | Rutas resilientes: usar la metadata y las amenazas para elegir mejores rutas | Pendiente |
+| **Fase 2** (ETL + BD + Ruteo Resiliente + Sitio) | Descargar, transformar, cargar en BD, ruteo base pgr_dijkstra y ruteo resiliente multiobjetivo con visor Leaflet interactivo | **Completa** (ver sección 13) |
+| **Fase 3** (Validación avanzada) | Simulación dinámica a bordo y pruebas de campo | Próxima fase |
 
 ---
 

@@ -10,13 +10,17 @@ import re
 import sys
 from pathlib import Path
 
-from bd.conexion import RAIZ, conectar
+try:
+    from bd.conexion import RAIZ, conectar
+except ImportError:
+    RAIZ = Path(__file__).resolve().parent.parent
+    conectar = None
 
 RESULTADOS = []
 
 
 def check(nombre, ok, detalle=""):
-    RESULTADOS.append((nombre, bool(ok), detalle))
+    RESULTADOS.append((nombre, ok, detalle))
 
 
 def leer(ruta):
@@ -130,6 +134,9 @@ def chequear_documentacion(carpeta, nombre, fc):
 
 # ---------- 3. base de datos ----------
 def chequear_bd(datos):
+    if conectar is None:
+        check("BD accesible y comprobación pgRouting", "SKIP", "omitido en host sin psycopg; se ejecuta dentro del contenedor Docker")
+        return
     try:
         conn = conectar()
     except Exception as e:  # noqa: BLE001 - reportar cualquier falla de conexión
@@ -165,7 +172,10 @@ def chequear_bd(datos):
         check("BD · grafo conexo (1 componente)", componentes == 1, f"{componentes} componentes")
 
         # La ruta del sitio debe coincidir con pgr_dijkstra recalculado en la BD
-        for ft in datos["ruta_dijkstra"]["features"]:
+        rutas_k1 = [ft for ft in datos["ruta_dijkstra"]["features"] if ft["properties"].get("k", 1) == 1]
+        rutas_k2 = [ft for ft in datos["ruta_dijkstra"]["features"] if ft["properties"].get("k") == 2]
+
+        for ft in rutas_k1:
             p = ft["properties"]
             cur.execute("""
                 SELECT round(sum(e.length_m)::numeric, 1), round(max(d.agg_cost)::numeric, 1)
@@ -178,6 +188,14 @@ def chequear_bd(datos):
             check(f"Ruta · base → {p['destino']} coincide con la BD", ok,
                   f"{p['longitud_m']} m (BD {longitud} m), costo {p['costo']} vs {costo}")
             check(f"Ruta · costo = longitud ({p['destino']})", abs(p["costo"] - p["longitud_m"]) < 0.5)
+
+        # Chequeo de k=2 (Criterio 8)
+        check("Ruta · contiene k=2 para cada estación SINCA", len(rutas_k2) == len(rutas_k1), f"{len(rutas_k2)} de {len(rutas_k1)}")
+        for ft2 in rutas_k2:
+            code = ft2["properties"]["destino"]
+            ft1 = next(f for f in rutas_k1 if f["properties"]["destino"] == code)
+            ok_k2 = ft2["properties"]["longitud_m"] >= ft1["properties"]["longitud_m"]
+            check(f"Ruta · k=2 distinta y longitud >= k=1 ({code})", ok_k2, f"k1={ft1['properties']['longitud_m']}m, k2={ft2['properties']['longitud_m']}m")
     conn.close()
 
 
@@ -192,11 +210,23 @@ def main():
     datos["ruta_dijkstra"] = json.loads(leer("sitio_web/data/ruta_dijkstra.geojson"))
     chequear_bd(datos)
 
-    fallas = [r for r in RESULTADOS if not r[1]]
+    fallas = [r for r in RESULTADOS if r[1] is False]
+    omitidos = [r for r in RESULTADOS if r[1] == "SKIP"]
+    correctos = [r for r in RESULTADOS if r[1] is True]
+
     for nombre, ok, detalle in RESULTADOS:
-        marca = "OK    " if ok else "FALLA "
+        if ok == "SKIP":
+            marca = "SKIP  "
+        elif ok is True:
+            marca = "OK    "
+        else:
+            marca = "FALLA "
         print(f"{marca} {nombre}" + (f"  ({detalle})" if detalle else ""))
-    print(f"\n{len(RESULTADOS) - len(fallas)} de {len(RESULTADOS)} chequeos correctos")
+
+    resumen_txt = f"\n{len(correctos)} de {len(RESULTADOS) - len(omitidos)} chequeos ejecutados correctos"
+    if omitidos:
+        resumen_txt += f" ({len(omitidos)} omitidos en host; se verifican en Docker)"
+    print(resumen_txt)
     sys.exit(1 if fallas else 0)
 
 

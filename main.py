@@ -44,8 +44,9 @@ CARGA = [
     ("Lluvia", "amenazas/cargar_metno_lluvia.py"),
 ]
 
-# 3) Ruteo con pgr_dijkstra -> sitio_web/data/ruta_dijkstra.geojson
+# 3) Ruteo base con pgr_dijkstra -> sitio_web/data/ruta_dijkstra.geojson
 RUTEO = "ruteo/ruta_dijkstra.py"
+RUTEO_RESILIENTE = "ruteo/ruteo_resiliente.py"
 
 RESUMEN_SQL = """
 SELECT 'infra_node' AS tabla, count(*) FROM infra_node
@@ -116,8 +117,11 @@ def main():
             paso(f"Carga a la BD · {titulo}")
             en_etl(script)
 
-        paso("Ruteo: pgr_dijkstra desde la base hacia cada estación SINCA (costo = longitud)")
+        paso("Ruteo base: pgr_dijkstra desde la base hacia cada estación SINCA (costo = longitud)")
         en_etl(RUTEO)
+
+        paso("Ruteo resiliente multiobjetivo: Kosior et al. (2024) y KSP Yen (k >= 2)")
+        en_etl(RUTEO_RESILIENTE)
 
         paso("Sitio web (Leaflet)")
         compose("up", "-d", "web")

@@ -1,0 +1,2487 @@
+{
+  "type": "FeatureCollection",
+  "etl": {
+    "fuente": "Ruteo Resiliente Akgün et al. (2000) / GPP Kosior et al. (2024)",
+    "generado": "2026-10-19T01:29:39+00:00",
+    "paper": "Kosior, M., Przystałka, P., & Panfil, W. (2024). Adaptive Path Planning for UAV-Based Pollution Sampling. Applied Sciences, 14(24), 12065.",
+    "algoritmo": "Akgün et al. (2000) K-caminos disimilares por penalización iterativa de aristas",
+    "parametros": {
+      "origen": "base_scer",
+      "k_rutas": 2,
+      "factor_penalizacion_k2": 4.0,
+      "escenario_contingencia_activo": true,
+      "foco_contingencia": {
+        "lon": -71.4935,
+        "lat": -32.7801,
+        "radio_m": 180.0,
+        "descripcion": "Foco de contingencia: Incendio industrial en Planta Asfaltos Quintero"
+      },
+      "tasas_riesgo_supuestas": {
+        "lambda_base": 0.005,
+        "lambda_incendio": 5.0,
+        "lambda_urbano_dan151": 0.08,
+        "lambda_sismo": 0.05,
+        "lambda_telecom": 0.03,
+        "lambda_viento": 0.04,
+        "lambda_lluvia": 0.03
+      }
+    },
+    "total": 32
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.5173,
+            -32.7842
+          ],
+          [
+            -71.508129,
+            -32.784507
+          ],
+          [
+            -71.5035,
+            -32.783
+          ],
+          [
+            -71.498127,
+            -32.780572
+          ],
+          [
+            -71.4935,
+            -32.7801
+          ],
+          [
+            -71.486467,
+            -32.776094
+          ],
+          [
+            -71.485765,
+            -32.768722
+          ],
+          [
+            -71.482469,
+            -32.76866
+          ],
+          [
+            -71.480864,
+            -32.762488
+          ],
+          [
+            -71.479937,
+            -32.759468
+          ],
+          [
+            -71.475214,
+            -32.754565
+          ],
+          [
+            -71.474214,
+            -32.748276
+          ],
+          [
+            -71.47277,
+            -32.74518
+          ],
+          [
+            -71.468597,
+            -32.741347
+          ],
+          [
+            -71.460807,
+            -32.736423
+          ],
+          [
+            -71.456897,
+            -32.735259
+          ],
+          [
+            -71.450857,
+            -32.736201
+          ]
+        ]
+      },
+      "properties": {
+        "tipo_algoritmo": "dijkstra_k1",
+        "etiqueta": "Dijkstra k=1 (contingencia)",
+        "k_orden": 1,
+        "origen": "base_scer",
+        "destino": "sinca_campiche",
+        "destino_nombre": "Estación SINCA Campiche",
+        "longitud_m": 9531.0,
+        "supervivencia_pct": 0.2,
+        "amenazas": [
+          "densidad_urbana_dan151",
+          "incendio_contingencia_simulado",
+          "sombra_telecom"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.5173,
+            -32.7842
+          ],
+          [
+            -71.510289,
+            -32.785856
+          ],
+          [
+            -71.507865,
+            -32.782724
+          ],
+          [
+            -71.5035,
+            -32.783
+          ],
+          [
+            -71.498029,
+            -32.779321
+          ],
+          [
+            -71.4935,
+            -32.7801
+          ],
+          [
+            -71.48946,
+            -32.77869
+          ],
+          [
+            -71.486467,
+            -32.776094
+          ],
+          [
+            -71.48796,
+            -32.76881
+          ],
+          [
+            -71.480393,
+            -32.769736
+          ],
+          [
+            -71.480864,
+            -32.762488
+          ],
+          [
+            -71.48162,
+            -32.75961
+          ],
+          [
+            -71.475214,
+            -32.754565
+          ],
+          [
+            -71.474214,
+            -32.748276
+          ],
+          [
+            -71.468947,
+            -32.746708
+          ],
+          [
+            -71.468597,
+            -32.741347
+          ],
+          [
+            -71.460807,
+            -32.736423
+          ],
+          [
+            -71.451108,
+            -32.735326
+          ],
+          [
+            -71.450857,
+            -32.736201
+          ]
+        ]
+      },
+      "properties": {
+        "tipo_algoritmo": "dijkstra_k2",
+        "etiqueta": "Dijkstra k=2 (contingencia)",
+        "k_orden": 2,
+        "origen": "base_scer",
+        "destino": "sinca_campiche",
+        "destino_nombre": "Estación SINCA Campiche",
+        "longitud_m": 10647.9,
+        "supervivencia_pct": 1.2,
+        "amenazas": [
+          "incendio_contingencia_simulado",
+          "sombra_telecom"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.5173,
+            -32.7842
+          ],
+          [
+            -71.510289,
+            -32.785856
+          ],
+          [
+            -71.504423,
+            -32.787931
+          ],
+          [
+            -71.50229,
+            -32.787705
+          ],
+          [
+            -71.496759,
+            -32.788246
+          ],
+          [
+            -71.488,
+            -32.793
+          ],
+          [
+            -71.486192,
+            -32.787826
+          ],
+          [
+            -71.49099,
+            -32.78265
+          ],
+          [
+            -71.490998,
+            -32.782002
+          ],
+          [
+            -71.486467,
+            -32.776094
+          ],
+          [
+            -71.485765,
+            -32.768722
+          ],
+          [
+            -71.482469,
+            -32.76866
+          ],
+          [
+            -71.480864,
+            -32.762488
+          ],
+          [
+            -71.479937,
+            -32.759468
+          ],
+          [
+            -71.475214,
+            -32.754565
+          ],
+          [
+            -71.474214,
+            -32.748276
+          ],
+          [
+            -71.47277,
+            -32.74518
+          ],
+          [
+            -71.468597,
+            -32.741347
+          ],
+          [
+            -71.460807,
+            -32.736423
+          ],
+          [
+            -71.456897,
+            -32.735259
+          ],
+          [
+            -71.450857,
+            -32.736201
+          ]
+        ]
+      },
+      "properties": {
+        "tipo_algoritmo": "resiliente_k1",
+        "etiqueta": "Resiliente k=1 (contingencia)",
+        "k_orden": 1,
+        "origen": "base_scer",
+        "destino": "sinca_campiche",
+        "destino_nombre": "Estación SINCA Campiche",
+        "longitud_m": 11563.5,
+        "supervivencia_pct": 79.8,
+        "amenazas": [
+          "sombra_telecom"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.5173,
+            -32.7842
+          ],
+          [
+            -71.510289,
+            -32.785856
+          ],
+          [
+            -71.503992,
+            -32.788325
+          ],
+          [
+            -71.502803,
+            -32.789344
+          ],
+          [
+            -71.49642,
+            -32.794914
+          ],
+          [
+            -71.488,
+            -32.793
+          ],
+          [
+            -71.485904,
+            -32.787293
+          ],
+          [
+            -71.49099,
+            -32.78265
+          ],
+          [
+            -71.489506,
+            -32.779035
+          ],
+          [
+            -71.486467,
+            -32.776094
+          ],
+          [
+            -71.48796,
+            -32.76881
+          ],
+          [
+            -71.480393,
+            -32.769736
+          ],
+          [
+            -71.480864,
+            -32.762488
+          ],
+          [
+            -71.48162,
+            -32.75961
+          ],
+          [
+            -71.475214,
+            -32.754565
+          ],
+          [
+            -71.474214,
+            -32.748276
+          ],
+          [
+            -71.468947,
+            -32.746708
+          ],
+          [
+            -71.468597,
+            -32.741347
+          ],
+          [
+            -71.460807,
+            -32.736423
+          ],
+          [
+            -71.451108,
+            -32.735326
+          ],
+          [
+            -71.450857,
+            -32.736201
+          ]
+        ]
+      },
+      "properties": {
+        "tipo_algoritmo": "resiliente_k2",
+        "etiqueta": "Resiliente k=2 (contingencia)",
+        "k_orden": 2,
+        "origen": "base_scer",
+        "destino": "sinca_campiche",
+        "destino_nombre": "Estación SINCA Campiche",
+        "longitud_m": 12633.1,
+        "supervivencia_pct": 77.4,
+        "amenazas": [
+          "sombra_telecom"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.5173,
+            -32.7842
+          ],
+          [
+            -71.5253,
+            -32.782378
+          ],
+          [
+            -71.526616,
+            -32.782856
+          ],
+          [
+            -71.527476,
+            -32.783915
+          ],
+          [
+            -71.528533,
+            -32.784815
+          ],
+          [
+            -71.530444,
+            -32.785358
+          ],
+          [
+            -71.532226,
+            -32.787721
+          ]
+        ]
+      },
+      "properties": {
+        "tipo_algoritmo": "dijkstra_k1",
+        "etiqueta": "Dijkstra k=1 (contingencia)",
+        "k_orden": 1,
+        "origen": "base_scer",
+        "destino": "sinca_centro_quintero",
+        "destino_nombre": "Estación SINCA Centro Quintero",
+        "longitud_m": 1691.8,
+        "supervivencia_pct": 93.1,
+        "amenazas": [
+          "densidad_urbana_dan151"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.5173,
+            -32.7842
+          ],
+          [
+            -71.52651,
+            -32.78259
+          ],
+          [
+            -71.527006,
+            -32.782067
+          ],
+          [
+            -71.528235,
+            -32.78279
+          ],
+          [
+            -71.529272,
+            -32.783433
+          ],
+          [
+            -71.530444,
+            -32.785358
+          ],
+          [
+            -71.532615,
+            -32.787692
+          ],
+          [
+            -71.532226,
+            -32.787721
+          ]
+        ]
+      },
+      "properties": {
+        "tipo_algoritmo": "dijkstra_k2",
+        "etiqueta": "Dijkstra k=2 (contingencia)",
+        "k_orden": 2,
+        "origen": "base_scer",
+        "destino": "sinca_centro_quintero",
+        "destino_nombre": "Estación SINCA Centro Quintero",
+        "longitud_m": 1820.9,
+        "supervivencia_pct": 92.5,
+        "amenazas": [
+          "densidad_urbana_dan151"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.5173,
+            -32.7842
+          ],
+          [
+            -71.5253,
+            -32.782378
+          ],
+          [
+            -71.526616,
+            -32.782856
+          ],
+          [
+            -71.527476,
+            -32.783915
+          ],
+          [
+            -71.528399,
+            -32.783928
+          ],
+          [
+            -71.528533,
+            -32.784815
+          ],
+          [
+            -71.530444,
+            -32.785358
+          ],
+          [
+            -71.532226,
+            -32.787721
+          ]
+        ]
+      },
+      "properties": {
+        "tipo_algoritmo": "resiliente_k1",
+        "etiqueta": "Resiliente k=1 (contingencia)",
+        "k_orden": 1,
+        "origen": "base_scer",
+        "destino": "sinca_centro_quintero",
+        "destino_nombre": "Estación SINCA Centro Quintero",
+        "longitud_m": 1736.8,
+        "supervivencia_pct": 94.2,
+        "amenazas": [
+          "densidad_urbana_dan151"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.5173,
+            -32.7842
+          ],
+          [
+            -71.52651,
+            -32.78259
+          ],
+          [
+            -71.527006,
+            -32.782067
+          ],
+          [
+            -71.528235,
+            -32.78279
+          ],
+          [
+            -71.528399,
+            -32.783928
+          ],
+          [
+            -71.527953,
+            -32.784775
+          ],
+          [
+            -71.52843,
+            -32.78557
+          ],
+          [
+            -71.528229,
+            -32.786524
+          ],
+          [
+            -71.528224,
+            -32.786825
+          ],
+          [
+            -71.528055,
+            -32.787698
+          ],
+          [
+            -71.529683,
+            -32.78919
+          ],
+          [
+            -71.532226,
+            -32.787721
+          ]
+        ]
+      },
+      "properties": {
+        "tipo_algoritmo": "resiliente_k2",
+        "etiqueta": "Resiliente k=2 (contingencia)",
+        "k_orden": 2,
+        "origen": "base_scer",
+        "destino": "sinca_centro_quintero",
+        "destino_nombre": "Estación SINCA Centro Quintero",
+        "longitud_m": 2176.6,
+        "supervivencia_pct": 92.9,
+        "amenazas": [
+          "densidad_urbana_dan151"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.5173,
+            -32.7842
+          ],
+          [
+            -71.508129,
+            -32.784507
+          ],
+          [
+            -71.5035,
+            -32.783
+          ],
+          [
+            -71.498127,
+            -32.780572
+          ],
+          [
+            -71.4935,
+            -32.7801
+          ],
+          [
+            -71.486467,
+            -32.776094
+          ],
+          [
+            -71.485765,
+            -32.768722
+          ],
+          [
+            -71.482469,
+            -32.76866
+          ],
+          [
+            -71.480864,
+            -32.762488
+          ],
+          [
+            -71.479937,
+            -32.759468
+          ],
+          [
+            -71.475214,
+            -32.754565
+          ],
+          [
+            -71.474214,
+            -32.748276
+          ]
+        ]
+      },
+      "properties": {
+        "tipo_algoritmo": "dijkstra_k1",
+        "etiqueta": "Dijkstra k=1 (contingencia)",
+        "k_orden": 1,
+        "origen": "base_scer",
+        "destino": "sinca_la_greda",
+        "destino_nombre": "Estación SINCA La Greda",
+        "longitud_m": 6709.4,
+        "supervivencia_pct": 0.2,
+        "amenazas": [
+          "densidad_urbana_dan151",
+          "incendio_contingencia_simulado",
+          "sombra_telecom"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.5173,
+            -32.7842
+          ],
+          [
+            -71.510289,
+            -32.785856
+          ],
+          [
+            -71.507865,
+            -32.782724
+          ],
+          [
+            -71.5035,
+            -32.783
+          ],
+          [
+            -71.498029,
+            -32.779321
+          ],
+          [
+            -71.4935,
+            -32.7801
+          ],
+          [
+            -71.48946,
+            -32.77869
+          ],
+          [
+            -71.486467,
+            -32.776094
+          ],
+          [
+            -71.48796,
+            -32.76881
+          ],
+          [
+            -71.480393,
+            -32.769736
+          ],
+          [
+            -71.480864,
+            -32.762488
+          ],
+          [
+            -71.48162,
+            -32.75961
+          ],
+          [
+            -71.475214,
+            -32.754565
+          ],
+          [
+            -71.474214,
+            -32.748276
+          ]
+        ]
+      },
+      "properties": {
+        "tipo_algoritmo": "dijkstra_k2",
+        "etiqueta": "Dijkstra k=2 (contingencia)",
+        "k_orden": 2,
+        "origen": "base_scer",
+        "destino": "sinca_la_greda",
+        "destino_nombre": "Estación SINCA La Greda",
+        "longitud_m": 7601.5,
+        "supervivencia_pct": 1.3,
+        "amenazas": [
+          "incendio_contingencia_simulado",
+          "sombra_telecom"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.5173,
+            -32.7842
+          ],
+          [
+            -71.510289,
+            -32.785856
+          ],
+          [
+            -71.504423,
+            -32.787931
+          ],
+          [
+            -71.50229,
+            -32.787705
+          ],
+          [
+            -71.496759,
+            -32.788246
+          ],
+          [
+            -71.488,
+            -32.793
+          ],
+          [
+            -71.486192,
+            -32.787826
+          ],
+          [
+            -71.49099,
+            -32.78265
+          ],
+          [
+            -71.490998,
+            -32.782002
+          ],
+          [
+            -71.486467,
+            -32.776094
+          ],
+          [
+            -71.485765,
+            -32.768722
+          ],
+          [
+            -71.482469,
+            -32.76866
+          ],
+          [
+            -71.480864,
+            -32.762488
+          ],
+          [
+            -71.479937,
+            -32.759468
+          ],
+          [
+            -71.475214,
+            -32.754565
+          ],
+          [
+            -71.474214,
+            -32.748276
+          ]
+        ]
+      },
+      "properties": {
+        "tipo_algoritmo": "resiliente_k1",
+        "etiqueta": "Resiliente k=1 (contingencia)",
+        "k_orden": 1,
+        "origen": "base_scer",
+        "destino": "sinca_la_greda",
+        "destino_nombre": "Estación SINCA La Greda",
+        "longitud_m": 8741.9,
+        "supervivencia_pct": 88.1,
+        "amenazas": [
+          "sombra_telecom"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.5173,
+            -32.7842
+          ],
+          [
+            -71.510289,
+            -32.785856
+          ],
+          [
+            -71.503992,
+            -32.788325
+          ],
+          [
+            -71.502803,
+            -32.789344
+          ],
+          [
+            -71.49642,
+            -32.794914
+          ],
+          [
+            -71.488,
+            -32.793
+          ],
+          [
+            -71.485904,
+            -32.787293
+          ],
+          [
+            -71.49099,
+            -32.78265
+          ],
+          [
+            -71.489506,
+            -32.779035
+          ],
+          [
+            -71.486467,
+            -32.776094
+          ],
+          [
+            -71.48796,
+            -32.76881
+          ],
+          [
+            -71.480393,
+            -32.769736
+          ],
+          [
+            -71.480864,
+            -32.762488
+          ],
+          [
+            -71.48162,
+            -32.75961
+          ],
+          [
+            -71.475214,
+            -32.754565
+          ],
+          [
+            -71.474214,
+            -32.748276
+          ]
+        ]
+      },
+      "properties": {
+        "tipo_algoritmo": "resiliente_k2",
+        "etiqueta": "Resiliente k=2 (contingencia)",
+        "k_orden": 2,
+        "origen": "base_scer",
+        "destino": "sinca_la_greda",
+        "destino_nombre": "Estación SINCA La Greda",
+        "longitud_m": 9586.7,
+        "supervivencia_pct": 86.1,
+        "amenazas": [
+          "sombra_telecom"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.5173,
+            -32.7842
+          ],
+          [
+            -71.510289,
+            -32.785856
+          ],
+          [
+            -71.503992,
+            -32.788325
+          ],
+          [
+            -71.502803,
+            -32.789344
+          ],
+          [
+            -71.49642,
+            -32.794914
+          ]
+        ]
+      },
+      "properties": {
+        "tipo_algoritmo": "dijkstra_k1",
+        "etiqueta": "Dijkstra k=1 (contingencia)",
+        "k_orden": 1,
+        "origen": "base_scer",
+        "destino": "sinca_loncura",
+        "destino_nombre": "Estación SINCA Loncura",
+        "longitud_m": 2349.0,
+        "supervivencia_pct": 98.8,
+        "amenazas": []
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.5173,
+            -32.7842
+          ],
+          [
+            -71.508129,
+            -32.784507
+          ],
+          [
+            -71.504423,
+            -32.787931
+          ],
+          [
+            -71.503992,
+            -32.788325
+          ],
+          [
+            -71.502156,
+            -32.789708
+          ],
+          [
+            -71.49642,
+            -32.794914
+          ]
+        ]
+      },
+      "properties": {
+        "tipo_algoritmo": "dijkstra_k2",
+        "etiqueta": "Dijkstra k=2 (contingencia)",
+        "k_orden": 2,
+        "origen": "base_scer",
+        "destino": "sinca_loncura",
+        "destino_nombre": "Estación SINCA Loncura",
+        "longitud_m": 2451.8,
+        "supervivencia_pct": 86.6,
+        "amenazas": [
+          "densidad_urbana_dan151"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.5173,
+            -32.7842
+          ],
+          [
+            -71.510289,
+            -32.785856
+          ],
+          [
+            -71.503992,
+            -32.788325
+          ],
+          [
+            -71.502803,
+            -32.789344
+          ],
+          [
+            -71.49642,
+            -32.794914
+          ]
+        ]
+      },
+      "properties": {
+        "tipo_algoritmo": "resiliente_k1",
+        "etiqueta": "Resiliente k=1 (contingencia)",
+        "k_orden": 1,
+        "origen": "base_scer",
+        "destino": "sinca_loncura",
+        "destino_nombre": "Estación SINCA Loncura",
+        "longitud_m": 2349.0,
+        "supervivencia_pct": 98.8,
+        "amenazas": []
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.5173,
+            -32.7842
+          ],
+          [
+            -71.510289,
+            -32.785856
+          ],
+          [
+            -71.504423,
+            -32.787931
+          ],
+          [
+            -71.50229,
+            -32.787705
+          ],
+          [
+            -71.496759,
+            -32.788246
+          ],
+          [
+            -71.49642,
+            -32.794914
+          ]
+        ]
+      },
+      "properties": {
+        "tipo_algoritmo": "resiliente_k2",
+        "etiqueta": "Resiliente k=2 (contingencia)",
+        "k_orden": 2,
+        "origen": "base_scer",
+        "destino": "sinca_loncura",
+        "destino_nombre": "Estación SINCA Loncura",
+        "longitud_m": 2739.3,
+        "supervivencia_pct": 98.6,
+        "amenazas": []
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.5173,
+            -32.7842
+          ],
+          [
+            -71.508129,
+            -32.784507
+          ],
+          [
+            -71.5035,
+            -32.783
+          ],
+          [
+            -71.498127,
+            -32.780572
+          ],
+          [
+            -71.4935,
+            -32.7801
+          ],
+          [
+            -71.486467,
+            -32.776094
+          ],
+          [
+            -71.485765,
+            -32.768722
+          ],
+          [
+            -71.482469,
+            -32.76866
+          ],
+          [
+            -71.480864,
+            -32.762488
+          ],
+          [
+            -71.479937,
+            -32.759468
+          ],
+          [
+            -71.475214,
+            -32.754565
+          ],
+          [
+            -71.474214,
+            -32.748276
+          ],
+          [
+            -71.47277,
+            -32.74518
+          ],
+          [
+            -71.468597,
+            -32.741347
+          ],
+          [
+            -71.460807,
+            -32.736423
+          ],
+          [
+            -71.452159,
+            -32.734692
+          ],
+          [
+            -71.4485,
+            -32.7315
+          ],
+          [
+            -71.416666,
+            -32.729969
+          ],
+          [
+            -71.414293,
+            -32.726414
+          ],
+          [
+            -71.412,
+            -32.723
+          ],
+          [
+            -71.410148,
+            -32.721627
+          ],
+          [
+            -71.40808,
+            -32.719707
+          ],
+          [
+            -71.407326,
+            -32.718731
+          ]
+        ]
+      },
+      "properties": {
+        "tipo_algoritmo": "dijkstra_k1",
+        "etiqueta": "Dijkstra k=1 (contingencia)",
+        "k_orden": 1,
+        "origen": "base_scer",
+        "destino": "sinca_puchuncavi",
+        "destino_nombre": "Estación SINCA Puchuncaví",
+        "longitud_m": 14413.5,
+        "supervivencia_pct": 0.1,
+        "amenazas": [
+          "densidad_urbana_dan151",
+          "incendio_contingencia_simulado",
+          "sombra_telecom"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.5173,
+            -32.7842
+          ],
+          [
+            -71.510289,
+            -32.785856
+          ],
+          [
+            -71.507865,
+            -32.782724
+          ],
+          [
+            -71.5035,
+            -32.783
+          ],
+          [
+            -71.498029,
+            -32.779321
+          ],
+          [
+            -71.4935,
+            -32.7801
+          ],
+          [
+            -71.48946,
+            -32.77869
+          ],
+          [
+            -71.486467,
+            -32.776094
+          ],
+          [
+            -71.48796,
+            -32.76881
+          ],
+          [
+            -71.480393,
+            -32.769736
+          ],
+          [
+            -71.480864,
+            -32.762488
+          ],
+          [
+            -71.48162,
+            -32.75961
+          ],
+          [
+            -71.475214,
+            -32.754565
+          ],
+          [
+            -71.474214,
+            -32.748276
+          ],
+          [
+            -71.468947,
+            -32.746708
+          ],
+          [
+            -71.468597,
+            -32.741347
+          ],
+          [
+            -71.460807,
+            -32.736423
+          ],
+          [
+            -71.451108,
+            -32.735326
+          ],
+          [
+            -71.4485,
+            -32.7315
+          ],
+          [
+            -71.416666,
+            -32.729969
+          ],
+          [
+            -71.415451,
+            -32.727093
+          ],
+          [
+            -71.415106,
+            -32.725987
+          ],
+          [
+            -71.412,
+            -32.723
+          ],
+          [
+            -71.410148,
+            -32.721627
+          ],
+          [
+            -71.408431,
+            -32.718983
+          ],
+          [
+            -71.407326,
+            -32.718731
+          ]
+        ]
+      },
+      "properties": {
+        "tipo_algoritmo": "dijkstra_k2",
+        "etiqueta": "Dijkstra k=2 (contingencia)",
+        "k_orden": 2,
+        "origen": "base_scer",
+        "destino": "sinca_puchuncavi",
+        "destino_nombre": "Estación SINCA Puchuncaví",
+        "longitud_m": 15601.7,
+        "supervivencia_pct": 1.1,
+        "amenazas": [
+          "densidad_urbana_dan151",
+          "incendio_contingencia_simulado",
+          "sombra_telecom"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.5173,
+            -32.7842
+          ],
+          [
+            -71.510289,
+            -32.785856
+          ],
+          [
+            -71.504423,
+            -32.787931
+          ],
+          [
+            -71.50229,
+            -32.787705
+          ],
+          [
+            -71.496759,
+            -32.788246
+          ],
+          [
+            -71.488,
+            -32.793
+          ],
+          [
+            -71.486192,
+            -32.787826
+          ],
+          [
+            -71.49099,
+            -32.78265
+          ],
+          [
+            -71.490998,
+            -32.782002
+          ],
+          [
+            -71.486467,
+            -32.776094
+          ],
+          [
+            -71.485765,
+            -32.768722
+          ],
+          [
+            -71.482469,
+            -32.76866
+          ],
+          [
+            -71.480864,
+            -32.762488
+          ],
+          [
+            -71.479937,
+            -32.759468
+          ],
+          [
+            -71.475214,
+            -32.754565
+          ],
+          [
+            -71.474214,
+            -32.748276
+          ],
+          [
+            -71.47277,
+            -32.74518
+          ],
+          [
+            -71.468597,
+            -32.741347
+          ],
+          [
+            -71.460807,
+            -32.736423
+          ],
+          [
+            -71.452159,
+            -32.734692
+          ],
+          [
+            -71.4485,
+            -32.7315
+          ],
+          [
+            -71.416666,
+            -32.729969
+          ],
+          [
+            -71.415451,
+            -32.727093
+          ],
+          [
+            -71.414293,
+            -32.726414
+          ],
+          [
+            -71.412,
+            -32.723
+          ],
+          [
+            -71.410148,
+            -32.721627
+          ],
+          [
+            -71.40808,
+            -32.719707
+          ],
+          [
+            -71.407326,
+            -32.718731
+          ]
+        ]
+      },
+      "properties": {
+        "tipo_algoritmo": "resiliente_k1",
+        "etiqueta": "Resiliente k=1 (contingencia)",
+        "k_orden": 1,
+        "origen": "base_scer",
+        "destino": "sinca_puchuncavi",
+        "destino_nombre": "Estación SINCA Puchuncaví",
+        "longitud_m": 16464.1,
+        "supervivencia_pct": 74.4,
+        "amenazas": [
+          "densidad_urbana_dan151",
+          "sombra_telecom"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.5173,
+            -32.7842
+          ],
+          [
+            -71.510289,
+            -32.785856
+          ],
+          [
+            -71.503992,
+            -32.788325
+          ],
+          [
+            -71.502803,
+            -32.789344
+          ],
+          [
+            -71.49642,
+            -32.794914
+          ],
+          [
+            -71.488,
+            -32.793
+          ],
+          [
+            -71.485904,
+            -32.787293
+          ],
+          [
+            -71.49099,
+            -32.78265
+          ],
+          [
+            -71.489506,
+            -32.779035
+          ],
+          [
+            -71.486467,
+            -32.776094
+          ],
+          [
+            -71.48796,
+            -32.76881
+          ],
+          [
+            -71.480393,
+            -32.769736
+          ],
+          [
+            -71.480864,
+            -32.762488
+          ],
+          [
+            -71.48162,
+            -32.75961
+          ],
+          [
+            -71.475214,
+            -32.754565
+          ],
+          [
+            -71.474214,
+            -32.748276
+          ],
+          [
+            -71.468947,
+            -32.746708
+          ],
+          [
+            -71.468597,
+            -32.741347
+          ],
+          [
+            -71.460807,
+            -32.736423
+          ],
+          [
+            -71.451108,
+            -32.735326
+          ],
+          [
+            -71.4485,
+            -32.7315
+          ],
+          [
+            -71.416666,
+            -32.729969
+          ],
+          [
+            -71.415108,
+            -32.726716
+          ],
+          [
+            -71.415106,
+            -32.725987
+          ],
+          [
+            -71.412,
+            -32.723
+          ],
+          [
+            -71.410148,
+            -32.721627
+          ],
+          [
+            -71.408431,
+            -32.718983
+          ],
+          [
+            -71.407326,
+            -32.718731
+          ]
+        ]
+      },
+      "properties": {
+        "tipo_algoritmo": "resiliente_k2",
+        "etiqueta": "Resiliente k=2 (contingencia)",
+        "k_orden": 2,
+        "origen": "base_scer",
+        "destino": "sinca_puchuncavi",
+        "destino_nombre": "Estación SINCA Puchuncaví",
+        "longitud_m": 17591.4,
+        "supervivencia_pct": 72.1,
+        "amenazas": [
+          "densidad_urbana_dan151",
+          "sombra_telecom"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.5173,
+            -32.7842
+          ],
+          [
+            -71.5253,
+            -32.782378
+          ],
+          [
+            -71.527006,
+            -32.782067
+          ],
+          [
+            -71.527985,
+            -32.781513
+          ],
+          [
+            -71.529165,
+            -32.780896
+          ],
+          [
+            -71.531107,
+            -32.77931
+          ],
+          [
+            -71.531626,
+            -32.77769
+          ],
+          [
+            -71.531264,
+            -32.776616
+          ],
+          [
+            -71.53282,
+            -32.775423
+          ],
+          [
+            -71.535258,
+            -32.772321
+          ]
+        ]
+      },
+      "properties": {
+        "tipo_algoritmo": "dijkstra_k1",
+        "etiqueta": "Dijkstra k=1 (contingencia)",
+        "k_orden": 1,
+        "origen": "base_scer",
+        "destino": "sinca_quintero",
+        "destino_nombre": "Estación SINCA Quintero",
+        "longitud_m": 2352.4,
+        "supervivencia_pct": 88.3,
+        "amenazas": [
+          "densidad_urbana_dan151"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.5173,
+            -32.7842
+          ],
+          [
+            -71.52651,
+            -32.78259
+          ],
+          [
+            -71.527006,
+            -32.782067
+          ],
+          [
+            -71.528312,
+            -32.781771
+          ],
+          [
+            -71.529165,
+            -32.780896
+          ],
+          [
+            -71.528541,
+            -32.77889
+          ],
+          [
+            -71.531107,
+            -32.77931
+          ],
+          [
+            -71.533006,
+            -32.779048
+          ],
+          [
+            -71.535015,
+            -32.777449
+          ],
+          [
+            -71.5372,
+            -32.7758
+          ],
+          [
+            -71.535258,
+            -32.772321
+          ]
+        ]
+      },
+      "properties": {
+        "tipo_algoritmo": "dijkstra_k2",
+        "etiqueta": "Dijkstra k=2 (contingencia)",
+        "k_orden": 2,
+        "origen": "base_scer",
+        "destino": "sinca_quintero",
+        "destino_nombre": "Estación SINCA Quintero",
+        "longitud_m": 2821.4,
+        "supervivencia_pct": 84.9,
+        "amenazas": [
+          "densidad_urbana_dan151"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.5173,
+            -32.7842
+          ],
+          [
+            -71.5253,
+            -32.782378
+          ],
+          [
+            -71.526778,
+            -32.781522
+          ],
+          [
+            -71.526966,
+            -32.780967
+          ],
+          [
+            -71.529165,
+            -32.780896
+          ],
+          [
+            -71.531107,
+            -32.77931
+          ],
+          [
+            -71.533915,
+            -32.780007
+          ],
+          [
+            -71.534502,
+            -32.778263
+          ],
+          [
+            -71.535015,
+            -32.777449
+          ],
+          [
+            -71.537605,
+            -32.775621
+          ],
+          [
+            -71.538003,
+            -32.773741
+          ],
+          [
+            -71.535258,
+            -32.772321
+          ]
+        ]
+      },
+      "properties": {
+        "tipo_algoritmo": "resiliente_k1",
+        "etiqueta": "Resiliente k=1 (contingencia)",
+        "k_orden": 1,
+        "origen": "base_scer",
+        "destino": "sinca_quintero",
+        "destino_nombre": "Estación SINCA Quintero",
+        "longitud_m": 2873.1,
+        "supervivencia_pct": 91.4,
+        "amenazas": [
+          "densidad_urbana_dan151"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.5173,
+            -32.7842
+          ],
+          [
+            -71.52651,
+            -32.78259
+          ],
+          [
+            -71.526778,
+            -32.781522
+          ],
+          [
+            -71.526954,
+            -32.780831
+          ],
+          [
+            -71.529165,
+            -32.780896
+          ],
+          [
+            -71.528541,
+            -32.77889
+          ],
+          [
+            -71.526675,
+            -32.778341
+          ],
+          [
+            -71.526417,
+            -32.776682
+          ],
+          [
+            -71.526717,
+            -32.775683
+          ],
+          [
+            -71.52666,
+            -32.77367
+          ],
+          [
+            -71.527321,
+            -32.771316
+          ],
+          [
+            -71.529154,
+            -32.770121
+          ],
+          [
+            -71.530448,
+            -32.770174
+          ],
+          [
+            -71.533958,
+            -32.771577
+          ],
+          [
+            -71.535258,
+            -32.772321
+          ]
+        ]
+      },
+      "properties": {
+        "tipo_algoritmo": "resiliente_k2",
+        "etiqueta": "Resiliente k=2 (contingencia)",
+        "k_orden": 2,
+        "origen": "base_scer",
+        "destino": "sinca_quintero",
+        "destino_nombre": "Estación SINCA Quintero",
+        "longitud_m": 3343.4,
+        "supervivencia_pct": 89.8,
+        "amenazas": [
+          "densidad_urbana_dan151"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.5173,
+            -32.7842
+          ],
+          [
+            -71.510289,
+            -32.785856
+          ],
+          [
+            -71.503992,
+            -32.788325
+          ],
+          [
+            -71.502803,
+            -32.789344
+          ],
+          [
+            -71.49642,
+            -32.794914
+          ],
+          [
+            -71.483406,
+            -32.801052
+          ]
+        ]
+      },
+      "properties": {
+        "tipo_algoritmo": "dijkstra_k1",
+        "etiqueta": "Dijkstra k=1 (contingencia)",
+        "k_orden": 1,
+        "origen": "base_scer",
+        "destino": "sinca_sur",
+        "destino_nombre": "Estación SINCA Sur",
+        "longitud_m": 3743.8,
+        "supervivencia_pct": 98.1,
+        "amenazas": []
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.5173,
+            -32.7842
+          ],
+          [
+            -71.508129,
+            -32.784507
+          ],
+          [
+            -71.504423,
+            -32.787931
+          ],
+          [
+            -71.50229,
+            -32.787705
+          ],
+          [
+            -71.496759,
+            -32.788246
+          ],
+          [
+            -71.488,
+            -32.793
+          ],
+          [
+            -71.483406,
+            -32.801052
+          ]
+        ]
+      },
+      "properties": {
+        "tipo_algoritmo": "dijkstra_k2",
+        "etiqueta": "Dijkstra k=2 (contingencia)",
+        "k_orden": 2,
+        "origen": "base_scer",
+        "destino": "sinca_sur",
+        "destino_nombre": "Estación SINCA Sur",
+        "longitud_m": 4061.8,
+        "supervivencia_pct": 91.5,
+        "amenazas": [
+          "densidad_urbana_dan151"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.5173,
+            -32.7842
+          ],
+          [
+            -71.510289,
+            -32.785856
+          ],
+          [
+            -71.503992,
+            -32.788325
+          ],
+          [
+            -71.502803,
+            -32.789344
+          ],
+          [
+            -71.49642,
+            -32.794914
+          ],
+          [
+            -71.483406,
+            -32.801052
+          ]
+        ]
+      },
+      "properties": {
+        "tipo_algoritmo": "resiliente_k1",
+        "etiqueta": "Resiliente k=1 (contingencia)",
+        "k_orden": 1,
+        "origen": "base_scer",
+        "destino": "sinca_sur",
+        "destino_nombre": "Estación SINCA Sur",
+        "longitud_m": 3743.8,
+        "supervivencia_pct": 98.1,
+        "amenazas": []
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.5173,
+            -32.7842
+          ],
+          [
+            -71.510289,
+            -32.785856
+          ],
+          [
+            -71.504423,
+            -32.787931
+          ],
+          [
+            -71.50229,
+            -32.787705
+          ],
+          [
+            -71.496759,
+            -32.788246
+          ],
+          [
+            -71.488,
+            -32.793
+          ],
+          [
+            -71.483406,
+            -32.801052
+          ]
+        ]
+      },
+      "properties": {
+        "tipo_algoritmo": "resiliente_k2",
+        "etiqueta": "Resiliente k=2 (contingencia)",
+        "k_orden": 2,
+        "origen": "base_scer",
+        "destino": "sinca_sur",
+        "destino_nombre": "Estación SINCA Sur",
+        "longitud_m": 3964.8,
+        "supervivencia_pct": 98.0,
+        "amenazas": []
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.5173,
+            -32.7842
+          ],
+          [
+            -71.508129,
+            -32.784507
+          ],
+          [
+            -71.5035,
+            -32.783
+          ],
+          [
+            -71.498127,
+            -32.780572
+          ],
+          [
+            -71.4935,
+            -32.7801
+          ],
+          [
+            -71.486467,
+            -32.776094
+          ],
+          [
+            -71.485765,
+            -32.768722
+          ],
+          [
+            -71.482469,
+            -32.76866
+          ],
+          [
+            -71.480864,
+            -32.762488
+          ],
+          [
+            -71.479937,
+            -32.759468
+          ],
+          [
+            -71.475214,
+            -32.754565
+          ],
+          [
+            -71.474214,
+            -32.748276
+          ],
+          [
+            -71.47561,
+            -32.74452
+          ],
+          [
+            -71.475878,
+            -32.743039
+          ],
+          [
+            -71.480844,
+            -32.741842
+          ]
+        ]
+      },
+      "properties": {
+        "tipo_algoritmo": "dijkstra_k1",
+        "etiqueta": "Dijkstra k=1 (contingencia)",
+        "k_orden": 1,
+        "origen": "base_scer",
+        "destino": "sinca_ventanas",
+        "destino_nombre": "Estación SINCA Ventanas",
+        "longitud_m": 7796.7,
+        "supervivencia_pct": 0.2,
+        "amenazas": [
+          "densidad_urbana_dan151",
+          "incendio_contingencia_simulado",
+          "sombra_telecom"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.5173,
+            -32.7842
+          ],
+          [
+            -71.510289,
+            -32.785856
+          ],
+          [
+            -71.507865,
+            -32.782724
+          ],
+          [
+            -71.5035,
+            -32.783
+          ],
+          [
+            -71.498029,
+            -32.779321
+          ],
+          [
+            -71.4935,
+            -32.7801
+          ],
+          [
+            -71.48946,
+            -32.77869
+          ],
+          [
+            -71.486467,
+            -32.776094
+          ],
+          [
+            -71.48796,
+            -32.76881
+          ],
+          [
+            -71.480393,
+            -32.769736
+          ],
+          [
+            -71.480864,
+            -32.762488
+          ],
+          [
+            -71.48162,
+            -32.75961
+          ],
+          [
+            -71.475214,
+            -32.754565
+          ],
+          [
+            -71.474214,
+            -32.748276
+          ],
+          [
+            -71.47435,
+            -32.74728
+          ],
+          [
+            -71.47561,
+            -32.74452
+          ],
+          [
+            -71.4792,
+            -32.7445
+          ],
+          [
+            -71.480844,
+            -32.741842
+          ]
+        ]
+      },
+      "properties": {
+        "tipo_algoritmo": "dijkstra_k2",
+        "etiqueta": "Dijkstra k=2 (contingencia)",
+        "k_orden": 2,
+        "origen": "base_scer",
+        "destino": "sinca_ventanas",
+        "destino_nombre": "Estación SINCA Ventanas",
+        "longitud_m": 8710.6,
+        "supervivencia_pct": 1.2,
+        "amenazas": [
+          "densidad_urbana_dan151",
+          "incendio_contingencia_simulado",
+          "sombra_telecom"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.5173,
+            -32.7842
+          ],
+          [
+            -71.510289,
+            -32.785856
+          ],
+          [
+            -71.504423,
+            -32.787931
+          ],
+          [
+            -71.50229,
+            -32.787705
+          ],
+          [
+            -71.496759,
+            -32.788246
+          ],
+          [
+            -71.488,
+            -32.793
+          ],
+          [
+            -71.486192,
+            -32.787826
+          ],
+          [
+            -71.49099,
+            -32.78265
+          ],
+          [
+            -71.490998,
+            -32.782002
+          ],
+          [
+            -71.486467,
+            -32.776094
+          ],
+          [
+            -71.485765,
+            -32.768722
+          ],
+          [
+            -71.482469,
+            -32.76866
+          ],
+          [
+            -71.480864,
+            -32.762488
+          ],
+          [
+            -71.479937,
+            -32.759468
+          ],
+          [
+            -71.475214,
+            -32.754565
+          ],
+          [
+            -71.474214,
+            -32.748276
+          ],
+          [
+            -71.47277,
+            -32.74518
+          ],
+          [
+            -71.475878,
+            -32.743039
+          ],
+          [
+            -71.480844,
+            -32.741842
+          ]
+        ]
+      },
+      "properties": {
+        "tipo_algoritmo": "resiliente_k1",
+        "etiqueta": "Resiliente k=1 (contingencia)",
+        "k_orden": 1,
+        "origen": "base_scer",
+        "destino": "sinca_ventanas",
+        "destino_nombre": "Estación SINCA Ventanas",
+        "longitud_m": 9970.6,
+        "supervivencia_pct": 78.8,
+        "amenazas": [
+          "densidad_urbana_dan151",
+          "sombra_telecom"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.5173,
+            -32.7842
+          ],
+          [
+            -71.510289,
+            -32.785856
+          ],
+          [
+            -71.503992,
+            -32.788325
+          ],
+          [
+            -71.502803,
+            -32.789344
+          ],
+          [
+            -71.49642,
+            -32.794914
+          ],
+          [
+            -71.488,
+            -32.793
+          ],
+          [
+            -71.485904,
+            -32.787293
+          ],
+          [
+            -71.49099,
+            -32.78265
+          ],
+          [
+            -71.489506,
+            -32.779035
+          ],
+          [
+            -71.486467,
+            -32.776094
+          ],
+          [
+            -71.48796,
+            -32.76881
+          ],
+          [
+            -71.480393,
+            -32.769736
+          ],
+          [
+            -71.480864,
+            -32.762488
+          ],
+          [
+            -71.48162,
+            -32.75961
+          ],
+          [
+            -71.475214,
+            -32.754565
+          ],
+          [
+            -71.474214,
+            -32.748276
+          ],
+          [
+            -71.47435,
+            -32.74728
+          ],
+          [
+            -71.47561,
+            -32.74452
+          ],
+          [
+            -71.4792,
+            -32.7445
+          ],
+          [
+            -71.480844,
+            -32.741842
+          ]
+        ]
+      },
+      "properties": {
+        "tipo_algoritmo": "resiliente_k2",
+        "etiqueta": "Resiliente k=2 (contingencia)",
+        "k_orden": 2,
+        "origen": "base_scer",
+        "destino": "sinca_ventanas",
+        "destino_nombre": "Estación SINCA Ventanas",
+        "longitud_m": 10695.9,
+        "supervivencia_pct": 76.5,
+        "amenazas": [
+          "densidad_urbana_dan151",
+          "sombra_telecom"
+        ]
+      }
+    }
+  ]
+}
