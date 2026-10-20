@@ -3,7 +3,7 @@
  "etl": {
   "fuente": "SINCA - Ministerio del Medio Ambiente",
   "url": "https://sinca.mma.gob.cl/index.php/json/listadomapa2k19/",
-  "generado": "2026-10-18T22:34:22+00:00",
+  "generado": "2026-10-19T22:50:10+00:00",
   "parametros": {
    "aoi": [
     -71.56,
@@ -39,23 +39,23 @@
     "measurements": [
      {
       "pollutant": "SO2",
-      "value": 9.01,
+      "value": 8.49,
       "unit": "µg/m3N",
       "averaging": "concentración 1 h",
       "status": "bueno",
       "status_code": 1,
       "icap": 2,
-      "observed_at": "2026-10-18T17:00:00-04:00"
+      "observed_at": "2026-10-19T17:00:00-04:00"
      },
      {
       "pollutant": "NO2",
-      "value": 5.6,
+      "value": 2.54,
       "unit": "ppbv",
       "averaging": "concentración 1 h",
       "status": "bueno",
       "status_code": 1,
       "icap": null,
-      "observed_at": "2026-10-18T17:00:00-04:00"
+      "observed_at": "2026-10-19T17:00:00-04:00"
      },
      {
       "pollutant": "CO",
@@ -65,17 +65,17 @@
       "status": "bueno",
       "status_code": 1,
       "icap": null,
-      "observed_at": "2026-10-18T17:00:00-04:00"
+      "observed_at": "2026-10-19T17:00:00-04:00"
      },
      {
       "pollutant": "O3",
-      "value": 19,
+      "value": 26,
       "unit": "ppbv",
       "averaging": "concentración 1 h",
       "status": "bueno",
       "status_code": 1,
       "icap": null,
-      "observed_at": "2026-10-18T17:00:00-04:00"
+      "observed_at": "2026-10-19T17:00:00-04:00"
      }
     ]
    }
@@ -109,47 +109,47 @@
       "status": "bueno",
       "status_code": 1,
       "icap": 20,
-      "observed_at": "2026-10-18T16:00:00-04:00"
+      "observed_at": "2026-10-19T17:00:00-04:00"
      },
      {
       "pollutant": "PM10",
-      "value": 25,
+      "value": 31,
       "unit": "µg/m3N",
       "averaging": "media móvil 24 h",
       "status": "bueno",
       "status_code": 1,
-      "icap": 19,
-      "observed_at": "2026-10-18T16:00:00-04:00"
+      "icap": 24,
+      "observed_at": "2026-10-19T17:00:00-04:00"
      },
      {
       "pollutant": "SO2",
-      "value": 8.08,
+      "value": 8.58,
       "unit": "µg/m3N",
       "averaging": "concentración 1 h",
       "status": "bueno",
       "status_code": 1,
       "icap": 2,
-      "observed_at": "2026-10-18T16:00:00-04:00"
+      "observed_at": "2026-10-19T17:00:00-04:00"
      },
      {
       "pollutant": "NO2",
-      "value": 7.09,
+      "value": 4.57,
       "unit": "ppbv",
       "averaging": "concentración 1 h",
       "status": "bueno",
       "status_code": 1,
       "icap": null,
-      "observed_at": "2026-10-18T16:00:00-04:00"
+      "observed_at": "2026-10-19T17:00:00-04:00"
      },
      {
       "pollutant": "O3",
-      "value": 29,
+      "value": 36,
       "unit": "ppbv",
       "averaging": "concentración 1 h",
       "status": "bueno",
       "status_code": 1,
       "icap": null,
-      "observed_at": "2026-10-18T16:00:00-04:00"
+      "observed_at": "2026-10-19T17:00:00-04:00"
      }
     ]
    }
@@ -177,43 +177,43 @@
     "measurements": [
      {
       "pollutant": "PM2.5",
-      "value": 8,
+      "value": 9,
       "unit": "µg/m3",
       "averaging": "media móvil 24 h",
       "status": "bueno",
       "status_code": 1,
-      "icap": 16,
-      "observed_at": "2026-10-18T16:00:00-04:00"
+      "icap": 18,
+      "observed_at": "2026-10-19T17:00:00-04:00"
      },
      {
       "pollutant": "PM10",
-      "value": 15,
+      "value": 18,
       "unit": "µg/m3N",
       "averaging": "media móvil 24 h",
       "status": "bueno",
       "status_code": 1,
-      "icap": 12,
-      "observed_at": "2026-10-18T16:00:00-04:00"
+      "icap": 14,
+      "observed_at": "2026-10-19T17:00:00-04:00"
      },
      {
       "pollutant": "SO2",
-      "value": 4.39,
+      "value": 4.5,
       "unit": "µg/m3N",
       "averaging": "concentración 1 h",
       "status": "bueno",
       "status_code": 1,
       "icap": 1,
-      "observed_at": "2026-10-18T16:00:00-04:00"
+      "observed_at": "2026-10-19T17:00:00-04:00"
      },
      {
       "pollutant": "NO2",
-      "value": 5.81,
+      "value": 4.53,
       "unit": "ppbv",
       "averaging": "concentración 1 h",
       "status": "bueno",
       "status_code": 1,
       "icap": null,
-      "observed_at": "2026-10-18T16:00:00-04:00"
+      "observed_at": "2026-10-19T17:00:00-04:00"
      },
      {
       "pollutant": "CO",
@@ -223,17 +223,17 @@
       "status": "bueno",
       "status_code": 1,
       "icap": null,
-      "observed_at": "2026-10-18T16:00:00-04:00"
+      "observed_at": "2026-10-19T17:00:00-04:00"
      },
      {
       "pollutant": "O3",
-      "value": 38,
+      "value": 44,
       "unit": "ppbv",
       "averaging": "concentración 1 h",
       "status": "bueno",
       "status_code": 1,
       "icap": null,
-      "observed_at": "2026-10-18T16:00:00-04:00"
+      "observed_at": "2026-10-19T17:00:00-04:00"
      }
     ]
    }
@@ -267,47 +267,47 @@
       "status": "bueno",
       "status_code": 1,
       "icap": 20,
-      "observed_at": "2026-10-18T16:00:00-04:00"
+      "observed_at": "2026-10-19T17:00:00-04:00"
      },
      {
       "pollutant": "PM10",
-      "value": 33,
+      "value": 29,
       "unit": "µg/m3N",
       "averaging": "media móvil 24 h",
       "status": "bueno",
       "status_code": 1,
-      "icap": 25,
-      "observed_at": "2026-10-18T16:00:00-04:00"
+      "icap": 22,
+      "observed_at": "2026-10-19T17:00:00-04:00"
      },
      {
       "pollutant": "SO2",
-      "value": 16.71,
+      "value": 14.56,
       "unit": "µg/m3N",
       "averaging": "concentración 1 h",
       "status": "bueno",
       "status_code": 1,
       "icap": 4,
-      "observed_at": "2026-10-18T16:00:00-04:00"
+      "observed_at": "2026-10-19T17:00:00-04:00"
      },
      {
       "pollutant": "NO2",
-      "value": 2.65,
+      "value": 2.74,
       "unit": "ppbv",
       "averaging": "concentración 1 h",
       "status": "bueno",
       "status_code": 1,
       "icap": null,
-      "observed_at": "2026-10-18T16:00:00-04:00"
+      "observed_at": "2026-10-19T17:00:00-04:00"
      },
      {
       "pollutant": "O3",
-      "value": 34,
+      "value": 33,
       "unit": "ppbv",
       "averaging": "concentración 1 h",
       "status": "bueno",
       "status_code": 1,
       "icap": null,
-      "observed_at": "2026-10-18T16:00:00-04:00"
+      "observed_at": "2026-10-19T17:00:00-04:00"
      }
     ]
    }
@@ -335,53 +335,53 @@
     "measurements": [
      {
       "pollutant": "PM10",
-      "value": 22,
+      "value": 30,
       "unit": "µg/m3N",
       "averaging": "media móvil 24 h",
       "status": "bueno",
       "status_code": 1,
-      "icap": 17,
-      "observed_at": "2026-10-18T16:00:00-04:00"
+      "icap": 23,
+      "observed_at": "2026-10-19T17:00:00-04:00"
      },
      {
       "pollutant": "SO2",
-      "value": 11.49,
+      "value": 12.16,
       "unit": "µg/m3N",
       "averaging": "concentración 1 h",
       "status": "bueno",
       "status_code": 1,
       "icap": 3,
-      "observed_at": "2026-10-18T16:00:00-04:00"
+      "observed_at": "2026-10-19T17:00:00-04:00"
      },
      {
       "pollutant": "NO2",
-      "value": 3.7,
+      "value": 5.88,
       "unit": "ppbv",
       "averaging": "concentración 1 h",
       "status": "bueno",
       "status_code": 1,
       "icap": null,
-      "observed_at": "2026-10-18T16:00:00-04:00"
+      "observed_at": "2026-10-19T17:00:00-04:00"
      },
      {
       "pollutant": "CO",
-      "value": 0.55,
+      "value": 0.56,
       "unit": "ppmv",
       "averaging": "media móvil 8 h",
       "status": "bueno",
       "status_code": 1,
       "icap": null,
-      "observed_at": "2026-10-18T16:00:00-04:00"
+      "observed_at": "2026-10-19T17:00:00-04:00"
      },
      {
       "pollutant": "O3",
-      "value": 34,
+      "value": 36,
       "unit": "ppbv",
       "averaging": "concentración 1 h",
       "status": "bueno",
       "status_code": 1,
       "icap": null,
-      "observed_at": "2026-10-18T16:00:00-04:00"
+      "observed_at": "2026-10-19T17:00:00-04:00"
      }
     ]
    }
@@ -409,43 +409,43 @@
     "measurements": [
      {
       "pollutant": "PM10",
-      "value": 24,
+      "value": 21,
       "unit": "µg/m3N",
       "averaging": "media móvil 24 h",
       "status": "bueno",
       "status_code": 1,
-      "icap": 18,
-      "observed_at": "2026-10-18T16:00:00-04:00"
+      "icap": 16,
+      "observed_at": "2026-10-19T17:00:00-04:00"
      },
      {
       "pollutant": "SO2",
-      "value": 14.19,
+      "value": 14.57,
       "unit": "µg/m3N",
       "averaging": "concentración 1 h",
       "status": "bueno",
       "status_code": 1,
       "icap": 4,
-      "observed_at": "2026-10-18T16:00:00-04:00"
+      "observed_at": "2026-10-19T17:00:00-04:00"
      },
      {
       "pollutant": "NO2",
-      "value": 3.47,
+      "value": 3.68,
       "unit": "ppbv",
       "averaging": "concentración 1 h",
       "status": "bueno",
       "status_code": 1,
       "icap": null,
-      "observed_at": "2026-10-18T16:00:00-04:00"
+      "observed_at": "2026-10-19T17:00:00-04:00"
      },
      {
       "pollutant": "O3",
-      "value": 31,
+      "value": 36,
       "unit": "ppbv",
       "averaging": "concentración 1 h",
       "status": "bueno",
       "status_code": 1,
       "icap": null,
-      "observed_at": "2026-10-18T16:00:00-04:00"
+      "observed_at": "2026-10-19T17:00:00-04:00"
      }
     ]
    }
@@ -473,63 +473,63 @@
     "measurements": [
      {
       "pollutant": "PM2.5",
-      "value": 16,
+      "value": 30,
       "unit": "µg/m3",
       "averaging": "media móvil 24 h",
       "status": "bueno",
       "status_code": 1,
-      "icap": 32,
-      "observed_at": "2026-10-18T17:00:00-04:00"
+      "icap": 60,
+      "observed_at": "2026-10-19T17:00:00-04:00"
      },
      {
       "pollutant": "PM10",
-      "value": 40,
+      "value": 91,
       "unit": "µg/m3N",
       "averaging": "media móvil 24 h",
       "status": "bueno",
       "status_code": 1,
-      "icap": 31,
-      "observed_at": "2026-10-18T17:00:00-04:00"
+      "icap": 70,
+      "observed_at": "2026-10-19T17:00:00-04:00"
      },
      {
       "pollutant": "SO2",
-      "value": 3.69,
+      "value": 3.95,
       "unit": "µg/m3N",
       "averaging": "concentración 1 h",
       "status": "bueno",
       "status_code": 1,
       "icap": 1,
-      "observed_at": "2026-10-18T17:00:00-04:00"
+      "observed_at": "2026-10-19T17:00:00-04:00"
      },
      {
       "pollutant": "NO2",
-      "value": 4.2,
+      "value": 13.6,
       "unit": "ppbv",
       "averaging": "concentración 1 h",
       "status": "bueno",
       "status_code": 1,
       "icap": null,
-      "observed_at": "2026-10-18T17:00:00-04:00"
+      "observed_at": "2026-10-19T17:00:00-04:00"
      },
      {
       "pollutant": "CO",
-      "value": 0.26,
+      "value": 0.32,
       "unit": "ppmv",
       "averaging": "media móvil 8 h",
       "status": "bueno",
       "status_code": 1,
       "icap": null,
-      "observed_at": "2026-10-18T17:00:00-04:00"
+      "observed_at": "2026-10-19T17:00:00-04:00"
      },
      {
       "pollutant": "O3",
-      "value": 19,
+      "value": 25,
       "unit": "ppbv",
       "averaging": "concentración 1 h",
       "status": "bueno",
       "status_code": 1,
       "icap": null,
-      "observed_at": "2026-10-18T17:00:00-04:00"
+      "observed_at": "2026-10-19T17:00:00-04:00"
      }
     ]
    }
@@ -557,63 +557,63 @@
     "measurements": [
      {
       "pollutant": "PM2.5",
-      "value": 7,
+      "value": 10,
       "unit": "µg/m3",
       "averaging": "media móvil 24 h",
       "status": "bueno",
       "status_code": 1,
-      "icap": 14,
-      "observed_at": "2026-10-18T17:00:00-04:00"
+      "icap": 20,
+      "observed_at": "2026-10-19T17:00:00-04:00"
      },
      {
       "pollutant": "PM10",
-      "value": 21,
+      "value": 28,
       "unit": "µg/m3N",
       "averaging": "media móvil 24 h",
       "status": "bueno",
       "status_code": 1,
-      "icap": 16,
-      "observed_at": "2026-10-18T17:00:00-04:00"
+      "icap": 22,
+      "observed_at": "2026-10-19T17:00:00-04:00"
      },
      {
       "pollutant": "SO2",
-      "value": 17.83,
+      "value": 18.37,
       "unit": "µg/m3N",
       "averaging": "concentración 1 h",
       "status": "bueno",
       "status_code": 1,
       "icap": 5,
-      "observed_at": "2026-10-18T17:00:00-04:00"
+      "observed_at": "2026-10-19T17:00:00-04:00"
      },
      {
       "pollutant": "NO2",
-      "value": 3.61,
+      "value": 4.77,
       "unit": "ppbv",
       "averaging": "concentración 1 h",
       "status": "bueno",
       "status_code": 1,
       "icap": null,
-      "observed_at": "2026-10-18T17:00:00-04:00"
+      "observed_at": "2026-10-19T17:00:00-04:00"
      },
      {
       "pollutant": "CO",
-      "value": 0.49,
+      "value": 0.47,
       "unit": "ppmv",
       "averaging": "media móvil 8 h",
       "status": "bueno",
       "status_code": 1,
       "icap": null,
-      "observed_at": "2026-10-18T17:00:00-04:00"
+      "observed_at": "2026-10-19T17:00:00-04:00"
      },
      {
       "pollutant": "O3",
-      "value": 27,
+      "value": 34,
       "unit": "ppbv",
       "averaging": "concentración 1 h",
       "status": "bueno",
       "status_code": 1,
       "icap": null,
-      "observed_at": "2026-10-18T17:00:00-04:00"
+      "observed_at": "2026-10-19T17:00:00-04:00"
      }
     ]
    }
@@ -641,63 +641,63 @@
     "measurements": [
      {
       "pollutant": "PM2.5",
-      "value": 7,
+      "value": 9,
       "unit": "µg/m3",
       "averaging": "media móvil 24 h",
       "status": "bueno",
       "status_code": 1,
-      "icap": 14,
-      "observed_at": "2026-10-18T17:00:00-04:00"
+      "icap": 18,
+      "observed_at": "2026-10-19T17:00:00-04:00"
      },
      {
       "pollutant": "PM10",
-      "value": 29,
+      "value": 45,
       "unit": "µg/m3N",
       "averaging": "media móvil 24 h",
       "status": "bueno",
       "status_code": 1,
-      "icap": 22,
-      "observed_at": "2026-10-18T17:00:00-04:00"
+      "icap": 35,
+      "observed_at": "2026-10-19T17:00:00-04:00"
      },
      {
       "pollutant": "SO2",
-      "value": 1.7,
+      "value": 2.36,
       "unit": "µg/m3N",
       "averaging": "concentración 1 h",
       "status": "bueno",
       "status_code": 1,
       "icap": 0,
-      "observed_at": "2026-10-18T17:00:00-04:00"
+      "observed_at": "2026-10-19T17:00:00-04:00"
      },
      {
       "pollutant": "NO2",
-      "value": 8.75,
+      "value": 7.19,
       "unit": "ppbv",
       "averaging": "concentración 1 h",
       "status": "bueno",
       "status_code": 1,
       "icap": null,
-      "observed_at": "2026-10-18T17:00:00-04:00"
+      "observed_at": "2026-10-19T17:00:00-04:00"
      },
      {
       "pollutant": "CO",
-      "value": 0.2,
+      "value": 0.22,
       "unit": "ppmv",
       "averaging": "media móvil 8 h",
       "status": "bueno",
       "status_code": 1,
       "icap": null,
-      "observed_at": "2026-10-18T17:00:00-04:00"
+      "observed_at": "2026-10-19T17:00:00-04:00"
      },
      {
       "pollutant": "O3",
-      "value": 21,
+      "value": 25,
       "unit": "ppbv",
       "averaging": "concentración 1 h",
       "status": "bueno",
       "status_code": 1,
       "icap": null,
-      "observed_at": "2026-10-18T17:00:00-04:00"
+      "observed_at": "2026-10-19T17:00:00-04:00"
      }
     ]
    }
@@ -725,13 +725,13 @@
     "measurements": [
      {
       "pollutant": "PM2.5",
-      "value": 10,
+      "value": 9,
       "unit": "µg/m3",
       "averaging": "media móvil 24 h",
       "status": "bueno",
       "status_code": 1,
-      "icap": 20,
-      "observed_at": "2026-10-18T17:00:00-04:00"
+      "icap": 18,
+      "observed_at": "2026-10-19T17:00:00-04:00"
      },
      {
       "pollutant": "PM10",
@@ -741,37 +741,37 @@
       "status": "bueno",
       "status_code": 1,
       "icap": 28,
-      "observed_at": "2026-10-18T17:00:00-04:00"
+      "observed_at": "2026-10-19T17:00:00-04:00"
      },
      {
       "pollutant": "SO2",
-      "value": 5.86,
+      "value": 6.06,
       "unit": "µg/m3N",
       "averaging": "concentración 1 h",
       "status": "bueno",
       "status_code": 1,
       "icap": 1,
-      "observed_at": "2026-10-18T17:00:00-04:00"
+      "observed_at": "2026-10-19T17:00:00-04:00"
      },
      {
       "pollutant": "NO2",
-      "value": 2.83,
+      "value": 2.43,
       "unit": "ppbv",
       "averaging": "concentración 1 h",
       "status": "bueno",
       "status_code": 1,
       "icap": null,
-      "observed_at": "2026-10-18T17:00:00-04:00"
+      "observed_at": "2026-10-19T17:00:00-04:00"
      },
      {
       "pollutant": "O3",
-      "value": 32,
+      "value": 38,
       "unit": "ppbv",
       "averaging": "concentración 1 h",
       "status": "bueno",
       "status_code": 1,
       "icap": null,
-      "observed_at": "2026-10-18T17:00:00-04:00"
+      "observed_at": "2026-10-19T17:00:00-04:00"
      }
     ]
    }

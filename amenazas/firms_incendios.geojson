@@ -3,7 +3,7 @@
  "etl": {
   "fuente": "NASA FIRMS (VIIRS S-NPP, VIIRS NOAA-20, MODIS) - NRT 7 días",
   "url": "https://firms.modaps.eosdis.nasa.gov/data/active_fire",
-  "generado": "2026-10-18T22:35:50+00:00",
+  "generado": "2026-10-19T22:51:47+00:00",
   "parametros": {
    "bbox_region": [
     -71.86,

@@ -3,7 +3,7 @@
  "etl": {
   "fuente": "NASA SRTM GL1 (30 m) vía OpenTopoData",
   "url": "https://api.opentopodata.org/v1/srtm30m",
-  "generado": "2026-10-18T22:34:56+00:00",
+  "generado": "2026-10-19T22:50:51+00:00",
   "parametros": {
    "espaciado_muestras_m": 100,
    "puntos_consultados": 1826

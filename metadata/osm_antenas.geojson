@@ -3,7 +3,7 @@
  "etl": {
   "fuente": "OpenStreetMap vía Overpass API",
   "url": "https://overpass-api.de/api/interpreter",
-  "generado": "2026-10-18T22:35:34+00:00",
+  "generado": "2026-10-19T22:51:38+00:00",
   "parametros": {
    "bbox_consulta": [
     -71.64,

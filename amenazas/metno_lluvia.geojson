@@ -3,7 +3,7 @@
  "etl": {
   "fuente": "MET Norway Locationforecast 2.0",
   "url": "https://api.met.no/weatherapi/locationforecast/2.0/compact",
-  "generado": "2026-10-18T22:36:19+00:00",
+  "generado": "2026-10-19T22:52:16+00:00",
   "parametros": {
    "aoi": [
     -71.56,
@@ -47,19 +47,19 @@
     ]
    },
    "properties": {
-    "external_id": "r0c0_2026-10-18T22:00:00Z",
+    "external_id": "r0c0_2026-10-19T22:00:00Z",
     "event_type": "lluvia",
-    "value": 0.0,
+    "value": 0.2,
     "unit": "mm/h",
     "threshold": 2.0,
     "exceeds": false,
-    "observed_at": "2026-10-18T22:00:00+00:00",
-    "valid_until": "2026-10-18T23:00:00+00:00",
+    "observed_at": "2026-10-19T22:00:00+00:00",
+    "valid_until": "2026-10-19T23:00:00+00:00",
     "lon": -71.5375,
     "lat": -32.80375,
     "cell": "r0c0",
-    "symbol_code": "cloudy",
-    "model_updated_at": "2026-10-18T19:17:27Z"
+    "symbol_code": "lightrainshowers_day",
+    "model_updated_at": "2026-10-19T19:22:06Z"
    }
   },
   {
@@ -92,19 +92,19 @@
     ]
    },
    "properties": {
-    "external_id": "r0c1_2026-10-18T22:00:00Z",
+    "external_id": "r0c1_2026-10-19T22:00:00Z",
     "event_type": "lluvia",
-    "value": 0.0,
+    "value": 0.2,
     "unit": "mm/h",
     "threshold": 2.0,
     "exceeds": false,
-    "observed_at": "2026-10-18T22:00:00+00:00",
-    "valid_until": "2026-10-18T23:00:00+00:00",
+    "observed_at": "2026-10-19T22:00:00+00:00",
+    "valid_until": "2026-10-19T23:00:00+00:00",
     "lon": -71.4925,
     "lat": -32.80375,
     "cell": "r0c1",
-    "symbol_code": "cloudy",
-    "model_updated_at": "2026-10-18T19:17:28Z"
+    "symbol_code": "lightrainshowers_day",
+    "model_updated_at": "2026-10-19T19:22:06Z"
    }
   },
   {
@@ -137,19 +137,19 @@
     ]
    },
    "properties": {
-    "external_id": "r0c2_2026-10-18T22:00:00Z",
+    "external_id": "r0c2_2026-10-19T22:00:00Z",
     "event_type": "lluvia",
     "value": 0.0,
     "unit": "mm/h",
     "threshold": 2.0,
     "exceeds": false,
-    "observed_at": "2026-10-18T22:00:00+00:00",
-    "valid_until": "2026-10-18T23:00:00+00:00",
+    "observed_at": "2026-10-19T22:00:00+00:00",
+    "valid_until": "2026-10-19T23:00:00+00:00",
     "lon": -71.4475,
     "lat": -32.80375,
     "cell": "r0c2",
-    "symbol_code": "cloudy",
-    "model_updated_at": "2026-10-18T19:17:27Z"
+    "symbol_code": "fair_day",
+    "model_updated_at": "2026-10-19T19:22:06Z"
    }
   },
   {
@@ -182,19 +182,19 @@
     ]
    },
    "properties": {
-    "external_id": "r0c3_2026-10-18T22:00:00Z",
+    "external_id": "r0c3_2026-10-19T22:00:00Z",
     "event_type": "lluvia",
     "value": 0.0,
     "unit": "mm/h",
     "threshold": 2.0,
     "exceeds": false,
-    "observed_at": "2026-10-18T22:00:00+00:00",
-    "valid_until": "2026-10-18T23:00:00+00:00",
+    "observed_at": "2026-10-19T22:00:00+00:00",
+    "valid_until": "2026-10-19T23:00:00+00:00",
     "lon": -71.4025,
     "lat": -32.80375,
     "cell": "r0c3",
-    "symbol_code": "cloudy",
-    "model_updated_at": "2026-10-18T19:17:27Z"
+    "symbol_code": "fair_day",
+    "model_updated_at": "2026-10-19T19:24:28Z"
    }
   },
   {
@@ -227,19 +227,19 @@
     ]
    },
    "properties": {
-    "external_id": "r1c0_2026-10-18T22:00:00Z",
+    "external_id": "r1c0_2026-10-19T22:00:00Z",
     "event_type": "lluvia",
-    "value": 0.0,
+    "value": 0.2,
     "unit": "mm/h",
     "threshold": 2.0,
     "exceeds": false,
-    "observed_at": "2026-10-18T22:00:00+00:00",
-    "valid_until": "2026-10-18T23:00:00+00:00",
+    "observed_at": "2026-10-19T22:00:00+00:00",
+    "valid_until": "2026-10-19T23:00:00+00:00",
     "lon": -71.5375,
     "lat": -32.77125,
     "cell": "r1c0",
-    "symbol_code": "cloudy",
-    "model_updated_at": "2026-10-18T19:17:31Z"
+    "symbol_code": "lightrainshowers_day",
+    "model_updated_at": "2026-10-19T19:22:06Z"
    }
   },
   {
@@ -272,19 +272,19 @@
     ]
    },
    "properties": {
-    "external_id": "r1c1_2026-10-18T22:00:00Z",
+    "external_id": "r1c1_2026-10-19T22:00:00Z",
     "event_type": "lluvia",
-    "value": 0.0,
+    "value": 0.2,
     "unit": "mm/h",
     "threshold": 2.0,
     "exceeds": false,
-    "observed_at": "2026-10-18T22:00:00+00:00",
-    "valid_until": "2026-10-18T23:00:00+00:00",
+    "observed_at": "2026-10-19T22:00:00+00:00",
+    "valid_until": "2026-10-19T23:00:00+00:00",
     "lon": -71.4925,
     "lat": -32.77125,
     "cell": "r1c1",
-    "symbol_code": "cloudy",
-    "model_updated_at": "2026-10-18T19:17:31Z"
+    "symbol_code": "lightrainshowers_day",
+    "model_updated_at": "2026-10-19T19:22:06Z"
    }
   },
   {
@@ -317,19 +317,19 @@
     ]
    },
    "properties": {
-    "external_id": "r1c2_2026-10-18T22:00:00Z",
+    "external_id": "r1c2_2026-10-19T22:00:00Z",
     "event_type": "lluvia",
     "value": 0.0,
     "unit": "mm/h",
     "threshold": 2.0,
     "exceeds": false,
-    "observed_at": "2026-10-18T22:00:00+00:00",
-    "valid_until": "2026-10-18T23:00:00+00:00",
+    "observed_at": "2026-10-19T22:00:00+00:00",
+    "valid_until": "2026-10-19T23:00:00+00:00",
     "lon": -71.4475,
     "lat": -32.77125,
     "cell": "r1c2",
-    "symbol_code": "cloudy",
-    "model_updated_at": "2026-10-18T19:17:28Z"
+    "symbol_code": "fair_day",
+    "model_updated_at": "2026-10-19T19:24:29Z"
    }
   },
   {
@@ -362,19 +362,19 @@
     ]
    },
    "properties": {
-    "external_id": "r1c3_2026-10-18T22:00:00Z",
+    "external_id": "r1c3_2026-10-19T22:00:00Z",
     "event_type": "lluvia",
     "value": 0.0,
     "unit": "mm/h",
     "threshold": 2.0,
     "exceeds": false,
-    "observed_at": "2026-10-18T22:00:00+00:00",
-    "valid_until": "2026-10-18T23:00:00+00:00",
+    "observed_at": "2026-10-19T22:00:00+00:00",
+    "valid_until": "2026-10-19T23:00:00+00:00",
     "lon": -71.4025,
     "lat": -32.77125,
     "cell": "r1c3",
-    "symbol_code": "cloudy",
-    "model_updated_at": "2026-10-18T19:17:31Z"
+    "symbol_code": "fair_day",
+    "model_updated_at": "2026-10-19T19:24:28Z"
    }
   },
   {
@@ -407,19 +407,19 @@
     ]
    },
    "properties": {
-    "external_id": "r2c0_2026-10-18T22:00:00Z",
+    "external_id": "r2c0_2026-10-19T22:00:00Z",
     "event_type": "lluvia",
     "value": 0.0,
     "unit": "mm/h",
     "threshold": 2.0,
     "exceeds": false,
-    "observed_at": "2026-10-18T22:00:00+00:00",
-    "valid_until": "2026-10-18T23:00:00+00:00",
+    "observed_at": "2026-10-19T22:00:00+00:00",
+    "valid_until": "2026-10-19T23:00:00+00:00",
     "lon": -71.5375,
     "lat": -32.73875,
     "cell": "r2c0",
-    "symbol_code": "cloudy",
-    "model_updated_at": "2026-10-18T19:17:31Z"
+    "symbol_code": "fog",
+    "model_updated_at": "2026-10-19T19:22:06Z"
    }
   },
   {
@@ -452,19 +452,19 @@
     ]
    },
    "properties": {
-    "external_id": "r2c1_2026-10-18T22:00:00Z",
+    "external_id": "r2c1_2026-10-19T22:00:00Z",
     "event_type": "lluvia",
     "value": 0.0,
     "unit": "mm/h",
     "threshold": 2.0,
     "exceeds": false,
-    "observed_at": "2026-10-18T22:00:00+00:00",
-    "valid_until": "2026-10-18T23:00:00+00:00",
+    "observed_at": "2026-10-19T22:00:00+00:00",
+    "valid_until": "2026-10-19T23:00:00+00:00",
     "lon": -71.4925,
     "lat": -32.73875,
     "cell": "r2c1",
-    "symbol_code": "cloudy",
-    "model_updated_at": "2026-10-18T19:17:31Z"
+    "symbol_code": "fog",
+    "model_updated_at": "2026-10-19T19:24:29Z"
    }
   },
   {
@@ -497,19 +497,19 @@
     ]
    },
    "properties": {
-    "external_id": "r2c2_2026-10-18T22:00:00Z",
+    "external_id": "r2c2_2026-10-19T22:00:00Z",
     "event_type": "lluvia",
     "value": 0.0,
     "unit": "mm/h",
     "threshold": 2.0,
     "exceeds": false,
-    "observed_at": "2026-10-18T22:00:00+00:00",
-    "valid_until": "2026-10-18T23:00:00+00:00",
+    "observed_at": "2026-10-19T22:00:00+00:00",
+    "valid_until": "2026-10-19T23:00:00+00:00",
     "lon": -71.4475,
     "lat": -32.73875,
     "cell": "r2c2",
-    "symbol_code": "cloudy",
-    "model_updated_at": "2026-10-18T19:17:27Z"
+    "symbol_code": "partlycloudy_day",
+    "model_updated_at": "2026-10-19T19:24:29Z"
    }
   },
   {
@@ -542,19 +542,19 @@
     ]
    },
    "properties": {
-    "external_id": "r2c3_2026-10-18T22:00:00Z",
+    "external_id": "r2c3_2026-10-19T22:00:00Z",
     "event_type": "lluvia",
     "value": 0.0,
     "unit": "mm/h",
     "threshold": 2.0,
     "exceeds": false,
-    "observed_at": "2026-10-18T22:00:00+00:00",
-    "valid_until": "2026-10-18T23:00:00+00:00",
+    "observed_at": "2026-10-19T22:00:00+00:00",
+    "valid_until": "2026-10-19T23:00:00+00:00",
     "lon": -71.4025,
     "lat": -32.73875,
     "cell": "r2c3",
-    "symbol_code": "cloudy",
-    "model_updated_at": "2026-10-18T19:17:28Z"
+    "symbol_code": "partlycloudy_day",
+    "model_updated_at": "2026-10-19T19:24:29Z"
    }
   },
   {
@@ -587,19 +587,19 @@
     ]
    },
    "properties": {
-    "external_id": "r3c0_2026-10-18T22:00:00Z",
+    "external_id": "r3c0_2026-10-19T22:00:00Z",
     "event_type": "lluvia",
     "value": 0.0,
     "unit": "mm/h",
     "threshold": 2.0,
     "exceeds": false,
-    "observed_at": "2026-10-18T22:00:00+00:00",
-    "valid_until": "2026-10-18T23:00:00+00:00",
+    "observed_at": "2026-10-19T22:00:00+00:00",
+    "valid_until": "2026-10-19T23:00:00+00:00",
     "lon": -71.5375,
     "lat": -32.70625,
     "cell": "r3c0",
-    "symbol_code": "cloudy",
-    "model_updated_at": "2026-10-18T19:17:28Z"
+    "symbol_code": "fog",
+    "model_updated_at": "2026-10-19T19:24:29Z"
    }
   },
   {
@@ -632,19 +632,19 @@
     ]
    },
    "properties": {
-    "external_id": "r3c1_2026-10-18T22:00:00Z",
+    "external_id": "r3c1_2026-10-19T22:00:00Z",
     "event_type": "lluvia",
     "value": 0.0,
     "unit": "mm/h",
     "threshold": 2.0,
     "exceeds": false,
-    "observed_at": "2026-10-18T22:00:00+00:00",
-    "valid_until": "2026-10-18T23:00:00+00:00",
+    "observed_at": "2026-10-19T22:00:00+00:00",
+    "valid_until": "2026-10-19T23:00:00+00:00",
     "lon": -71.4925,
     "lat": -32.70625,
     "cell": "r3c1",
-    "symbol_code": "cloudy",
-    "model_updated_at": "2026-10-18T19:17:31Z"
+    "symbol_code": "fog",
+    "model_updated_at": "2026-10-19T19:24:28Z"
    }
   },
   {
@@ -677,19 +677,19 @@
     ]
    },
    "properties": {
-    "external_id": "r3c2_2026-10-18T22:00:00Z",
+    "external_id": "r3c2_2026-10-19T22:00:00Z",
     "event_type": "lluvia",
     "value": 0.0,
     "unit": "mm/h",
     "threshold": 2.0,
     "exceeds": false,
-    "observed_at": "2026-10-18T22:00:00+00:00",
-    "valid_until": "2026-10-18T23:00:00+00:00",
+    "observed_at": "2026-10-19T22:00:00+00:00",
+    "valid_until": "2026-10-19T23:00:00+00:00",
     "lon": -71.4475,
     "lat": -32.70625,
     "cell": "r3c2",
-    "symbol_code": "cloudy",
-    "model_updated_at": "2026-10-18T19:17:31Z"
+    "symbol_code": "partlycloudy_day",
+    "model_updated_at": "2026-10-19T19:24:28Z"
    }
   },
   {
@@ -722,19 +722,19 @@
     ]
    },
    "properties": {
-    "external_id": "r3c3_2026-10-18T22:00:00Z",
+    "external_id": "r3c3_2026-10-19T22:00:00Z",
     "event_type": "lluvia",
     "value": 0.0,
     "unit": "mm/h",
     "threshold": 2.0,
     "exceeds": false,
-    "observed_at": "2026-10-18T22:00:00+00:00",
-    "valid_until": "2026-10-18T23:00:00+00:00",
+    "observed_at": "2026-10-19T22:00:00+00:00",
+    "valid_until": "2026-10-19T23:00:00+00:00",
     "lon": -71.4025,
     "lat": -32.70625,
     "cell": "r3c3",
-    "symbol_code": "cloudy",
-    "model_updated_at": "2026-10-18T19:17:28Z"
+    "symbol_code": "partlycloudy_day",
+    "model_updated_at": "2026-10-19T19:24:29Z"
    }
   }
  ]

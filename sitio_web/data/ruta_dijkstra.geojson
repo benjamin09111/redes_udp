@@ -2,7 +2,7 @@
  "type": "FeatureCollection",
  "etl": {
   "fuente": "pgRouting pgr_dijkstra sobre infra_edge (k=1 y k=2 con costo = length_m)",
-  "generado": "2026-10-19T02:11:00+00:00",
+  "generado": "2026-10-19T22:52:42+00:00",
   "parametros": {
    "origen": "base_scer",
    "costo": "length_m",
@@ -234,7 +234,7 @@
     "destino_nombre": "Estación SINCA Centro Quintero",
     "tramos": 6,
     "nodos": 7,
-    "longitud_m": 1691.8,
+    "longitud_m": 1691.7,
     "costo": 1691.8,
     "k": 1
    }

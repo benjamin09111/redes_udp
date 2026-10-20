@@ -3,7 +3,7 @@
  "etl": {
   "fuente": "Open-Meteo Forecast API (condiciones actuales)",
   "url": "https://api.open-meteo.com/v1/forecast",
-  "generado": "2026-10-18T22:35:56+00:00",
+  "generado": "2026-10-19T22:51:54+00:00",
   "parametros": {
    "aoi": [
     -71.56,
@@ -47,21 +47,21 @@
     ]
    },
    "properties": {
-    "external_id": "r0c0_2026-10-18T22:30",
+    "external_id": "r0c0_2026-10-19T22:45",
     "event_type": "viento",
-    "value": 7.4,
+    "value": 6.3,
     "unit": "m/s (ráfaga 10 m)",
     "threshold": 14.0,
     "exceeds": false,
-    "observed_at": "2026-10-18T22:30:00+00:00",
+    "observed_at": "2026-10-19T22:45:00+00:00",
     "lon": -71.5375,
     "lat": -32.80375,
     "cell": "r0c0",
-    "wind_speed_10m": 2.97,
-    "wind_direction_10m": 290,
-    "wind_speed_80m": 3.7,
-    "wind_speed_120m": 3.88,
-    "wind_direction_120m": 286
+    "wind_speed_10m": 3.35,
+    "wind_direction_10m": 27,
+    "wind_speed_80m": 4.86,
+    "wind_speed_120m": 5.08,
+    "wind_direction_120m": 19
    }
   },
   {
@@ -94,21 +94,21 @@
     ]
    },
    "properties": {
-    "external_id": "r0c1_2026-10-18T22:30",
+    "external_id": "r0c1_2026-10-19T22:45",
     "event_type": "viento",
-    "value": 7.4,
+    "value": 6.3,
     "unit": "m/s (ráfaga 10 m)",
     "threshold": 14.0,
     "exceeds": false,
-    "observed_at": "2026-10-18T22:30:00+00:00",
+    "observed_at": "2026-10-19T22:45:00+00:00",
     "lon": -71.4925,
     "lat": -32.80375,
     "cell": "r0c1",
-    "wind_speed_10m": 2.97,
-    "wind_direction_10m": 290,
-    "wind_speed_80m": 3.7,
-    "wind_speed_120m": 3.88,
-    "wind_direction_120m": 286
+    "wind_speed_10m": 3.35,
+    "wind_direction_10m": 27,
+    "wind_speed_80m": 4.86,
+    "wind_speed_120m": 5.08,
+    "wind_direction_120m": 19
    }
   },
   {
@@ -141,21 +141,21 @@
     ]
    },
    "properties": {
-    "external_id": "r0c2_2026-10-18T22:30",
+    "external_id": "r0c2_2026-10-19T22:45",
     "event_type": "viento",
-    "value": 6.0,
+    "value": 5.8,
     "unit": "m/s (ráfaga 10 m)",
     "threshold": 14.0,
     "exceeds": false,
-    "observed_at": "2026-10-18T22:30:00+00:00",
+    "observed_at": "2026-10-19T22:45:00+00:00",
     "lon": -71.4475,
     "lat": -32.80375,
     "cell": "r0c2",
-    "wind_speed_10m": 3.56,
-    "wind_direction_10m": 334,
-    "wind_speed_80m": 4.64,
-    "wind_speed_120m": 4.86,
-    "wind_direction_120m": 332
+    "wind_speed_10m": 2.18,
+    "wind_direction_10m": 351,
+    "wind_speed_80m": 3.41,
+    "wind_speed_120m": 3.57,
+    "wind_direction_120m": 359
    }
   },
   {
@@ -188,21 +188,21 @@
     ]
    },
    "properties": {
-    "external_id": "r0c3_2026-10-18T22:30",
+    "external_id": "r0c3_2026-10-19T22:45",
     "event_type": "viento",
-    "value": 6.0,
+    "value": 5.8,
     "unit": "m/s (ráfaga 10 m)",
     "threshold": 14.0,
     "exceeds": false,
-    "observed_at": "2026-10-18T22:30:00+00:00",
+    "observed_at": "2026-10-19T22:45:00+00:00",
     "lon": -71.4025,
     "lat": -32.80375,
     "cell": "r0c3",
-    "wind_speed_10m": 3.56,
-    "wind_direction_10m": 334,
-    "wind_speed_80m": 4.64,
-    "wind_speed_120m": 4.86,
-    "wind_direction_120m": 332
+    "wind_speed_10m": 2.18,
+    "wind_direction_10m": 351,
+    "wind_speed_80m": 3.41,
+    "wind_speed_120m": 3.57,
+    "wind_direction_120m": 359
    }
   },
   {
@@ -235,21 +235,21 @@
     ]
    },
    "properties": {
-    "external_id": "r1c0_2026-10-18T22:30",
+    "external_id": "r1c0_2026-10-19T22:45",
     "event_type": "viento",
-    "value": 7.4,
+    "value": 6.3,
     "unit": "m/s (ráfaga 10 m)",
     "threshold": 14.0,
     "exceeds": false,
-    "observed_at": "2026-10-18T22:30:00+00:00",
+    "observed_at": "2026-10-19T22:45:00+00:00",
     "lon": -71.5375,
     "lat": -32.77125,
     "cell": "r1c0",
-    "wind_speed_10m": 2.97,
-    "wind_direction_10m": 290,
-    "wind_speed_80m": 3.7,
-    "wind_speed_120m": 3.88,
-    "wind_direction_120m": 286
+    "wind_speed_10m": 3.35,
+    "wind_direction_10m": 27,
+    "wind_speed_80m": 4.86,
+    "wind_speed_120m": 5.08,
+    "wind_direction_120m": 19
    }
   },
   {
@@ -282,21 +282,21 @@
     ]
    },
    "properties": {
-    "external_id": "r1c1_2026-10-18T22:30",
+    "external_id": "r1c1_2026-10-19T22:45",
     "event_type": "viento",
-    "value": 7.4,
+    "value": 6.3,
     "unit": "m/s (ráfaga 10 m)",
     "threshold": 14.0,
     "exceeds": false,
-    "observed_at": "2026-10-18T22:30:00+00:00",
+    "observed_at": "2026-10-19T22:45:00+00:00",
     "lon": -71.4925,
     "lat": -32.77125,
     "cell": "r1c1",
-    "wind_speed_10m": 2.97,
-    "wind_direction_10m": 290,
-    "wind_speed_80m": 3.7,
-    "wind_speed_120m": 3.88,
-    "wind_direction_120m": 286
+    "wind_speed_10m": 3.35,
+    "wind_direction_10m": 27,
+    "wind_speed_80m": 4.86,
+    "wind_speed_120m": 5.08,
+    "wind_direction_120m": 19
    }
   },
   {
@@ -329,21 +329,21 @@
     ]
    },
    "properties": {
-    "external_id": "r1c2_2026-10-18T22:30",
+    "external_id": "r1c2_2026-10-19T22:45",
     "event_type": "viento",
-    "value": 7.4,
+    "value": 6.3,
     "unit": "m/s (ráfaga 10 m)",
     "threshold": 14.0,
     "exceeds": false,
-    "observed_at": "2026-10-18T22:30:00+00:00",
+    "observed_at": "2026-10-19T22:45:00+00:00",
     "lon": -71.4475,
     "lat": -32.77125,
     "cell": "r1c2",
-    "wind_speed_10m": 2.97,
-    "wind_direction_10m": 290,
-    "wind_speed_80m": 3.7,
-    "wind_speed_120m": 3.88,
-    "wind_direction_120m": 286
+    "wind_speed_10m": 3.35,
+    "wind_direction_10m": 27,
+    "wind_speed_80m": 4.86,
+    "wind_speed_120m": 5.08,
+    "wind_direction_120m": 19
    }
   },
   {
@@ -376,21 +376,21 @@
     ]
    },
    "properties": {
-    "external_id": "r1c3_2026-10-18T22:30",
+    "external_id": "r1c3_2026-10-19T22:45",
     "event_type": "viento",
-    "value": 6.0,
+    "value": 5.8,
     "unit": "m/s (ráfaga 10 m)",
     "threshold": 14.0,
     "exceeds": false,
-    "observed_at": "2026-10-18T22:30:00+00:00",
+    "observed_at": "2026-10-19T22:45:00+00:00",
     "lon": -71.4025,
     "lat": -32.77125,
     "cell": "r1c3",
-    "wind_speed_10m": 3.56,
-    "wind_direction_10m": 334,
-    "wind_speed_80m": 4.64,
-    "wind_speed_120m": 4.86,
-    "wind_direction_120m": 332
+    "wind_speed_10m": 2.18,
+    "wind_direction_10m": 351,
+    "wind_speed_80m": 3.41,
+    "wind_speed_120m": 3.57,
+    "wind_direction_120m": 359
    }
   },
   {
@@ -423,21 +423,21 @@
     ]
    },
    "properties": {
-    "external_id": "r2c0_2026-10-18T22:30",
+    "external_id": "r2c0_2026-10-19T22:45",
     "event_type": "viento",
-    "value": 7.4,
+    "value": 6.3,
     "unit": "m/s (ráfaga 10 m)",
     "threshold": 14.0,
     "exceeds": false,
-    "observed_at": "2026-10-18T22:30:00+00:00",
+    "observed_at": "2026-10-19T22:45:00+00:00",
     "lon": -71.5375,
     "lat": -32.73875,
     "cell": "r2c0",
-    "wind_speed_10m": 2.97,
-    "wind_direction_10m": 290,
-    "wind_speed_80m": 3.7,
-    "wind_speed_120m": 3.88,
-    "wind_direction_120m": 286
+    "wind_speed_10m": 3.35,
+    "wind_direction_10m": 27,
+    "wind_speed_80m": 4.86,
+    "wind_speed_120m": 5.08,
+    "wind_direction_120m": 19
    }
   },
   {
@@ -470,21 +470,21 @@
     ]
    },
    "properties": {
-    "external_id": "r2c1_2026-10-18T22:30",
+    "external_id": "r2c1_2026-10-19T22:45",
     "event_type": "viento",
-    "value": 7.4,
+    "value": 6.3,
     "unit": "m/s (ráfaga 10 m)",
     "threshold": 14.0,
     "exceeds": false,
-    "observed_at": "2026-10-18T22:30:00+00:00",
+    "observed_at": "2026-10-19T22:45:00+00:00",
     "lon": -71.4925,
     "lat": -32.73875,
     "cell": "r2c1",
-    "wind_speed_10m": 2.97,
-    "wind_direction_10m": 290,
-    "wind_speed_80m": 3.7,
-    "wind_speed_120m": 3.88,
-    "wind_direction_120m": 286
+    "wind_speed_10m": 3.35,
+    "wind_direction_10m": 27,
+    "wind_speed_80m": 4.86,
+    "wind_speed_120m": 5.08,
+    "wind_direction_120m": 19
    }
   },
   {
@@ -517,21 +517,21 @@
     ]
    },
    "properties": {
-    "external_id": "r2c2_2026-10-18T22:30",
+    "external_id": "r2c2_2026-10-19T22:45",
     "event_type": "viento",
-    "value": 5.7,
+    "value": 6.4,
     "unit": "m/s (ráfaga 10 m)",
     "threshold": 14.0,
     "exceeds": false,
-    "observed_at": "2026-10-18T22:30:00+00:00",
+    "observed_at": "2026-10-19T22:45:00+00:00",
     "lon": -71.4475,
     "lat": -32.73875,
     "cell": "r2c2",
-    "wind_speed_10m": 3.06,
-    "wind_direction_10m": 308,
-    "wind_speed_80m": 3.78,
-    "wind_speed_120m": 3.96,
-    "wind_direction_120m": 308
+    "wind_speed_10m": 2.93,
+    "wind_direction_10m": 23,
+    "wind_speed_80m": 4.36,
+    "wind_speed_120m": 4.56,
+    "wind_direction_120m": 10
    }
   },
   {
@@ -564,21 +564,21 @@
     ]
    },
    "properties": {
-    "external_id": "r2c3_2026-10-18T22:30",
+    "external_id": "r2c3_2026-10-19T22:45",
     "event_type": "viento",
-    "value": 5.7,
+    "value": 6.4,
     "unit": "m/s (ráfaga 10 m)",
     "threshold": 14.0,
     "exceeds": false,
-    "observed_at": "2026-10-18T22:30:00+00:00",
+    "observed_at": "2026-10-19T22:45:00+00:00",
     "lon": -71.4025,
     "lat": -32.73875,
     "cell": "r2c3",
-    "wind_speed_10m": 3.06,
-    "wind_direction_10m": 308,
-    "wind_speed_80m": 3.78,
-    "wind_speed_120m": 3.96,
-    "wind_direction_120m": 308
+    "wind_speed_10m": 2.93,
+    "wind_direction_10m": 23,
+    "wind_speed_80m": 4.36,
+    "wind_speed_120m": 4.56,
+    "wind_direction_120m": 10
    }
   },
   {
@@ -611,21 +611,21 @@
     ]
    },
    "properties": {
-    "external_id": "r3c0_2026-10-18T22:30",
+    "external_id": "r3c0_2026-10-19T22:45",
     "event_type": "viento",
-    "value": 7.4,
+    "value": 6.3,
     "unit": "m/s (ráfaga 10 m)",
     "threshold": 14.0,
     "exceeds": false,
-    "observed_at": "2026-10-18T22:30:00+00:00",
+    "observed_at": "2026-10-19T22:45:00+00:00",
     "lon": -71.5375,
     "lat": -32.70625,
     "cell": "r3c0",
-    "wind_speed_10m": 2.97,
-    "wind_direction_10m": 290,
-    "wind_speed_80m": 3.7,
-    "wind_speed_120m": 3.88,
-    "wind_direction_120m": 286
+    "wind_speed_10m": 3.35,
+    "wind_direction_10m": 27,
+    "wind_speed_80m": 4.86,
+    "wind_speed_120m": 5.08,
+    "wind_direction_120m": 19
    }
   },
   {
@@ -658,21 +658,21 @@
     ]
    },
    "properties": {
-    "external_id": "r3c1_2026-10-18T22:30",
+    "external_id": "r3c1_2026-10-19T22:45",
     "event_type": "viento",
-    "value": 5.7,
+    "value": 6.4,
     "unit": "m/s (ráfaga 10 m)",
     "threshold": 14.0,
     "exceeds": false,
-    "observed_at": "2026-10-18T22:30:00+00:00",
+    "observed_at": "2026-10-19T22:45:00+00:00",
     "lon": -71.4925,
     "lat": -32.70625,
     "cell": "r3c1",
-    "wind_speed_10m": 3.06,
-    "wind_direction_10m": 308,
-    "wind_speed_80m": 3.78,
-    "wind_speed_120m": 3.96,
-    "wind_direction_120m": 308
+    "wind_speed_10m": 2.93,
+    "wind_direction_10m": 23,
+    "wind_speed_80m": 4.36,
+    "wind_speed_120m": 4.56,
+    "wind_direction_120m": 10
    }
   },
   {
@@ -705,21 +705,21 @@
     ]
    },
    "properties": {
-    "external_id": "r3c2_2026-10-18T22:30",
+    "external_id": "r3c2_2026-10-19T22:45",
     "event_type": "viento",
-    "value": 5.7,
+    "value": 6.4,
     "unit": "m/s (ráfaga 10 m)",
     "threshold": 14.0,
     "exceeds": false,
-    "observed_at": "2026-10-18T22:30:00+00:00",
+    "observed_at": "2026-10-19T22:45:00+00:00",
     "lon": -71.4475,
     "lat": -32.70625,
     "cell": "r3c2",
-    "wind_speed_10m": 3.06,
-    "wind_direction_10m": 308,
-    "wind_speed_80m": 3.78,
-    "wind_speed_120m": 3.96,
-    "wind_direction_120m": 308
+    "wind_speed_10m": 2.93,
+    "wind_direction_10m": 23,
+    "wind_speed_80m": 4.36,
+    "wind_speed_120m": 4.56,
+    "wind_direction_120m": 10
    }
   },
   {
@@ -752,21 +752,21 @@
     ]
    },
    "properties": {
-    "external_id": "r3c3_2026-10-18T22:30",
+    "external_id": "r3c3_2026-10-19T22:45",
     "event_type": "viento",
-    "value": 5.7,
+    "value": 6.4,
     "unit": "m/s (ráfaga 10 m)",
     "threshold": 14.0,
     "exceeds": false,
-    "observed_at": "2026-10-18T22:30:00+00:00",
+    "observed_at": "2026-10-19T22:45:00+00:00",
     "lon": -71.4025,
     "lat": -32.70625,
     "cell": "r3c3",
-    "wind_speed_10m": 3.06,
-    "wind_direction_10m": 308,
-    "wind_speed_80m": 3.78,
-    "wind_speed_120m": 3.96,
-    "wind_direction_120m": 308
+    "wind_speed_10m": 2.93,
+    "wind_direction_10m": 23,
+    "wind_speed_80m": 4.36,
+    "wind_speed_120m": 4.56,
+    "wind_direction_120m": 10
    }
   }
  ]

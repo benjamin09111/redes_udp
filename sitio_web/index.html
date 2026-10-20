@@ -48,7 +48,7 @@
       <div id="mapa" aria-label="Mapa de la red y rutas"></div>
 
       <!-- PANEL DE TELEMETRÍA Y COSTOS · LÍNEA BASE DIJKSTRA -->
-      <div id="hud-dijkstra-costos" class="hud-dijkstra-panel" hidden>
+      <div id="hud-dijkstra-costos" class="hud-dijkstra-panel">
         <div class="hud-dijkstra-header">
           <div class="hud-header-left">
             <span class="hud-badge-tag">Motor pgRouting &bull; Dijkstra Topológico</span>
@@ -117,155 +117,228 @@
       </div>
     </div>
 
-    <aside id="panel">
-      <!-- 1. Dupla (Inicio, Objetivo) -->
-      <section class="card">
-        <h2>1. Dupla Operacional (Origen, Objetivo)</h2>
-        <div class="control-group">
-          <label for="select-origen">Nodo de Origen (Inicio)</label>
-          <select id="select-origen"></select>
+    <aside id="panel" class="wizard-mode">
+      <!-- CONTROLADOR DEL ASISTENTE Y NAVEGACIÓN POR PASOS -->
+      <div class="wizard-header-box">
+        <div class="wizard-stepper" role="tablist" aria-label="Pasos de planificación">
+          <button type="button" class="wizard-step-tab active" data-step="1" id="wtab-1" title="Paso 1: Dupla Operacional">
+            <span class="step-num">1</span>
+            <span class="step-name">Misión</span>
+          </button>
+          <button type="button" class="wizard-step-tab" data-step="2" id="wtab-2" title="Paso 2: Restricciones">
+            <span class="step-num">2</span>
+            <span class="step-name">Restricciones</span>
+          </button>
+          <button type="button" class="wizard-step-tab" data-step="3" id="wtab-3" title="Paso 3: Resultados">
+            <span class="step-num">3</span>
+            <span class="step-name">Resultados</span>
+          </button>
+          <button type="button" class="wizard-step-tab" data-step="4" id="wtab-4" title="Paso 4: Red y Capas">
+            <span class="step-num">4</span>
+            <span class="step-name">Red</span>
+          </button>
         </div>
-        <div class="control-group">
-          <label for="select-destino">Nodo Objetivo (Destino)</label>
-          <select id="select-destino"></select>
+        <div class="wizard-toggle-row">
+          <span class="wizard-status-txt" id="wizard-status-txt">Paso 1: Misión (Origen / Destino)</span>
+          <button type="button" id="btn-toggle-wizard-mode" class="btn-mode-toggle" title="Alternar entre modo Asistente (paso a paso) y modo Acordeón (expandir todo)">
+            <span id="wizard-mode-label">Modo Acordeón</span>
+          </button>
         </div>
-        <p class="nota-hint">Seleccione vértices en los selectores o haga clic sobre el mapa (Shift + clic para fijar origen). Las estaciones SINCA y fuentes emisoras constituyen puntos prioritarios de muestreo.</p>
-        <p id="aviso-destino" class="aviso-destino" hidden></p>
-      </section>
+      </div>
 
-      <!-- 2. Restricciones del Usuario (Preferencias Dinámicas) -->
-      <section class="card">
-        <div class="card-header-toggle">
-          <h2>2. Parámetros y Restricciones Operacionales</h2>
-          <button id="btn-default-restricciones" type="button" class="btn-link" title="Restablecer valores nominales recomendados">Valores nominales</button>
+      <!-- PASO 1: DUPLA OPERACIONAL -->
+      <section class="card wizard-panel-card active" id="wizard-pane-1" data-step="1">
+        <div class="panel-section-header" data-toggle="1">
+          <h2>1. Dupla Operacional (Origen, Objetivo)</h2>
+          <span class="step-pill">Paso 1</span>
         </div>
-        <div class="checkbox-list">
-          <label class="check-item">
-            <input type="checkbox" id="check-incendios" checked>
-            <span>Exclusión por plumas térmicas / incendios (NASA FIRMS)</span>
-          </label>
-          <label class="check-item">
-            <input type="checkbox" id="check-poblacion" checked>
-            <span>Restricción de sobrevuelo urbano (INE / DAN 151)</span>
-          </label>
-          <label class="check-item">
-            <input type="checkbox" id="check-sismos" checked>
-            <span>Exclusión de infraestructura en alerta sísmica (CSN)</span>
-          </label>
-          <label class="check-item">
-            <input type="checkbox" id="check-telecom" checked>
-            <span>Requerimiento de cobertura de enlace C2 (Radiobases OSM)</span>
-          </label>
-        </div>
-
-        <div class="escenario-box mt-2">
-          <label class="check-item text-warning">
-            <input type="checkbox" id="check-escenario-estres">
-            <strong>Escenario de contingencia industrial: Incidente en Planta Asfaltos Quintero</strong>
-          </label>
-        </div>
-
-        <div class="control-group mt-2">
-          <label for="select-k-alternativa">Visualización de Rutas (k &ge; 2)</label>
-          <select id="select-k-alternativa">
-            <option value="1">k = 1 (Ruta Primaria)</option>
-            <option value="2">k = 2 (Ruta de Contingencia / Respaldo)</option>
-            <option value="ambas">Mostrar k=1 y k=2 simultáneamente</option>
-          </select>
+        <div class="wizard-card-content">
+          <div class="control-group">
+            <label for="select-origen">Nodo de Origen (Inicio)</label>
+            <select id="select-origen"></select>
+          </div>
+          <div class="control-group">
+            <label for="select-destino">Nodo Objetivo (Destino)</label>
+            <select id="select-destino"></select>
+          </div>
+          <p class="nota-hint">Seleccione en los controles o haga clic en el mapa (Shift + clic: fijar origen). Las estaciones SINCA y fuentes emisoras son destinos prioritarios.</p>
+          <p id="aviso-destino" class="aviso-destino" hidden></p>
+          
+          <div class="wizard-pane-footer">
+            <button type="button" class="btn-wizard-action btn-wizard-next" data-goto="2">
+              Configurar Restricciones &rarr;
+            </button>
+          </div>
         </div>
       </section>
 
-      <!-- 3. Análisis Comparativo Multicriterio -->
-      <section class="card">
-        <h2>3. Análisis Comparativo Multicriterio</h2>
-        
-        <div class="comparativa-rutas">
-          <!-- Tarjeta Dijkstra -->
-          <div class="ruta-card dijkstra-card">
-            <div class="ruta-tag dijkstra-tag">
-              <span class="linea-muestra dijkstra-linea"></span>
-              <strong id="label-dijkstra-card">Dijkstra Geométrico (Línea Base)</strong>
-            </div>
-            <div class="stat-row">
-              <span>Distancia Geodésica:</span>
-              <strong id="dijkstra-distancia">—</strong>
-            </div>
-            <div class="stat-row">
-              <span>Supervivencia estimada:</span>
-              <strong id="dijkstra-supervivencia" class="score-bad">—</strong>
-            </div>
-            <div class="stat-row">
-              <span>Restricciones activadas:</span>
-              <span id="dijkstra-amenazas" class="text-xs text-bad">—</span>
-            </div>
-            <button id="btn-abrir-auditoria-dijkstra" type="button" class="btn-dijkstra-inspect">Inspeccionar Tramos y Costos</button>
-            <div class="pgrouting-samples-box">
-              <div class="pgrouting-title">Rutas Oficiales pgRouting en Base de Datos:</div>
-              <div class="pgrouting-btns" id="pgrouting-sinca-buttons"></div>
-            </div>
-          </div>
-
-          <!-- Tarjeta Resiliente -->
-          <div class="ruta-card resiliente-card">
-            <div class="ruta-tag resiliente-tag">
-              <span class="linea-muestra resiliente-linea"></span>
-              <strong id="label-resiliente-card">Planificación Resiliente Adaptativa</strong>
-            </div>
-            <div class="stat-row">
-              <span>Distancia Geodésica:</span>
-              <strong id="resiliente-distancia">—</strong>
-            </div>
-            <div class="stat-row">
-              <span>Supervivencia estimada:</span>
-              <strong id="resiliente-supervivencia" class="score-good">—</strong>
-            </div>
-            <div class="stat-row">
-              <span>Riesgos mitigados:</span>
-              <span id="resiliente-amenazas" class="text-xs text-good">—</span>
-            </div>
+      <!-- PASO 2: PARÁMETROS Y RESTRICCIONES OPERACIONALES -->
+      <section class="card wizard-panel-card" id="wizard-pane-2" data-step="2">
+        <div class="panel-section-header" data-toggle="2">
+          <div class="card-header-toggle" style="margin: 0; border: none; padding: 0; width: 100%;">
+            <h2>2. Parámetros y Restricciones</h2>
+            <button id="btn-default-restricciones" type="button" class="btn-link" title="Restablecer valores nominales recomendados">Nominales</button>
           </div>
         </div>
+        <div class="wizard-card-content">
+          <div class="checkbox-list">
+            <label class="check-item">
+              <input type="checkbox" id="check-incendios" checked>
+              <span>Exclusión por plumas térmicas / incendios (FIRMS)</span>
+            </label>
+            <label class="check-item">
+              <input type="checkbox" id="check-poblacion" checked>
+              <span>Restricción de sobrevuelo urbano (INE / DAN 151)</span>
+            </label>
+            <label class="check-item">
+              <input type="checkbox" id="check-sismos" checked>
+              <span>Exclusión de infraestructura en alerta sísmica (CSN)</span>
+            </label>
+            <label class="check-item">
+              <input type="checkbox" id="check-telecom" checked>
+              <span>Cobertura requerida de enlace C2 (Radiobases OSM)</span>
+            </label>
+          </div>
 
-        <!-- Métrica Probabilística de Fiabilidad de Conjunto -->
-        <div class="metricas-conjunto">
-          <div class="conjunto-row">
-            <span>Diversidad topológica de aristas (Disyunción):</span>
-            <strong id="resiliente-diversidad">—</strong>
+          <div class="escenario-box mt-2">
+            <label class="check-item text-warning">
+              <input type="checkbox" id="check-escenario-estres">
+              <strong>Contingencia: Incidente Planta Asfaltos Quintero</strong>
+            </label>
           </div>
-          <div class="conjunto-row">
-            <span>Resiliencia conjunta Línea Base (k=2):</span>
-            <strong id="conjunto-dijkstra-res">—</strong>
-          </div>
-          <div class="conjunto-row">
-            <span>Resiliencia conjunta Adaptativa (k=2):</span>
-            <strong id="conjunto-resiliente-res" class="text-good">—</strong>
-          </div>
-        </div>
 
-        <!-- Evaluación Diferencial de Resiliencia -->
-        <div class="diferencial-banner" id="diferencial-banner">
-          <div class="diferencial-label">Evaluación Diferencial de Resiliencia (&Delta;R):</div>
-          <div class="diferencial-value" id="diferencial-valor">+0.0 p.p.</div>
-          <span id="badge-delta-resiliencia" class="hidden" aria-hidden="true"></span>
-          <div class="diferencial-desc" id="diferencial-desc">La trayectoria resiliente preserva la viabilidad operativa ante contingencias con mínima variación de longitud de vuelo.</div>
+          <div class="control-group mt-2">
+            <label for="select-k-alternativa">Visualización de Rutas (k &ge; 2)</label>
+            <select id="select-k-alternativa">
+              <option value="1">k = 1 (Ruta Primaria)</option>
+              <option value="2">k = 2 (Ruta de Contingencia / Respaldo)</option>
+              <option value="ambas">Mostrar k=1 y k=2 simultáneamente</option>
+            </select>
+          </div>
+
+          <div class="wizard-pane-footer dual">
+            <button type="button" class="btn-wizard-action btn-wizard-prev" data-goto="1">
+              &larr; Origen / Destino
+            </button>
+            <button type="button" class="btn-wizard-action btn-wizard-next primary" data-goto="3">
+              Ver Comparativa &rarr;
+            </button>
+          </div>
         </div>
       </section>
 
-      <!-- 4. Resumen de Capas y Red -->
-      <section class="card">
-        <h2>4. Topología e Infraestructura de Red</h2>
-        <dl id="resumen"></dl>
+      <!-- PASO 3: ANÁLISIS COMPARATIVO MULTICRITERIO -->
+      <section class="card wizard-panel-card" id="wizard-pane-3" data-step="3">
+        <div class="panel-section-header" data-toggle="3">
+          <h2>3. Análisis Comparativo Multicriterio</h2>
+          <span class="step-pill">Telemetría</span>
+        </div>
+        <div class="wizard-card-content">
+          <div class="comparativa-rutas">
+            <!-- Tarjeta Dijkstra -->
+            <div class="ruta-card dijkstra-card">
+              <div class="ruta-tag dijkstra-tag">
+                <span class="linea-muestra dijkstra-linea"></span>
+                <strong id="label-dijkstra-card">Dijkstra Geométrico (Línea Base)</strong>
+              </div>
+              <div class="stat-row">
+                <span>Distancia Geodésica:</span>
+                <strong id="dijkstra-distancia">—</strong>
+              </div>
+              <div class="stat-row">
+                <span>Supervivencia estimada:</span>
+                <strong id="dijkstra-supervivencia" class="score-bad">—</strong>
+              </div>
+              <div class="stat-row">
+                <span>Restricciones activadas:</span>
+                <span id="dijkstra-amenazas" class="text-xs text-bad">—</span>
+              </div>
+              <button id="btn-abrir-auditoria-dijkstra" type="button" class="btn-dijkstra-inspect">Inspeccionar Tramos y Costos</button>
+              <div class="pgrouting-samples-box">
+                <div class="pgrouting-title">Rutas Oficiales pgRouting en Base de Datos:</div>
+                <div class="pgrouting-btns" id="pgrouting-sinca-buttons"></div>
+              </div>
+            </div>
+
+            <!-- Tarjeta Resiliente -->
+            <div class="ruta-card resiliente-card">
+              <div class="ruta-tag resiliente-tag">
+                <span class="linea-muestra resiliente-linea"></span>
+                <strong id="label-resiliente-card">Planificación Resiliente Adaptativa</strong>
+              </div>
+              <div class="stat-row">
+                <span>Distancia Geodésica:</span>
+                <strong id="resiliente-distancia">—</strong>
+              </div>
+              <div class="stat-row">
+                <span>Supervivencia estimada:</span>
+                <strong id="resiliente-supervivencia" class="score-good">—</strong>
+              </div>
+              <div class="stat-row">
+                <span>Riesgos mitigados:</span>
+                <span id="resiliente-amenazas" class="text-xs text-good">—</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Métrica Probabilística de Fiabilidad de Conjunto -->
+          <div class="metricas-conjunto">
+            <div class="conjunto-row">
+              <span>Diversidad topológica (Disyunción):</span>
+              <strong id="resiliente-diversidad">—</strong>
+            </div>
+            <div class="conjunto-row">
+              <span>Resiliencia Línea Base (k=2):</span>
+              <strong id="conjunto-dijkstra-res">—</strong>
+            </div>
+            <div class="conjunto-row">
+              <span>Resiliencia Adaptativa (k=2):</span>
+              <strong id="conjunto-resiliente-res" class="text-good">—</strong>
+            </div>
+          </div>
+
+          <!-- Evaluación Diferencial de Resiliencia -->
+          <div class="diferencial-banner" id="diferencial-banner">
+            <div class="diferencial-label">Evaluación Diferencial de Resiliencia (&Delta;R):</div>
+            <div class="diferencial-value" id="diferencial-valor">+0.0 p.p.</div>
+            <span id="badge-delta-resiliencia" class="hidden" aria-hidden="true"></span>
+            <div class="diferencial-desc" id="diferencial-desc">La trayectoria adaptativa preserva la viabilidad operativa ante contingencias.</div>
+          </div>
+
+          <div class="wizard-pane-footer dual">
+            <button type="button" class="btn-wizard-action btn-wizard-prev" data-goto="2">
+              &larr; Restricciones
+            </button>
+            <button type="button" class="btn-wizard-action btn-wizard-next" data-goto="4">
+              Ver Topología y Capas &rarr;
+            </button>
+          </div>
+        </div>
       </section>
 
-      <!-- 5. Leyenda de Nodos -->
-      <section class="card">
-        <h2>5. Clasificación Funcional de Nodos</h2>
-        <ul id="leyenda" class="leyenda"></ul>
-      </section>
+      <!-- PASO 4: TOPOLOGÍA, CLASIFICACIÓN DE RED Y ESTADO -->
+      <section class="card wizard-panel-card" id="wizard-pane-4" data-step="4">
+        <div class="panel-section-header" data-toggle="4">
+          <h2>4. Topología e Infraestructura de Red</h2>
+          <span class="step-pill">195 Nodos</span>
+        </div>
+        <div class="wizard-card-content">
+          <dl id="resumen" class="resumen-dl"></dl>
 
-      <section class="card">
-        <h2>Estado del Sistema</h2>
-        <p id="estado" class="text-sm">Iniciando motor reactivo…</p>
+          <h3 class="sub-section-title">Clasificación Funcional de Nodos</h3>
+          <ul id="leyenda" class="leyenda-grid"></ul>
+
+          <div class="system-status-box">
+            <span class="status-box-title">Estado del Sistema</span>
+            <p id="estado" class="text-sm">Iniciando motor reactivo…</p>
+          </div>
+
+          <div class="wizard-pane-footer">
+            <button type="button" class="btn-wizard-action btn-wizard-prev" data-goto="3">
+              &larr; Volver a Resultados
+            </button>
+          </div>
+        </div>
       </section>
     </aside>
   </main>
@@ -426,55 +499,61 @@
         <!-- COLUMNA METODOLOGÍA Y DESGLOSE -->
         <div class="infra-info-panel">
           
-          <!-- TARJETA: METODOLOGÍA DE EXTRACCIÓN Y TRANSFORMACIÓN -->
+          <!-- TARJETA: METODOLOGÍA DE EXTRACCIÓN Y TRANSFORMACIÓN (ACORDEÓN) -->
           <div class="card">
             <h2>Metodología de Construcción del Grafo (ETL)</h2>
-            <div class="method-steps-list">
-              <div class="method-step">
-                <span class="step-num">1</span>
-                <div class="step-details">
-                  <strong>Normalización de Vértices y Compatibilidad con pgRouting</strong>
+            <div class="accordion-group">
+              <details class="accordion-item" open>
+                <summary class="accordion-header">
+                  <span class="step-num">1</span>
+                  <span class="acc-title">Normalización de Vértices y Compatibilidad pgRouting</span>
+                </summary>
+                <div class="accordion-body">
                   <p>
-                    A partir de <code>public/data/nodes.geojson</code> (fase 1), el script normaliza las coordenadas WGS84 3D <code>[lon, lat, elevación]</code> 
-                    y genera un <code>id</code> entero secuencial único (1..195) requerido por la función <code>pgr_dijkstra()</code>. 
-                    Se preserva <code>code</code> semántico inmutable (ej: <code>base_scer</code>, <code>sinca_ventanas</code>).
+                    A partir de <code>public/data/nodes.geojson</code>, normaliza coordenadas WGS84 3D <code>[lon, lat, elevación]</code> 
+                    y genera un <code>id</code> entero secuencial único (1..195) requerido por <code>pgr_dijkstra()</code>, preservando su código semántico.
                   </p>
                 </div>
-              </div>
+              </details>
 
-              <div class="method-step">
-                <span class="step-num">2</span>
-                <div class="step-details">
-                  <strong>Topología de K-Vecinos más Cercanos (K=4)</strong>
+              <details class="accordion-item">
+                <summary class="accordion-header">
+                  <span class="step-num">2</span>
+                  <span class="acc-title">Topología de K-Vecinos más Cercanos (K=4)</span>
+                </summary>
+                <div class="accordion-body">
                   <p>
-                    Para cada nodo <em>u</em>, calcula la distancia esférica Haversine <em>d(u, v)</em> con los demás <em>N - 1</em> nodos y conecta sus 4 vecinos espaciales más próximos. 
-                    Se consolidan pares no dirigidos <em>(u, v) &equiv; (v, u)</em> con aristas bidireccionales donde <code>cost = reverse_cost = length_m</code>.
+                    Para cada nodo <em>u</em>, calcula la distancia esférica Haversine y conecta sus 4 vecinos espaciales más próximos, 
+                    consolidando pares bidireccionales donde <code>cost = reverse_cost = length_m</code>.
                   </p>
                 </div>
-              </div>
+              </details>
 
-              <div class="method-step">
-                <span class="step-num">3</span>
-                <div class="step-details">
-                  <strong>Garantía Matemática de Conectividad con Union-Find (DSU)</strong>
+              <details class="accordion-item">
+                <summary class="accordion-header">
+                  <span class="step-num">3</span>
+                  <span class="acc-title">Garantía Matemática de Conectividad con Union-Find</span>
+                </summary>
+                <div class="accordion-body">
                   <p>
-                    Para evitar componentes aislados por bahías o esteros, implementa <em>Disjoint-Set Union</em> con compresión de caminos. 
-                    Si existen particiones independientes, encuentra automáticamente el par de nodos de mínima distancia entre ellas y añade 
-                    <strong>aristas puente</strong>, asegurando un grafo 100% conexo.
+                    Implementa <em>Disjoint-Set Union</em> (DSU) con compresión de caminos. Si existen particiones separadas por accidentes costeros, 
+                    añade automáticamente <strong>aristas puente</strong> de mínima distancia, garantizando 100% de conexidad.
                   </p>
                 </div>
-              </div>
+              </details>
 
-              <div class="method-step">
-                <span class="step-num">4</span>
-                <div class="step-details">
-                  <strong>Zonas Urbanas y Cumplimiento Normativo DAN 151</strong>
+              <details class="accordion-item">
+                <summary class="accordion-header">
+                  <span class="step-num">4</span>
+                  <span class="acc-title">Zonas Urbanas y Restricción DAN 151</span>
+                </summary>
+                <div class="accordion-body">
                   <p>
-                    Normaliza los polígonos de 13 localidades a <code>MultiPolygon</code> RFC 7946 con orientación estricta de anillos 
-                    (exterior antihorario, huecos horarios) y calcula el área en km². Sirve de base para penalizar el sobrevuelo sobre zonas densas.
+                    Normaliza 13 localidades a <code>MultiPolygon</code> RFC 7946 con orientación estricta de anillos para penalizar 
+                    el sobrevuelo de zonas densamente pobladas conforme a la normativa aeronáutica DGAC.
                   </p>
                 </div>
-              </div>
+              </details>
             </div>
           </div>
 
@@ -715,55 +794,67 @@
           
           <div class="card">
             <h2>Fundamento de las 4 Fuentes de Metadata</h2>
-            <div class="method-steps-list">
+            <div class="accordion-group">
               
-              <div class="method-step">
-                <span class="step-num">1</span>
-                <div class="step-details">
-                  <strong>Calidad del Aire (SINCA / Ministerio del Medio Ambiente)</strong>
+              <details class="accordion-item" open>
+                <summary class="accordion-header">
+                  <span class="step-num">1</span>
+                  <span class="acc-title">Calidad del Aire (SINCA / MMA)</span>
+                  <span class="acc-badge">meta_air_quality</span>
+                </summary>
+                <div class="accordion-body">
+                  <p><strong>Script:</strong> <code>metadata/sinca_calidad_aire.py</code> &bull; <strong>API:</strong> SINCA MMA</p>
                   <p>
-                    <strong>Script:</strong> <code>metadata/sinca_calidad_aire.py</code> &bull; <strong>Tabla:</strong> <code>meta_air_quality</code><br>
-                    <strong>API Fuente:</strong> <code>sinca.mma.gob.cl/index.php/json/listadomapa2k19/</code><br>
-                    <strong>Modelamiento:</strong> Establece la <em>prioridad y atractividad de muestreo</em> para la misión UAV. En presencia de concentraciones críticas de SO₂, NO₂, CO, O₃ o material particulado (PM₁₀/PM₂.₅), el Global Path Planner (GPP) prioriza estas estaciones como destinos de intercepción estratégica en plumas industriales.
+                    Establece la <em>prioridad de muestreo</em> para la misión UAV. En presencia de concentraciones críticas de 
+                    SO₂, NO₂, CO o PM₁₀/PM₂.₅, el Global Path Planner (GPP) prioriza estas estaciones como destinos estratégicos de monitoreo.
                   </p>
                 </div>
-              </div>
+              </details>
 
-              <div class="method-step">
-                <span class="step-num">2</span>
-                <div class="step-details">
-                  <strong>Relieve Topográfico por Arista (NASA SRTM 30m GL1)</strong>
+              <details class="accordion-item">
+                <summary class="accordion-header">
+                  <span class="step-num">2</span>
+                  <span class="acc-title">Relieve Topográfico por Arista (NASA SRTM 30m)</span>
+                  <span class="acc-badge">meta_edge_terrain</span>
+                </summary>
+                <div class="accordion-body">
+                  <p><strong>Script:</strong> <code>metadata/srtm_relieve.py</code> &bull; <strong>Fuente:</strong> OpenTopoData (SRTM GL1)</p>
                   <p>
-                    <strong>Script:</strong> <code>metadata/srtm_relieve.py</code> &bull; <strong>Tabla:</strong> <code>meta_edge_terrain</code><br>
-                    <strong>API Fuente:</strong> OpenTopoData (NASA SRTM 30m)<br>
-                    <strong>Modelamiento:</strong> Cada arista de la red se muestrea a intervalos regulares de 100 m. Se calculan cotas mínimas, máximas y desnivel acumulado (ascenso/descenso). Permite verificar la restricción aeronáutica DAN 151 (operación entre 0 y 120 m AGL sobre terreno) y alimentar la fórmula de Consumo Energético Estimado ($EEE$) por ascenso.
+                    Muestreo altimétrico cada 100 m por corredor. Evalúa pendientes y desniveles acumulados para validar el techo DAN 151 
+                    (0 a 120 m AGL sobre terreno) y alimentar la fórmula de Consumo Energético Estimado ($EEE$) por ascenso.
                   </p>
                 </div>
-              </div>
+              </details>
 
-              <div class="method-step">
-                <span class="step-num">3</span>
-                <div class="step-details">
-                  <strong>Densidad Demográfica por Manzana Censal (INE / Censo 2017)</strong>
+              <details class="accordion-item">
+                <summary class="accordion-header">
+                  <span class="step-num">3</span>
+                  <span class="acc-title">Densidad Demográfica por Manzana Censal (INE)</span>
+                  <span class="acc-badge">meta_census_block</span>
+                </summary>
+                <div class="accordion-body">
+                  <p><strong>Script:</strong> <code>metadata/ine_manzanas.py</code> &bull; <strong>Fuente:</strong> IDE SMA / Censo 2017</p>
                   <p>
-                    <strong>Script:</strong> <code>metadata/ine_manzanas.py</code> &bull; <strong>Tabla:</strong> <code>meta_census_block</code><br>
-                    <strong>BD Fuente:</strong> Servidor ArcGIS REST de la IDE del Ministerio del Medio Ambiente<br>
-                    <strong>Modelamiento:</strong> Evalúa el riesgo a terceros en superficie. Las aristas que sobrevuelan manzanas con densidad superior a 2.500 hab/km² son penalizadas en el costo de la trayectoria. Conforme a DAN 151, el sobrevuelo urbano no se prohíbe, pero requiere trayectorias más conservadoras priorizando bordes costeros o áreas deshabitadas.
+                    Evalúa el riesgo a terceros en superficie. Las aristas que sobrevuelan áreas con densidad &gt; 2.500 hab/km² 
+                    son penalizadas en costo, privilegiando bordes costeros conforme a la directiva aeronáutica DAN 151.
                   </p>
                 </div>
-              </div>
+              </details>
 
-              <div class="method-step">
-                <span class="step-num">4</span>
-                <div class="step-details">
-                  <strong>Infraestructura de Telecomunicaciones y Enlace C2 (OSM)</strong>
+              <details class="accordion-item">
+                <summary class="accordion-header">
+                  <span class="step-num">4</span>
+                  <span class="acc-title">Telecomunicaciones y Enlace C2 (OSM)</span>
+                  <span class="acc-badge">meta_telecom_antenna</span>
+                </summary>
+                <div class="accordion-body">
+                  <p><strong>Script:</strong> <code>metadata/osm_antenas.py</code> &bull; <strong>Fuente:</strong> OpenStreetMap Overpass</p>
                   <p>
-                    <strong>Script:</strong> <code>metadata/osm_antenas.py</code> &bull; <strong>Tabla:</strong> <code>meta_telecom_antenna</code><br>
-                    <strong>API Fuente:</strong> OpenStreetMap vía Overpass API (reemplaza Subtel por reCAPTCHA)<br>
-                    <strong>Modelamiento:</strong> Extrae torres y mástiles celulares generando polígonos de celda macro de 3 km. Las aristas que caen fuera de estos polígonos corresponden a "sombras de telemetría", donde la probabilidad de pérdida del enlace de Comando y Control (C2) aumenta, penalizando la confiabilidad de la arista.
+                    Mapea radiobases celulares generando celdas macro de 3 km. Las aristas fuera de cobertura quedan en "sombras de telemetría", 
+                    penalizando su confiabilidad operativa por riesgo de degradación de enlace C2.
                   </p>
                 </div>
-              </div>
+              </details>
 
             </div>
           </div>
@@ -986,124 +1077,79 @@
               se almacena en GeoJSON RFC 7946, se carga a PostGIS en el esquema unificado threat_event y modula el costo de las aristas del grafo.
             </p>
 
-            <div class="source-methods-list">
+            <div class="accordion-group">
               
-              <!-- CARD 1: INCENDIOS -->
-              <div class="source-block">
-                <div class="source-head">
-                  <span class="source-tag">Satélites VIIRS / MODIS</span>
-                  <h4>NASA FIRMS &bull; Focos de Incendio y Bloqueo Convectivo</h4>
-                </div>
-                <div class="source-body">
-                  <p>
-                    <strong>Módulo de Extracción ETL:</strong> <code>amenazas/firms_incendios.py</code> descarga archivos NRT
-                    públicos de Sudamérica para VIIRS S-NPP, VIIRS NOAA-20 y MODIS. Filtra las coordenadas dentro de la región
-                    ampliada (~30 km) de la Bahía de Quintero.
-                  </p>
-                  <p>
-                    <strong>Modelo de Afectación Espacial:</strong> Cada detección se transforma en un polígono circular
-                    de exclusión con radio $R = 2.000\text{ m}$. Si la confianza es nominal o alta (VIIRS <code>n</code>/<code>h</code>,
-                    MODIS &ge; 50%), se establece <code>exceeds = true</code> (zona activa).
-                  </p>
-                  <p>
-                    <strong>Regla de Ponderación de Costo:</strong> Bloqueo estricto e insalvable ($C_{uv} = \infty$)
-                    para toda arista que intersecte el polígono. Las altas temperaturas, corrientes convectivas ascendentes y
-                    la opacidad por humo implican riesgo crítico de pérdida de sustentación y daño térmico al fuselaje.
-                  </p>
+              <!-- ACORDEÓN 1: INCENDIOS -->
+              <details class="accordion-item" open>
+                <summary class="accordion-header">
+                  <span class="source-tag">VIIRS / MODIS</span>
+                  <span class="acc-title">NASA FIRMS &bull; Focos de Incendio y Bloqueo Convectivo</span>
+                  <span class="acc-badge text-bad">Bloqueo Crítico</span>
+                </summary>
+                <div class="accordion-body">
+                  <p><strong>Extracción ETL:</strong> <code>amenazas/firms_incendios.py</code> descarga detecciones NRT en la Bahía de Quintero (~30 km).</p>
+                  <p><strong>Afectación Espacial:</strong> Polígono circular de exclusión con radio $R = 2.000\text{ m}$. Confianza nominal/alta fija <code>exceeds = true</code>.</p>
+                  <p><strong>Ponderación en Red:</strong> Inhabilita de forma estricta ($C_{uv} = \infty$) las aristas intersectadas por turbulencia convectiva y riesgo térmico.</p>
                   <div class="source-meta-foot">
                     <span>Script Carga: <code>amenazas/cargar_firms_incendios.py</code></span>
-                    <span>Tabla BD: <code>threat_event (event_type = 'incendio')</code></span>
+                    <span>Tabla BD: <code>threat_event (incendio)</code></span>
                   </div>
                 </div>
-              </div>
+              </details>
 
-              <!-- CARD 2: SISMOS -->
-              <div class="source-block">
-                <div class="source-head">
-                  <span class="source-tag">EMSC FDSN / CSN U. de Chile</span>
-                  <h4>CSN &bull; Sismicidad y Falla de Estaciones Base de Recarga</h4>
-                </div>
-                <div class="source-body">
-                  <p>
-                    <strong>Módulo de Extracción ETL:</strong> <code>amenazas/csn_sismos.py</code> consume el servicio FDSN
-                    de EMSC filtrando eventos de los últimos 30 días con autoría del Centro Sismológico Nacional (<code>CSN</code>)
-                    en un radio de ~330 km alrededor de la base aérea.
-                  </p>
-                  <p>
-                    <strong>Modelo de Afectación Espacial:</strong> Ley empírica de atenuación para intensidad instrumental
-                    &ge; VI (daño potencial en infraestructura de red eléctrica):
-                    <code>R(km) = 10^(0.5 &bull; M &minus; 1.8)</code>.
-                    Eventos con $M \ge 5.0$ establecen <code>exceeds = true</code>. Se calcula además <code>base_dentro_radio</code>
-                    respecto al Aeródromo de Quintero.
-                  </p>
-                  <p>
-                    <strong>Regla de Ponderación de Costo:</strong> Un sismo fuerte que abarque un nodo base o vertipuerto
-                    lo deja inoperable por caída de suministro eléctrico (corte de cargadores rápidos). El planificador global (GPP)
-                    invalida ese nodo como destino y redirige al UAV hacia bases secundarias o activa el plan de retorno alternativo.
-                  </p>
+              <!-- ACORDEÓN 2: SISMOS -->
+              <details class="accordion-item">
+                <summary class="accordion-header">
+                  <span class="source-tag">EMSC / CSN</span>
+                  <span class="acc-title">CSN &bull; Sismicidad y Falla de Infraestructura Base</span>
+                  <span class="acc-badge">Redirección</span>
+                </summary>
+                <div class="accordion-body">
+                  <p><strong>Extracción ETL:</strong> <code>amenazas/csn_sismos.py</code> consume FDSN de EMSC filtrando eventos con autoría CSN de los últimos 30 días.</p>
+                  <p><strong>Afectación Espacial:</strong> Atenuación de intensidad &ge; VI: <code>R(km) = 10^(0.5 &bull; M &minus; 1.8)</code>. Magnitudes $M \ge 5.0$ fijan <code>exceeds = true</code>.</p>
+                  <p><strong>Ponderación en Red:</strong> Un sismo que afecte un nodo base lo invalida por corte de suministro eléctrico, redirigiendo al UAV a vertipuertos alternativos.</p>
                   <div class="source-meta-foot">
                     <span>Script Carga: <code>amenazas/cargar_csn_sismos.py</code></span>
-                    <span>Tabla BD: <code>threat_event (event_type = 'sismo')</code></span>
+                    <span>Tabla BD: <code>threat_event (sismo)</code></span>
                   </div>
                 </div>
-              </div>
+              </details>
 
-              <!-- CARD 3: VIENTO -->
-              <div class="source-block">
-                <div class="source-head">
-                  <span class="source-tag">Open-Meteo Forecast API</span>
-                  <h4>Open-Meteo &bull; Viento a Techo DAN 151 y Consumo EEE</h4>
-                </div>
-                <div class="source-body">
-                  <p>
-                    <strong>Módulo de Extracción ETL:</strong> <code>amenazas/openmeteo_viento.py</code> divide el área en una
-                    grilla regular de 4&times;4 celdas rectangulares (~4&times;3.6 km) y extrae simultáneamente ráfagas a 10m y
-                    viento medio a 10m, 80m y 120m (límite superior DAN 151 DGAC).
-                  </p>
-                  <p>
-                    <strong>Modelo de Afectación Espacial:</strong> Umbral operacional No-Go: si la ráfaga a 10m o el viento
-                    a 120m superan 14.0 m/s (50.4 km/h), la celda activa <code>exceeds = true</code>.
-                  </p>
-                  <p>
-                    <strong>Regla de Ponderación de Costo:</strong> Celdas con <code>exceeds = true</code> inhabilitan las aristas
-                    que las cruzan. En celdas operacionales, el vector de viento se proyecta sobre el acimut de cada arista para calcular
-                    la velocidad respecto a tierra <code>v_g = v_a + w &bull; cos(&theta;)</code> y el consumo energético EEE (Kosior et al., 2024),
-                    penalizando severamente el vuelo contra el viento dominante del suroeste.
-                  </p>
+              <!-- ACORDEÓN 3: VIENTO -->
+              <details class="accordion-item">
+                <summary class="accordion-header">
+                  <span class="source-tag">Open-Meteo</span>
+                  <span class="acc-title">Open-Meteo &bull; Viento a Techo DAN 151 y Consumo EEE</span>
+                  <span class="acc-badge">Vectorial</span>
+                </summary>
+                <div class="accordion-body">
+                  <p><strong>Extracción ETL:</strong> <code>amenazas/openmeteo_viento.py</code> procesa una grilla 4&times;4 con ráfagas a 10m y viento a 10m, 80m y 120m (techo DAN 151).</p>
+                  <p><strong>Afectación Espacial:</strong> Umbral No-Go: ráfaga o viento &gt; 14 m/s fija <code>exceeds = true</code>.</p>
+                  <p><strong>Ponderación en Red:</strong> Celdas activas inhabilitan aristas. En celdas operacionales, la proyección del vector calcula $v_g$ y penaliza el consumo energético EEE.</p>
                   <div class="source-meta-foot">
                     <span>Script Carga: <code>amenazas/cargar_openmeteo_viento.py</code></span>
-                    <span>Tabla BD: <code>threat_event (event_type = 'viento')</code></span>
+                    <span>Tabla BD: <code>threat_event (viento)</code></span>
                   </div>
                 </div>
-              </div>
+              </details>
 
-              <!-- CARD 4: LLUVIA -->
-              <div class="source-block">
-                <div class="source-head">
-                  <span class="source-tag">MET Norway Locationforecast</span>
-                  <h4>MET Norway &bull; Precipitación y Retorno de Emergencia (LPP)</h4>
-                </div>
-                <div class="source-body">
-                  <p>
-                    <strong>Módulo de Extracción ETL:</strong> <code>amenazas/metno_lluvia.py</code> consulta la API de MET Norway
-                    en los centroides de la grilla 4&times;4, extrayendo la precipitación prevista en mm/h para la próxima hora.
-                  </p>
-                  <p>
-                    <strong>Modelo de Afectación Espacial:</strong> Umbral operacional No-Go: precipitación &gt; 2.0 mm/h
-                    activa <code>exceeds = true</code> sobre la celda correspondiente.
-                  </p>
-                  <p>
-                    <strong>Regla de Ponderación de Costo:</strong> La lluvia intensa degrada la visibilidad de cámaras ópticas,
-                    genera dispersión en sensores LiDAR y compromete la electrónica expuesta. Las aristas dentro de celdas con lluvia
-                    quedan bloqueadas; si el dron se encuentra en ruta, el Local Path Planner (LPP) activa maniobras de evasión y
-                    retorno inmediato hacia zonas de sotavento o bases de abrigo.
-                  </p>
+              <!-- ACORDEÓN 4: LLUVIA -->
+              <details class="accordion-item">
+                <summary class="accordion-header">
+                  <span class="source-tag">MET Norway</span>
+                  <span class="acc-title">MET Norway &bull; Precipitación y Retorno de Emergencia</span>
+                  <span class="acc-badge">Meteorológico</span>
+                </summary>
+                <div class="accordion-body">
+                  <p><strong>Extracción ETL:</strong> <code>amenazas/metno_lluvia.py</code> consulta precipitación prevista en mm/h para la próxima hora en grilla 4&times;4.</p>
+                  <p><strong>Afectación Espacial:</strong> Umbral operacional: precipitación &gt; 2.0 mm/h activa <code>exceeds = true</code>.</p>
+                  <p><strong>Ponderación en Red:</strong> Lluvia intensa degrada visibilidad óptica y LiDAR, bloqueando corredores y forzando maniobras de retorno a sotavento.</p>
                   <div class="source-meta-foot">
                     <span>Script Carga: <code>amenazas/cargar_metno_lluvia.py</code></span>
-                    <span>Tabla BD: <code>threat_event (event_type = 'lluvia')</code></span>
+                    <span>Tabla BD: <code>threat_event (lluvia)</code></span>
                   </div>
                 </div>
-              </div>
+              </details>
 
             </div>
           </div>

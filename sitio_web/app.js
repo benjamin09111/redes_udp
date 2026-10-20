@@ -51,6 +51,77 @@ async function cargar(url) {
   return r.json();
 }
 
+function formatInlineMd(str) {
+  return str
+    .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+    .replace(/\*\*\*(.*?)\*\*\*/g, '<strong><em>$1</em></strong>')
+    .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+    .replace(/\*(.*?)\*/g, '<em>$1</em>')
+    .replace(/`([^`]+)`/g, '<code>$1</code>');
+}
+
+function renderMarkdownSimple(md) {
+  if (!md) return '';
+  const lines = md.split('\n');
+  let html = '';
+  let inList = false;
+  let inCode = false;
+
+  for (let rawLine of lines) {
+    let line = rawLine.trim();
+
+    if (line.startsWith('```')) {
+      if (inCode) {
+        html += '</code></pre>';
+        inCode = false;
+      } else {
+        html += '<pre class="code-display"><code>';
+        inCode = true;
+      }
+      continue;
+    }
+
+    if (inCode) {
+      html += rawLine.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;') + '\n';
+      continue;
+    }
+
+    if (line.startsWith('- ') || line.startsWith('* ')) {
+      if (!inList) { html += '<ul style="margin: 6px 0; padding-left: 20px;">'; inList = true; }
+      const content = formatInlineMd(line.slice(2));
+      html += `<li>${content}</li>`;
+      continue;
+    } else if (inList) {
+      html += '</ul>';
+      inList = false;
+    }
+
+    if (!line) continue;
+
+    if (line.startsWith('#### ')) {
+      html += `<h4>${formatInlineMd(line.slice(5))}</h4>`;
+    } else if (line.startsWith('### ')) {
+      html += `<h3>${formatInlineMd(line.slice(4))}</h3>`;
+    } else if (line.startsWith('## ')) {
+      html += `<h2>${formatInlineMd(line.slice(3))}</h2>`;
+    } else if (line.startsWith('# ')) {
+      html += `<h1>${formatInlineMd(line.slice(2))}</h1>`;
+    } else if (line.startsWith('|') && line.endsWith('|')) {
+      if (line.includes('---')) continue;
+      const cells = line.split('|').slice(1, -1).map(c => c.trim());
+      html += `<div style="display:flex;gap:8px;font-size:11px;padding:3px 0;border-bottom:1px solid #e2e8f0;">${
+        cells.map(c => `<span style="flex:1;">${formatInlineMd(c)}</span>`).join('')
+      }</div>`;
+    } else {
+      html += `<p style="margin: 4px 0 8px;">${formatInlineMd(line)}</p>`;
+    }
+  }
+
+  if (inList) html += '</ul>';
+  if (inCode) html += '</code></pre>';
+  return html;
+}
+
 // -----------------------------------------------------------------------------
 // MAPA BASE LEAFLET
 // -----------------------------------------------------------------------------
@@ -77,7 +148,7 @@ const layerRutaPgrouting = L.layerGroup();
 const layerDijkstraAuditoria = L.layerGroup().addTo(mapa);
 const layerSimuladorUav = L.layerGroup().addTo(mapa);
 
-// Estado de simulación de vuelo y auditoría de costos Dijkstra (Criterio 8)
+// Estado de simulación de vuelo y auditoría de costos Dijkstra
 let simulacionVueloActiva = false;
 let simulacionTimerId = null;
 let marcadorDronSimulado = null;
@@ -589,9 +660,14 @@ function actualizarRutasEnVivo() {
   setTxt('conjunto-resiliente-res', `${metResiliente.resilienciaConjuntoPct.toFixed(1)}%`);
   setTxt('resiliente-diversidad', `${metResiliente.diversidadPct.toFixed(1)}%`);
 
-  // Actualizar auditoría visual detallada de Dijkstra (Criterio 8 Entrega 2)
+  // Actualizar auditoría visual detallada de costos Dijkstra
   if (typeof actualizarAuditoriaDijkstraUI === 'function') {
     actualizarAuditoriaDijkstraUI(dijK1, nodoOrig, nodoDest, metDijkstra, aristasMap);
+  }
+
+  // Notificar al asistente de planificación
+  if (typeof window.asistenteNotificarRutaCalculada === 'function') {
+    window.asistenteNotificarRutaCalculada(nodoOrig.name, nodoDest.name);
   }
 }
 
@@ -910,8 +986,9 @@ async function iniciar() {
   // Primera ejecución de rutas en el simulador
   actualizarRutasEnVivo();
 
-  // Configurar navegación de módulos
+  // Configurar navegación de módulos y asistente
   configurarNavegacionModulos(d);
+  inicializarAsistentePanel();
 
   // Inicializar módulos de Entrega 2
   inicializarModuloInfraestructura(d);
@@ -944,31 +1021,32 @@ function configurarNavegacionModulos(d) {
     if (tab === 'simulador') {
       tabBtnSimulador.classList.add('active');
       vistaSimulador.hidden = false;
-      mapa.invalidateSize();
+      setTimeout(() => { if (mapa) mapa.invalidateSize(); }, 60);
+      setTimeout(() => { if (mapa) mapa.invalidateSize(); }, 250);
     } else if (tab === 'infraestructura') {
       tabBtnInfra.classList.add('active');
       vistaInfra.hidden = false;
       if (!mapaInfraInicializado) {
         montarMapaInfra(d);
-      } else if (mapaInfra) {
-        mapaInfra.invalidateSize();
       }
+      setTimeout(() => { if (mapaInfra) mapaInfra.invalidateSize(); }, 60);
+      setTimeout(() => { if (mapaInfra) mapaInfra.invalidateSize(); }, 250);
     } else if (tab === 'metadata') {
       tabBtnMeta.classList.add('active');
       vistaMeta.hidden = false;
       if (!mapaMetaInicializado) {
         montarMapaMeta(d);
-      } else if (mapaMeta) {
-        mapaMeta.invalidateSize();
       }
+      setTimeout(() => { if (mapaMeta) mapaMeta.invalidateSize(); }, 60);
+      setTimeout(() => { if (mapaMeta) mapaMeta.invalidateSize(); }, 250);
     } else if (tab === 'amenazas') {
       tabBtnAmenazas.classList.add('active');
       vistaAmenazas.hidden = false;
       if (!mapaAmenazasInicializado) {
         montarMapaAmenazas(d);
-      } else if (mapaAmenazas) {
-        mapaAmenazas.invalidateSize();
       }
+      setTimeout(() => { if (mapaAmenazas) mapaAmenazas.invalidateSize(); }, 60);
+      setTimeout(() => { if (mapaAmenazas) mapaAmenazas.invalidateSize(); }, 250);
     } else if (tab === 'documentacion') {
       tabBtnDoc.classList.add('active');
       vistaDoc.hidden = false;
@@ -981,6 +1059,146 @@ function configurarNavegacionModulos(d) {
   if (tabBtnAmenazas) tabBtnAmenazas.addEventListener('click', () => cambiarPestaña('amenazas'));
   if (tabBtnDoc) tabBtnDoc.addEventListener('click', () => cambiarPestaña('documentacion'));
 }
+
+// =============================================================================
+// GESTIÓN DEL ASISTENTE (WIZARD) Y ACORDEÓN EN PANEL LATERAL
+// =============================================================================
+function inicializarAsistentePanel() {
+  const panel = document.getElementById('panel');
+  if (!panel) return;
+
+  const tabs = [1, 2, 3, 4].map(i => document.getElementById(`wtab-${i}`));
+  const panes = [1, 2, 3, 4].map(i => document.getElementById(`wizard-pane-${i}`));
+  const btnToggleMode = document.getElementById('btn-toggle-wizard-mode');
+  const labelMode = document.getElementById('wizard-mode-label');
+  const statusTxt = document.getElementById('wizard-status-txt');
+
+  const stepTitles = {
+    1: 'Paso 1: Misión (Origen / Destino)',
+    2: 'Paso 2: Parámetros y Restricciones',
+    3: 'Paso 3: Comparativa Multicriterio',
+    4: 'Paso 4: Topología y Capas de Red',
+  };
+
+  let pasoActual = 1;
+  let esModoWizard = true;
+
+  function setPaso(num) {
+    if (num < 1 || num > 4) return;
+    pasoActual = num;
+
+    tabs.forEach((tab, idx) => {
+      if (tab) {
+        if (idx + 1 === num) {
+          tab.classList.add('active');
+        } else {
+          tab.classList.remove('active');
+        }
+      }
+    });
+
+    panes.forEach((pane, idx) => {
+      if (pane) {
+        if (idx + 1 === num) {
+          pane.classList.add('active');
+          pane.classList.remove('collapsed');
+        } else {
+          pane.classList.remove('active');
+        }
+      }
+    });
+
+    if (statusTxt) {
+      statusTxt.textContent = stepTitles[num] || `Paso ${num}`;
+    }
+
+    panel.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  // Clicks en pestañas del stepper superior
+  tabs.forEach((tab, idx) => {
+    if (tab) {
+      tab.addEventListener('click', () => {
+        if (!esModoWizard) {
+          const targetPane = panes[idx];
+          if (targetPane) {
+            targetPane.classList.remove('collapsed');
+            targetPane.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+          }
+        }
+        setPaso(idx + 1);
+      });
+    }
+  });
+
+  // Clicks en botones "Siguiente" y "Anterior"
+  panel.querySelectorAll('.btn-wizard-action[data-goto]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const goto = parseInt(btn.getAttribute('data-goto'), 10);
+      if (goto) {
+        setPaso(goto);
+      }
+    });
+  });
+
+  // Alternar entre Modo Asistente (paso a paso) y Modo Acordeón
+  if (btnToggleMode) {
+    btnToggleMode.addEventListener('click', () => {
+      esModoWizard = !esModoWizard;
+      if (esModoWizard) {
+        panel.classList.remove('accordion-mode');
+        panel.classList.add('wizard-mode');
+        if (labelMode) labelMode.textContent = 'Modo Acordeón';
+        setPaso(pasoActual);
+      } else {
+        panel.classList.remove('wizard-mode');
+        panel.classList.add('accordion-mode');
+        if (labelMode) labelMode.textContent = 'Modo Asistente';
+        if (statusTxt) statusTxt.textContent = 'Vista Completa en Acordeón';
+        panes.forEach((pane, idx) => {
+          if (pane) {
+            pane.classList.add('active');
+            if (idx === 3) {
+              pane.classList.add('collapsed');
+            } else {
+              pane.classList.remove('collapsed');
+            }
+          }
+        });
+      }
+    });
+  }
+
+  // Clic en encabezados de tarjeta en modo acordeón para colapsar / expandir
+  panel.querySelectorAll('.panel-section-header[data-toggle]').forEach(header => {
+    header.addEventListener('click', () => {
+      if (!esModoWizard) {
+        const card = header.closest('.wizard-panel-card');
+        if (card) {
+          card.classList.toggle('collapsed');
+        }
+      }
+    });
+  });
+
+  // Notificar al asistente cuando se calculan rutas
+  window.asistenteNotificarRutaCalculada = function(origName, destName) {
+    if (statusTxt && esModoWizard && pasoActual === 1) {
+      statusTxt.textContent = `Ruta lista: ${origName} → ${destName}`;
+      const tab3 = document.getElementById('wtab-3');
+      if (tab3) {
+        tab3.style.borderColor = '#15803d';
+        setTimeout(() => { if (tab3) tab3.style.borderColor = ''; }, 2000);
+      }
+    }
+  };
+}
+
+// =============================================================================
+// MÓDULO DE INFRAESTRUCTURA
+// =============================================================================
+let mapaInfra = null;
+let mapaInfraInicializado = false;
 
 function inicializarModuloInfraestructura(d) {
   // 2. Poblar KPIs de Infraestructura
@@ -1130,8 +1348,8 @@ function montarMapaInfra(d) {
   mapaInfraInicializado = true;
 
   mapaInfra = L.map('mapa-infra').setView([-32.76, -71.47], 12);
-  L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
-    maxZoom: 19, attribution: 'Tiles &copy; Esri',
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19, attribution: '&copy; OpenStreetMap',
   }).addTo(mapaInfra);
 
   const layerZonas = L.layerGroup().addTo(mapaInfra);
@@ -1258,7 +1476,7 @@ function montarMapaInfra(d) {
 }
 
 // =============================================================================
-// MÓDULO DE METADATA (CRITERIO 2 Y 3.1 RÚBRICA ENTREGA 2)
+// MÓDULO DE METADATA DEL ENTORNO OPERACIONAL
 // =============================================================================
 let mapaMeta = null;
 let mapaMetaInicializado = false;
@@ -1448,8 +1666,8 @@ function montarMapaMeta(d) {
   mapaMetaInicializado = true;
 
   mapaMeta = L.map('mapa-meta').setView([-32.76, -71.47], 12);
-  L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
-    maxZoom: 19, attribution: 'Tiles &copy; Esri',
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19, attribution: '&copy; OpenStreetMap',
   }).addTo(mapaMeta);
 
   const layerManzanas = L.layerGroup().addTo(mapaMeta);
@@ -1617,7 +1835,7 @@ function montarMapaMeta(d) {
 }
 
 // =============================================================================
-// MÓDULO DE AMENAZAS (CRITERIOS 3, 4.1, 4.2, 5.1, 5.2 Y 6 RÚBRICA ENTREGA 2)
+// MÓDULO DE MODELOS DE AMENAZAS Y RESTRICCIONES DINÁMICAS
 // =============================================================================
 let mapaAmenazas = null;
 let mapaAmenazasInicializado = false;
@@ -1828,8 +2046,8 @@ function montarMapaAmenazas(d) {
   mapaAmenazasInicializado = true;
 
   mapaAmenazas = L.map('mapa-amenazas').setView([-32.76, -71.47], 12);
-  L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
-    maxZoom: 19, attribution: 'Tiles &copy; Esri',
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19, attribution: '&copy; OpenStreetMap',
   }).addTo(mapaAmenazas);
 
   const layerRedFondo = L.layerGroup().addTo(mapaAmenazas);
@@ -2045,7 +2263,7 @@ function montarMapaAmenazas(d) {
 }
 
 // =============================================================================
-// MÓDULO DE DOCUMENTACIÓN Y ESTRUCTURA DE DATOS (CRITERIO 4 DE LA PAUTA)
+// MÓDULO DE ESPECIFICACIÓN Y ESTRUCTURA DE DATOS
 // =============================================================================
 function inicializarModuloDocumentacion(d) {
   const CATALOGO_ARCHIVOS = {
@@ -2452,12 +2670,9 @@ function inicializarModuloDocumentacion(d) {
 }
 
 // =============================================================================
-// AUDITORÍA INTERACTIVA DE COSTOS DIJKSTRA Y SIMULACIÓN UAV (CRITERIO 8)
-// "El sitio deberá mostrar una ruta generada con pgr_dijkstra, utilizando la
-//  longitud de la ruta como costo, que muestre a modo de ejemplo una ruta que
-//  sea una posible solución a su problema planteado. Esta ruta será el peor caso
-//  que podría resolver su problemática, ya que no considerará la metadata ni
-//  las posibles amenazas."
+// AUDITORÍA INTERACTIVA DE COSTOS DIJKSTRA Y SIMULACIÓN UAV
+// Modelo de línea base geométrica (peor caso operacional) sin considerar metadata
+// ni penalizaciones dinámicas por contingencias.
 // =============================================================================
 
 function inicializarAuditoriaDijkstra(d) {

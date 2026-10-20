@@ -1,5 +1,5 @@
 -- ============================================================================
--- Criterio 8 (Canvas): Generación de k rutas distintas (k >= 2) con pgRouting
+-- Generación de k rutas distintas (k >= 2) con pgRouting (pgr_dijkstra)
 -- Basadas ÚNICAMENTE en la distancia física en km (cost = length_m)
 -- ============================================================================
 

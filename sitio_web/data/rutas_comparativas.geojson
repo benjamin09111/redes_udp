@@ -2,7 +2,7 @@
   "type": "FeatureCollection",
   "etl": {
     "fuente": "Ruteo Resiliente Akgün et al. (2000) / GPP Kosior et al. (2024)",
-    "generado": "2026-10-19T01:29:39+00:00",
+    "generado": "2026-10-19T22:52:45+00:00",
     "paper": "Kosior, M., Przystałka, P., & Panfil, W. (2024). Adaptive Path Planning for UAV-Based Pollution Sampling. Applied Sciences, 14(24), 12065.",
     "algoritmo": "Akgün et al. (2000) K-caminos disimilares por penalización iterativa de aristas",
     "parametros": {

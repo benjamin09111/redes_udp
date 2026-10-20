@@ -200,7 +200,7 @@ No tiene FK: se relaciona con la red **por ubicación** (ver sección 4).
 | `density_hab_km2` | Personas por km² | `3441` |
 | `geom` | **Polígono** de la manzana | `MULTIPOLYGON(...)` |
 
-Es la **base de datos geoespacial con polígonos** que pedía la pauta.
+Es la **capa geoespacial con polígonos** requerida para el análisis de exposición demográfica.
 
 ---
 
