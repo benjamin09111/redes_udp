@@ -193,7 +193,9 @@ function inicializarGrafo(d) {
 
     // Tasa de riesgo física objetiva (Hazard rate por km)
     let hazardRate = 0.005; // Tasa base nominal
-    if (hayIncendio || hayEstres) hazardRate += 5.0; // Riesgo crítico dentro del fuego
+    if (hayIncendio) hazardRate += 5.0;               // Riesgo crítico dentro del fuego real
+    // El foco simulado solo cuenta si el escenario de contingencia está activo (igual que ruteo_resiliente.py)
+    const hazardEstres = hayEstres && !hayIncendio ? 5.0 : 0.0;
     if (hayPoblacion) hazardRate += 0.08;             // Restricción DAN 151
     if (haySismo) hazardRate += 0.05;                 // Oscilación de infraestructuras
     if (!hayTelecom) hazardRate += 0.03;              // Sombra C2
@@ -214,6 +216,7 @@ function inicializarGrafo(d) {
       hayLluvia,
       hayEstres,
       hazardRate,
+      hazardEstres,
     };
 
     grafoAdyacencia[u].push({ vecino: v, edge_id: props.id, length_m, edgeRef: item });
@@ -328,7 +331,7 @@ class MinPriorityQueue {
 // -----------------------------------------------------------------------------
 // MÉTRICA DE RESILIENCIA PROBABILÍSTICA EXACTA PARA K RUTAS
 // -----------------------------------------------------------------------------
-function evaluarConfiabilidadConjuntoExacta(aristasK1, aristasK2, aristasMap) {
+function evaluarConfiabilidadConjuntoExacta(aristasK1, aristasK2, aristasMap, incluirEstres) {
   const s1 = new Set(aristasK1);
   const s2 = new Set(aristasK2 || []);
   const ec = new Set([...s1].filter(x => s2.has(x)));
@@ -339,7 +342,7 @@ function evaluarConfiabilidadConjuntoExacta(aristasK1, aristasK2, aristasMap) {
     let h = 0.0;
     edgeSet.forEach(eid => {
       const edge = aristasMap[eid];
-      if (edge) h += edge.hazardRate * (edge.length_m / 1000.0);
+      if (edge) h += (edge.hazardRate + (incluirEstres ? edge.hazardEstres : 0)) * (edge.length_m / 1000.0);
     });
     return Math.exp(-h);
   }
@@ -362,7 +365,7 @@ function evaluarConfiabilidadConjuntoExacta(aristasK1, aristasK2, aristasMap) {
   s1.forEach(eid => {
     const e = aristasMap[eid];
     if (e) {
-      if (e.hayIncendio || e.hayEstres) amenazasK1.add('Incendio');
+      if (e.hayIncendio || (incluirEstres && e.hayEstres)) amenazasK1.add('Incendio');
       if (e.hayPoblacion) amenazasK1.add('Densidad Urbana (DAN 151)');
       if (e.haySismo) amenazasK1.add('Alerta Sísmica');
       if (!e.hayTelecom) amenazasK1.add('Sombra Telecom C2');
@@ -477,8 +480,8 @@ function actualizarRutasEnVivo() {
   grafoAristas.forEach(e => { aristasMap[e.id] = e; });
 
   // Evaluación con la métrica probabilística exacta
-  const metDijkstra = evaluarConfiabilidadConjuntoExacta(dijK1.aristas, dijK2 ? dijK2.aristas : [], aristasMap);
-  const metResiliente = evaluarConfiabilidadConjuntoExacta(resK1.aristas, resK2 ? resK2.aristas : [], aristasMap);
+  const metDijkstra = evaluarConfiabilidadConjuntoExacta(dijK1.aristas, dijK2 ? dijK2.aristas : [], aristasMap, chkEstres);
+  const metResiliente = evaluarConfiabilidadConjuntoExacta(resK1.aristas, resK2 ? resK2.aristas : [], aristasMap, chkEstres);
 
   const deltaR = metResiliente.resilienciaConjuntoPct - metDijkstra.resilienciaConjuntoPct;
 
