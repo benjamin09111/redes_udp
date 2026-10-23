@@ -12,7 +12,17 @@ from datetime import datetime, timezone
 
 from bd.conexion import RAIZ, conectar
 
-ORIGEN = "base_scer"  # Aeródromo de Quintero (base de despacho y RTH)
+# Cargar parámetros unificados
+CONFIG_PATH = RAIZ / "config" / "parametros.json"
+if CONFIG_PATH.exists():
+    with open(CONFIG_PATH, "r", encoding="utf-8") as f:
+        _cfg = json.load(f)
+    ORIGEN = _cfg.get("algoritmo", {}).get("origen_default", "base_scer")
+    FACTOR_P = float(_cfg.get("algoritmo", {}).get("factor_penalizacion_p", 4.0))
+else:
+    ORIGEN = "base_scer"
+    FACTOR_P = 4.0
+
 SALIDA = RAIZ / "sitio_web" / "data" / "ruta_dijkstra.geojson"
 
 SQL_DESTINOS = """
@@ -26,10 +36,10 @@ SELECT count(*) FILTER (WHERE d.edge <> -1)                AS tramos,
        COUNT(DISTINCT d.node)                              AS nodos,
        ST_AsGeoJSON(ST_MakeLine(n.geom ORDER BY d.seq))    AS linea
 FROM pgr_dijkstra(
-       'SELECT id, source, target, cost, reverse_cost FROM infra_edge',
+       'SELECT id, source, target, length_m AS cost, length_m AS reverse_cost FROM infra_edge',
        (SELECT id FROM infra_node WHERE code = %s),
        %s,
-       directed := true) AS d
+       directed := false) AS d
 LEFT JOIN infra_edge e ON e.id = d.edge
 JOIN infra_node n ON n.id = d.node
 """
@@ -37,23 +47,24 @@ JOIN infra_node n ON n.id = d.node
 SQL_ARISTAS_K1 = """
 SELECT d.edge
 FROM pgr_dijkstra(
-       'SELECT id, source, target, cost, reverse_cost FROM infra_edge',
+       'SELECT id, source, target, length_m AS cost, length_m AS reverse_cost FROM infra_edge',
        (SELECT id FROM infra_node WHERE code = %s),
        %s,
-       directed := true) AS d
+       directed := false) AS d
 WHERE d.edge <> -1
+ORDER BY d.seq
 """
 
 
-def calcular_k2(cur, destino_id, aristas_k1):
+def calcular_k2(cur, destino_id, aristas_k1, factor_p=4.0):
     if not aristas_k1:
-        return 0, 0.0, 0.0, 0, None
+        return 0, 0.0, 0.0, 0, None, []
 
     ids_str = ",".join(str(int(x)) for x in aristas_k1)
     sql_grafo_k2 = (
         "SELECT id, source, target, "
-        f"CASE WHEN id IN ({ids_str}) THEN cost * 4.0 ELSE cost END AS cost, "
-        f"CASE WHEN id IN ({ids_str}) THEN reverse_cost * 4.0 ELSE reverse_cost END AS reverse_cost "
+        f"CASE WHEN id IN ({ids_str}) THEN length_m * {factor_p} ELSE length_m END AS cost, "
+        f"CASE WHEN id IN ({ids_str}) THEN length_m * {factor_p} ELSE length_m END AS reverse_cost "
         "FROM infra_edge"
     )
     sql_k2 = f"""
@@ -66,12 +77,27 @@ def calcular_k2(cur, destino_id, aristas_k1):
            '{sql_grafo_k2}',
            (SELECT id FROM infra_node WHERE code = %s),
            %s,
-           directed := true) AS d
+           directed := false) AS d
     LEFT JOIN infra_edge e ON e.id = d.edge
     JOIN infra_node n ON n.id = d.node
     """
     cur.execute(sql_k2, (ORIGEN, destino_id))
-    return cur.fetchone()
+    tramos, long_m, costo, nodos, linea = cur.fetchone()
+
+    # Obtener aristas de k=2
+    sql_aristas_k2 = f"""
+    SELECT d.edge
+    FROM pgr_dijkstra(
+           '{sql_grafo_k2}',
+           (SELECT id FROM infra_node WHERE code = %s),
+           %s,
+           directed := false) AS d
+    WHERE d.edge <> -1
+    ORDER BY d.seq
+    """
+    cur.execute(sql_aristas_k2, (ORIGEN, destino_id))
+    aristas_k2 = [r[0] for r in cur.fetchall()]
+    return tramos, long_m, costo, nodos, linea, aristas_k2
 
 
 def calcular(cur):
@@ -87,8 +113,8 @@ def calcular(cur):
         cur.execute(SQL_ARISTAS_K1, (ORIGEN, destino_id))
         aristas_k1 = [row[0] for row in cur.fetchall()]
 
-        # 3. Ruta k=2 con pgr_dijkstra penalizando aristas de k=1 (factor x4.0)
-        tramos_k2, longitud_k2, costo_k2, nodos_k2, linea_k2 = calcular_k2(cur, destino_id, aristas_k1)
+        # 3. Ruta k=2 con pgr_dijkstra penalizando aristas de k=1 (factor_p)
+        tramos_k2, longitud_k2, costo_k2, nodos_k2, linea_k2, aristas_k2 = calcular_k2(cur, destino_id, aristas_k1, FACTOR_P)
 
         # Feature k=1
         features.append({
@@ -103,6 +129,7 @@ def calcular(cur):
                 "longitud_m": round(longitud_k1, 1),
                 "costo": round(costo_k1, 1),
                 "k": 1,
+                "aristas": aristas_k1,
             },
         })
 
@@ -120,6 +147,7 @@ def calcular(cur):
                     "longitud_m": round(longitud_k2, 1),
                     "costo": round(costo_k2, 1),
                     "k": 2,
+                    "aristas": aristas_k2,
                 },
             })
     return features
@@ -138,7 +166,7 @@ def main():
                 "origen": ORIGEN,
                 "costo": "length_m",
                 "k_rutas": 2,
-                "factor_penalizacion_k2": 4.0,
+                "factor_penalizacion_k2": FACTOR_P,
                 "considera_metadata_y_amenazas": False,
             },
             "total": len(features),

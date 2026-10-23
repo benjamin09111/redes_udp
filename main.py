@@ -120,7 +120,7 @@ def main():
         paso("Ruteo base: pgr_dijkstra desde la base hacia cada estación SINCA (costo = longitud)")
         en_etl(RUTEO)
 
-        paso("Ruteo resiliente multiobjetivo: Kosior et al. (2024) y KSP Yen (k >= 2)")
+        paso("Ruteo resiliente multiobjetivo: penalización iterativa Akgün et al. (2000) (k >= 2)")
         en_etl(RUTEO_RESILIENTE)
 
         paso("Sitio web (Leaflet)")

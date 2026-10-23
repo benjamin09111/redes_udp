@@ -137,6 +137,7 @@ CREATE TABLE threat_event (                  -- amenazas/*.geojson
     unit         varchar,
     threshold    double precision,
     exceeds      boolean NOT NULL,           -- true = zona activa (la fase 3 decide qué bloquea)
+    simulated    boolean NOT NULL DEFAULT false,
     observed_at  timestamptz NOT NULL,
     valid_until  timestamptz,
     properties   jsonb,

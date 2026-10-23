@@ -1,26 +1,29 @@
 {
-  "generado": "2026-10-19T01:29:39+00:00",
-  "paper": "Kosior, M., Przystałka, P., & Panfil, W. (2024). Adaptive Path Planning for UAV-Based Pollution Sampling. Applied Sciences, 14(24), 12065.",
+  "generado": "2026-10-22T21:31:52+00:00",
   "algoritmo": "Akgün et al. (2000) K-caminos disimilares por penalización iterativa de aristas",
   "metrica": "Confiabilidad estocástica exacta R = S(E_C) * [1 - (1 - S(E_1))(1 - S(E_2))]",
   "parametros": {
     "origen": "base_scer",
     "k_rutas": 2,
     "factor_penalizacion_k2": 4.0,
+    "beta": 1000.0,
     "foco_contingencia": {
-      "lon": -71.4935,
+      "nombre": "Foco de contingencia industrial: Planta Asfaltos Quintero",
+      "event_type": "incendio",
+      "simulated": true,
       "lat": -32.7801,
+      "lon": -71.4935,
       "radio_m": 180.0,
-      "descripcion": "Foco de contingencia: Incendio industrial en Planta Asfaltos Quintero"
+      "descripcion": "Incendio industrial simulado en el istmo de Quintero para evaluar resiliencia de la red"
     },
     "tasas_riesgo_supuestas": {
-      "lambda_base": 0.005,
-      "lambda_incendio": 5.0,
-      "lambda_urbano_dan151": 0.08,
-      "lambda_sismo": 0.05,
-      "lambda_telecom": 0.03,
-      "lambda_viento": 0.04,
-      "lambda_lluvia": 0.03
+      "base": 0.005,
+      "incendio": 5.0,
+      "urbana": 0.08,
+      "sismo": 0.05,
+      "sin_cobertura": 0.03,
+      "viento": 0.04,
+      "lluvia": 0.03
     }
   },
   "escenario_base_datos_reales": {
@@ -39,17 +42,18 @@
         ]
       },
       "resiliente": {
-        "longitud_k1_m": 9605.3,
+        "longitud_k1_m": 9531.0,
         "longitud_k2_m": 10647.9,
-        "supervivencia_k1_pct": 80.6,
+        "supervivencia_k1_pct": 75.3,
         "supervivencia_k2_pct": 78.2,
-        "diversidad_pct": 90.6,
-        "resiliencia_conjunto_pct": 91.9,
+        "diversidad_pct": 93.8,
+        "resiliencia_conjunto_pct": 91.2,
         "amenazas": [
+          "densidad_urbana_dan151",
           "sombra_telecom"
         ]
       },
-      "delta_resiliencia_pp": 0.7
+      "delta_resiliencia_pp": 0.0
     },
     "sinca_centro_quintero": {
       "nombre": "Estación SINCA Centro Quintero",
@@ -65,17 +69,17 @@
         ]
       },
       "resiliente": {
-        "longitud_k1_m": 1736.8,
-        "longitud_k2_m": 2176.6,
-        "supervivencia_k1_pct": 94.2,
-        "supervivencia_k2_pct": 92.9,
+        "longitud_k1_m": 1691.8,
+        "longitud_k2_m": 1820.9,
+        "supervivencia_k1_pct": 93.1,
+        "supervivencia_k2_pct": 92.5,
         "diversidad_pct": 100.0,
-        "resiliencia_conjunto_pct": 99.6,
+        "resiliencia_conjunto_pct": 99.5,
         "amenazas": [
           "densidad_urbana_dan151"
         ]
       },
-      "delta_resiliencia_pp": 0.1
+      "delta_resiliencia_pp": 0.0
     },
     "sinca_la_greda": {
       "nombre": "Estación SINCA La Greda",
@@ -92,17 +96,18 @@
         ]
       },
       "resiliente": {
-        "longitud_k1_m": 6783.7,
+        "longitud_k1_m": 6709.4,
         "longitud_k2_m": 7601.5,
-        "supervivencia_k1_pct": 89.0,
+        "supervivencia_k1_pct": 83.1,
         "supervivencia_k2_pct": 87.0,
-        "diversidad_pct": 91.3,
-        "resiliencia_conjunto_pct": 96.4,
+        "diversidad_pct": 95.7,
+        "resiliencia_conjunto_pct": 96.0,
         "amenazas": [
+          "densidad_urbana_dan151",
           "sombra_telecom"
         ]
       },
-      "delta_resiliencia_pp": 0.4
+      "delta_resiliencia_pp": 0.0
     },
     "sinca_loncura": {
       "nombre": "Estación SINCA Loncura",
@@ -117,14 +122,14 @@
       },
       "resiliente": {
         "longitud_k1_m": 2349.0,
-        "longitud_k2_m": 2739.3,
+        "longitud_k2_m": 2451.8,
         "supervivencia_k1_pct": 98.8,
-        "supervivencia_k2_pct": 98.6,
-        "diversidad_pct": 87.5,
-        "resiliencia_conjunto_pct": 99.7,
+        "supervivencia_k2_pct": 86.6,
+        "diversidad_pct": 100.0,
+        "resiliencia_conjunto_pct": 99.8,
         "amenazas": []
       },
-      "delta_resiliencia_pp": -0.1
+      "delta_resiliencia_pp": 0.0
     },
     "sinca_puchuncavi": {
       "nombre": "Estación SINCA Puchuncaví",
@@ -141,18 +146,18 @@
         ]
       },
       "resiliente": {
-        "longitud_k1_m": 14505.8,
+        "longitud_k1_m": 14431.5,
         "longitud_k2_m": 15606.2,
-        "supervivencia_k1_pct": 75.1,
+        "supervivencia_k1_pct": 70.2,
         "supervivencia_k2_pct": 72.8,
-        "diversidad_pct": 88.6,
-        "resiliencia_conjunto_pct": 88.9,
+        "diversidad_pct": 90.9,
+        "resiliencia_conjunto_pct": 88.0,
         "amenazas": [
           "densidad_urbana_dan151",
           "sombra_telecom"
         ]
       },
-      "delta_resiliencia_pp": 1.4
+      "delta_resiliencia_pp": 0.5
     },
     "sinca_quintero": {
       "nombre": "Estación SINCA Quintero",
@@ -168,17 +173,17 @@
         ]
       },
       "resiliente": {
-        "longitud_k1_m": 2873.1,
-        "longitud_k2_m": 3343.4,
-        "supervivencia_k1_pct": 91.4,
-        "supervivencia_k2_pct": 89.8,
+        "longitud_k1_m": 2352.4,
+        "longitud_k2_m": 2821.5,
+        "supervivencia_k1_pct": 88.3,
+        "supervivencia_k2_pct": 85.8,
         "diversidad_pct": 100.0,
-        "resiliencia_conjunto_pct": 99.1,
+        "resiliencia_conjunto_pct": 98.3,
         "amenazas": [
           "densidad_urbana_dan151"
         ]
       },
-      "delta_resiliencia_pp": 0.9
+      "delta_resiliencia_pp": 0.1
     },
     "sinca_sur": {
       "nombre": "Estación SINCA Sur",
@@ -193,14 +198,14 @@
       },
       "resiliente": {
         "longitud_k1_m": 3743.8,
-        "longitud_k2_m": 3964.8,
+        "longitud_k2_m": 4061.8,
         "supervivencia_k1_pct": 98.1,
-        "supervivencia_k2_pct": 98.0,
-        "diversidad_pct": 90.0,
-        "resiliencia_conjunto_pct": 99.6,
+        "supervivencia_k2_pct": 91.5,
+        "diversidad_pct": 100.0,
+        "resiliencia_conjunto_pct": 99.8,
         "amenazas": []
       },
-      "delta_resiliencia_pp": -0.2
+      "delta_resiliencia_pp": 0.0
     },
     "sinca_ventanas": {
       "nombre": "Estación SINCA Ventanas",
@@ -217,18 +222,18 @@
         ]
       },
       "resiliente": {
-        "longitud_k1_m": 8012.3,
-        "longitud_k2_m": 8710.6,
-        "supervivencia_k1_pct": 79.6,
-        "supervivencia_k2_pct": 77.3,
-        "diversidad_pct": 93.3,
-        "resiliencia_conjunto_pct": 93.6,
+        "longitud_k1_m": 7796.7,
+        "longitud_k2_m": 8708.0,
+        "supervivencia_k1_pct": 74.0,
+        "supervivencia_k2_pct": 76.6,
+        "diversidad_pct": 96.6,
+        "resiliencia_conjunto_pct": 92.5,
         "amenazas": [
           "densidad_urbana_dan151",
           "sombra_telecom"
         ]
       },
-      "delta_resiliencia_pp": 1.1
+      "delta_resiliencia_pp": 0.0
     }
   },
   "escenario_contingencia_simulado": {
@@ -249,16 +254,16 @@
       },
       "resiliente": {
         "longitud_k1_m": 11563.5,
-        "longitud_k2_m": 12633.1,
+        "longitud_k2_m": 12735.1,
         "supervivencia_k1_pct": 79.8,
-        "supervivencia_k2_pct": 77.4,
-        "diversidad_pct": 91.9,
-        "resiliencia_conjunto_pct": 91.6,
+        "supervivencia_k2_pct": 72.3,
+        "diversidad_pct": 94.7,
+        "resiliencia_conjunto_pct": 91.0,
         "amenazas": [
           "sombra_telecom"
         ]
       },
-      "delta_resiliencia_pp": 90.3
+      "delta_resiliencia_pp": 89.7
     },
     "sinca_centro_quintero": {
       "nombre": "Estación SINCA Centro Quintero",
@@ -274,17 +279,17 @@
         ]
       },
       "resiliente": {
-        "longitud_k1_m": 1736.8,
-        "longitud_k2_m": 2176.6,
-        "supervivencia_k1_pct": 94.2,
-        "supervivencia_k2_pct": 92.9,
+        "longitud_k1_m": 1691.8,
+        "longitud_k2_m": 1820.9,
+        "supervivencia_k1_pct": 93.1,
+        "supervivencia_k2_pct": 92.5,
         "diversidad_pct": 100.0,
-        "resiliencia_conjunto_pct": 99.6,
+        "resiliencia_conjunto_pct": 99.5,
         "amenazas": [
           "densidad_urbana_dan151"
         ]
       },
-      "delta_resiliencia_pp": 0.1
+      "delta_resiliencia_pp": 0.0
     },
     "sinca_la_greda": {
       "nombre": "Estación SINCA La Greda",
@@ -303,16 +308,16 @@
       },
       "resiliente": {
         "longitud_k1_m": 8741.9,
-        "longitud_k2_m": 9586.7,
+        "longitud_k2_m": 9688.7,
         "supervivencia_k1_pct": 88.1,
-        "supervivencia_k2_pct": 86.1,
-        "diversidad_pct": 92.9,
-        "resiliencia_conjunto_pct": 96.2,
+        "supervivencia_k2_pct": 80.4,
+        "diversidad_pct": 96.6,
+        "resiliencia_conjunto_pct": 95.9,
         "amenazas": [
           "sombra_telecom"
         ]
       },
-      "delta_resiliencia_pp": 94.7
+      "delta_resiliencia_pp": 94.4
     },
     "sinca_loncura": {
       "nombre": "Estación SINCA Loncura",
@@ -327,14 +332,14 @@
       },
       "resiliente": {
         "longitud_k1_m": 2349.0,
-        "longitud_k2_m": 2739.3,
+        "longitud_k2_m": 2451.8,
         "supervivencia_k1_pct": 98.8,
-        "supervivencia_k2_pct": 98.6,
-        "diversidad_pct": 87.5,
-        "resiliencia_conjunto_pct": 99.7,
+        "supervivencia_k2_pct": 86.6,
+        "diversidad_pct": 100.0,
+        "resiliencia_conjunto_pct": 99.8,
         "amenazas": []
       },
-      "delta_resiliencia_pp": -0.1
+      "delta_resiliencia_pp": 0.0
     },
     "sinca_puchuncavi": {
       "nombre": "Estación SINCA Puchuncaví",
@@ -353,17 +358,17 @@
       },
       "resiliente": {
         "longitud_k1_m": 16464.1,
-        "longitud_k2_m": 17591.4,
+        "longitud_k2_m": 17693.4,
         "supervivencia_k1_pct": 74.4,
-        "supervivencia_k2_pct": 72.1,
-        "diversidad_pct": 89.8,
-        "resiliencia_conjunto_pct": 88.6,
+        "supervivencia_k2_pct": 67.2,
+        "diversidad_pct": 92.0,
+        "resiliencia_conjunto_pct": 87.8,
         "amenazas": [
           "densidad_urbana_dan151",
           "sombra_telecom"
         ]
       },
-      "delta_resiliencia_pp": 87.4
+      "delta_resiliencia_pp": 86.6
     },
     "sinca_quintero": {
       "nombre": "Estación SINCA Quintero",
@@ -379,17 +384,17 @@
         ]
       },
       "resiliente": {
-        "longitud_k1_m": 2873.1,
-        "longitud_k2_m": 3343.4,
-        "supervivencia_k1_pct": 91.4,
-        "supervivencia_k2_pct": 89.8,
+        "longitud_k1_m": 2352.4,
+        "longitud_k2_m": 2821.5,
+        "supervivencia_k1_pct": 88.3,
+        "supervivencia_k2_pct": 85.8,
         "diversidad_pct": 100.0,
-        "resiliencia_conjunto_pct": 99.1,
+        "resiliencia_conjunto_pct": 98.3,
         "amenazas": [
           "densidad_urbana_dan151"
         ]
       },
-      "delta_resiliencia_pp": 0.9
+      "delta_resiliencia_pp": 0.1
     },
     "sinca_sur": {
       "nombre": "Estación SINCA Sur",
@@ -404,14 +409,14 @@
       },
       "resiliente": {
         "longitud_k1_m": 3743.8,
-        "longitud_k2_m": 3964.8,
+        "longitud_k2_m": 4061.8,
         "supervivencia_k1_pct": 98.1,
-        "supervivencia_k2_pct": 98.0,
-        "diversidad_pct": 90.0,
-        "resiliencia_conjunto_pct": 99.6,
+        "supervivencia_k2_pct": 91.5,
+        "diversidad_pct": 100.0,
+        "resiliencia_conjunto_pct": 99.8,
         "amenazas": []
       },
-      "delta_resiliencia_pp": -0.2
+      "delta_resiliencia_pp": 0.0
     },
     "sinca_ventanas": {
       "nombre": "Estación SINCA Ventanas",
@@ -429,38 +434,38 @@
         ]
       },
       "resiliente": {
-        "longitud_k1_m": 9970.6,
-        "longitud_k2_m": 10695.9,
-        "supervivencia_k1_pct": 78.8,
-        "supervivencia_k2_pct": 76.5,
-        "diversidad_pct": 94.3,
-        "resiliencia_conjunto_pct": 93.3,
+        "longitud_k1_m": 9829.3,
+        "longitud_k2_m": 10795.2,
+        "supervivencia_k1_pct": 78.4,
+        "supervivencia_k2_pct": 70.8,
+        "diversidad_pct": 97.1,
+        "resiliencia_conjunto_pct": 92.3,
         "amenazas": [
           "densidad_urbana_dan151",
           "sombra_telecom"
         ]
       },
-      "delta_resiliencia_pp": 92.0
+      "delta_resiliencia_pp": 91.0
     }
   },
   "analisis_sensibilidad_puchuncavi": [
     {
       "lambda_incendio": 0.5,
       "resiliencia_dijkstra_pct": 65.6,
-      "resiliencia_resiliente_pct": 88.6,
-      "delta_pp": 23.0
+      "resiliencia_resiliente_pct": 72.6,
+      "delta_pp": 7.0
     },
     {
       "lambda_incendio": 1.0,
       "resiliencia_dijkstra_pct": 44.5,
-      "resiliencia_resiliente_pct": 88.6,
-      "delta_pp": 44.1
+      "resiliencia_resiliente_pct": 55.7,
+      "delta_pp": 11.2
     },
     {
       "lambda_incendio": 5.0,
       "resiliencia_dijkstra_pct": 1.2,
-      "resiliencia_resiliente_pct": 88.6,
-      "delta_pp": 87.4
+      "resiliencia_resiliente_pct": 87.8,
+      "delta_pp": 86.6
     }
   ],
   "destinos": {
@@ -481,16 +486,16 @@
       },
       "resiliente": {
         "longitud_k1_m": 11563.5,
-        "longitud_k2_m": 12633.1,
+        "longitud_k2_m": 12735.1,
         "supervivencia_k1_pct": 79.8,
-        "supervivencia_k2_pct": 77.4,
-        "diversidad_pct": 91.9,
-        "resiliencia_conjunto_pct": 91.6,
+        "supervivencia_k2_pct": 72.3,
+        "diversidad_pct": 94.7,
+        "resiliencia_conjunto_pct": 91.0,
         "amenazas": [
           "sombra_telecom"
         ]
       },
-      "delta_resiliencia_pp": 90.3
+      "delta_resiliencia_pp": 89.7
     },
     "sinca_centro_quintero": {
       "nombre": "Estación SINCA Centro Quintero",
@@ -506,17 +511,17 @@
         ]
       },
       "resiliente": {
-        "longitud_k1_m": 1736.8,
-        "longitud_k2_m": 2176.6,
-        "supervivencia_k1_pct": 94.2,
-        "supervivencia_k2_pct": 92.9,
+        "longitud_k1_m": 1691.8,
+        "longitud_k2_m": 1820.9,
+        "supervivencia_k1_pct": 93.1,
+        "supervivencia_k2_pct": 92.5,
         "diversidad_pct": 100.0,
-        "resiliencia_conjunto_pct": 99.6,
+        "resiliencia_conjunto_pct": 99.5,
         "amenazas": [
           "densidad_urbana_dan151"
         ]
       },
-      "delta_resiliencia_pp": 0.1
+      "delta_resiliencia_pp": 0.0
     },
     "sinca_la_greda": {
       "nombre": "Estación SINCA La Greda",
@@ -535,16 +540,16 @@
       },
       "resiliente": {
         "longitud_k1_m": 8741.9,
-        "longitud_k2_m": 9586.7,
+        "longitud_k2_m": 9688.7,
         "supervivencia_k1_pct": 88.1,
-        "supervivencia_k2_pct": 86.1,
-        "diversidad_pct": 92.9,
-        "resiliencia_conjunto_pct": 96.2,
+        "supervivencia_k2_pct": 80.4,
+        "diversidad_pct": 96.6,
+        "resiliencia_conjunto_pct": 95.9,
         "amenazas": [
           "sombra_telecom"
         ]
       },
-      "delta_resiliencia_pp": 94.7
+      "delta_resiliencia_pp": 94.4
     },
     "sinca_loncura": {
       "nombre": "Estación SINCA Loncura",
@@ -559,14 +564,14 @@
       },
       "resiliente": {
         "longitud_k1_m": 2349.0,
-        "longitud_k2_m": 2739.3,
+        "longitud_k2_m": 2451.8,
         "supervivencia_k1_pct": 98.8,
-        "supervivencia_k2_pct": 98.6,
-        "diversidad_pct": 87.5,
-        "resiliencia_conjunto_pct": 99.7,
+        "supervivencia_k2_pct": 86.6,
+        "diversidad_pct": 100.0,
+        "resiliencia_conjunto_pct": 99.8,
         "amenazas": []
       },
-      "delta_resiliencia_pp": -0.1
+      "delta_resiliencia_pp": 0.0
     },
     "sinca_puchuncavi": {
       "nombre": "Estación SINCA Puchuncaví",
@@ -585,17 +590,17 @@
       },
       "resiliente": {
         "longitud_k1_m": 16464.1,
-        "longitud_k2_m": 17591.4,
+        "longitud_k2_m": 17693.4,
         "supervivencia_k1_pct": 74.4,
-        "supervivencia_k2_pct": 72.1,
-        "diversidad_pct": 89.8,
-        "resiliencia_conjunto_pct": 88.6,
+        "supervivencia_k2_pct": 67.2,
+        "diversidad_pct": 92.0,
+        "resiliencia_conjunto_pct": 87.8,
         "amenazas": [
           "densidad_urbana_dan151",
           "sombra_telecom"
         ]
       },
-      "delta_resiliencia_pp": 87.4
+      "delta_resiliencia_pp": 86.6
     },
     "sinca_quintero": {
       "nombre": "Estación SINCA Quintero",
@@ -611,17 +616,17 @@
         ]
       },
       "resiliente": {
-        "longitud_k1_m": 2873.1,
-        "longitud_k2_m": 3343.4,
-        "supervivencia_k1_pct": 91.4,
-        "supervivencia_k2_pct": 89.8,
+        "longitud_k1_m": 2352.4,
+        "longitud_k2_m": 2821.5,
+        "supervivencia_k1_pct": 88.3,
+        "supervivencia_k2_pct": 85.8,
         "diversidad_pct": 100.0,
-        "resiliencia_conjunto_pct": 99.1,
+        "resiliencia_conjunto_pct": 98.3,
         "amenazas": [
           "densidad_urbana_dan151"
         ]
       },
-      "delta_resiliencia_pp": 0.9
+      "delta_resiliencia_pp": 0.1
     },
     "sinca_sur": {
       "nombre": "Estación SINCA Sur",
@@ -636,14 +641,14 @@
       },
       "resiliente": {
         "longitud_k1_m": 3743.8,
-        "longitud_k2_m": 3964.8,
+        "longitud_k2_m": 4061.8,
         "supervivencia_k1_pct": 98.1,
-        "supervivencia_k2_pct": 98.0,
-        "diversidad_pct": 90.0,
-        "resiliencia_conjunto_pct": 99.6,
+        "supervivencia_k2_pct": 91.5,
+        "diversidad_pct": 100.0,
+        "resiliencia_conjunto_pct": 99.8,
         "amenazas": []
       },
-      "delta_resiliencia_pp": -0.2
+      "delta_resiliencia_pp": 0.0
     },
     "sinca_ventanas": {
       "nombre": "Estación SINCA Ventanas",
@@ -661,18 +666,18 @@
         ]
       },
       "resiliente": {
-        "longitud_k1_m": 9970.6,
-        "longitud_k2_m": 10695.9,
-        "supervivencia_k1_pct": 78.8,
-        "supervivencia_k2_pct": 76.5,
-        "diversidad_pct": 94.3,
-        "resiliencia_conjunto_pct": 93.3,
+        "longitud_k1_m": 9829.3,
+        "longitud_k2_m": 10795.2,
+        "supervivencia_k1_pct": 78.4,
+        "supervivencia_k2_pct": 70.8,
+        "diversidad_pct": 97.1,
+        "resiliencia_conjunto_pct": 92.3,
         "amenazas": [
           "densidad_urbana_dan151",
           "sombra_telecom"
         ]
       },
-      "delta_resiliencia_pp": 92.0
+      "delta_resiliencia_pp": 91.0
     }
   }
 }

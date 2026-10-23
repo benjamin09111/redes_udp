@@ -61,6 +61,9 @@ def chequear_entregables():
     check("8 · ruta pgr_dijkstra con costo = longitud",
           ruta["etl"]["parametros"]["costo"] == "length_m" and ruta["etl"]["parametros"]["considera_metadata_y_amenazas"] is False,
           ruta["etl"]["fuente"])
+    check("8 · ruta pgr_dijkstra contiene k=1 y k=2 como Features",
+          any(f["properties"].get("k") == 1 for f in ruta["features"]) and any(f["properties"].get("k") == 2 for f in ruta["features"]))
+    check("Parámetros · config/parametros.json existe", (RAIZ / "config/parametros.json").exists())
     check("9 · main.py en la raíz", (RAIZ / "main.py").exists())
     check("Docker · Dockerfile con versión de Python fijada",
           re.search(r"FROM python:\d+\.\d+\.\d+", leer("Dockerfile")) is not None)

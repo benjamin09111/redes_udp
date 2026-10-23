@@ -21,18 +21,44 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 RAIZ = Path(__file__).resolve().parent.parent
-ORIGEN_BASE = "base_scer"  # Aeródromo de Quintero (SCER)
 
-# Escenario de contingencia industrial: Foco en Planta Asfaltos Quintero
-# Se modela un incendio en las instalaciones industriales (radio de afección térmica de 180 m).
-# Radios superiores a 450 m bloquean por completo el istmo hacia el norte, evidenciando un cuello
-# de botella estructural y conjunto de corte topológico de la red de Quintero a Puchuncaví.
-FOCO_ESTRES = {
+# Cargar parámetros unificados
+CONFIG_PATH = RAIZ / "config" / "parametros.json"
+if CONFIG_PATH.exists():
+    with open(CONFIG_PATH, "r", encoding="utf-8") as f:
+        PARAMETROS = json.load(f)
+else:
+    PARAMETROS = {
+        "lambdas": {"base": 0.005, "incendio": 5.0, "urbana": 0.08, "sismo": 0.05, "sin_cobertura": 0.03, "viento": 0.04, "lluvia": 0.03},
+        "algoritmo": {"beta": 1000.0, "factor_penalizacion_p": 4.0, "origen_default": "base_scer"},
+        "umbrales": {"densidad_urbana_hab_km2": 2500},
+        "contingencia": {
+            "nombre": "Foco Planta Asfaltos Quintero",
+            "lat": -32.7801,
+            "lon": -71.4935,
+            "radio_m": 180.0,
+            "descripcion": "Incendio industrial simulado en Planta Asfaltos Quintero"
+        }
+    }
+
+ORIGEN_BASE = PARAMETROS.get("algoritmo", {}).get("origen_default", "base_scer")
+FOCO_ESTRES = PARAMETROS.get("contingencia", {
     "lon": -71.4935,
     "lat": -32.7801,
     "radio_m": 180.0,
     "descripcion": "Foco de contingencia: Incendio industrial en Planta Asfaltos Quintero"
-}
+})
+LAMBDAS_DEFAULT = PARAMETROS.get("lambdas", {
+    "base": 0.005,
+    "incendio": 5.0,
+    "urbana": 0.08,
+    "sismo": 0.05,
+    "sin_cobertura": 0.03,
+    "viento": 0.04,
+    "lluvia": 0.03
+})
+BETA_DEFAULT = float(PARAMETROS.get("algoritmo", {}).get("beta", 1000.0))
+FACTOR_P_DEFAULT = float(PARAMETROS.get("algoritmo", {}).get("factor_penalizacion_p", 4.0))
 
 # ==============================================================================
 # 1. UTILIDADES GEOMÉTRICAS Y ESPACIALES
@@ -189,7 +215,7 @@ def cargar_capas():
 # 3. CONSTRUCCIÓN DEL GRAFO ESPACIAL CON MODELO DE RIESGO
 # ==============================================================================
 
-def construir_grafo(datos, restricciones=None, incluir_estres=True, lambda_incendio=5.0):
+def construir_grafo(datos, restricciones=None, incluir_estres=True, lambda_incendio=None, beta=None):
     if restricciones is None:
         restricciones = {
             "evitar_incendios": True,
@@ -199,6 +225,15 @@ def construir_grafo(datos, restricciones=None, incluir_estres=True, lambda_incen
             "evitar_viento": True,
             "evitar_lluvia": True,
         }
+
+    l_base = LAMBDAS_DEFAULT.get("base", 0.005)
+    l_inc = lambda_incendio if lambda_incendio is not None else LAMBDAS_DEFAULT.get("incendio", 5.0)
+    l_urb = LAMBDAS_DEFAULT.get("urbana", 0.08)
+    l_sis = LAMBDAS_DEFAULT.get("sismo", 0.05)
+    l_tel = LAMBDAS_DEFAULT.get("sin_cobertura", 0.03)
+    l_vie = LAMBDAS_DEFAULT.get("viento", 0.04)
+    l_llu = LAMBDAS_DEFAULT.get("lluvia", 0.03)
+    b_val = beta if beta is not None else BETA_DEFAULT
 
     nodos_por_id = {}
     nodos_por_code = {}
@@ -235,54 +270,43 @@ def construir_grafo(datos, restricciones=None, incluir_estres=True, lambda_incen
         d_foco = dist_punto_a_segmento_m(coord_u, coord_v, (FOCO_ESTRES["lon"], FOCO_ESTRES["lat"]))
         hay_estres = d_foco <= FOCO_ESTRES["radio_m"]
 
-        # 1. Ponderación de costo de búsqueda resiliente (Routing weights)
-        penalizacion = 0.0
+        len_km = length / 1000.0
+
+        # Tasa de riesgo física por km: H(e) = lambda_base * L_km + sum(lambda_f * L_km)
+        hazard_rate = l_base
         factores_riesgo = []
 
         if restricciones.get("evitar_incendios"):
             if hay_incendio_real:
-                penalizacion += 15.0
+                hazard_rate += l_inc
                 factores_riesgo.append("incendio_activo")
             if incluir_estres and hay_estres:
-                penalizacion += 30.0  # Penalización suficiente para activar el bypass
+                hazard_rate += l_inc
                 factores_riesgo.append("incendio_contingencia_simulado")
 
         if restricciones.get("evitar_sismos") and hay_sismo:
-            penalizacion += 4.0
+            hazard_rate += l_sis
             factores_riesgo.append("alerta_sismica")
 
         if restricciones.get("evitar_poblacion") and hay_poblacion:
-            penalizacion += 6.0  # Restricción DGAC DAN 151
+            hazard_rate += l_urb
             factores_riesgo.append("densidad_urbana_dan151")
 
         if restricciones.get("garantizar_telecom") and not hay_telecom:
-            penalizacion += 2.5
+            hazard_rate += l_tel
             factores_riesgo.append("sombra_telecom")
 
         if restricciones.get("evitar_viento") and hay_viento:
-            penalizacion += 2.0
+            hazard_rate += l_vie
             factores_riesgo.append("viento_extremo")
 
         if restricciones.get("evitar_lluvia") and hay_lluvia:
-            penalizacion += 2.0
+            hazard_rate += l_llu
             factores_riesgo.append("lluvia_intensa")
 
-        costo_resiliente = length * (1.0 + penalizacion)
-
-        # 2. Tasa de riesgo física supuesta (Hazard Rate por km para evaluación de resiliencia)
-        hazard_rate = 0.005  # Tasa base nominal por fallas mecánicas / ambientales generales
-        if hay_incendio_real or (incluir_estres and hay_estres):
-            hazard_rate += lambda_incendio
-        if hay_poblacion:
-            hazard_rate += 0.08  # Riesgo operacional y regulatorio sobre zonas densas
-        if hay_sismo:
-            hazard_rate += 0.05  # Riesgo por líneas oscilantes
-        if not hay_telecom:
-            hazard_rate += 0.03  # Riesgo por interrupción de enlace C2
-        if hay_viento:
-            hazard_rate += 0.04  # Viento sobre umbral operacional
-        if hay_lluvia:
-            hazard_rate += 0.03  # Precipitaciones sobre umbral
+        # Modelo W(e) = L_m(e) + beta * H(e) donde H(e) = hazard_rate * len_km
+        H_e = hazard_rate * len_km
+        costo_resiliente = length + b_val * H_e
 
         info_aristas[eid] = {
             "id": eid,
@@ -317,14 +341,14 @@ def construir_grafo(datos, restricciones=None, incluir_estres=True, lambda_incen
 
 
 # ==============================================================================
-# 4. ALGORITMO DE RUTEO DE K CAMINOS DISIMILARES (AKGÜN ET AL., 2000)
+# 4. ALGORITMO DE RUTEO DE K CAMINOS DISIMILARES POR PENALIZACIÓN ITERATIVA
 # ==============================================================================
 
 def dijkstra_camino(adj, origen_id, destino_id, penalizaciones=None):
     if penalizaciones is None:
         penalizaciones = {}
 
-    dist = {nid: float("inf") for nid in adj}
+    dist = {u: float("inf") for u in adj}
     padre_nodo = {}
     padre_arista = {}
 
@@ -366,7 +390,7 @@ def dijkstra_camino(adj, origen_id, destino_id, penalizaciones=None):
     return dist[destino_id], camino_nodos, camino_aristas
 
 
-def calcular_par_ksp(adj, origen_id, destino_id, factor_penalizacion=4.0):
+def calcular_par_penalizacion_iterativa(adj, origen_id, destino_id, factor_penalizacion=4.0):
     costo_1, nodos_1, aristas_1 = dijkstra_camino(adj, origen_id, destino_id)
     if not nodos_1:
         return None, None
@@ -469,8 +493,8 @@ def evaluar_escenario(grafo, destinos_sinca, origen_id, etiqueta="contingencia")
         dest_code = dest["code"]
         dest_name = dest["name"]
 
-        dijkstra_k1, dijkstra_k2 = calcular_par_ksp(adj_dijkstra, origen_id, dest_id, factor_penalizacion=4.0)
-        resiliente_k1, resiliente_k2 = calcular_par_ksp(adj_resiliente, origen_id, dest_id, factor_penalizacion=4.0)
+        dijkstra_k1, dijkstra_k2 = calcular_par_penalizacion_iterativa(adj_dijkstra, origen_id, dest_id, factor_penalizacion=FACTOR_P_DEFAULT)
+        resiliente_k1, resiliente_k2 = calcular_par_penalizacion_iterativa(adj_resiliente, origen_id, dest_id, factor_penalizacion=FACTOR_P_DEFAULT)
 
         if not dijkstra_k1 or not resiliente_k1:
             continue
@@ -593,8 +617,8 @@ def ejecutar_comparativa_completa():
     puchuncavi_prop = next(d for d in destinos_sinca if d["code"] == "sinca_puchuncavi")
     for lam in [0.5, 1.0, 5.0]:
         g_sens = construir_grafo(datos, incluir_estres=True, lambda_incendio=lam)
-        d_k1, d_k2 = calcular_par_ksp(g_sens["adj_dijkstra"], origen_id, puchuncavi_prop["id"], factor_penalizacion=4.0)
-        r_k1, r_k2 = calcular_par_ksp(g_sens["adj_resiliente"], origen_id, puchuncavi_prop["id"], factor_penalizacion=4.0)
+        d_k1, d_k2 = calcular_par_penalizacion_iterativa(g_sens["adj_dijkstra"], origen_id, puchuncavi_prop["id"], factor_penalizacion=FACTOR_P_DEFAULT)
+        r_k1, r_k2 = calcular_par_penalizacion_iterativa(g_sens["adj_resiliente"], origen_id, puchuncavi_prop["id"], factor_penalizacion=FACTOR_P_DEFAULT)
         m_d = calcular_resiliencia_conjunto_exacta(d_k1[2], d_k2[2], g_sens["info_aristas"])
         m_r = calcular_resiliencia_conjunto_exacta(r_k1[2], r_k2[2], g_sens["info_aristas"])
         sensibilidad_puchuncavi.append({
@@ -610,25 +634,17 @@ def ejecutar_comparativa_completa():
     fc = {
         "type": "FeatureCollection",
         "etl": {
-            "fuente": "Ruteo Resiliente Akgün et al. (2000) / GPP Kosior et al. (2024)",
+            "fuente": "Ruteo Resiliente Akgün et al. (2000) con función de costo W(e) = L + beta * H(e)",
             "generado": datetime.now(timezone.utc).isoformat(timespec="seconds"),
-            "paper": "Kosior, M., Przystałka, P., & Panfil, W. (2024). Adaptive Path Planning for UAV-Based Pollution Sampling. Applied Sciences, 14(24), 12065.",
             "algoritmo": "Akgün et al. (2000) K-caminos disimilares por penalización iterativa de aristas",
             "parametros": {
                 "origen": ORIGEN_BASE,
                 "k_rutas": 2,
-                "factor_penalizacion_k2": 4.0,
+                "factor_penalizacion_k2": FACTOR_P_DEFAULT,
+                "beta": BETA_DEFAULT,
                 "escenario_contingencia_activo": True,
                 "foco_contingencia": FOCO_ESTRES,
-                "tasas_riesgo_supuestas": {
-                    "lambda_base": 0.005,
-                    "lambda_incendio": 5.0,
-                    "lambda_urbano_dan151": 0.08,
-                    "lambda_sismo": 0.05,
-                    "lambda_telecom": 0.03,
-                    "lambda_viento": 0.04,
-                    "lambda_lluvia": 0.03,
-                },
+                "tasas_riesgo_supuestas": LAMBDAS_DEFAULT,
             },
             "total": len(features_comparativas),
         },
@@ -642,23 +658,15 @@ def ejecutar_comparativa_completa():
     out_json = RAIZ / "sitio_web" / "data" / "resumen_resiliencia.json"
     resumen_data = {
         "generado": datetime.now(timezone.utc).isoformat(timespec="seconds"),
-        "paper": "Kosior, M., Przystałka, P., & Panfil, W. (2024). Adaptive Path Planning for UAV-Based Pollution Sampling. Applied Sciences, 14(24), 12065.",
         "algoritmo": "Akgün et al. (2000) K-caminos disimilares por penalización iterativa de aristas",
         "metrica": "Confiabilidad estocástica exacta R = S(E_C) * [1 - (1 - S(E_1))(1 - S(E_2))]",
         "parametros": {
             "origen": ORIGEN_BASE,
             "k_rutas": 2,
-            "factor_penalizacion_k2": 4.0,
+            "factor_penalizacion_k2": FACTOR_P_DEFAULT,
+            "beta": BETA_DEFAULT,
             "foco_contingencia": FOCO_ESTRES,
-            "tasas_riesgo_supuestas": {
-                "lambda_base": 0.005,
-                "lambda_incendio": 5.0,
-                "lambda_urbano_dan151": 0.08,
-                "lambda_sismo": 0.05,
-                "lambda_telecom": 0.03,
-                "lambda_viento": 0.04,
-                "lambda_lluvia": 0.03,
-            },
+            "tasas_riesgo_supuestas": LAMBDAS_DEFAULT,
         },
         "escenario_base_datos_reales": resumen_base,
         "escenario_contingencia_simulado": resumen_estres,
