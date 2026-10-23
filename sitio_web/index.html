@@ -147,7 +147,7 @@
       <!-- 3. Capas de Amenazas (Acordeón) -->
       <section class="card card-accordion" id="card-amenazas">
         <button type="button" class="accordion-header" id="btn-accordion-amenazas" aria-expanded="true">
-          <h2>Amenazas</h2>
+          <h2>Condiciones operacionales <small>(sólo visual)</small></h2>
           <span class="accordion-arrow" id="arrow-accordion-amenazas">
             <svg class="ui-icon ui-icon-sm" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
           </span>
@@ -157,22 +157,22 @@
             <label class="check-item">
               <input type="checkbox" id="check-layer-incendios">
               <span>Incendios activos (NASA FIRMS)</span>
-              <span class="help-btn" tabindex="0" role="tooltip" data-tooltip="Focos térmicos detectados por satélites de la NASA (sensores VIIRS / MODIS). Muestra halos de calor con la potencia radiativa en MW. Constituyen zonas de peligro térmico y turbulencia severa que inhabilitan el sobrevuelo.">?</span>
+              <span class="help-btn" tabindex="0" role="tooltip" data-tooltip="Capa informativa de focos térmicos NASA FIRMS (VIIRS / MODIS). Muestra potencia radiativa y contexto de fuego; por ahora no bloquea ni cambia la ruta.">?</span>
             </label>
             <label class="check-item">
-              <input type="checkbox" id="check-layer-sismos">
-              <span>Tráfico aéreo tripulado (OpenSky ADS-B)</span>
-              <span class="help-btn" tabindex="0" role="tooltip" data-tooltip="Vigilancia en tiempo real de aeronaves tripuladas con transpondedor ADS-B en aproximación al Aeródromo de Quintero (SCER). Genera cilindros de exclusión de 1.500 m para aeronaves bajo 1.000 m MSL según normativa DAN 151.">?</span>
+              <input type="checkbox" id="check-layer-notam">
+              <span>Restricciones NOTAM (DGAC/AIS)</span>
+              <span class="help-btn" tabindex="0" role="tooltip" data-tooltip="Capa visual de avisos aeronáuticos oficiales DGAC/AIS. Una publicación debe validarse por un operador; por ahora no bloquea ni cambia la ruta automáticamente.">?</span>
             </label>
             <label class="check-item">
               <input type="checkbox" id="check-layer-viento">
               <span>Viento y ráfagas (Open-Meteo)</span>
-              <span class="help-btn" tabindex="0" role="tooltip" data-tooltip="Pronóstico meteorológico a 10 y 120 m AGL en grilla 4×4 sobre la bahía. Muestra flechas con la dirección del flujo: verde para vientos nominales y rojo para ráfagas superiores a 12 m/s (límite operacional seguro según DAN 151).">?</span>
+              <span class="help-btn" tabindex="0" role="tooltip" data-tooltip="Pronóstico meteorológico en grilla 4×4 sobre la bahía. Es contexto visual: aún no cambia velocidad, consumo ni la ruta calculada.">?</span>
             </label>
             <label class="check-item">
               <input type="checkbox" id="check-layer-lluvia">
               <span>Niebla costera y visibilidad (Open-Meteo)</span>
-              <span class="help-btn" tabindex="0" role="tooltip" data-tooltip="Monitoreo horario de visibilidad horizontal y humedad en grilla 4×4. Detecta bancos de niebla y camanchaca costera (&lt;1.000 m de visibilidad o HR&ge;95%), condición que inhabilita el vuelo VLOS/BVLOS seguro bajo normativa DAN 151.">?</span>
+              <span class="help-btn" tabindex="0" role="tooltip" data-tooltip="Monitoreo horario de visibilidad y humedad en grilla 4×4. Es contexto visual para el operador; no bloquea ni modifica la ruta en esta versión.">?</span>
             </label>
           </div>
         </div>
@@ -236,19 +236,23 @@
             </div>
             <div class="ventana-metrica-card">
               <span class="metrica-card-lbl">Altitud de Crucero</span>
-              <strong class="metrica-card-val text-primary" id="ventana-dron-altitud">~100 m AGL (fija)</strong>
+              <strong class="metrica-card-val text-primary" id="ventana-dron-altitud">100 m AGL (objetivo)</strong>
+            </div>
+            <div class="ventana-metrica-card">
+              <span class="metrica-card-lbl">Velocidad de Crucero</span>
+              <strong class="metrica-card-val text-primary">10 m/s · 36 km/h</strong>
             </div>
           </div>
 
           <!-- Evaluación de Operabilidad, Batería y Legalidad DAN 151 -->
           <div class="ventana-evaluacion-box">
             <div class="ventana-eval-fila">
-              <span class="eval-fila-lbl">Autonomía de batería:</span>
+              <span class="eval-fila-lbl">Autonomía útil (35 min):</span>
               <span class="eval-fila-val" id="res-bateria">—</span>
             </div>
             <div class="ventana-eval-fila">
               <span class="eval-fila-lbl">Alcance operacional:</span>
-              <span class="eval-fila-val" id="res-alcance">—</span>
+              <span class="eval-fila-val" id="res-alcance" title="Máximo de 21 km ida y vuelta a 10 m/s dentro de la autonomía útil.">—</span>
             </div>
             <div class="ventana-eval-fila" id="fila-regimen-legal">
               <span class="eval-fila-lbl">Régimen Legal (DAN 151):</span>
@@ -355,7 +359,7 @@
         <span class="footer-sep">|</span>
         <div class="footer-stat">
           <span class="stat-lbl">Altitud:</span>
-          <strong class="stat-val text-primary" id="mapa-footer-altitud" title="Altitud de vuelo fija sobre el terreno (~100m AGL, límite 120m DAN 151)">~100 m AGL</strong>
+          <strong class="stat-val text-primary" id="mapa-footer-altitud" title="Altitud objetivo de 100 m sobre el terreno; bajo el máximo de 120 m AGL de DAN 151.">100 m AGL</strong>
         </div>
         <span class="footer-sep">|</span>
         <div class="footer-stat">
@@ -390,7 +394,7 @@
         <span class="footer-sep footer-stat-secondary">|</span>
         <div class="footer-stat footer-stat-secondary">
           <span class="stat-lbl">Velocidad:</span>
-          <strong class="stat-val" id="mapa-footer-vel">54 km/h</strong>
+          <strong class="stat-val" id="mapa-footer-vel" title="10 m/s: límite operativo para preservar la precisión del sensor de partículas.">36 km/h</strong>
         </div>
       </footer>
     </div>
@@ -1213,10 +1217,10 @@ R = 6.371.000 m &bull; φ = latitud (rad) &bull; λ = longitud (rad)</div>
               <span class="dl-arrow">&darr;</span>
             </a>
 
-            <a class="dl-card" href="../amenazas/opensky_aeronaves.geojson" download="opensky_aeronaves.geojson">
+            <a class="dl-card" href="../amenazas/notam_dgac.geojson" download="notam_dgac.geojson">
               <div class="dl-card-content">
-                <strong>opensky_aeronaves.geojson</strong>
-                <span>Tráfico aéreo en vivo &bull; OpenSky Network ADS-B</span>
+                <strong>notam_dgac.geojson</strong>
+                <span>Restricciones aeronáuticas &bull; DGAC/AIS &bull; sólo visual</span>
               </div>
               <span class="dl-arrow">&darr;</span>
             </a>
@@ -1252,7 +1256,7 @@ R = 6.371.000 m &bull; φ = latitud (rad) &bull; λ = longitud (rad)</div>
 
         <div class="infra-kpi">
           <div class="kpi-top">
-            <span class="kpi-name">Tráfico Aéreo (OpenSky)</span>
+            <span class="kpi-name">Restricciones NOTAM (DGAC/AIS)</span>
           </div>
           <div class="kpi-number" id="kpi-amenaza-sismos">—</div>
           <div class="kpi-footnote">Vigilancia ADS-B &bull; Cilindro exclusión 1.500 m en aproximación SCER</div>
@@ -1298,7 +1302,7 @@ R = 6.371.000 m &bull; φ = latitud (rad) &bull; λ = longitud (rad)</div>
                 </label>
                 <label class="toggle-chip">
                   <input type="checkbox" id="toggle-amenaza-sismos" checked>
-                  <span>Tráfico Aéreo (OpenSky)</span>
+                  <span>Restricciones NOTAM (DGAC/AIS)</span>
                 </label>
                 <label class="toggle-chip">
                   <input type="checkbox" id="toggle-amenaza-viento" checked>
@@ -1386,13 +1390,13 @@ R = 6.371.000 m &bull; φ = latitud (rad) &bull; λ = longitud (rad)</div>
               <!-- CARD 2: TRÁFICO AÉREO TRIPULADO -->
               <div class="source-block">
                 <div class="source-head">
-                  <span class="source-tag">OpenSky Network ADS-B</span>
-                  <h4>OpenSky &bull; Tráfico Aéreo Tripulado y Separación Espacial en SCER</h4>
+                  <span class="source-tag">DGAC Chile / AIS IFIS</span>
+                  <h4>NOTAM &bull; Restricciones Aeronáuticas Oficiales</h4>
                 </div>
                 <div class="source-body">
                   <p>
-                    <strong>Metodología de Extracción:</strong> <code>amenazas/opensky_aeronaves.py</code> consume el servicio de telemetría en vivo
-                    de OpenSky Network filtrando aeronaves en la envolvente de la Bahía de Quintero y Puchuncaví con altitud barométrica
+                    <strong>Estado actual:</strong> la capa recibe únicamente NOTAM oficiales que hayan sido interpretados y georreferenciados
+                    por un operador. No se automatiza la autorización ni el bloqueo de rutas.
                     &le; 1.000 m (espacio aéreo compartido con aproximación al Aeródromo de Quintero SCER).
                   </p>
                   <p>
@@ -1405,7 +1409,7 @@ R = 6.371.000 m &bull; φ = latitud (rad) &bull; λ = longitud (rad)</div>
                     (C = &infin;), garantizando probabilidad cero de conflicto aéreo ($N_{COL} = 0$).
                   </p>
                   <div class="source-meta-foot">
-                    <span>Script Carga: <code>amenazas/cargar_opensky_aeronaves.py</code></span>
+                    <span>Capa visual: <code>amenazas/notam_dgac.geojson</code></span>
                     <span>Tabla BD: <code>threat_event (event_type = 'aeronave')</code></span>
                   </div>
                 </div>
@@ -1484,7 +1488,7 @@ R = 6.371.000 m &bull; φ = latitud (rad) &bull; λ = longitud (rad)</div>
           </div>
           <div class="explorer-tabs-bar" role="tablist">
             <button class="amenaza-exp-tab active" type="button" data-amenaza="firms">firms_incendios</button>
-            <button class="amenaza-exp-tab" type="button" data-amenaza="opensky">opensky_aeronaves</button>
+            <button class="amenaza-exp-tab" type="button" data-amenaza="notam">notam_dgac</button>
             <button class="amenaza-exp-tab" type="button" data-amenaza="viento">openmeteo_viento</button>
             <button class="amenaza-exp-tab" type="button" data-amenaza="niebla">openmeteo_niebla</button>
           </div>
@@ -1560,7 +1564,7 @@ R = 6.371.000 m &bull; φ = latitud (rad) &bull; λ = longitud (rad)</div>
             <div class="dl-card" style="cursor: default;">
               <div class="dl-card-content">
                 <strong>3. Amenazas Dinámicas (4)</strong>
-                <span>firms &bull; opensky &bull; viento &bull; niebla</span>
+                <span>firms &bull; NOTAM &bull; viento &bull; niebla</span>
               </div>
               <span class="dl-arrow">&bull;</span>
             </div>
@@ -1670,7 +1674,7 @@ R = 6.371.000 m &bull; φ = latitud (rad) &bull; λ = longitud (rad)</div>
             <div class="doc-domain-group">
               <span class="doc-domain-label">Amenazas:</span>
               <button class="doc-file-btn" type="button" data-docfile="firms_incendios">firms_incendios</button>
-              <button class="doc-file-btn" type="button" data-docfile="opensky_aeronaves">opensky_aeronaves</button>
+              <button class="doc-file-btn" type="button" data-docfile="notam_dgac">notam_dgac</button>
               <button class="doc-file-btn" type="button" data-docfile="openmeteo_viento">openmeteo_viento</button>
               <button class="doc-file-btn" type="button" data-docfile="openmeteo_niebla">openmeteo_niebla</button>
             </div>

@@ -16,8 +16,7 @@ const FUENTES = {
   antenas: '../metadata/osm_antenas.geojson',
   obstaculos: '../metadata/osm_obstaculos.geojson',
   incendios: '../amenazas/firms_incendios.geojson',
-  aeronaves: '../amenazas/opensky_aeronaves.geojson',
-  sismos: '../amenazas/opensky_aeronaves.geojson',
+  notam: '../amenazas/notam_dgac.geojson',
   viento: '../amenazas/openmeteo_viento.geojson',
   niebla: '../amenazas/openmeteo_niebla.geojson',
   lluvia: '../amenazas/openmeteo_niebla.geojson',
@@ -130,7 +129,10 @@ const layerCostosEnlace = L.layerGroup();
 let capaAristasGlobal = null;
 let capaZonasGlobal = null;
 let ultimosNodosRutaActiva = [];
-const VELOCIDAD_CRUCERO_KMH = 54.0; // 15 m/s según estándar operacional DAN 151 DGAC
+// Perfil operativo de la misión de muestreo: no equivale a la velocidad máxima de la aeronave.
+// Se limita a 10 m/s para proteger la precisión del sensor de partículas.
+const VELOCIDAD_CRUCERO_MS = 10.0;
+const VELOCIDAD_CRUCERO_KMH = VELOCIDAD_CRUCERO_MS * 3.6;
 
 // Capas de Metadata (solo visualización en mapa)
 let capaAireGlobal = null;
@@ -140,9 +142,11 @@ let capaAntenasGlobal = null;
 let capaObstaculosGlobal = null;
 let capaTrazaUrbanaGlobal = null;
 
-// Capas de Amenazas (solo visualización en mapa)
+// Capas de condiciones operacionales: por ahora son exclusivamente visuales.
+// No alteran pesos de aristas, Dijkstra ni el resultado de la misión.
+const AMENAZAS_SOLO_VISUALES = true;
 let capaIncendiosGlobal = null;
-let capaSismosGlobal = null;
+let capaNotamGlobal = null;
 let capaVientoGlobal = null;
 let capaLluviaGlobal = null;
 
@@ -272,10 +276,12 @@ function inicializarGrafo(d) {
 
   const manzanasDensas = d.manzanas.features.filter(f => (f.properties.density_hab_km2 || 0) > 2500);
   const antenas = d.antenas.features;
-  const incendios = d.incendios.features.filter(f => f.properties.exceeds);
-  const aeronaves = (d.aeronaves || d.sismos).features.filter(f => f.properties.exceeds);
-  const vientoActivo = (d.viento?.features || []).filter(f => f.properties.exceeds);
-  const nieblaActiva = (d.niebla || d.lluvia)?.features?.filter(f => f.properties.exceeds) || [];
+  // Las fuentes ambientales y NOTAM sólo se muestran en el mapa hasta implementar
+  // un motor 4D validado. Se preservan las variables para una futura integración.
+  const incendios = AMENAZAS_SOLO_VISUALES ? [] : d.incendios.features.filter(f => f.properties.exceeds);
+  const aeronaves = [];
+  const vientoActivo = AMENAZAS_SOLO_VISUALES ? [] : (d.viento?.features || []).filter(f => f.properties.exceeds);
+  const nieblaActiva = AMENAZAS_SOLO_VISUALES ? [] : ((d.niebla || d.lluvia)?.features?.filter(f => f.properties.exceeds) || []);
 
   grafoAristas = d.aristas.features.map(f => {
     const props = f.properties;
@@ -292,7 +298,7 @@ function inicializarGrafo(d) {
     const hayViento = aristaTocaPoligonos(coordU, coordV, vientoActivo);
     const hayNiebla = aristaTocaPoligonos(coordU, coordV, nieblaActiva);
     const dFoco = distPuntoASegmentoM(coordU, coordV, [FOCO_SIMULADO.lon, FOCO_SIMULADO.lat]);
-    const hayEstres = dFoco <= FOCO_SIMULADO.radio_m;
+    const hayEstres = !AMENAZAS_SOLO_VISUALES && dFoco <= FOCO_SIMULADO.radio_m;
 
     // Tasa de riesgo física objetiva (Hazard rate por km)
     let hazardRate = LAMBDAS.base; // Tasa base nominal
@@ -702,16 +708,22 @@ function ejecutarMision() {
   btnEjecutar.innerHTML = `<svg class="ui-icon ui-icon-sm" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span>Misión Ejecutada</span>`;
 }
 
-// Modelo de UAV homologado único para la misión: DJI Matrice 350 RTK (DGAC DAN 151)
-// Altitud de crucero fijada a ~100m AGL sobre el terreno (sin variación vertical por ahora)
+// Perfil operativo único para la misión de muestreo con DJI Matrice 350 RTK.
+// La autonomía útil ya descuenta carga útil y reserva: 55 min × 0,8 × 0,8 ≈ 35 min.
+// Por ello, no se debe interpretarla como la autonomía nominal de la ficha técnica.
 const MODELOS_DRON = {
   m350: {
     nombre: 'DJI Matrice 350 RTK',
     tipo: 'Multirotor Industrial (Única Plataforma Operacional)',
-    distanciaMaxKm: 32.0,
-    tiempoMaxMin: 55,
-    bateriaReservaPct: 15, // reserva obligatoria DGAC DAN 151
-    altitudFijaM: 100,      // ~100 m AGL fija
+    velocidadCruceroMs: VELOCIDAD_CRUCERO_MS,
+    velocidadCruceroKmh: VELOCIDAD_CRUCERO_KMH,
+    tiempoNominalMin: 55,
+    factorCargaUtil: 0.8,
+    factorReserva: 0.8,
+    tiempoUtilMin: 35,
+    distanciaMaxKm: 21,
+    altitudFijaM: 100,
+    altitudMaxLegalM: 120,
   },
 };
 
@@ -736,8 +748,8 @@ function actualizarEvaluacionDronFooter(distKm = ultimaDistanciaKmRuta, tiempoMi
   const bannerBvlos = document.getElementById('alerta-bvlos-banner');
   const descBvlos = document.getElementById('alerta-bvlos-desc');
 
-  if (elDronAltitud) elDronAltitud.textContent = '~100 m AGL (fija)';
-  if (elFooterAltitud) elFooterAltitud.textContent = '~100 m AGL';
+  if (elDronAltitud) elDronAltitud.textContent = '100 m AGL (objetivo)';
+  if (elFooterAltitud) elFooterAltitud.textContent = '100 m AGL';
 
   if (ultimaDistanciaKmRuta == null) {
     if (elAlcance) elAlcance.textContent = '—';
@@ -751,7 +763,6 @@ function actualizarEvaluacionDronFooter(distKm = ultimaDistanciaKmRuta, tiempoMi
     return;
   }
 
-  const modeloKey = 'm350';
   const dron = MODELOS_DRON.m350;
   if (elDronModelo) elDronModelo.textContent = dron.nombre;
 
@@ -771,24 +782,23 @@ function actualizarEvaluacionDronFooter(distKm = ultimaDistanciaKmRuta, tiempoMi
     txtResAlcance = `<span class="text-good">Dentro de rango (${distRuta.toFixed(1)} / ${distMax} km)</span>`;
   }
 
-  // 2. Evaluación de Batería y Tiempo de Vuelo
+  // 2. Evaluación contra la envolvente útil, ya ajustada por carga y reserva.
   const tVueloMin = ultimoTiempoMinutosRuta || 0;
-  const tMaxMin = dron.tiempoMaxMin;
+  const tMaxMin = dron.tiempoUtilMin;
   const pctConsumo = (tVueloMin / tMaxMin) * 100;
   const pctRestante = Math.max(0, 100 - pctConsumo);
-  const reservaMinima = dron.bateriaReservaPct || 15;
 
   let badgeBateriaHtml = '';
   let txtResBateria = '';
-  if (pctRestante < reservaMinima) {
-    badgeBateriaHtml = `<span class="badge-status-danger" title="Batería restante estimada (${pctRestante.toFixed(0)}%) inferior a la reserva mínima obligatoria del ${reservaMinima}% (DAN 151). ¡No alcanza!">Insuficiente (${pctRestante.toFixed(0)}%)</span>`;
-    txtResBateria = `<span class="text-bad">Insuficiente (&lt;${reservaMinima}% reserva)</span>`;
-  } else if (pctRestante < 30) {
-    badgeBateriaHtml = `<span class="badge-status-warning" title="Batería ajustada (${pctRestante.toFixed(0)}% restante). Cumple reserva del ${reservaMinima}%, pero requiere precaución ante viento">Ajustada (${pctRestante.toFixed(0)}%)</span>`;
-    txtResBateria = `<span class="text-warning">Ajustada (${pctRestante.toFixed(0)}% restante)</span>`;
+  if (tVueloMin > tMaxMin) {
+    badgeBateriaHtml = `<span class="badge-status-danger" title="El tiempo estimado (${tVueloMin.toFixed(1)} min) supera la autonomía útil de ${tMaxMin} min, calculada con carga y reserva.">Insuficiente</span>`;
+    txtResBateria = `<span class="text-bad">Excede autonomía útil (${tVueloMin.toFixed(1)} / ${tMaxMin} min)</span>`;
+  } else if (pctRestante < 20) {
+    badgeBateriaHtml = `<span class="badge-status-warning" title="Queda sólo ${pctRestante.toFixed(0)}% de la envolvente útil de ${tMaxMin} min. El viento puede eliminar este margen.">Ajustada (${pctRestante.toFixed(0)}%)</span>`;
+    txtResBateria = `<span class="text-warning">Margen útil ajustado (${pctRestante.toFixed(0)}%)</span>`;
   } else {
-    badgeBateriaHtml = `<span class="badge-status-ok" title="Batería suficiente: ${pctRestante.toFixed(0)}% restante estimado al aterrizar (Consumo: ${pctConsumo.toFixed(0)}% en ${tVueloMin.toFixed(1)} min)">Alcanza (${pctRestante.toFixed(0)}%)</span>`;
-    txtResBateria = `<span class="text-good">Alcanza (${pctRestante.toFixed(0)}% restante)</span>`;
+    badgeBateriaHtml = `<span class="badge-status-ok" title="Tiempo estimado: ${tVueloMin.toFixed(1)} de ${tMaxMin} min útiles. La envolvente útil incorpora carga y reserva.">Alcanza (${pctRestante.toFixed(0)}%)</span>`;
+    txtResBateria = `<span class="text-good">Dentro de autonomía útil (${pctRestante.toFixed(0)}%)</span>`;
   }
 
   // 3. Evaluación de Legalidad Aeronáutica (DAN 151 DGAC Chile: Límite VLOS 500 m)
@@ -1327,9 +1337,9 @@ function inicializarCapasCartograficas(d) {
     });
   }
 
-  // 9. Tráfico Aéreo Tripulado (OpenSky ADS-B) con cilindro de exclusión y badge de telemetría
+  // 9. Restricciones NOTAM DGAC/AIS, sólo contexto visual y validación humana.
   const capaSismos = L.featureGroup();
-  const coleccionAeronaves = d.aeronaves || d.sismos;
+  const coleccionAeronaves = d.notam;
   if (coleccionAeronaves && coleccionAeronaves.features) {
     coleccionAeronaves.features.forEach(f => {
       const p = f.properties;
@@ -1342,13 +1352,13 @@ function inicializarCapasCartograficas(d) {
             : { color: '#2563eb', weight: 1, dashArray: '4 4', fillColor: '#93c5fd', fillOpacity: 0.1 }))
       });
       poly.bindPopup(tabla(esAeronave ? [
-        ['Amenaza', 'Tráfico Aéreo Tripulado (OpenSky ADS-B)'],
+        ['Restricción aeronáutica', 'NOTAM DGAC/AIS'],
         ['Callsign / Matrícula', p.callsign || p.external_id],
         ['ICAO 24-bit', p.icao24 || '—'],
         ['Altitud Barométrica', `${p.baro_altitude_m || p.value} m MSL`],
         ['Velocidad Terrestre', `${p.velocity_ms || 0} m/s (${((p.velocity_ms || 0) * 3.6).toFixed(0)} km/h)`],
         ['Cilindro de Exclusión', `${p.exclusion_radius_m || 1500} m`],
-        ['Conflicto / Bloqueo', bloquea(p)],
+        ['Estado', 'Sólo visual; requiere validación humana'],
       ] : [
         ['Tipo', 'Evento Sísmico'],
         ['Magnitud', p.value],
@@ -1598,10 +1608,10 @@ function inicializarCapasCartograficas(d) {
     'Metadata · Cobertura antenas (OSM)': capaAntenas,
     'Metadata · Obstáculos físicos y alta tensión (OSM)': capaObstaculos,
     'Metadata · Quebradas (Traza Urbana)': capaTrazaUrbana,
-    'Amenaza · Incendios (NASA FIRMS)': capaIncendios,
-    'Amenaza · Tráfico Aéreo (OpenSky ADS-B)': capaSismos,
-    'Amenaza · Viento (Open-Meteo)': capaViento,
-    'Amenaza · Niebla Costera (Open-Meteo)': capaLluvia,
+    'Condición visual · Incendios (NASA FIRMS)': capaIncendios,
+    'Condición visual · Restricciones NOTAM (DGAC/AIS)': capaSismos,
+    'Condición visual · Viento (Open-Meteo)': capaViento,
+    'Condición visual · Niebla Costera (Open-Meteo)': capaLluvia,
   };
 
   // Asignar referencias globales de las capas para los checkboxes del panel lateral
@@ -1612,7 +1622,7 @@ function inicializarCapasCartograficas(d) {
   capaObstaculosGlobal = capaObstaculos;
   capaTrazaUrbanaGlobal = capaTrazaUrbana;
   capaIncendiosGlobal = capaIncendios;
-  capaSismosGlobal = capaSismos;
+  capaNotamGlobal = capaSismos;
   capaVientoGlobal = capaViento;
   capaLluviaGlobal = capaLluvia;
 
@@ -1639,7 +1649,7 @@ function inicializarCapasCartograficas(d) {
   enlazarCapaVisual('check-layer-traza', capaTrazaUrbanaGlobal);
 
   enlazarCapaVisual('check-layer-incendios', capaIncendiosGlobal);
-  enlazarCapaVisual('check-layer-sismos', capaSismosGlobal);
+  enlazarCapaVisual('check-layer-notam', capaNotamGlobal);
   enlazarCapaVisual('check-layer-viento', capaVientoGlobal);
   enlazarCapaVisual('check-layer-lluvia', capaLluviaGlobal);
 
@@ -3299,8 +3309,8 @@ function montarMapaMeta(d) {
 function inicializarModuloAmenazas(d) {
   // 1. Poblar KPIs de Amenazas
   document.getElementById('kpi-amenaza-incendios').textContent = `${d.incendios.features.length} foco`;
-  const cantAeronaves = (d.aeronaves || d.sismos)?.features?.length || 1;
-  document.getElementById('kpi-amenaza-sismos').textContent = `${cantAeronaves} aeronave${cantAeronaves > 1 ? 's' : ''}`;
+  const cantNotam = d.notam?.features?.length || 0;
+  document.getElementById('kpi-amenaza-sismos').textContent = `${cantNotam} NOTAM`;
   document.getElementById('kpi-amenaza-viento').textContent = `${d.viento.features.length} celdas`;
   const cantNiebla = (d.niebla || d.lluvia)?.features?.length || 16;
   document.getElementById('kpi-amenaza-lluvia').textContent = `${cantNiebla} celdas`;
@@ -3311,13 +3321,13 @@ function inicializarModuloAmenazas(d) {
     btnDl.addEventListener('click', () => {
       const paqueteAmenazas = {
         descripcion: "Amenazas Dinámicas y Eventos de Falla · Bahía de Quintero",
-        marco_metodologico: "NASA FIRMS (incendios) + OpenSky ADS-B (tráfico aéreo) + Open-Meteo (viento y niebla costera)",
+        marco_metodologico: "NASA FIRMS (incendios) + DGAC/AIS (NOTAM) + Open-Meteo (viento y niebla costera). Capas sólo visuales.",
         modulo: "Amenazas y Restricciones Dinámicas",
         modelo_bd: "PostgreSQL 16 + PostGIS 3.4 (tabla threat_event)",
         fecha_exportacion: new Date().toISOString(),
         fuentes: {
           firms_incendios: d.incendios,
-          opensky_aeronaves: d.aeronaves || d.sismos,
+          notam_dgac: d.notam,
           openmeteo_viento: d.viento,
           openmeteo_niebla: d.niebla || d.lluvia,
         }
@@ -3335,15 +3345,15 @@ function inicializarModuloAmenazas(d) {
   }
 
   // 3. Explorador de Amenazas
-  const specAeronaves = {
-    nombre: 'opensky_aeronaves',
-    archivoGeojson: '../amenazas/opensky_aeronaves.geojson',
-    archivoScript: '../amenazas/opensky_aeronaves.py',
-    archivoCarga: '../amenazas/cargar_opensky_aeronaves.py',
-    archivoDoc: '../amenazas/opensky_aeronaves.md',
-    dataRef: d.aeronaves || d.sismos,
-    tablaBD: 'threat_event (event_type = \'aeronave\')',
-    desc: `${(d.aeronaves || d.sismos).features.length} Aeronave ADS-B · OpenSky Network (separación SCER)`,
+  const specNotam = {
+    nombre: 'notam_dgac',
+    archivoGeojson: '../amenazas/notam_dgac.geojson',
+    archivoScript: null,
+    archivoCarga: null,
+    archivoDoc: '../amenazas/notam_dgac.md',
+    dataRef: d.notam,
+    tablaBD: 'airspace_restriction (NOTAM DGAC/AIS)',
+    desc: `${d.notam?.features?.length || 0} NOTAM georreferenciado · DGAC/AIS · sólo visual`,
   };
 
   const specNiebla = {
@@ -3368,8 +3378,7 @@ function inicializarModuloAmenazas(d) {
       tablaBD: 'threat_event (event_type = \'incendio\')',
       desc: `${d.incendios.features.length} Foco Activo · NASA FIRMS VIIRS/MODIS`,
     },
-    opensky: specAeronaves,
-    csn: specAeronaves,
+    notam: specNotam,
     viento: {
       nombre: 'openmeteo_viento',
       archivoGeojson: '../amenazas/openmeteo_viento.geojson',
@@ -3412,6 +3421,10 @@ function inicializarModuloAmenazas(d) {
     } else if (amenazaTipoVistaActivo === 'script') {
       preEl.hidden = false;
       docEl.hidden = true;
+      if (!spec.archivoScript) {
+        codeEl.textContent = '# NOTAM DGAC/AIS: la capa se carga mediante validación humana de la publicación oficial; no existe ETL automático en esta versión.';
+        return;
+      }
       if (cacheAmenazasTextos[spec.archivoScript]) {
         codeEl.textContent = cacheAmenazasTextos[spec.archivoScript];
       } else {
@@ -3427,6 +3440,10 @@ function inicializarModuloAmenazas(d) {
     } else if (amenazaTipoVistaActivo === 'carga') {
       preEl.hidden = false;
       docEl.hidden = true;
+      if (!spec.archivoCarga) {
+        codeEl.textContent = '# Sin cargador a BD: esta capa es exclusivamente visual en la versión actual.';
+        return;
+      }
       if (cacheAmenazasTextos[spec.archivoCarga]) {
         codeEl.textContent = cacheAmenazasTextos[spec.archivoCarga];
       } else {
@@ -3626,8 +3643,8 @@ function montarMapaAmenazas(d) {
   });
 
   // 4. Sismos (CSN / EMSC)
-  // 4. Tráfico Aéreo Tripulado (OpenSky ADS-B)
-  const coleccionAeronavesMap = d.aeronaves || d.sismos;
+  // 4. Restricciones NOTAM DGAC/AIS (contexto visual; sin automatizar decisiones)
+  const coleccionAeronavesMap = d.notam;
   coleccionAeronavesMap.features.forEach(f => {
     const p = f.properties;
     const ring = f.geometry.coordinates[0].map(([lon, lat]) => [lat, lon]);
@@ -3652,7 +3669,7 @@ function montarMapaAmenazas(d) {
 
     const handler = () => {
       if (esAeronave) {
-        mostrarEnAmenazaInspector('Tráfico Aéreo Tripulado (OpenSky ADS-B)', `${p.callsign || 'Aeronave'} · ${Math.round(p.baro_altitude_m || p.value)}m MSL`, {
+        mostrarEnAmenazaInspector('Restricción aeronáutica NOTAM (DGAC/AIS)', p.notam_id || p.external_id || 'NOTAM', {
           'Tipo de Evento': 'aeronave',
           'ID Externo / Registro': p.external_id,
           'Callsign / Matrícula': p.callsign || 'VFR-SCER',
@@ -3894,33 +3911,33 @@ function inicializarModuloDocumentacion(d) {
       resumen: 'Focos de incendio satelitales NRT (VIIRS/MODIS) con FRP y exclusión térmica total.',
       datosRef: d.incendios,
     },
-    opensky_aeronaves: {
-      id: 'opensky_aeronaves',
+    notam_dgac: {
+      id: 'notam_dgac',
       dominio: 'Amenazas',
-      archivoDatos: '../amenazas/opensky_aeronaves.geojson',
-      nombreDatos: 'opensky_aeronaves.geojson',
-      archivoDoc: '../amenazas/opensky_aeronaves.md',
-      nombreDoc: 'opensky_aeronaves.md',
-      scriptGenerador: 'amenazas/opensky_aeronaves.py',
-      tablaBD: 'threat_event (aeronave)',
-      tipoGeom: 'Polygon (cilindro 1.5 km)',
-      entidades: `${(d.aeronaves || d.sismos)?.features?.length || 1} aeronave`,
-      resumen: 'Vigilancia ADS-B en vivo (OpenSky Network) con cilindros de exclusión aérea de 1500 m en aproximación a SCER.',
-      datosRef: d.aeronaves || d.sismos,
+      archivoDatos: '../amenazas/notam_dgac.geojson',
+      nombreDatos: 'notam_dgac.geojson',
+      archivoDoc: '../amenazas/notam_dgac.md',
+      nombreDoc: 'notam_dgac.md',
+      scriptGenerador: 'Validación humana desde DGAC/AIS',
+      tablaBD: 'airspace_restriction (NOTAM)',
+      tipoGeom: 'Volumen 4D cuando esté georreferenciado',
+      entidades: `${d.notam?.features?.length || 0} NOTAM`,
+      resumen: 'Avisos aeronáuticos oficiales DGAC/AIS; capa visual sin decisión automática.',
+      datosRef: d.notam,
     },
     csn_sismos: {
-      id: 'opensky_aeronaves',
+      id: 'notam_dgac',
       dominio: 'Amenazas',
-      archivoDatos: '../amenazas/opensky_aeronaves.geojson',
-      nombreDatos: 'opensky_aeronaves.geojson',
-      archivoDoc: '../amenazas/opensky_aeronaves.md',
-      nombreDoc: 'opensky_aeronaves.md',
-      scriptGenerador: 'amenazas/opensky_aeronaves.py',
-      tablaBD: 'threat_event (aeronave)',
-      tipoGeom: 'Polygon (cilindro 1.5 km)',
-      entidades: `${(d.aeronaves || d.sismos)?.features?.length || 1} aeronave`,
-      resumen: 'Vigilancia ADS-B en vivo (OpenSky Network) con cilindros de exclusión aérea de 1500 m en aproximación a SCER.',
-      datosRef: d.aeronaves || d.sismos,
+      archivoDatos: '../amenazas/notam_dgac.geojson',
+      nombreDatos: 'notam_dgac.geojson',
+      archivoDoc: '../amenazas/notam_dgac.md',
+      nombreDoc: 'notam_dgac.md',
+      scriptGenerador: 'Validación humana desde DGAC/AIS',
+      tablaBD: 'airspace_restriction (NOTAM)',
+      tipoGeom: 'Volumen 4D cuando esté georreferenciado',
+      entidades: `${d.notam?.features?.length || 0} NOTAM`,
+      resumen: 'Avisos aeronáuticos oficiales DGAC/AIS; capa visual sin decisión automática.',
+      datosRef: d.notam,
     },
     openmeteo_viento: {
       id: 'openmeteo_viento',

@@ -5,9 +5,8 @@
   "main": "src/main.js",
   "type": "module",
   "scripts": {
-    "dev": "python -m http.server 8000",
-    "start": "python -m http.server 8000",
-    "serve": "npx serve -l 8000 ."
+    "dev": "vite --host 0.0.0.0 --port 8000 --strictPort",
+    "start": "vite --host 0.0.0.0 --port 8000 --strictPort"
   },
   "keywords": [
     "uav",
@@ -19,5 +18,8 @@
     "quintero"
   ],
   "author": "Benjamin Morales, Benjamin Polanco, Benjamin Aceituno, Aldo Morales",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "vite": "^8.3.5"
+  }
 }
