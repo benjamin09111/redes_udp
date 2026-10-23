@@ -1,7 +1,7 @@
 CREATE EXTENSION IF NOT EXISTS postgis;
 CREATE EXTENSION IF NOT EXISTS pgrouting;
 
-DROP TABLE IF EXISTS threat_event, meta_telecom_antenna, meta_census_block, meta_edge_terrain,
+DROP TABLE IF EXISTS threat_event, meta_telecom_antenna, meta_obstacle, meta_census_block, meta_edge_terrain,
                      meta_air_quality, urban_zone, infra_edge, infra_node, data_source CASCADE;
 
 -- CATÁLOGO DE FUENTES (trazabilidad ETL)
@@ -37,7 +37,7 @@ CREATE TABLE infra_edge (                    -- infraestructura/aristas.geojson
     source        integer NOT NULL REFERENCES infra_node (id),
     target        integer NOT NULL REFERENCES infra_node (id),
     length_m      double precision NOT NULL,
-    cost          double precision NOT NULL, -- fase 2: = length_m (pgr_dijkstra)
+    cost          double precision NOT NULL, -- ruta base: = length_m (pgr_dijkstra)
     reverse_cost  double precision NOT NULL, -- arista bidireccional
     geom          geometry(LineString, 4326) NOT NULL,
     CHECK (source <> target)
@@ -123,16 +123,31 @@ CREATE TABLE meta_telecom_antenna (          -- metadata/osm_antenas.geojson
 );
 CREATE INDEX meta_telecom_antenna_cov_idx ON meta_telecom_antenna USING gist (coverage_geom);
 
+CREATE TABLE meta_obstacle (                 -- metadata/osm_obstaculos.geojson
+    id                 serial PRIMARY KEY,
+    source_id          integer NOT NULL REFERENCES data_source (id),
+    osm_id             varchar NOT NULL UNIQUE,
+    name               varchar,
+    obstacle_type      varchar NOT NULL,      -- chimney, power_line, power_tower
+    height_m           real,
+    height_estimated   boolean NOT NULL DEFAULT false,
+    buffer_radius_m    real NOT NULL,
+    voltage_kv         real,
+    operational_action varchar NOT NULL,      -- bloquear, penalizar
+    geom               geometry(Geometry, 4326) NOT NULL
+);
+CREATE INDEX meta_obstacle_geom_idx ON meta_obstacle USING gist (geom);
+
 -- AMENAZAS
 -- Los cuatro json de amenazas comparten las mismas propiedades base, por lo que se cargan en una
 -- sola tabla. Los atributos propios de cada fuente quedan en `properties`.
--- Sin FK a nodos/aristas: la afectación se calcula espacialmente en la fase 3
+-- Sin FK a nodos/aristas: la afectación se evalúa dinámicamente mediante intersección espacial
 --   (ST_Intersects(infra_edge.geom, threat_event.geom) AND threat_event.exceeds).
 CREATE TABLE threat_event (                  -- amenazas/*.geojson
     id           bigserial PRIMARY KEY,
     source_id    integer NOT NULL REFERENCES data_source (id),
     external_id  varchar NOT NULL,
-    event_type   varchar NOT NULL CHECK (event_type IN ('incendio', 'sismo', 'viento', 'lluvia')),
+    event_type   varchar NOT NULL CHECK (event_type IN ('incendio', 'sismo', 'viento', 'lluvia', 'niebla', 'aeronave')),
     value        double precision,
     unit         varchar,
     threshold    double precision,

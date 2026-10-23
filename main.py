@@ -24,9 +24,9 @@ DESCARGA = [
     ("Metadata: manzanas censales (INE)", "metadata/ine_manzanas.py"),
     ("Metadata: antenas y cobertura (OSM)", "metadata/osm_antenas.py"),
     ("Amenaza: incendios (NASA FIRMS)", "amenazas/firms_incendios.py"),
-    ("Amenaza: sismos (EMSC / CSN)", "amenazas/csn_sismos.py"),
+    ("Amenaza: tráfico aéreo tripulado (OpenSky)", "amenazas/opensky_aeronaves.py"),
     ("Amenaza: viento (Open-Meteo)", "amenazas/openmeteo_viento.py"),
-    ("Amenaza: lluvia (MET Norway)", "amenazas/metno_lluvia.py"),
+    ("Amenaza: niebla costera (Open-Meteo)", "amenazas/openmeteo_niebla.py"),
 ]
 
 # 2) Carga: cada .geojson a su tabla (el orden respeta las llaves foráneas)
@@ -39,9 +39,9 @@ CARGA = [
     ("Manzanas (INE)", "metadata/cargar_ine_manzanas.py"),
     ("Antenas (OSM)", "metadata/cargar_osm_antenas.py"),
     ("Incendios", "amenazas/cargar_firms_incendios.py"),
-    ("Sismos", "amenazas/cargar_csn_sismos.py"),
+    ("Tráfico aéreo (OpenSky)", "amenazas/cargar_opensky_aeronaves.py"),
     ("Viento", "amenazas/cargar_openmeteo_viento.py"),
-    ("Lluvia", "amenazas/cargar_metno_lluvia.py"),
+    ("Niebla costera (Open-Meteo)", "amenazas/cargar_openmeteo_niebla.py"),
 ]
 
 # 3) Ruteo base con pgr_dijkstra -> sitio_web/data/ruta_dijkstra.geojson

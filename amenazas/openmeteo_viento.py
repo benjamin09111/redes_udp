@@ -23,7 +23,7 @@ URL = "https://api.open-meteo.com/v1/forecast"
 UA = "redes_udp-uav-sim/1.0 (+https://giteit.udp.cl)"
 AOI = (-71.56, -32.82, -71.38, -32.69)  # lon_min, lat_min, lon_max, lat_max
 GRID = 4
-GUST_THRESHOLD_MS = 14.0                 # .agents/rules/geo_and_apis.md: No-Go si ráfagas > 14 m/s
+GUST_THRESHOLD_MS = 12.0                 # Límite operacional DJI Matrice 350 RTK (12 m/s a 120 m AGL)
 VARS = "wind_speed_10m,wind_gusts_10m,wind_direction_10m,wind_speed_80m,wind_speed_120m,wind_direction_120m"
 OUT = Path(__file__).resolve().parent / "openmeteo_viento.geojson"
 

@@ -31,7 +31,7 @@ def leer(ruta):
 DATOS = {
     "infraestructura": ["nodos", "aristas", "zonas_urbanas"],
     "metadata": ["sinca_calidad_aire", "srtm_relieve", "ine_manzanas", "osm_antenas"],
-    "amenazas": ["firms_incendios", "csn_sismos", "openmeteo_viento", "metno_lluvia"],
+    "amenazas": ["firms_incendios", "opensky_aeronaves", "openmeteo_viento", "openmeteo_niebla"],
 }
 
 
@@ -43,7 +43,7 @@ def chequear_entregables():
     check("1 · extractor de infraestructura", (RAIZ / "infraestructura/extraer_infraestructura.py").exists())
     extractores = {
         "metadata": ["sinca_calidad_aire", "srtm_relieve", "ine_manzanas", "osm_antenas"],
-        "amenazas": ["firms_incendios", "csn_sismos", "openmeteo_viento", "metno_lluvia"],
+        "amenazas": ["firms_incendios", "opensky_aeronaves", "openmeteo_viento", "openmeteo_niebla"],
     }
     for carpeta, lista in extractores.items():
         check(f"2-3 · {carpeta}: {len(lista)} extractores (n = 4 integrantes)",
@@ -156,7 +156,7 @@ def chequear_bd(datos):
         "meta_census_block": len(datos["ine_manzanas"]["features"]),
         "meta_telecom_antenna": len(datos["osm_antenas"]["features"]),
         "threat_event": sum(len(datos[n]["features"]) for n in
-                            ["firms_incendios", "csn_sismos", "openmeteo_viento", "metno_lluvia"]),
+                            ["firms_incendios", "opensky_aeronaves", "openmeteo_viento", "openmeteo_niebla"]),
     }
     with conn, conn.cursor() as cur:
         for tabla, n in esperado.items():
