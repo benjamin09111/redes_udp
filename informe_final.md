@@ -532,7 +532,8 @@ Cada archivo incluye un encabezado \texttt{etl} con su procedencia, fecha y par�
 \small
 \caption{Estructura de atributos en los archivos GeoJSON de infraestructura.}
 \label{tab:json_infra}
-\begin{tabularx}{\linewidth}{lllXY}
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{p{3.4cm}p{2.8cm}p{2.0cm}p{3.2cm}p{5.5cm}}
 \toprule
 \textbf{Archivo} & \textbf{Campo} & \textbf{Tipo} & \textbf{Unidad / Formato} & \textbf{Ejemplo Real en Dataset} \\
 \midrule
@@ -547,7 +548,8 @@ Cada archivo incluye un encabezado \texttt{etl} con su procedencia, fecha y par�
 \texttt{zonas\_urbanas.geojson} & \texttt{code} & String & Identificador & \texttt{"urban\_quintero"} \\
  & \texttt{area\_km2} & Float & $\text{km}^2$ & \texttt{9.62} \\
 \bottomrule
-\end{tabularx}
+\end{tabular}%
+}
 \end{table}
 
 \begin{lstlisting}[language=SQL,caption={Extracto del bloque \texttt{etl} y un feature real de \texttt{infraestructura/nodos.geojson}.}]
@@ -600,17 +602,23 @@ Las cinco capas de metadatos operacionales se filtraron a la caja envolvente de 
 \small
 \caption{Fuentes de metadata integradas en el sistema.}
 \label{tab:metadata}
-\begin{tabularx}{\linewidth}{lllXY}
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{p{3.2cm}p{2.6cm}p{3.6cm}p{2.6cm}p{5.6cm}}
 \toprule
 \textbf{Script ETL} & \textbf{Archivo de Salida} & \textbf{Endpoint / Servicio Exacto} & \textbf{Ventana de Datos} & \textbf{Resumen del Procesamiento} \\
 \midrule
 \texttt{ine\_manzanas.py} & \texttt{metadata/ine\_...} & IDE SMA ArcGIS REST \cite{idesma} & Censo INE 2017 & Descarga $703$ manzanas censales, calculando densidad en $\text{hab/km}^2$. \\
-\texttt{osm\_obstaculos.py} & \texttt{metadata/osm\_...} & Overpass API (OSM) \cite{overpass} & Catálogo OSM en vivo & Extrae $12$ estructuras verticales (chimeneas $50\text{--}152\text{ m}$, tendidos de $110/220\text{ kV}$ y torres) con búfer ($60\text{--}120\text{ m}$). \\
-\texttt{srtm\_relieve.py} & \texttt{metadata/srtm\_...} & API OpenTopoData SRTM 30m \cite{opentopo} & Modelo SRTM v3 $30\text{ m}$ & Muestrea perfil altimétrico cada $100\text{ m}$ a lo largo de las $633$ aristas. \\
+\addlinespace
+\texttt{osm\_obstaculos.py} & \texttt{metadata/osm\_...} & Overpass API (OSM) \cite{overpass} & Catálogo OSM en vivo & Extrae $12$ estructuras verticales (chimeneas $50\text{--}152\text{ m}$, tendidos $110/220\text{ kV}$) con búfer ($60\text{--}120\text{ m}$). \\
+\addlinespace
+\texttt{srtm\_relieve.py} & \texttt{metadata/srtm\_...} & OpenTopoData SRTM 30m \cite{opentopo} & Modelo SRTM v3 $30\text{ m}$ & Muestrea perfil altimétrico cada $100\text{ m}$ a lo largo de las $633$ aristas. \\
+\addlinespace
 \texttt{osm\_antenas.py} & \texttt{metadata/osm\_...} & Overpass API \cite{overpass} & Catálogo OSM en vivo & Extrae $25$ torres celulares y genera área de cobertura circular de $3.000\text{ m}$. \\
-\texttt{sinca\_calidad\_aire.py} & \texttt{metadata/sinca\_...} & API REST JSON SINCA \cite{sinca} & Registros horarios 19-10-2026 & Extrae última concentración de $\text{SO}_2, \text{NO}_2, \text{CO}, \text{O}_3, \text{MP}_{10}, \text{MP}_{2{,}5}$. Asocia al nodo si dista $<500\text{ m}$. \\
+\addlinespace
+\texttt{sinca\_calidad\_aire.py} & \texttt{metadata/sinca\_...} & API REST JSON SINCA \cite{sinca} & Registros 19-10-2026 & Extrae última concentración de $\text{SO}_2, \text{NO}_2, \text{CO}, \text{O}_3, \text{MP}_{10}, \text{MP}_{2{,}5}$. Asocia a nodo si dista $<500\text{ m}$. \\
 \bottomrule
-\end{tabularx}
+\end{tabular}%
+}
 \end{table}
 
 \begin{table}[H]
@@ -618,17 +626,23 @@ Las cinco capas de metadatos operacionales se filtraron a la caja envolvente de 
 \small
 \caption{Marco conceptual y rol operacional de las cinco capas de metadata en el enrutamiento UAV.}
 \label{tab:metadata_roles}
-\begin{tabularx}{\linewidth}{lllX}
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{p{3.2cm}p{2.6cm}p{3.0cm}p{8.5cm}}
 \toprule
 \textbf{Metadata} & \textbf{Fuente Primaria} & \textbf{Dimensión Operacional} & \textbf{Rol en el Enrutamiento UAV} \\
 \midrule
 Población & INE (IDE SMA) & Riesgo en tierra & \textbf{Penalizar}: Incrementa el costo de aristas sobre zonas densamente pobladas según directrices SORA (GRC) y DAN 151. \\
+\addlinespace
 Obstáculos y tendido eléctrico & OSM (Overpass) & Riesgo en el aire & \textbf{Bloquear o penalizar}: Inhabilita aristas que intersectan chimeneas ($50\text{--}152\text{ m}$) y penaliza cruces de líneas de alta tensión ($110/220\text{ kV}$). \\
+\addlinespace
 Relieve orográfico & SRTM (OpenTopoData) & Terreno y energía & \textbf{Penalizar ascenso y verificar cota}: Verifica techo legal de $120\text{ m}$ AGL y penaliza consumo energético ($EEE$) por trepada gravitacional. \\
+\addlinespace
 Cobertura celular & OpenCelliD / OSM & Enlace de control C2 & \textbf{Penalizar zonas de sombra}: Penaliza corredores fuera de la cobertura 4G/LTE requerida para la telemetría continua de mando. \\
+\addlinespace
 Calidad del aire & SINCA (MMA) & Valor de la misión & \textbf{Priorizar destinos}: No modifica costos de aristas; asigna recompensa $\mathcal{R}(d)$ a estaciones críticas y provee referencia de suelo. \\
 \bottomrule
-\end{tabularx}
+\end{tabular}%
+}
 \end{table}
 
 \noindent \textbf{Justificación Técnica, Supuestos y Limitaciones Declaradas:}
@@ -654,7 +668,8 @@ La Tabla~\ref{tab:json_metadata} detalla la estructura y valores reales en los a
 \small
 \caption{Estructura y valores reales de los GeoJSON de metadata.}
 \label{tab:json_metadata}
-\begin{tabularx}{\linewidth}{lllXY}
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{p{3.2cm}p{3.0cm}p{1.8cm}p{3.5cm}p{5.5cm}}
 \toprule
 \textbf{Archivo} & \textbf{Campo} & \textbf{Tipo} & \textbf{Unidad} & \textbf{Ejemplo Real en Dataset} \\
 \midrule
@@ -677,7 +692,8 @@ La Tabla~\ref{tab:json_metadata} detalla la estructura y valores reales en los a
  & \texttt{pollutant} & String & Gas / Aerosol & \texttt{"MP25"}, \texttt{"SO2"} \\
  & \texttt{value} & Float & $\mu\text{g/m}^3\text{N}$ & \texttt{18.4} \\
 \bottomrule
-\end{tabularx}
+\end{tabular}%
+}
 \end{table}
 
 \subsection{Carga Transaccional}
@@ -706,16 +722,21 @@ Para modelar contingencias dinámicas que restringen el espacio aéreo, se desar
 \small
 \caption{Fuentes de amenazas y parámetros operacionales en la ejecución de referencia.}
 \label{tab:amenazas}
-\begin{tabularx}{\linewidth}{lllXYc}
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{p{3.2cm}p{2.4cm}p{3.4cm}p{3.2cm}p{4.4cm}c}
 \toprule
 \textbf{Script ETL} & \textbf{Archivo de Salida} & \textbf{Endpoint / Servicio} & \textbf{Filtro Espacial Real} & \textbf{Modelo y Umbral} & \textbf{Eventos (Activos)} \\
 \midrule
 \texttt{firms\_incendios.py} & \texttt{amenazas/firms\_...} & NASA FIRMS CSV \cite{firms} & Caja AOI con margen de $0{,}3^\circ$ ($\approx 30\text{ km}$) & Búfer $2.000\text{ m}$; activo si confianza nominal/alta \cite{schroeder} & $1$ ($1$) \\
+\addlinespace
 \texttt{opensky\_aeronaves.py} & \texttt{amenazas/opensky\_...} & OpenSky Network API \cite{opensky} & Envolvente Bahía Quintero/Puchuncaví & Cilindro $R = 1.500\text{ m}$; activo si altitud baro $\le 1.000\text{ m}$ MSL & $1$ ($1$) \\
+\addlinespace
 \texttt{openmeteo\_viento.py} & \texttt{amenazas/openmeteo\_...} & Open-Meteo API \cite{openmeteo} & Grilla $4 \times 4$ sobre la bahía & Celda activa si ráfaga $\ge 12{,}0\text{ m/s}$ a $120\text{ m}$ AGL & $16$ ($0$) \\
-\texttt{openmeteo\_niebla.py} & \texttt{amenazas/openmeteo\_...} & Open-Meteo API \cite{openmeteo} & Grilla $4 \times 4$ sobre la bahía & Celda activa si visibilidad $< 1.000\text{ m}$ o HR $\ge 95$\% & $16$ ($8$) \\
+\addlinespace
+\texttt{openmeteo\_niebla.py} & \texttt{amenazas/openmeteo\_...} & Open-Meteo API \cite{openmeteo} & Grilla $4 \times 4$ sobre la bahía & Celda activa si visibilidad $< 1.000\text{ m}$ o $\text{HR} \ge 95$\% & $16$ ($8$) \\
 \bottomrule
-\end{tabularx}
+\end{tabular}%
+}
 \end{table}
 
 \noindent \textbf{Justificación Operacional y Auditoría de Afectación:}
@@ -737,19 +758,27 @@ Los cuatro archivos de amenazas comparten un formato base homogéneo (ver Tabla~
 \small
 \caption{Estructura común de atributos en los archivos GeoJSON de amenazas.}
 \label{tab:json_amenazas}
-\begin{tabularx}{\linewidth}{lllXY}
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{p{2.8cm}p{2.2cm}p{2.6cm}p{5.5cm}p{3.8cm}}
 \toprule
 \textbf{Propiedad} & \textbf{Tipo} & \textbf{Unidad} & \textbf{Significado y Rol Operacional} & \textbf{Ejemplo Real} \\
 \midrule
 \texttt{geometry} & \texttt{Polygon} & Grados WGS84 & Zona de afectación (círculo $32$ vértices o celda) & Polígono discretizado \\
+\addlinespace
 \texttt{external\_id} & String & Texto & Identificador único en el catálogo de origen & \texttt{"opensky\_scer\_vfr\_01"} \\
+\addlinespace
 \texttt{event\_type} & String & Categoría & \texttt{incendio}, \texttt{aeronave}, \texttt{viento} o \texttt{niebla} & \texttt{"aeronave"} \\
+\addlinespace
 \texttt{value} & Float & Variable & Magnitud física medida & \texttt{350.0} ($\text{m}$) \\
+\addlinespace
 \texttt{threshold} & Float & Variable & Umbral crítico que define riesgo a la nave & \texttt{1000.0} ($\text{m}$) \\
+\addlinespace
 \texttt{exceeds} & Boolean & Booleano & \texttt{true} si supera el umbral (zona activa) & \texttt{true} \\
+\addlinespace
 \texttt{observed\_at} & String & ISO 8601 & Fecha y hora UTC del registro o pronóstico & \texttt{"2026-10-23T07:28:04Z"} \\
 \bottomrule
-\end{tabularx}
+\end{tabular}%
+}
 \end{table}
 
 \begin{lstlisting}[language=SQL,caption={Feature real de una aeronave tripulada en \texttt{amenazas/opensky\_aeronaves.geojson}.}]
@@ -986,17 +1015,23 @@ La Tabla~\ref{tab:pruebas} resume los grupos de pruebas verificados:
 \small
 \caption{Suite de pruebas automatizadas implementada en \texttt{tests/verificar.py}.}
 \label{tab:pruebas}
-\begin{tabularx}{\linewidth}{lcXY}
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{p{4.2cm}cp{5.5cm}p{5.5cm}}
 \toprule
 \textbf{Grupo de Pruebas} & \textbf{Cantidad} & \textbf{Aspecto Auditado} & \textbf{Criterio de Aceptación} \\
 \midrule
 Componentes del sistema & $12$ & Esquema DDL, diagramas, scripts ETL, cargadores relacionales y visor web & Integridad estructural y dependencias fijadas \\
+\addlinespace
 Especificación GeoJSON & $11$ & Estructura RFC 7946, geometría válida y orientación de anillos de polígonos & Exterior antihorario, huecos horarios y rango WGS84 \\
+\addlinespace
 Documentación en Markdown & $11$ & Correspondencia entre campos del GeoJSON y archivo \texttt{.md} homónimo & $100$\,\% de propiedades documentadas entre comillas invertidas \\
+\addlinespace
 Configuración y Docker & $5$ & Versiones fijadas en Dockerfile, docker-compose y requirements & Python 3.12, pgRouting 16-3.5-3.8.0 y \texttt{==} \\
+\addlinespace
 Base de datos y pgRouting & $18$ & Conexión, conteo de filas, validez geométrica PostGIS y conexidad del grafo & Filas esperadas, $\text{ST\_IsValid} = \text{true}$ y $1$ componente \\
 \bottomrule
-\end{tabularx}
+\end{tabular}%
+}
 \end{table}
 
 \noindent \textbf{Resultado de la Verificación:} Las $57$ pruebas automatizadas de estructura de datos, especificación GeoJSON y documentación se ejecutaron con éxito sin fallas ($57$ de $57$ correctas). Asimismo, en el entorno Docker con base de datos levantada, las pruebas relacionales confirmaron que la tabla \texttt{infra\_edge} conforma un grafo $100$\,\% conexo ($1$ componente) y que las longitudes precalculadas en \texttt{sitio\_web/data/ruta\_dijkstra.geojson} coinciden exactamente con la consulta de pgRouting ejecutada en vivo.
