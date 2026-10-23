@@ -1,0 +1,741 @@
+{
+ "type": "FeatureCollection",
+ "etl": {
+  "fuente": "Open-Meteo Forecast API (niebla y visibilidad en superficie)",
+  "url": "https://api.open-meteo.com/v1/forecast",
+  "generado": "2026-10-23T07:26:52+00:00",
+  "parametros": {
+   "aoi": [
+    -71.56,
+    -32.82,
+    -71.38,
+    -32.69
+   ],
+   "grilla": "4x4",
+   "umbral_visibilidad_m": 1000.0
+  },
+  "total": 16
+ },
+ "features": [
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -71.56,
+       -32.82
+      ],
+      [
+       -71.515,
+       -32.82
+      ],
+      [
+       -71.515,
+       -32.7875
+      ],
+      [
+       -71.56,
+       -32.7875
+      ],
+      [
+       -71.56,
+       -32.82
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "external_id": "niebla_r0c0_2026-10-23T07:15",
+    "event_type": "niebla",
+    "value": 1920.0,
+    "unit": "m (visibilidad)",
+    "threshold": 1000.0,
+    "exceeds": false,
+    "observed_at": "2026-10-23T07:15:00+00:00",
+    "lon": -71.5375,
+    "lat": -32.80375,
+    "cell": "r0c0",
+    "relative_humidity": 94,
+    "cloud_cover_low": 39,
+    "weather_code": 2
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -71.515,
+       -32.82
+      ],
+      [
+       -71.47,
+       -32.82
+      ],
+      [
+       -71.47,
+       -32.7875
+      ],
+      [
+       -71.515,
+       -32.7875
+      ],
+      [
+       -71.515,
+       -32.82
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "external_id": "niebla_r0c1_2026-10-23T07:15",
+    "event_type": "niebla",
+    "value": 1920.0,
+    "unit": "m (visibilidad)",
+    "threshold": 1000.0,
+    "exceeds": false,
+    "observed_at": "2026-10-23T07:15:00+00:00",
+    "lon": -71.4925,
+    "lat": -32.80375,
+    "cell": "r0c1",
+    "relative_humidity": 94,
+    "cloud_cover_low": 39,
+    "weather_code": 2
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -71.47,
+       -32.82
+      ],
+      [
+       -71.425,
+       -32.82
+      ],
+      [
+       -71.425,
+       -32.7875
+      ],
+      [
+       -71.47,
+       -32.7875
+      ],
+      [
+       -71.47,
+       -32.82
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "external_id": "niebla_r0c2_2026-10-23T07:15",
+    "event_type": "niebla",
+    "value": 1040.0,
+    "unit": "m (visibilidad)",
+    "threshold": 1000.0,
+    "exceeds": true,
+    "observed_at": "2026-10-23T07:15:00+00:00",
+    "lon": -71.4475,
+    "lat": -32.80375,
+    "cell": "r0c2",
+    "relative_humidity": 100,
+    "cloud_cover_low": 98,
+    "weather_code": 3
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -71.425,
+       -32.82
+      ],
+      [
+       -71.38,
+       -32.82
+      ],
+      [
+       -71.38,
+       -32.7875
+      ],
+      [
+       -71.425,
+       -32.7875
+      ],
+      [
+       -71.425,
+       -32.82
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "external_id": "niebla_r0c3_2026-10-23T07:15",
+    "event_type": "niebla",
+    "value": 1040.0,
+    "unit": "m (visibilidad)",
+    "threshold": 1000.0,
+    "exceeds": true,
+    "observed_at": "2026-10-23T07:15:00+00:00",
+    "lon": -71.4025,
+    "lat": -32.80375,
+    "cell": "r0c3",
+    "relative_humidity": 100,
+    "cloud_cover_low": 98,
+    "weather_code": 3
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -71.56,
+       -32.7875
+      ],
+      [
+       -71.515,
+       -32.7875
+      ],
+      [
+       -71.515,
+       -32.755
+      ],
+      [
+       -71.56,
+       -32.755
+      ],
+      [
+       -71.56,
+       -32.7875
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "external_id": "niebla_r1c0_2026-10-23T07:15",
+    "event_type": "niebla",
+    "value": 1920.0,
+    "unit": "m (visibilidad)",
+    "threshold": 1000.0,
+    "exceeds": false,
+    "observed_at": "2026-10-23T07:15:00+00:00",
+    "lon": -71.5375,
+    "lat": -32.77125,
+    "cell": "r1c0",
+    "relative_humidity": 94,
+    "cloud_cover_low": 39,
+    "weather_code": 2
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -71.515,
+       -32.7875
+      ],
+      [
+       -71.47,
+       -32.7875
+      ],
+      [
+       -71.47,
+       -32.755
+      ],
+      [
+       -71.515,
+       -32.755
+      ],
+      [
+       -71.515,
+       -32.7875
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "external_id": "niebla_r1c1_2026-10-23T07:15",
+    "event_type": "niebla",
+    "value": 1920.0,
+    "unit": "m (visibilidad)",
+    "threshold": 1000.0,
+    "exceeds": false,
+    "observed_at": "2026-10-23T07:15:00+00:00",
+    "lon": -71.4925,
+    "lat": -32.77125,
+    "cell": "r1c1",
+    "relative_humidity": 94,
+    "cloud_cover_low": 39,
+    "weather_code": 2
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -71.47,
+       -32.7875
+      ],
+      [
+       -71.425,
+       -32.7875
+      ],
+      [
+       -71.425,
+       -32.755
+      ],
+      [
+       -71.47,
+       -32.755
+      ],
+      [
+       -71.47,
+       -32.7875
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "external_id": "niebla_r1c2_2026-10-23T07:15",
+    "event_type": "niebla",
+    "value": 1920.0,
+    "unit": "m (visibilidad)",
+    "threshold": 1000.0,
+    "exceeds": false,
+    "observed_at": "2026-10-23T07:15:00+00:00",
+    "lon": -71.4475,
+    "lat": -32.77125,
+    "cell": "r1c2",
+    "relative_humidity": 94,
+    "cloud_cover_low": 39,
+    "weather_code": 2
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -71.425,
+       -32.7875
+      ],
+      [
+       -71.38,
+       -32.7875
+      ],
+      [
+       -71.38,
+       -32.755
+      ],
+      [
+       -71.425,
+       -32.755
+      ],
+      [
+       -71.425,
+       -32.7875
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "external_id": "niebla_r1c3_2026-10-23T07:15",
+    "event_type": "niebla",
+    "value": 1040.0,
+    "unit": "m (visibilidad)",
+    "threshold": 1000.0,
+    "exceeds": true,
+    "observed_at": "2026-10-23T07:15:00+00:00",
+    "lon": -71.4025,
+    "lat": -32.77125,
+    "cell": "r1c3",
+    "relative_humidity": 100,
+    "cloud_cover_low": 98,
+    "weather_code": 3
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -71.56,
+       -32.755
+      ],
+      [
+       -71.515,
+       -32.755
+      ],
+      [
+       -71.515,
+       -32.7225
+      ],
+      [
+       -71.56,
+       -32.7225
+      ],
+      [
+       -71.56,
+       -32.755
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "external_id": "niebla_r2c0_2026-10-23T07:15",
+    "event_type": "niebla",
+    "value": 1920.0,
+    "unit": "m (visibilidad)",
+    "threshold": 1000.0,
+    "exceeds": false,
+    "observed_at": "2026-10-23T07:15:00+00:00",
+    "lon": -71.5375,
+    "lat": -32.73875,
+    "cell": "r2c0",
+    "relative_humidity": 94,
+    "cloud_cover_low": 39,
+    "weather_code": 2
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -71.515,
+       -32.755
+      ],
+      [
+       -71.47,
+       -32.755
+      ],
+      [
+       -71.47,
+       -32.7225
+      ],
+      [
+       -71.515,
+       -32.7225
+      ],
+      [
+       -71.515,
+       -32.755
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "external_id": "niebla_r2c1_2026-10-23T07:15",
+    "event_type": "niebla",
+    "value": 1920.0,
+    "unit": "m (visibilidad)",
+    "threshold": 1000.0,
+    "exceeds": false,
+    "observed_at": "2026-10-23T07:15:00+00:00",
+    "lon": -71.4925,
+    "lat": -32.73875,
+    "cell": "r2c1",
+    "relative_humidity": 94,
+    "cloud_cover_low": 39,
+    "weather_code": 2
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -71.47,
+       -32.755
+      ],
+      [
+       -71.425,
+       -32.755
+      ],
+      [
+       -71.425,
+       -32.7225
+      ],
+      [
+       -71.47,
+       -32.7225
+      ],
+      [
+       -71.47,
+       -32.755
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "external_id": "niebla_r2c2_2026-10-23T07:15",
+    "event_type": "niebla",
+    "value": 840.0,
+    "unit": "m (visibilidad)",
+    "threshold": 1000.0,
+    "exceeds": true,
+    "observed_at": "2026-10-23T07:15:00+00:00",
+    "lon": -71.4475,
+    "lat": -32.73875,
+    "cell": "r2c2",
+    "relative_humidity": 97,
+    "cloud_cover_low": 81,
+    "weather_code": 3
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -71.425,
+       -32.755
+      ],
+      [
+       -71.38,
+       -32.755
+      ],
+      [
+       -71.38,
+       -32.7225
+      ],
+      [
+       -71.425,
+       -32.7225
+      ],
+      [
+       -71.425,
+       -32.755
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "external_id": "niebla_r2c3_2026-10-23T07:15",
+    "event_type": "niebla",
+    "value": 840.0,
+    "unit": "m (visibilidad)",
+    "threshold": 1000.0,
+    "exceeds": true,
+    "observed_at": "2026-10-23T07:15:00+00:00",
+    "lon": -71.4025,
+    "lat": -32.73875,
+    "cell": "r2c3",
+    "relative_humidity": 97,
+    "cloud_cover_low": 81,
+    "weather_code": 3
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -71.56,
+       -32.7225
+      ],
+      [
+       -71.515,
+       -32.7225
+      ],
+      [
+       -71.515,
+       -32.69
+      ],
+      [
+       -71.56,
+       -32.69
+      ],
+      [
+       -71.56,
+       -32.7225
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "external_id": "niebla_r3c0_2026-10-23T07:15",
+    "event_type": "niebla",
+    "value": 1920.0,
+    "unit": "m (visibilidad)",
+    "threshold": 1000.0,
+    "exceeds": false,
+    "observed_at": "2026-10-23T07:15:00+00:00",
+    "lon": -71.5375,
+    "lat": -32.70625,
+    "cell": "r3c0",
+    "relative_humidity": 94,
+    "cloud_cover_low": 39,
+    "weather_code": 2
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -71.515,
+       -32.7225
+      ],
+      [
+       -71.47,
+       -32.7225
+      ],
+      [
+       -71.47,
+       -32.69
+      ],
+      [
+       -71.515,
+       -32.69
+      ],
+      [
+       -71.515,
+       -32.7225
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "external_id": "niebla_r3c1_2026-10-23T07:15",
+    "event_type": "niebla",
+    "value": 840.0,
+    "unit": "m (visibilidad)",
+    "threshold": 1000.0,
+    "exceeds": true,
+    "observed_at": "2026-10-23T07:15:00+00:00",
+    "lon": -71.4925,
+    "lat": -32.70625,
+    "cell": "r3c1",
+    "relative_humidity": 97,
+    "cloud_cover_low": 81,
+    "weather_code": 3
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -71.47,
+       -32.7225
+      ],
+      [
+       -71.425,
+       -32.7225
+      ],
+      [
+       -71.425,
+       -32.69
+      ],
+      [
+       -71.47,
+       -32.69
+      ],
+      [
+       -71.47,
+       -32.7225
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "external_id": "niebla_r3c2_2026-10-23T07:15",
+    "event_type": "niebla",
+    "value": 840.0,
+    "unit": "m (visibilidad)",
+    "threshold": 1000.0,
+    "exceeds": true,
+    "observed_at": "2026-10-23T07:15:00+00:00",
+    "lon": -71.4475,
+    "lat": -32.70625,
+    "cell": "r3c2",
+    "relative_humidity": 97,
+    "cloud_cover_low": 81,
+    "weather_code": 3
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -71.425,
+       -32.7225
+      ],
+      [
+       -71.38,
+       -32.7225
+      ],
+      [
+       -71.38,
+       -32.69
+      ],
+      [
+       -71.425,
+       -32.69
+      ],
+      [
+       -71.425,
+       -32.7225
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "external_id": "niebla_r3c3_2026-10-23T07:15",
+    "event_type": "niebla",
+    "value": 840.0,
+    "unit": "m (visibilidad)",
+    "threshold": 1000.0,
+    "exceeds": true,
+    "observed_at": "2026-10-23T07:15:00+00:00",
+    "lon": -71.4025,
+    "lat": -32.70625,
+    "cell": "r3c3",
+    "relative_humidity": 97,
+    "cloud_cover_low": 81,
+    "weather_code": 3
+   }
+  }
+ ]
+}

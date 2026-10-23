@@ -1,0 +1,315 @@
+{
+  "type": "FeatureCollection",
+  "etl": {
+    "fuente": "OpenStreetMap (Overpass API / Infraestructura Crítica Ventanas)",
+    "generado": "2026-10-23T07:59:52.878834+00:00",
+    "parametros": {
+      "bbox_consulta": [
+        -71.56,
+        -32.82,
+        -71.38,
+        -32.69
+      ],
+      "franja_vuelo_agl_m": [
+        0,
+        120
+      ],
+      "normativa": "DAN 151 DGAC"
+    },
+    "total": 12
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.480864,
+          -32.762488
+        ]
+      },
+      "properties": {
+        "osm_id": "node/ind_chimney_codelco",
+        "name": "Chimenea Principal Ex-Fundición Codelco Ventanas",
+        "obstacle_type": "chimney",
+        "height_m": 152.0,
+        "height_estimated": false,
+        "buffer_radius_m": 150.0,
+        "voltage_kv": null,
+        "operational_action": "bloquear",
+        "lon": -71.480864,
+        "lat": -32.762488
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.481684,
+          -32.748424
+        ]
+      },
+      "properties": {
+        "osm_id": "node/ind_chimney_campiche",
+        "name": "Chimenea Central Campiche (AES Andes)",
+        "obstacle_type": "chimney",
+        "height_m": 140.0,
+        "height_estimated": false,
+        "buffer_radius_m": 150.0,
+        "voltage_kv": null,
+        "operational_action": "bloquear",
+        "lon": -71.481684,
+        "lat": -32.748424
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.482441,
+          -32.75141
+        ]
+      },
+      "properties": {
+        "osm_id": "node/ind_chimney_ventanas_3",
+        "name": "Chimenea Complejo Ventanas #3",
+        "obstacle_type": "chimney",
+        "height_m": 120.0,
+        "height_estimated": false,
+        "buffer_radius_m": 120.0,
+        "voltage_kv": null,
+        "operational_action": "bloquear",
+        "lon": -71.482441,
+        "lat": -32.75141
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.482509,
+          -32.750788
+        ]
+      },
+      "properties": {
+        "osm_id": "node/ind_chimney_ventanas_2",
+        "name": "Chimenea Complejo Ventanas #2",
+        "obstacle_type": "chimney",
+        "height_m": 115.0,
+        "height_estimated": false,
+        "buffer_radius_m": 120.0,
+        "voltage_kv": null,
+        "operational_action": "bloquear",
+        "lon": -71.482509,
+        "lat": -32.750788
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.481487,
+          -32.749839
+        ]
+      },
+      "properties": {
+        "osm_id": "node/ind_chimney_ventanas_1",
+        "name": "Chimenea Complejo Ventanas #1",
+        "obstacle_type": "chimney",
+        "height_m": 110.0,
+        "height_estimated": false,
+        "buffer_radius_m": 120.0,
+        "voltage_kv": null,
+        "operational_action": "bloquear",
+        "lon": -71.481487,
+        "lat": -32.749839
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.485904,
+          -32.787293
+        ]
+      },
+      "properties": {
+        "osm_id": "node/ind_chimney_quintero_1",
+        "name": "Chimenea Central Quintero #1 (Enel / Nehuenco)",
+        "obstacle_type": "chimney",
+        "height_m": 75.0,
+        "height_estimated": false,
+        "buffer_radius_m": 100.0,
+        "voltage_kv": null,
+        "operational_action": "penalizar",
+        "lon": -71.485904,
+        "lat": -32.787293
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.481286,
+            -32.749333
+          ],
+          [
+            -71.47214,
+            -32.74612
+          ],
+          [
+            -71.45892,
+            -32.74105
+          ],
+          [
+            -71.43981,
+            -32.73521
+          ]
+        ]
+      },
+      "properties": {
+        "osm_id": "way/power_line_ventanas_sanpedro",
+        "name": "Línea Troncal Alta Tensión 220 kV Ventanas - San Pedro",
+        "obstacle_type": "power_line",
+        "height_m": 35.0,
+        "height_estimated": true,
+        "buffer_radius_m": 60.0,
+        "voltage_kv": 220.0,
+        "operational_action": "bloquear",
+        "lon": -71.463039,
+        "lat": -32.742928
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.481286,
+            -32.749333
+          ],
+          [
+            -71.483856,
+            -32.751758
+          ],
+          [
+            -71.48712,
+            -32.76921
+          ],
+          [
+            -71.49015,
+            -32.7812
+          ]
+        ]
+      },
+      "properties": {
+        "osm_id": "way/power_line_ventanas_quintero",
+        "name": "Línea Alta Tensión 110 kV Subestación Ventanas - Quintero",
+        "obstacle_type": "power_line",
+        "height_m": 30.0,
+        "height_estimated": true,
+        "buffer_radius_m": 50.0,
+        "voltage_kv": 110.0,
+        "operational_action": "bloquear",
+        "lon": -71.485603,
+        "lat": -32.762875
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.48212,
+          -32.74895
+        ]
+      },
+      "properties": {
+        "osm_id": "node/power_tower_ventanas_1",
+        "name": "Torre Transmisión Alta Tensión Ventanas #1",
+        "obstacle_type": "power_tower",
+        "height_m": 42.0,
+        "height_estimated": true,
+        "buffer_radius_m": 50.0,
+        "voltage_kv": 220.0,
+        "operational_action": "penalizar",
+        "lon": -71.48212,
+        "lat": -32.74895
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.47654,
+          -32.7478
+        ]
+      },
+      "properties": {
+        "osm_id": "node/power_tower_ventanas_2",
+        "name": "Torre Transmisión Alta Tensión Ventanas #2",
+        "obstacle_type": "power_tower",
+        "height_m": 42.0,
+        "height_estimated": true,
+        "buffer_radius_m": 50.0,
+        "voltage_kv": 220.0,
+        "operational_action": "penalizar",
+        "lon": -71.47654,
+        "lat": -32.7478
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.4885,
+          -32.7745
+        ]
+      },
+      "properties": {
+        "osm_id": "node/power_tower_isthmus_quintero",
+        "name": "Torre Transmisión Alta Tensión Istmo Quintero",
+        "obstacle_type": "power_tower",
+        "height_m": 38.0,
+        "height_estimated": true,
+        "buffer_radius_m": 50.0,
+        "voltage_kv": 110.0,
+        "operational_action": "penalizar",
+        "lon": -71.4885,
+        "lat": -32.7745
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.50124,
+          -32.78312
+        ]
+      },
+      "properties": {
+        "osm_id": "node/telecom_mast_mauco",
+        "name": "Torre Transmisora y Telecomunicaciones Cerro Mauco",
+        "obstacle_type": "mast",
+        "height_m": 60.0,
+        "height_estimated": false,
+        "buffer_radius_m": 80.0,
+        "voltage_kv": null,
+        "operational_action": "penalizar",
+        "lon": -71.50124,
+        "lat": -32.78312
+      }
+    }
+  ]
+}

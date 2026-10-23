@@ -1,0 +1,34 @@
+Algoritmos de Ruteo y Redes Resilientes
+1. Introducción
+Las estaciones SINCA de Quintero y Puchuncaví miden la contaminación a nivel de
+suelo [1], mientras que las plumas de la zona industrial se dispersan en altura. Un UAV
+permite muestrear dentro de la pluma [2], pero su vuelo cruza amenazas como incendios,
+zonas pobladas, zonas sin cobertura de telemetría, viento y lluvia. Si la única ruta planificada
+queda comprometida, la misión se pierde.
+En esta fase se construyó un proceso ETL en Docker que obtiene la infraestructura de
+la red (237 nodos y 633 aristas), 4 fuentes de metadata y 4 fuentes de amenazas, las guarda
+en GeoJSON y las carga en una base de datos PostgreSQL con PostGIS y pgRouting. Sobre
+esa base se generan, antes del despegue, dos rutas (k= 2) desde el Aeródromo de Quintero
+hasta las 8 estaciones SINCA de la red, con el método de penalización iterativa de Akgün et
+al. [3]. Se comparan dos funciones de costo: la longitudL(e), calculada conpgr_dijkstra, y
+un costo ponderado por la exposición a amenazas,W(e). Cada par se evalúa con una métrica
+de resiliencia conjuntaR, y los resultados se muestran en un sitio web con Leaflet.
+Con un foco de incendio conocido sobre el corredor más corto,Rsube de 1,2–1,5 % con
+L(e)a 88,6–96,2 % conW(e), con un desvío de 2,03 a 2,17km. En una simulación de Monte
+Carlo con focos aleatorios, la ventaja aparece solo cuando el planificador conoce la amenaza.
+Todo el proyecto se encuentra disponible en el repositorio de GitLab:https://giteit.
+udp.cl/CIT3435/2026-2/trabajo-grupal/grupo09.
+2. Estado del arte
+Caminos mínimos: el algoritmo de Dijkstra [4] encuentra el camino de costo mínimo y
+es la base depgr_dijkstra. El algoritmo de Yen [5] entrega loskcaminos simples más
+cortos (pgr_KSP), que suelen compartir casi todas las aristas.
+Caminos disjuntos y disímiles: Suurballe [6] encuentra dos caminos disjuntos en aristas
+de costo total mínimo, y Bhandari [7] extiende estos métodos a redes sobrevivientes.
+Akgün, Erkut y Batta [3] comparan métodos para generar caminos disímiles, entre ellos
+la penalización iterativa, que es el que usa este trabajo.
+UAV para muestreo de contaminación: Kosior et al. [2] planifican trayectorias en dos
+niveles; este trabajo corresponde al nivel global.
+Riesgo y fiabilidad de UAV: SORA [8] clasifica el riesgo según la población sobrevolada,
+y Petritoli et al. [9] analizan tasas de falla de UAV por hora de vuelo. Para detectar
+incendios se usa el producto VIIRS de 375m [10].
+3

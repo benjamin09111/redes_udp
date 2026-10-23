@@ -19,7 +19,7 @@
         <span class="status-badge"><span class="dot-live"></span> Red Conexa &middot; 237 Nodos &middot; 633 Aristas</span>
       </div>
     </div>
-    <p>Evaluación enrutamiento Dijkstra (fase 2)</p>
+    <p>Simulador y Auditoría de Ruteo Resiliente UAV · Bahía de Quintero y Puchuncaví</p>
     
     <!-- Barra de Navegación Formal -->
     <nav class="app-navbar" aria-label="Navegación de módulos">
@@ -107,22 +107,27 @@
             <label class="check-item">
               <input type="checkbox" id="check-layer-aire">
               <span>Calidad del aire (SINCA)</span>
-              <span class="help-btn" tabindex="0" role="tooltip" data-tooltip="Estaciones ambientales del Ministerio del Medio Ambiente (MMA). Muestra sensores de monitoreo de MP2.5, MP10, SO₂ y NO₂ con su concentración en tiempo real para priorizar misiones hacia zonas de alta contaminación.">?</span>
+              <span class="help-btn" tabindex="0" role="tooltip" data-tooltip="Estaciones ambientales del Ministerio del Medio Ambiente (MMA). Valor de la misión: define la prioridad de muestreo R(d) según concentración horaria de contaminantes (SO₂, MP₂.₅, MP₁₀) sin penalizar aristas.">?</span>
             </label>
             <label class="check-item">
               <input type="checkbox" id="check-layer-relieve">
               <span>Relieve por arista (SRTM)</span>
-              <span class="help-btn" tabindex="0" role="tooltip" data-tooltip="Modelo de elevación digital NASA SRTM (resolución 30 m). Colorea los corredores aéreos: azul para pendientes suaves (&lt;15%) y rojo para pendientes abruptas (&gt;15%) que demandan mayor empuje y batería al dron.">?</span>
+              <span class="help-btn" tabindex="0" role="tooltip" data-tooltip="Modelo digital de elevación NASA SRTM (resolución 30 m). Verifica el límite legal de 120 m AGL sobre el terreno (DAN 151) y calcula el consumo energético estimado (EEE) por ascenso gravitacional.">?</span>
             </label>
             <label class="check-item">
               <input type="checkbox" id="check-layer-manzanas">
               <span>Manzanas pobladas (INE)</span>
-              <span class="help-btn" tabindex="0" role="tooltip" data-tooltip="Censo Nacional INE 2017 a nivel de bloque habitacional. Muestra polígonos de densidad: verde para baja densidad y naranja/rojo para zonas densas (&gt;2500 hab/km²), donde la norma DAN 151 exige mayor precaución para proteger a terceros en tierra.">?</span>
+              <span class="help-btn" tabindex="0" role="tooltip" data-tooltip="Censo Nacional INE 2017 a nivel de bloque habitacional. Base del riesgo en tierra según metodología SORA: penaliza en el costo de aristas el sobrevuelo de áreas residenciales con densidad >2500 hab/km².">?</span>
             </label>
             <label class="check-item">
               <input type="checkbox" id="check-layer-antenas">
               <span>Antenas de telecom (OSM)</span>
-              <span class="help-btn" tabindex="0" role="tooltip" data-tooltip="Torres y radiobases celulares de OpenStreetMap. Muestra el radio de alcance estimado (2 km) de la señal de mando y telemetría C2. Volar fuera de estos círculos implica riesgo de pérdida de enlace con el dron.">?</span>
+              <span class="help-btn" tabindex="0" role="tooltip" data-tooltip="Torres y radiobases de telefonía móvil de OpenStreetMap. Supuesto operacional: telemetría y mando C2 por 4G/LTE (banda 7/28) a 120 m de altura con celda macro de 3 km. Volar fuera incrementa el riesgo de pérdida de enlace.">?</span>
+            </label>
+            <label class="check-item">
+              <input type="checkbox" id="check-layer-obstaculos">
+              <span>Obstáculos y tendido eléctrico (OSM)</span>
+              <span class="help-btn" tabindex="0" role="tooltip" data-tooltip="Chimeneas industriales (50 a 152 m) y líneas de alta tensión (110/220 kV) de OpenStreetMap en el cordón Ventanas-Quintero. Riesgo físico de impacto e interferencia electromagnética severa con la brújula en la franja de 0 a 120 m AGL.">?</span>
             </label>
             <label class="check-item">
               <input type="checkbox" id="check-layer-traza">
@@ -156,8 +161,8 @@
             </label>
             <label class="check-item">
               <input type="checkbox" id="check-layer-sismos">
-              <span>Eventos sísmicos (CSN / EMSC)</span>
-              <span class="help-btn" tabindex="0" role="tooltip" data-tooltip="Eventos sísmicos registrados por el Centro Sismológico Nacional y EMSC. Muestra el epicentro y ondas de atenuación según magnitud y radio de aceleración para activar protocolos de contingencia post-terremoto.">?</span>
+              <span>Tráfico aéreo tripulado (OpenSky ADS-B)</span>
+              <span class="help-btn" tabindex="0" role="tooltip" data-tooltip="Vigilancia en tiempo real de aeronaves tripuladas con transpondedor ADS-B en aproximación al Aeródromo de Quintero (SCER). Genera cilindros de exclusión de 1.500 m para aeronaves bajo 1.000 m MSL según normativa DAN 151.">?</span>
             </label>
             <label class="check-item">
               <input type="checkbox" id="check-layer-viento">
@@ -166,8 +171,8 @@
             </label>
             <label class="check-item">
               <input type="checkbox" id="check-layer-lluvia">
-              <span>Precipitación / Lluvia (MET Norway)</span>
-              <span class="help-btn" tabindex="0" role="tooltip" data-tooltip="Tasa horaria de lluvia en mm/h suministrada por MET Norway en celdas 4×4. El color azul claro representa lluvia tolerable y el azul oscuro lluvias intensas (&gt;2 mm/h) que superan la protección IPx4 del dron.">?</span>
+              <span>Niebla costera y visibilidad (Open-Meteo)</span>
+              <span class="help-btn" tabindex="0" role="tooltip" data-tooltip="Monitoreo horario de visibilidad horizontal y humedad en grilla 4×4. Detecta bancos de niebla y camanchaca costera (&lt;1.000 m de visibilidad o HR&ge;95%), condición que inhabilita el vuelo VLOS/BVLOS seguro bajo normativa DAN 151.">?</span>
             </label>
           </div>
         </div>
@@ -229,9 +234,13 @@
               <span class="metrica-card-lbl">Modelo de UAV</span>
               <strong class="metrica-card-val text-muted" id="ventana-dron-modelo">DJI Matrice 350 RTK</strong>
             </div>
+            <div class="ventana-metrica-card">
+              <span class="metrica-card-lbl">Altitud de Crucero</span>
+              <strong class="metrica-card-val text-primary" id="ventana-dron-altitud">~100 m AGL (fija)</strong>
+            </div>
           </div>
 
-          <!-- Evaluación de Operabilidad y Batería -->
+          <!-- Evaluación de Operabilidad, Batería y Legalidad DAN 151 -->
           <div class="ventana-evaluacion-box">
             <div class="ventana-eval-fila">
               <span class="eval-fila-lbl">Autonomía de batería:</span>
@@ -240,6 +249,21 @@
             <div class="ventana-eval-fila">
               <span class="eval-fila-lbl">Alcance operacional:</span>
               <span class="eval-fila-val" id="res-alcance">—</span>
+            </div>
+            <div class="ventana-eval-fila" id="fila-regimen-legal">
+              <span class="eval-fila-lbl">Régimen Legal (DAN 151):</span>
+              <span class="eval-fila-val" id="res-regimen-legal">—</span>
+            </div>
+          </div>
+
+          <!-- Banner Alerta Legal BVLOS (Normativa DGAC Chile) -->
+          <div id="alerta-bvlos-banner" class="alerta-bvlos-banner" style="display: none;">
+            <div class="alerta-bvlos-icon">
+              <svg class="ui-icon ui-icon-sm" viewBox="0 0 24 24" style="color:#dc2626;"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+            </div>
+            <div class="alerta-bvlos-texto">
+              <strong style="color:#b91c1c; display:block; margin-bottom:2px;">Vuelo BVLOS — Más Allá de la Línea de Vista (Norma DAN 151 DGAC)</strong>
+              <span id="alerta-bvlos-desc" style="color:#7f1d1d;">Esta ruta supera el límite legal visual de 500 m. En Chile, <strong>requiere Autorización Especial de la DGAC</strong> con análisis de riesgo SORA aprobado y enlace C2 redundante.</span>
             </div>
           </div>
 
@@ -324,17 +348,24 @@
         <div class="footer-stat footer-drone-picker">
           <svg class="ui-icon ui-icon-xs" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><circle cx="12" cy="4" r="2"/><circle cx="12" cy="20" r="2"/><circle cx="4" cy="12" r="2"/><circle cx="20" cy="12" r="2"/><path d="M12 6v3M12 15v3M6 12h3M15 12h3"/></svg>
           <span class="stat-lbl">UAV:</span>
-          <select id="select-drone-model" class="footer-drone-select" title="Seleccionar modelo de UAV homologado en Chile para verificar autonomía y alcance">
-            <option value="m350" selected>DJI Matrice 350 RTK (32 km)</option>
-            <option value="m30t">DJI Matrice 30T (25 km)</option>
-            <option value="mavic3e">DJI Mavic 3 Enterprise (18 km)</option>
-            <option value="trinity_vtol">Trinity F90+ VTOL (50 km)</option>
+          <select id="select-drone-model" class="footer-drone-select" disabled title="Aeronave estándar única: DJI Matrice 350 RTK (modelo fijado para la misión)">
+            <option value="m350" selected>DJI Matrice 350 RTK</option>
           </select>
+        </div>
+        <span class="footer-sep">|</span>
+        <div class="footer-stat">
+          <span class="stat-lbl">Altitud:</span>
+          <strong class="stat-val text-primary" id="mapa-footer-altitud" title="Altitud de vuelo fija sobre el terreno (~100m AGL, límite 120m DAN 151)">~100 m AGL</strong>
         </div>
         <span class="footer-sep">|</span>
         <div class="footer-stat">
           <span class="stat-lbl">Distancia:</span>
           <strong class="stat-val" id="mapa-footer-km">—</strong>
+        </div>
+        <span class="footer-sep">|</span>
+        <div class="footer-stat" id="footer-stat-legal-box">
+          <span class="stat-lbl">Norma DGAC:</span>
+          <strong class="stat-val" id="mapa-footer-legal">—</strong>
         </div>
         <span class="footer-sep">|</span>
         <div class="footer-stat" id="footer-stat-alcance-box">
@@ -522,7 +553,7 @@
           <p>
             Para construir una malla de navegación aérea segura y evitar un grafo completo inviable computacionalmente, se implementó el algoritmo <strong>K-Nearest Neighbors espacial</strong>:
           </p>
-          <div class="pauta-code-box">-- Distancia Esférica Haversine entre vértices u y v
+          <div class="math-code-box">-- Distancia Esférica Haversine entre vértices u y v
 d(u, v) = 2 · R · arcsin( √( sin²(Δφ/2) + cos(φ₁)·cos(φ₂)·sin²(Δλ/2) ) )
 R = 6.371.000 m &bull; φ = latitud (rad) &bull; λ = longitud (rad)</div>
           <ul class="grafo-details-list">
@@ -573,7 +604,7 @@ R = 6.371.000 m &bull; φ = latitud (rad) &bull; λ = longitud (rad)</div>
     </div>
   </div>
 
-  <!-- VISTA 2: MÓDULO DE INFRAESTRUCTURA (ÍTEM 1 RÚBRICA ENTREGA 2) -->
+  <!-- VISTA 2: MÓDULO DE INFRAESTRUCTURA -->
   <div id="vista-infraestructura" class="tab-view" hidden>
     <div class="infra-module">
       
@@ -581,7 +612,7 @@ R = 6.371.000 m &bull; φ = latitud (rad) &bull; λ = longitud (rad)</div>
       <section class="infra-hero-card">
         <div class="hero-top">
           <div class="hero-text">
-            <div class="hero-pill">Ítem 1 Rúbrica Entrega 2 &bull; Automatización ETL</div>
+            <div class="hero-pill">Topología de Red &bull; Pipeline ETL Geoespacial</div>
             <h2>1. Extracción y Transformación de Infraestructura</h2>
             <p>
               Pipeline automatizado que procesa los <strong>vértices espaciales 3D</strong> (nodos), compila los 
@@ -856,7 +887,7 @@ R = 6.371.000 m &bull; φ = latitud (rad) &bull; λ = longitud (rad)</div>
     </div>
   </div>
 
-  <!-- VISTA 3: MÓDULO DE METADATA (CRITERIO 2 Y 3.1 RÚBRICA ENTREGA 2) -->
+  <!-- VISTA 3: MÓDULO DE METADATA TERRITORIAL Y OPERACIONAL -->
   <div id="vista-metadata" class="tab-view" hidden>
     <div class="infra-module">
       
@@ -864,18 +895,18 @@ R = 6.371.000 m &bull; φ = latitud (rad) &bull; λ = longitud (rad)</div>
       <section class="infra-hero-card">
         <div class="hero-top">
           <div class="hero-text">
-            <div class="hero-pill">Criterio 2 y 3.1 Rúbrica &bull; Extracción y Transformación de Metadata</div>
+            <div class="hero-pill">Infraestructura Geoespacial &bull; Extracción y Transformación de Metadata</div>
             <h2>Extracción y Transformación de Metadata Territorial y Operacional</h2>
             <p>
               Pipeline automatizado en Python estándar que cosecha, limpia y normaliza información geográfica
-              y operativa desde 4 fuentes heterogéneas (APIs públicas y servicios de bases de datos geoespaciales).
+              y operativa desde 5 fuentes heterogéneas (APIs públicas y servicios de bases de datos geoespaciales).
               Cada fuente produce un archivo <strong>GeoJSON RFC 7946</strong> documentado y listo para carga relacional
               en PostgreSQL / PostGIS.
             </p>
           </div>
           <div class="hero-meta-box">
             <span class="meta-label">Módulo de Automatización</span>
-            <code class="meta-code">metadata/*.py (4 scripts independientes)</code>
+            <code class="meta-code">metadata/*.py (5 fuentes independientes)</code>
             <span class="meta-sub">Python 3.12 estándar &bull; Sin dependencias externas &bull; Compatible Docker</span>
             <button id="btn-descargar-todo-metadata" type="button" class="btn-bundle-download">
               Descargar Metadata Consolidada (.json)
@@ -883,14 +914,14 @@ R = 6.371.000 m &bull; φ = latitud (rad) &bull; λ = longitud (rad)</div>
           </div>
         </div>
 
-        <!-- ACCESO RÁPIDO Y DESCARGAS DE LOS 4 DATASETS -->
+        <!-- ACCESO RÁPIDO Y DESCARGAS DE LOS DATASETS -->
         <div class="infra-downloads-bar">
-          <span class="downloads-title">Archivos GeoJSON de Metadata disponibles:</span>
+          <span class="downloads-title">Archivos GeoJSON de Metadata disponibles (5 dimensiones):</span>
           <div class="download-cards-grid">
             <a class="dl-card" href="../metadata/sinca_calidad_aire.geojson" download="sinca_calidad_aire.geojson">
               <div class="dl-card-content">
                 <strong>sinca_calidad_aire.geojson</strong>
-                <span>Calidad del aire en tiempo real &bull; MMA</span>
+                <span>Valor de la misión: Calidad del aire &bull; MMA</span>
               </div>
               <span class="dl-arrow">&darr;</span>
             </a>
@@ -898,7 +929,7 @@ R = 6.371.000 m &bull; φ = latitud (rad) &bull; λ = longitud (rad)</div>
             <a class="dl-card" href="../metadata/srtm_relieve.geojson" download="srtm_relieve.geojson">
               <div class="dl-card-content">
                 <strong>srtm_relieve.geojson</strong>
-                <span>Perfil altimétrico orográfico &bull; NASA SRTM 30m</span>
+                <span>Relieve orográfico y 120m AGL &bull; NASA SRTM</span>
               </div>
               <span class="dl-arrow">&darr;</span>
             </a>
@@ -906,7 +937,7 @@ R = 6.371.000 m &bull; φ = latitud (rad) &bull; λ = longitud (rad)</div>
             <a class="dl-card" href="../metadata/ine_manzanas.geojson" download="ine_manzanas.geojson">
               <div class="dl-card-content">
                 <strong>ine_manzanas.geojson</strong>
-                <span>Población y densidad &bull; Censo INE 2017</span>
+                <span>Riesgo en tierra SORA: Densidad &bull; Censo INE 2017</span>
               </div>
               <span class="dl-arrow">&darr;</span>
             </a>
@@ -914,7 +945,15 @@ R = 6.371.000 m &bull; φ = latitud (rad) &bull; λ = longitud (rad)</div>
             <a class="dl-card" href="../metadata/osm_antenas.geojson" download="osm_antenas.geojson">
               <div class="dl-card-content">
                 <strong>osm_antenas.geojson</strong>
-                <span>Infraestructura celular y enlace C2 &bull; OSM</span>
+                <span>Enlace C2 (4G/LTE 3km) &bull; OSM / OpenCelliD</span>
+              </div>
+              <span class="dl-arrow">&darr;</span>
+            </a>
+
+            <a class="dl-card" href="../metadata/osm_obstaculos.geojson" download="osm_obstaculos.geojson">
+              <div class="dl-card-content">
+                <strong>osm_obstaculos.geojson</strong>
+                <span>Obstáculos físicos y alta tensión &bull; OSM</span>
               </div>
               <span class="dl-arrow">&darr;</span>
             </a>
@@ -929,7 +968,7 @@ R = 6.371.000 m &bull; φ = latitud (rad) &bull; λ = longitud (rad)</div>
             <span class="kpi-name">Calidad del Aire (SINCA)</span>
           </div>
           <div class="kpi-number" id="kpi-meta-sinca">—</div>
-          <div class="kpi-footnote">Estaciones activas &bull; Pondera prioridad de muestreo del GPP</div>
+          <div class="kpi-footnote">Valor de misión &bull; Prioridad de muestreo R(d)</div>
         </div>
 
         <div class="infra-kpi">
@@ -937,7 +976,7 @@ R = 6.371.000 m &bull; φ = latitud (rad) &bull; λ = longitud (rad)</div>
             <span class="kpi-name">Perfiles Orográficos (SRTM)</span>
           </div>
           <div class="kpi-number" id="kpi-meta-srtm">—</div>
-          <div class="kpi-footnote">Aristas muestreadas cada 100 m &bull; Modelo de elevación 30 m</div>
+          <div class="kpi-footnote">Verificación 120m AGL y consumo EEE por ascenso</div>
         </div>
 
         <div class="infra-kpi">
@@ -945,7 +984,7 @@ R = 6.371.000 m &bull; φ = latitud (rad) &bull; λ = longitud (rad)</div>
             <span class="kpi-name">Manzanas Censales (INE)</span>
           </div>
           <div class="kpi-number" id="kpi-meta-ine">—</div>
-          <div class="kpi-footnote">Polígonos urbanos Censo 2017 &bull; Penalización DAN 151</div>
+          <div class="kpi-footnote">Riesgo en tierra SORA &bull; Censo INE 2017</div>
         </div>
 
         <div class="infra-kpi">
@@ -953,19 +992,27 @@ R = 6.371.000 m &bull; φ = latitud (rad) &bull; λ = longitud (rad)</div>
             <span class="kpi-name">Telecomunicaciones (OSM)</span>
           </div>
           <div class="kpi-number" id="kpi-meta-antenas">—</div>
-          <div class="kpi-footnote">Torres celulares &bull; Celdas macro radio 3 km (enlace C2)</div>
+          <div class="kpi-footnote">Enlace C2 4G/LTE (3 km) &bull; Proyección OpenCelliD</div>
+        </div>
+
+        <div class="infra-kpi">
+          <div class="kpi-top">
+            <span class="kpi-name">Obstáculos y Alta Tensión</span>
+          </div>
+          <div class="kpi-number text-danger" id="kpi-meta-obstaculos">12</div>
+          <div class="kpi-footnote">Chimeneas (50-152 m) y líneas 110/220 kV &bull; Riesgo aire</div>
         </div>
 
         <div class="infra-kpi kpi-highlight">
           <div class="kpi-top">
-            <span class="kpi-name">Esquema Relacional</span>
+            <span class="kpi-name">Dimensiones Modeladas</span>
           </div>
-          <div class="kpi-number text-success">4 Tablas</div>
-          <div class="kpi-footnote">meta_air_quality, meta_edge_terrain, meta_census_block, meta_telecom_antenna</div>
+          <div class="kpi-number text-success">5 Capas</div>
+          <div class="kpi-footnote">Aire &bull; Relieve &bull; Población &bull; Telecom &bull; Obstáculos</div>
         </div>
       </section>
 
-      <!-- SECCIÓN MAPA + CARDS DE LAS 4 FUENTES -->
+      <!-- SECCIÓN MAPA + CARDS DE LAS 5 FUENTES -->
       <div class="infra-grid">
         
         <!-- COLUMNA MAPA -->
@@ -990,6 +1037,10 @@ R = 6.371.000 m &bull; φ = latitud (rad) &bull; λ = longitud (rad)</div>
                   <input type="checkbox" id="toggle-meta-antenas" checked>
                   <span>Cobertura C2</span>
                 </label>
+                <label class="toggle-chip">
+                  <input type="checkbox" id="toggle-meta-obstaculos" checked>
+                  <span>Obstáculos y Alta Tensión</span>
+                </label>
               </div>
             </div>
 
@@ -998,7 +1049,7 @@ R = 6.371.000 m &bull; φ = latitud (rad) &bull; λ = longitud (rad)</div>
             <!-- INSPECTOR DE METADATA -->
             <div class="infra-inspector" id="meta-inspector-box">
               <div class="inspector-hint" id="meta-inspector-placeholder">
-                <span>Selecciona una estación SINCA, arista con relieve, manzana censal o celda de antena en el mapa para inspeccionar sus atributos técnicos.</span>
+                <span>Selecciona una estación SINCA, arista con relieve, manzana censal, celda de antena u obstáculo físico en el mapa para inspeccionar sus atributos técnicos.</span>
               </div>
               <div class="inspector-body" id="meta-inspector-details" hidden>
                 <div class="inspector-header">
@@ -1012,11 +1063,11 @@ R = 6.371.000 m &bull; φ = latitud (rad) &bull; λ = longitud (rad)</div>
           </div>
         </div>
 
-        <!-- COLUMNA EXPLICACIÓN DE LAS 4 FUENTES (METODOLOGÍA CIENTÍFICA) -->
+        <!-- COLUMNA EXPLICACIÓN DE LAS 5 FUENTES (METODOLOGÍA CIENTÍFICA) -->
         <div class="infra-info-panel">
           
           <div class="card">
-            <h2>Fundamento de las 4 Fuentes de Metadata</h2>
+            <h2>Fundamento de las 5 Fuentes de Metadata</h2>
             <div class="method-steps-list">
               
               <div class="method-step">
@@ -1067,6 +1118,18 @@ R = 6.371.000 m &bull; φ = latitud (rad) &bull; λ = longitud (rad)</div>
                 </div>
               </div>
 
+              <div class="method-step">
+                <span class="step-num">5</span>
+                <div class="step-details">
+                  <strong>Obstáculos Verticales y Tendido Eléctrico (OpenStreetMap / Overpass API)</strong>
+                  <p>
+                    <strong>Script:</strong> <code>metadata/osm_obstaculos.py</code> &bull; <strong>Tabla:</strong> <code>meta_obstacle</code><br>
+                    <strong>API Fuente:</strong> OpenStreetMap vía Overpass API e Infraestructura Crítica de Ventanas<br>
+                    <strong>Modelamiento:</strong> Modela el <em>riesgo en el aire</em> frente a colisiones físicas e interferencia electromagnética. Incluye chimeneas industriales de entre 50 m y 152 m (que penetran o superan el techo legal de 120 m AGL), líneas de alta tensión de 110 kV y 220 kV, y torres de transmisión. Inhabilita aristas que cruzan radios de seguridad críticos y penaliza aproximaciones riesgosas.
+                  </p>
+                </div>
+              </div>
+
             </div>
           </div>
 
@@ -1085,6 +1148,7 @@ R = 6.371.000 m &bull; φ = latitud (rad) &bull; λ = longitud (rad)</div>
             <button class="meta-exp-tab" type="button" data-meta="srtm">srtm_relieve</button>
             <button class="meta-exp-tab" type="button" data-meta="ine">ine_manzanas</button>
             <button class="meta-exp-tab" type="button" data-meta="antenas">osm_antenas</button>
+            <button class="meta-exp-tab" type="button" data-meta="obstaculos">osm_obstaculos</button>
           </div>
         </div>
 
@@ -1111,7 +1175,7 @@ R = 6.371.000 m &bull; φ = latitud (rad) &bull; λ = longitud (rad)</div>
     </div>
   </div>
 
-  <!-- VISTA 4: AMENAZAS DINÁMICAS (ENTREGA 2 - ÍTEMS 3, 4, 5 Y 6) -->
+  <!-- VISTA 4: AMENAZAS DINÁMICAS Y CONDICIONES ADVERSAS -->
   <div id="vista-amenazas" class="tab-view" hidden>
     <div class="infra-container">
       
@@ -1149,10 +1213,10 @@ R = 6.371.000 m &bull; φ = latitud (rad) &bull; λ = longitud (rad)</div>
               <span class="dl-arrow">&darr;</span>
             </a>
 
-            <a class="dl-card" href="../amenazas/csn_sismos.geojson" download="csn_sismos.geojson">
+            <a class="dl-card" href="../amenazas/opensky_aeronaves.geojson" download="opensky_aeronaves.geojson">
               <div class="dl-card-content">
-                <strong>csn_sismos.geojson</strong>
-                <span>Sismicidad últimos 30 días &bull; CSN / EMSC FDSN</span>
+                <strong>opensky_aeronaves.geojson</strong>
+                <span>Tráfico aéreo en vivo &bull; OpenSky Network ADS-B</span>
               </div>
               <span class="dl-arrow">&darr;</span>
             </a>
@@ -1165,10 +1229,10 @@ R = 6.371.000 m &bull; φ = latitud (rad) &bull; λ = longitud (rad)</div>
               <span class="dl-arrow">&darr;</span>
             </a>
 
-            <a class="dl-card" href="../amenazas/metno_lluvia.geojson" download="metno_lluvia.geojson">
+            <a class="dl-card" href="../amenazas/openmeteo_niebla.geojson" download="openmeteo_niebla.geojson">
               <div class="dl-card-content">
-                <strong>metno_lluvia.geojson</strong>
-                <span>Grilla 4&times;4 precipitación prevista &bull; MET Norway</span>
+                <strong>openmeteo_niebla.geojson</strong>
+                <span>Grilla 4&times;4 niebla y visibilidad &bull; Open-Meteo Forecast</span>
               </div>
               <span class="dl-arrow">&darr;</span>
             </a>
@@ -1188,10 +1252,10 @@ R = 6.371.000 m &bull; φ = latitud (rad) &bull; λ = longitud (rad)</div>
 
         <div class="infra-kpi">
           <div class="kpi-top">
-            <span class="kpi-name">Sismos Registrados (CSN)</span>
+            <span class="kpi-name">Tráfico Aéreo (OpenSky)</span>
           </div>
           <div class="kpi-number" id="kpi-amenaza-sismos">—</div>
-          <div class="kpi-footnote">Ventana 30 días &bull; Radio atenuación intensidad &ge; VI</div>
+          <div class="kpi-footnote">Vigilancia ADS-B &bull; Cilindro exclusión 1.500 m en aproximación SCER</div>
         </div>
 
         <div class="infra-kpi">
@@ -1199,15 +1263,15 @@ R = 6.371.000 m &bull; φ = latitud (rad) &bull; λ = longitud (rad)</div>
             <span class="kpi-name">Campo de Viento (Open-Meteo)</span>
           </div>
           <div class="kpi-number" id="kpi-amenaza-viento">—</div>
-          <div class="kpi-footnote">Grilla 4&times;4 &bull; Viento 10m y 120m (techo DAN 151) &bull; Umbral 14 m/s</div>
+          <div class="kpi-footnote">Grilla 4&times;4 &bull; Viento 10m y 120m (techo DAN 151) &bull; Umbral 12 m/s</div>
         </div>
 
         <div class="infra-kpi">
           <div class="kpi-top">
-            <span class="kpi-name">Precipitación Horaria (MET)</span>
+            <span class="kpi-name">Niebla Costera (Open-Meteo)</span>
           </div>
           <div class="kpi-number" id="kpi-amenaza-lluvia">—</div>
-          <div class="kpi-footnote">Grilla 4&times;4 &bull; Tasa prevista próx. hora &bull; Umbral 2.0 mm/h</div>
+          <div class="kpi-footnote">Grilla 4&times;4 &bull; Visibilidad &lt; 1.000 m o HR &ge; 95% &bull; DAN 151 VLOS</div>
         </div>
 
         <div class="infra-kpi kpi-highlight">
@@ -1234,7 +1298,7 @@ R = 6.371.000 m &bull; φ = latitud (rad) &bull; λ = longitud (rad)</div>
                 </label>
                 <label class="toggle-chip">
                   <input type="checkbox" id="toggle-amenaza-sismos" checked>
-                  <span>Sismos (CSN)</span>
+                  <span>Tráfico Aéreo (OpenSky)</span>
                 </label>
                 <label class="toggle-chip">
                   <input type="checkbox" id="toggle-amenaza-viento" checked>
@@ -1242,7 +1306,7 @@ R = 6.371.000 m &bull; φ = latitud (rad) &bull; λ = longitud (rad)</div>
                 </label>
                 <label class="toggle-chip">
                   <input type="checkbox" id="toggle-amenaza-lluvia" checked>
-                  <span>Lluvia (MET Norway)</span>
+                  <span>Niebla Costera (Open-Meteo)</span>
                 </label>
                 <label class="toggle-chip">
                   <input type="checkbox" id="toggle-amenaza-red" checked>
@@ -1279,13 +1343,13 @@ R = 6.371.000 m &bull; φ = latitud (rad) &bull; λ = longitud (rad)</div>
           </div>
         </div>
 
-        <!-- COLUMNA METODOLOGÍA CIENTÍFICA (CRITERIOS 4.1, 4.2, 5.1 Y 5.2) -->
+        <!-- COLUMNA METODOLOGÍA CIENTÍFICA -->
         <div class="infra-doc-panel">
           <div class="card doc-card">
             <h3>Modelamiento Científico de Fallas y Asignación de Pesos</h3>
             <p class="doc-lead">
-              Cumplimiento formal de los criterios 4.1, 4.2, 5.1 y 5.2 de la rúbrica. Cada amenaza se extrae con Python puro,
-              se almacena en GeoJSON, se carga a PostGIS y se modela matemáticamente para la planificación de rutas resilientes.
+              Fundamentación teórica y metodológica de la ingesta de amenazas dinámicas, modelamiento espacial
+              y formulación matemática de penalizaciones para la navegación resiliente del UAV.
             </p>
 
             <div class="source-methods-list">
@@ -1298,17 +1362,17 @@ R = 6.371.000 m &bull; φ = latitud (rad) &bull; λ = longitud (rad)</div>
                 </div>
                 <div class="source-body">
                   <p>
-                    <strong>Extracción (Criterio 4.1):</strong> <code>amenazas/firms_incendios.py</code> descarga archivos NRT
+                    <strong>Metodología de Extracción:</strong> <code>amenazas/firms_incendios.py</code> descarga archivos NRT
                     públicos de Sudamérica para VIIRS S-NPP, VIIRS NOAA-20 y MODIS. Filtra las coordenadas dentro de la región
                     ampliada (~30 km) de la Bahía de Quintero.
                   </p>
                   <p>
-                    <strong>Modelamiento de Falla (Criterio 5.1):</strong> Cada detección se transforma en un polígono circular
+                    <strong>Modelamiento Espacial y Falla:</strong> Cada detección se transforma en un polígono circular
                     de exclusión con radio $R = 2.000\text{ m}$. Si la confianza es nominal o alta (VIIRS <code>n</code>/<code>h</code>,
                     MODIS &ge; 50%), se establece <code>exceeds = true</code> (zona activa).
                   </p>
                   <p>
-                    <strong>Asignación de Pesos (Criterio 5.2):</strong> Bloqueo estricto e insalvable ($C_{uv} = \infty$)
+                    <strong>Regla de Pesos Operacionales:</strong> Bloqueo estricto e insalvable ($C_{uv} = \infty$)
                     para toda arista que intersecte el polígono. Las altas temperaturas, corrientes convectivas ascendentes y
                     la opacidad por humo implican riesgo crítico de pérdida de sustentación y daño térmico al fuselaje.
                   </p>
@@ -1319,33 +1383,30 @@ R = 6.371.000 m &bull; φ = latitud (rad) &bull; λ = longitud (rad)</div>
                 </div>
               </div>
 
-              <!-- CARD 2: SISMOS -->
+              <!-- CARD 2: TRÁFICO AÉREO TRIPULADO -->
               <div class="source-block">
                 <div class="source-head">
-                  <span class="source-tag">EMSC FDSN / CSN U. de Chile</span>
-                  <h4>CSN &bull; Sismicidad y Falla de Estaciones Base de Recarga</h4>
+                  <span class="source-tag">OpenSky Network ADS-B</span>
+                  <h4>OpenSky &bull; Tráfico Aéreo Tripulado y Separación Espacial en SCER</h4>
                 </div>
                 <div class="source-body">
                   <p>
-                    <strong>Extracción (Criterio 4.1):</strong> <code>amenazas/csn_sismos.py</code> consume el servicio FDSN
-                    de EMSC filtrando eventos de los últimos 30 días con autoría del Centro Sismológico Nacional (<code>CSN</code>)
-                    en un radio de ~330 km alrededor de la base aérea.
+                    <strong>Metodología de Extracción:</strong> <code>amenazas/opensky_aeronaves.py</code> consume el servicio de telemetría en vivo
+                    de OpenSky Network filtrando aeronaves en la envolvente de la Bahía de Quintero y Puchuncaví con altitud barométrica
+                    &le; 1.000 m (espacio aéreo compartido con aproximación al Aeródromo de Quintero SCER).
                   </p>
                   <p>
-                    <strong>Modelamiento de Falla (Criterio 5.1):</strong> Ley empírica de atenuación para intensidad instrumental
-                    &ge; VI (daño potencial en infraestructura de red eléctrica):
-                    <code>R(km) = 10^(0.5 &bull; M &minus; 1.8)</code>.
-                    Eventos con $M \ge 5.0$ establecen <code>exceeds = true</code>. Se calcula además <code>base_dentro_radio</code>
-                    respecto al Aeródromo de Quintero.
+                    <strong>Modelamiento Espacial y Falla:</strong> Cilindro de protección de 1.500 m de radio proyectado alrededor de cada
+                    aeronave detectada a baja cota (&le; 1.000 m MSL), activando <code>exceeds = true</code>.
                   </p>
                   <p>
-                    <strong>Asignación de Pesos (Criterio 5.2):</strong> Un sismo fuerte que abarque un nodo base o vertipuerto
-                    lo deja inoperable por caída de suministro eléctrico (corte de cargadores rápidos). El planificador global (GPP)
-                    invalida ese nodo como destino y redirige al UAV hacia bases secundarias o activa el plan de retorno alternativo.
+                    <strong>Regla de Pesos Operacionales:</strong> En estricto cumplimiento de la norma DAN 151 de la DGAC, las aeronaves
+                    tripuladas poseen derecho de paso absoluto. Toda arista de la red que interseca el cilindro de exclusión queda bloqueada
+                    (C = &infin;), garantizando probabilidad cero de conflicto aéreo ($N_{COL} = 0$).
                   </p>
                   <div class="source-meta-foot">
-                    <span>Script Carga: <code>amenazas/cargar_csn_sismos.py</code></span>
-                    <span>Tabla BD: <code>threat_event (event_type = 'sismo')</code></span>
+                    <span>Script Carga: <code>amenazas/cargar_opensky_aeronaves.py</code></span>
+                    <span>Tabla BD: <code>threat_event (event_type = 'aeronave')</code></span>
                   </div>
                 </div>
               </div>
@@ -1358,16 +1419,16 @@ R = 6.371.000 m &bull; φ = latitud (rad) &bull; λ = longitud (rad)</div>
                 </div>
                 <div class="source-body">
                   <p>
-                    <strong>Extracción (Criterio 4.1):</strong> <code>amenazas/openmeteo_viento.py</code> divide el área en una
+                    <strong>Metodología de Extracción:</strong> <code>amenazas/openmeteo_viento.py</code> divide el área en una
                     grilla regular de 4&times;4 celdas rectangulares (~4&times;3.6 km) y extrae simultáneamente ráfagas a 10m y
                     viento medio a 10m, 80m y 120m (límite superior DAN 151 DGAC).
                   </p>
                   <p>
-                    <strong>Modelamiento de Falla (Criterio 5.1):</strong> Umbral operacional No-Go: si la ráfaga a 10m o el viento
-                    a 120m superan 14.0 m/s (50.4 km/h), la celda activa <code>exceeds = true</code>.
+                    <strong>Modelamiento Espacial y Falla:</strong> Umbral operacional No-Go: si la ráfaga a 10m o el viento
+                    a 120m superan 12.0 m/s (43.2 km/h, límite del DJI Matrice 350 RTK), la celda activa <code>exceeds = true</code>.
                   </p>
                   <p>
-                    <strong>Asignación de Pesos (Criterio 5.2):</strong> Celdas con <code>exceeds = true</code> inhabilitan las aristas
+                    <strong>Regla de Pesos Operacionales:</strong> Celdas con <code>exceeds = true</code> inhabilitan las aristas
                     que las cruzan. En celdas operacionales, el vector de viento se proyecta sobre el acimut de cada arista para calcular
                     la velocidad respecto a tierra <code>v_g = v_a + w &bull; cos(&theta;)</code> y el consumo energético EEE (Kosior et al., 2024),
                     penalizando severamente el vuelo contra el viento dominante del suroeste.
@@ -1379,30 +1440,31 @@ R = 6.371.000 m &bull; φ = latitud (rad) &bull; λ = longitud (rad)</div>
                 </div>
               </div>
 
-              <!-- CARD 4: LLUVIA -->
+              <!-- CARD 4: NIEBLA COSTERA -->
               <div class="source-block">
                 <div class="source-head">
-                  <span class="source-tag">MET Norway Locationforecast</span>
-                  <h4>MET Norway &bull; Precipitación y Retorno de Emergencia (LPP)</h4>
+                  <span class="source-tag">Open-Meteo Forecast API</span>
+                  <h4>Open-Meteo &bull; Niebla Costera (Camanchaca) y Pérdida de Contacto Visual</h4>
                 </div>
                 <div class="source-body">
                   <p>
-                    <strong>Extracción (Criterio 4.1):</strong> <code>amenazas/metno_lluvia.py</code> consulta la API de MET Norway
-                    en los centroides de la grilla 4&times;4, extrayendo la precipitación prevista en mm/h para la próxima hora.
+                    <strong>Metodología de Extracción:</strong> <code>amenazas/openmeteo_niebla.py</code> consulta la Forecast API de Open-Meteo
+                    en los centroides de la grilla 4&times;4 (~4&times;3.6 km), extrayendo visibilidad horizontal en superficie (m),
+                    humedad relativa a 2m (%) y cobertura de nubes bajas (%).
                   </p>
                   <p>
-                    <strong>Modelamiento de Falla (Criterio 5.1):</strong> Umbral operacional No-Go: precipitación &gt; 2.0 mm/h
+                    <strong>Modelamiento Espacial y Falla:</strong> La norma DAN 151 de la DGAC prohíbe el vuelo fuera de condiciones VMC
+                    (condiciones meteorológicas de vuelo visual). Visibilidad horizontal &lt; 1.000 m o saturación de humedad (&ge; 95% con nubosidad baja &ge; 80%)
                     activa <code>exceeds = true</code> sobre la celda correspondiente.
                   </p>
                   <p>
-                    <strong>Asignación de Pesos (Criterio 5.2):</strong> La lluvia intensa degrada la visibilidad de cámaras ópticas,
-                    genera dispersión en sensores LiDAR y compromete la electrónica expuesta. Las aristas dentro de celdas con lluvia
-                    quedan bloqueadas; si el dron se encuentra en ruta, el Local Path Planner (LPP) activa maniobras de evasión y
-                    retorno inmediato hacia zonas de sotavento o bases de abrigo.
+                    <strong>Regla de Pesos Operacionales:</strong> La niebla densa bloquea la visión de los sensores electro-ópticos, genera
+                    condensación sobre la aviónica y viola la visibilidad mínima normativa. Las aristas dentro de celdas con niebla
+                    quedan bloqueadas; si el dron está en vuelo, se redirige hacia el interior o activa aterrizaje preventivo.
                   </p>
                   <div class="source-meta-foot">
-                    <span>Script Carga: <code>amenazas/cargar_metno_lluvia.py</code></span>
-                    <span>Tabla BD: <code>threat_event (event_type = 'lluvia')</code></span>
+                    <span>Script Carga: <code>amenazas/cargar_openmeteo_niebla.py</code></span>
+                    <span>Tabla BD: <code>threat_event (event_type = 'niebla')</code></span>
                   </div>
                 </div>
               </div>
@@ -1422,9 +1484,9 @@ R = 6.371.000 m &bull; φ = latitud (rad) &bull; λ = longitud (rad)</div>
           </div>
           <div class="explorer-tabs-bar" role="tablist">
             <button class="amenaza-exp-tab active" type="button" data-amenaza="firms">firms_incendios</button>
-            <button class="amenaza-exp-tab" type="button" data-amenaza="csn">csn_sismos</button>
+            <button class="amenaza-exp-tab" type="button" data-amenaza="opensky">opensky_aeronaves</button>
             <button class="amenaza-exp-tab" type="button" data-amenaza="viento">openmeteo_viento</button>
-            <button class="amenaza-exp-tab" type="button" data-amenaza="lluvia">metno_lluvia</button>
+            <button class="amenaza-exp-tab" type="button" data-amenaza="niebla">openmeteo_niebla</button>
           </div>
         </div>
 
@@ -1452,7 +1514,7 @@ R = 6.371.000 m &bull; φ = latitud (rad) &bull; λ = longitud (rad)</div>
     </div>
   </div>
 
-  <!-- VISTA 5: DOCUMENTACIÓN Y ESTRUCTURA DE ARCHIVOS (CRITERIO 4 DE LA PAUTA) -->
+  <!-- VISTA 5: DICCIONARIO DE DATOS Y ESPECIFICACIONES TÉCNICAS -->
   <div id="vista-documentacion" class="tab-view" hidden>
     <div class="infra-container">
 
@@ -1460,12 +1522,11 @@ R = 6.371.000 m &bull; φ = latitud (rad) &bull; λ = longitud (rad)</div>
       <section class="infra-hero-banner">
         <div class="hero-top-row">
           <div class="hero-text">
-            <h2>Documentación Técnica y Estructura de Datos (Criterio 4)</h2>
+            <h2>Diccionario de Datos y Especificaciones Técnicas RFC 7946</h2>
             <p>
-              Cumplimiento formal del Criterio 4 de la rúbrica de evaluación: <em>"Cada archivo .json o .geojson debe tener un archivo
-              asociado que explique la estructura del archivo y a qué corresponde cada valor del *.json para facilitar su entendimiento"</em>.
-              Este módulo consolida la matriz completa de 14 conjuntos de datos (11 del pipeline ETL y 3 de ruteo/resiliencia),
-              con correspondencia biunívoca a su especificación técnica homónima en formato Markdown (<code>.md</code>).
+              Trazabilidad y especificación técnica formal: cada conjunto de datos en formato GeoJSON o JSON dispone
+              de un documento Markdown (<code>.md</code>) homónimo que detalla su origen, parámetros de extracción,
+              estructura de atributos y semántica espacial para la reproducibilidad de la investigación.
             </p>
           </div>
           <div class="hero-meta-box">
@@ -1478,9 +1539,9 @@ R = 6.371.000 m &bull; φ = latitud (rad) &bull; λ = longitud (rad)</div>
           </div>
         </div>
 
-        <!-- ACCESO RÁPIDO A LAS 4 CATEGORÍAS -->
+        <!-- ACCESO RÁPIDO A LAS CATEGORÍAS -->
         <div class="infra-downloads-bar">
-          <span class="downloads-title">Dominios temáticos documentados (14 archivos con paridad 1:1):</span>
+          <span class="downloads-title">Dominios temáticos documentados con paridad 1:1:</span>
           <div class="download-cards-grid">
             <div class="dl-card" style="cursor: default;">
               <div class="dl-card-content">
@@ -1491,15 +1552,15 @@ R = 6.371.000 m &bull; φ = latitud (rad) &bull; λ = longitud (rad)</div>
             </div>
             <div class="dl-card" style="cursor: default;">
               <div class="dl-card-content">
-                <strong>2. Metadata Geoespacial (4)</strong>
-                <span>sinca &bull; srtm &bull; ine &bull; antenas</span>
+                <strong>2. Metadata Geoespacial (5)</strong>
+                <span>sinca &bull; srtm &bull; ine &bull; antenas &bull; obstáculos</span>
               </div>
               <span class="dl-arrow">&bull;</span>
             </div>
             <div class="dl-card" style="cursor: default;">
               <div class="dl-card-content">
                 <strong>3. Amenazas Dinámicas (4)</strong>
-                <span>firms &bull; csn &bull; openmeteo &bull; metno</span>
+                <span>firms &bull; opensky &bull; viento &bull; niebla</span>
               </div>
               <span class="dl-arrow">&bull;</span>
             </div>
@@ -1520,16 +1581,16 @@ R = 6.371.000 m &bull; φ = latitud (rad) &bull; λ = longitud (rad)</div>
           <div class="kpi-top">
             <span class="kpi-name">Archivos de Datos</span>
           </div>
-          <div class="kpi-number">14</div>
-          <div class="kpi-footnote">11 GeoJSON de pipeline ETL + 3 de ruteo/simulación</div>
+          <div class="kpi-number">15</div>
+          <div class="kpi-footnote">12 GeoJSON de pipeline ETL + 3 de ruteo/simulación</div>
         </div>
 
         <div class="infra-kpi">
           <div class="kpi-top">
             <span class="kpi-name">Archivos de Especificación (.md)</span>
           </div>
-          <div class="kpi-number text-success">14 (100%)</div>
-          <div class="kpi-footnote">Paridad 1 a 1 exacta según exigencia de Criterio 4</div>
+          <div class="kpi-number text-success">15 (100%)</div>
+          <div class="kpi-footnote">Paridad 1 a 1 exacta con documentación Markdown</div>
         </div>
 
         <div class="infra-kpi">
@@ -1560,7 +1621,7 @@ R = 6.371.000 m &bull; φ = latitud (rad) &bull; λ = longitud (rad)</div>
       <!-- TABLA GENERAL DE TRAZABILIDAD Y CORRESPONDENCIA (MATRIZ MAESTRA) -->
       <section class="card" style="margin-bottom: 24px;">
         <div class="map-box-header">
-          <h3>Matriz de Trazabilidad y Correspondencia de Archivos (Criterio 4)</h3>
+          <h3>Matriz de Trazabilidad y Correspondencia de Conjuntos de Datos</h3>
           <span class="map-tip">Cada fila representa un archivo de datos, su script de extracción/cálculo, su tabla relacional y su archivo .md descriptivo.</span>
         </div>
         <div style="overflow-x: auto;">
@@ -1604,13 +1665,14 @@ R = 6.371.000 m &bull; φ = latitud (rad) &bull; λ = longitud (rad)</div>
               <button class="doc-file-btn" type="button" data-docfile="srtm_relieve">srtm_relieve</button>
               <button class="doc-file-btn" type="button" data-docfile="ine_manzanas">ine_manzanas</button>
               <button class="doc-file-btn" type="button" data-docfile="osm_antenas">osm_antenas</button>
+              <button class="doc-file-btn" type="button" data-docfile="osm_obstaculos">osm_obstaculos</button>
             </div>
             <div class="doc-domain-group">
               <span class="doc-domain-label">Amenazas:</span>
               <button class="doc-file-btn" type="button" data-docfile="firms_incendios">firms_incendios</button>
-              <button class="doc-file-btn" type="button" data-docfile="csn_sismos">csn_sismos</button>
+              <button class="doc-file-btn" type="button" data-docfile="opensky_aeronaves">opensky_aeronaves</button>
               <button class="doc-file-btn" type="button" data-docfile="openmeteo_viento">openmeteo_viento</button>
-              <button class="doc-file-btn" type="button" data-docfile="metno_lluvia">metno_lluvia</button>
+              <button class="doc-file-btn" type="button" data-docfile="openmeteo_niebla">openmeteo_niebla</button>
             </div>
             <div class="doc-domain-group">
               <span class="doc-domain-label">Ruteo:</span>
@@ -1667,8 +1729,8 @@ R = 6.371.000 m &bull; φ = latitud (rad) &bull; λ = longitud (rad)</div>
       <!-- AUDITORÍA AUTOMÁTICA Y VERIFICACIÓN EN DOCKER -->
       <section class="card" style="margin-top: 24px;">
         <div class="map-box-header">
-          <h3>Auditoría Automatizada de Entregables (Script de Verificación)</h3>
-          <span class="map-tip">El script <code>tests/verificar.py</code> valida de forma exhaustiva cada uno de los puntos exigidos en la pauta de evaluación.</span>
+          <h3>Auditoría Automatizada del Pipeline Geoespacial</h3>
+          <span class="map-tip">El script <code>tests/verificar.py</code> valida de forma exhaustiva la integridad de esquemas, atributos y coherencia espacial de todas las capas geoespaciales.</span>
         </div>
         <div class="audit-grid">
           <div class="audit-card">

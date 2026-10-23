@@ -1,0 +1,30 @@
+Algoritmos de Ruteo y Redes Resilientes
+3. Hipótesis
+Se considera de alta severidad una amenaza conλ≥1km−1 (en este modelo, el incen-
+dio).
+H1: cuando una amenaza de alta severidad intersecta el corredor de menor distancia, el
+par de rutas calculado conW(e)tiene mayor resiliencia conjunta que el calculado con
+L(e):∆R >0.
+H2: cuando ninguna amenaza de alta severidad intersecta las rutas,|∆R|<2p.p.
+H3: el aumento de longitud de la ruta primaria no supera el 10 % de la autonomía
+nominal del UAV de referencia (≈2,64km, supuesto S6).
+4. Objetivos
+4.1. Objetivo general
+Comparar dos funciones de costo dentro del mismo esquema de penalización iterativa
+de Akgün et al. [3], la longitudL(e)y el costo ponderado por exposiciónW(e), para generar
+pares de rutas (k= 2) entre el Aeródromo de Quintero y las 8 estaciones SINCA de la red,
+maximizando la resiliencia conjuntaRsujeta a un aumento de distancia acotado (H3).
+4.2. Objetivos específicos
+1. Implementar un proceso ETL reproducible en Docker que integre infraestructura, 4
+fuentes de metadata y 4 fuentes de amenazas en una base de datos con PostgreSQL,
+PostGIS y pgRouting.
+2. Generar los pares de rutas con ambas funciones de costo, calcularRy compararlos en
+una plataforma web.
+3. Evaluar H1–H3 y la sensibilidad de∆Raλincendio, al factor de penalización y al radio
+del foco, con amenazas conocidas y no anticipadas.
+5. Alcance y supuestos
+5.1. Alcance
+Planificación previa al vuelo, sin replanificación en vuelo.
+OrigenfijoenelAeródromodeQuintero(base_scer)y8destinos:lasestacionesSINCA
+de la red.
+4

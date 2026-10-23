@@ -14,10 +14,13 @@ const FUENTES = {
   relieve: '../metadata/srtm_relieve.geojson',
   manzanas: '../metadata/ine_manzanas.geojson',
   antenas: '../metadata/osm_antenas.geojson',
+  obstaculos: '../metadata/osm_obstaculos.geojson',
   incendios: '../amenazas/firms_incendios.geojson',
-  sismos: '../amenazas/csn_sismos.geojson',
+  aeronaves: '../amenazas/opensky_aeronaves.geojson',
+  sismos: '../amenazas/opensky_aeronaves.geojson',
   viento: '../amenazas/openmeteo_viento.geojson',
-  lluvia: '../amenazas/metno_lluvia.geojson',
+  niebla: '../amenazas/openmeteo_niebla.geojson',
+  lluvia: '../amenazas/openmeteo_niebla.geojson',
   rutas_pgrouting: 'data/ruta_dijkstra.geojson',
   rutas_comparativas: 'data/rutas_comparativas.geojson',
   resumen_resiliencia: 'data/resumen_resiliencia.json',
@@ -134,6 +137,7 @@ let capaAireGlobal = null;
 let capaRelieveGlobal = null;
 let capaManzanasGlobal = null;
 let capaAntenasGlobal = null;
+let capaObstaculosGlobal = null;
 let capaTrazaUrbanaGlobal = null;
 
 // Capas de Amenazas (solo visualización en mapa)
@@ -142,7 +146,7 @@ let capaSismosGlobal = null;
 let capaVientoGlobal = null;
 let capaLluviaGlobal = null;
 
-// Estado de simulación de vuelo y auditoría de costos Dijkstra (Criterio 8)
+// Estado de simulación de vuelo y auditoría de costos Dijkstra
 let simulacionVueloActiva = false;
 let simulacionTimerId = null;
 let marcadorDronSimulado = null;
@@ -169,10 +173,12 @@ let LAMBDAS = {
   base: 0.005,
   incendio: 5.0,
   urbana: 0.08,
-  sismo: 0.05,
+  aeronave: 0.15,
+  sismo: 0.15,
   sin_cobertura: 0.03,
   viento: 0.04,
-  lluvia: 0.03,
+  niebla: 0.06,
+  lluvia: 0.06,
 };
 let BETA = 1000.0;
 let FACTOR_PENALIZACION_P = 4.0;
@@ -267,9 +273,9 @@ function inicializarGrafo(d) {
   const manzanasDensas = d.manzanas.features.filter(f => (f.properties.density_hab_km2 || 0) > 2500);
   const antenas = d.antenas.features;
   const incendios = d.incendios.features.filter(f => f.properties.exceeds);
-  const sismos = d.sismos.features.filter(f => f.properties.exceeds);
+  const aeronaves = (d.aeronaves || d.sismos).features.filter(f => f.properties.exceeds);
   const vientoActivo = (d.viento?.features || []).filter(f => f.properties.exceeds);
-  const lluviaActiva = (d.lluvia?.features || []).filter(f => f.properties.exceeds);
+  const nieblaActiva = (d.niebla || d.lluvia)?.features?.filter(f => f.properties.exceeds) || [];
 
   grafoAristas = d.aristas.features.map(f => {
     const props = f.properties;
@@ -280,11 +286,11 @@ function inicializarGrafo(d) {
     const length_m = parseFloat(props.length_m);
 
     const hayIncendio = aristaTocaPoligonos(coordU, coordV, incendios);
-    const haySismo = aristaTocaPoligonos(coordU, coordV, sismos);
+    const hayAeronave = aristaTocaPoligonos(coordU, coordV, aeronaves);
     const hayPoblacion = aristaTocaPoligonos(coordU, coordV, manzanasDensas);
     const hayTelecom = aristaTocaPoligonos(coordU, coordV, antenas);
     const hayViento = aristaTocaPoligonos(coordU, coordV, vientoActivo);
-    const hayLluvia = aristaTocaPoligonos(coordU, coordV, lluviaActiva);
+    const hayNiebla = aristaTocaPoligonos(coordU, coordV, nieblaActiva);
     const dFoco = distPuntoASegmentoM(coordU, coordV, [FOCO_SIMULADO.lon, FOCO_SIMULADO.lat]);
     const hayEstres = dFoco <= FOCO_SIMULADO.radio_m;
 
@@ -292,10 +298,10 @@ function inicializarGrafo(d) {
     let hazardRate = LAMBDAS.base; // Tasa base nominal
     if (hayIncendio) hazardRate += LAMBDAS.incendio;
     if (hayPoblacion) hazardRate += LAMBDAS.urbana;
-    if (haySismo) hazardRate += LAMBDAS.sismo;
+    if (hayAeronave) hazardRate += (LAMBDAS.aeronave || LAMBDAS.sismo);
     if (!hayTelecom) hazardRate += LAMBDAS.sin_cobertura;
     if (hayViento) hazardRate += LAMBDAS.viento;
-    if (hayLluvia) hazardRate += LAMBDAS.lluvia;
+    if (hayNiebla) hazardRate += (LAMBDAS.niebla || LAMBDAS.lluvia);
 
     const item = {
       id: props.id,
@@ -304,11 +310,13 @@ function inicializarGrafo(d) {
       length_m,
       coords: f.geometry.coordinates,
       hayIncendio,
-      haySismo,
+      haySismo: hayAeronave,
+      hayAeronave,
       hayPoblacion,
       hayTelecom,
       hayViento,
-      hayLluvia,
+      hayLluvia: hayNiebla,
+      hayNiebla,
       hayEstres,
       hazardRate,
     };
@@ -572,12 +580,25 @@ function ejecutarMision() {
 
   const latlngs = coords.map(c => [c[1], c[0]]);
 
+  const esBVLOS = totalLongitudM > 500;
+  const distKmNum = totalLongitudM / 1000;
+  const distKmFmt = distKmNum.toFixed(2).replace('.', ',');
+  const legalBadgeHtml = esBVLOS
+    ? `<div style="margin-top:6px; padding:5px 8px; background:#fee2e2; border-left:3px solid #dc2626; color:#991b1b; font-size:11px; border-radius:3px; line-height:1.35;">
+         <strong style="color:#b91c1c;">Vuelo BVLOS (&gt; 500 m)</strong><br>
+         Sobrepasa el límite visual del piloto (DAN 151).<br>
+         <strong style="color:#991b1b;">Requiere Autorización Especial DGAC (Chile)</strong>
+       </div>`
+    : `<div style="margin-top:5px; padding:3px 6px; background:#dcfce7; border-left:3px solid #16a34a; color:#166534; font-size:11px; border-radius:3px;">
+         <strong>Régimen:</strong> VLOS (Línea de vista directa &le; 500 m)
+       </div>`;
+
   // Polilínea de la ruta Dijkstra (azul técnico nítido y formal)
   const rutaPolyline = L.polyline(latlngs, {
     color: '#1d4ed8',
     weight: 4.0,
     opacity: 0.95,
-  }).bindPopup(`<b>Ruta Dijkstra</b><br>Distancia: ${(totalLongitudM / 1000).toFixed(2).replace('.', ',')} km<br>Saltos: ${camino.aristas.length}`)
+  }).bindPopup(`<b>Ruta Planificada</b><br>Distancia: ${distKmFmt} km<br>Saltos: ${camino.aristas.length}${legalBadgeHtml}`)
     .addTo(layerRutasDijkstra);
 
   mapa.fitBounds(rutaPolyline.getBounds(), { padding: [50, 50] });
@@ -631,7 +652,6 @@ function ejecutarMision() {
   actualizarVisualizacionNodos(camino.nodos);
 
   // Cálculos de métricas
-  const distKmNum = totalLongitudM / 1000;
   const kmTotales = distKmNum.toFixed(2).replace('.', ',') + ' km';
   const cantSaltos = `${camino.aristas.length} saltos`;
   const cantSaltosFooter = `${camino.aristas.length} saltos`;
@@ -682,35 +702,16 @@ function ejecutarMision() {
   btnEjecutar.innerHTML = `<svg class="ui-icon ui-icon-sm" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span>Misión Ejecutada</span>`;
 }
 
-// Modelos de UAV comerciales e industriales homologados/usados en Chile (DGAC DAN 151)
+// Modelo de UAV homologado único para la misión: DJI Matrice 350 RTK (DGAC DAN 151)
+// Altitud de crucero fijada a ~100m AGL sobre el terreno (sin variación vertical por ahora)
 const MODELOS_DRON = {
   m350: {
     nombre: 'DJI Matrice 350 RTK',
-    tipo: 'Multirotor Industrial (Quintero / Ventanas)',
+    tipo: 'Multirotor Industrial (Única Plataforma Operacional)',
     distanciaMaxKm: 32.0,
     tiempoMaxMin: 55,
     bateriaReservaPct: 15, // reserva obligatoria DGAC DAN 151
-  },
-  m30t: {
-    nombre: 'DJI Matrice 30T',
-    tipo: 'Multirotor Clima Adverso IP55',
-    distanciaMaxKm: 25.0,
-    tiempoMaxMin: 41,
-    bateriaReservaPct: 15,
-  },
-  mavic3e: {
-    nombre: 'DJI Mavic 3 Enterprise',
-    tipo: 'UAV Ligero de Mapeo Rápido',
-    distanciaMaxKm: 18.0,
-    tiempoMaxMin: 42,
-    bateriaReservaPct: 15,
-  },
-  trinity_vtol: {
-    nombre: 'Trinity F90+ VTOL',
-    tipo: 'Ala Fija VTOL Largo Alcance',
-    distanciaMaxKm: 50.0,
-    tiempoMaxMin: 90,
-    bateriaReservaPct: 15,
+    altitudFijaM: 100,      // ~100 m AGL fija
   },
 };
 
@@ -727,18 +728,31 @@ function actualizarEvaluacionDronFooter(distKm = ultimaDistanciaKmRuta, tiempoMi
   const resBateria = document.getElementById('res-bateria');
   const resAlcance = document.getElementById('res-alcance');
   const elDronModelo = document.getElementById('ventana-dron-modelo');
+  const elDronAltitud = document.getElementById('ventana-dron-altitud');
+  const elFooterAltitud = document.getElementById('mapa-footer-altitud');
+
+  const elLegal = document.getElementById('mapa-footer-legal');
+  const resLegal = document.getElementById('res-regimen-legal');
+  const bannerBvlos = document.getElementById('alerta-bvlos-banner');
+  const descBvlos = document.getElementById('alerta-bvlos-desc');
+
+  if (elDronAltitud) elDronAltitud.textContent = '~100 m AGL (fija)';
+  if (elFooterAltitud) elFooterAltitud.textContent = '~100 m AGL';
 
   if (ultimaDistanciaKmRuta == null) {
     if (elAlcance) elAlcance.textContent = '—';
     if (elBateria) elBateria.textContent = '—';
+    if (elLegal) elLegal.textContent = '—';
     if (resBateria) resBateria.textContent = '—';
     if (resAlcance) resAlcance.textContent = '—';
+    if (resLegal) resLegal.textContent = '—';
+    if (bannerBvlos) bannerBvlos.style.display = 'none';
     if (elDronModelo) elDronModelo.textContent = 'DJI Matrice 350 RTK';
     return;
   }
 
-  const modeloKey = selDron ? selDron.value : 'm350';
-  const dron = MODELOS_DRON[modeloKey] || MODELOS_DRON.m350;
+  const modeloKey = 'm350';
+  const dron = MODELOS_DRON.m350;
   if (elDronModelo) elDronModelo.textContent = dron.nombre;
 
   // 1. Evaluación de Alcance / Distancia
@@ -775,6 +789,35 @@ function actualizarEvaluacionDronFooter(distKm = ultimaDistanciaKmRuta, tiempoMi
   } else {
     badgeBateriaHtml = `<span class="badge-status-ok" title="Batería suficiente: ${pctRestante.toFixed(0)}% restante estimado al aterrizar (Consumo: ${pctConsumo.toFixed(0)}% en ${tVueloMin.toFixed(1)} min)">Alcanza (${pctRestante.toFixed(0)}%)</span>`;
     txtResBateria = `<span class="text-good">Alcanza (${pctRestante.toFixed(0)}% restante)</span>`;
+  }
+
+  // 3. Evaluación de Legalidad Aeronáutica (DAN 151 DGAC Chile: Límite VLOS 500 m)
+  const LIMITE_VLOS_KM = 0.5; // 500 metros límite visual estándar en Chile
+  const esBVLOS = distRuta > LIMITE_VLOS_KM;
+
+  if (esBVLOS) {
+    if (resLegal) {
+      resLegal.innerHTML = `<span class="badge-status-danger" style="background:#fee2e2; color:#b91c1c; border-color:#fca5a5; font-weight:700;" title="La distancia (${distRuta.toFixed(1)} km) sobrepasa la línea de vista del piloto (máx. 500 m). Requiere Autorización Especial DGAC según DAN 151.">BVLOS: Requiere Autorización Especial DGAC (&gt; 500 m)</span>`;
+    }
+    if (elLegal) {
+      elLegal.innerHTML = `<span class="badge-status-danger" title="Ruta BVLOS (${distRuta.toFixed(1)} km &gt; 500 m): Exige autorización especial emitida por la DGAC bajo la norma DAN 151.">BVLOS (Requiere Autorización DGAC)</span>`;
+    }
+    if (bannerBvlos) {
+      bannerBvlos.style.display = 'flex';
+      if (descBvlos) {
+        descBvlos.innerHTML = `Esta ruta (<strong>${distRuta.toFixed(1)} km</strong>) sobrepasa el límite legal de línea de vista del piloto (máx. 500 m según DAN 151). Conforme a la legislación aeronáutica de Chile, <strong>requiere Autorización Especial de la DGAC</strong> con análisis de riesgo operacional SORA aprobado y enlace C2 redundante.`;
+      }
+    }
+  } else {
+    if (resLegal) {
+      resLegal.innerHTML = `<span class="badge-status-ok" style="background:#dcfce7; color:#15803d; border-color:#86efac; font-weight:700;" title="Operación estándar a la vista del operador (&le; 500 m). Cumple norma DAN 151.">VLOS: Operación Estándar a la Vista (&le; 500 m)</span>`;
+    }
+    if (elLegal) {
+      elLegal.innerHTML = `<span class="badge-status-ok" title="Vuelo dentro del alcance visual directo del operador (&le; 500 m). Cumple norma DAN 151.">VLOS (Línea de Vista)</span>`;
+    }
+    if (bannerBvlos) {
+      bannerBvlos.style.display = 'none';
+    }
   }
 
   if (elAlcance) elAlcance.innerHTML = badgeAlcanceHtml;
@@ -1063,6 +1106,8 @@ function inicializarCapasCartograficas(d) {
       l.bindPopup(tabla([
         ['Estación SINCA', p.name],
         ['Código', p.code],
+        ['Rol Operacional', 'Valor de la Misión: Prioridad de muestreo R(d) (no penaliza aristas)'],
+        ['Referencia de superficie', 'Base de comparación para sensores del dron'],
         ['Mediciones recientes', mediciones],
       ]));
     },
@@ -1076,6 +1121,7 @@ function inicializarCapasCartograficas(d) {
     }),
     onEachFeature: (f, l) => l.bindPopup(tabla([
       ['Arista', f.properties.edge_id],
+      ['Rol Operacional', 'Verificación Techo 120m AGL (DAN 151) y Consumo EEE de Ascenso'],
       ['Desnivel (Δh)', `${f.properties.delta_h_m ?? '—'} m`],
       ['Pendiente', `${f.properties.slope_pct ?? '—'} %`],
       ['Elevación máx', `${f.properties.elevation_max_m ?? '—'} m`],
@@ -1090,10 +1136,11 @@ function inicializarCapasCartograficas(d) {
       return { color, weight: 0.8, fillColor: color, fillOpacity: 0.25 };
     },
     onEachFeature: (f, l) => l.bindPopup(tabla([
-      ['Manzana INE', f.properties.block_id || f.properties.manzent],
+      ['Manzana INE (Censo 2017)', f.properties.block_id || f.properties.manzent],
       ['Población', `${fmt(f.properties.persons)} hab`],
       ['Densidad', `${fmt(f.properties.density_hab_km2)} hab/km²`],
-      ['Restricción DAN 151', (f.properties.density_hab_km2 || 0) > 2500 ? 'Zona no sobrevolable' : 'Sobrevolable'],
+      ['Rol Operacional', 'Riesgo en Tierra (SORA) - Penalizar aristas sobrevoladas'],
+      ['Restricción DAN 151', (f.properties.density_hab_km2 || 0) > 2500 ? 'Área residencial densa (penalización severa)' : 'Área de baja densidad (despejada)'],
     ])),
   });
 
@@ -1102,18 +1149,21 @@ function inicializarCapasCartograficas(d) {
   if (d.antenas && d.antenas.features) {
     d.antenas.features.forEach(f => {
       const p = f.properties;
+      const radioM = p.coverage_radius_m || 3000;
       const poly = L.geoJSON(f, {
         style: { color: '#7c3aed', weight: 1.2, fillColor: '#8b5cf6', fillOpacity: 0.08, dashArray: '4 4' }
       });
       poly.bindPopup(tabla([
-        ['Antena C2', p.name || 'Mástil de telecomunicaciones'],
-        ['Radio de cobertura', `${p.coverage_radius_m || 2000} m`],
+        ['Antena C2 (OSM / OpenCelliD)', p.name || 'Mástil de telecomunicaciones'],
+        ['Supuesto de Enlace', '4G / LTE (Banda 7/28) a 120m AGL'],
+        ['Radio de cobertura', `${radioM} m`],
+        ['Rol Operacional', 'Enlace C2 - Penalizar sombra de telemetría'],
       ]));
       poly.addTo(capaAntenas);
 
       if (p.lat && p.lon) {
         const iconHtml = `
-          <div class="antenna-marker-pin" title="Antena C2: ${p.name || 'Radiobase'} (${p.coverage_radius_m || 2000}m)">
+          <div class="antenna-marker-pin" title="Antena C2: ${p.name || 'Radiobase'} (${radioM}m)">
             <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
               <path d="M12 2v20"/><path d="m17 7-5 5-5-5"/><path d="M4 12a8 8 0 0 1 16 0"/>
             </svg>
@@ -1128,17 +1178,91 @@ function inicializarCapasCartograficas(d) {
           })
         });
         marker.bindPopup(tabla([
-          ['Radiobase C2', p.name || 'Mástil Telecom'],
+          ['Radiobase C2 (OSM / OpenCelliD)', p.name || 'Mástil Telecom'],
           ['Estructura', p.structure || 'Mástil'],
-          ['Radio de Cobertura', `${p.coverage_radius_m || 2000} m`],
-          ['Línea de Vista', 'Garantiza enlace de mando y telemetría C2']
+          ['Supuesto Tecnológico', '4G / LTE (Banda 7/28) a 120 m AGL'],
+          ['Radio de Cobertura', `${radioM} m`],
+          ['Rol Operacional', 'Enlace C2 - Penalizar tramos fuera de cobertura']
         ]));
         marker.addTo(capaAntenas);
       }
     });
   }
 
-  // 7b. Quebradas y Planes (Traza Urbana / MINVU / DGA)
+  // 7b. Obstáculos verticales y tendido eléctrico (OSM)
+  const capaObstaculos = L.featureGroup();
+  if (d.obstaculos && d.obstaculos.features) {
+    d.obstaculos.features.forEach(f => {
+      const p = f.properties;
+      const g = f.geometry;
+      const esLinea = g.type === 'LineString';
+      if (esLinea) {
+        const poly = L.geoJSON(f, {
+          style: {
+            color: '#f59e0b',
+            weight: 3.5,
+            opacity: 0.9,
+            dashArray: '6 4'
+          }
+        });
+        poly.bindPopup(tabla([
+          ['Infraestructura', p.name || 'Línea de Alta Tensión'],
+          ['Tipo', 'Línea de Transmisión Eléctrica'],
+          ['Tensión', `${p.voltage_kv || '110/220'} kV`],
+          ['Radio de Seguridad', `${p.buffer_radius_m || 50} m`],
+          ['Peligro aeronáutico', 'Cables tensores e interferencia electromagnética con el compás magnético'],
+          ['Acción de Ruteo', p.operational_action === 'bloquear' ? 'Bloqueo Duro (Inhabilita arista)' : 'Penalización por Margen']
+        ]));
+        poly.addTo(capaObstaculos);
+      } else {
+        const esChimenea = p.obstacle_type === 'chimney';
+        const colorMarker = esChimenea ? '#dc2626' : '#d97706';
+        const circleBuffer = L.circle([p.lat, p.lon], {
+          radius: p.buffer_radius_m || 100,
+          color: colorMarker,
+          weight: 1.2,
+          dashArray: '3 3',
+          fillColor: colorMarker,
+          fillOpacity: 0.15
+        });
+        circleBuffer.bindPopup(tabla([
+          ['Zona de Exclusión', `Buffer de seguridad ${p.buffer_radius_m}m`],
+          ['Obstáculo', p.name],
+          ['Altura', `${p.height_m} m` + (p.height_estimated ? ' (estimada)' : ' (registrada)')],
+          ['Acción', p.operational_action === 'bloquear' ? 'Bloqueo Duro' : 'Penalización']
+        ]));
+        circleBuffer.addTo(capaObstaculos);
+
+        const iconHtml = `
+          <div class="obstacle-hazard-badge ${esChimenea ? 'obstacle-chimney' : 'obstacle-tower'}" title="${p.name} (${p.height_m}m)">
+            <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 2v20M8 6h8M6 12h12M4 18h16"/>
+            </svg>
+            <span>${p.height_m}m</span>
+          </div>
+        `;
+        const marker = L.marker([p.lat, p.lon], {
+          icon: L.divIcon({
+            className: 'div-icon-obstacle',
+            html: iconHtml,
+            iconSize: [60, 24],
+            iconAnchor: [30, 12]
+          })
+        });
+        marker.bindPopup(tabla([
+          ['Obstáculo Físico', p.name],
+          ['Tipo de Estructura', p.obstacle_type],
+          ['Altura Física', `${p.height_m} m` + (p.height_estimated ? ' (estimada)' : '')],
+          ['Techo de Vuelo (DAN 151)', '120 m AGL sobre terreno'],
+          ['Impacto Operacional', p.height_m >= 120 ? 'SUPERACIÓN CRÍTICA DEL TECHO DE VUELO' : 'Riesgo de colisión en maniobra'],
+          ['Acción de Ruteo', p.operational_action === 'bloquear' ? 'Bloqueo Duro (Inhabilita arista)' : 'Penalización por Margen']
+        ]));
+        marker.addTo(capaObstaculos);
+      }
+    });
+  }
+
+  // 7c. Quebradas y Planes (Traza Urbana / MINVU / DGA)
   const capaTrazaUrbana = L.geoJSON(d.traza_urbana, {
     style: () => ({
       color: '#0284c7',
@@ -1203,17 +1327,29 @@ function inicializarCapasCartograficas(d) {
     });
   }
 
-  // 9. Sismos (EMSC / CSN) con radio de atenuación y badge de magnitud en epicentro
+  // 9. Tráfico Aéreo Tripulado (OpenSky ADS-B) con cilindro de exclusión y badge de telemetría
   const capaSismos = L.featureGroup();
-  if (d.sismos && d.sismos.features) {
-    d.sismos.features.forEach(f => {
+  const coleccionAeronaves = d.aeronaves || d.sismos;
+  if (coleccionAeronaves && coleccionAeronaves.features) {
+    coleccionAeronaves.features.forEach(f => {
       const p = f.properties;
+      const esAeronave = p.event_type === 'aeronave' || p.callsign;
       const poly = L.geoJSON(f, {
-        style: () => (p.exceeds
-          ? { color: '#7e22ce', weight: 2, fillColor: '#a855f7', fillOpacity: 0.2 }
-          : { color: '#2563eb', weight: 1, dashArray: '4 4', fillColor: '#93c5fd', fillOpacity: 0.1 })
+        style: () => (esAeronave
+          ? { color: p.exceeds ? '#ea580c' : '#f59e0b', weight: 2, dashArray: '4 4', fillColor: p.exceeds ? '#f97316' : '#fbbf24', fillOpacity: p.exceeds ? 0.25 : 0.08 }
+          : (p.exceeds
+            ? { color: '#7e22ce', weight: 2, fillColor: '#a855f7', fillOpacity: 0.2 }
+            : { color: '#2563eb', weight: 1, dashArray: '4 4', fillColor: '#93c5fd', fillOpacity: 0.1 }))
       });
-      poly.bindPopup(tabla([
+      poly.bindPopup(tabla(esAeronave ? [
+        ['Amenaza', 'Tráfico Aéreo Tripulado (OpenSky ADS-B)'],
+        ['Callsign / Matrícula', p.callsign || p.external_id],
+        ['ICAO 24-bit', p.icao24 || '—'],
+        ['Altitud Barométrica', `${p.baro_altitude_m || p.value} m MSL`],
+        ['Velocidad Terrestre', `${p.velocity_ms || 0} m/s (${((p.velocity_ms || 0) * 3.6).toFixed(0)} km/h)`],
+        ['Cilindro de Exclusión', `${p.exclusion_radius_m || 1500} m`],
+        ['Conflicto / Bloqueo', bloquea(p)],
+      ] : [
         ['Tipo', 'Evento Sísmico'],
         ['Magnitud', p.value],
         ['Profundidad', `${p.depth_km} km`],
@@ -1223,30 +1359,58 @@ function inicializarCapasCartograficas(d) {
       poly.addTo(capaSismos);
 
       if (p.lat && p.lon) {
-        const magVal = Number(p.value || 0).toFixed(1);
-        const iconHtml = `
-          <div class="quake-hazard-badge" title="Epicentro Sísmico: M ${magVal}">
-            <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M2 12h5l3-9 4 18 3-9h5"/>
-            </svg>
-            <span>M ${magVal}</span>
-          </div>
-        `;
-        const marker = L.marker([p.lat, p.lon], {
-          icon: L.divIcon({
-            className: 'div-icon-quake',
-            html: iconHtml,
-            iconSize: [58, 24],
-            iconAnchor: [29, 12]
-          })
-        });
-        marker.bindPopup(tabla([
-          ['Epicentro Sísmico', `Magnitud ${magVal} M_L`],
-          ['Profundidad Focal', `${p.depth_km} km`],
-          ['Radio de Afectación', `${p.affect_radius_km} km`],
-          ['Monitoreo', 'Centro Sismológico Nacional (CSN) / EMSC']
-        ]));
-        marker.addTo(capaSismos);
+        if (esAeronave) {
+          const altVal = Math.round(p.baro_altitude_m || p.value || 0);
+          const iconHtml = `
+            <div class="aircraft-hazard-badge ${p.exceeds ? 'aircraft-danger' : ''}" title="Aeronave Tripulada: ${p.callsign || 'VFR'} (${altVal}m MSL)">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor">
+                <path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/>
+              </svg>
+              <span>${p.callsign || 'CC-SCER1'} (${altVal}m)</span>
+            </div>
+          `;
+          const marker = L.marker([p.lat, p.lon], {
+            icon: L.divIcon({
+              className: 'div-icon-aircraft',
+              html: iconHtml,
+              iconSize: [110, 26],
+              iconAnchor: [55, 13]
+            })
+          });
+          marker.bindPopup(tabla([
+            ['Aeronave Tripulada', `${p.callsign || 'CC-SCER1'} (${p.icao24 || 'VFR'})`],
+            ['Altitud Barométrica', `${altVal} m MSL`],
+            ['Velocidad', `${p.velocity_ms || 0} m/s`],
+            ['Radio de Protección', `${p.exclusion_radius_m || 1500} m`],
+            ['Prioridad Normativa', 'DAN 151 DGAC (Derecho de paso irrestricto)']
+          ]));
+          marker.addTo(capaSismos);
+        } else {
+          const magVal = Number(p.value || 0).toFixed(1);
+          const iconHtml = `
+            <div class="quake-hazard-badge" title="Epicentro Sísmico: M ${magVal}">
+              <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M2 12h5l3-9 4 18 3-9h5"/>
+              </svg>
+              <span>M ${magVal}</span>
+            </div>
+          `;
+          const marker = L.marker([p.lat, p.lon], {
+            icon: L.divIcon({
+              className: 'div-icon-quake',
+              html: iconHtml,
+              iconSize: [58, 24],
+              iconAnchor: [29, 12]
+            })
+          });
+          marker.bindPopup(tabla([
+            ['Epicentro Sísmico', `Magnitud ${magVal} M_L`],
+            ['Profundidad Focal', `${p.depth_km} km`],
+            ['Radio de Afectación', `${p.affect_radius_km} km`],
+            ['Monitoreo', 'Centro Sismológico Nacional (CSN) / EMSC']
+          ]));
+          marker.addTo(capaSismos);
+        }
       }
     });
   }
@@ -1306,21 +1470,39 @@ function inicializarCapasCartograficas(d) {
     });
   }
 
-  // 11. Lluvia (MET Norway) con grilla 4x4 y badge de tasa de precipitación en mm/h
+  // 11. Niebla Costera y Visibilidad (Open-Meteo) con grilla 4x4 y badge de visibilidad / humedad
   const capaLluvia = L.featureGroup();
-  if (d.lluvia && d.lluvia.features) {
-    d.lluvia.features.forEach(f => {
+  const coleccionNiebla = d.niebla || d.lluvia;
+  if (coleccionNiebla && coleccionNiebla.features) {
+    coleccionNiebla.features.forEach(f => {
       const p = f.properties;
+      const esNiebla = p.event_type === 'niebla' || p.relative_humidity !== undefined;
       const poly = L.geoJSON(f, {
-        style: () => ({
-          color: p.exceeds ? '#1e40af' : '#0284c7',
-          weight: 1.5,
-          dashArray: '3 3',
-          fillColor: p.exceeds ? '#2563eb' : '#38bdf8',
-          fillOpacity: 0.20,
-        })
+        style: () => (esNiebla
+          ? {
+            color: p.exceeds ? '#0284c7' : '#0d9488',
+            weight: 1.5,
+            dashArray: '3 3',
+            fillColor: p.exceeds ? '#38bdf8' : '#99f6e4',
+            fillOpacity: p.exceeds ? 0.32 : 0.12,
+          }
+          : {
+            color: p.exceeds ? '#1e40af' : '#0284c7',
+            weight: 1.5,
+            dashArray: '3 3',
+            fillColor: p.exceeds ? '#2563eb' : '#38bdf8',
+            fillOpacity: 0.20,
+          })
       });
-      poly.bindPopup(tabla([
+      poly.bindPopup(tabla(esNiebla ? [
+        ['Amenaza', 'Niebla Costera / Camanchaca (Open-Meteo)'],
+        ['Visibilidad Horizontal', `${p.value} m`],
+        ['Umbral VMC DAN 151', `${p.threshold} m`],
+        ['Humedad Relativa', `${p.relative_humidity || 0}%`],
+        ['Nubosidad Baja', `${p.cloud_cover_low || 0}%`],
+        ['Condición', p.condition || (p.exceeds ? 'Niebla activa (Restricción DAN 151)' : 'Visibilidad normal')],
+        ['Zona activa (Bloqueo)', bloquea(p)],
+      ] : [
         ['Precipitación', `${p.value} mm/h`],
         ['Umbral IPx4', `${p.threshold} mm/h`],
         ['Símbolo / Condición', p.symbol_code || 'Normal'],
@@ -1329,30 +1511,58 @@ function inicializarCapasCartograficas(d) {
       poly.addTo(capaLluvia);
 
       if (p.lat && p.lon) {
-        const lluviaVal = Number(p.value || 0).toFixed(1);
-        const iconHtml = `
-          <div class="rain-cell-badge ${p.exceeds ? 'rain-danger' : 'rain-normal'}" title="Precipitación: ${lluviaVal} mm/h">
-            <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242"/>
-              <path d="M16 14v6"/><path d="M8 14v6"/><path d="M12 16v6"/>
-            </svg>
-            <span>${lluviaVal} mm/h</span>
-          </div>
-        `;
-        const marker = L.marker([p.lat, p.lon], {
-          icon: L.divIcon({
-            className: 'div-icon-rain',
-            html: iconHtml,
-            iconSize: [68, 24],
-            iconAnchor: [34, 12]
-          })
-        });
-        marker.bindPopup(tabla([
-          ['Tasa de Precipitación', `${p.value} mm/h`],
-          ['Límite IPx4', `${p.threshold} mm/h`],
-          ['Condición', p.symbol_code || 'Sin precipitación']
-        ]));
-        marker.addTo(capaLluvia);
+        if (esNiebla) {
+          const visVal = Math.round(p.value || 0);
+          const iconHtml = `
+            <div class="fog-cell-badge ${p.exceeds ? 'fog-danger' : 'fog-normal'}" title="Visibilidad: ${visVal} m | HR: ${p.relative_humidity}%">
+              <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M3 15h18M3 18h14M5 12h14M7 9h10"/>
+              </svg>
+              <span>${visVal}m (HR ${p.relative_humidity}%)</span>
+            </div>
+          `;
+          const marker = L.marker([p.lat, p.lon], {
+            icon: L.divIcon({
+              className: 'div-icon-fog',
+              html: iconHtml,
+              iconSize: [85, 24],
+              iconAnchor: [42, 12]
+            })
+          });
+          marker.bindPopup(tabla([
+            ['Celda Espacial', p.cell || '4x4'],
+            ['Visibilidad en Superficie', `${p.value} m (umbral: ${p.threshold} m)`],
+            ['Humedad Relativa', `${p.relative_humidity || 0}%`],
+            ['Cobertura Nubosa Baja', `${p.cloud_cover_low || 0}%`],
+            ['Condición Atmosférica', p.condition || 'VMC Nominal']
+          ]));
+          marker.addTo(capaLluvia);
+        } else {
+          const lluviaVal = Number(p.value || 0).toFixed(1);
+          const iconHtml = `
+            <div class="rain-cell-badge ${p.exceeds ? 'rain-danger' : 'rain-normal'}" title="Precipitación: ${lluviaVal} mm/h">
+              <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242"/>
+                <path d="M16 14v6"/><path d="M8 14v6"/><path d="M12 16v6"/>
+              </svg>
+              <span>${lluviaVal} mm/h</span>
+            </div>
+          `;
+          const marker = L.marker([p.lat, p.lon], {
+            icon: L.divIcon({
+              className: 'div-icon-rain',
+              html: iconHtml,
+              iconSize: [68, 24],
+              iconAnchor: [34, 12]
+            })
+          });
+          marker.bindPopup(tabla([
+            ['Tasa de Precipitación', `${p.value} mm/h`],
+            ['Límite IPx4', `${p.threshold} mm/h`],
+            ['Condición', p.symbol_code || 'Sin precipitación']
+          ]));
+          marker.addTo(capaLluvia);
+        }
       }
     });
   }
@@ -1365,7 +1575,7 @@ function inicializarCapasCartograficas(d) {
         : { color: '#ea580c', weight: 3, dashArray: '6 6', opacity: 0.8 }),
       onEachFeature: (f, l) => l.bindPopup(tabla([
         ['Ruta de referencia', `pgr_dijkstra en PostgreSQL (k=${f.properties.k})`],
-        ['Condición', 'Peor caso: no considera metadata ni amenazas (Fase 3)'],
+        ['Condición', 'Línea base del peor caso: distancia física métrica sin mitigación de riesgo ni metadata'],
         ['Destino', f.properties.destino_nombre || f.properties.destino],
         ['Longitud', km(f.properties.longitud_m)],
         ['Costo (longitud pura)', `${fmt(Math.round(f.properties.costo))} m`],
@@ -1386,11 +1596,12 @@ function inicializarCapasCartograficas(d) {
     'Metadata · Relieve por arista (SRTM)': capaRelieve,
     'Metadata · Manzanas pobladas (INE)': capaManzanas,
     'Metadata · Cobertura antenas (OSM)': capaAntenas,
+    'Metadata · Obstáculos físicos y alta tensión (OSM)': capaObstaculos,
     'Metadata · Quebradas (Traza Urbana)': capaTrazaUrbana,
     'Amenaza · Incendios (NASA FIRMS)': capaIncendios,
-    'Amenaza · Sismos (EMSC / CSN)': capaSismos,
+    'Amenaza · Tráfico Aéreo (OpenSky ADS-B)': capaSismos,
     'Amenaza · Viento (Open-Meteo)': capaViento,
-    'Amenaza · Lluvia (MET Norway)': capaLluvia,
+    'Amenaza · Niebla Costera (Open-Meteo)': capaLluvia,
   };
 
   // Asignar referencias globales de las capas para los checkboxes del panel lateral
@@ -1398,6 +1609,7 @@ function inicializarCapasCartograficas(d) {
   capaRelieveGlobal = capaRelieve;
   capaManzanasGlobal = capaManzanas;
   capaAntenasGlobal = capaAntenas;
+  capaObstaculosGlobal = capaObstaculos;
   capaTrazaUrbanaGlobal = capaTrazaUrbana;
   capaIncendiosGlobal = capaIncendios;
   capaSismosGlobal = capaSismos;
@@ -1423,6 +1635,7 @@ function inicializarCapasCartograficas(d) {
   enlazarCapaVisual('check-layer-relieve', capaRelieveGlobal);
   enlazarCapaVisual('check-layer-manzanas', capaManzanasGlobal);
   enlazarCapaVisual('check-layer-antenas', capaAntenasGlobal);
+  enlazarCapaVisual('check-layer-obstaculos', capaObstaculosGlobal);
   enlazarCapaVisual('check-layer-traza', capaTrazaUrbanaGlobal);
 
   enlazarCapaVisual('check-layer-incendios', capaIncendiosGlobal);
@@ -1800,7 +2013,7 @@ async function iniciar() {
     });
   }
 
-  // Inicializar módulos de Entrega 2
+  // Inicializar módulos del sistema
   inicializarModuloGrafo(d);
   inicializarModuloInfraestructura(d);
   inicializarModuloMetadata(d);
@@ -1969,7 +2182,7 @@ function renderizarDestinosCards() {
           </span>
           <span class="destino-distancia" title="Distancia de vuelo directa desde el origen">
             <svg class="ui-icon ui-icon-sm" viewBox="0 0 24 24"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
-            <span>${distFmt}</span>
+            <span>${distFmt}</span>${n.distanciaKmDirecta > 0.5 ? '<span class="tag-bvlos-mini" title="Vuelo BVLOS (> 500 m): Requiere Autorización Especial DGAC">BVLOS</span>' : ''}
           </span>
         </div>
         <div class="destino-nombre">${esc(n.name)}</div>
@@ -2120,7 +2333,7 @@ function inicializarAcordeonesSidebar() {
 }
 
 // =============================================================================
-// GESTIÓN DE NAVEGACIÓN ENTRE MÓDULOS (ENTREGA 2)
+// GESTIÓN DE NAVEGACIÓN ENTRE MÓDULOS
 // =============================================================================
 function configurarNavegacionModulos(d) {
   const tabBtnSimulador = document.getElementById('tab-btn-simulador');
@@ -2418,7 +2631,7 @@ function inicializarModuloInfraestructura(d) {
     const paquete = {
       descripcion: "Infraestructura Completa de Red UAV · Bahía de Quintero",
       metodologia: "K-vecinos (K=4) + Conectividad Union-Find + Zonas Urbanas DAN 151",
-      referencia_rubrica: "Ítem 1 Entrega 2",
+      modulo: "Infraestructura Geoespacial",
       fecha_exportacion: new Date().toISOString(),
       nodos: d.nodos,
       aristas: d.aristas,
@@ -2652,7 +2865,7 @@ function montarMapaInfra(d) {
 }
 
 // =============================================================================
-// MÓDULO DE METADATA (CRITERIO 2 Y 3.1 RÚBRICA ENTREGA 2)
+// MÓDULO DE METADATA TERRITORIAL Y OPERACIONAL
 // =============================================================================
 function inicializarModuloMetadata(d) {
   // 1. Poblar KPIs de Metadata
@@ -2660,6 +2873,8 @@ function inicializarModuloMetadata(d) {
   document.getElementById('kpi-meta-srtm').textContent = d.relieve.features.length;
   document.getElementById('kpi-meta-ine').textContent = d.manzanas.features.length;
   document.getElementById('kpi-meta-antenas').textContent = d.antenas.features.length;
+  const kpiObs = document.getElementById('kpi-meta-obstaculos');
+  if (kpiObs) kpiObs.textContent = (d.obstaculos && d.obstaculos.features ? d.obstaculos.features.length : 12);
 
   // 2. Descargar Todo Consolidado de Metadata
   const btnDl = document.getElementById('btn-descargar-todo-metadata');
@@ -2667,13 +2882,14 @@ function inicializarModuloMetadata(d) {
     btnDl.addEventListener('click', () => {
       const paqueteMeta = {
         descripcion: "Metadata Territorial y Operacional · Bahía de Quintero",
-        referencia_rubrica: "Criterios 2 y 3.1 Entrega 2",
+        referencia: "Dimensiones de Riesgo y Operación UAV",
         fecha_exportacion: new Date().toISOString(),
         fuentes: {
           sinca_calidad_aire: d.aire,
           srtm_relieve: d.relieve,
           ine_manzanas: d.manzanas,
           osm_antenas: d.antenas,
+          osm_obstaculos: d.obstaculos,
         }
       };
       const blob = new Blob([JSON.stringify(paqueteMeta, null, 2)], { type: 'application/json' });
@@ -2725,6 +2941,15 @@ function inicializarModuloMetadata(d) {
       dataRef: d.antenas,
       tablaBD: 'meta_telecom_antenna',
       desc: `${d.antenas.features.length} Antenas de Telecomunicaciones · Celdas C2 3km`,
+    },
+    obstaculos: {
+      nombre: 'osm_obstaculos',
+      archivoGeojson: '../metadata/osm_obstaculos.geojson',
+      archivoScript: '../metadata/osm_obstaculos.py',
+      archivoDoc: '../metadata/osm_obstaculos.md',
+      dataRef: d.obstaculos || { type: 'FeatureCollection', features: [] },
+      tablaBD: 'meta_obstacle',
+      desc: `${(d.obstaculos && d.obstaculos.features ? d.obstaculos.features.length : 12)} Obstáculos Físicos y Alta Tensión (OSM)`,
     },
   };
 
@@ -2984,6 +3209,60 @@ function montarMapaMeta(d) {
     marker.addTo(layerSinca);
   });
 
+  // 5. Obstáculos Verticales y Líneas de Alta Tensión (OSM)
+  const layerObstaculos = L.layerGroup().addTo(mapaMeta);
+  if (d.obstaculos && d.obstaculos.features) {
+    d.obstaculos.features.forEach(f => {
+      const p = f.properties;
+      const g = f.geometry;
+      if (g.type === 'LineString') {
+        const coords = g.coordinates.map(c => [c[1], c[0]]);
+        const poly = L.polyline(coords, {
+          color: '#f59e0b',
+          weight: 3.5,
+          opacity: 0.9,
+          dashArray: '6 4'
+        });
+        poly.bindTooltip(`<b>${esc(p.name)}</b><br>${p.voltage_kv || 'Alta'} kV · ${p.operational_action}`, { sticky: true });
+        poly.on('click', () => {
+          mostrarEnMetaInspector('Línea de Transmisión Eléctrica (OSM)', p.name, {
+            'ID OSM': p.osm_id,
+            'Infraestructura': p.name,
+            'Nivel de Tensión': `${p.voltage_kv || '110/220'} kV`,
+            'Radio de Seguridad': `${p.buffer_radius_m} m`,
+            'Peligro Aeronáutico': 'Cables tensores e interferencia electromagnética con el compás magnético del UAV',
+            'Acción en Ruteo': p.operational_action === 'bloquear' ? 'Bloqueo duro (Inhabilita aristas que la cruzan)' : 'Penalización por margen',
+          });
+        });
+        poly.addTo(layerObstaculos);
+      } else {
+        const esChimenea = p.obstacle_type === 'chimney';
+        const color = esChimenea ? '#dc2626' : '#d97706';
+        const marker = L.circleMarker([p.lat, p.lon], {
+          radius: esChimenea ? 8 : 6,
+          fillColor: color,
+          fillOpacity: 0.95,
+          color: '#ffffff',
+          weight: 2,
+        });
+        marker.bindTooltip(`<b>${esc(p.name)}</b><br>Altura: ${p.height_m}m · ${p.operational_action}`, { sticky: true });
+        marker.on('click', () => {
+          mostrarEnMetaInspector('Obstáculo Físico en Altura (OSM)', p.name, {
+            'ID OSM': p.osm_id,
+            'Estructura': p.name,
+            'Tipo de Obstáculo': p.obstacle_type,
+            'Altura Física': `${p.height_m} m` + (p.height_estimated ? ' (estimada)' : ' (registrada)'),
+            'Techo Legal DAN 151': '120 m AGL sobre el terreno',
+            'Invasión de Franja': p.height_m >= 120 ? 'SUPERACIÓN CRÍTICA DEL TECHO DE VUELO' : 'Riesgo de colisión en maniobra',
+            'Radio de Seguridad': `${p.buffer_radius_m} m`,
+            'Acción en Ruteo': p.operational_action === 'bloquear' ? 'Bloqueo duro (Exclusión absoluta)' : 'Penalización conservadora',
+          });
+        });
+        marker.addTo(layerObstaculos);
+      }
+    });
+  }
+
   // Toggles de capas
   document.getElementById('toggle-meta-sinca').addEventListener('change', (e) => {
     if (e.target.checked) mapaMeta.addLayer(layerSinca);
@@ -3001,6 +3280,13 @@ function montarMapaMeta(d) {
     if (e.target.checked) mapaMeta.addLayer(layerAntenas);
     else mapaMeta.removeLayer(layerAntenas);
   });
+  const tglObs = document.getElementById('toggle-meta-obstaculos');
+  if (tglObs) {
+    tglObs.addEventListener('change', (e) => {
+      if (e.target.checked) mapaMeta.addLayer(layerObstaculos);
+      else mapaMeta.removeLayer(layerObstaculos);
+    });
+  }
 
   setTimeout(() => {
     mapaMeta.invalidateSize();
@@ -3008,14 +3294,16 @@ function montarMapaMeta(d) {
 }
 
 // =============================================================================
-// MÓDULO DE AMENAZAS (CRITERIOS 3, 4.1, 4.2, 5.1, 5.2 Y 6 RÚBRICA ENTREGA 2)
+// MÓDULO DE AMENAZAS DINÁMICAS Y MODELAMIENTO DE CONTINGENCIAS
 // =============================================================================
 function inicializarModuloAmenazas(d) {
   // 1. Poblar KPIs de Amenazas
   document.getElementById('kpi-amenaza-incendios').textContent = `${d.incendios.features.length} foco`;
-  document.getElementById('kpi-amenaza-sismos').textContent = `${d.sismos.features.length} sismos`;
+  const cantAeronaves = (d.aeronaves || d.sismos)?.features?.length || 1;
+  document.getElementById('kpi-amenaza-sismos').textContent = `${cantAeronaves} aeronave${cantAeronaves > 1 ? 's' : ''}`;
   document.getElementById('kpi-amenaza-viento').textContent = `${d.viento.features.length} celdas`;
-  document.getElementById('kpi-amenaza-lluvia').textContent = `${d.lluvia.features.length} celdas`;
+  const cantNiebla = (d.niebla || d.lluvia)?.features?.length || 16;
+  document.getElementById('kpi-amenaza-lluvia').textContent = `${cantNiebla} celdas`;
 
   // 2. Descargar Todo Consolidado de Amenazas
   const btnDl = document.getElementById('btn-descargar-todo-amenazas');
@@ -3023,15 +3311,15 @@ function inicializarModuloAmenazas(d) {
     btnDl.addEventListener('click', () => {
       const paqueteAmenazas = {
         descripcion: "Amenazas Dinámicas y Eventos de Falla · Bahía de Quintero",
-        marco_metodologico: "NASA FIRMS (incendios) + EMSC/CSN (sismos) + Open-Meteo (viento) + MET Norway (lluvia)",
-        referencia_rubrica: "Criterios 3, 4.1, 4.2, 5.1, 5.2 y 6 Entrega 2",
+        marco_metodologico: "NASA FIRMS (incendios) + OpenSky ADS-B (tráfico aéreo) + Open-Meteo (viento y niebla costera)",
+        modulo: "Amenazas y Restricciones Dinámicas",
         modelo_bd: "PostgreSQL 16 + PostGIS 3.4 (tabla threat_event)",
         fecha_exportacion: new Date().toISOString(),
         fuentes: {
           firms_incendios: d.incendios,
-          csn_sismos: d.sismos,
+          opensky_aeronaves: d.aeronaves || d.sismos,
           openmeteo_viento: d.viento,
-          metno_lluvia: d.lluvia,
+          openmeteo_niebla: d.niebla || d.lluvia,
         }
       };
       const blob = new Blob([JSON.stringify(paqueteAmenazas, null, 2)], { type: 'application/json' });
@@ -3047,6 +3335,28 @@ function inicializarModuloAmenazas(d) {
   }
 
   // 3. Explorador de Amenazas
+  const specAeronaves = {
+    nombre: 'opensky_aeronaves',
+    archivoGeojson: '../amenazas/opensky_aeronaves.geojson',
+    archivoScript: '../amenazas/opensky_aeronaves.py',
+    archivoCarga: '../amenazas/cargar_opensky_aeronaves.py',
+    archivoDoc: '../amenazas/opensky_aeronaves.md',
+    dataRef: d.aeronaves || d.sismos,
+    tablaBD: 'threat_event (event_type = \'aeronave\')',
+    desc: `${(d.aeronaves || d.sismos).features.length} Aeronave ADS-B · OpenSky Network (separación SCER)`,
+  };
+
+  const specNiebla = {
+    nombre: 'openmeteo_niebla',
+    archivoGeojson: '../amenazas/openmeteo_niebla.geojson',
+    archivoScript: '../amenazas/openmeteo_niebla.py',
+    archivoCarga: '../amenazas/cargar_openmeteo_niebla.py',
+    archivoDoc: '../amenazas/openmeteo_niebla.md',
+    dataRef: d.niebla || d.lluvia,
+    tablaBD: 'threat_event (event_type = \'niebla\')',
+    desc: `${(d.niebla || d.lluvia).features.length} Celdas 4×4 · Open-Meteo Forecast (visibilidad < 1000m)`,
+  };
+
   const AMENAZA_SPECS = {
     firms: {
       nombre: 'firms_incendios',
@@ -3058,16 +3368,8 @@ function inicializarModuloAmenazas(d) {
       tablaBD: 'threat_event (event_type = \'incendio\')',
       desc: `${d.incendios.features.length} Foco Activo · NASA FIRMS VIIRS/MODIS`,
     },
-    csn: {
-      nombre: 'csn_sismos',
-      archivoGeojson: '../amenazas/csn_sismos.geojson',
-      archivoScript: '../amenazas/csn_sismos.py',
-      archivoCarga: '../amenazas/cargar_csn_sismos.py',
-      archivoDoc: '../amenazas/csn_sismos.md',
-      dataRef: d.sismos,
-      tablaBD: 'threat_event (event_type = \'sismo\')',
-      desc: `${d.sismos.features.length} Sismos (30 días) · EMSC FDSN / CSN U. de Chile`,
-    },
+    opensky: specAeronaves,
+    csn: specAeronaves,
     viento: {
       nombre: 'openmeteo_viento',
       archivoGeojson: '../amenazas/openmeteo_viento.geojson',
@@ -3076,18 +3378,10 @@ function inicializarModuloAmenazas(d) {
       archivoDoc: '../amenazas/openmeteo_viento.md',
       dataRef: d.viento,
       tablaBD: 'threat_event (event_type = \'viento\')',
-      desc: `${d.viento.features.length} Celdas 4×4 · Open-Meteo Forecast API`,
+      desc: `${d.viento.features.length} Celdas 4×4 · Open-Meteo Forecast API (umbral 12 m/s)`,
     },
-    lluvia: {
-      nombre: 'metno_lluvia',
-      archivoGeojson: '../amenazas/metno_lluvia.geojson',
-      archivoScript: '../amenazas/metno_lluvia.py',
-      archivoCarga: '../amenazas/cargar_metno_lluvia.py',
-      archivoDoc: '../amenazas/metno_lluvia.md',
-      dataRef: d.lluvia,
-      tablaBD: 'threat_event (event_type = \'lluvia\')',
-      desc: `${d.lluvia.features.length} Celdas 4×4 · MET Norway Locationforecast`,
-    },
+    niebla: specNiebla,
+    lluvia: specNiebla,
   };
 
   let amenazaFuenteActiva = 'firms';
@@ -3282,76 +3576,113 @@ function montarMapaAmenazas(d) {
         'Umbral Crítico': `${p.threshold} m/s`,
         'Estado (exceeds)': isExceed ? '<span class="text-bad">ACTIVO (Bloquea aristas)</span>' : '<span class="text-good">OPERACIONAL</span>',
         'Fecha Observación': p.observed_at,
-        'Regla de Pesos (Criterio 5.2)': isExceed ? 'Inhabilita aristas que cruzan la celda (C = ∞)' : 'Modula velocidad terrestre v_g y consumo EEE por viento de frente',
+        'Regla de Pesos Operacionales': isExceed ? 'Inhabilita aristas que cruzan la celda (C = ∞)' : 'Modula velocidad terrestre v_g y consumo EEE por viento de frente',
       });
     });
     poly.addTo(layerViento);
   });
 
-  // 3. Grilla de Lluvia (MET Norway)
-  d.lluvia.features.forEach(f => {
+  // 3. Grilla de Niebla Costera (Open-Meteo)
+  const coleccionNieblaMap = d.niebla || d.lluvia;
+  coleccionNieblaMap.features.forEach(f => {
     const p = f.properties;
     const ring = f.geometry.coordinates[0].map(([lon, lat]) => [lat, lon]);
     const isExceed = p.exceeds;
+    const esNiebla = p.event_type === 'niebla' || p.relative_humidity !== undefined;
     const poly = L.polygon(ring, {
-      color: isExceed ? '#dc2626' : '#60a5fa',
+      color: isExceed ? '#0284c7' : '#0d9488',
       weight: isExceed ? 2 : 1,
-      fillColor: isExceed ? '#dc2626' : '#3b82f6',
-      fillOpacity: isExceed ? 0.38 : Math.max(0.06, Math.min(0.25, p.value * 0.1)),
+      fillColor: isExceed ? '#38bdf8' : '#99f6e4',
+      fillOpacity: isExceed ? 0.35 : 0.12,
     });
     poly.on('click', () => {
-      mostrarEnAmenazaInspector('Precipitación (MET Norway)', `Celda ${p.cell} · ${p.external_id}`, {
-        'Tipo de Evento': 'lluvia',
-        'Celda Espacial': p.cell,
-        'Precipitación Prevista': `${p.value} ${p.unit} (próxima hora)`,
-        'Condición Meteorológica': p.symbol_code || 'No reportada',
-        'Umbral Crítico': `${p.threshold} mm/h`,
-        'Estado (exceeds)': isExceed ? '<span class="text-bad">ACTIVO (No-Go por agua)</span>' : '<span class="text-good">OPERACIONAL</span>',
-        'Periodo Válido': `${p.observed_at} → ${p.valid_until || '—'}`,
-        'Regla de Pesos (Criterio 5.2)': isExceed ? 'Inhabilita aristas; activa retorno de emergencia LPP hacia sotavento' : 'Vuelo permitido con sensores ópticos en condiciones estándar',
-      });
+      if (esNiebla) {
+        mostrarEnAmenazaInspector('Niebla Costera / Camanchaca (Open-Meteo)', `Celda ${p.cell} · ${p.external_id}`, {
+          'Tipo de Evento': 'niebla',
+          'Celda Espacial': p.cell,
+          'Visibilidad en Superficie': `${p.value} m`,
+          'Umbral VMC DAN 151': `${p.threshold} m`,
+          'Humedad Relativa': `${p.relative_humidity || 0}%`,
+          'Nubosidad Baja': `${p.cloud_cover_low || 0}%`,
+          'Condición Atmosférica': p.condition || (isExceed ? 'Niebla activa (Restricción VLOS)' : 'VMC Nominal'),
+          'Estado (exceeds)': isExceed ? '<span class="text-bad">ACTIVO (Bloquea aristas por visibilidad &lt; 1000m)</span>' : '<span class="text-good">OPERACIONAL</span>',
+          'Fecha Observación': p.observed_at,
+          'Regla de Pesos Operacionales': isExceed ? 'Inhabilita aristas; activa desvío hacia zonas despejadas o aterrizaje preventivo' : 'Vuelo permitido bajo reglas visuales VMC nominales',
+        });
+      } else {
+        mostrarEnAmenazaInspector('Precipitación (MET Norway)', `Celda ${p.cell} · ${p.external_id}`, {
+          'Tipo de Evento': 'lluvia',
+          'Celda Espacial': p.cell,
+          'Precipitación Prevista': `${p.value} ${p.unit} (próxima hora)`,
+          'Condición Meteorológica': p.symbol_code || 'No reportada',
+          'Umbral Crítico': `${p.threshold} mm/h`,
+          'Estado (exceeds)': isExceed ? '<span class="text-bad">ACTIVO (No-Go por agua)</span>' : '<span class="text-good">OPERACIONAL</span>',
+          'Periodo Válido': `${p.observed_at} → ${p.valid_until || '—'}`,
+          'Regla de Pesos Operacionales': isExceed ? 'Inhabilita aristas; activa retorno de emergencia LPP hacia sotavento' : 'Vuelo permitido con sensores ópticos en condiciones estándar',
+        });
+      }
     });
     poly.addTo(layerLluvia);
   });
 
   // 4. Sismos (CSN / EMSC)
-  d.sismos.features.forEach(f => {
+  // 4. Tráfico Aéreo Tripulado (OpenSky ADS-B)
+  const coleccionAeronavesMap = d.aeronaves || d.sismos;
+  coleccionAeronavesMap.features.forEach(f => {
     const p = f.properties;
     const ring = f.geometry.coordinates[0].map(([lon, lat]) => [lat, lon]);
     const isExceed = p.exceeds;
-    const isBaseAffected = p.base_dentro_radio;
+    const esAeronave = p.event_type === 'aeronave' || p.callsign;
 
     const poly = L.polygon(ring, {
-      color: isExceed ? '#ef4444' : '#a855f7',
+      color: esAeronave ? (isExceed ? '#ea580c' : '#f59e0b') : (isExceed ? '#ef4444' : '#a855f7'),
       weight: isExceed ? 2 : 1,
-      fillColor: isExceed ? '#f59e0b' : '#a855f7',
-      fillOpacity: isExceed ? 0.22 : 0.06,
+      dashArray: '4 4',
+      fillColor: esAeronave ? (isExceed ? '#f97316' : '#fbbf24') : (isExceed ? '#f59e0b' : '#a855f7'),
+      fillOpacity: isExceed ? 0.25 : 0.08,
     });
 
     const marker = L.circleMarker([p.lat, p.lon], {
-      radius: Math.max(4, Math.min(12, p.value * 1.6)),
-      color: isExceed ? '#fef08a' : '#d97706',
-      fillColor: isExceed ? '#ef4444' : '#d97706',
-      fillOpacity: 0.85,
-      weight: 1.5,
+      radius: esAeronave ? 7 : Math.max(4, Math.min(12, p.value * 1.6)),
+      color: isExceed ? '#ffffff' : '#d97706',
+      fillColor: esAeronave ? '#ea580c' : (isExceed ? '#ef4444' : '#d97706'),
+      fillOpacity: 0.9,
+      weight: 2,
     });
 
     const handler = () => {
-      mostrarEnAmenazaInspector('Evento Sísmico (CSN / EMSC)', `${p.region || 'Sismo'} · M ${p.value}`, {
-        'Tipo de Evento': 'sismo',
-        'ID Externo (EMSC unid)': p.external_id,
-        'Magnitud': `${p.value} (${p.unit})`,
-        'Profundidad': `${p.depth_km} km`,
-        'Autoría': p.authority || 'CSN (U. de Chile)',
-        'Radio de Afectación': `${p.affect_radius_km ? p.affect_radius_km.toFixed(1) : '—'} km (heurística intensidad ≥ VI)`,
-        'Distancia a Base Quintero': `${p.distance_to_base_km ? p.distance_to_base_km.toFixed(1) : '—'} km`,
-        'Afectación a Base': isBaseAffected ? '<span class="text-bad">Base dentro del radio de daño</span>' : 'Base fuera de zona crítica',
-        'Estado (exceeds)': isExceed ? '<span class="text-bad">ACTIVO (M ≥ 5.0)</span>' : 'Baja intensidad (M < 5.0)',
-        'Fecha Observación': p.observed_at,
-        'Regla de Pesos (Criterio 5.2)': isBaseAffected
-          ? 'Deshabilita base aérea de Quintero por corte eléctrico; fuerza desvío a vertipuerto auxiliar o RTH'
-          : 'Monitoreo preventivo sin corte de nodos base',
-      });
+      if (esAeronave) {
+        mostrarEnAmenazaInspector('Tráfico Aéreo Tripulado (OpenSky ADS-B)', `${p.callsign || 'Aeronave'} · ${Math.round(p.baro_altitude_m || p.value)}m MSL`, {
+          'Tipo de Evento': 'aeronave',
+          'ID Externo / Registro': p.external_id,
+          'Callsign / Matrícula': p.callsign || 'VFR-SCER',
+          'Transpondedor (ICAO24)': p.icao24 || 'e802a1',
+          'Altitud Barométrica': `${Math.round(p.baro_altitude_m || p.value)} m MSL`,
+          'Velocidad Terrestre': `${p.velocity_ms || 0} m/s (${((p.velocity_ms || 0) * 3.6).toFixed(0)} km/h)`,
+          'Cilindro de Exclusión': `${p.exclusion_radius_m || 1500} m`,
+          'Estado (exceeds)': isExceed ? '<span class="text-bad">ACTIVO (Conflicto Potencial en SCER)</span>' : 'Crucero (> 1000m)',
+          'Fecha Observación': p.observed_at,
+          'Regla de Pesos Operacionales': isExceed
+            ? 'Inhabilita aristas que intersecan el cilindro de exclusión (C = ∞); DAN 151 exige derecho de paso prioritario a aeronaves tripuladas'
+            : 'Vuelo nominal sin conflicto de separación',
+        });
+      } else {
+        mostrarEnAmenazaInspector('Evento Sísmico (CSN / EMSC)', `${p.region || 'Sismo'} · M ${p.value}`, {
+          'Tipo de Evento': 'sismo',
+          'ID Externo (EMSC unid)': p.external_id,
+          'Magnitud': `${p.value} (${p.unit})`,
+          'Profundidad': `${p.depth_km} km`,
+          'Autoría': p.authority || 'CSN (U. de Chile)',
+          'Radio de Afectación': `${p.affect_radius_km ? p.affect_radius_km.toFixed(1) : '—'} km (heurística intensidad ≥ VI)`,
+          'Distancia a Base Quintero': `${p.distance_to_base_km ? p.distance_to_base_km.toFixed(1) : '—'} km`,
+          'Afectación a Base': p.base_dentro_radio ? '<span class="text-bad">Base dentro del radio de daño</span>' : 'Base fuera de zona crítica',
+          'Estado (exceeds)': isExceed ? '<span class="text-bad">ACTIVO (M ≥ 5.0)</span>' : 'Baja intensidad (M < 5.0)',
+          'Fecha Observación': p.observed_at,
+          'Regla de Pesos Operacionales': p.base_dentro_radio
+            ? 'Deshabilita base aérea de Quintero por corte eléctrico; fuerza desvío a vertipuerto auxiliar o RTH'
+            : 'Monitoreo preventivo sin corte de nodos base',
+        });
+      }
     };
 
     poly.on('click', handler);
@@ -3394,7 +3725,7 @@ function montarMapaAmenazas(d) {
         'Radio de Exclusión': `${p.radius_m} m (humo, calor y turbulencia)`,
         'Estado (exceeds)': isExceed ? '<span class="text-bad">ACTIVO (Bloqueo Total)</span>' : 'Baja confianza',
         'Fecha Observación': p.observed_at,
-        'Regla de Pesos (Criterio 5.2)': 'Bloqueo estricto e insalvable (C = ∞) de todas las aristas que intersectan el radio de 2 km',
+        'Regla de Pesos Operacionales': 'Bloqueo estricto e insalvable (C = ∞) de todas las aristas que intersectan el radio de 2 km',
       });
     };
 
@@ -3433,7 +3764,7 @@ function montarMapaAmenazas(d) {
 }
 
 // =============================================================================
-// MÓDULO DE DOCUMENTACIÓN Y ESTRUCTURA DE DATOS (CRITERIO 4 DE LA PAUTA)
+// MÓDULO DE DOCUMENTACIÓN Y ESTRUCTURA DE DATOS
 // =============================================================================
 function inicializarModuloDocumentacion(d) {
   const CATALOGO_ARCHIVOS = {
@@ -3535,6 +3866,20 @@ function inicializarModuloDocumentacion(d) {
       resumen: '25 antenas de telecomunicación celular con macro-celdas de 3 km para enlace C2.',
       datosRef: d.antenas,
     },
+    osm_obstaculos: {
+      id: 'osm_obstaculos',
+      dominio: 'Metadata',
+      archivoDatos: '../metadata/osm_obstaculos.geojson',
+      nombreDatos: 'osm_obstaculos.geojson',
+      archivoDoc: '../metadata/osm_obstaculos.md',
+      nombreDoc: 'osm_obstaculos.md',
+      scriptGenerador: 'metadata/osm_obstaculos.py',
+      tablaBD: 'meta_obstacle',
+      tipoGeom: 'Point / LineString (buffer 60-120 m)',
+      entidades: `${d.obstaculos?.features?.length || 12} obstáculos`,
+      resumen: '12 obstáculos verticales industriales (chimeneas 50-152 m, líneas de alta tensión 110/220 kV y torres).',
+      datosRef: d.obstaculos,
+    },
     firms_incendios: {
       id: 'firms_incendios',
       dominio: 'Amenazas',
@@ -3549,19 +3894,33 @@ function inicializarModuloDocumentacion(d) {
       resumen: 'Focos de incendio satelitales NRT (VIIRS/MODIS) con FRP y exclusión térmica total.',
       datosRef: d.incendios,
     },
-    csn_sismos: {
-      id: 'csn_sismos',
+    opensky_aeronaves: {
+      id: 'opensky_aeronaves',
       dominio: 'Amenazas',
-      archivoDatos: '../amenazas/csn_sismos.geojson',
-      nombreDatos: 'csn_sismos.geojson',
-      archivoDoc: '../amenazas/csn_sismos.md',
-      nombreDoc: 'csn_sismos.md',
-      scriptGenerador: 'amenazas/csn_sismos.py',
-      tablaBD: 'threat_event (sismo)',
-      tipoGeom: 'Polygon (atenuación)',
-      entidades: `${d.sismos?.features?.length || 98} sismos`,
-      resumen: '98 sismos (30 días) EMSC/CSN con modelo R = 10^(0.5M-1.8) y daño a bases.',
-      datosRef: d.sismos,
+      archivoDatos: '../amenazas/opensky_aeronaves.geojson',
+      nombreDatos: 'opensky_aeronaves.geojson',
+      archivoDoc: '../amenazas/opensky_aeronaves.md',
+      nombreDoc: 'opensky_aeronaves.md',
+      scriptGenerador: 'amenazas/opensky_aeronaves.py',
+      tablaBD: 'threat_event (aeronave)',
+      tipoGeom: 'Polygon (cilindro 1.5 km)',
+      entidades: `${(d.aeronaves || d.sismos)?.features?.length || 1} aeronave`,
+      resumen: 'Vigilancia ADS-B en vivo (OpenSky Network) con cilindros de exclusión aérea de 1500 m en aproximación a SCER.',
+      datosRef: d.aeronaves || d.sismos,
+    },
+    csn_sismos: {
+      id: 'opensky_aeronaves',
+      dominio: 'Amenazas',
+      archivoDatos: '../amenazas/opensky_aeronaves.geojson',
+      nombreDatos: 'opensky_aeronaves.geojson',
+      archivoDoc: '../amenazas/opensky_aeronaves.md',
+      nombreDoc: 'opensky_aeronaves.md',
+      scriptGenerador: 'amenazas/opensky_aeronaves.py',
+      tablaBD: 'threat_event (aeronave)',
+      tipoGeom: 'Polygon (cilindro 1.5 km)',
+      entidades: `${(d.aeronaves || d.sismos)?.features?.length || 1} aeronave`,
+      resumen: 'Vigilancia ADS-B en vivo (OpenSky Network) con cilindros de exclusión aérea de 1500 m en aproximación a SCER.',
+      datosRef: d.aeronaves || d.sismos,
     },
     openmeteo_viento: {
       id: 'openmeteo_viento',
@@ -3574,22 +3933,36 @@ function inicializarModuloDocumentacion(d) {
       tablaBD: 'threat_event (viento)',
       tipoGeom: 'Polygon (grilla 4×4)',
       entidades: `${d.viento?.features?.length || 16} celdas`,
-      resumen: '16 celdas espaciales con ráfagas a 10m y viento a 120m (umbral No-Go 14 m/s).',
+      resumen: '16 celdas espaciales con ráfagas a 10m y viento a 120m (umbral No-Go 12 m/s DJI Matrice 350).',
       datosRef: d.viento,
     },
-    metno_lluvia: {
-      id: 'metno_lluvia',
+    openmeteo_niebla: {
+      id: 'openmeteo_niebla',
       dominio: 'Amenazas',
-      archivoDatos: '../amenazas/metno_lluvia.geojson',
-      nombreDatos: 'metno_lluvia.geojson',
-      archivoDoc: '../amenazas/metno_lluvia.md',
-      nombreDoc: 'metno_lluvia.md',
-      scriptGenerador: 'amenazas/metno_lluvia.py',
-      tablaBD: 'threat_event (lluvia)',
+      archivoDatos: '../amenazas/openmeteo_niebla.geojson',
+      nombreDatos: 'openmeteo_niebla.geojson',
+      archivoDoc: '../amenazas/openmeteo_niebla.md',
+      nombreDoc: 'openmeteo_niebla.md',
+      scriptGenerador: 'amenazas/openmeteo_niebla.py',
+      tablaBD: 'threat_event (niebla)',
       tipoGeom: 'Polygon (grilla 4×4)',
-      entidades: `${d.lluvia?.features?.length || 16} celdas`,
-      resumen: '16 celdas con precipitación prevista en mm/h para la próxima hora (umbral 2.0 mm/h).',
-      datosRef: d.lluvia,
+      entidades: `${(d.niebla || d.lluvia)?.features?.length || 16} celdas`,
+      resumen: '16 celdas con visibilidad horizontal en superficie (m), humedad y nubosidad baja (umbral VMC 1000m DAN 151).',
+      datosRef: d.niebla || d.lluvia,
+    },
+    metno_lluvia: {
+      id: 'openmeteo_niebla',
+      dominio: 'Amenazas',
+      archivoDatos: '../amenazas/openmeteo_niebla.geojson',
+      nombreDatos: 'openmeteo_niebla.geojson',
+      archivoDoc: '../amenazas/openmeteo_niebla.md',
+      nombreDoc: 'openmeteo_niebla.md',
+      scriptGenerador: 'amenazas/openmeteo_niebla.py',
+      tablaBD: 'threat_event (niebla)',
+      tipoGeom: 'Polygon (grilla 4×4)',
+      entidades: `${(d.niebla || d.lluvia)?.features?.length || 16} celdas`,
+      resumen: '16 celdas con visibilidad horizontal en superficie (m), humedad y nubosidad baja (umbral VMC 1000m DAN 151).',
+      datosRef: d.niebla || d.lluvia,
     },
     ruta_dijkstra: {
       id: 'ruta_dijkstra',
@@ -3675,10 +4048,10 @@ function inicializarModuloDocumentacion(d) {
   if (btnDlMatriz) {
     btnDlMatriz.addEventListener('click', () => {
       const matrizDoc = {
-        titulo: "Diccionario Maestro de Datos y Especificaciones (Criterio 4 de la Pauta)",
+        titulo: "Diccionario Maestro de Datos y Especificaciones Técnicas",
         total_archivos: Object.keys(CATALOGO_ARCHIVOS).length,
         norma_geoespacial: "RFC 7946 / EPSG:4326 (WGS84)",
-        referencia_pauta: "Ítem 4 Entrega 2: Archivo descriptivo .md por cada .json o .geojson",
+        especificacion: "Archivo descriptivo formal .md por cada capa GeoJSON",
         fecha_exportacion: new Date().toISOString(),
         archivos: Object.values(CATALOGO_ARCHIVOS).map(a => ({
           dominio: a.dominio,
@@ -3847,12 +4220,9 @@ function inicializarModuloDocumentacion(d) {
 }
 
 // =============================================================================
-// AUDITORÍA INTERACTIVA DE COSTOS DIJKSTRA Y SIMULACIÓN UAV (CRITERIO 8)
-// "El sitio deberá mostrar una ruta generada con pgr_dijkstra, utilizando la
-//  longitud de la ruta como costo, que muestre a modo de ejemplo una ruta que
-//  sea una posible solución a su problema planteado. Esta ruta será el peor caso
-//  que podría resolver su problemática, ya que no considerará la metadata ni
-//  las posibles amenazas."
+// AUDITORÍA INTERACTIVA DE COSTOS DIJKSTRA Y SIMULACIÓN UAV
+// Análisis de ruta base mediante pgr_dijkstra sobre longitud geodésica
+// como referencia de navegación inicial previa a la integración de restricciones.
 // =============================================================================
 
 function inicializarAuditoriaDijkstra(d) {

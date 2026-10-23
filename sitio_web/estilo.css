@@ -1046,6 +1046,14 @@ select:disabled {
   border-color: var(--acento);
 }
 
+.footer-drone-select:disabled {
+  background: var(--fondo-suave);
+  color: var(--texto);
+  cursor: default;
+  opacity: 0.95;
+  border-color: var(--borde);
+}
+
 .badge-status-ok {
   color: #15803d;
   background: #dcfce7;
@@ -2508,7 +2516,8 @@ table.pop td {
 }
 
 .pauta-math-box,
-.pauta-code-box {
+.pauta-code-box,
+.math-code-box {
   background: var(--fondo);
   border: 1px solid var(--borde);
   border-radius: var(--radius-xs);
@@ -2735,6 +2744,51 @@ table.pop td {
   white-space: nowrap;
 }
 
+.aircraft-hazard-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: #fffbeb;
+  border: 1.5px solid #d97706;
+  color: #b45309;
+  padding: 2px 6px;
+  border-radius: var(--radius-xs);
+  font-size: 0.70rem;
+  font-weight: 700;
+  box-shadow: 0 1px 6px rgba(217, 119, 6, 0.3);
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.aircraft-hazard-badge.aircraft-danger {
+  background: #fef2f2;
+  border-color: #dc2626;
+  color: #b91c1c;
+}
+
+.fog-cell-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: #f0fdfa;
+  border: 1.5px solid #0d9488;
+  color: #0f766e;
+  padding: 2px 6px;
+  border-radius: var(--radius-xs);
+  font-size: 0.70rem;
+  font-weight: 700;
+  box-shadow: 0 1px 4px rgba(13, 148, 136, 0.2);
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.fog-cell-badge.fog-danger {
+  background: #eff6ff;
+  border-color: #2563eb;
+  color: #1d4ed8;
+  font-weight: 800;
+}
+
 /* TABLA DE RÚBRICA OFICIAL TG2 (60/60 PTS) */
 .rubric-table-wrapper {
   overflow-x: auto;
@@ -2813,5 +2867,117 @@ table.pop td {
   border-radius: 3px;
   border: 1px solid var(--borde);
   text-decoration: none;
+}
+
+/* Badges de Obstáculos Físicos y Amenazas Aéreas */
+.obstacle-hazard-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.25);
+  white-space: nowrap;
+}
+.obstacle-hazard-badge.obstacle-chimney {
+  background: #fef2f2;
+  color: #dc2626;
+  border: 1px solid #f87171;
+}
+.obstacle-hazard-badge.obstacle-tower {
+  background: #fffbeb;
+  color: #d97706;
+  border: 1px solid #fcd34d;
+}
+
+.aircraft-hazard-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.25);
+  white-space: nowrap;
+}
+.aircraft-hazard-badge.aircraft-danger {
+  background: #fef2f2;
+  color: #dc2626;
+  border: 1px solid #f87171;
+}
+.aircraft-hazard-badge.aircraft-safe {
+  background: #f0fdf4;
+  color: #16a34a;
+  border: 1px solid #86efac;
+}
+
+.fog-cell-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.25);
+  white-space: nowrap;
+}
+.fog-cell-badge.fog-danger {
+  background: #f0f9ff;
+  color: #0284c7;
+  border: 1px solid #38bdf8;
+}
+.fog-cell-badge.fog-clear {
+  background: #f0fdfa;
+  color: #0d9488;
+  border: 1px solid #5eead4;
+}
+
+/* =============================================================================
+   RÉGIMEN LEGAL Y ALERTA BVLOS / VLOS (NORMATIVA DAN 151 DGAC CHILE)
+   ============================================================================= */
+.alerta-bvlos-banner {
+  background: #fef2f2;
+  border: 1px solid #fca5a5;
+  border-left: 4px solid #dc2626;
+  border-radius: var(--radius-xs);
+  padding: 8px 10px;
+  margin-top: 10px;
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 0.74rem;
+  line-height: 1.35;
+  color: #991b1b;
+  box-shadow: 0 1px 3px rgba(220, 38, 38, 0.08);
+}
+
+.alerta-bvlos-banner .alerta-bvlos-icon {
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.alerta-bvlos-banner .alerta-bvlos-texto {
+  flex: 1;
+}
+
+.alerta-bvlos-banner strong {
+  color: #991b1b;
+  font-weight: 700;
+}
+
+.tag-bvlos-mini {
+  background: #fee2e2;
+  color: #dc2626;
+  border: 1px solid #fca5a5;
+  font-size: 0.64rem;
+  font-weight: 800;
+  padding: 1px 4px;
+  border-radius: 3px;
+  letter-spacing: 0.03em;
+  margin-left: 4px;
 }
 
