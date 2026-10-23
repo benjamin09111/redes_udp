@@ -1,29 +1,32 @@
 {
   "type": "FeatureCollection",
   "etl": {
-    "fuente": "Ruteo Resiliente Akgün et al. (2000) / GPP Kosior et al. (2024)",
-    "generado": "2026-10-19T01:29:39+00:00",
-    "paper": "Kosior, M., Przystałka, P., & Panfil, W. (2024). Adaptive Path Planning for UAV-Based Pollution Sampling. Applied Sciences, 14(24), 12065.",
+    "fuente": "Ruteo Resiliente Akgün et al. (2000) con función de costo W(e) = L + beta * H(e)",
+    "generado": "2026-10-22T21:31:52+00:00",
     "algoritmo": "Akgün et al. (2000) K-caminos disimilares por penalización iterativa de aristas",
     "parametros": {
       "origen": "base_scer",
       "k_rutas": 2,
       "factor_penalizacion_k2": 4.0,
+      "beta": 1000.0,
       "escenario_contingencia_activo": true,
       "foco_contingencia": {
-        "lon": -71.4935,
+        "nombre": "Foco de contingencia industrial: Planta Asfaltos Quintero",
+        "event_type": "incendio",
+        "simulated": true,
         "lat": -32.7801,
+        "lon": -71.4935,
         "radio_m": 180.0,
-        "descripcion": "Foco de contingencia: Incendio industrial en Planta Asfaltos Quintero"
+        "descripcion": "Incendio industrial simulado en el istmo de Quintero para evaluar resiliencia de la red"
       },
       "tasas_riesgo_supuestas": {
-        "lambda_base": 0.005,
-        "lambda_incendio": 5.0,
-        "lambda_urbano_dan151": 0.08,
-        "lambda_sismo": 0.05,
-        "lambda_telecom": 0.03,
-        "lambda_viento": 0.04,
-        "lambda_lluvia": 0.03
+        "base": 0.005,
+        "incendio": 5.0,
+        "urbana": 0.08,
+        "sismo": 0.05,
+        "sin_cobertura": 0.03,
+        "viento": 0.04,
+        "lluvia": 0.03
       }
     },
     "total": 32
@@ -333,12 +336,12 @@
             -32.7842
           ],
           [
-            -71.510289,
-            -32.785856
+            -71.508129,
+            -32.784507
           ],
           [
-            -71.503992,
-            -32.788325
+            -71.504423,
+            -32.787931
           ],
           [
             -71.502803,
@@ -421,9 +424,10 @@
         "origen": "base_scer",
         "destino": "sinca_campiche",
         "destino_nombre": "Estación SINCA Campiche",
-        "longitud_m": 12633.1,
-        "supervivencia_pct": 77.4,
+        "longitud_m": 12735.1,
+        "supervivencia_pct": 72.3,
         "amenazas": [
+          "densidad_urbana_dan151",
           "sombra_telecom"
         ]
       }
@@ -552,10 +556,6 @@
             -32.783915
           ],
           [
-            -71.528399,
-            -32.783928
-          ],
-          [
             -71.528533,
             -32.784815
           ],
@@ -576,8 +576,8 @@
         "origen": "base_scer",
         "destino": "sinca_centro_quintero",
         "destino_nombre": "Estación SINCA Centro Quintero",
-        "longitud_m": 1736.8,
-        "supervivencia_pct": 94.2,
+        "longitud_m": 1691.8,
+        "supervivencia_pct": 93.1,
         "amenazas": [
           "densidad_urbana_dan151"
         ]
@@ -605,32 +605,16 @@
             -32.78279
           ],
           [
-            -71.528399,
-            -32.783928
+            -71.529272,
+            -32.783433
           ],
           [
-            -71.527953,
-            -32.784775
+            -71.530444,
+            -32.785358
           ],
           [
-            -71.52843,
-            -32.78557
-          ],
-          [
-            -71.528229,
-            -32.786524
-          ],
-          [
-            -71.528224,
-            -32.786825
-          ],
-          [
-            -71.528055,
-            -32.787698
-          ],
-          [
-            -71.529683,
-            -32.78919
+            -71.532615,
+            -32.787692
           ],
           [
             -71.532226,
@@ -645,8 +629,8 @@
         "origen": "base_scer",
         "destino": "sinca_centro_quintero",
         "destino_nombre": "Estación SINCA Centro Quintero",
-        "longitud_m": 2176.6,
-        "supervivencia_pct": 92.9,
+        "longitud_m": 1820.9,
+        "supervivencia_pct": 92.5,
         "amenazas": [
           "densidad_urbana_dan151"
         ]
@@ -896,12 +880,12 @@
             -32.7842
           ],
           [
-            -71.510289,
-            -32.785856
+            -71.508129,
+            -32.784507
           ],
           [
-            -71.503992,
-            -32.788325
+            -71.504423,
+            -32.787931
           ],
           [
             -71.502803,
@@ -964,9 +948,10 @@
         "origen": "base_scer",
         "destino": "sinca_la_greda",
         "destino_nombre": "Estación SINCA La Greda",
-        "longitud_m": 9586.7,
-        "supervivencia_pct": 86.1,
+        "longitud_m": 9688.7,
+        "supervivencia_pct": 80.4,
         "amenazas": [
+          "densidad_urbana_dan151",
           "sombra_telecom"
         ]
       }
@@ -1104,20 +1089,20 @@
             -32.7842
           ],
           [
-            -71.510289,
-            -32.785856
+            -71.508129,
+            -32.784507
           ],
           [
             -71.504423,
             -32.787931
           ],
           [
-            -71.50229,
-            -32.787705
+            -71.503992,
+            -32.788325
           ],
           [
-            -71.496759,
-            -32.788246
+            -71.502156,
+            -32.789708
           ],
           [
             -71.49642,
@@ -1132,9 +1117,11 @@
         "origen": "base_scer",
         "destino": "sinca_loncura",
         "destino_nombre": "Estación SINCA Loncura",
-        "longitud_m": 2739.3,
-        "supervivencia_pct": 98.6,
-        "amenazas": []
+        "longitud_m": 2451.8,
+        "supervivencia_pct": 86.6,
+        "amenazas": [
+          "densidad_urbana_dan151"
+        ]
       }
     },
     {
@@ -1523,12 +1510,12 @@
             -32.7842
           ],
           [
-            -71.510289,
-            -32.785856
+            -71.508129,
+            -32.784507
           ],
           [
-            -71.503992,
-            -32.788325
+            -71.504423,
+            -32.787931
           ],
           [
             -71.502803,
@@ -1639,8 +1626,8 @@
         "origen": "base_scer",
         "destino": "sinca_puchuncavi",
         "destino_nombre": "Estación SINCA Puchuncaví",
-        "longitud_m": 17591.4,
-        "supervivencia_pct": 72.1,
+        "longitud_m": 17693.4,
+        "supervivencia_pct": 67.2,
         "amenazas": [
           "densidad_urbana_dan151",
           "sombra_telecom"
@@ -1787,12 +1774,12 @@
             -32.782378
           ],
           [
-            -71.526778,
-            -32.781522
+            -71.527006,
+            -32.782067
           ],
           [
-            -71.526966,
-            -32.780967
+            -71.527985,
+            -32.781513
           ],
           [
             -71.529165,
@@ -1803,24 +1790,16 @@
             -32.77931
           ],
           [
-            -71.533915,
-            -32.780007
+            -71.531626,
+            -32.77769
           ],
           [
-            -71.534502,
-            -32.778263
+            -71.531264,
+            -32.776616
           ],
           [
-            -71.535015,
-            -32.777449
-          ],
-          [
-            -71.537605,
-            -32.775621
-          ],
-          [
-            -71.538003,
-            -32.773741
+            -71.53282,
+            -32.775423
           ],
           [
             -71.535258,
@@ -1835,8 +1814,8 @@
         "origen": "base_scer",
         "destino": "sinca_quintero",
         "destino_nombre": "Estación SINCA Quintero",
-        "longitud_m": 2873.1,
-        "supervivencia_pct": 91.4,
+        "longitud_m": 2352.4,
+        "supervivencia_pct": 88.3,
         "amenazas": [
           "densidad_urbana_dan151"
         ]
@@ -1856,12 +1835,12 @@
             -32.78259
           ],
           [
-            -71.526778,
-            -32.781522
+            -71.527006,
+            -32.782067
           ],
           [
-            -71.526954,
-            -32.780831
+            -71.528312,
+            -32.781771
           ],
           [
             -71.529165,
@@ -1872,36 +1851,24 @@
             -32.77889
           ],
           [
-            -71.526675,
-            -32.778341
+            -71.531107,
+            -32.77931
           ],
           [
-            -71.526417,
-            -32.776682
+            -71.533006,
+            -32.779048
           ],
           [
-            -71.526717,
-            -32.775683
+            -71.534011,
+            -32.778193
           ],
           [
-            -71.52666,
-            -32.77367
+            -71.535015,
+            -32.777449
           ],
           [
-            -71.527321,
-            -32.771316
-          ],
-          [
-            -71.529154,
-            -32.770121
-          ],
-          [
-            -71.530448,
-            -32.770174
-          ],
-          [
-            -71.533958,
-            -32.771577
+            -71.5372,
+            -32.7758
           ],
           [
             -71.535258,
@@ -1916,8 +1883,8 @@
         "origen": "base_scer",
         "destino": "sinca_quintero",
         "destino_nombre": "Estación SINCA Quintero",
-        "longitud_m": 3343.4,
-        "supervivencia_pct": 89.8,
+        "longitud_m": 2821.5,
+        "supervivencia_pct": 85.8,
         "amenazas": [
           "densidad_urbana_dan151"
         ]
@@ -2068,8 +2035,8 @@
             -32.7842
           ],
           [
-            -71.510289,
-            -32.785856
+            -71.508129,
+            -32.784507
           ],
           [
             -71.504423,
@@ -2100,9 +2067,11 @@
         "origen": "base_scer",
         "destino": "sinca_sur",
         "destino_nombre": "Estación SINCA Sur",
-        "longitud_m": 3964.8,
-        "supervivencia_pct": 98.0,
-        "amenazas": []
+        "longitud_m": 4061.8,
+        "supervivencia_pct": 91.5,
+        "amenazas": [
+          "densidad_urbana_dan151"
+        ]
       }
     },
     {
@@ -2353,8 +2322,8 @@
             -32.748276
           ],
           [
-            -71.47277,
-            -32.74518
+            -71.47435,
+            -32.74728
           ],
           [
             -71.475878,
@@ -2373,8 +2342,8 @@
         "origen": "base_scer",
         "destino": "sinca_ventanas",
         "destino_nombre": "Estación SINCA Ventanas",
-        "longitud_m": 9970.6,
-        "supervivencia_pct": 78.8,
+        "longitud_m": 9829.3,
+        "supervivencia_pct": 78.4,
         "amenazas": [
           "densidad_urbana_dan151",
           "sombra_telecom"
@@ -2391,12 +2360,12 @@
             -32.7842
           ],
           [
-            -71.510289,
-            -32.785856
+            -71.508129,
+            -32.784507
           ],
           [
-            -71.503992,
-            -32.788325
+            -71.504423,
+            -32.787931
           ],
           [
             -71.502803,
@@ -2451,10 +2420,6 @@
             -32.748276
           ],
           [
-            -71.47435,
-            -32.74728
-          ],
-          [
             -71.47561,
             -32.74452
           ],
@@ -2475,8 +2440,8 @@
         "origen": "base_scer",
         "destino": "sinca_ventanas",
         "destino_nombre": "Estación SINCA Ventanas",
-        "longitud_m": 10695.9,
-        "supervivencia_pct": 76.5,
+        "longitud_m": 10795.2,
+        "supervivencia_pct": 70.8,
         "amenazas": [
           "densidad_urbana_dan151",
           "sombra_telecom"

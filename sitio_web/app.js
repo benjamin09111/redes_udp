@@ -21,13 +21,24 @@ const FUENTES = {
   rutas_pgrouting: 'data/ruta_dijkstra.geojson',
   rutas_comparativas: 'data/rutas_comparativas.geojson',
   resumen_resiliencia: 'data/resumen_resiliencia.json',
+  parametros: '../config/parametros.json',
+  traza_urbana: 'data/traza_urbana_quebradas.geojson',
 };
 
 const COLOR_CATEGORIA = {
-  base: '#10b981', sinca: '#f59e0b', emission_source: '#ef4444', health: '#ec4899',
-  education: '#8b5cf6', commercial: '#06b6d4', crowded_area: '#84cc16', beach: '#0ea5e9',
-  hospitality: '#f97316', restaurant: '#d946ef', attraction: '#14b8a6', historic: '#a16207',
-  auxiliary_hub: '#64748b',
+  base: '#15803d',            // Verde bosque aeronáutico
+  sinca: '#0369a1',           // Cerúleo / azul marino (estaciones ambientales)
+  emission_source: '#b91c1c', // Carmesí oscuro (fuentes industriales)
+  health: '#be185d',          // Magenta formal (red asistencial)
+  education: '#6d28d9',       // Púrpura formal (educación)
+  commercial: '#475569',      // Pizarra técnica (comercial)
+  crowded_area: '#c2410c',    // Ámbar óxido (densidad poblacional)
+  beach: '#0891b2',           // Azul verdoso costero (playas)
+  hospitality: '#b45309',     // Bronce (hospedaje)
+  restaurant: '#78716c',      // Piedra neutra (gastronomía)
+  attraction: '#0f766e',      // Verde azulado (atractivos)
+  historic: '#713f12',        // Pardo formal (patrimonio)
+  auxiliary_hub: '#334155',   // Carbón (nodos de soporte)
 };
 
 const NOMBRE_CATEGORIA = {
@@ -37,11 +48,28 @@ const NOMBRE_CATEGORIA = {
   attraction: 'Atractivo', historic: 'Histórico', auxiliary_hub: 'Hub Auxiliar',
 };
 
+const ESTILO_BADGE_CATEGORIA = {
+  base: { bg: '#dcfce7', text: '#15803d', border: '#86efac' },
+  sinca: { bg: '#e0f2fe', text: '#0369a1', border: '#7dd3fc' },
+  emission_source: { bg: '#fee2e2', text: '#991b1b', border: '#fca5a5' },
+  health: { bg: '#fce7f3', text: '#9d174d', border: '#f472b6' },
+  education: { bg: '#ede9fe', text: '#5b21b6', border: '#c4b5fd' },
+  commercial: { bg: '#f1f5f9', text: '#334155', border: '#cbd5e1' },
+  crowded_area: { bg: '#ffedd5', text: '#9a3412', border: '#fdba74' },
+  beach: { bg: '#cffafe', text: '#155e75', border: '#67e8f9' },
+  hospitality: { bg: '#fef3c7', text: '#92400e', border: '#fcd34d' },
+  restaurant: { bg: '#f5f5f4', text: '#44403c', border: '#d6d3d1' },
+  attraction: { bg: '#ccfbf1', text: '#115e59', border: '#5eead4' },
+  historic: { bg: '#fef9c3', text: '#713f12', border: '#fde047' },
+  auxiliary_hub: { bg: '#f1f5f9', text: '#1e293b', border: '#cbd5e1' },
+};
+
 // Utilidades generales de renderizado
 const esc = (v) => String(v ?? '—').replace(/[&<>"']/g, (c) => `&#${c.charCodeAt(0)};`);
 const fila = (k, v) => `<tr><th>${esc(k)}</th><td>${esc(v)}</td></tr>`;
 const tabla = (filas) => `<table class="pop">${filas.map(([k, v]) => fila(k, v)).join('')}</table>`;
-const km = (m) => `${(m / 1000).toFixed(2)} km`;
+const km = (m) => (m == null ? '—' : `${(m / 1000).toFixed(2).replace('.', ',')} km`);
+const pct = (p) => (p == null ? '—' : `${Number(p).toFixed(1).replace('.', ',')}%`);
 const fmt = (n) => (n == null ? null : Number(n).toLocaleString('es-CL'));
 const bloquea = (p) => (p.exceeds ? 'Sí (zona activa)' : 'No');
 
@@ -52,9 +80,24 @@ async function cargar(url) {
 }
 
 // -----------------------------------------------------------------------------
-// MAPA BASE LEAFLET
+// MAPA BASE LEAFLET (Acotado al área de estudio Quintero – Puchuncaví)
 // -----------------------------------------------------------------------------
-const mapa = L.map('mapa').setView([-32.76, -71.47], 12);
+const BOUNDS_QUINTERO = [
+  [-32.84, -71.58], // Suroeste: Base Aérea Quintero / Costa sur
+  [-32.68, -71.36], // Noreste: Puchuncaví / Los Maitenes norte
+];
+const BOUNDS_MAX = [
+  [-32.88, -71.64],
+  [-32.64, -71.30],
+];
+
+const mapa = L.map('mapa', {
+  minZoom: 11,
+  maxZoom: 18,
+  maxBounds: BOUNDS_MAX,
+  maxBoundsViscosity: 1.0,
+}).fitBounds(BOUNDS_QUINTERO);
+
 // Panel propio para los nodos, sobre zonas, rutas y amenazas (overlayPane = 400),
 // para que el clic en un nodo siempre llegue al nodo.
 mapa.createPane('nodos').style.zIndex = 450;
@@ -77,20 +120,63 @@ const layerRutaPgrouting = L.layerGroup();
 const layerDijkstraAuditoria = L.layerGroup().addTo(mapa);
 const layerSimuladorUav = L.layerGroup().addTo(mapa);
 
+// Capas de control de nodos y aristas (controladas por la leyenda rápida inferior)
+let layerTodosLosNodos = null;
+const layerNodosRuta = L.layerGroup().addTo(mapa);
+const layerCostosEnlace = L.layerGroup();
+let capaAristasGlobal = null;
+let capaZonasGlobal = null;
+let ultimosNodosRutaActiva = [];
+const VELOCIDAD_CRUCERO_KMH = 54.0; // 15 m/s según estándar operacional DAN 151 DGAC
+
+// Capas de Metadata (solo visualización en mapa)
+let capaAireGlobal = null;
+let capaRelieveGlobal = null;
+let capaManzanasGlobal = null;
+let capaAntenasGlobal = null;
+let capaTrazaUrbanaGlobal = null;
+
+// Capas de Amenazas (solo visualización en mapa)
+let capaIncendiosGlobal = null;
+let capaSismosGlobal = null;
+let capaVientoGlobal = null;
+let capaLluviaGlobal = null;
+
 // Estado de simulación de vuelo y auditoría de costos Dijkstra (Criterio 8)
 let simulacionVueloActiva = false;
 let simulacionTimerId = null;
 let marcadorDronSimulado = null;
 let rutaDijkstraActiva = null;
 
-// Foco de contingencia simulado: Planta Asfaltos Quintero (radio 180 m)
-const FOCO_SIMULADO = {
+// Mapas de vistas secundarias (módulos)
+let mapaGrafo = null;
+let mapaGrafoInicializado = false;
+let mapaInfra = null;
+let mapaInfraInicializado = false;
+let mapaMeta = null;
+let mapaMetaInicializado = false;
+let mapaAmenazas = null;
+let mapaAmenazasInicializado = false;
+
+// Parámetros unificados (leídos desde config/parametros.json)
+let FOCO_SIMULADO = {
   lon: -71.4935,
   lat: -32.7801,
   radio_m: 180.0,
   nombre: 'Escenario de Contingencia: Incendio industrial en Planta Asfaltos Quintero'
 };
-const LAMBDA_INCENDIO = 5.0; // km^-1, mismo supuesto que ruteo/ruteo_resiliente.py
+let LAMBDAS = {
+  base: 0.005,
+  incendio: 5.0,
+  urbana: 0.08,
+  sismo: 0.05,
+  sin_cobertura: 0.03,
+  viento: 0.04,
+  lluvia: 0.03,
+};
+let BETA = 1000.0;
+let FACTOR_PENALIZACION_P = 4.0;
+let ORIGEN_PREDETERMINADO = 'base_scer';
 
 // Estructuras de datos del Grafo en memoria
 let grafoNodos = {};      // id -> { code, name, category, coord }
@@ -203,13 +289,13 @@ function inicializarGrafo(d) {
     const hayEstres = dFoco <= FOCO_SIMULADO.radio_m;
 
     // Tasa de riesgo física objetiva (Hazard rate por km)
-    let hazardRate = 0.005; // Tasa base nominal
-    if (hayIncendio) hazardRate += LAMBDA_INCENDIO;   // Riesgo crítico dentro del fuego (el foco simulado se suma solo si el escenario está activo)
-    if (hayPoblacion) hazardRate += 0.08;             // Restricción DAN 151
-    if (haySismo) hazardRate += 0.05;                 // Oscilación de infraestructuras
-    if (!hayTelecom) hazardRate += 0.03;              // Sombra C2
-    if (hayViento) hazardRate += 0.04;                // Alerta por viento extremo
-    if (hayLluvia) hazardRate += 0.03;                // Precipitaciones sobre umbral
+    let hazardRate = LAMBDAS.base; // Tasa base nominal
+    if (hayIncendio) hazardRate += LAMBDAS.incendio;
+    if (hayPoblacion) hazardRate += LAMBDAS.urbana;
+    if (haySismo) hazardRate += LAMBDAS.sismo;
+    if (!hayTelecom) hazardRate += LAMBDAS.sin_cobertura;
+    if (hayViento) hazardRate += LAMBDAS.viento;
+    if (hayLluvia) hazardRate += LAMBDAS.lluvia;
 
     const item = {
       id: props.id,
@@ -352,7 +438,7 @@ function evaluarConfiabilidadConjuntoExacta(aristasK1, aristasK2, aristasMap, in
     edgeSet.forEach(eid => {
       const edge = aristasMap[eid];
       if (!edge) return;
-      const tasa = edge.hazardRate + (incluirEstres && edge.hayEstres && !edge.hayIncendio ? LAMBDA_INCENDIO : 0);
+      const tasa = edge.hazardRate + (incluirEstres && edge.hayEstres && !edge.hayIncendio ? LAMBDAS.incendio : 0);
       h += tasa * (edge.length_m / 1000.0);
     });
     return Math.exp(-h);
@@ -412,15 +498,27 @@ function mostrarAvisoDestino(nodo) {
   aviso.hidden = esMedicion;
   if (!esMedicion) {
     const cat = NOMBRE_CATEGORIA[nodo.category] || nodo.category;
-    aviso.textContent = `⚠️ ${nodo.name} (${cat}) es un nodo de paso, no un punto de medición. ` +
+    aviso.textContent = `${nodo.name} (${cat}) es un nodo de paso, no un punto de medición. ` +
       'La ruta se muestra solo como exploración: la misión real apunta a estaciones SINCA o fuentes emisoras.';
   }
 }
 
-function actualizarRutasEnVivo() {
+// -----------------------------------------------------------------------------
+// CONTROL DE EJECUCIÓN DE LA MISIÓN (DIJKSTRA PURO)
+// -----------------------------------------------------------------------------
+function habilitarEjecucion() {
+  const btn = document.getElementById('btn-ejecutar-mision');
+  if (btn) {
+    btn.disabled = false;
+    btn.innerHTML = `<svg class="ui-icon ui-icon-sm" viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg><span>Ejecutar Misión</span>`;
+  }
+}
+
+function ejecutarMision() {
   const selOrigen = document.getElementById('select-origen');
   const selDestino = document.getElementById('select-destino');
-  if (!selOrigen || !selDestino) return;
+  const btnEjecutar = document.getElementById('btn-ejecutar-mision');
+  if (!selOrigen || !selDestino || !btnEjecutar) return;
 
   const origenCode = selOrigen.value;
   const destinoCode = selDestino.value;
@@ -428,170 +526,472 @@ function actualizarRutasEnVivo() {
   const nodoOrig = grafoNodosPorCode[origenCode];
   const nodoDest = grafoNodosPorCode[destinoCode];
 
-  if (!nodoOrig || !nodoDest || origenCode === destinoCode) {
-    return;
-  }
-  mostrarAvisoDestino(nodoDest);
-
-  const origenId = nodoOrig.id;
-  const destinoId = nodoDest.id;
-
-  // Preferencias de búsqueda del usuario
-  const chkIncendios = document.getElementById('check-incendios').checked;
-  const chkPoblacion = document.getElementById('check-poblacion').checked;
-  const chkSismos = document.getElementById('check-sismos').checked;
-  const chkTelecom = document.getElementById('check-telecom').checked;
-  const chkEstres = document.getElementById('check-escenario-estres').checked;
-  const verK = document.getElementById('select-k-alternativa').value;
-
-  // Actualizar visibilidad de la capa del foco simulado
-  layerEscenarioSimulado.clearLayers();
-  if (chkEstres) {
-    L.circle([FOCO_SIMULADO.lat, FOCO_SIMULADO.lon], {
-      radius: FOCO_SIMULADO.radio_m,
-      color: '#dc2626',
-      weight: 2,
-      fillColor: '#ef4444',
-      fillOpacity: 0.45,
-    }).bindPopup(tabla([
-      ['Amenaza Simulada', FOCO_SIMULADO.nombre],
-      ['Radio de afectación', `${FOCO_SIMULADO.radio_m} m`],
-      ['Ubicación', `${FOCO_SIMULADO.lat.toFixed(4)}, ${FOCO_SIMULADO.lon.toFixed(4)}`],
-    ])).addTo(layerEscenarioSimulado);
-  }
-
-  // Costo Dijkstra: longitud geométrica pura
-  const costoDijkstra = (edge) => edge.length_m;
-
-  // Costo Resiliente: ponderado por preferencias de usuario
-  const costoResiliente = (edge) => {
-    let factor = 1.0;
-    if (chkIncendios && edge.hayIncendio) factor += 15.0;
-    if (chkEstres && edge.hayEstres) factor += 30.0;
-    if (chkPoblacion && edge.hayPoblacion) factor += 6.0;
-    if (chkSismos && edge.haySismo) factor += 4.0;
-    if (chkTelecom && !edge.hayTelecom) factor += 2.5;
-    return edge.length_m * factor;
-  };
-
-  // Cálculo de K=1 y K=2
-  const dijK1 = dijkstraCamino(origenId, destinoId, costoDijkstra, 4.0);
-  const dijK2 = dijK1 ? dijkstraCamino(origenId, destinoId, costoDijkstra, 4.0, new Set(dijK1.aristas)) : null;
-
-  const resK1 = dijkstraCamino(origenId, destinoId, costoResiliente, 4.0);
-  const resK2 = resK1 ? dijkstraCamino(origenId, destinoId, costoResiliente, 4.0, new Set(resK1.aristas)) : null;
-
-  if (!dijK1 || !resK1) {
-    document.getElementById('badge-delta-resiliencia').textContent = 'Ruta no encontrada';
+  if (!nodoOrig || !nodoDest) {
     return;
   }
 
-  // Mapa de aristas para consulta rápida
+  if (origenCode === destinoCode) {
+    alert('El origen y el destino deben ser diferentes.');
+    return;
+  }
+
   const aristasMap = {};
   grafoAristas.forEach(e => { aristasMap[e.id] = e; });
 
-  // Evaluación con la métrica probabilística exacta
-  const metDijkstra = evaluarConfiabilidadConjuntoExacta(dijK1.aristas, dijK2 ? dijK2.aristas : [], aristasMap, chkEstres);
-  const metResiliente = evaluarConfiabilidadConjuntoExacta(resK1.aristas, resK2 ? resK2.aristas : [], aristasMap, chkEstres);
+  // Costo Dijkstra puro: longitud física en metros
+  const costoDijkstra = (edge) => edge.length_m;
+  const camino = dijkstraCamino(nodoOrig.id, nodoDest.id, costoDijkstra, 1.0, new Set());
 
-  const deltaR = metResiliente.resilienciaConjuntoPct - metDijkstra.resilienciaConjuntoPct;
+  if (!camino || !camino.nodos || camino.nodos.length < 2) {
+    alert('No se encontró una ruta factible entre los nodos seleccionados.');
+    return;
+  }
 
-  // Dibujar en el mapa
+  // Limpiar capas previas de rutas
   layerRutasDijkstra.clearLayers();
   layerRutasResiliente.clearLayers();
   layerMarcadoresExtremos.clearLayers();
+  layerCostosEnlace.clearLayers();
 
-  function construirCoords(nodosRuta, aristasRuta) {
-    const coords = [grafoNodos[nodosRuta[0]].coord];
-    for (let i = 0; i < aristasRuta.length; i++) {
-      const eCoords = aristasMap[aristasRuta[i]].coords;
+  // Construir coordenadas precisas del camino
+  const coords = [nodoOrig.coord];
+  let totalLongitudM = 0;
+  for (let i = 0; i < camino.aristas.length; i++) {
+    const eid = camino.aristas[i];
+    const edge = aristasMap[eid];
+    if (edge) {
+      totalLongitudM += edge.length_m;
+      const eCoords = edge.coords;
       const last = coords[coords.length - 1];
       const dDir = Math.hypot(eCoords[0][0] - last[0], eCoords[0][1] - last[1]);
       const dInv = Math.hypot(eCoords[eCoords.length - 1][0] - last[0], eCoords[eCoords.length - 1][1] - last[1]);
       const seg = dDir <= dInv ? eCoords : [...eCoords].reverse();
       for (let j = 1; j < seg.length; j++) coords.push(seg[j]);
     }
-    return coords.map(c => [c[1], c[0]]); // Leaflet espera [lat, lon]
   }
 
-  const latlngsDijK1 = construirCoords(dijK1.nodos, dijK1.aristas);
-  const latlngsResK1 = construirCoords(resK1.nodos, resK1.aristas);
+  const latlngs = coords.map(c => [c[1], c[0]]);
 
-  const mostrarK1 = (verK === '1' || verK === 'k1' || verK === 'ambas');
-  const mostrarK2 = (verK === '2' || verK === 'k2' || verK === 'ambas');
+  // Polilínea de la ruta Dijkstra (azul técnico nítido y formal)
+  const rutaPolyline = L.polyline(latlngs, {
+    color: '#1d4ed8',
+    weight: 4.0,
+    opacity: 0.95,
+  }).bindPopup(`<b>Ruta Dijkstra</b><br>Distancia: ${(totalLongitudM / 1000).toFixed(2).replace('.', ',')} km<br>Saltos: ${camino.aristas.length}`)
+    .addTo(layerRutasDijkstra);
 
-  // Rutas Dijkstra
-  if (mostrarK1) {
-    L.polyline(latlngsDijK1, {
-      color: '#ef4444', weight: 4.5, dashArray: '8 6', opacity: 0.9,
-    }).bindPopup(`<b>Dijkstra k=1 (Peor Caso)</b><br>Longitud: ${km(metDijkstra.longitudK1M)}<br>Supervivencia: ${metDijkstra.supervivenciaK1Pct.toFixed(1)}%`)
-      .addTo(layerRutasDijkstra);
+  mapa.fitBounds(rutaPolyline.getBounds(), { padding: [50, 50] });
+
+  // Marcadores de origen y destino sobrios con borde blanco nítido
+  L.circleMarker([nodoOrig.coord[1], nodoOrig.coord[0]], {
+    radius: 8, color: '#ffffff', weight: 2, fillColor: '#15803d', fillOpacity: 1
+  }).bindTooltip(`Origen: ${nodoOrig.name}`).addTo(layerMarcadoresExtremos);
+
+  L.circleMarker([nodoDest.coord[1], nodoDest.coord[0]], {
+    radius: 8, color: '#ffffff', weight: 2, fillColor: '#b91c1c', fillOpacity: 1
+  }).bindTooltip(`Destino: ${nodoDest.name}`).addTo(layerMarcadoresExtremos);
+
+  // Badges de costo por enlace
+  for (let i = 0; i < camino.aristas.length; i++) {
+    const eid = camino.aristas[i];
+    const edge = aristasMap[eid];
+    const uId = camino.nodos[i];
+    const vId = camino.nodos[i + 1];
+    const uNode = grafoNodos[uId];
+    const vNode = grafoNodos[vId];
+    if (edge && uNode && vNode) {
+      let midLat = (uNode.coord[1] + vNode.coord[1]) / 2;
+      let midLon = (uNode.coord[0] + vNode.coord[0]) / 2;
+      if (edge.coords && edge.coords.length >= 2) {
+        const cMid = edge.coords[Math.floor(edge.coords.length / 2)];
+        midLat = cMid[1];
+        midLon = cMid[0];
+      }
+      const distKm = (edge.length_m / 1000).toFixed(2).replace('.', ',');
+      const badgeMarker = L.marker([midLat, midLon], {
+        icon: L.divIcon({
+          className: 'edge-cost-icon',
+          html: `<span class="edge-cost-badge">${distKm} km</span>`,
+          iconAnchor: [24, 10],
+        }),
+        interactive: false,
+      });
+      badgeMarker.addTo(layerCostosEnlace);
+    }
   }
 
-  if (dijK2 && mostrarK2) {
-    const latlngsDijK2 = construirCoords(dijK2.nodos, dijK2.aristas);
-    L.polyline(latlngsDijK2, {
-      color: '#f87171', weight: 3, dashArray: '4 4', opacity: 0.7,
-    }).bindPopup(`<b>Dijkstra k=2 (Alternativa)</b><br>Longitud: ${km(metDijkstra.longitudK2M)}<br>Supervivencia: ${metDijkstra.supervivenciaK2Pct.toFixed(1)}%`)
-      .addTo(layerRutasDijkstra);
+  const checkCosto = document.getElementById('check-costo-enlace');
+  if (checkCosto && checkCosto.checked) {
+    if (!mapa.hasLayer(layerCostosEnlace)) mapa.addLayer(layerCostosEnlace);
+  } else {
+    if (mapa.hasLayer(layerCostosEnlace)) mapa.removeLayer(layerCostosEnlace);
   }
 
-  // Rutas Resilientes
-  if (mostrarK1) {
-    L.polyline(latlngsResK1, {
-      color: '#10b981', weight: 5, opacity: 0.95,
-    }).bindPopup(`<b>Resiliente k=1 (Ruta Primaria)</b><br>Longitud: ${km(metResiliente.longitudK1M)}<br>Supervivencia: ${metResiliente.supervivenciaK1Pct.toFixed(1)}%`)
-      .addTo(layerRutasResiliente);
-  }
+  // Actualizar nodos visibles de la ruta
+  actualizarVisualizacionNodos(camino.nodos);
 
-  if (resK2 && mostrarK2) {
-    const latlngsResK2 = construirCoords(resK2.nodos, resK2.aristas);
-    L.polyline(latlngsResK2, {
-      color: '#06b6d4', weight: 3.5, opacity: 0.85,
-    }).bindPopup(`<b>Resiliente k=2 (Contingencia)</b><br>Longitud: ${km(metResiliente.longitudK2M)}<br>Supervivencia: ${metResiliente.supervivenciaK2Pct.toFixed(1)}%`)
-      .addTo(layerRutasResiliente);
-  }
+  // Cálculos de métricas
+  const distKmNum = totalLongitudM / 1000;
+  const kmTotales = distKmNum.toFixed(2).replace('.', ',') + ' km';
+  const cantSaltos = `${camino.aristas.length} saltos`;
+  const cantSaltosFooter = `${camino.aristas.length} saltos`;
+  const tiempoSeg = Math.round(distKmNum / (VELOCIDAD_CRUCERO_KMH / 3600));
+  const min = Math.floor(tiempoSeg / 60);
+  const seg = tiempoSeg % 60;
+  const tiempoVuelo = `${min} min ${String(seg).padStart(2, '0')} s`;
+  const tiempoMinNum = tiempoSeg / 60;
 
-  // Marcadores de inicio y fin
-  const pOrig = [nodoOrig.coord[1], nodoOrig.coord[0]];
-  const pDest = [nodoDest.coord[1], nodoDest.coord[0]];
-
-  L.circleMarker(pOrig, { radius: 9, color: '#065f46', weight: 2, fillColor: '#10b981', fillOpacity: 1 })
-    .bindTooltip(`Origen: ${nodoOrig.name}`).addTo(layerMarcadoresExtremos);
-  L.circleMarker(pDest, { radius: 9, color: '#7c2d12', weight: 2, fillColor: '#f97316', fillOpacity: 1 })
-    .bindTooltip(`Destino: ${nodoDest.name}`).addTo(layerMarcadoresExtremos);
-
-  // Actualizar tarjetas de interfaz
-  const signo = deltaR >= 0 ? '+' : '';
-  const valDelta = `${signo}${deltaR.toFixed(1)} p.p.`;
-
-  const elemDelta = document.getElementById('diferencial-valor');
-  if (elemDelta) {
-    elemDelta.textContent = valDelta;
-    elemDelta.style.color = deltaR > 0 ? '#34d399' : (deltaR === 0 ? '#60a5fa' : '#f87171');
-  }
-
+  // Actualizar métricas
   const setTxt = (id, txt) => {
     const el = document.getElementById(id);
     if (el) el.textContent = txt;
   };
+  setTxt('res-km', kmTotales);
+  setTxt('res-tiempo', tiempoVuelo);
+  setTxt('res-saltos', cantSaltos);
 
-  // Métricas Dijkstra
-  setTxt('dijkstra-distancia', km(metDijkstra.longitudK1M));
-  setTxt('dijkstra-supervivencia', `${metDijkstra.supervivenciaK1Pct.toFixed(1)}%`);
-  setTxt('dijkstra-amenazas', metDijkstra.amenazasK1.length ? metDijkstra.amenazasK1.join(', ') : 'Ninguna');
-  setTxt('conjunto-dijkstra-res', `${metDijkstra.resilienciaConjuntoPct.toFixed(1)}%`);
+  // Actualizar origen / destino y modelo de dron en la ventana flotante estilo MATLAB
+  const selOrig = document.getElementById('select-origen');
+  const selDest = document.getElementById('select-destino');
+  const origenTxt = selOrig && selOrig.selectedOptions && selOrig.selectedOptions[0] ? selOrig.selectedOptions[0].textContent : 'Origen';
+  const destinoTxt = selDest && selDest.selectedOptions && selDest.selectedOptions[0] ? selDest.selectedOptions[0].textContent : 'Destino';
+  setTxt('ventana-origen-lbl', origenTxt);
+  setTxt('ventana-destino-lbl', destinoTxt);
 
-  // Métricas Resiliente
-  setTxt('resiliente-distancia', km(metResiliente.longitudK1M));
-  setTxt('resiliente-supervivencia', `${metResiliente.supervivenciaK1Pct.toFixed(1)}%`);
-  setTxt('resiliente-amenazas', metResiliente.amenazasK1.length ? metResiliente.amenazasK1.join(', ') : 'Despejada (0 amenazas)');
-  setTxt('conjunto-resiliente-res', `${metResiliente.resilienciaConjuntoPct.toFixed(1)}%`);
-  setTxt('resiliente-diversidad', `${metResiliente.diversidadPct.toFixed(1)}%`);
+  // Actualizar footer inferior del mapa
+  setTxt('mapa-footer-km', kmTotales);
+  setTxt('mapa-footer-saltos', cantSaltosFooter);
+  setTxt('mapa-footer-tiempo', tiempoVuelo);
 
-  // Actualizar auditoría visual detallada de Dijkstra (Criterio 8 Entrega 2)
-  if (typeof actualizarAuditoriaDijkstraUI === 'function') {
-    actualizarAuditoriaDijkstraUI(dijK1, nodoOrig, nodoDest, metDijkstra, aristasMap);
+  // Actualizar evaluación de batería y distancia según modelo de dron en Chile
+  actualizarEvaluacionDronFooter(distKmNum, tiempoMinNum);
+
+  // Mostrar ventana flotante de resultados estilo MATLAB y habilitar botón de reapertura en sidebar
+  const ventana = document.getElementById('ventana-resultados-uav');
+  if (ventana) {
+    ventana.style.display = 'block';
+    ventana.classList.remove('minimizada');
+  }
+  const btnAbrirVentana = document.getElementById('btn-abrir-ventana-resultados');
+  if (btnAbrirVentana) {
+    btnAbrirVentana.style.display = 'flex';
+  }
+
+  // Deshabilitar botón de ejecución hasta que haya un cambio
+  btnEjecutar.disabled = true;
+  btnEjecutar.innerHTML = `<svg class="ui-icon ui-icon-sm" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span>Misión Ejecutada</span>`;
+}
+
+// Modelos de UAV comerciales e industriales homologados/usados en Chile (DGAC DAN 151)
+const MODELOS_DRON = {
+  m350: {
+    nombre: 'DJI Matrice 350 RTK',
+    tipo: 'Multirotor Industrial (Quintero / Ventanas)',
+    distanciaMaxKm: 32.0,
+    tiempoMaxMin: 55,
+    bateriaReservaPct: 15, // reserva obligatoria DGAC DAN 151
+  },
+  m30t: {
+    nombre: 'DJI Matrice 30T',
+    tipo: 'Multirotor Clima Adverso IP55',
+    distanciaMaxKm: 25.0,
+    tiempoMaxMin: 41,
+    bateriaReservaPct: 15,
+  },
+  mavic3e: {
+    nombre: 'DJI Mavic 3 Enterprise',
+    tipo: 'UAV Ligero de Mapeo Rápido',
+    distanciaMaxKm: 18.0,
+    tiempoMaxMin: 42,
+    bateriaReservaPct: 15,
+  },
+  trinity_vtol: {
+    nombre: 'Trinity F90+ VTOL',
+    tipo: 'Ala Fija VTOL Largo Alcance',
+    distanciaMaxKm: 50.0,
+    tiempoMaxMin: 90,
+    bateriaReservaPct: 15,
+  },
+};
+
+let ultimaDistanciaKmRuta = null;
+let ultimoTiempoMinutosRuta = null;
+
+function actualizarEvaluacionDronFooter(distKm = ultimaDistanciaKmRuta, tiempoMin = ultimoTiempoMinutosRuta) {
+  if (distKm != null) ultimaDistanciaKmRuta = distKm;
+  if (tiempoMin != null) ultimoTiempoMinutosRuta = tiempoMin;
+
+  const selDron = document.getElementById('select-drone-model');
+  const elAlcance = document.getElementById('mapa-footer-alcance');
+  const elBateria = document.getElementById('mapa-footer-bateria');
+  const resBateria = document.getElementById('res-bateria');
+  const resAlcance = document.getElementById('res-alcance');
+  const elDronModelo = document.getElementById('ventana-dron-modelo');
+
+  if (ultimaDistanciaKmRuta == null) {
+    if (elAlcance) elAlcance.textContent = '—';
+    if (elBateria) elBateria.textContent = '—';
+    if (resBateria) resBateria.textContent = '—';
+    if (resAlcance) resAlcance.textContent = '—';
+    if (elDronModelo) elDronModelo.textContent = 'DJI Matrice 350 RTK';
+    return;
+  }
+
+  const modeloKey = selDron ? selDron.value : 'm350';
+  const dron = MODELOS_DRON[modeloKey] || MODELOS_DRON.m350;
+  if (elDronModelo) elDronModelo.textContent = dron.nombre;
+
+  // 1. Evaluación de Alcance / Distancia
+  const distRuta = ultimaDistanciaKmRuta;
+  const distMax = dron.distanciaMaxKm;
+  const excedeDistancia = distRuta > distMax;
+
+  let badgeAlcanceHtml = '';
+  let txtResAlcance = '';
+  if (excedeDistancia) {
+    const excesoKm = (distRuta - distMax).toFixed(1).replace('.', ',');
+    badgeAlcanceHtml = `<span class="badge-status-danger" title="La ruta (${distRuta.toFixed(1)} km) supera el alcance máximo recomendado de ${distMax} km para ${dron.nombre}. Exceso: +${excesoKm} km">Excede (+${excesoKm} km)</span>`;
+    txtResAlcance = `<span class="text-bad">Excede recomendación (+${excesoKm} km)</span>`;
+  } else {
+    badgeAlcanceHtml = `<span class="badge-status-ok" title="Ruta dentro del rango seguro (${distRuta.toFixed(1)} km de ${distMax} km máx).">Operacional (${distRuta.toFixed(1)} / ${distMax} km)</span>`;
+    txtResAlcance = `<span class="text-good">Dentro de rango (${distRuta.toFixed(1)} / ${distMax} km)</span>`;
+  }
+
+  // 2. Evaluación de Batería y Tiempo de Vuelo
+  const tVueloMin = ultimoTiempoMinutosRuta || 0;
+  const tMaxMin = dron.tiempoMaxMin;
+  const pctConsumo = (tVueloMin / tMaxMin) * 100;
+  const pctRestante = Math.max(0, 100 - pctConsumo);
+  const reservaMinima = dron.bateriaReservaPct || 15;
+
+  let badgeBateriaHtml = '';
+  let txtResBateria = '';
+  if (pctRestante < reservaMinima) {
+    badgeBateriaHtml = `<span class="badge-status-danger" title="Batería restante estimada (${pctRestante.toFixed(0)}%) inferior a la reserva mínima obligatoria del ${reservaMinima}% (DAN 151). ¡No alcanza!">Insuficiente (${pctRestante.toFixed(0)}%)</span>`;
+    txtResBateria = `<span class="text-bad">Insuficiente (&lt;${reservaMinima}% reserva)</span>`;
+  } else if (pctRestante < 30) {
+    badgeBateriaHtml = `<span class="badge-status-warning" title="Batería ajustada (${pctRestante.toFixed(0)}% restante). Cumple reserva del ${reservaMinima}%, pero requiere precaución ante viento">Ajustada (${pctRestante.toFixed(0)}%)</span>`;
+    txtResBateria = `<span class="text-warning">Ajustada (${pctRestante.toFixed(0)}% restante)</span>`;
+  } else {
+    badgeBateriaHtml = `<span class="badge-status-ok" title="Batería suficiente: ${pctRestante.toFixed(0)}% restante estimado al aterrizar (Consumo: ${pctConsumo.toFixed(0)}% en ${tVueloMin.toFixed(1)} min)">Alcanza (${pctRestante.toFixed(0)}%)</span>`;
+    txtResBateria = `<span class="text-good">Alcanza (${pctRestante.toFixed(0)}% restante)</span>`;
+  }
+
+  if (elAlcance) elAlcance.innerHTML = badgeAlcanceHtml;
+  if (elBateria) elBateria.innerHTML = badgeBateriaHtml;
+  if (resBateria) resBateria.innerHTML = txtResBateria;
+  if (resAlcance) resAlcance.innerHTML = txtResAlcance;
+}
+
+const actualizarRutasEnVivo = ejecutarMision;
+
+// -----------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
+// SELECCIÓN DE ORIGEN Y DESTINO DIRECTA DESDE EL MAPA
+// -----------------------------------------------------------------------------
+let modoSeleccionOrigen = false;
+let modoSeleccionDestino = false;
+
+function activarSeleccionOrigenMapa() {
+  desactivarSeleccionDestinoMapa();
+  modoSeleccionOrigen = true;
+  const banner = document.getElementById('mapa-banner-seleccion-origen');
+  if (banner) banner.hidden = false;
+
+  // Forzar activación de todos los nodos en el mapa
+  const checkSoloElegidos = document.getElementById('check-solo-nodos-elegidos');
+  if (checkSoloElegidos && checkSoloElegidos.checked) {
+    checkSoloElegidos.checked = false;
+  }
+  actualizarVisualizacionNodos();
+
+  // Acercar el mapa lo máximo posible sin dejar fuera ningún nodo
+  if (layerTodosLosNodos && layerTodosLosNodos.getBounds && layerTodosLosNodos.getBounds().isValid()) {
+    mapa.fitBounds(layerTodosLosNodos.getBounds(), { padding: [30, 30] });
+  } else {
+    mapa.fitBounds(BOUNDS_MAX, { padding: [30, 30] });
+  }
+
+  mapa.getContainer().style.cursor = 'crosshair';
+}
+
+function desactivarSeleccionOrigenMapa() {
+  modoSeleccionOrigen = false;
+  const banner = document.getElementById('mapa-banner-seleccion-origen');
+  if (banner) banner.hidden = true;
+  if (!modoSeleccionDestino) {
+    mapa.getContainer().style.cursor = '';
+  }
+}
+
+function activarSeleccionDestinoMapa() {
+  desactivarSeleccionOrigenMapa();
+  modoSeleccionDestino = true;
+  const banner = document.getElementById('mapa-banner-seleccion-destino');
+  if (banner) banner.hidden = false;
+
+  // Forzar activación de todos los nodos en el mapa
+  const checkSoloElegidos = document.getElementById('check-solo-nodos-elegidos');
+  if (checkSoloElegidos && checkSoloElegidos.checked) {
+    checkSoloElegidos.checked = false;
+  }
+  actualizarVisualizacionNodos();
+
+  if (layerTodosLosNodos && layerTodosLosNodos.getBounds && layerTodosLosNodos.getBounds().isValid()) {
+    mapa.fitBounds(layerTodosLosNodos.getBounds(), { padding: [30, 30] });
+  } else {
+    mapa.fitBounds(BOUNDS_MAX, { padding: [30, 30] });
+  }
+
+  mapa.getContainer().style.cursor = 'crosshair';
+}
+
+function desactivarSeleccionDestinoMapa() {
+  modoSeleccionDestino = false;
+  const banner = document.getElementById('mapa-banner-seleccion-destino');
+  if (banner) banner.hidden = true;
+  if (!modoSeleccionOrigen) {
+    mapa.getContainer().style.cursor = '';
+  }
+}
+
+function procesarClickEnNodo(nodoProp) {
+  if (modoSeleccionOrigen) {
+    // Solo disponibles: Base Aérea SCER o Estaciones SINCA
+    const esOrigenValido = (nodoProp.category === 'base' || nodoProp.category === 'sinca');
+    if (esOrigenValido) {
+      const selOrigen = document.getElementById('select-origen');
+      if (selOrigen) {
+        selOrigen.value = nodoProp.code;
+        desactivarSeleccionOrigenMapa();
+        habilitarEjecucion();
+      }
+    } else {
+      alert(`El nodo "${nodoProp.name}" (${NOMBRE_CATEGORIA[nodoProp.category] || nodoProp.category}) no es un punto de despegue autorizado.\n\nSolo se permite despegar desde la Base Aérea SCER o las estaciones SINCA.`);
+    }
+    return;
+  }
+
+  if (modoSeleccionDestino) {
+    const selDestino = document.getElementById('select-destino');
+    if (selDestino) {
+      selDestino.value = nodoProp.code;
+      desactivarSeleccionDestinoMapa();
+      habilitarEjecucion();
+    }
+    return;
+  }
+
+  // Comportamiento normal: seleccionar destino
+  const selDestino = document.getElementById('select-destino');
+  if (selDestino) {
+    selDestino.value = nodoProp.code;
+    habilitarEjecucion();
+  }
+}
+
+window.fijarDestinoDesdeMapa = function(code) {
+  const selDestino = document.getElementById('select-destino');
+  if (selDestino) {
+    selDestino.value = code;
+    desactivarSeleccionDestinoMapa();
+    habilitarEjecucion();
+    mapa.closePopup();
+  }
+};
+
+window.fijarOrigenDesdeMapa = function(code) {
+  const selOrigen = document.getElementById('select-origen');
+  if (selOrigen) {
+    selOrigen.value = code;
+    desactivarSeleccionOrigenMapa();
+    habilitarEjecucion();
+    mapa.closePopup();
+  }
+};
+
+function crearPopupNodo(p) {
+  const esOrigenValido = (p.category === 'base' || p.category === 'sinca');
+  const catNom = NOMBRE_CATEGORIA[p.category] ?? p.category;
+  const col = COLOR_CATEGORIA[p.category] ?? '#64748b';
+  return `
+    <div class="nodo-popup-card">
+      <div class="nodo-popup-header">
+        <span class="nodo-popup-cat-badge" style="background:${col};"></span>
+        <strong class="nodo-popup-title">${esc(p.name)}</strong>
+      </div>
+      <table class="pop">
+        <tr><th>Categoría</th><td>${esc(catNom)}</td></tr>
+        <tr><th>Código</th><td><code>${esc(p.code)}</code></td></tr>
+        ${p.city ? `<tr><th>Comuna</th><td>${esc(p.city)}</td></tr>` : ''}
+      </table>
+      <div class="nodo-popup-actions">
+        <button type="button" class="btn-popup-set btn-popup-set-dest" onclick="window.fijarDestinoDesdeMapa('${esc(p.code)}')">
+          <svg class="ui-icon ui-icon-xs" viewBox="0 0 24 24"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+          <span>Fijar como Destino</span>
+        </button>
+        ${esOrigenValido ? `
+        <button type="button" class="btn-popup-set btn-popup-set-orig" onclick="window.fijarOrigenDesdeMapa('${esc(p.code)}')">
+          <svg class="ui-icon ui-icon-xs" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span>Fijar como Origen</span>
+        </button>
+        ` : ''}
+      </div>
+    </div>
+  `;
+}
+
+// -----------------------------------------------------------------------------
+// CONTROL DINÁMICO DE VISUALIZACIÓN DE NODOS EN EL MAPA
+// -----------------------------------------------------------------------------
+function actualizarVisualizacionNodos(nodosIds) {
+  if (nodosIds && Array.isArray(nodosIds)) {
+    ultimosNodosRutaActiva = nodosIds;
+  }
+  const checkSoloElegidos = document.getElementById('check-solo-nodos-elegidos');
+  const soloElegidos = checkSoloElegidos ? checkSoloElegidos.checked : true;
+
+  if (soloElegidos) {
+    if (layerTodosLosNodos && mapa.hasLayer(layerTodosLosNodos)) {
+      mapa.removeLayer(layerTodosLosNodos);
+    }
+    if (!mapa.hasLayer(layerNodosRuta)) {
+      mapa.addLayer(layerNodosRuta);
+    }
+    layerNodosRuta.clearLayers();
+
+    const origenVal = document.getElementById('select-origen')?.value;
+    const destinoVal = document.getElementById('select-destino')?.value;
+
+    const listaNodos = ultimosNodosRutaActiva || [];
+    listaNodos.forEach(nid => {
+      const nodo = grafoNodos[nid];
+      if (!nodo || !nodo.coord) return;
+      if (nodo.code === origenVal || nodo.code === destinoVal) return;
+
+      const marker = L.circleMarker([nodo.coord[1], nodo.coord[0]], {
+        pane: 'nodos',
+        radius: nodo.category === 'sinca' ? 6.5 : 4.5,
+        color: '#ffffff',
+        weight: 1.2,
+        fillColor: COLOR_CATEGORIA[nodo.category] ?? '#1d4ed8',
+        fillOpacity: 0.95,
+      });
+
+      marker.bindTooltip(nodo.name, { direction: 'top', offset: [0, -5] });
+      marker.bindPopup(crearPopupNodo(nodo));
+
+      marker.on('click', () => {
+        procesarClickEnNodo(nodo);
+      });
+
+      marker.addTo(layerNodosRuta);
+    });
+  } else {
+    layerNodosRuta.clearLayers();
+    if (layerTodosLosNodos && !mapa.hasLayer(layerTodosLosNodos)) {
+      mapa.addLayer(layerTodosLosNodos);
+    }
   }
 }
 
@@ -608,48 +1008,49 @@ function capaAmenaza(fc, estilo, filas) {
 function inicializarCapasCartograficas(d) {
   // 1. Capa Aristas
   const capaAristas = L.geoJSON(d.aristas, {
-    style: { color: '#475569', weight: 1.2, opacity: 0.4 },
+    style: { color: '#94a3b8', weight: 1.2, opacity: 0.6 },
     onEachFeature: (f, l) => l.bindPopup(tabla([
       ['Arista ID', f.properties.id],
       ['Origen → Destino', `${f.properties.source} → ${f.properties.target}`],
       ['Longitud', `${f.properties.length_m} m`],
     ])),
   });
+  capaAristasGlobal = capaAristas;
 
   // 2. Capa Nodos clasificados
   const capaNodos = L.geoJSON(d.nodos, {
     pointToLayer: (f, ll) => L.circleMarker(ll, {
       pane: 'nodos',
-      radius: f.properties.category === 'base' ? 8 : (f.properties.category === 'sinca' ? 7 : 5),
-      color: '#0f172a', weight: 1.5,
-      fillColor: COLOR_CATEGORIA[f.properties.category] ?? '#94a3b8', fillOpacity: 0.95,
+      radius: f.properties.category === 'base' ? 7.5 : (f.properties.category === 'sinca' ? 6.5 : 4.5),
+      color: '#ffffff', weight: 1.2,
+      fillColor: COLOR_CATEGORIA[f.properties.category] ?? '#64748b', fillOpacity: 0.95,
     }),
     onEachFeature: (f, l) => {
-      l.bindPopup(tabla([
-        ['Nombre', f.properties.name],
-        ['Categoría', NOMBRE_CATEGORIA[f.properties.category] ?? f.properties.category],
-        ['Código', f.properties.code],
-      ]));
+      l.bindPopup(crearPopupNodo(f.properties));
       l.on('click', (e) => {
         const selOrigen = document.getElementById('select-origen');
-        const selDestino = document.getElementById('select-destino');
         if (e.originalEvent.shiftKey) {
-          selOrigen.value = f.properties.code;
+          const esOrigenValido = (f.properties.category === 'base' || f.properties.category === 'sinca');
+          if (esOrigenValido && selOrigen) {
+            selOrigen.value = f.properties.code;
+            habilitarEjecucion();
+          }
         } else {
-          selDestino.value = f.properties.code;
+          procesarClickEnNodo(f.properties);
         }
-        actualizarRutasEnVivo();
       });
     },
   });
+  layerTodosLosNodos = capaNodos;
 
-  // 3. Zonas urbanas
+  // 3. Zonas urbanas (Mapeo)
   const capaZonas = L.geoJSON(d.zonas, {
-    style: { color: '#0284c7', weight: 1.8, fillColor: '#38bdf8', fillOpacity: 0.12 },
+    style: { color: '#0369a1', weight: 1.4, fillColor: '#0284c7', fillOpacity: 0.08 },
     onEachFeature: (f, l) => l.bindPopup(tabla([
       ['Zona Urbana', f.properties.name || f.properties.nombre || 'Área urbana'],
     ])),
   });
+  capaZonasGlobal = capaZonas;
 
   // 4. Calidad del aire (SINCA) con mediciones
   const capaAire = L.geoJSON(d.aire, {
@@ -696,71 +1097,265 @@ function inicializarCapasCartograficas(d) {
     ])),
   });
 
-  // 7. Cobertura de antenas OSM
-  const capaAntenas = L.geoJSON(d.antenas, {
-    style: { color: '#8b5cf6', weight: 1.5, fillColor: '#c4b5fd', fillOpacity: 0.15, dashArray: '4 4' },
+  // 7. Cobertura de antenas OSM (Mástil con radiobases y círculo de alcance C2)
+  const capaAntenas = L.featureGroup();
+  if (d.antenas && d.antenas.features) {
+    d.antenas.features.forEach(f => {
+      const p = f.properties;
+      const poly = L.geoJSON(f, {
+        style: { color: '#7c3aed', weight: 1.2, fillColor: '#8b5cf6', fillOpacity: 0.08, dashArray: '4 4' }
+      });
+      poly.bindPopup(tabla([
+        ['Antena C2', p.name || 'Mástil de telecomunicaciones'],
+        ['Radio de cobertura', `${p.coverage_radius_m || 2000} m`],
+      ]));
+      poly.addTo(capaAntenas);
+
+      if (p.lat && p.lon) {
+        const iconHtml = `
+          <div class="antenna-marker-pin" title="Antena C2: ${p.name || 'Radiobase'} (${p.coverage_radius_m || 2000}m)">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 2v20"/><path d="m17 7-5 5-5-5"/><path d="M4 12a8 8 0 0 1 16 0"/>
+            </svg>
+          </div>
+        `;
+        const marker = L.marker([p.lat, p.lon], {
+          icon: L.divIcon({
+            className: 'div-icon-antenna',
+            html: iconHtml,
+            iconSize: [24, 24],
+            iconAnchor: [12, 12]
+          })
+        });
+        marker.bindPopup(tabla([
+          ['Radiobase C2', p.name || 'Mástil Telecom'],
+          ['Estructura', p.structure || 'Mástil'],
+          ['Radio de Cobertura', `${p.coverage_radius_m || 2000} m`],
+          ['Línea de Vista', 'Garantiza enlace de mando y telemetría C2']
+        ]));
+        marker.addTo(capaAntenas);
+      }
+    });
+  }
+
+  // 7b. Quebradas y Planes (Traza Urbana / MINVU / DGA)
+  const capaTrazaUrbana = L.geoJSON(d.traza_urbana, {
+    style: () => ({
+      color: '#0284c7',
+      weight: 2.2,
+      dashArray: '4 4',
+      opacity: 0.85,
+    }),
     onEachFeature: (f, l) => l.bindPopup(tabla([
-      ['Antena C2', f.properties.name || 'Mástil de telecomunicaciones'],
-      ['Radio de cobertura', `${f.properties.radius_m || 2000} m`],
+      ['Cauce / Quebrada', f.properties?.nombre || f.properties?.name || 'Quebrada natural'],
+      ['Tipo fluvial', f.properties?.tipo || 'Drenaje natural'],
+      ['Comuna', f.properties?.comuna || 'Quintero / Puchuncaví'],
+      ['Fuente', f.properties?.fuente || 'Traza Urbana (MINVU / DGA / OSM)'],
+      ['Riesgo orográfico', 'Zona de escorrentía y potencial turbulencia térmica'],
     ])),
   });
 
-  // 8. Incendios (NASA FIRMS)
-  const capaIncendios = capaAmenaza(d.incendios,
-    (p) => (p.exceeds
-      ? { color: '#b91c1c', weight: 2, fillColor: '#ef4444', fillOpacity: 0.5 }
-      : { color: '#f97316', weight: 1, dashArray: '4 4', fillColor: '#fdba74', fillOpacity: 0.2 }),
-    (p) => [
-      ['Tipo', 'Incendio satelital (NASA FIRMS)'],
-      ['Potencia (FRP)', `${p.value} MW`],
-      ['Instrumento', p.instrument],
-      ['Confianza', p.confidence],
-      ['Zona activa', bloquea(p)],
-    ]
-  );
+  // 8. Incendios (NASA FIRMS) con polígono térmico y badge de potencia radiativa
+  const capaIncendios = L.featureGroup();
+  if (d.incendios && d.incendios.features) {
+    d.incendios.features.forEach(f => {
+      const p = f.properties;
+      const poly = L.geoJSON(f, {
+        style: () => (p.exceeds
+          ? { color: '#b91c1c', weight: 2, fillColor: '#ef4444', fillOpacity: 0.35 }
+          : { color: '#f97316', weight: 1, dashArray: '4 4', fillColor: '#fdba74', fillOpacity: 0.15 })
+      });
+      poly.bindPopup(tabla([
+        ['Tipo', 'Incendio satelital (NASA FIRMS)'],
+        ['Potencia (FRP)', `${p.value} MW`],
+        ['Instrumento', p.instrument],
+        ['Confianza', p.confidence],
+        ['Zona activa', bloquea(p)],
+      ]));
+      poly.addTo(capaIncendios);
 
-  // 9. Sismos (EMSC / CSN)
-  const capaSismos = capaAmenaza(d.sismos,
-    (p) => (p.exceeds
-      ? { color: '#7e22ce', weight: 2, fillColor: '#a855f7', fillOpacity: 0.25 }
-      : { color: '#2563eb', weight: 1, dashArray: '4 4', fillColor: '#93c5fd', fillOpacity: 0.12 }),
-    (p) => [
-      ['Tipo', 'Evento Sísmico'],
-      ['Magnitud', p.value],
-      ['Profundidad', `${p.depth_km} km`],
-      ['Radio de afectación', `${p.affect_radius_km} km`],
-      ['Zona activa', bloquea(p)],
-    ]
-  );
+      if (p.lat && p.lon) {
+        const frpVal = Number(p.value || 0).toFixed(1);
+        const iconHtml = `
+          <div class="fire-hazard-badge" title="Foco Térmico: ${frpVal} MW (NASA FIRMS)">
+            <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/>
+            </svg>
+            <span>${frpVal} MW</span>
+          </div>
+        `;
+        const marker = L.marker([p.lat, p.lon], {
+          icon: L.divIcon({
+            className: 'div-icon-fire',
+            html: iconHtml,
+            iconSize: [66, 24],
+            iconAnchor: [33, 12]
+          })
+        });
+        marker.bindPopup(tabla([
+          ['Foco Térmico Satelital', 'NASA FIRMS VIIRS'],
+          ['Potencia Radiativa (FRP)', `${frpVal} MW`],
+          ['Confianza', p.confidence || 'Nominal'],
+          ['Peligro aeronáutico', 'Turbulencia térmica convectiva y visibilidad nula']
+        ]));
+        marker.addTo(capaIncendios);
+      }
+    });
+  }
 
-  // 10. Viento (Open-Meteo)
-  const capaViento = capaAmenaza(d.viento,
-    (p) => ({
-      color: p.exceeds ? '#b91c1c' : '#16a34a', weight: 1,
-      fillColor: p.exceeds ? '#ef4444' : '#4ade80', fillOpacity: 0.25,
-    }),
-    (p) => [
-      ['Ráfaga 10 m', `${p.value} m/s`],
-      ['Viento 10 m', `${p.wind_speed_10m} m/s (${p.wind_direction_10m}°)`],
-      ['Viento 120 m', `${p.wind_speed_120m} m/s`],
-      ['Umbral operacional', `${p.threshold} m/s`],
-      ['Zona activa', bloquea(p)],
-    ]
-  );
+  // 9. Sismos (EMSC / CSN) con radio de atenuación y badge de magnitud en epicentro
+  const capaSismos = L.featureGroup();
+  if (d.sismos && d.sismos.features) {
+    d.sismos.features.forEach(f => {
+      const p = f.properties;
+      const poly = L.geoJSON(f, {
+        style: () => (p.exceeds
+          ? { color: '#7e22ce', weight: 2, fillColor: '#a855f7', fillOpacity: 0.2 }
+          : { color: '#2563eb', weight: 1, dashArray: '4 4', fillColor: '#93c5fd', fillOpacity: 0.1 })
+      });
+      poly.bindPopup(tabla([
+        ['Tipo', 'Evento Sísmico'],
+        ['Magnitud', p.value],
+        ['Profundidad', `${p.depth_km} km`],
+        ['Radio de afectación', `${p.affect_radius_km} km`],
+        ['Zona activa', bloquea(p)],
+      ]));
+      poly.addTo(capaSismos);
 
-  // 11. Lluvia (MET Norway)
-  const capaLluvia = capaAmenaza(d.lluvia,
-    (p) => ({
-      color: p.exceeds ? '#1e3a8a' : '#0284c7', weight: 1,
-      fillColor: p.exceeds ? '#1d4ed8' : '#7dd3fc', fillOpacity: 0.3,
-    }),
-    (p) => [
-      ['Precipitación', `${p.value} mm/h`],
-      ['Umbral IPx4', `${p.threshold} mm/h`],
-      ['Condición', p.symbol_code],
-      ['Zona activa', bloquea(p)],
-    ]
-  );
+      if (p.lat && p.lon) {
+        const magVal = Number(p.value || 0).toFixed(1);
+        const iconHtml = `
+          <div class="quake-hazard-badge" title="Epicentro Sísmico: M ${magVal}">
+            <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M2 12h5l3-9 4 18 3-9h5"/>
+            </svg>
+            <span>M ${magVal}</span>
+          </div>
+        `;
+        const marker = L.marker([p.lat, p.lon], {
+          icon: L.divIcon({
+            className: 'div-icon-quake',
+            html: iconHtml,
+            iconSize: [58, 24],
+            iconAnchor: [29, 12]
+          })
+        });
+        marker.bindPopup(tabla([
+          ['Epicentro Sísmico', `Magnitud ${magVal} M_L`],
+          ['Profundidad Focal', `${p.depth_km} km`],
+          ['Radio de Afectación', `${p.affect_radius_km} km`],
+          ['Monitoreo', 'Centro Sismológico Nacional (CSN) / EMSC']
+        ]));
+        marker.addTo(capaSismos);
+      }
+    });
+  }
+
+  // 10. Viento (Open-Meteo) con grilla 4x4, vector direccional rotado y velocidad en m/s
+  const capaViento = L.featureGroup();
+  if (d.viento && d.viento.features) {
+    d.viento.features.forEach(f => {
+      const p = f.properties;
+      const poly = L.geoJSON(f, {
+        style: () => ({
+          color: p.exceeds ? '#dc2626' : '#16a34a',
+          weight: 1.5,
+          dashArray: '3 3',
+          fillColor: p.exceeds ? '#ef4444' : '#22c55e',
+          fillOpacity: 0.16,
+        })
+      });
+      poly.bindPopup(tabla([
+        ['Tipo', 'Celda Meteorológica (Open-Meteo)'],
+        ['Ráfaga 10 m', `${p.value} m/s`],
+        ['Viento 10 m', `${p.wind_speed_10m} m/s (${p.wind_direction_10m}°)`],
+        ['Viento 120 m', `${p.wind_speed_120m} m/s (${p.wind_direction_120m || p.wind_direction_10m}°)`],
+        ['Umbral operacional', `${p.threshold} m/s`],
+        ['Zona activa (Bloqueo)', bloquea(p)],
+      ]));
+      poly.addTo(capaViento);
+
+      if (p.lat && p.lon) {
+        const rot = p.wind_direction_10m ?? 0;
+        const vel = Number(p.wind_speed_10m || 0).toFixed(1);
+        const colorClase = p.exceeds ? 'viento-peligro' : 'viento-seguro';
+        const iconHtml = `
+          <div class="vector-viento-badge ${colorClase}" title="Viento 10m: ${vel} m/s hacia ${rot}°">
+            <svg class="ui-icon-wind-arrow" style="transform: rotate(${rot}deg);" viewBox="0 0 24 24" width="14" height="14">
+              <path d="M12 2L19 21L12 17L5 21L12 2Z" fill="currentColor" stroke="none"/>
+            </svg>
+            <span>${vel} m/s</span>
+          </div>
+        `;
+        const marker = L.marker([p.lat, p.lon], {
+          icon: L.divIcon({
+            className: 'div-icon-wind',
+            html: iconHtml,
+            iconSize: [66, 24],
+            iconAnchor: [33, 12]
+          })
+        });
+        marker.bindPopup(tabla([
+          ['Vector de Viento 10 m', `${vel} m/s`],
+          ['Dirección', `${rot}° (hacia donde sopla)`],
+          ['Ráfaga máxima', `${p.value} m/s`],
+          ['Estado', p.exceeds ? 'Riesgo Crítico (supera umbral)' : 'Operación Nominal Segura']
+        ]));
+        marker.addTo(capaViento);
+      }
+    });
+  }
+
+  // 11. Lluvia (MET Norway) con grilla 4x4 y badge de tasa de precipitación en mm/h
+  const capaLluvia = L.featureGroup();
+  if (d.lluvia && d.lluvia.features) {
+    d.lluvia.features.forEach(f => {
+      const p = f.properties;
+      const poly = L.geoJSON(f, {
+        style: () => ({
+          color: p.exceeds ? '#1e40af' : '#0284c7',
+          weight: 1.5,
+          dashArray: '3 3',
+          fillColor: p.exceeds ? '#2563eb' : '#38bdf8',
+          fillOpacity: 0.20,
+        })
+      });
+      poly.bindPopup(tabla([
+        ['Precipitación', `${p.value} mm/h`],
+        ['Umbral IPx4', `${p.threshold} mm/h`],
+        ['Símbolo / Condición', p.symbol_code || 'Normal'],
+        ['Zona activa (Bloqueo)', bloquea(p)],
+      ]));
+      poly.addTo(capaLluvia);
+
+      if (p.lat && p.lon) {
+        const lluviaVal = Number(p.value || 0).toFixed(1);
+        const iconHtml = `
+          <div class="rain-cell-badge ${p.exceeds ? 'rain-danger' : 'rain-normal'}" title="Precipitación: ${lluviaVal} mm/h">
+            <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242"/>
+              <path d="M16 14v6"/><path d="M8 14v6"/><path d="M12 16v6"/>
+            </svg>
+            <span>${lluviaVal} mm/h</span>
+          </div>
+        `;
+        const marker = L.marker([p.lat, p.lon], {
+          icon: L.divIcon({
+            className: 'div-icon-rain',
+            html: iconHtml,
+            iconSize: [68, 24],
+            iconAnchor: [34, 12]
+          })
+        });
+        marker.bindPopup(tabla([
+          ['Tasa de Precipitación', `${p.value} mm/h`],
+          ['Límite IPx4', `${p.threshold} mm/h`],
+          ['Condición', p.symbol_code || 'Sin precipitación']
+        ]));
+        marker.addTo(capaLluvia);
+      }
+    });
+  }
 
   // 12. Ruta oficial pgr_dijkstra generada por PostgreSQL
   if (d.rutas_pgrouting && d.rutas_pgrouting.features) {
@@ -769,20 +1364,21 @@ function inicializarCapasCartograficas(d) {
         ? { color: '#fb923c', weight: 2.5, dashArray: '2 6', opacity: 0.8 }
         : { color: '#ea580c', weight: 3, dashArray: '6 6', opacity: 0.8 }),
       onEachFeature: (f, l) => l.bindPopup(tabla([
-        ['Ruta pgRouting', `pgr_dijkstra en BD (k=${f.properties.k})`],
+        ['Ruta de referencia', `pgr_dijkstra en PostgreSQL (k=${f.properties.k})`],
+        ['Condición', 'Peor caso: no considera metadata ni amenazas (Fase 3)'],
         ['Destino', f.properties.destino_nombre || f.properties.destino],
         ['Longitud', km(f.properties.longitud_m)],
-        ['Costo pgRouting', `${fmt(f.properties.costo)} m`],
+        ['Costo (longitud pura)', `${fmt(Math.round(f.properties.costo))} m`],
         ['Tramos', f.properties.tramos],
       ])),
     }).addTo(layerRutaPgrouting);
   }
 
   const overlays = {
-    'Rutas Resilientes (Akgün / Kosior)': layerRutasResiliente,
-    'Rutas Dijkstra (Peor Caso reactivo)': layerRutasDijkstra,
-    'Ruta pgr_dijkstra (Base de Datos)': layerRutaPgrouting,
-    'Escenario de Contingencia (Quintero)': layerEscenarioSimulado,
+    'Ruta de referencia — pgr_dijkstra (costo = longitud)': layerRutaPgrouting,
+    'Ruta Dijkstra (Peor caso: distancia pura en km)': layerRutasDijkstra,
+    'Rutas Resilientes (Akgün et al. 2000: penalización iterativa)': layerRutasResiliente,
+    'Escenario de Contingencia (Planta Asfaltos)': layerEscenarioSimulado,
     'Infraestructura · Nodos': capaNodos,
     'Infraestructura · Aristas': capaAristas,
     'Infraestructura · Zonas urbanas': capaZonas,
@@ -790,26 +1386,303 @@ function inicializarCapasCartograficas(d) {
     'Metadata · Relieve por arista (SRTM)': capaRelieve,
     'Metadata · Manzanas pobladas (INE)': capaManzanas,
     'Metadata · Cobertura antenas (OSM)': capaAntenas,
+    'Metadata · Quebradas (Traza Urbana)': capaTrazaUrbana,
     'Amenaza · Incendios (NASA FIRMS)': capaIncendios,
     'Amenaza · Sismos (EMSC / CSN)': capaSismos,
     'Amenaza · Viento (Open-Meteo)': capaViento,
     'Amenaza · Lluvia (MET Norway)': capaLluvia,
   };
 
-  const controlCapas = {};
-  Object.entries(overlays).forEach(([nom, layer]) => {
-    controlCapas[nom] = layer;
-    if ([
-      'Rutas Resilientes (Akgün / Kosior)',
-      'Rutas Dijkstra (Peor Caso reactivo)',
-      'Infraestructura · Nodos',
-      'Infraestructura · Zonas urbanas',
-    ].includes(nom)) {
-      layer.addTo(mapa);
+  // Asignar referencias globales de las capas para los checkboxes del panel lateral
+  capaAireGlobal = capaAire;
+  capaRelieveGlobal = capaRelieve;
+  capaManzanasGlobal = capaManzanas;
+  capaAntenasGlobal = capaAntenas;
+  capaTrazaUrbanaGlobal = capaTrazaUrbana;
+  capaIncendiosGlobal = capaIncendios;
+  capaSismosGlobal = capaSismos;
+  capaVientoGlobal = capaViento;
+  capaLluviaGlobal = capaLluvia;
+
+  // Conectar checkboxes del panel lateral (Solo visualización, no afectan algoritmo ni costo)
+  function enlazarCapaVisual(checkId, capa) {
+    const chk = document.getElementById(checkId);
+    if (!chk) return;
+    chk.checked = false; // por defecto apagado
+    chk.addEventListener('change', () => {
+      if (!capa) return;
+      if (chk.checked) {
+        if (!mapa.hasLayer(capa)) mapa.addLayer(capa);
+      } else {
+        if (mapa.hasLayer(capa)) mapa.removeLayer(capa);
+      }
+    });
+  }
+
+  enlazarCapaVisual('check-layer-aire', capaAireGlobal);
+  enlazarCapaVisual('check-layer-relieve', capaRelieveGlobal);
+  enlazarCapaVisual('check-layer-manzanas', capaManzanasGlobal);
+  enlazarCapaVisual('check-layer-antenas', capaAntenasGlobal);
+  enlazarCapaVisual('check-layer-traza', capaTrazaUrbanaGlobal);
+
+  enlazarCapaVisual('check-layer-incendios', capaIncendiosGlobal);
+  enlazarCapaVisual('check-layer-sismos', capaSismosGlobal);
+  enlazarCapaVisual('check-layer-viento', capaVientoGlobal);
+  enlazarCapaVisual('check-layer-lluvia', capaLluviaGlobal);
+
+  // Conectar controles de la leyenda rápida del mapa (abajo a la derecha)
+  const checkSoloElegidos = document.getElementById('check-solo-nodos-elegidos');
+  if (checkSoloElegidos) {
+    checkSoloElegidos.addEventListener('change', () => {
+      actualizarVisualizacionNodos();
+    });
+  }
+
+  const checkAristas = document.getElementById('check-ver-aristas');
+  if (checkAristas) {
+    checkAristas.addEventListener('change', () => {
+      if (checkAristas.checked) {
+        if (capaAristasGlobal && !mapa.hasLayer(capaAristasGlobal)) {
+          mapa.addLayer(capaAristasGlobal);
+        }
+      } else {
+        if (capaAristasGlobal && mapa.hasLayer(capaAristasGlobal)) {
+          mapa.removeLayer(capaAristasGlobal);
+        }
+      }
+    });
+  }
+
+  const checkCostoEnlace = document.getElementById('check-costo-enlace');
+  if (checkCostoEnlace) {
+    checkCostoEnlace.addEventListener('change', () => {
+      if (checkCostoEnlace.checked) {
+        if (!mapa.hasLayer(layerCostosEnlace)) mapa.addLayer(layerCostosEnlace);
+      } else {
+        if (mapa.hasLayer(layerCostosEnlace)) mapa.removeLayer(layerCostosEnlace);
+      }
+    });
+  }
+
+  const checkMapeo = document.getElementById('check-ver-mapeo');
+  if (checkMapeo) {
+    checkMapeo.addEventListener('change', () => {
+      if (checkMapeo.checked) {
+        if (capaZonasGlobal && !mapa.hasLayer(capaZonasGlobal)) {
+          mapa.addLayer(capaZonasGlobal);
+        }
+      } else {
+        if (capaZonasGlobal && mapa.hasLayer(capaZonasGlobal)) {
+          mapa.removeLayer(capaZonasGlobal);
+        }
+      }
+    });
+  }
+
+  const checkOsm = document.getElementById('check-mapa-osm');
+  if (checkOsm) {
+    checkOsm.addEventListener('change', () => {
+      if (checkOsm.checked) {
+        if (mapa.hasLayer(capasBase['Satélite (Esri)'])) {
+          mapa.removeLayer(capasBase['Satélite (Esri)']);
+        }
+        if (!mapa.hasLayer(capasBase['OpenStreetMap'])) {
+          mapa.addLayer(capasBase['OpenStreetMap']);
+        }
+      } else {
+        if (mapa.hasLayer(capasBase['OpenStreetMap'])) {
+          mapa.removeLayer(capasBase['OpenStreetMap']);
+        }
+        if (!mapa.hasLayer(capasBase['Satélite (Esri)'])) {
+          mapa.addLayer(capasBase['Satélite (Esri)']);
+        }
+      }
+    });
+  }
+
+  // Visualización inicial: solo nodos de la ruta activa por defecto
+  actualizarVisualizacionNodos();
+}
+
+// -----------------------------------------------------------------------------
+// LEYENDA DESPLEGABLE DE COLORES DE NODOS (ARRIBA A LA DERECHA DEL MAPA)
+// -----------------------------------------------------------------------------
+function inicializarLeyendaColoresNodos(d) {
+  const listaCont = document.getElementById('leyenda-nodos-lista');
+  const btnToggle = document.getElementById('btn-toggle-leyenda-nodos');
+  const bodyCont = document.getElementById('leyenda-nodos-body');
+  const arrow = document.getElementById('leyenda-nodos-arrow');
+
+  if (!listaCont || !btnToggle || !bodyCont) return;
+
+  // Contar cantidad de nodos por categoría
+  const conteos = {};
+  if (d.nodos && Array.isArray(d.nodos.features)) {
+    d.nodos.features.forEach(f => {
+      const c = f.properties?.category || 'auxiliary_hub';
+      conteos[c] = (conteos[c] || 0) + 1;
+    });
+  }
+
+  // Lista ordenada de categorías temáticas
+  const ordenCategorias = [
+    'base', 'sinca', 'emission_source', 'health', 'education',
+    'commercial', 'crowded_area', 'beach', 'hospitality',
+    'restaurant', 'attraction', 'historic', 'auxiliary_hub',
+  ];
+
+  listaCont.innerHTML = ordenCategorias.map(cat => {
+    const color = COLOR_CATEGORIA[cat] || '#64748b';
+    const nombre = NOMBRE_CATEGORIA[cat] || cat;
+    const count = conteos[cat] || 0;
+    return `
+      <div class="leyenda-nodo-item" title="${esc(nombre)} (${count} nodos en la red)">
+        <span class="leyenda-nodo-dot" style="background:${color};"></span>
+        <span class="leyenda-nodo-name">${esc(nombre)}</span>
+        <span class="leyenda-nodo-count">(${count})</span>
+      </div>
+    `;
+  }).join('');
+
+  // Toggle abrir / cerrar interactivo
+  let abierta = true;
+  btnToggle.addEventListener('click', () => {
+    abierta = !abierta;
+    bodyCont.hidden = !abierta;
+    btnToggle.setAttribute('aria-expanded', abierta ? 'true' : 'false');
+    if (arrow) {
+      arrow.style.transform = abierta ? 'rotate(0deg)' : 'rotate(-90deg)';
+      arrow.style.transition = 'transform 0.2s ease';
     }
   });
+}
 
-  L.control.layers(capasBase, controlCapas, { collapsed: true, position: 'topright' }).addTo(mapa);
+// -----------------------------------------------------------------------------
+// VENTANA FLOTANTE DRAGGABLE ESTILO MATLAB PARA RESULTADOS DE MISIÓN
+// -----------------------------------------------------------------------------
+function inicializarVentanaResultadosDraggable() {
+  const ventana = document.getElementById('ventana-resultados-uav');
+  const header = document.getElementById('ventana-header-drag');
+  const btnMinimizar = document.getElementById('btn-minimizar-ventana');
+  const btnCerrar = document.getElementById('btn-cerrar-ventana');
+  const btnAbrir = document.getElementById('btn-abrir-ventana-resultados');
+  const viewport = document.querySelector('.mapa-viewport');
+
+  if (!ventana || !header) return;
+
+  // Botón cerrar (✕)
+  if (btnCerrar) {
+    btnCerrar.addEventListener('click', (e) => {
+      e.stopPropagation();
+      ventana.style.display = 'none';
+    });
+  }
+
+  // Botón minimizar / expandir (_)
+  if (btnMinimizar) {
+    btnMinimizar.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isMin = ventana.classList.toggle('minimizada');
+      btnMinimizar.title = isMin ? 'Expandir ventana' : 'Minimizar ventana';
+    });
+  }
+
+  // Botón en el sidebar para reabrir
+  if (btnAbrir) {
+    btnAbrir.addEventListener('click', () => {
+      ventana.style.display = 'block';
+      ventana.classList.remove('minimizada');
+      clampingVentana();
+    });
+  }
+
+  // Lógica de arrastre estilo MATLAB Figure Window
+  let isDragging = false;
+  let startX = 0;
+  let startY = 0;
+  let initialLeft = 0;
+  let initialTop = 0;
+
+  function clampingVentana() {
+    if (!viewport) return;
+    const vpRect = viewport.getBoundingClientRect();
+    const vRect = ventana.getBoundingClientRect();
+    let curLeft = ventana.offsetLeft;
+    let curTop = ventana.offsetTop;
+    const maxLeft = Math.max(10, vpRect.width - vRect.width - 10);
+    const maxTop = Math.max(10, vpRect.height - (ventana.classList.contains('minimizada') ? 45 : vRect.height) - 45);
+
+    if (curLeft > maxLeft) curLeft = maxLeft;
+    if (curLeft < 10) curLeft = 10;
+    if (curTop > maxTop) curTop = maxTop;
+    if (curTop < 10) curTop = 10;
+
+    ventana.style.left = `${curLeft}px`;
+    ventana.style.top = `${curTop}px`;
+    ventana.style.right = 'auto';
+    ventana.style.bottom = 'auto';
+  }
+
+  const startDrag = (clientX, clientY, target) => {
+    if (target.closest('.btn-ventana-action')) return;
+    isDragging = true;
+    startX = clientX;
+    startY = clientY;
+    initialLeft = ventana.offsetLeft;
+    initialTop = ventana.offsetTop;
+    document.body.style.userSelect = 'none';
+  };
+
+  const moveDrag = (clientX, clientY) => {
+    if (!isDragging || !viewport) return;
+    const dx = clientX - startX;
+    const dy = clientY - startY;
+
+    let newLeft = initialLeft + dx;
+    let newTop = initialTop + dy;
+
+    const vpRect = viewport.getBoundingClientRect();
+    const vRect = ventana.getBoundingClientRect();
+    const maxLeft = Math.max(10, vpRect.width - vRect.width - 10);
+    const maxTop = Math.max(10, vpRect.height - (ventana.classList.contains('minimizada') ? 45 : vRect.height) - 45);
+
+    newLeft = Math.max(10, Math.min(newLeft, maxLeft));
+    newTop = Math.max(10, Math.min(newTop, maxTop));
+
+    ventana.style.left = `${newLeft}px`;
+    ventana.style.top = `${newTop}px`;
+    ventana.style.right = 'auto';
+    ventana.style.bottom = 'auto';
+  };
+
+  const stopDrag = () => {
+    if (isDragging) {
+      isDragging = false;
+      document.body.style.userSelect = '';
+    }
+  };
+
+  // Mouse events
+  header.addEventListener('mousedown', (e) => {
+    startDrag(e.clientX, e.clientY, e.target);
+  });
+  window.addEventListener('mousemove', (e) => {
+    moveDrag(e.clientX, e.clientY);
+  });
+  window.addEventListener('mouseup', stopDrag);
+
+  // Touch events (para notebooks táctiles o tablets)
+  header.addEventListener('touchstart', (e) => {
+    if (e.touches.length === 1) {
+      startDrag(e.touches[0].clientX, e.touches[0].clientY, e.target);
+    }
+  }, { passive: true });
+  window.addEventListener('touchmove', (e) => {
+    if (isDragging && e.touches.length === 1) {
+      moveDrag(e.touches[0].clientX, e.touches[0].clientY);
+    }
+  }, { passive: true });
+  window.addEventListener('touchend', stopDrag);
 }
 
 // -----------------------------------------------------------------------------
@@ -830,6 +1703,18 @@ async function iniciar() {
   });
   datosCargados = d;
 
+  if (d.parametros) {
+    if (d.parametros.lambdas) LAMBDAS = { ...LAMBDAS, ...d.parametros.lambdas };
+    if (d.parametros.algoritmo) {
+      if (d.parametros.algoritmo.beta != null) BETA = Number(d.parametros.algoritmo.beta);
+      if (d.parametros.algoritmo.factor_penalizacion_p != null) FACTOR_PENALIZACION_P = Number(d.parametros.algoritmo.factor_penalizacion_p);
+      if (d.parametros.algoritmo.origen_default) ORIGEN_PREDETERMINADO = d.parametros.algoritmo.origen_default;
+    }
+    if (d.parametros.contingencia) {
+      FOCO_SIMULADO = { ...FOCO_SIMULADO, ...d.parametros.contingencia };
+    }
+  }
+
   // Inicializar estructuras de grafo en memoria
   inicializarGrafo(d);
 
@@ -844,23 +1729,37 @@ async function iniciar() {
     categorias[cat].push(f.properties);
   });
 
-  let htmlOptions = '';
+  // Opciones completas para Destino (Monitoreo e Inspección)
+  let htmlOptionsDestino = '';
   const ordenCategorias = [...new Set([...Object.keys(NOMBRE_CATEGORIA), ...Object.keys(categorias)])];
   ordenCategorias.forEach(cat => {
     if (categorias[cat]) {
       const nombreCat = NOMBRE_CATEGORIA[cat] || cat;
       const etiqueta = DESTINOS_MEDICION.has(cat) ? `${nombreCat} · punto de medición`
         : (cat === 'base' ? nombreCat : `${nombreCat} · nodo de paso`);
-      htmlOptions += `<optgroup label="--- ${etiqueta} ---">`;
+      htmlOptionsDestino += `<optgroup label="--- ${etiqueta} ---">`;
       categorias[cat].sort((a, b) => a.name.localeCompare(b.name)).forEach(p => {
-        htmlOptions += `<option value="${p.code}">${p.name} (${p.city || 'Quintero'})</option>`;
+        htmlOptionsDestino += `<option value="${p.code}">${p.name} (${p.city || 'Quintero'})</option>`;
       });
-      htmlOptions += `</optgroup>`;
+      htmlOptionsDestino += `</optgroup>`;
     }
   });
 
-  selOrigen.innerHTML = htmlOptions;
-  selDestino.innerHTML = htmlOptions;
+  // Opciones exclusivas para ORIGEN (Base SCER y Estaciones SINCA con nido/hangar)
+  let htmlOptionsOrigen = '';
+  ['base', 'sinca'].forEach(cat => {
+    if (categorias[cat]) {
+      const etiqueta = cat === 'base' ? 'Base Aérea Principal (Hangar SCER)' : 'Estaciones SINCA (Nidos Automatizados)';
+      htmlOptionsOrigen += `<optgroup label="--- ${etiqueta} ---">`;
+      categorias[cat].sort((a, b) => a.name.localeCompare(b.name)).forEach(p => {
+        htmlOptionsOrigen += `<option value="${p.code}">${p.name} (${p.city || 'Quintero'})</option>`;
+      });
+      htmlOptionsOrigen += `</optgroup>`;
+    }
+  });
+
+  selOrigen.innerHTML = htmlOptionsOrigen;
+  selDestino.innerHTML = htmlOptionsDestino;
 
   selOrigen.value = 'base_scer';
   selDestino.value = 'sinca_puchuncavi';
@@ -868,52 +1767,41 @@ async function iniciar() {
   // Inicializar capas cartográficas
   inicializarCapasCartograficas(d);
 
-  // Event Listeners interactivos
-  selOrigen.addEventListener('change', actualizarRutasEnVivo);
-  selDestino.addEventListener('change', actualizarRutasEnVivo);
-  document.getElementById('select-k-alternativa').addEventListener('change', actualizarRutasEnVivo);
+  // Conectar botón de ejecución de la misión
+  const btnEjecutar = document.getElementById('btn-ejecutar-mision');
+  if (btnEjecutar) {
+    btnEjecutar.addEventListener('click', ejecutarMision);
+  }
 
-  ['check-incendios', 'check-poblacion', 'check-sismos', 'check-telecom', 'check-escenario-estres'].forEach(id => {
-    document.getElementById(id).addEventListener('change', actualizarRutasEnVivo);
-  });
+  // Al cambiar origen o destino, habilitar botón para nueva ejecución
+  selOrigen.addEventListener('change', habilitarEjecucion);
+  selDestino.addEventListener('change', habilitarEjecucion);
 
-  document.getElementById('btn-default-restricciones').addEventListener('click', () => {
-    document.getElementById('check-incendios').checked = true;
-    document.getElementById('check-poblacion').checked = true;
-    document.getElementById('check-sismos').checked = true;
-    document.getElementById('check-telecom').checked = true;
-    document.getElementById('check-escenario-estres').checked = false;
-    actualizarRutasEnVivo();
-  });
+  // Inicializar selector avanzado de destino y modos de selección en mapa
+  inicializarSelectorDestinoAvanzado(d);
 
-  // Resumen en panel lateral
-  const suma = (lista, c) => lista.reduce((s, f) => s + (f.properties[c] || 0), 0);
-  document.getElementById('resumen').innerHTML = [
-    ['Nodos de la red', d.nodos.features.length],
-    ['Aristas de vuelo', `${d.aristas.features.length} (${(suma(d.aristas.features, 'length_m') / 1000).toFixed(1)} km)`],
-    ['Zonas urbanas', d.zonas.features.length],
-    ['Estaciones SINCA', d.aire.features.length],
-    ['Perfiles SRTM', d.relieve.features.length],
-    ['Manzanas censales (INE)', fmt(d.manzanas.features.length)],
-    ['Antenas de telecom', d.antenas.features.length],
-    ['Incendios satelitales', d.incendios.features.length],
-    ['Sismos en registro', d.sismos.features.length],
-  ].map(([k, v]) => `<dt>${esc(k)}</dt><dd>${esc(v)}</dd>`).join('');
+  // Inicializar acordeones de Metadata y Amenazas
+  inicializarAcordeonesSidebar();
 
-  const conteo = {};
-  d.nodos.features.forEach(f => { conteo[f.properties.category] = (conteo[f.properties.category] || 0) + 1; });
-  document.getElementById('leyenda').innerHTML = Object.keys(COLOR_CATEGORIA)
-    .filter(c => conteo[c])
-    .map(c => `<li><span class="punto" style="background:${COLOR_CATEGORIA[c]}"></span>${esc(NOMBRE_CATEGORIA[c])} <b>${conteo[c]}</b></li>`)
-    .join('');
+  // Inicializar leyenda desplegable de colores de nodos (arriba a la derecha)
+  inicializarLeyendaColoresNodos(d);
 
-  // Primera ejecución de rutas en el simulador
-  actualizarRutasEnVivo();
+  // Inicializar ventana flotante draggable estilo MATLAB para resultados
+  inicializarVentanaResultadosDraggable();
 
   // Configurar navegación de módulos
   configurarNavegacionModulos(d);
 
+  // Inicializar selector de modelo de dron en footer
+  const selDronFooter = document.getElementById('select-drone-model');
+  if (selDronFooter) {
+    selDronFooter.addEventListener('change', () => {
+      actualizarEvaluacionDronFooter();
+    });
+  }
+
   // Inicializar módulos de Entrega 2
+  inicializarModuloGrafo(d);
   inicializarModuloInfraestructura(d);
   inicializarModuloMetadata(d);
   inicializarModuloAmenazas(d);
@@ -921,76 +1809,571 @@ async function iniciar() {
   inicializarAuditoriaDijkstra(d);
 }
 
+// -----------------------------------------------------------------------------
+// SELECTOR DE DESTINO AVANZADO (MODAL INTERACTIVO CON FILTROS Y DISTANCIAS KM)
+// -----------------------------------------------------------------------------
+let categoriaFiltroDestino = 'todos';
+let busquedaDestinoTexto = '';
+let ordenDestinoCriterio = 'distancia_asc';
+let nodosParaDestino = [];
+
+function abrirModalDestino() {
+  const modal = document.getElementById('modal-selector-destino');
+  if (!modal) return;
+
+  const selOrigen = document.getElementById('select-origen');
+  const origenCode = selOrigen ? selOrigen.value : 'base_scer';
+  const nodoOrig = grafoNodosPorCode[origenCode];
+
+  const lblOrigen = document.getElementById('modal-destino-origen-nombre');
+  if (lblOrigen) {
+    lblOrigen.textContent = nodoOrig ? `${nodoOrig.name} (${nodoOrig.city || 'Quintero'})` : 'Base Aérea SCER';
+  }
+
+  // Calcular distancias directas en km desde el origen actual
+  nodosParaDestino.forEach(n => {
+    if (nodoOrig && nodoOrig.coord && n.coord) {
+      const dMetros = L.latLng(nodoOrig.coord[1], nodoOrig.coord[0]).distanceTo(L.latLng(n.coord[1], n.coord[0]));
+      n._distKm = dMetros / 1000;
+    } else {
+      n._distKm = 0;
+    }
+  });
+
+  renderizarPillsCategoriasDestino();
+  renderizarDestinosCards();
+
+  modal.hidden = false;
+  const inputBusq = document.getElementById('modal-destino-busqueda');
+  if (inputBusq) {
+    inputBusq.value = busquedaDestinoTexto;
+    setTimeout(() => inputBusq.focus(), 60);
+  }
+}
+
+function cerrarModalDestino() {
+  const modal = document.getElementById('modal-selector-destino');
+  if (modal) modal.hidden = true;
+}
+
+function renderizarPillsCategoriasDestino() {
+  const cont = document.getElementById('modal-pills-container');
+  if (!cont) return;
+
+  const selOrigen = document.getElementById('select-origen');
+  const origenCode = selOrigen ? selOrigen.value : '';
+
+  // Conteo por categoría (excluyendo el origen actual)
+  const conteo = { todos: 0 };
+  nodosParaDestino.forEach(n => {
+    if (n.code === origenCode) return;
+    conteo.todos++;
+    conteo[n.category] = (conteo[n.category] || 0) + 1;
+  });
+
+  const categorias = [
+    { id: 'todos', nombre: 'Todos' },
+    { id: 'sinca', nombre: 'Estaciones SINCA' },
+    { id: 'emission_source', nombre: 'Fuentes Emisoras' },
+    { id: 'health', nombre: 'Salud' },
+    { id: 'education', nombre: 'Educación' },
+    { id: 'commercial', nombre: 'Comercial' },
+    { id: 'crowded_area', nombre: 'Áreas Concurridas' },
+    { id: 'beach', nombre: 'Playas' },
+    { id: 'hospitality', nombre: 'Hotelería' },
+    { id: 'restaurant', nombre: 'Restaurantes' },
+    { id: 'attraction', nombre: 'Atracciones' },
+    { id: 'historic', nombre: 'Histórico' },
+    { id: 'auxiliary_hub', nombre: 'Centros Auxiliares' },
+  ];
+
+  cont.innerHTML = categorias
+    .filter(cat => cat.id === 'todos' || conteo[cat.id] > 0)
+    .map(cat => {
+      const activeClass = categoriaFiltroDestino === cat.id ? 'active' : '';
+      const dot = cat.id !== 'todos' ? `<span class="punto" style="background:${COLOR_CATEGORIA[cat.id] || '#38bdf8'}; width:7px; height:7px; margin-right:4px;"></span>` : '';
+      return `<button type="button" class="modal-pill ${activeClass}" data-cat="${cat.id}">
+        ${dot}${cat.nombre} <span style="opacity:0.75; font-size:0.68rem;">(${conteo[cat.id] || 0})</span>
+      </button>`;
+    }).join('');
+
+  cont.querySelectorAll('.modal-pill').forEach(btn => {
+    btn.addEventListener('click', () => {
+      categoriaFiltroDestino = btn.getAttribute('data-cat');
+      cont.querySelectorAll('.modal-pill').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      renderizarDestinosCards();
+    });
+  });
+}
+
+function renderizarDestinosCards() {
+  const grid = document.getElementById('modal-cards-grid');
+  const contador = document.getElementById('modal-destinos-contador');
+  if (!grid) return;
+
+  const selOrigen = document.getElementById('select-origen');
+  const selDestino = document.getElementById('select-destino');
+  const origenCode = selOrigen ? selOrigen.value : '';
+  const destinoActual = selDestino ? selDestino.value : '';
+
+  const q = busquedaDestinoTexto.trim().toLowerCase();
+
+  let filtrados = nodosParaDestino.filter(n => {
+    if (n.code === origenCode) return false;
+    if (categoriaFiltroDestino !== 'todos' && n.category !== categoriaFiltroDestino) return false;
+    if (q) {
+      const matchName = n.name.toLowerCase().includes(q);
+      const matchCode = n.code.toLowerCase().includes(q);
+      const matchCity = (n.city || '').toLowerCase().includes(q);
+      const matchCat = (NOMBRE_CATEGORIA[n.category] || '').toLowerCase().includes(q);
+      if (!matchName && !matchCode && !matchCity && !matchCat) return false;
+    }
+    return true;
+  });
+
+  // Ordenamiento
+  if (ordenDestinoCriterio === 'distancia_asc') {
+    filtrados.sort((a, b) => a._distKm - b._distKm);
+  } else if (ordenDestinoCriterio === 'distancia_desc') {
+    filtrados.sort((a, b) => b._distKm - a._distKm);
+  } else if (ordenDestinoCriterio === 'nombre_asc') {
+    filtrados.sort((a, b) => a.name.localeCompare(b.name));
+  }
+
+  if (contador) {
+    contador.textContent = `${filtrados.length} destino${filtrados.length === 1 ? '' : 's'} disponible${filtrados.length === 1 ? '' : 's'}`;
+  }
+
+  if (filtrados.length === 0) {
+    grid.innerHTML = `<div class="placeholder-msg" style="grid-column: 1 / -1; padding: 24px;">
+      No se encontraron destinos que coincidan con "${esc(q)}" en la categoría seleccionada.
+    </div>`;
+    return;
+  }
+
+  grid.innerHTML = filtrados.map(n => {
+    const isSelected = n.code === destinoActual;
+    const isPriority = (n.category === 'sinca' || n.category === 'emission_source');
+    const badgeStyle = ESTILO_BADGE_CATEGORIA[n.category] || { bg: '#f1f5f9', text: '#334155', border: '#cbd5e1' };
+    const dotColor = COLOR_CATEGORIA[n.category] || '#64748b';
+    const catName = NOMBRE_CATEGORIA[n.category] || n.category;
+    const distFmt = n._distKm.toFixed(2).replace('.', ',') + ' km';
+
+    return `
+      <div class="destino-card ${isSelected ? 'active-dest' : ''}" data-code="${esc(n.code)}">
+        <div class="destino-card-top">
+          <span class="destino-badge" style="background:${badgeStyle.bg}; color:${badgeStyle.text}; border: 1px solid ${badgeStyle.border};">
+            <span class="punto" style="background:${dotColor}; width:6px; height:6px; display:inline-block; border-radius:50%; margin-right:4px;"></span>
+            ${esc(catName)}
+          </span>
+          <span class="destino-distancia" title="Distancia de vuelo directa desde el origen">
+            <svg class="ui-icon ui-icon-sm" viewBox="0 0 24 24"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+            <span>${distFmt}</span>
+          </span>
+        </div>
+        <div class="destino-nombre">${esc(n.name)}</div>
+        <div class="destino-comuna">
+          <svg class="ui-icon ui-icon-sm" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span>${esc(n.city || 'Quintero')} &bull; <code>${esc(n.code)}</code></span>
+        </div>
+        ${isPriority ? `
+          <div class="destino-tag-monitoreo">
+            <svg class="ui-icon ui-icon-sm" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <span>Objetivo Prioritario de Misión</span>
+          </div>` : ''}
+      </div>
+    `;
+  }).join('');
+
+  grid.querySelectorAll('.destino-card').forEach(card => {
+    card.addEventListener('click', () => {
+      const code = card.getAttribute('data-code');
+      if (selDestino && code) {
+        selDestino.value = code;
+        cerrarModalDestino();
+        habilitarEjecucion();
+
+        const nodoDest = grafoNodosPorCode[code];
+        if (nodoDest && nodoDest.coord) {
+          mapa.panTo([nodoDest.coord[1], nodoDest.coord[0]]);
+        }
+      }
+    });
+  });
+}
+
+function inicializarSelectorDestinoAvanzado(d) {
+  nodosParaDestino = d.nodos.features.map(f => ({
+    ...f.properties,
+    coord: f.geometry.coordinates,
+  }));
+
+  const btnAbrirModal = document.getElementById('btn-abrir-modal-destino');
+  const selDestino = document.getElementById('select-destino');
+  const btnCerrarModal = document.getElementById('btn-cerrar-modal-destino');
+  const btnCancelarModal = document.getElementById('btn-cancelar-modal-destino');
+  const modal = document.getElementById('modal-selector-destino');
+  const inputBusq = document.getElementById('modal-destino-busqueda');
+  const btnClearSearch = document.getElementById('btn-limpiar-busqueda-destino');
+  const selOrden = document.getElementById('modal-destino-orden');
+
+  if (btnAbrirModal) btnAbrirModal.addEventListener('click', abrirModalDestino);
+
+  if (selDestino) {
+    selDestino.addEventListener('mousedown', (e) => {
+      e.preventDefault();
+      abrirModalDestino();
+    });
+    selDestino.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        abrirModalDestino();
+      }
+    });
+  }
+
+  if (btnCerrarModal) btnCerrarModal.addEventListener('click', cerrarModalDestino);
+  if (btnCancelarModal) btnCancelarModal.addEventListener('click', cerrarModalDestino);
+
+  if (modal) {
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) cerrarModalDestino();
+    });
+  }
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      if (modal && !modal.hidden) cerrarModalDestino();
+      if (modoSeleccionOrigen) desactivarSeleccionOrigenMapa();
+    }
+  });
+
+  if (inputBusq) {
+    inputBusq.addEventListener('input', () => {
+      busquedaDestinoTexto = inputBusq.value;
+      if (btnClearSearch) btnClearSearch.hidden = !busquedaDestinoTexto;
+      renderizarDestinosCards();
+    });
+  }
+
+  if (btnClearSearch) {
+    btnClearSearch.addEventListener('click', () => {
+      busquedaDestinoTexto = '';
+      if (inputBusq) {
+        inputBusq.value = '';
+        inputBusq.focus();
+      }
+      btnClearSearch.hidden = true;
+      renderizarDestinosCards();
+    });
+  }
+
+  if (selOrden) {
+    selOrden.addEventListener('change', () => {
+      ordenDestinoCriterio = selOrden.value;
+      renderizarDestinosCards();
+    });
+  }
+
+  // Conectar botón para seleccionar origen desde el mapa
+  const btnSelOrigenMapa = document.getElementById('btn-seleccionar-origen-mapa');
+  if (btnSelOrigenMapa) {
+    btnSelOrigenMapa.addEventListener('click', activarSeleccionOrigenMapa);
+  }
+
+  const btnCancelBanner = document.getElementById('btn-cancelar-seleccion-origen');
+  if (btnCancelBanner) {
+    btnCancelBanner.addEventListener('click', desactivarSeleccionOrigenMapa);
+  }
+
+  // Conectar botón para seleccionar destino desde el mapa
+  const btnSelDestinoMapa = document.getElementById('btn-seleccionar-destino-mapa');
+  if (btnSelDestinoMapa) {
+    btnSelDestinoMapa.addEventListener('click', activarSeleccionDestinoMapa);
+  }
+
+  const btnCancelDestinoBanner = document.getElementById('btn-cancelar-seleccion-destino');
+  if (btnCancelDestinoBanner) {
+    btnCancelDestinoBanner.addEventListener('click', desactivarSeleccionDestinoMapa);
+  }
+}
+
+// -----------------------------------------------------------------------------
+// CONTROL DE ACORDEONES EN PANEL LATERAL (METADATA Y AMENAZAS)
+// -----------------------------------------------------------------------------
+function inicializarAcordeonesSidebar() {
+  function enlazarAcordeon(btnId, bodyId) {
+    const btn = document.getElementById(btnId);
+    const body = document.getElementById(bodyId);
+    if (!btn || !body) return;
+
+    btn.addEventListener('click', () => {
+      const expandido = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', expandido ? 'false' : 'true');
+      body.hidden = expandido;
+    });
+  }
+
+  enlazarAcordeon('btn-accordion-metadata', 'body-accordion-metadata');
+  enlazarAcordeon('btn-accordion-amenazas', 'body-accordion-amenazas');
+}
+
 // =============================================================================
 // GESTIÓN DE NAVEGACIÓN ENTRE MÓDULOS (ENTREGA 2)
 // =============================================================================
 function configurarNavegacionModulos(d) {
   const tabBtnSimulador = document.getElementById('tab-btn-simulador');
+  const tabBtnGrafo = document.getElementById('tab-btn-grafo');
   const tabBtnInfra = document.getElementById('tab-btn-infraestructura');
   const tabBtnMeta = document.getElementById('tab-btn-metadata');
   const tabBtnAmenazas = document.getElementById('tab-btn-amenazas');
   const tabBtnDoc = document.getElementById('tab-btn-documentacion');
-  const tabBtnPauta = document.getElementById('tab-btn-pauta');
 
   const vistaSimulador = document.getElementById('vista-simulador');
+  const vistaGrafo = document.getElementById('vista-grafo');
   const vistaInfra = document.getElementById('vista-infraestructura');
   const vistaMeta = document.getElementById('vista-metadata');
   const vistaAmenazas = document.getElementById('vista-amenazas');
   const vistaDoc = document.getElementById('vista-documentacion');
-  const vistaPauta = document.getElementById('vista-pauta');
 
   function cambiarPestaña(tab) {
-    [tabBtnSimulador, tabBtnInfra, tabBtnMeta, tabBtnAmenazas, tabBtnDoc, tabBtnPauta].forEach(btn => btn?.classList.remove('active'));
-    [vistaSimulador, vistaInfra, vistaMeta, vistaAmenazas, vistaDoc, vistaPauta].forEach(v => { if (v) v.hidden = true; });
+    [tabBtnSimulador, tabBtnGrafo, tabBtnInfra, tabBtnMeta, tabBtnAmenazas, tabBtnDoc].forEach(btn => btn?.classList.remove('active'));
+    [vistaSimulador, vistaGrafo, vistaInfra, vistaMeta, vistaAmenazas, vistaDoc].forEach(v => { if (v) v.hidden = true; });
 
     if (tab === 'simulador') {
       tabBtnSimulador.classList.add('active');
       vistaSimulador.hidden = false;
-      mapa.invalidateSize();
+      setTimeout(() => mapa.invalidateSize(), 60);
+    } else if (tab === 'grafo') {
+      if (tabBtnGrafo) tabBtnGrafo.classList.add('active');
+      if (vistaGrafo) vistaGrafo.hidden = false;
+      if (!mapaGrafoInicializado) {
+        montarMapaGrafo(d);
+      }
+      setTimeout(() => {
+        if (mapaGrafo) mapaGrafo.invalidateSize();
+      }, 60);
     } else if (tab === 'infraestructura') {
       tabBtnInfra.classList.add('active');
       vistaInfra.hidden = false;
       if (!mapaInfraInicializado) {
         montarMapaInfra(d);
-      } else if (mapaInfra) {
-        mapaInfra.invalidateSize();
       }
+      setTimeout(() => {
+        if (mapaInfra) mapaInfra.invalidateSize();
+      }, 60);
     } else if (tab === 'metadata') {
       tabBtnMeta.classList.add('active');
       vistaMeta.hidden = false;
       if (!mapaMetaInicializado) {
         montarMapaMeta(d);
-      } else if (mapaMeta) {
-        mapaMeta.invalidateSize();
       }
+      setTimeout(() => {
+        if (mapaMeta) mapaMeta.invalidateSize();
+      }, 60);
     } else if (tab === 'amenazas') {
       tabBtnAmenazas.classList.add('active');
       vistaAmenazas.hidden = false;
       if (!mapaAmenazasInicializado) {
         montarMapaAmenazas(d);
-      } else if (mapaAmenazas) {
-        mapaAmenazas.invalidateSize();
       }
+      setTimeout(() => {
+        if (mapaAmenazas) mapaAmenazas.invalidateSize();
+      }, 60);
     } else if (tab === 'documentacion') {
       tabBtnDoc.classList.add('active');
       vistaDoc.hidden = false;
-    } else if (tab === 'pauta') {
-      tabBtnPauta?.classList.add('active');
-      if (vistaPauta) vistaPauta.hidden = false;
     }
   }
 
   tabBtnSimulador.addEventListener('click', () => cambiarPestaña('simulador'));
+  if (tabBtnGrafo) tabBtnGrafo.addEventListener('click', () => cambiarPestaña('grafo'));
   tabBtnInfra.addEventListener('click', () => cambiarPestaña('infraestructura'));
   if (tabBtnMeta) tabBtnMeta.addEventListener('click', () => cambiarPestaña('metadata'));
   if (tabBtnAmenazas) tabBtnAmenazas.addEventListener('click', () => cambiarPestaña('amenazas'));
   if (tabBtnDoc) tabBtnDoc.addEventListener('click', () => cambiarPestaña('documentacion'));
-  if (tabBtnPauta) tabBtnPauta.addEventListener('click', () => cambiarPestaña('pauta'));
+}
 
-  const btnPautaSim = document.getElementById('btn-pauta-ir-simulador');
-  if (btnPautaSim) {
-    btnPautaSim.addEventListener('click', () => cambiarPestaña('simulador'));
+// =============================================================================
+// MÓDULO DE GRAFO (ARQUITECTURA, MAPEO Y CONSTRUCCIÓN TOPOLÓGICA)
+// =============================================================================
+function inicializarModuloGrafo(d) {
+  // Desglose de categorías de nodos
+  const conteoCat = {};
+  if (d.nodos && d.nodos.features) {
+    d.nodos.features.forEach(f => {
+      const c = f.properties.category || 'otros';
+      conteoCat[c] = (conteoCat[c] || 0) + 1;
+    });
   }
+
+  const catsContainer = document.getElementById('grafo-cats-list');
+  if (catsContainer) {
+    catsContainer.innerHTML = Object.keys(COLOR_CATEGORIA)
+      .filter(c => conteoCat[c])
+      .map(c => `
+        <div class="cat-item-pill">
+          <div class="cat-left">
+            <span class="punto" style="background:${COLOR_CATEGORIA[c]}"></span>
+            <span>${esc(NOMBRE_CATEGORIA[c])}</span>
+          </div>
+          <span class="cat-count-badge">${conteoCat[c]}</span>
+        </div>
+      `).join('');
+  }
+}
+
+function montarMapaGrafo(d) {
+  if (mapaGrafoInicializado) return;
+  mapaGrafoInicializado = true;
+
+  mapaGrafo = L.map('mapa-grafo').setView([-32.76, -71.47], 12);
+  L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+    maxZoom: 19, attribution: 'Tiles &copy; Esri',
+  }).addTo(mapaGrafo);
+
+  const layerZonas = L.layerGroup().addTo(mapaGrafo);
+  const layerAristas = L.layerGroup().addTo(mapaGrafo);
+  const layerNodos = L.layerGroup().addTo(mapaGrafo);
+
+  // Inspector UI updater
+  const inspBox = document.getElementById('grafo-inspector-details');
+  const inspHint = document.getElementById('grafo-inspector-placeholder');
+  const inspType = document.getElementById('grafo-insp-type-badge');
+  const inspTitle = document.getElementById('grafo-insp-title');
+  const inspTable = document.getElementById('grafo-insp-table-content');
+
+  function mostrarEnInspector(tipo, titulo, props) {
+    if (!inspType || !inspTitle || !inspTable) return;
+    inspType.textContent = tipo;
+    inspTitle.textContent = titulo;
+    inspTable.innerHTML = `<table class="insp-table"><tbody>${
+      Object.entries(props).map(([k, v]) => `<tr><th>${esc(k)}</th><td>${esc(v)}</td></tr>`).join('')
+    }</tbody></table>`;
+    if (inspHint) inspHint.hidden = true;
+    if (inspBox) inspBox.hidden = false;
+  }
+
+  // 1. Zonas Urbanas Mapeadas
+  if (d.zonas && d.zonas.features) {
+    d.zonas.features.forEach(f => {
+      const p = f.properties;
+      L.geoJSON(f, {
+        style: {
+          color: '#6366f1',
+          weight: 1.5,
+          fillColor: '#818cf8',
+          fillOpacity: 0.16,
+          dashArray: '3 3',
+        },
+        onEachFeature: (feat, layer) => {
+          layer.bindTooltip(`<b>${esc(p.name)}</b><br>Área: ${p.area_km2 || '—'} km²`, { sticky: true });
+          layer.on('click', () => {
+            mostrarEnInspector('Zona Urbana (DAN 151)', p.name, {
+              'Código': p.code || '—',
+              'Nombre': p.name || 'Área Urbana',
+              'Superficie': p.area_km2 ? `${p.area_km2} km²` : '—',
+              'Restricción': 'DAN 151 (Penalización por densidad poblacional)',
+            });
+          });
+        }
+      }).addTo(layerZonas);
+    });
+  }
+
+  // 2. Corredores Aéreos K=4
+  if (d.aristas && d.aristas.features) {
+    d.aristas.features.forEach(f => {
+      const p = f.properties;
+      const coords = f.geometry.coordinates.map(c => [c[1], c[0]]);
+      const len = parseFloat(p.length_m || 0);
+      const polyline = L.polyline(coords, {
+        color: len < 500 ? '#38bdf8' : (len < 1500 ? '#0284c7' : '#64748b'),
+        weight: 2,
+        opacity: 0.7,
+      });
+      polyline.bindTooltip(`Corredor #${p.id}: ${km(len)}`, { sticky: true });
+      polyline.on('click', () => {
+        mostrarEnInspector('Corredor Aéreo (Arista)', `Corredor #${p.id} (${p.source_code || p.source} → ${p.target_code || p.target})`, {
+          'ID Arista': p.id,
+          'Nodo Origen': `${p.source} (${p.source_code || '—'})`,
+          'Nodo Destino': `${p.target} (${p.target_code || '—'})`,
+          'Longitud Física': `${p.length_m} m (${km(len)})`,
+          'Costo Base': `${p.cost || p.length_m} m`,
+          'Topología': 'K=4 Vecinos (Haversine + Union-Find)',
+        });
+      });
+      polyline.addTo(layerAristas);
+    });
+  }
+
+  // 3. Vértices 3D
+  if (d.nodos && d.nodos.features) {
+    d.nodos.features.forEach(f => {
+      const p = f.properties;
+      const [lon, lat] = f.geometry.coordinates;
+      const color = COLOR_CATEGORIA[p.category] || '#38bdf8';
+      const marker = L.circleMarker([lat, lon], {
+        radius: p.category === 'base' ? 8 : (p.category === 'sinca' ? 7 : 5),
+        fillColor: color,
+        fillOpacity: 0.95,
+        color: '#ffffff',
+        weight: 1.5,
+      });
+      marker.bindTooltip(`<b>${esc(p.name)}</b><br>${NOMBRE_CATEGORIA[p.category] || p.category}`, { sticky: true });
+      marker.on('click', () => {
+        mostrarEnInspector('Vértice de Red (Nodo)', p.name, {
+          'ID pgRouting': p.id,
+          'Código': p.code,
+          'Categoría': NOMBRE_CATEGORIA[p.category] || p.category,
+          'Tipo': p.type || '—',
+          'Rol Operacional': p.role || 'Nodo de paso',
+          'Elevación Terreno': p.elevation_msnm != null ? `${p.elevation_msnm} m.s.n.m.` : '—',
+          'Comuna / Localidad': p.city || 'Quintero / Puchuncaví',
+          'Coordenadas [Lon, Lat]': `[${lon.toFixed(5)}, ${lat.toFixed(5)}]`,
+        });
+      });
+      marker.addTo(layerNodos);
+    });
+  }
+
+  // Controles de visibilidad de capas
+  const chkNodos = document.getElementById('toggle-grafo-nodos');
+  if (chkNodos) {
+    chkNodos.addEventListener('change', (e) => {
+      if (e.target.checked) mapaGrafo.addLayer(layerNodos);
+      else mapaGrafo.removeLayer(layerNodos);
+    });
+  }
+
+  const chkAristas = document.getElementById('toggle-grafo-aristas');
+  if (chkAristas) {
+    chkAristas.addEventListener('change', (e) => {
+      if (e.target.checked) mapaGrafo.addLayer(layerAristas);
+      else mapaGrafo.removeLayer(layerAristas);
+    });
+  }
+
+  const chkZonas = document.getElementById('toggle-grafo-zonas');
+  if (chkZonas) {
+    chkZonas.addEventListener('change', (e) => {
+      if (e.target.checked) mapaGrafo.addLayer(layerZonas);
+      else mapaGrafo.removeLayer(layerZonas);
+    });
+  }
+
+  const btnCloseInsp = document.getElementById('btn-close-grafo-insp');
+  if (btnCloseInsp) {
+    btnCloseInsp.addEventListener('click', () => {
+      if (inspBox) inspBox.hidden = true;
+      if (inspHint) inspHint.hidden = false;
+    });
+  }
+
+  setTimeout(() => {
+    if (mapaGrafo) mapaGrafo.invalidateSize();
+  }, 250);
 }
 
 function inicializarModuloInfraestructura(d) {
@@ -1271,9 +2654,6 @@ function montarMapaInfra(d) {
 // =============================================================================
 // MÓDULO DE METADATA (CRITERIO 2 Y 3.1 RÚBRICA ENTREGA 2)
 // =============================================================================
-let mapaMeta = null;
-let mapaMetaInicializado = false;
-
 function inicializarModuloMetadata(d) {
   // 1. Poblar KPIs de Metadata
   document.getElementById('kpi-meta-sinca').textContent = d.aire.features.length;
@@ -1630,9 +3010,6 @@ function montarMapaMeta(d) {
 // =============================================================================
 // MÓDULO DE AMENAZAS (CRITERIOS 3, 4.1, 4.2, 5.1, 5.2 Y 6 RÚBRICA ENTREGA 2)
 // =============================================================================
-let mapaAmenazas = null;
-let mapaAmenazasInicializado = false;
-
 function inicializarModuloAmenazas(d) {
   // 1. Poblar KPIs de Amenazas
   document.getElementById('kpi-amenaza-incendios').textContent = `${d.incendios.features.length} foco`;
@@ -2479,49 +3856,7 @@ function inicializarModuloDocumentacion(d) {
 // =============================================================================
 
 function inicializarAuditoriaDijkstra(d) {
-  const btnInspeccionar = document.getElementById('btn-abrir-auditoria-dijkstra');
-  const hud = document.getElementById('hud-dijkstra-costos');
-  const btnCerrar = document.getElementById('btn-hud-cerrar');
-  const btnVuelo = document.getElementById('btn-hud-play-vuelo');
   const contenedorSinca = document.getElementById('pgrouting-sinca-buttons');
-
-  if (btnInspeccionar && hud) {
-    btnInspeccionar.addEventListener('click', () => {
-      hud.hidden = !hud.hidden;
-      if (!hud.hidden) {
-        if (rutaDijkstraActiva) {
-          actualizarAuditoriaDijkstraUI(
-            rutaDijkstraActiva.dijK1,
-            rutaDijkstraActiva.nodoOrig,
-            rutaDijkstraActiva.nodoDest,
-            rutaDijkstraActiva.metDijkstra,
-            rutaDijkstraActiva.aristasMap
-          );
-        } else {
-          actualizarRutasEnVivo();
-        }
-      } else {
-        detenerSimulacionVuelo();
-      }
-    });
-  }
-
-  if (btnCerrar && hud) {
-    btnCerrar.addEventListener('click', () => {
-      hud.hidden = true;
-      detenerSimulacionVuelo();
-    });
-  }
-
-  if (btnVuelo) {
-    btnVuelo.addEventListener('click', () => {
-      if (simulacionVueloActiva) {
-        detenerSimulacionVuelo();
-      } else {
-        simularVueloUav();
-      }
-    });
-  }
 
   // Poblar los 8 botones oficiales de pgRouting en base de datos
   if (contenedorSinca && d.rutas_pgrouting && d.rutas_pgrouting.features) {
@@ -2535,8 +3870,8 @@ function inicializarAuditoriaDijkstra(d) {
       const nomCorto = (props.destino_nombre || props.destino)
         .replace('Estación SINCA ', '')
         .replace('SINCA ', '');
-      btn.innerHTML = `${esc(nomCorto)} <span style="opacity:0.75;font-size:0.65rem;">${(props.longitud_m / 1000).toFixed(1)}k</span>`;
-      btn.title = `Ruta pgr_dijkstra oficial en BD:\n${props.destino_nombre}\nLongitud: ${props.longitud_m} m\nTramos: ${props.tramos}\nCosto: length_m (peor caso)`;
+      btn.innerHTML = `${esc(nomCorto)} <span style="opacity:0.75;font-size:0.65rem;">${km(props.longitud_m)}</span>`;
+      btn.title = `Ruta de referencia pgr_dijkstra en BD:\n${props.destino_nombre}\nLongitud: ${km(props.longitud_m)}\nTramos: ${props.tramos}\nCosto: longitud en km (peor caso)`;
 
       btn.addEventListener('click', () => {
         document.querySelectorAll('.btn-sinca-sample').forEach(b => b.classList.remove('active'));
@@ -2550,7 +3885,6 @@ function inicializarAuditoriaDijkstra(d) {
           detenerSimulacionVuelo();
           actualizarRutasEnVivo();
         }
-        if (hud) hud.hidden = false;
       });
 
       contenedorSinca.appendChild(btn);
@@ -2681,15 +4015,15 @@ function actualizarAuditoriaDijkstraUI(dijK1, nodoOrig, nodoDest, metDijkstra, a
       card.className = 'hud-step-card';
       card.dataset.stepIndex = t.index;
 
-      let riesgoBadgeHtml = '<span class="hud-step-risk risk-safe">✅ TRAMO DESPEJADO</span>';
+      let riesgoBadgeHtml = '<span class="hud-step-risk risk-safe"><span class="dot-live" style="background:#16a34a;width:6px;height:6px;display:inline-block;border-radius:50%;margin-right:4px;"></span>TRAMO DESPEJADO</span>';
       if (t.hayFuego) {
-        riesgoBadgeHtml = '<span class="hud-step-risk risk-danger">🔥 FUEGO / PLUMA ACTIVA</span>';
+        riesgoBadgeHtml = '<span class="hud-step-risk risk-danger"><span class="dot-live" style="background:#dc2626;width:6px;height:6px;display:inline-block;border-radius:50%;margin-right:4px;"></span>FUEGO / PLUMA ACTIVA</span>';
       } else if (t.hayPoblacion) {
-        riesgoBadgeHtml = '<span class="hud-step-risk risk-danger">🏢 DAN 151 URBANO</span>';
+        riesgoBadgeHtml = '<span class="hud-step-risk risk-danger"><span class="dot-live" style="background:#ea580c;width:6px;height:6px;display:inline-block;border-radius:50%;margin-right:4px;"></span>DAN 151 URBANO</span>';
       } else if (t.sinTelecom) {
-        riesgoBadgeHtml = '<span class="hud-step-risk" style="background:rgba(139,92,246,0.2);color:#c4b5fd;border:1px solid rgba(139,92,246,0.4);">📡 SIN ENLACE C2</span>';
+        riesgoBadgeHtml = '<span class="hud-step-risk" style="background:rgba(139,92,246,0.15);color:#7c3aed;border:1px solid rgba(139,92,246,0.3);"><span class="dot-live" style="background:#8b5cf6;width:6px;height:6px;display:inline-block;border-radius:50%;margin-right:4px;"></span>SIN ENLACE C2</span>';
       } else if (t.haySismo) {
-        riesgoBadgeHtml = '<span class="hud-step-risk" style="background:rgba(234,179,8,0.2);color:#facc15;border:1px solid rgba(234,179,8,0.4);">⚠️ ALERTA SÍSMICA</span>';
+        riesgoBadgeHtml = '<span class="hud-step-risk" style="background:rgba(234,179,8,0.15);color:#b45309;border:1px solid rgba(234,179,8,0.3);"><span class="dot-live" style="background:#d97706;width:6px;height:6px;display:inline-block;border-radius:50%;margin-right:4px;"></span>ALERTA SÍSMICA</span>';
       }
 
       const nomU = t.uNode?.name || `Vértice ${t.edge?.source}`;
@@ -2746,9 +4080,9 @@ function resaltarSegmentoEnMapa(t, fijarTooltip = false) {
   }).addTo(layerDijkstraAuditoria);
 
   const midpoint = latlngs[Math.floor(latlngs.length / 2)];
-  const riesgoTexto = t.hayFuego ? '🔥 Pluma de fuego / Incendio'
-    : (t.hayPoblacion ? '🏢 Zona urbana densa (DAN 151)'
-    : (t.sinTelecom ? '📡 Sin enlace de telemetría C2' : '✅ Nominal'));
+  const riesgoTexto = t.hayFuego ? 'Pluma de fuego / Incendio'
+    : (t.hayPoblacion ? 'Zona urbana densa (DAN 151)'
+    : (t.sinTelecom ? 'Sin enlace de telemetría C2' : 'Nominal'));
 
   const tooltipHtml = `
     <div style="font-size:0.78rem;line-height:1.3;">
@@ -2777,7 +4111,7 @@ function detenerSimulacionVuelo() {
   marcadorDronSimulado = null;
 
   const btnVuelo = document.getElementById('btn-hud-play-vuelo');
-  if (btnVuelo) btnVuelo.textContent = '▶ Simular Vuelo';
+  if (btnVuelo) btnVuelo.innerHTML = '<svg class="ui-icon ui-icon-sm" viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg><span>Simular Vuelo</span>';
 
   const telemBox = document.getElementById('hud-flight-telemetry-box');
   if (telemBox) telemBox.hidden = true;
@@ -2794,7 +4128,7 @@ function simularVueloUav() {
   simulacionVueloActiva = true;
 
   const btnVuelo = document.getElementById('btn-hud-play-vuelo');
-  if (btnVuelo) btnVuelo.textContent = '⏸ Pausar Vuelo';
+  if (btnVuelo) btnVuelo.innerHTML = '<svg class="ui-icon ui-icon-sm" viewBox="0 0 24 24"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg><span>Pausar Vuelo</span>';
 
   const telemBox = document.getElementById('hud-flight-telemetry-box');
   const stepInfo = document.getElementById('telemetry-step-info');
@@ -2852,9 +4186,9 @@ function simularVueloUav() {
   simulacionTimerId = setInterval(() => {
     if (!simulacionVueloActiva || pIdx >= puntosVuelo.length) {
       if (pIdx >= puntosVuelo.length) {
-        if (btnVuelo) btnVuelo.textContent = '↺ Reiniciar Vuelo';
+        if (btnVuelo) btnVuelo.innerHTML = '<svg class="ui-icon ui-icon-sm" viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg><span>Reiniciar Vuelo</span>';
         if (statusInfo) {
-          statusInfo.textContent = '🏁 Destino alcanzado (Misión fallida en peor caso)';
+          statusInfo.textContent = 'Destino alcanzado (Misión fallida en peor caso)';
           statusInfo.className = 'text-bad';
         }
       }
@@ -2890,28 +4224,28 @@ function simularVueloUav() {
         if (telemBox) telemBox.classList.add('telemetry-alert');
         if (radarPulse) radarPulse.classList.add('danger-pulse');
         if (statusInfo) {
-          statusInfo.textContent = '🔥 ALERTA: FUEGO ACTIVO / PLUMA';
+          statusInfo.textContent = 'ALERTA: FUEGO ACTIVO / PLUMA';
           statusInfo.className = 'text-bad';
         }
       } else if (t.hayPoblacion) {
         if (telemBox) telemBox.classList.add('telemetry-alert');
         if (radarPulse) radarPulse.classList.add('danger-pulse');
         if (statusInfo) {
-          statusInfo.textContent = '🏢 ALERTA: ZONA URBANA (DAN 151)';
+          statusInfo.textContent = 'ALERTA: ZONA URBANA (DAN 151)';
           statusInfo.className = 'text-bad';
         }
       } else if (t.sinTelecom) {
         if (telemBox) telemBox.classList.add('telemetry-alert');
         if (radarPulse) radarPulse.classList.remove('danger-pulse');
         if (statusInfo) {
-          statusInfo.textContent = '📡 ALERTA: PÉRDIDA ENLACE C2';
+          statusInfo.textContent = 'ALERTA: PÉRDIDA ENLACE C2';
           statusInfo.className = 'text-warning';
         }
       } else {
         if (telemBox) telemBox.classList.remove('telemetry-alert');
         if (radarPulse) radarPulse.classList.remove('danger-pulse');
         if (statusInfo) {
-          statusInfo.textContent = '✅ Vuelo nominal';
+          statusInfo.textContent = 'Vuelo nominal';
           statusInfo.className = 'text-good';
         }
       }

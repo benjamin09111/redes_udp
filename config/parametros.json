@@ -1,0 +1,29 @@
+{
+  "lambdas": {
+    "base": 0.005,
+    "incendio": 5.0,
+    "urbana": 0.08,
+    "sismo": 0.05,
+    "sin_cobertura": 0.03,
+    "viento": 0.04,
+    "lluvia": 0.03
+  },
+  "algoritmo": {
+    "beta": 1000.0,
+    "factor_penalizacion_p": 4.0,
+    "origen_default": "base_scer",
+    "k_rutas": 2
+  },
+  "umbrales": {
+    "densidad_urbana_hab_km2": 2500
+  },
+  "contingencia": {
+    "nombre": "Foco de contingencia industrial: Planta Asfaltos Quintero",
+    "event_type": "incendio",
+    "simulated": true,
+    "lat": -32.7801,
+    "lon": -71.4935,
+    "radio_m": 180.0,
+    "descripcion": "Incendio industrial simulado en el istmo de Quintero para evaluar resiliencia de la red"
+  }
+}
