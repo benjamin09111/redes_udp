@@ -602,23 +602,21 @@ Las cinco capas de metadatos operacionales se filtraron a la caja envolvente de 
 \small
 \caption{Fuentes de metadata integradas en el sistema.}
 \label{tab:metadata}
-\resizebox{\linewidth}{!}{%
-\begin{tabular}{p{3.2cm}p{2.6cm}p{3.6cm}p{2.6cm}p{5.6cm}}
+\begin{tabularx}{\linewidth}{p{2.8cm}p{2.6cm}p{3.0cm}p{2.2cm}X}
 \toprule
-\textbf{Script ETL} & \textbf{Archivo de Salida} & \textbf{Endpoint / Servicio Exacto} & \textbf{Ventana de Datos} & \textbf{Resumen del Procesamiento} \\
+\textbf{Script ETL} & \textbf{Salida} & \textbf{Endpoint / Servicio} & \textbf{Datos} & \textbf{Resumen del Procesamiento} \\
 \midrule
-\texttt{ine\_manzanas.py} & \texttt{metadata/ine\_...} & IDE SMA ArcGIS REST \cite{idesma} & Censo INE 2017 & Descarga $703$ manzanas censales, calculando densidad en $\text{hab/km}^2$. \\
+\texttt{ine\_manzanas} & \texttt{manzanas.json} & IDE SMA \cite{idesma} & Censo 2017 & $703$ manzanas censales; cálculo de densidad hab/$\text{km}^2$. \\
 \addlinespace
-\texttt{osm\_obstaculos.py} & \texttt{metadata/osm\_...} & Overpass API (OSM) \cite{overpass} & Catálogo OSM en vivo & Extrae $12$ estructuras verticales (chimeneas $50\text{--}152\text{ m}$, tendidos $110/220\text{ kV}$) con búfer ($60\text{--}120\text{ m}$). \\
+\texttt{osm\_obstaculos} & \texttt{obstaculos.json} & Overpass API \cite{overpass} & En vivo & $12$ chimeneas ($50\text{--}152\text{ m}$) y líneas $110/220\text{ kV}$. \\
 \addlinespace
-\texttt{srtm\_relieve.py} & \texttt{metadata/srtm\_...} & OpenTopoData SRTM 30m \cite{opentopo} & Modelo SRTM v3 $30\text{ m}$ & Muestrea perfil altimétrico cada $100\text{ m}$ a lo largo de las $633$ aristas. \\
+\texttt{srtm\_relieve} & \texttt{relieve.json} & OpenTopoData \cite{opentopo} & SRTM 30m & Perfil altimétrico cada $100\text{ m}$ en $633$ aristas ($EEE$). \\
 \addlinespace
-\texttt{osm\_antenas.py} & \texttt{metadata/osm\_...} & Overpass API \cite{overpass} & Catálogo OSM en vivo & Extrae $25$ torres celulares y genera área de cobertura circular de $3.000\text{ m}$. \\
+\texttt{osm\_antenas} & \texttt{antenas.json} & Overpass API \cite{overpass} & En vivo & $25$ mástiles celulares con radio C2 de $3.000\text{ m}$. \\
 \addlinespace
-\texttt{sinca\_calidad\_aire.py} & \texttt{metadata/sinca\_...} & API REST JSON SINCA \cite{sinca} & Registros 19-10-2026 & Extrae última concentración de $\text{SO}_2, \text{NO}_2, \text{CO}, \text{O}_3, \text{MP}_{10}, \text{MP}_{2{,}5}$. Asocia a nodo si dista $<500\text{ m}$. \\
+\texttt{sinca\_aire} & \texttt{calidad.json} & API SINCA \cite{sinca} & 19-10-2026 & Última concentración $\text{SO}_2, \text{MP}$; prioridad de misión. \\
 \bottomrule
-\end{tabular}%
-}
+\end{tabularx}
 \end{table}
 
 \begin{table}[H]
@@ -722,21 +720,19 @@ Para modelar contingencias dinámicas que restringen el espacio aéreo, se desar
 \small
 \caption{Fuentes de amenazas y parámetros operacionales en la ejecución de referencia.}
 \label{tab:amenazas}
-\resizebox{\linewidth}{!}{%
-\begin{tabular}{p{3.2cm}p{2.4cm}p{3.4cm}p{3.2cm}p{4.4cm}c}
+\begin{tabularx}{\linewidth}{p{2.2cm}p{2.2cm}p{2.8cm}p{2.8cm}Xc}
 \toprule
-\textbf{Script ETL} & \textbf{Archivo de Salida} & \textbf{Endpoint / Servicio} & \textbf{Filtro Espacial Real} & \textbf{Modelo y Umbral} & \textbf{Eventos (Activos)} \\
+\textbf{Script ETL} & \textbf{Salida} & \textbf{Endpoint / Servicio} & \textbf{Filtro Espacial} & \textbf{Modelo y Umbral} & \textbf{Activos} \\
 \midrule
-\texttt{firms\_incendios.py} & \texttt{amenazas/firms\_...} & NASA FIRMS CSV \cite{firms} & Caja AOI con margen de $0{,}3^\circ$ ($\approx 30\text{ km}$) & Búfer $2.000\text{ m}$; activo si confianza nominal/alta \cite{schroeder} & $1$ ($1$) \\
+\texttt{firms.py} & \texttt{firms.json} & NASA FIRMS \cite{firms} & AOI margen $0{,}3^\circ$ & Búfer $2.000\text{ m}$; conf. alta \cite{schroeder} & $1$ ($1$) \\
 \addlinespace
-\texttt{opensky\_aeronaves.py} & \texttt{amenazas/opensky\_...} & OpenSky Network API \cite{opensky} & Envolvente Bahía Quintero/Puchuncaví & Cilindro $R = 1.500\text{ m}$; activo si altitud baro $\le 1.000\text{ m}$ MSL & $1$ ($1$) \\
+\texttt{opensky.py} & \texttt{opensky.json} & OpenSky API \cite{opensky} & Patrón SCER & Cilindro $R=1.500\text{ m}$, cota $\le 1.000\text{ m}$ & $1$ ($1$) \\
 \addlinespace
-\texttt{openmeteo\_viento.py} & \texttt{amenazas/openmeteo\_...} & Open-Meteo API \cite{openmeteo} & Grilla $4 \times 4$ sobre la bahía & Celda activa si ráfaga $\ge 12{,}0\text{ m/s}$ a $120\text{ m}$ AGL & $16$ ($0$) \\
+\texttt{viento.py} & \texttt{viento.json} & Open-Meteo \cite{openmeteo} & Grilla $4 \times 4$ & Ráfaga $\ge 12\text{ m/s}$ a $120\text{ m}$ AGL & $16$ ($0$) \\
 \addlinespace
-\texttt{openmeteo\_niebla.py} & \texttt{amenazas/openmeteo\_...} & Open-Meteo API \cite{openmeteo} & Grilla $4 \times 4$ sobre la bahía & Celda activa si visibilidad $< 1.000\text{ m}$ o $\text{HR} \ge 95$\% & $16$ ($8$) \\
+\texttt{niebla.py} & \texttt{niebla.json} & Open-Meteo \cite{openmeteo} & Grilla $4 \times 4$ & Visibilidad $<1.000\text{ m}$ o $\text{HR} \ge 95$\% & $16$ ($8$) \\
 \bottomrule
-\end{tabular}%
-}
+\end{tabularx}
 \end{table}
 
 \noindent \textbf{Justificación Operacional y Auditoría de Afectación:}
