@@ -634,18 +634,14 @@ function ejecutarMision() {
   const distKmNum = totalLongitudM / 1000;
   const kmTotales = distKmNum.toFixed(2).replace('.', ',') + ' km';
   const cantSaltos = `${camino.aristas.length} saltos`;
-  const cantSaltosFooter = `${camino.aristas.length} saltos (${camino.nodos.length} nodos)`;
+  const cantSaltosFooter = `${camino.aristas.length} saltos`;
   const tiempoSeg = Math.round(distKmNum / (VELOCIDAD_CRUCERO_KMH / 3600));
   const min = Math.floor(tiempoSeg / 60);
   const seg = tiempoSeg % 60;
   const tiempoVuelo = `${min} min ${String(seg).padStart(2, '0')} s`;
+  const tiempoMinNum = tiempoSeg / 60;
 
-  // Actualizar tarjeta lateral "Resultados"
-  const placeholder = document.getElementById('resultados-placeholder');
-  const datos = document.getElementById('resultados-datos');
-  if (placeholder) placeholder.hidden = true;
-  if (datos) datos.hidden = false;
-
+  // Actualizar métricas
   const setTxt = (id, txt) => {
     const el = document.getElementById(id);
     if (el) el.textContent = txt;
@@ -654,24 +650,150 @@ function ejecutarMision() {
   setTxt('res-tiempo', tiempoVuelo);
   setTxt('res-saltos', cantSaltos);
 
+  // Actualizar origen / destino y modelo de dron en la ventana flotante estilo MATLAB
+  const selOrig = document.getElementById('select-origen');
+  const selDest = document.getElementById('select-destino');
+  const origenTxt = selOrig && selOrig.selectedOptions && selOrig.selectedOptions[0] ? selOrig.selectedOptions[0].textContent : 'Origen';
+  const destinoTxt = selDest && selDest.selectedOptions && selDest.selectedOptions[0] ? selDest.selectedOptions[0].textContent : 'Destino';
+  setTxt('ventana-origen-lbl', origenTxt);
+  setTxt('ventana-destino-lbl', destinoTxt);
+
   // Actualizar footer inferior del mapa
   setTxt('mapa-footer-km', kmTotales);
   setTxt('mapa-footer-saltos', cantSaltosFooter);
   setTxt('mapa-footer-tiempo', tiempoVuelo);
+
+  // Actualizar evaluación de batería y distancia según modelo de dron en Chile
+  actualizarEvaluacionDronFooter(distKmNum, tiempoMinNum);
+
+  // Mostrar ventana flotante de resultados estilo MATLAB y habilitar botón de reapertura en sidebar
+  const ventana = document.getElementById('ventana-resultados-uav');
+  if (ventana) {
+    ventana.style.display = 'block';
+    ventana.classList.remove('minimizada');
+  }
+  const btnAbrirVentana = document.getElementById('btn-abrir-ventana-resultados');
+  if (btnAbrirVentana) {
+    btnAbrirVentana.style.display = 'flex';
+  }
 
   // Deshabilitar botón de ejecución hasta que haya un cambio
   btnEjecutar.disabled = true;
   btnEjecutar.innerHTML = `<svg class="ui-icon ui-icon-sm" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span>Misión Ejecutada</span>`;
 }
 
+// Modelos de UAV comerciales e industriales homologados/usados en Chile (DGAC DAN 151)
+const MODELOS_DRON = {
+  m350: {
+    nombre: 'DJI Matrice 350 RTK',
+    tipo: 'Multirotor Industrial (Quintero / Ventanas)',
+    distanciaMaxKm: 32.0,
+    tiempoMaxMin: 55,
+    bateriaReservaPct: 15, // reserva obligatoria DGAC DAN 151
+  },
+  m30t: {
+    nombre: 'DJI Matrice 30T',
+    tipo: 'Multirotor Clima Adverso IP55',
+    distanciaMaxKm: 25.0,
+    tiempoMaxMin: 41,
+    bateriaReservaPct: 15,
+  },
+  mavic3e: {
+    nombre: 'DJI Mavic 3 Enterprise',
+    tipo: 'UAV Ligero de Mapeo Rápido',
+    distanciaMaxKm: 18.0,
+    tiempoMaxMin: 42,
+    bateriaReservaPct: 15,
+  },
+  trinity_vtol: {
+    nombre: 'Trinity F90+ VTOL',
+    tipo: 'Ala Fija VTOL Largo Alcance',
+    distanciaMaxKm: 50.0,
+    tiempoMaxMin: 90,
+    bateriaReservaPct: 15,
+  },
+};
+
+let ultimaDistanciaKmRuta = null;
+let ultimoTiempoMinutosRuta = null;
+
+function actualizarEvaluacionDronFooter(distKm = ultimaDistanciaKmRuta, tiempoMin = ultimoTiempoMinutosRuta) {
+  if (distKm != null) ultimaDistanciaKmRuta = distKm;
+  if (tiempoMin != null) ultimoTiempoMinutosRuta = tiempoMin;
+
+  const selDron = document.getElementById('select-drone-model');
+  const elAlcance = document.getElementById('mapa-footer-alcance');
+  const elBateria = document.getElementById('mapa-footer-bateria');
+  const resBateria = document.getElementById('res-bateria');
+  const resAlcance = document.getElementById('res-alcance');
+  const elDronModelo = document.getElementById('ventana-dron-modelo');
+
+  if (ultimaDistanciaKmRuta == null) {
+    if (elAlcance) elAlcance.textContent = '—';
+    if (elBateria) elBateria.textContent = '—';
+    if (resBateria) resBateria.textContent = '—';
+    if (resAlcance) resAlcance.textContent = '—';
+    if (elDronModelo) elDronModelo.textContent = 'DJI Matrice 350 RTK';
+    return;
+  }
+
+  const modeloKey = selDron ? selDron.value : 'm350';
+  const dron = MODELOS_DRON[modeloKey] || MODELOS_DRON.m350;
+  if (elDronModelo) elDronModelo.textContent = dron.nombre;
+
+  // 1. Evaluación de Alcance / Distancia
+  const distRuta = ultimaDistanciaKmRuta;
+  const distMax = dron.distanciaMaxKm;
+  const excedeDistancia = distRuta > distMax;
+
+  let badgeAlcanceHtml = '';
+  let txtResAlcance = '';
+  if (excedeDistancia) {
+    const excesoKm = (distRuta - distMax).toFixed(1).replace('.', ',');
+    badgeAlcanceHtml = `<span class="badge-status-danger" title="La ruta (${distRuta.toFixed(1)} km) supera el alcance máximo recomendado de ${distMax} km para ${dron.nombre}. Exceso: +${excesoKm} km">Excede (+${excesoKm} km)</span>`;
+    txtResAlcance = `<span class="text-bad">Excede recomendación (+${excesoKm} km)</span>`;
+  } else {
+    badgeAlcanceHtml = `<span class="badge-status-ok" title="Ruta dentro del rango seguro (${distRuta.toFixed(1)} km de ${distMax} km máx).">Operacional (${distRuta.toFixed(1)} / ${distMax} km)</span>`;
+    txtResAlcance = `<span class="text-good">Dentro de rango (${distRuta.toFixed(1)} / ${distMax} km)</span>`;
+  }
+
+  // 2. Evaluación de Batería y Tiempo de Vuelo
+  const tVueloMin = ultimoTiempoMinutosRuta || 0;
+  const tMaxMin = dron.tiempoMaxMin;
+  const pctConsumo = (tVueloMin / tMaxMin) * 100;
+  const pctRestante = Math.max(0, 100 - pctConsumo);
+  const reservaMinima = dron.bateriaReservaPct || 15;
+
+  let badgeBateriaHtml = '';
+  let txtResBateria = '';
+  if (pctRestante < reservaMinima) {
+    badgeBateriaHtml = `<span class="badge-status-danger" title="Batería restante estimada (${pctRestante.toFixed(0)}%) inferior a la reserva mínima obligatoria del ${reservaMinima}% (DAN 151). ¡No alcanza!">Insuficiente (${pctRestante.toFixed(0)}%)</span>`;
+    txtResBateria = `<span class="text-bad">Insuficiente (&lt;${reservaMinima}% reserva)</span>`;
+  } else if (pctRestante < 30) {
+    badgeBateriaHtml = `<span class="badge-status-warning" title="Batería ajustada (${pctRestante.toFixed(0)}% restante). Cumple reserva del ${reservaMinima}%, pero requiere precaución ante viento">Ajustada (${pctRestante.toFixed(0)}%)</span>`;
+    txtResBateria = `<span class="text-warning">Ajustada (${pctRestante.toFixed(0)}% restante)</span>`;
+  } else {
+    badgeBateriaHtml = `<span class="badge-status-ok" title="Batería suficiente: ${pctRestante.toFixed(0)}% restante estimado al aterrizar (Consumo: ${pctConsumo.toFixed(0)}% en ${tVueloMin.toFixed(1)} min)">Alcanza (${pctRestante.toFixed(0)}%)</span>`;
+    txtResBateria = `<span class="text-good">Alcanza (${pctRestante.toFixed(0)}% restante)</span>`;
+  }
+
+  if (elAlcance) elAlcance.innerHTML = badgeAlcanceHtml;
+  if (elBateria) elBateria.innerHTML = badgeBateriaHtml;
+  if (resBateria) resBateria.innerHTML = txtResBateria;
+  if (resAlcance) resAlcance.innerHTML = txtResAlcance;
+}
+
 const actualizarRutasEnVivo = ejecutarMision;
 
 // -----------------------------------------------------------------------------
-// SELECCIÓN DE ORIGEN DIRECTA DESDE EL MAPA
+// -----------------------------------------------------------------------------
+// SELECCIÓN DE ORIGEN Y DESTINO DIRECTA DESDE EL MAPA
 // -----------------------------------------------------------------------------
 let modoSeleccionOrigen = false;
+let modoSeleccionDestino = false;
 
 function activarSeleccionOrigenMapa() {
+  desactivarSeleccionDestinoMapa();
   modoSeleccionOrigen = true;
   const banner = document.getElementById('mapa-banner-seleccion-origen');
   if (banner) banner.hidden = false;
@@ -697,7 +819,40 @@ function desactivarSeleccionOrigenMapa() {
   modoSeleccionOrigen = false;
   const banner = document.getElementById('mapa-banner-seleccion-origen');
   if (banner) banner.hidden = true;
-  mapa.getContainer().style.cursor = '';
+  if (!modoSeleccionDestino) {
+    mapa.getContainer().style.cursor = '';
+  }
+}
+
+function activarSeleccionDestinoMapa() {
+  desactivarSeleccionOrigenMapa();
+  modoSeleccionDestino = true;
+  const banner = document.getElementById('mapa-banner-seleccion-destino');
+  if (banner) banner.hidden = false;
+
+  // Forzar activación de todos los nodos en el mapa
+  const checkSoloElegidos = document.getElementById('check-solo-nodos-elegidos');
+  if (checkSoloElegidos && checkSoloElegidos.checked) {
+    checkSoloElegidos.checked = false;
+  }
+  actualizarVisualizacionNodos();
+
+  if (layerTodosLosNodos && layerTodosLosNodos.getBounds && layerTodosLosNodos.getBounds().isValid()) {
+    mapa.fitBounds(layerTodosLosNodos.getBounds(), { padding: [30, 30] });
+  } else {
+    mapa.fitBounds(BOUNDS_MAX, { padding: [30, 30] });
+  }
+
+  mapa.getContainer().style.cursor = 'crosshair';
+}
+
+function desactivarSeleccionDestinoMapa() {
+  modoSeleccionDestino = false;
+  const banner = document.getElementById('mapa-banner-seleccion-destino');
+  if (banner) banner.hidden = true;
+  if (!modoSeleccionOrigen) {
+    mapa.getContainer().style.cursor = '';
+  }
 }
 
 function procesarClickEnNodo(nodoProp) {
@@ -717,12 +872,73 @@ function procesarClickEnNodo(nodoProp) {
     return;
   }
 
+  if (modoSeleccionDestino) {
+    const selDestino = document.getElementById('select-destino');
+    if (selDestino) {
+      selDestino.value = nodoProp.code;
+      desactivarSeleccionDestinoMapa();
+      habilitarEjecucion();
+    }
+    return;
+  }
+
   // Comportamiento normal: seleccionar destino
   const selDestino = document.getElementById('select-destino');
   if (selDestino) {
     selDestino.value = nodoProp.code;
     habilitarEjecucion();
   }
+}
+
+window.fijarDestinoDesdeMapa = function(code) {
+  const selDestino = document.getElementById('select-destino');
+  if (selDestino) {
+    selDestino.value = code;
+    desactivarSeleccionDestinoMapa();
+    habilitarEjecucion();
+    mapa.closePopup();
+  }
+};
+
+window.fijarOrigenDesdeMapa = function(code) {
+  const selOrigen = document.getElementById('select-origen');
+  if (selOrigen) {
+    selOrigen.value = code;
+    desactivarSeleccionOrigenMapa();
+    habilitarEjecucion();
+    mapa.closePopup();
+  }
+};
+
+function crearPopupNodo(p) {
+  const esOrigenValido = (p.category === 'base' || p.category === 'sinca');
+  const catNom = NOMBRE_CATEGORIA[p.category] ?? p.category;
+  const col = COLOR_CATEGORIA[p.category] ?? '#64748b';
+  return `
+    <div class="nodo-popup-card">
+      <div class="nodo-popup-header">
+        <span class="nodo-popup-cat-badge" style="background:${col};"></span>
+        <strong class="nodo-popup-title">${esc(p.name)}</strong>
+      </div>
+      <table class="pop">
+        <tr><th>Categoría</th><td>${esc(catNom)}</td></tr>
+        <tr><th>Código</th><td><code>${esc(p.code)}</code></td></tr>
+        ${p.city ? `<tr><th>Comuna</th><td>${esc(p.city)}</td></tr>` : ''}
+      </table>
+      <div class="nodo-popup-actions">
+        <button type="button" class="btn-popup-set btn-popup-set-dest" onclick="window.fijarDestinoDesdeMapa('${esc(p.code)}')">
+          <svg class="ui-icon ui-icon-xs" viewBox="0 0 24 24"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+          <span>Fijar como Destino</span>
+        </button>
+        ${esOrigenValido ? `
+        <button type="button" class="btn-popup-set btn-popup-set-orig" onclick="window.fijarOrigenDesdeMapa('${esc(p.code)}')">
+          <svg class="ui-icon ui-icon-xs" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span>Fijar como Origen</span>
+        </button>
+        ` : ''}
+      </div>
+    </div>
+  `;
 }
 
 // -----------------------------------------------------------------------------
@@ -763,11 +979,7 @@ function actualizarVisualizacionNodos(nodosIds) {
       });
 
       marker.bindTooltip(nodo.name, { direction: 'top', offset: [0, -5] });
-      marker.bindPopup(tabla([
-        ['Nombre', nodo.name],
-        ['Categoría', NOMBRE_CATEGORIA[nodo.category] ?? nodo.category],
-        ['Código', nodo.code],
-      ]));
+      marker.bindPopup(crearPopupNodo(nodo));
 
       marker.on('click', () => {
         procesarClickEnNodo(nodo);
@@ -814,11 +1026,7 @@ function inicializarCapasCartograficas(d) {
       fillColor: COLOR_CATEGORIA[f.properties.category] ?? '#64748b', fillOpacity: 0.95,
     }),
     onEachFeature: (f, l) => {
-      l.bindPopup(tabla([
-        ['Nombre', f.properties.name],
-        ['Categoría', NOMBRE_CATEGORIA[f.properties.category] ?? f.properties.category],
-        ['Código', f.properties.code],
-      ]));
+      l.bindPopup(crearPopupNodo(f.properties));
       l.on('click', (e) => {
         const selOrigen = document.getElementById('select-origen');
         if (e.originalEvent.shiftKey) {
@@ -1350,6 +1558,134 @@ function inicializarLeyendaColoresNodos(d) {
 }
 
 // -----------------------------------------------------------------------------
+// VENTANA FLOTANTE DRAGGABLE ESTILO MATLAB PARA RESULTADOS DE MISIÓN
+// -----------------------------------------------------------------------------
+function inicializarVentanaResultadosDraggable() {
+  const ventana = document.getElementById('ventana-resultados-uav');
+  const header = document.getElementById('ventana-header-drag');
+  const btnMinimizar = document.getElementById('btn-minimizar-ventana');
+  const btnCerrar = document.getElementById('btn-cerrar-ventana');
+  const btnAbrir = document.getElementById('btn-abrir-ventana-resultados');
+  const viewport = document.querySelector('.mapa-viewport');
+
+  if (!ventana || !header) return;
+
+  // Botón cerrar (✕)
+  if (btnCerrar) {
+    btnCerrar.addEventListener('click', (e) => {
+      e.stopPropagation();
+      ventana.style.display = 'none';
+    });
+  }
+
+  // Botón minimizar / expandir (_)
+  if (btnMinimizar) {
+    btnMinimizar.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isMin = ventana.classList.toggle('minimizada');
+      btnMinimizar.title = isMin ? 'Expandir ventana' : 'Minimizar ventana';
+    });
+  }
+
+  // Botón en el sidebar para reabrir
+  if (btnAbrir) {
+    btnAbrir.addEventListener('click', () => {
+      ventana.style.display = 'block';
+      ventana.classList.remove('minimizada');
+      clampingVentana();
+    });
+  }
+
+  // Lógica de arrastre estilo MATLAB Figure Window
+  let isDragging = false;
+  let startX = 0;
+  let startY = 0;
+  let initialLeft = 0;
+  let initialTop = 0;
+
+  function clampingVentana() {
+    if (!viewport) return;
+    const vpRect = viewport.getBoundingClientRect();
+    const vRect = ventana.getBoundingClientRect();
+    let curLeft = ventana.offsetLeft;
+    let curTop = ventana.offsetTop;
+    const maxLeft = Math.max(10, vpRect.width - vRect.width - 10);
+    const maxTop = Math.max(10, vpRect.height - (ventana.classList.contains('minimizada') ? 45 : vRect.height) - 45);
+
+    if (curLeft > maxLeft) curLeft = maxLeft;
+    if (curLeft < 10) curLeft = 10;
+    if (curTop > maxTop) curTop = maxTop;
+    if (curTop < 10) curTop = 10;
+
+    ventana.style.left = `${curLeft}px`;
+    ventana.style.top = `${curTop}px`;
+    ventana.style.right = 'auto';
+    ventana.style.bottom = 'auto';
+  }
+
+  const startDrag = (clientX, clientY, target) => {
+    if (target.closest('.btn-ventana-action')) return;
+    isDragging = true;
+    startX = clientX;
+    startY = clientY;
+    initialLeft = ventana.offsetLeft;
+    initialTop = ventana.offsetTop;
+    document.body.style.userSelect = 'none';
+  };
+
+  const moveDrag = (clientX, clientY) => {
+    if (!isDragging || !viewport) return;
+    const dx = clientX - startX;
+    const dy = clientY - startY;
+
+    let newLeft = initialLeft + dx;
+    let newTop = initialTop + dy;
+
+    const vpRect = viewport.getBoundingClientRect();
+    const vRect = ventana.getBoundingClientRect();
+    const maxLeft = Math.max(10, vpRect.width - vRect.width - 10);
+    const maxTop = Math.max(10, vpRect.height - (ventana.classList.contains('minimizada') ? 45 : vRect.height) - 45);
+
+    newLeft = Math.max(10, Math.min(newLeft, maxLeft));
+    newTop = Math.max(10, Math.min(newTop, maxTop));
+
+    ventana.style.left = `${newLeft}px`;
+    ventana.style.top = `${newTop}px`;
+    ventana.style.right = 'auto';
+    ventana.style.bottom = 'auto';
+  };
+
+  const stopDrag = () => {
+    if (isDragging) {
+      isDragging = false;
+      document.body.style.userSelect = '';
+    }
+  };
+
+  // Mouse events
+  header.addEventListener('mousedown', (e) => {
+    startDrag(e.clientX, e.clientY, e.target);
+  });
+  window.addEventListener('mousemove', (e) => {
+    moveDrag(e.clientX, e.clientY);
+  });
+  window.addEventListener('mouseup', stopDrag);
+
+  // Touch events (para notebooks táctiles o tablets)
+  header.addEventListener('touchstart', (e) => {
+    if (e.touches.length === 1) {
+      startDrag(e.touches[0].clientX, e.touches[0].clientY, e.target);
+    }
+  }, { passive: true });
+  window.addEventListener('touchmove', (e) => {
+    if (isDragging && e.touches.length === 1) {
+      moveDrag(e.touches[0].clientX, e.touches[0].clientY);
+    }
+  }, { passive: true });
+  window.addEventListener('touchend', stopDrag);
+}
+
+// -----------------------------------------------------------------------------
 // ARRANQUE DE LA APLICACIÓN
 // -----------------------------------------------------------------------------
 async function iniciar() {
@@ -1441,14 +1777,28 @@ async function iniciar() {
   selOrigen.addEventListener('change', habilitarEjecucion);
   selDestino.addEventListener('change', habilitarEjecucion);
 
-  // Inicializar selector avanzado de destino y modo selección origen
+  // Inicializar selector avanzado de destino y modos de selección en mapa
   inicializarSelectorDestinoAvanzado(d);
+
+  // Inicializar acordeones de Metadata y Amenazas
+  inicializarAcordeonesSidebar();
 
   // Inicializar leyenda desplegable de colores de nodos (arriba a la derecha)
   inicializarLeyendaColoresNodos(d);
 
+  // Inicializar ventana flotante draggable estilo MATLAB para resultados
+  inicializarVentanaResultadosDraggable();
+
   // Configurar navegación de módulos
   configurarNavegacionModulos(d);
+
+  // Inicializar selector de modelo de dron en footer
+  const selDronFooter = document.getElementById('select-drone-model');
+  if (selDronFooter) {
+    selDronFooter.addEventListener('change', () => {
+      actualizarEvaluacionDronFooter();
+    });
+  }
 
   // Inicializar módulos de Entrega 2
   inicializarModuloGrafo(d);
@@ -1736,6 +2086,37 @@ function inicializarSelectorDestinoAvanzado(d) {
   if (btnCancelBanner) {
     btnCancelBanner.addEventListener('click', desactivarSeleccionOrigenMapa);
   }
+
+  // Conectar botón para seleccionar destino desde el mapa
+  const btnSelDestinoMapa = document.getElementById('btn-seleccionar-destino-mapa');
+  if (btnSelDestinoMapa) {
+    btnSelDestinoMapa.addEventListener('click', activarSeleccionDestinoMapa);
+  }
+
+  const btnCancelDestinoBanner = document.getElementById('btn-cancelar-seleccion-destino');
+  if (btnCancelDestinoBanner) {
+    btnCancelDestinoBanner.addEventListener('click', desactivarSeleccionDestinoMapa);
+  }
+}
+
+// -----------------------------------------------------------------------------
+// CONTROL DE ACORDEONES EN PANEL LATERAL (METADATA Y AMENAZAS)
+// -----------------------------------------------------------------------------
+function inicializarAcordeonesSidebar() {
+  function enlazarAcordeon(btnId, bodyId) {
+    const btn = document.getElementById(btnId);
+    const body = document.getElementById(bodyId);
+    if (!btn || !body) return;
+
+    btn.addEventListener('click', () => {
+      const expandido = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', expandido ? 'false' : 'true');
+      body.hidden = expandido;
+    });
+  }
+
+  enlazarAcordeon('btn-accordion-metadata', 'body-accordion-metadata');
+  enlazarAcordeon('btn-accordion-amenazas', 'body-accordion-amenazas');
 }
 
 // =============================================================================

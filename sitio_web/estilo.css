@@ -226,9 +226,9 @@ header p {
 
 /* PANEL LATERAL IZQUIERDO */
 #panel {
-  width: 410px;
-  min-width: 370px;
-  max-width: 430px;
+  width: 380px;
+  min-width: 330px;
+  max-width: 410px;
   overflow-y: auto;
   padding: 14px;
   background: var(--fondo-panel);
@@ -263,6 +263,58 @@ header p {
   padding-bottom: 6px;
 }
 
+/* CARDS ACORDEÓN (METADATA Y AMENAZAS) */
+.card-accordion {
+  padding: 0 !important;
+  overflow: hidden;
+}
+
+.accordion-header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 12px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  font-family: inherit;
+  transition: background 0.15s ease;
+}
+
+.accordion-header:hover {
+  background: var(--fondo-subtle);
+}
+
+.accordion-header h2 {
+  margin: 0 !important;
+  border-bottom: none !important;
+  padding-bottom: 0 !important;
+  cursor: pointer;
+  user-select: none;
+}
+
+.accordion-arrow {
+  color: var(--suave);
+  display: inline-flex;
+  align-items: center;
+  transition: transform 0.2s ease;
+}
+
+.accordion-header[aria-expanded="false"] .accordion-arrow {
+  transform: rotate(-90deg);
+}
+
+.accordion-body {
+  padding: 4px 12px 12px;
+  border-top: 1px solid var(--borde);
+}
+
+.accordion-body[hidden] {
+  display: none !important;
+}
+
 .control-group {
   margin-bottom: 10px;
 }
@@ -272,6 +324,12 @@ header p {
   align-items: center;
   justify-content: space-between;
   margin-bottom: 4px;
+}
+
+.control-label-actions {
+  display: flex;
+  align-items: center;
+  gap: 4px;
 }
 
 .control-group label {
@@ -365,6 +423,31 @@ select:disabled {
   background: var(--fondo-muted);
   color: var(--texto);
   border-color: var(--borde-dark);
+}
+
+.btn-outline-resultados {
+  background: #ffffff;
+  border: 1px solid var(--borde-dark);
+  color: var(--texto);
+  font-size: 0.76rem;
+  font-weight: 600;
+  padding: 7px 11px;
+  border-radius: var(--radius-xs);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  width: 100%;
+  transition: all 0.15s ease;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+  font-family: inherit;
+}
+
+.btn-outline-resultados:hover {
+  background: var(--fondo-subtle);
+  border-color: var(--acento);
+  color: var(--acento);
 }
 
 .placeholder-msg {
@@ -567,7 +650,7 @@ select:disabled {
 /* LEYENDA FLOTANTE INFERIOR DERECHA */
 .mapa-leyenda-card {
   position: absolute;
-  bottom: 44px;
+  bottom: 60px;
   right: 14px;
   z-index: 1000;
   background: rgba(255, 255, 255, 0.95);
@@ -607,27 +690,309 @@ select:disabled {
   margin: 0;
 }
 
+/* =============================================================================
+   VENTANA FLOTANTE ESTILO MATLAB / TOOL WINDOW: RESULTADOS DE MISIÓN
+   ============================================================================= */
+.ventana-flotante-uav {
+  position: absolute;
+  top: 65px;
+  left: 70px;
+  width: 330px;
+  max-width: calc(100vw - 420px);
+  background: #ffffff;
+  border-radius: var(--radius-xs);
+  border: 1px solid var(--borde-dark);
+  box-shadow: 0 14px 34px rgba(15, 23, 42, 0.22), 0 3px 8px rgba(15, 23, 42, 0.08);
+  z-index: 1005;
+  overflow: hidden;
+  user-select: none;
+  font-family: inherit;
+  animation: fadeInVentana 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes fadeInVentana {
+  from {
+    opacity: 0;
+    transform: translateY(-8px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.ventana-flotante-header {
+  background: #0f172a;
+  color: #f8fafc;
+  padding: 8px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: grab;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.ventana-flotante-header:active {
+  cursor: grabbing;
+}
+
+.ventana-flotante-title {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 0.77rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: #f8fafc;
+  pointer-events: none;
+}
+
+.ventana-flotante-title svg {
+  color: #38bdf8;
+}
+
+.ventana-flotante-actions {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.btn-ventana-action {
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  color: #cbd5e1;
+  width: 22px;
+  height: 22px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0;
+  transition: all 0.15s ease;
+}
+
+.btn-ventana-action:hover {
+  background: rgba(255, 255, 255, 0.25);
+  color: #ffffff;
+}
+
+.btn-ventana-action.btn-ventana-close:hover {
+  background: #ef4444;
+  color: #ffffff;
+}
+
+.ventana-flotante-body {
+  padding: 12px 14px;
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 0.82rem;
+  user-select: text;
+}
+
+/* Estado minimizado */
+.ventana-flotante-uav.minimizada .ventana-flotante-body {
+  display: none !important;
+}
+
+.ventana-ruta-resumen {
+  background: var(--fondo-subtle);
+  border: 1px solid var(--borde);
+  border-radius: var(--radius-xs);
+  padding: 8px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.ventana-nodo-row {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.nodo-tipo-tag {
+  font-size: 0.64rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  padding: 1px 5px;
+  border-radius: 3px;
+  text-transform: uppercase;
+  flex-shrink: 0;
+}
+
+.nodo-tipo-tag.tag-origen {
+  background: #e0f2fe;
+  color: #0369a1;
+  border: 1px solid #bae6fd;
+}
+
+.nodo-tipo-tag.tag-destino {
+  background: #fef3c7;
+  color: #b45309;
+  border: 1px solid #fde68a;
+}
+
+.nodo-nombre-val {
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: var(--texto);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ventana-nodo-flecha {
+  display: flex;
+  align-items: center;
+  padding-left: 20px;
+  color: var(--suave);
+  line-height: 1;
+}
+
+.ventana-grid-metricas {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.ventana-metrica-card {
+  background: #ffffff;
+  border: 1px solid var(--borde);
+  border-radius: var(--radius-xs);
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.metrica-card-lbl {
+  font-size: 0.68rem;
+  color: var(--texto-secundario);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  font-weight: 600;
+}
+
+.metrica-card-val {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--texto);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.metrica-card-val.text-primary {
+  color: var(--azul-claro, #0284c7);
+}
+
+.metrica-card-val.text-good {
+  color: var(--verde, #16a34a);
+}
+
+.metrica-card-val.text-muted {
+  font-size: 0.74rem;
+  color: var(--texto-secundario);
+}
+
+.ventana-evaluacion-box {
+  background: var(--fondo-subtle);
+  border: 1px solid var(--borde);
+  border-radius: var(--radius-xs);
+  padding: 8px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.ventana-eval-fila {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  font-size: 0.77rem;
+}
+
+.eval-fila-lbl {
+  color: var(--texto-secundario);
+  font-weight: 500;
+}
+
+.eval-fila-val {
+  font-weight: 600;
+  text-align: right;
+}
+
+.ventana-matlab-hint {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.69rem;
+  color: var(--suave);
+  padding-top: 2px;
+  border-top: 1px dashed var(--borde);
+  user-select: none;
+}
+
 /* FOOTER INFERIOR DE MÉTRICAS EN EL MAPA */
 .mapa-footer-bar {
   position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
-  height: 34px;
-  background: rgba(255, 255, 255, 0.96);
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
+  min-height: 34px;
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
   border-top: 1px solid var(--borde);
   display: flex;
   align-items: center;
-  gap: 14px;
-  padding: 0 16px;
+  gap: 10px;
+  padding: 4px 14px;
   z-index: 999;
-  font-size: 0.77rem;
+  font-size: 0.76rem;
   color: var(--suave);
   box-shadow: 0 -1px 3px rgba(0, 0, 0, 0.04);
   flex-wrap: nowrap;
   overflow-x: auto;
+  scrollbar-width: thin;
+}
+
+@media (max-width: 1400px) {
+  .footer-stat-secondary {
+    display: none !important;
+  }
+}
+
+@media (max-width: 1100px) {
+  .mapa-footer-bar {
+    gap: 8px;
+    padding: 3px 10px;
+    font-size: 0.73rem;
+  }
+  .footer-drone-select {
+    max-width: 190px;
+  }
+}
+
+/* POSICIONAMIENTO LIMPIO DE ATTRIBUTION LEAFLET FUERA DEL FOOTER */
+.leaflet-bottom.leaflet-right {
+  bottom: 38px !important;
+  right: 6px !important;
+  z-index: 998 !important;
+}
+
+.leaflet-control-attribution {
+  background: rgba(255, 255, 255, 0.75) !important;
+  backdrop-filter: blur(2px);
+  padding: 1px 6px !important;
+  font-size: 0.65rem !important;
+  border-radius: var(--radius-xs);
+  border: 1px solid rgba(0, 0, 0, 0.08);
 }
 
 .footer-stat {
@@ -655,6 +1020,66 @@ select:disabled {
 .footer-sep {
   color: var(--borde-input);
   font-weight: 300;
+}
+
+.footer-drone-picker {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.footer-drone-select {
+  background: #ffffff;
+  border: 1px solid var(--borde-input);
+  border-radius: var(--radius-xs);
+  padding: 2px 7px;
+  font-size: 0.73rem;
+  font-weight: 600;
+  color: var(--texto);
+  cursor: pointer;
+  outline: none;
+  font-family: inherit;
+  transition: border-color 0.15s ease;
+}
+
+.footer-drone-select:hover, .footer-drone-select:focus {
+  border-color: var(--acento);
+}
+
+.badge-status-ok {
+  color: #15803d;
+  background: #dcfce7;
+  border: 1px solid #86efac;
+  padding: 1px 6px;
+  border-radius: var(--radius-xs);
+  font-size: 0.72rem;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+}
+
+.badge-status-warning {
+  color: #b45309;
+  background: #fef3c7;
+  border: 1px solid #fde047;
+  padding: 1px 6px;
+  border-radius: var(--radius-xs);
+  font-size: 0.72rem;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+}
+
+.badge-status-danger {
+  color: #b91c1c;
+  background: #fee2e2;
+  border: 1px solid #fca5a5;
+  padding: 1px 6px;
+  border-radius: var(--radius-xs);
+  font-size: 0.72rem;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
 }
 
 /* BADGE DE COSTO POR ENLACE */
@@ -717,6 +1142,14 @@ select:disabled {
   border-radius: 50%;
   background: var(--azul);
   animation: pulseDot 1.4s infinite;
+}
+
+.banner-destino {
+  border-color: #0284c7;
+}
+
+.pulse-destino {
+  background: #0284c7;
 }
 
 @keyframes pulseDot {
@@ -1132,6 +1565,77 @@ table.pop td {
 
 .leaflet-popup-tip {
   background: #ffffff;
+}
+
+/* POPUP DE NODOS CON ACCIONES DE SELECCIÓN */
+.nodo-popup-card {
+  min-width: 220px;
+}
+
+.nodo-popup-header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 6px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid var(--borde);
+}
+
+.nodo-popup-cat-badge {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.nodo-popup-title {
+  font-size: 0.84rem;
+  font-weight: 700;
+  color: var(--texto);
+}
+
+.nodo-popup-actions {
+  display: flex;
+  gap: 6px;
+  margin-top: 10px;
+  padding-top: 8px;
+  border-top: 1px solid var(--borde);
+}
+
+.btn-popup-set {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  padding: 6px 10px;
+  font-size: 0.77rem;
+  font-weight: 600;
+  border-radius: var(--radius-xs);
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: all 0.15s ease;
+  font-family: inherit;
+}
+
+.btn-popup-set-dest {
+  background: var(--acento);
+  color: #ffffff;
+  border-color: var(--acento);
+}
+
+.btn-popup-set-dest:hover {
+  background: #1e293b;
+}
+
+.btn-popup-set-orig {
+  background: var(--verde-bg);
+  color: var(--verde);
+  border-color: var(--verde-borde);
+}
+
+.btn-popup-set-orig:hover {
+  background: #bbf7d0;
 }
 
 /* =============================================================================
