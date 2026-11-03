@@ -2,12 +2,12 @@
  "type": "FeatureCollection",
  "etl": {
   "fuente": "public/data (dataset maestro fase 1: OSM/Overpass, SINCA, BCN, Open-Elevation)",
-  "generado": "2026-10-18T22:34:19+00:00",
+  "generado": "2026-11-03T15:02:48+00:00",
   "parametros": {
    "k_vecinos": 4,
    "aristas_puente": 2
   },
-  "total": 633
+  "total": 718
  },
  "features": [
   {
@@ -280,39 +280,13 @@
       -32.736201
      ],
      [
-      -71.456897,
-      -32.735259
-     ]
-    ]
-   },
-   "properties": {
-    "id": 11,
-    "source": 3,
-    "target": 122,
-    "source_code": "sinca_campiche",
-    "target_code": "hotel_1530433421",
-    "length_m": 574.58,
-    "cost": 574.58,
-    "reverse_cost": 574.58
-   }
-  },
-  {
-   "type": "Feature",
-   "geometry": {
-    "type": "LineString",
-    "coordinates": [
-     [
-      -71.450857,
-      -32.736201
-     ],
-     [
       -71.451821,
       -32.732211
      ]
     ]
    },
    "properties": {
-    "id": 12,
+    "id": 11,
     "source": 3,
     "target": 230,
     "source_code": "sinca_campiche",
@@ -338,7 +312,7 @@
     ]
    },
    "properties": {
-    "id": 13,
+    "id": 12,
     "source": 3,
     "target": 231,
     "source_code": "sinca_campiche",
@@ -364,7 +338,7 @@
     ]
    },
    "properties": {
-    "id": 14,
+    "id": 13,
     "source": 3,
     "target": 235,
     "source_code": "sinca_campiche",
@@ -390,7 +364,7 @@
     ]
    },
    "properties": {
-    "id": 15,
+    "id": 14,
     "source": 4,
     "target": 11,
     "source_code": "sinca_ventanas",
@@ -416,7 +390,7 @@
     ]
    },
    "properties": {
-    "id": 16,
+    "id": 15,
     "source": 4,
     "target": 19,
     "source_code": "sinca_ventanas",
@@ -442,7 +416,7 @@
     ]
    },
    "properties": {
-    "id": 17,
+    "id": 16,
     "source": 4,
     "target": 21,
     "source_code": "sinca_ventanas",
@@ -468,7 +442,7 @@
     ]
    },
    "properties": {
-    "id": 18,
+    "id": 17,
     "source": 4,
     "target": 33,
     "source_code": "sinca_ventanas",
@@ -494,7 +468,7 @@
     ]
    },
    "properties": {
-    "id": 19,
+    "id": 18,
     "source": 4,
     "target": 68,
     "source_code": "sinca_ventanas",
@@ -520,7 +494,7 @@
     ]
    },
    "properties": {
-    "id": 20,
+    "id": 19,
     "source": 5,
     "target": 79,
     "source_code": "sinca_la_greda",
@@ -546,7 +520,7 @@
     ]
    },
    "properties": {
-    "id": 21,
+    "id": 20,
     "source": 5,
     "target": 202,
     "source_code": "sinca_la_greda",
@@ -572,7 +546,7 @@
     ]
    },
    "properties": {
-    "id": 22,
+    "id": 21,
     "source": 5,
     "target": 203,
     "source_code": "sinca_la_greda",
@@ -598,7 +572,7 @@
     ]
    },
    "properties": {
-    "id": 23,
+    "id": 22,
     "source": 5,
     "target": 223,
     "source_code": "sinca_la_greda",
@@ -624,7 +598,7 @@
     ]
    },
    "properties": {
-    "id": 24,
+    "id": 23,
     "source": 5,
     "target": 224,
     "source_code": "sinca_la_greda",
@@ -650,7 +624,7 @@
     ]
    },
    "properties": {
-    "id": 25,
+    "id": 24,
     "source": 6,
     "target": 43,
     "source_code": "sinca_quintero",
@@ -676,7 +650,7 @@
     ]
    },
    "properties": {
-    "id": 26,
+    "id": 25,
     "source": 6,
     "target": 124,
     "source_code": "sinca_quintero",
@@ -702,7 +676,7 @@
     ]
    },
    "properties": {
-    "id": 27,
+    "id": 26,
     "source": 6,
     "target": 158,
     "source_code": "sinca_quintero",
@@ -728,7 +702,7 @@
     ]
    },
    "properties": {
-    "id": 28,
+    "id": 27,
     "source": 6,
     "target": 237,
     "source_code": "sinca_quintero",
@@ -754,7 +728,7 @@
     ]
    },
    "properties": {
-    "id": 29,
+    "id": 28,
     "source": 7,
     "target": 40,
     "source_code": "sinca_centro_quintero",
@@ -774,39 +748,13 @@
       -32.787721
      ],
      [
-      -71.530809,
-      -32.791122
-     ]
-    ]
-   },
-   "properties": {
-    "id": 30,
-    "source": 7,
-    "target": 45,
-    "source_code": "sinca_centro_quintero",
-    "target_code": "edu_escuela_francia",
-    "length_m": 400.7,
-    "cost": 400.7,
-    "reverse_cost": 400.7
-   }
-  },
-  {
-   "type": "Feature",
-   "geometry": {
-    "type": "LineString",
-    "coordinates": [
-     [
-      -71.532226,
-      -32.787721
-     ],
-     [
       -71.530444,
       -32.785358
      ]
     ]
    },
    "properties": {
-    "id": 31,
+    "id": 29,
     "source": 7,
     "target": 47,
     "source_code": "sinca_centro_quintero",
@@ -832,7 +780,7 @@
     ]
    },
    "properties": {
-    "id": 32,
+    "id": 30,
     "source": 7,
     "target": 50,
     "source_code": "sinca_centro_quintero",
@@ -858,7 +806,7 @@
     ]
    },
    "properties": {
-    "id": 33,
+    "id": 31,
     "source": 7,
     "target": 53,
     "source_code": "sinca_centro_quintero",
@@ -884,7 +832,7 @@
     ]
    },
    "properties": {
-    "id": 34,
+    "id": 32,
     "source": 8,
     "target": 9,
     "source_code": "sinca_loncura",
@@ -904,65 +852,13 @@
       -32.794914
      ],
      [
-      -71.502156,
-      -32.789708
-     ]
-    ]
-   },
-   "properties": {
-    "id": 35,
-    "source": 8,
-    "target": 23,
-    "source_code": "sinca_loncura",
-    "target_code": "health_posta_loncura",
-    "length_m": 789.04,
-    "cost": 789.04,
-    "reverse_cost": 789.04
-   }
-  },
-  {
-   "type": "Feature",
-   "geometry": {
-    "type": "LineString",
-    "coordinates": [
-     [
-      -71.49642,
-      -32.794914
-     ],
-     [
-      -71.502803,
-      -32.789344
-     ]
-    ]
-   },
-   "properties": {
-    "id": 36,
-    "source": 8,
-    "target": 60,
-    "source_code": "sinca_loncura",
-    "target_code": "comm_el_descanso_loncura",
-    "length_m": 860.0,
-    "cost": 860.0,
-    "reverse_cost": 860.0
-   }
-  },
-  {
-   "type": "Feature",
-   "geometry": {
-    "type": "LineString",
-    "coordinates": [
-     [
-      -71.49642,
-      -32.794914
-     ],
-     [
       -71.488,
       -32.793
      ]
     ]
    },
    "properties": {
-    "id": 37,
+    "id": 33,
     "source": 8,
     "target": 96,
     "source_code": "sinca_loncura",
@@ -982,20 +878,20 @@
       -32.794914
      ],
      [
-      -71.50896,
-      -32.79902
+      -71.50088,
+      -32.79171
      ]
     ]
    },
    "properties": {
-    "id": 38,
+    "id": 34,
     "source": 8,
-    "target": 200,
+    "target": 250,
     "source_code": "sinca_loncura",
-    "target_code": "infra_ruta_f210_quintero",
-    "length_m": 1257.9,
-    "cost": 1257.9,
-    "reverse_cost": 1257.9
+    "target_code": "poi_loncura_manutara",
+    "length_m": 548.39,
+    "cost": 548.39,
+    "reverse_cost": 548.39
    }
   },
   {
@@ -1008,20 +904,72 @@
       -32.794914
      ],
      [
-      -71.496759,
-      -32.788246
+      -71.5015,
+      -32.7958
      ]
     ]
    },
    "properties": {
-    "id": 39,
+    "id": 35,
     "source": 8,
-    "target": 228,
+    "target": 254,
     "source_code": "sinca_loncura",
-    "target_code": "ind_pfv_loncura",
-    "length_m": 742.12,
-    "cost": 742.12,
-    "reverse_cost": 742.12
+    "target_code": "poi_loncura_estadio",
+    "length_m": 484.95,
+    "cost": 484.95,
+    "reverse_cost": 484.95
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -71.49642,
+      -32.794914
+     ],
+     [
+      -71.4985,
+      -32.7932
+     ]
+    ]
+   },
+   "properties": {
+    "id": 36,
+    "source": 8,
+    "target": 255,
+    "source_code": "sinca_loncura",
+    "target_code": "poi_loncura_las_jaibas",
+    "length_m": 272.26,
+    "cost": 272.26,
+    "reverse_cost": 272.26
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -71.49642,
+      -32.794914
+     ],
+     [
+      -71.497,
+      -32.7895
+     ]
+    ]
+   },
+   "properties": {
+    "id": 37,
+    "source": 8,
+    "target": 258,
+    "source_code": "sinca_loncura",
+    "target_code": "poi_loncura_parque_solar",
+    "length_m": 604.45,
+    "cost": 604.45,
+    "reverse_cost": 604.45
    }
   },
   {
@@ -1040,7 +988,7 @@
     ]
    },
    "properties": {
-    "id": 40,
+    "id": 38,
     "source": 9,
     "target": 96,
     "source_code": "sinca_sur",
@@ -1066,7 +1014,7 @@
     ]
    },
    "properties": {
-    "id": 41,
+    "id": 39,
     "source": 9,
     "target": 214,
     "source_code": "sinca_sur",
@@ -1092,7 +1040,7 @@
     ]
    },
    "properties": {
-    "id": 42,
+    "id": 40,
     "source": 9,
     "target": 227,
     "source_code": "sinca_sur",
@@ -1118,7 +1066,7 @@
     ]
    },
    "properties": {
-    "id": 43,
+    "id": 41,
     "source": 10,
     "target": 212,
     "source_code": "ind_codelco",
@@ -1144,7 +1092,7 @@
     ]
    },
    "properties": {
-    "id": 44,
+    "id": 42,
     "source": 10,
     "target": 213,
     "source_code": "ind_codelco",
@@ -1170,7 +1118,7 @@
     ]
    },
    "properties": {
-    "id": 45,
+    "id": 43,
     "source": 10,
     "target": 224,
     "source_code": "ind_codelco",
@@ -1196,7 +1144,7 @@
     ]
    },
    "properties": {
-    "id": 46,
+    "id": 44,
     "source": 10,
     "target": 226,
     "source_code": "ind_codelco",
@@ -1222,7 +1170,7 @@
     ]
    },
    "properties": {
-    "id": 47,
+    "id": 45,
     "source": 11,
     "target": 21,
     "source_code": "ind_termoelectrica",
@@ -1248,7 +1196,7 @@
     ]
    },
    "properties": {
-    "id": 48,
+    "id": 46,
     "source": 11,
     "target": 68,
     "source_code": "ind_termoelectrica",
@@ -1274,7 +1222,7 @@
     ]
    },
    "properties": {
-    "id": 49,
+    "id": 47,
     "source": 11,
     "target": 202,
     "source_code": "ind_termoelectrica",
@@ -1300,7 +1248,7 @@
     ]
    },
    "properties": {
-    "id": 50,
+    "id": 48,
     "source": 12,
     "target": 13,
     "source_code": "ind_gnl",
@@ -1326,7 +1274,7 @@
     ]
    },
    "properties": {
-    "id": 51,
+    "id": 49,
     "source": 12,
     "target": 16,
     "source_code": "ind_gnl",
@@ -1352,7 +1300,7 @@
     ]
    },
    "properties": {
-    "id": 52,
+    "id": 50,
     "source": 12,
     "target": 217,
     "source_code": "ind_gnl",
@@ -1378,7 +1326,7 @@
     ]
    },
    "properties": {
-    "id": 53,
+    "id": 51,
     "source": 12,
     "target": 219,
     "source_code": "ind_gnl",
@@ -1404,7 +1352,7 @@
     ]
    },
    "properties": {
-    "id": 54,
+    "id": 52,
     "source": 12,
     "target": 220,
     "source_code": "ind_gnl",
@@ -1430,7 +1378,7 @@
     ]
    },
    "properties": {
-    "id": 55,
+    "id": 53,
     "source": 13,
     "target": 16,
     "source_code": "ind_enap",
@@ -1456,7 +1404,7 @@
     ]
    },
    "properties": {
-    "id": 56,
+    "id": 54,
     "source": 13,
     "target": 214,
     "source_code": "ind_enap",
@@ -1482,7 +1430,7 @@
     ]
    },
    "properties": {
-    "id": 57,
+    "id": 55,
     "source": 13,
     "target": 215,
     "source_code": "ind_enap",
@@ -1508,7 +1456,7 @@
     ]
    },
    "properties": {
-    "id": 58,
+    "id": 56,
     "source": 13,
     "target": 217,
     "source_code": "ind_enap",
@@ -1534,7 +1482,7 @@
     ]
    },
    "properties": {
-    "id": 59,
+    "id": 57,
     "source": 13,
     "target": 220,
     "source_code": "ind_enap",
@@ -1560,7 +1508,7 @@
     ]
    },
    "properties": {
-    "id": 60,
+    "id": 58,
     "source": 13,
     "target": 227,
     "source_code": "ind_enap",
@@ -1586,7 +1534,7 @@
     ]
    },
    "properties": {
-    "id": 61,
+    "id": 59,
     "source": 14,
     "target": 197,
     "source_code": "ind_oxiquim",
@@ -1612,7 +1560,7 @@
     ]
    },
    "properties": {
-    "id": 62,
+    "id": 60,
     "source": 14,
     "target": 216,
     "source_code": "ind_oxiquim",
@@ -1638,7 +1586,7 @@
     ]
    },
    "properties": {
-    "id": 63,
+    "id": 61,
     "source": 14,
     "target": 218,
     "source_code": "ind_oxiquim",
@@ -1664,7 +1612,7 @@
     ]
    },
    "properties": {
-    "id": 64,
+    "id": 62,
     "source": 14,
     "target": 219,
     "source_code": "ind_oxiquim",
@@ -1690,7 +1638,7 @@
     ]
    },
    "properties": {
-    "id": 65,
+    "id": 63,
     "source": 15,
     "target": 204,
     "source_code": "ind_puerto_ventanas",
@@ -1716,7 +1664,7 @@
     ]
    },
    "properties": {
-    "id": 66,
+    "id": 64,
     "source": 15,
     "target": 205,
     "source_code": "ind_puerto_ventanas",
@@ -1742,7 +1690,7 @@
     ]
    },
    "properties": {
-    "id": 67,
+    "id": 65,
     "source": 15,
     "target": 206,
     "source_code": "ind_puerto_ventanas",
@@ -1768,7 +1716,7 @@
     ]
    },
    "properties": {
-    "id": 68,
+    "id": 66,
     "source": 15,
     "target": 226,
     "source_code": "ind_puerto_ventanas",
@@ -1794,7 +1742,7 @@
     ]
    },
    "properties": {
-    "id": 69,
+    "id": 67,
     "source": 16,
     "target": 186,
     "source_code": "ind_asfalto_quintero",
@@ -1820,7 +1768,7 @@
     ]
    },
    "properties": {
-    "id": 70,
+    "id": 68,
     "source": 16,
     "target": 217,
     "source_code": "ind_asfalto_quintero",
@@ -1846,7 +1794,7 @@
     ]
    },
    "properties": {
-    "id": 71,
+    "id": 69,
     "source": 16,
     "target": 219,
     "source_code": "ind_asfalto_quintero",
@@ -1872,7 +1820,7 @@
     ]
    },
    "properties": {
-    "id": 72,
+    "id": 70,
     "source": 16,
     "target": 220,
     "source_code": "ind_asfalto_quintero",
@@ -1898,7 +1846,7 @@
     ]
    },
    "properties": {
-    "id": 73,
+    "id": 71,
     "source": 16,
     "target": 221,
     "source_code": "ind_asfalto_quintero",
@@ -1924,7 +1872,7 @@
     ]
    },
    "properties": {
-    "id": 74,
+    "id": 72,
     "source": 16,
     "target": 222,
     "source_code": "ind_asfalto_quintero",
@@ -1950,7 +1898,7 @@
     ]
    },
    "properties": {
-    "id": 75,
+    "id": 73,
     "source": 17,
     "target": 44,
     "source_code": "health_hosp_adriana_cousino",
@@ -1976,7 +1924,7 @@
     ]
    },
    "properties": {
-    "id": 76,
+    "id": 74,
     "source": 17,
     "target": 51,
     "source_code": "health_hosp_adriana_cousino",
@@ -2002,7 +1950,7 @@
     ]
    },
    "properties": {
-    "id": 77,
+    "id": 75,
     "source": 17,
     "target": 102,
     "source_code": "health_hosp_adriana_cousino",
@@ -2028,7 +1976,7 @@
     ]
    },
    "properties": {
-    "id": 78,
+    "id": 76,
     "source": 17,
     "target": 188,
     "source_code": "health_hosp_adriana_cousino",
@@ -2054,7 +2002,7 @@
     ]
    },
    "properties": {
-    "id": 79,
+    "id": 77,
     "source": 17,
     "target": 191,
     "source_code": "health_hosp_adriana_cousino",
@@ -2080,7 +2028,7 @@
     ]
    },
    "properties": {
-    "id": 80,
+    "id": 78,
     "source": 17,
     "target": 193,
     "source_code": "health_hosp_adriana_cousino",
@@ -2106,7 +2054,7 @@
     ]
    },
    "properties": {
-    "id": 81,
+    "id": 79,
     "source": 18,
     "target": 46,
     "source_code": "health_cesfam_quintero",
@@ -2132,7 +2080,7 @@
     ]
    },
    "properties": {
-    "id": 82,
+    "id": 80,
     "source": 18,
     "target": 54,
     "source_code": "health_cesfam_quintero",
@@ -2152,39 +2100,13 @@
       -32.795313
      ],
      [
-      -71.542595,
-      -32.790977
-     ]
-    ]
-   },
-   "properties": {
-    "id": 83,
-    "source": 18,
-    "target": 132,
-    "source_code": "health_cesfam_quintero",
-    "target_code": "hotel_6718345397",
-    "length_m": 860.96,
-    "cost": 860.96,
-    "reverse_cost": 860.96
-   }
-  },
-  {
-   "type": "Feature",
-   "geometry": {
-    "type": "LineString",
-    "coordinates": [
-     [
-      -71.534964,
-      -32.795313
-     ],
-     [
       -71.535055,
       -32.797943
      ]
     ]
    },
    "properties": {
-    "id": 84,
+    "id": 81,
     "source": 18,
     "target": 181,
     "source_code": "health_cesfam_quintero",
@@ -2204,20 +2126,20 @@
       -32.795313
      ],
      [
-      -71.530014,
-      -32.794358
+      -71.5372,
+      -32.7925
      ]
     ]
    },
    "properties": {
-    "id": 85,
+    "id": 82,
     "source": 18,
-    "target": 192,
+    "target": 268,
     "source_code": "health_cesfam_quintero",
-    "target_code": "church_654628986",
-    "length_m": 474.72,
-    "cost": 474.72,
-    "reverse_cost": 474.72
+    "target_code": "poi_quintero_sur_diego_portales",
+    "length_m": 376.19,
+    "cost": 376.19,
+    "reverse_cost": 376.19
    }
   },
   {
@@ -2236,7 +2158,7 @@
     ]
    },
    "properties": {
-    "id": 86,
+    "id": 83,
     "source": 19,
     "target": 21,
     "source_code": "health_cesfam_ventanas",
@@ -2262,7 +2184,7 @@
     ]
    },
    "properties": {
-    "id": 87,
+    "id": 84,
     "source": 19,
     "target": 33,
     "source_code": "health_cesfam_ventanas",
@@ -2288,7 +2210,7 @@
     ]
    },
    "properties": {
-    "id": 88,
+    "id": 85,
     "source": 19,
     "target": 85,
     "source_code": "health_cesfam_ventanas",
@@ -2314,7 +2236,7 @@
     ]
    },
    "properties": {
-    "id": 89,
+    "id": 86,
     "source": 19,
     "target": 156,
     "source_code": "health_cesfam_ventanas",
@@ -2340,7 +2262,7 @@
     ]
    },
    "properties": {
-    "id": 90,
+    "id": 87,
     "source": 20,
     "target": 30,
     "source_code": "health_cesfam_puchuncavi",
@@ -2366,7 +2288,7 @@
     ]
    },
    "properties": {
-    "id": 91,
+    "id": 88,
     "source": 20,
     "target": 37,
     "source_code": "health_cesfam_puchuncavi",
@@ -2392,7 +2314,7 @@
     ]
    },
    "properties": {
-    "id": 92,
+    "id": 89,
     "source": 20,
     "target": 67,
     "source_code": "health_cesfam_puchuncavi",
@@ -2418,7 +2340,7 @@
     ]
    },
    "properties": {
-    "id": 93,
+    "id": 90,
     "source": 20,
     "target": 82,
     "source_code": "health_cesfam_puchuncavi",
@@ -2444,7 +2366,7 @@
     ]
    },
    "properties": {
-    "id": 94,
+    "id": 91,
     "source": 20,
     "target": 93,
     "source_code": "health_cesfam_puchuncavi",
@@ -2470,7 +2392,7 @@
     ]
    },
    "properties": {
-    "id": 95,
+    "id": 92,
     "source": 20,
     "target": 166,
     "source_code": "health_cesfam_puchuncavi",
@@ -2496,7 +2418,7 @@
     ]
    },
    "properties": {
-    "id": 96,
+    "id": 93,
     "source": 20,
     "target": 199,
     "source_code": "health_cesfam_puchuncavi",
@@ -2522,7 +2444,7 @@
     ]
    },
    "properties": {
-    "id": 97,
+    "id": 94,
     "source": 21,
     "target": 33,
     "source_code": "health_sapu_ventanas",
@@ -2548,7 +2470,7 @@
     ]
    },
    "properties": {
-    "id": 98,
+    "id": 95,
     "source": 21,
     "target": 85,
     "source_code": "health_sapu_ventanas",
@@ -2568,65 +2490,13 @@
       -32.788325
      ],
      [
-      -71.502156,
-      -32.789708
-     ]
-    ]
-   },
-   "properties": {
-    "id": 99,
-    "source": 22,
-    "target": 23,
-    "source_code": "health_cecof_loncura",
-    "target_code": "health_posta_loncura",
-    "length_m": 230.44,
-    "cost": 230.44,
-    "reverse_cost": 230.44
-   }
-  },
-  {
-   "type": "Feature",
-   "geometry": {
-    "type": "LineString",
-    "coordinates": [
-     [
-      -71.503992,
-      -32.788325
-     ],
-     [
-      -71.502803,
-      -32.789344
-     ]
-    ]
-   },
-   "properties": {
-    "id": 100,
-    "source": 22,
-    "target": 60,
-    "source_code": "health_cecof_loncura",
-    "target_code": "comm_el_descanso_loncura",
-    "length_m": 158.72,
-    "cost": 158.72,
-    "reverse_cost": 158.72
-   }
-  },
-  {
-   "type": "Feature",
-   "geometry": {
-    "type": "LineString",
-    "coordinates": [
-     [
-      -71.503992,
-      -32.788325
-     ],
-     [
       -71.50229,
       -32.787705
      ]
     ]
    },
    "properties": {
-    "id": 101,
+    "id": 96,
     "source": 22,
     "target": 70,
     "source_code": "health_cecof_loncura",
@@ -2646,39 +2516,13 @@
       -32.788325
      ],
      [
-      -71.510289,
-      -32.785856
-     ]
-    ]
-   },
-   "properties": {
-    "id": 102,
-    "source": 22,
-    "target": 180,
-    "source_code": "health_cecof_loncura",
-    "target_code": "attr_10776927882",
-    "length_m": 649.52,
-    "cost": 649.52,
-    "reverse_cost": 649.52
-   }
-  },
-  {
-   "type": "Feature",
-   "geometry": {
-    "type": "LineString",
-    "coordinates": [
-     [
-      -71.503992,
-      -32.788325
-     ],
-     [
       -71.504423,
       -32.787931
      ]
     ]
    },
    "properties": {
-    "id": 103,
+    "id": 97,
     "source": 22,
     "target": 189,
     "source_code": "health_cecof_loncura",
@@ -2704,7 +2548,7 @@
     ]
    },
    "properties": {
-    "id": 104,
+    "id": 98,
     "source": 22,
     "target": 229,
     "source_code": "health_cecof_loncura",
@@ -2724,20 +2568,72 @@
       -32.788325
      ],
      [
-      -71.512628,
-      -32.791928
+      -71.50373,
+      -32.78953
      ]
     ]
    },
    "properties": {
-    "id": 105,
+    "id": 99,
     "source": 22,
-    "target": 234,
+    "target": 252,
     "source_code": "health_cecof_loncura",
-    "target_code": "hist_conchal_bato_aconcagua",
-    "length_m": 901.22,
-    "cost": 901.22,
-    "reverse_cost": 901.22
+    "target_code": "poi_loncura_almacen_gaston",
+    "length_m": 136.21,
+    "cost": 136.21,
+    "reverse_cost": 136.21
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -71.503992,
+      -32.788325
+     ],
+     [
+      -71.50421,
+      -32.78793
+     ]
+    ]
+   },
+   "properties": {
+    "id": 100,
+    "source": 22,
+    "target": 253,
+    "source_code": "health_cecof_loncura",
+    "target_code": "poi_loncura_union_progreso",
+    "length_m": 48.42,
+    "cost": 48.42,
+    "reverse_cost": 48.42
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -71.503992,
+      -32.788325
+     ],
+     [
+      -71.5035,
+      -32.7875
+     ]
+    ]
+   },
+   "properties": {
+    "id": 101,
+    "source": 22,
+    "target": 257,
+    "source_code": "health_cecof_loncura",
+    "target_code": "poi_loncura_chimbote_huaras",
+    "length_m": 102.62,
+    "cost": 102.62,
+    "reverse_cost": 102.62
    }
   },
   {
@@ -2756,7 +2652,7 @@
     ]
    },
    "properties": {
-    "id": 106,
+    "id": 102,
     "source": 23,
     "target": 60,
     "source_code": "health_posta_loncura",
@@ -2776,65 +2672,13 @@
       -32.789708
      ],
      [
-      -71.50229,
-      -32.787705
-     ]
-    ]
-   },
-   "properties": {
-    "id": 107,
-    "source": 23,
-    "target": 70,
-    "source_code": "health_posta_loncura",
-    "target_code": "crowd_plaza_loncura",
-    "length_m": 223.08,
-    "cost": 223.08,
-    "reverse_cost": 223.08
-   }
-  },
-  {
-   "type": "Feature",
-   "geometry": {
-    "type": "LineString",
-    "coordinates": [
-     [
-      -71.502156,
-      -32.789708
-     ],
-     [
-      -71.50896,
-      -32.79902
-     ]
-    ]
-   },
-   "properties": {
-    "id": 108,
-    "source": 23,
-    "target": 200,
-    "source_code": "health_posta_loncura",
-    "target_code": "infra_ruta_f210_quintero",
-    "length_m": 1215.17,
-    "cost": 1215.17,
-    "reverse_cost": 1215.17
-   }
-  },
-  {
-   "type": "Feature",
-   "geometry": {
-    "type": "LineString",
-    "coordinates": [
-     [
-      -71.502156,
-      -32.789708
-     ],
-     [
       -71.496759,
       -32.788246
      ]
     ]
    },
    "properties": {
-    "id": 109,
+    "id": 103,
     "source": 23,
     "target": 228,
     "source_code": "health_posta_loncura",
@@ -2854,20 +2698,124 @@
       -32.789708
      ],
      [
-      -71.50349,
-      -32.788246
+      -71.5018,
+      -32.78834
      ]
     ]
    },
    "properties": {
-    "id": 110,
+    "id": 104,
     "source": 23,
-    "target": 229,
+    "target": 248,
     "source_code": "health_posta_loncura",
-    "target_code": "civic_centro_civico_loncura",
-    "length_m": 204.89,
-    "cost": 204.89,
-    "reverse_cost": 204.89
+    "target_code": "poi_loncura_german_riesco",
+    "length_m": 155.71,
+    "cost": 155.71,
+    "reverse_cost": 155.71
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -71.502156,
+      -32.789708
+     ],
+     [
+      -71.50259,
+      -32.79041
+     ]
+    ]
+   },
+   "properties": {
+    "id": 105,
+    "source": 23,
+    "target": 249,
+    "source_code": "health_posta_loncura",
+    "target_code": "poi_loncura_los_alerces",
+    "length_m": 87.97,
+    "cost": 87.97,
+    "reverse_cost": 87.97
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -71.502156,
+      -32.789708
+     ],
+     [
+      -71.50088,
+      -32.79171
+     ]
+    ]
+   },
+   "properties": {
+    "id": 106,
+    "source": 23,
+    "target": 250,
+    "source_code": "health_posta_loncura",
+    "target_code": "poi_loncura_manutara",
+    "length_m": 252.55,
+    "cost": 252.55,
+    "reverse_cost": 252.55
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -71.502156,
+      -32.789708
+     ],
+     [
+      -71.5032,
+      -32.7935
+     ]
+    ]
+   },
+   "properties": {
+    "id": 107,
+    "source": 23,
+    "target": 251,
+    "source_code": "health_posta_loncura",
+    "target_code": "poi_loncura_av_bosque",
+    "length_m": 432.8,
+    "cost": 432.8,
+    "reverse_cost": 432.8
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -71.502156,
+      -32.789708
+     ],
+     [
+      -71.50373,
+      -32.78953
+     ]
+    ]
+   },
+   "properties": {
+    "id": 108,
+    "source": 23,
+    "target": 252,
+    "source_code": "health_posta_loncura",
+    "target_code": "poi_loncura_almacen_gaston",
+    "length_m": 148.46,
+    "cost": 148.46,
+    "reverse_cost": 148.46
    }
   },
   {
@@ -2886,7 +2834,7 @@
     ]
    },
    "properties": {
-    "id": 111,
+    "id": 109,
     "source": 24,
     "target": 36,
     "source_code": "health_posta_horcon",
@@ -2912,7 +2860,7 @@
     ]
    },
    "properties": {
-    "id": 112,
+    "id": 110,
     "source": 24,
     "target": 61,
     "source_code": "health_posta_horcon",
@@ -2938,7 +2886,7 @@
     ]
    },
    "properties": {
-    "id": 113,
+    "id": 111,
     "source": 24,
     "target": 69,
     "source_code": "health_posta_horcon",
@@ -2964,7 +2912,7 @@
     ]
    },
    "properties": {
-    "id": 114,
+    "id": 112,
     "source": 24,
     "target": 115,
     "source_code": "health_posta_horcon",
@@ -2984,20 +2932,20 @@
       -32.711267
      ],
      [
-      -71.489821,
-      -32.709743
+      -71.489024,
+      -32.710053
      ]
     ]
    },
    "properties": {
-    "id": 115,
+    "id": 113,
     "source": 24,
-    "target": 147,
+    "target": 155,
     "source_code": "health_posta_horcon",
-    "target_code": "resto_3292297653",
-    "length_m": 198.8,
-    "cost": 198.8,
-    "reverse_cost": 198.8
+    "target_code": "resto_4422085101",
+    "length_m": 138.15,
+    "cost": 138.15,
+    "reverse_cost": 138.15
    }
   },
   {
@@ -3010,20 +2958,20 @@
       -32.711267
      ],
      [
-      -71.489024,
-      -32.710053
+      -71.4875,
+      -32.7125
      ]
     ]
    },
    "properties": {
-    "id": 116,
+    "id": 114,
     "source": 24,
-    "target": 155,
+    "target": 243,
     "source_code": "health_posta_horcon",
-    "target_code": "resto_4422085101",
-    "length_m": 138.15,
-    "cost": 138.15,
-    "reverse_cost": 138.15
+    "target_code": "poi_chocota_mirador_pelicanos",
+    "length_m": 177.8,
+    "cost": 177.8,
+    "reverse_cost": 177.8
    }
   },
   {
@@ -3042,7 +2990,7 @@
     ]
    },
    "properties": {
-    "id": 117,
+    "id": 115,
     "source": 25,
     "target": 29,
     "source_code": "health_cruz_roja",
@@ -3068,7 +3016,7 @@
     ]
    },
    "properties": {
-    "id": 118,
+    "id": 116,
     "source": 25,
     "target": 39,
     "source_code": "health_cruz_roja",
@@ -3094,7 +3042,7 @@
     ]
    },
    "properties": {
-    "id": 119,
+    "id": 117,
     "source": 25,
     "target": 62,
     "source_code": "health_cruz_roja",
@@ -3120,7 +3068,7 @@
     ]
    },
    "properties": {
-    "id": 120,
+    "id": 118,
     "source": 25,
     "target": 83,
     "source_code": "health_cruz_roja",
@@ -3128,6 +3076,32 @@
     "length_m": 76.77,
     "cost": 76.77,
     "reverse_cost": 76.77
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -71.527323,
+      -32.787385
+     ],
+     [
+      -71.52705,
+      -32.78709
+     ]
+    ]
+   },
+   "properties": {
+    "id": 119,
+    "source": 25,
+    "target": 265,
+    "source_code": "health_cruz_roja",
+    "target_code": "poi_quintero_sur_shell_prat",
+    "length_m": 41.56,
+    "cost": 41.56,
+    "reverse_cost": 41.56
    }
   },
   {
@@ -3146,7 +3120,7 @@
     ]
    },
    "properties": {
-    "id": 121,
+    "id": 120,
     "source": 26,
     "target": 64,
     "source_code": "health_centro_medico_quintero",
@@ -3172,7 +3146,7 @@
     ]
    },
    "properties": {
-    "id": 122,
+    "id": 121,
     "source": 26,
     "target": 66,
     "source_code": "health_centro_medico_quintero",
@@ -3198,7 +3172,7 @@
     ]
    },
    "properties": {
-    "id": 123,
+    "id": 122,
     "source": 26,
     "target": 164,
     "source_code": "health_centro_medico_quintero",
@@ -3224,7 +3198,7 @@
     ]
    },
    "properties": {
-    "id": 124,
+    "id": 123,
     "source": 26,
     "target": 190,
     "source_code": "health_centro_medico_quintero",
@@ -3250,7 +3224,7 @@
     ]
    },
    "properties": {
-    "id": 125,
+    "id": 124,
     "source": 27,
     "target": 28,
     "source_code": "health_cruz_verde_quintero",
@@ -3276,7 +3250,7 @@
     ]
    },
    "properties": {
-    "id": 126,
+    "id": 125,
     "source": 27,
     "target": 56,
     "source_code": "health_cruz_verde_quintero",
@@ -3302,7 +3276,7 @@
     ]
    },
    "properties": {
-    "id": 127,
+    "id": 126,
     "source": 27,
     "target": 81,
     "source_code": "health_cruz_verde_quintero",
@@ -3328,7 +3302,7 @@
     ]
    },
    "properties": {
-    "id": 128,
+    "id": 127,
     "source": 27,
     "target": 134,
     "source_code": "health_cruz_verde_quintero",
@@ -3354,7 +3328,7 @@
     ]
    },
    "properties": {
-    "id": 129,
+    "id": 128,
     "source": 27,
     "target": 183,
     "source_code": "health_cruz_verde_quintero",
@@ -3380,7 +3354,7 @@
     ]
    },
    "properties": {
-    "id": 130,
+    "id": 129,
     "source": 27,
     "target": 201,
     "source_code": "health_cruz_verde_quintero",
@@ -3406,7 +3380,7 @@
     ]
    },
    "properties": {
-    "id": 131,
+    "id": 130,
     "source": 28,
     "target": 56,
     "source_code": "health_ahumada_quintero",
@@ -3432,7 +3406,7 @@
     ]
    },
    "properties": {
-    "id": 132,
+    "id": 131,
     "source": 28,
     "target": 77,
     "source_code": "health_ahumada_quintero",
@@ -3458,7 +3432,7 @@
     ]
    },
    "properties": {
-    "id": 133,
+    "id": 132,
     "source": 28,
     "target": 81,
     "source_code": "health_ahumada_quintero",
@@ -3484,7 +3458,7 @@
     ]
    },
    "properties": {
-    "id": 134,
+    "id": 133,
     "source": 28,
     "target": 125,
     "source_code": "health_ahumada_quintero",
@@ -3510,7 +3484,7 @@
     ]
    },
    "properties": {
-    "id": 135,
+    "id": 134,
     "source": 28,
     "target": 183,
     "source_code": "health_ahumada_quintero",
@@ -3536,7 +3510,7 @@
     ]
    },
    "properties": {
-    "id": 136,
+    "id": 135,
     "source": 29,
     "target": 39,
     "source_code": "health_dr_simi_quintero",
@@ -3556,65 +3530,13 @@
       -32.786908
      ],
      [
-      -71.528224,
-      -32.786825
-     ]
-    ]
-   },
-   "properties": {
-    "id": 137,
-    "source": 29,
-    "target": 62,
-    "source_code": "health_dr_simi_quintero",
-    "target_code": "comm_sdtodo_quintero",
-    "length_m": 105.66,
-    "cost": 105.66,
-    "reverse_cost": 105.66
-   }
-  },
-  {
-   "type": "Feature",
-   "geometry": {
-    "type": "LineString",
-    "coordinates": [
-     [
-      -71.527098,
-      -32.786908
-     ],
-     [
-      -71.528055,
-      -32.787698
-     ]
-    ]
-   },
-   "properties": {
-    "id": 138,
-    "source": 29,
-    "target": 83,
-    "source_code": "health_dr_simi_quintero",
-    "target_code": "crowd_subcomisaria_quintero",
-    "length_m": 125.38,
-    "cost": 125.38,
-    "reverse_cost": 125.38
-   }
-  },
-  {
-   "type": "Feature",
-   "geometry": {
-    "type": "LineString",
-    "coordinates": [
-     [
-      -71.527098,
-      -32.786908
-     ],
-     [
       -71.52757,
       -32.78624
      ]
     ]
    },
    "properties": {
-    "id": 139,
+    "id": 136,
     "source": 29,
     "target": 88,
     "source_code": "health_dr_simi_quintero",
@@ -3640,7 +3562,7 @@
     ]
    },
    "properties": {
-    "id": 140,
+    "id": 137,
     "source": 29,
     "target": 89,
     "source_code": "health_dr_simi_quintero",
@@ -3666,7 +3588,7 @@
     ]
    },
    "properties": {
-    "id": 141,
+    "id": 138,
     "source": 29,
     "target": 125,
     "source_code": "health_dr_simi_quintero",
@@ -3674,6 +3596,32 @@
     "length_m": 99.07,
     "cost": 99.07,
     "reverse_cost": 99.07
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -71.527098,
+      -32.786908
+     ],
+     [
+      -71.52705,
+      -32.78709
+     ]
+    ]
+   },
+   "properties": {
+    "id": 139,
+    "source": 29,
+    "target": 265,
+    "source_code": "health_dr_simi_quintero",
+    "target_code": "poi_quintero_sur_shell_prat",
+    "length_m": 20.73,
+    "cost": 20.73,
+    "reverse_cost": 20.73
    }
   },
   {
@@ -3692,7 +3640,7 @@
     ]
    },
    "properties": {
-    "id": 142,
+    "id": 140,
     "source": 30,
     "target": 38,
     "source_code": "health_farmacia_puchuncavi",
@@ -3718,7 +3666,7 @@
     ]
    },
    "properties": {
-    "id": 143,
+    "id": 141,
     "source": 30,
     "target": 55,
     "source_code": "health_farmacia_puchuncavi",
@@ -3744,7 +3692,7 @@
     ]
    },
    "properties": {
-    "id": 144,
+    "id": 142,
     "source": 30,
     "target": 67,
     "source_code": "health_farmacia_puchuncavi",
@@ -3770,7 +3718,7 @@
     ]
    },
    "properties": {
-    "id": 145,
+    "id": 143,
     "source": 30,
     "target": 80,
     "source_code": "health_farmacia_puchuncavi",
@@ -3796,7 +3744,7 @@
     ]
    },
    "properties": {
-    "id": 146,
+    "id": 144,
     "source": 30,
     "target": 93,
     "source_code": "health_farmacia_puchuncavi",
@@ -3822,7 +3770,7 @@
     ]
    },
    "properties": {
-    "id": 147,
+    "id": 145,
     "source": 30,
     "target": 95,
     "source_code": "health_farmacia_puchuncavi",
@@ -3848,7 +3796,7 @@
     ]
    },
    "properties": {
-    "id": 148,
+    "id": 146,
     "source": 30,
     "target": 166,
     "source_code": "health_farmacia_puchuncavi",
@@ -3874,7 +3822,7 @@
     ]
    },
    "properties": {
-    "id": 149,
+    "id": 147,
     "source": 30,
     "target": 187,
     "source_code": "health_farmacia_puchuncavi",
@@ -3900,7 +3848,7 @@
     ]
    },
    "properties": {
-    "id": 150,
+    "id": 148,
     "source": 31,
     "target": 94,
     "source_code": "health_farmacia_horcon",
@@ -3926,7 +3874,7 @@
     ]
    },
    "properties": {
-    "id": 151,
+    "id": 149,
     "source": 31,
     "target": 143,
     "source_code": "health_farmacia_horcon",
@@ -3952,7 +3900,7 @@
     ]
    },
    "properties": {
-    "id": 152,
+    "id": 150,
     "source": 31,
     "target": 147,
     "source_code": "health_farmacia_horcon",
@@ -3978,7 +3926,7 @@
     ]
    },
    "properties": {
-    "id": 153,
+    "id": 151,
     "source": 31,
     "target": 150,
     "source_code": "health_farmacia_horcon",
@@ -4004,7 +3952,7 @@
     ]
    },
    "properties": {
-    "id": 154,
+    "id": 152,
     "source": 31,
     "target": 154,
     "source_code": "health_farmacia_horcon",
@@ -4024,39 +3972,13 @@
       -32.736423
      ],
      [
-      -71.451108,
-      -32.735326
-     ]
-    ]
-   },
-   "properties": {
-    "id": 155,
-    "source": 32,
-    "target": 35,
-    "source_code": "edu_escuela_la_greda",
-    "target_code": "edu_escuela_campiche",
-    "length_m": 915.35,
-    "cost": 915.35,
-    "reverse_cost": 915.35
-   }
-  },
-  {
-   "type": "Feature",
-   "geometry": {
-    "type": "LineString",
-    "coordinates": [
-     [
-      -71.460807,
-      -32.736423
-     ],
-     [
       -71.456897,
       -32.735259
      ]
     ]
    },
    "properties": {
-    "id": 156,
+    "id": 153,
     "source": 32,
     "target": 122,
     "source_code": "edu_escuela_la_greda",
@@ -4082,7 +4004,7 @@
     ]
    },
    "properties": {
-    "id": 157,
+    "id": 154,
     "source": 32,
     "target": 138,
     "source_code": "edu_escuela_la_greda",
@@ -4102,20 +4024,20 @@
       -32.736423
      ],
      [
-      -71.468597,
-      -32.741347
+      -71.4682,
+      -32.7385
      ]
     ]
    },
    "properties": {
-    "id": 158,
+    "id": 155,
     "source": 32,
-    "target": 198,
+    "target": 271,
     "source_code": "edu_escuela_la_greda",
-    "target_code": "comm_copec_ventanas",
-    "length_m": 911.4,
-    "cost": 911.4,
-    "reverse_cost": 911.4
+    "target_code": "poi_campiche_escuela_rural",
+    "length_m": 729.03,
+    "cost": 729.03,
+    "reverse_cost": 729.03
    }
   },
   {
@@ -4128,20 +4050,46 @@
       -32.736423
      ],
      [
-      -71.452159,
-      -32.734692
+      -71.4655,
+      -32.736
      ]
     ]
    },
    "properties": {
-    "id": 159,
+    "id": 156,
     "source": 32,
-    "target": 235,
+    "target": 272,
     "source_code": "edu_escuela_la_greda",
-    "target_code": "hist_cruz_ermita_campiche",
-    "length_m": 831.47,
-    "cost": 831.47,
-    "reverse_cost": 831.47
+    "target_code": "poi_campiche_plaza_comunitaria",
+    "length_m": 441.47,
+    "cost": 441.47,
+    "reverse_cost": 441.47
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -71.460807,
+      -32.736423
+     ],
+     [
+      -71.463,
+      -32.7352
+     ]
+    ]
+   },
+   "properties": {
+    "id": 157,
+    "source": 32,
+    "target": 273,
+    "source_code": "edu_escuela_la_greda",
+    "target_code": "poi_campiche_sede_social",
+    "length_m": 246.11,
+    "cost": 246.11,
+    "reverse_cost": 246.11
    }
   },
   {
@@ -4160,7 +4108,7 @@
     ]
    },
    "properties": {
-    "id": 160,
+    "id": 158,
     "source": 33,
     "target": 85,
     "source_code": "edu_colegio_sargento_aldea",
@@ -4186,7 +4134,7 @@
     ]
    },
    "properties": {
-    "id": 161,
+    "id": 159,
     "source": 33,
     "target": 156,
     "source_code": "edu_colegio_sargento_aldea",
@@ -4206,117 +4154,13 @@
       -32.729684
      ],
      [
-      -71.502999,
-      -32.725604
-     ]
-    ]
-   },
-   "properties": {
-    "id": 162,
-    "source": 34,
-    "target": 118,
-    "source_code": "edu_escuela_la_chocota",
-    "target_code": "beach_playa_el_tebo",
-    "length_m": 1557.31,
-    "cost": 1557.31,
-    "reverse_cost": 1557.31
-   }
-  },
-  {
-   "type": "Feature",
-   "geometry": {
-    "type": "LineString",
-    "coordinates": [
-     [
-      -71.487073,
-      -32.729684
-     ],
-     [
-      -71.498283,
-      -32.734384
-     ]
-    ]
-   },
-   "properties": {
-    "id": 163,
-    "source": 34,
-    "target": 139,
-    "source_code": "edu_escuela_la_chocota",
-    "target_code": "hotel_1381832768",
-    "length_m": 1171.58,
-    "cost": 1171.58,
-    "reverse_cost": 1171.58
-   }
-  },
-  {
-   "type": "Feature",
-   "geometry": {
-    "type": "LineString",
-    "coordinates": [
-     [
-      -71.487073,
-      -32.729684
-     ],
-     [
-      -71.488907,
-      -32.740404
-     ]
-    ]
-   },
-   "properties": {
-    "id": 164,
-    "source": 34,
-    "target": 162,
-    "source_code": "edu_escuela_la_chocota",
-    "target_code": "resto_10813080226",
-    "length_m": 1204.29,
-    "cost": 1204.29,
-    "reverse_cost": 1204.29
-   }
-  },
-  {
-   "type": "Feature",
-   "geometry": {
-    "type": "LineString",
-    "coordinates": [
-     [
-      -71.487073,
-      -32.729684
-     ],
-     [
-      -71.486524,
-      -32.740037
-     ]
-    ]
-   },
-   "properties": {
-    "id": 165,
-    "source": 34,
-    "target": 194,
-    "source_code": "edu_escuela_la_chocota",
-    "target_code": "edu_jardin_ventanas",
-    "length_m": 1152.35,
-    "cost": 1152.35,
-    "reverse_cost": 1152.35
-   }
-  },
-  {
-   "type": "Feature",
-   "geometry": {
-    "type": "LineString",
-    "coordinates": [
-     [
-      -71.487073,
-      -32.729684
-     ],
-     [
       -71.488409,
       -32.737281
      ]
     ]
    },
    "properties": {
-    "id": 166,
+    "id": 160,
     "source": 34,
     "target": 195,
     "source_code": "edu_escuela_la_chocota",
@@ -4324,6 +4168,84 @@
     "length_m": 853.94,
     "cost": 853.94,
     "reverse_cost": 853.94
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -71.487073,
+      -32.729684
+     ],
+     [
+      -71.48415,
+      -32.72538
+     ]
+    ]
+   },
+   "properties": {
+    "id": 161,
+    "source": 34,
+    "target": 238,
+    "source_code": "edu_escuela_la_chocota",
+    "target_code": "poi_chocota_junta_camelias",
+    "length_m": 551.18,
+    "cost": 551.18,
+    "reverse_cost": 551.18
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -71.487073,
+      -32.729684
+     ],
+     [
+      -71.48742,
+      -32.7302
+     ]
+    ]
+   },
+   "properties": {
+    "id": 162,
+    "source": 34,
+    "target": 240,
+    "source_code": "edu_escuela_la_chocota",
+    "target_code": "poi_chocota_centro",
+    "length_m": 65.92,
+    "cost": 65.92,
+    "reverse_cost": 65.92
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -71.487073,
+      -32.729684
+     ],
+     [
+      -71.48462,
+      -32.72468
+     ]
+    ]
+   },
+   "properties": {
+    "id": 163,
+    "source": 34,
+    "target": 242,
+    "source_code": "edu_escuela_la_chocota",
+    "target_code": "poi_chocota_villa_bosque",
+    "length_m": 601.88,
+    "cost": 601.88,
+    "reverse_cost": 601.88
    }
   },
   {
@@ -4342,7 +4264,7 @@
     ]
    },
    "properties": {
-    "id": 167,
+    "id": 164,
     "source": 35,
     "target": 122,
     "source_code": "edu_escuela_campiche",
@@ -4368,7 +4290,7 @@
     ]
    },
    "properties": {
-    "id": 168,
+    "id": 165,
     "source": 35,
     "target": 230,
     "source_code": "edu_escuela_campiche",
@@ -4394,7 +4316,7 @@
     ]
    },
    "properties": {
-    "id": 169,
+    "id": 166,
     "source": 35,
     "target": 231,
     "source_code": "edu_escuela_campiche",
@@ -4420,7 +4342,7 @@
     ]
    },
    "properties": {
-    "id": 170,
+    "id": 167,
     "source": 35,
     "target": 235,
     "source_code": "edu_escuela_campiche",
@@ -4446,7 +4368,7 @@
     ]
    },
    "properties": {
-    "id": 171,
+    "id": 168,
     "source": 36,
     "target": 69,
     "source_code": "edu_escuela_horcon",
@@ -4466,39 +4388,13 @@
       -32.713264
      ],
      [
-      -71.493723,
-      -32.716002
-     ]
-    ]
-   },
-   "properties": {
-    "id": 172,
-    "source": 36,
-    "target": 144,
-    "source_code": "edu_escuela_horcon",
-    "target_code": "resto_2282613397",
-    "length_m": 607.09,
-    "cost": 607.09,
-    "reverse_cost": 607.09
-   }
-  },
-  {
-   "type": "Feature",
-   "geometry": {
-    "type": "LineString",
-    "coordinates": [
-     [
-      -71.488109,
-      -32.713264
-     ],
-     [
       -71.485725,
       -32.714157
      ]
     ]
    },
    "properties": {
-    "id": 173,
+    "id": 169,
     "source": 36,
     "target": 159,
     "source_code": "edu_escuela_horcon",
@@ -4524,7 +4420,7 @@
     ]
    },
    "properties": {
-    "id": 174,
+    "id": 170,
     "source": 36,
     "target": 177,
     "source_code": "edu_escuela_horcon",
@@ -4532,6 +4428,32 @@
     "length_m": 247.8,
     "cost": 247.8,
     "reverse_cost": 247.8
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -71.488109,
+      -32.713264
+     ],
+     [
+      -71.4875,
+      -32.7125
+     ]
+    ]
+   },
+   "properties": {
+    "id": 171,
+    "source": 36,
+    "target": 243,
+    "source_code": "edu_escuela_horcon",
+    "target_code": "poi_chocota_mirador_pelicanos",
+    "length_m": 102.29,
+    "cost": 102.29,
+    "reverse_cost": 102.29
    }
   },
   {
@@ -4550,7 +4472,7 @@
     ]
    },
    "properties": {
-    "id": 175,
+    "id": 172,
     "source": 37,
     "target": 82,
     "source_code": "edu_colegio_velasquez",
@@ -4576,7 +4498,7 @@
     ]
    },
    "properties": {
-    "id": 176,
+    "id": 173,
     "source": 37,
     "target": 93,
     "source_code": "edu_colegio_velasquez",
@@ -4602,7 +4524,7 @@
     ]
    },
    "properties": {
-    "id": 177,
+    "id": 174,
     "source": 37,
     "target": 166,
     "source_code": "edu_colegio_velasquez",
@@ -4628,7 +4550,7 @@
     ]
    },
    "properties": {
-    "id": 178,
+    "id": 175,
     "source": 37,
     "target": 187,
     "source_code": "edu_colegio_velasquez",
@@ -4654,7 +4576,7 @@
     ]
    },
    "properties": {
-    "id": 179,
+    "id": 176,
     "source": 37,
     "target": 199,
     "source_code": "edu_colegio_velasquez",
@@ -4680,7 +4602,7 @@
     ]
    },
    "properties": {
-    "id": 180,
+    "id": 177,
     "source": 38,
     "target": 55,
     "source_code": "edu_colegio_san_hernaldo",
@@ -4706,7 +4628,7 @@
     ]
    },
    "properties": {
-    "id": 181,
+    "id": 178,
     "source": 38,
     "target": 80,
     "source_code": "edu_colegio_san_hernaldo",
@@ -4732,7 +4654,7 @@
     ]
    },
    "properties": {
-    "id": 182,
+    "id": 179,
     "source": 38,
     "target": 93,
     "source_code": "edu_colegio_san_hernaldo",
@@ -4758,7 +4680,7 @@
     ]
    },
    "properties": {
-    "id": 183,
+    "id": 180,
     "source": 39,
     "target": 50,
     "source_code": "edu_liceo_politecnico_quintero",
@@ -4778,65 +4700,13 @@
       -32.788239
      ],
      [
-      -71.527169,
-      -32.792341
-     ]
-    ]
-   },
-   "properties": {
-    "id": 184,
-    "source": 39,
-    "target": 57,
-    "source_code": "edu_liceo_politecnico_quintero",
-    "target_code": "comm_unimarc_normandie",
-    "length_m": 456.85,
-    "cost": 456.85,
-    "reverse_cost": 456.85
-   }
-  },
-  {
-   "type": "Feature",
-   "geometry": {
-    "type": "LineString",
-    "coordinates": [
-     [
-      -71.527444,
-      -32.788239
-     ],
-     [
-      -71.528224,
-      -32.786825
-     ]
-    ]
-   },
-   "properties": {
-    "id": 185,
-    "source": 39,
-    "target": 62,
-    "source_code": "edu_liceo_politecnico_quintero",
-    "target_code": "comm_sdtodo_quintero",
-    "length_m": 173.31,
-    "cost": 173.31,
-    "reverse_cost": 173.31
-   }
-  },
-  {
-   "type": "Feature",
-   "geometry": {
-    "type": "LineString",
-    "coordinates": [
-     [
-      -71.527444,
-      -32.788239
-     ],
-     [
       -71.528055,
       -32.787698
      ]
     ]
    },
    "properties": {
-    "id": 186,
+    "id": 181,
     "source": 39,
     "target": 83,
     "source_code": "edu_liceo_politecnico_quintero",
@@ -4844,6 +4714,58 @@
     "length_m": 82.95,
     "cost": 82.95,
     "reverse_cost": 82.95
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -71.527444,
+      -32.788239
+     ],
+     [
+      -71.52666,
+      -32.79153
+     ]
+    ]
+   },
+   "properties": {
+    "id": 182,
+    "source": 39,
+    "target": 264,
+    "source_code": "edu_liceo_politecnico_quintero",
+    "target_code": "poi_quintero_sur_copec_f210",
+    "length_m": 373.21,
+    "cost": 373.21,
+    "reverse_cost": 373.21
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -71.527444,
+      -32.788239
+     ],
+     [
+      -71.52705,
+      -32.78709
+     ]
+    ]
+   },
+   "properties": {
+    "id": 183,
+    "source": 39,
+    "target": 265,
+    "source_code": "edu_liceo_politecnico_quintero",
+    "target_code": "poi_quintero_sur_shell_prat",
+    "length_m": 132.97,
+    "cost": 132.97,
+    "reverse_cost": 132.97
    }
   },
   {
@@ -4862,7 +4784,7 @@
     ]
    },
    "properties": {
-    "id": 187,
+    "id": 184,
     "source": 40,
     "target": 53,
     "source_code": "edu_colegio_don_orione",
@@ -4882,39 +4804,13 @@
       -32.785821
      ],
      [
-      -71.537937,
-      -32.784669
-     ]
-    ]
-   },
-   "properties": {
-    "id": 188,
-    "source": 40,
-    "target": 105,
-    "source_code": "edu_colegio_don_orione",
-    "target_code": "beach_playa_las_cañitas",
-    "length_m": 397.74,
-    "cost": 397.74,
-    "reverse_cost": 397.74
-   }
-  },
-  {
-   "type": "Feature",
-   "geometry": {
-    "type": "LineString",
-    "coordinates": [
-     [
-      -71.533909,
-      -32.785821
-     ],
-     [
       -71.53731,
       -32.784541
      ]
     ]
    },
    "properties": {
-    "id": 189,
+    "id": 185,
     "source": 40,
     "target": 106,
     "source_code": "edu_colegio_don_orione",
@@ -4940,7 +4836,7 @@
     ]
    },
    "properties": {
-    "id": 190,
+    "id": 186,
     "source": 40,
     "target": 109,
     "source_code": "edu_colegio_don_orione",
@@ -4966,7 +4862,7 @@
     ]
    },
    "properties": {
-    "id": 191,
+    "id": 187,
     "source": 40,
     "target": 137,
     "source_code": "edu_colegio_don_orione",
@@ -4974,6 +4870,32 @@
     "length_m": 287.79,
     "cost": 287.79,
     "reverse_cost": 287.79
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -71.533909,
+      -32.785821
+     ],
+     [
+      -71.5368,
+      -32.7852
+     ]
+    ]
+   },
+   "properties": {
+    "id": 188,
+    "source": 40,
+    "target": 269,
+    "source_code": "edu_colegio_don_orione",
+    "target_code": "poi_quintero_sur_sanfuentes",
+    "length_m": 278.94,
+    "cost": 278.94,
+    "reverse_cost": 278.94
    }
   },
   {
@@ -4992,7 +4914,7 @@
     ]
    },
    "properties": {
-    "id": 192,
+    "id": 189,
     "source": 41,
     "target": 47,
     "source_code": "edu_colegio_ingles",
@@ -5018,7 +4940,7 @@
     ]
    },
    "properties": {
-    "id": 193,
+    "id": 190,
     "source": 41,
     "target": 137,
     "source_code": "edu_colegio_ingles",
@@ -5044,7 +4966,7 @@
     ]
    },
    "properties": {
-    "id": 194,
+    "id": 191,
     "source": 41,
     "target": 190,
     "source_code": "edu_colegio_ingles",
@@ -5070,7 +4992,7 @@
     ]
    },
    "properties": {
-    "id": 195,
+    "id": 192,
     "source": 41,
     "target": 193,
     "source_code": "edu_colegio_ingles",
@@ -5090,65 +5012,13 @@
       -32.801792
      ],
      [
-      -71.536773,
-      -32.797418
-     ]
-    ]
-   },
-   "properties": {
-    "id": 196,
-    "source": 42,
-    "target": 54,
-    "source_code": "edu_colegio_alonso_quintero",
-    "target_code": "edu_jardin_bambi",
-    "length_m": 668.0,
-    "cost": 668.0,
-    "reverse_cost": 668.0
-   }
-  },
-  {
-   "type": "Feature",
-   "geometry": {
-    "type": "LineString",
-    "coordinates": [
-     [
-      -71.531874,
-      -32.801792
-     ],
-     [
-      -71.526812,
-      -32.798536
-     ]
-    ]
-   },
-   "properties": {
-    "id": 197,
-    "source": 42,
-    "target": 58,
-    "source_code": "edu_colegio_alonso_quintero",
-    "target_code": "comm_acuenta_quintero",
-    "length_m": 595.76,
-    "cost": 595.76,
-    "reverse_cost": 595.76
-   }
-  },
-  {
-   "type": "Feature",
-   "geometry": {
-    "type": "LineString",
-    "coordinates": [
-     [
-      -71.531874,
-      -32.801792
-     ],
-     [
       -71.529555,
       -32.799484
      ]
     ]
    },
    "properties": {
-    "id": 198,
+    "id": 193,
     "source": 42,
     "target": 76,
     "source_code": "edu_colegio_alonso_quintero",
@@ -5168,20 +5038,20 @@
       -32.801792
      ],
      [
-      -71.535055,
-      -32.797943
+      -71.53292,
+      -32.79861
      ]
     ]
    },
    "properties": {
-    "id": 199,
+    "id": 194,
     "source": 42,
-    "target": 181,
+    "target": 260,
     "source_code": "edu_colegio_alonso_quintero",
-    "target_code": "attr_12136580404",
-    "length_m": 521.13,
-    "cost": 521.13,
-    "reverse_cost": 521.13
+    "target_code": "poi_quintero_sur_lomas",
+    "length_m": 367.08,
+    "cost": 367.08,
+    "reverse_cost": 367.08
    }
   },
   {
@@ -5194,20 +5064,46 @@
       -32.801792
      ],
      [
-      -71.527753,
-      -32.799943
+      -71.53342,
+      -32.80106
      ]
     ]
    },
    "properties": {
-    "id": 200,
+    "id": 195,
     "source": 42,
-    "target": 196,
+    "target": 262,
     "source_code": "edu_colegio_alonso_quintero",
-    "target_code": "crowd_quintero_padel",
-    "length_m": 436.61,
-    "cost": 436.61,
-    "reverse_cost": 436.61
+    "target_code": "poi_quintero_sur_colinas_mar",
+    "length_m": 165.84,
+    "cost": 165.84,
+    "reverse_cost": 165.84
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -71.531874,
+      -32.801792
+     ],
+     [
+      -71.52946,
+      -32.79889
+     ]
+    ]
+   },
+   "properties": {
+    "id": 196,
+    "source": 42,
+    "target": 263,
+    "source_code": "edu_colegio_alonso_quintero",
+    "target_code": "poi_quintero_sur_estadio_muni",
+    "length_m": 393.75,
+    "cost": 393.75,
+    "reverse_cost": 393.75
    }
   },
   {
@@ -5226,7 +5122,7 @@
     ]
    },
    "properties": {
-    "id": 201,
+    "id": 197,
     "source": 43,
     "target": 48,
     "source_code": "edu_colegio_alonso_norte",
@@ -5252,7 +5148,7 @@
     ]
    },
    "properties": {
-    "id": 202,
+    "id": 198,
     "source": 43,
     "target": 49,
     "source_code": "edu_colegio_alonso_norte",
@@ -5278,7 +5174,7 @@
     ]
    },
    "properties": {
-    "id": 203,
+    "id": 199,
     "source": 43,
     "target": 52,
     "source_code": "edu_colegio_alonso_norte",
@@ -5304,7 +5200,7 @@
     ]
    },
    "properties": {
-    "id": 204,
+    "id": 200,
     "source": 43,
     "target": 123,
     "source_code": "edu_colegio_alonso_norte",
@@ -5330,7 +5226,7 @@
     ]
    },
    "properties": {
-    "id": 205,
+    "id": 201,
     "source": 43,
     "target": 124,
     "source_code": "edu_colegio_alonso_norte",
@@ -5356,7 +5252,7 @@
     ]
    },
    "properties": {
-    "id": 206,
+    "id": 202,
     "source": 44,
     "target": 92,
     "source_code": "edu_colegio_santa_filomena",
@@ -5382,7 +5278,7 @@
     ]
    },
    "properties": {
-    "id": 207,
+    "id": 203,
     "source": 44,
     "target": 119,
     "source_code": "edu_colegio_santa_filomena",
@@ -5408,7 +5304,7 @@
     ]
    },
    "properties": {
-    "id": 208,
+    "id": 204,
     "source": 44,
     "target": 141,
     "source_code": "edu_colegio_santa_filomena",
@@ -5434,7 +5330,7 @@
     ]
    },
    "properties": {
-    "id": 209,
+    "id": 205,
     "source": 44,
     "target": 164,
     "source_code": "edu_colegio_santa_filomena",
@@ -5460,7 +5356,7 @@
     ]
    },
    "properties": {
-    "id": 210,
+    "id": 206,
     "source": 44,
     "target": 191,
     "source_code": "edu_colegio_santa_filomena",
@@ -5486,7 +5382,7 @@
     ]
    },
    "properties": {
-    "id": 211,
+    "id": 207,
     "source": 44,
     "target": 193,
     "source_code": "edu_colegio_santa_filomena",
@@ -5512,7 +5408,7 @@
     ]
    },
    "properties": {
-    "id": 212,
+    "id": 208,
     "source": 45,
     "target": 50,
     "source_code": "edu_escuela_francia",
@@ -5538,7 +5434,7 @@
     ]
    },
    "properties": {
-    "id": 213,
+    "id": 209,
     "source": 45,
     "target": 57,
     "source_code": "edu_escuela_francia",
@@ -5558,20 +5454,20 @@
       -32.791122
      ],
      [
-      -71.530014,
-      -32.794358
+      -71.53073,
+      -32.79148
      ]
     ]
    },
    "properties": {
-    "id": 214,
+    "id": 210,
     "source": 45,
-    "target": 192,
+    "target": 259,
     "source_code": "edu_escuela_francia",
-    "target_code": "church_654628986",
-    "length_m": 367.42,
-    "cost": 367.42,
-    "reverse_cost": 367.42
+    "target_code": "poi_quintero_sur_porvenir",
+    "length_m": 40.49,
+    "cost": 40.49,
+    "reverse_cost": 40.49
    }
   },
   {
@@ -5580,50 +5476,24 @@
     "type": "LineString",
     "coordinates": [
      [
-      -71.534055,
-      -32.794139
+      -71.530809,
+      -32.791122
      ],
      [
-      -71.536773,
-      -32.797418
+      -71.52956,
+      -32.79327
      ]
     ]
    },
    "properties": {
-    "id": 215,
-    "source": 46,
-    "target": 54,
-    "source_code": "edu_escuela_narau",
-    "target_code": "edu_jardin_bambi",
-    "length_m": 444.39,
-    "cost": 444.39,
-    "reverse_cost": 444.39
-   }
-  },
-  {
-   "type": "Feature",
-   "geometry": {
-    "type": "LineString",
-    "coordinates": [
-     [
-      -71.534055,
-      -32.794139
-     ],
-     [
-      -71.535055,
-      -32.797943
-     ]
-    ]
-   },
-   "properties": {
-    "id": 216,
-    "source": 46,
-    "target": 181,
-    "source_code": "edu_escuela_narau",
-    "target_code": "attr_12136580404",
-    "length_m": 433.19,
-    "cost": 433.19,
-    "reverse_cost": 433.19
+    "id": 211,
+    "source": 45,
+    "target": 267,
+    "source_code": "edu_escuela_francia",
+    "target_code": "poi_quintero_sur_multicancha_pinos",
+    "length_m": 265.85,
+    "cost": 265.85,
+    "reverse_cost": 265.85
    }
   },
   {
@@ -5642,7 +5512,7 @@
     ]
    },
    "properties": {
-    "id": 217,
+    "id": 212,
     "source": 46,
     "target": 192,
     "source_code": "edu_escuela_narau",
@@ -5650,6 +5520,58 @@
     "length_m": 378.51,
     "cost": 378.51,
     "reverse_cost": 378.51
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -71.534055,
+      -32.794139
+     ],
+     [
+      -71.53073,
+      -32.79148
+     ]
+    ]
+   },
+   "properties": {
+    "id": 213,
+    "source": 46,
+    "target": 259,
+    "source_code": "edu_escuela_narau",
+    "target_code": "poi_quintero_sur_porvenir",
+    "length_m": 428.97,
+    "cost": 428.97,
+    "reverse_cost": 428.97
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -71.534055,
+      -32.794139
+     ],
+     [
+      -71.5372,
+      -32.7925
+     ]
+    ]
+   },
+   "properties": {
+    "id": 214,
+    "source": 46,
+    "target": 268,
+    "source_code": "edu_escuela_narau",
+    "target_code": "poi_quintero_sur_diego_portales",
+    "length_m": 345.88,
+    "cost": 345.88,
+    "reverse_cost": 345.88
    }
   },
   {
@@ -5668,7 +5590,7 @@
     ]
    },
    "properties": {
-    "id": 218,
+    "id": 215,
     "source": 47,
     "target": 53,
     "source_code": "edu_colegio_costa_mauco",
@@ -5694,7 +5616,7 @@
     ]
    },
    "properties": {
-    "id": 219,
+    "id": 216,
     "source": 47,
     "target": 77,
     "source_code": "edu_colegio_costa_mauco",
@@ -5714,20 +5636,20 @@
       -32.785358
      ],
      [
-      -71.529272,
-      -32.783433
+      -71.528533,
+      -32.784815
      ]
     ]
    },
    "properties": {
-    "id": 220,
+    "id": 217,
     "source": 47,
-    "target": 190,
+    "target": 201,
     "source_code": "edu_colegio_costa_mauco",
-    "target_code": "church_11610040021",
-    "length_m": 240.46,
-    "cost": 240.46,
-    "reverse_cost": 240.46
+    "target_code": "crowd_parque_infantil_quintero",
+    "length_m": 188.57,
+    "cost": 188.57,
+    "reverse_cost": 188.57
    }
   },
   {
@@ -5740,20 +5662,20 @@
       -32.785358
      ],
      [
-      -71.528533,
-      -32.784815
+      -71.5297,
+      -32.78568
      ]
     ]
    },
    "properties": {
-    "id": 221,
+    "id": 218,
     "source": 47,
-    "target": 201,
+    "target": 266,
     "source_code": "edu_colegio_costa_mauco",
-    "target_code": "crowd_parque_infantil_quintero",
-    "length_m": 188.57,
-    "cost": 188.57,
-    "reverse_cost": 188.57
+    "target_code": "poi_quintero_sur_ann_sullivan",
+    "length_m": 78.23,
+    "cost": 78.23,
+    "reverse_cost": 78.23
    }
   },
   {
@@ -5772,7 +5694,7 @@
     ]
    },
    "properties": {
-    "id": 222,
+    "id": 219,
     "source": 48,
     "target": 49,
     "source_code": "edu_centro_faro",
@@ -5798,7 +5720,7 @@
     ]
    },
    "properties": {
-    "id": 223,
+    "id": 220,
     "source": 48,
     "target": 51,
     "source_code": "edu_centro_faro",
@@ -5824,7 +5746,7 @@
     ]
    },
    "properties": {
-    "id": 224,
+    "id": 221,
     "source": 48,
     "target": 123,
     "source_code": "edu_centro_faro",
@@ -5850,7 +5772,7 @@
     ]
    },
    "properties": {
-    "id": 225,
+    "id": 222,
     "source": 49,
     "target": 51,
     "source_code": "edu_escuela_nuevo_mundo",
@@ -5876,7 +5798,7 @@
     ]
    },
    "properties": {
-    "id": 226,
+    "id": 223,
     "source": 49,
     "target": 123,
     "source_code": "edu_escuela_nuevo_mundo",
@@ -5902,7 +5824,7 @@
     ]
    },
    "properties": {
-    "id": 227,
+    "id": 224,
     "source": 50,
     "target": 53,
     "source_code": "edu_escuela_san_gabriel",
@@ -5922,20 +5844,20 @@
       -32.78919
      ],
      [
-      -71.527169,
-      -32.792341
+      -71.528055,
+      -32.787698
      ]
     ]
    },
    "properties": {
-    "id": 228,
+    "id": 225,
     "source": 50,
-    "target": 57,
+    "target": 83,
     "source_code": "edu_escuela_san_gabriel",
-    "target_code": "comm_unimarc_normandie",
-    "length_m": 421.89,
-    "cost": 421.89,
-    "reverse_cost": 421.89
+    "target_code": "crowd_subcomisaria_quintero",
+    "length_m": 225.13,
+    "cost": 225.13,
+    "reverse_cost": 225.13
    }
   },
   {
@@ -5948,20 +5870,20 @@
       -32.78919
      ],
      [
-      -71.528055,
-      -32.787698
+      -71.53073,
+      -32.79148
      ]
     ]
    },
    "properties": {
-    "id": 229,
+    "id": 226,
     "source": 50,
-    "target": 83,
+    "target": 259,
     "source_code": "edu_escuela_san_gabriel",
-    "target_code": "crowd_subcomisaria_quintero",
-    "length_m": 225.13,
-    "cost": 225.13,
-    "reverse_cost": 225.13
+    "target_code": "poi_quintero_sur_porvenir",
+    "length_m": 272.8,
+    "cost": 272.8,
+    "reverse_cost": 272.8
    }
   },
   {
@@ -5980,7 +5902,7 @@
     ]
    },
    "properties": {
-    "id": 230,
+    "id": 227,
     "source": 51,
     "target": 123,
     "source_code": "edu_escuela_ann_sullivan",
@@ -6006,7 +5928,7 @@
     ]
    },
    "properties": {
-    "id": 231,
+    "id": 228,
     "source": 51,
     "target": 188,
     "source_code": "edu_escuela_ann_sullivan",
@@ -6032,7 +5954,7 @@
     ]
    },
    "properties": {
-    "id": 232,
+    "id": 229,
     "source": 52,
     "target": 103,
     "source_code": "edu_escuela_lourdes",
@@ -6058,7 +5980,7 @@
     ]
    },
    "properties": {
-    "id": 233,
+    "id": 230,
     "source": 52,
     "target": 104,
     "source_code": "edu_escuela_lourdes",
@@ -6084,7 +6006,7 @@
     ]
    },
    "properties": {
-    "id": 234,
+    "id": 231,
     "source": 52,
     "target": 110,
     "source_code": "edu_escuela_lourdes",
@@ -6110,7 +6032,7 @@
     ]
    },
    "properties": {
-    "id": 235,
+    "id": 232,
     "source": 52,
     "target": 126,
     "source_code": "edu_escuela_lourdes",
@@ -6136,7 +6058,7 @@
     ]
    },
    "properties": {
-    "id": 236,
+    "id": 233,
     "source": 52,
     "target": 188,
     "source_code": "edu_escuela_lourdes",
@@ -6162,7 +6084,7 @@
     ]
    },
    "properties": {
-    "id": 237,
+    "id": 234,
     "source": 52,
     "target": 237,
     "source_code": "edu_escuela_lourdes",
@@ -6188,7 +6110,7 @@
     ]
    },
    "properties": {
-    "id": 238,
+    "id": 235,
     "source": 54,
     "target": 181,
     "source_code": "edu_jardin_bambi",
@@ -6196,6 +6118,84 @@
     "length_m": 170.86,
     "cost": 170.86,
     "reverse_cost": 170.86
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -71.536773,
+      -32.797418
+     ],
+     [
+      -71.53292,
+      -32.79861
+     ]
+    ]
+   },
+   "properties": {
+    "id": 236,
+    "source": 54,
+    "target": 260,
+    "source_code": "edu_jardin_bambi",
+    "target_code": "poi_quintero_sur_lomas",
+    "length_m": 383.75,
+    "cost": 383.75,
+    "reverse_cost": 383.75
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -71.536773,
+      -32.797418
+     ],
+     [
+      -71.53702,
+      -32.79876
+     ]
+    ]
+   },
+   "properties": {
+    "id": 237,
+    "source": 54,
+    "target": 261,
+    "source_code": "edu_jardin_bambi",
+    "target_code": "poi_quintero_sur_independencia",
+    "length_m": 151.0,
+    "cost": 151.0,
+    "reverse_cost": 151.0
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -71.536773,
+      -32.797418
+     ],
+     [
+      -71.5372,
+      -32.7925
+     ]
+    ]
+   },
+   "properties": {
+    "id": 238,
+    "source": 54,
+    "target": 268,
+    "source_code": "edu_jardin_bambi",
+    "target_code": "poi_quintero_sur_diego_portales",
+    "length_m": 548.31,
+    "cost": 548.31,
+    "reverse_cost": 548.31
    }
   },
   {
@@ -6360,6 +6360,84 @@
     "type": "LineString",
     "coordinates": [
      [
+      -71.527169,
+      -32.792341
+     ],
+     [
+      -71.53073,
+      -32.79148
+     ]
+    ]
+   },
+   "properties": {
+    "id": 245,
+    "source": 57,
+    "target": 259,
+    "source_code": "comm_unimarc_normandie",
+    "target_code": "poi_quintero_sur_porvenir",
+    "length_m": 346.36,
+    "cost": 346.36,
+    "reverse_cost": 346.36
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -71.527169,
+      -32.792341
+     ],
+     [
+      -71.52666,
+      -32.79153
+     ]
+    ]
+   },
+   "properties": {
+    "id": 246,
+    "source": 57,
+    "target": 264,
+    "source_code": "comm_unimarc_normandie",
+    "target_code": "poi_quintero_sur_copec_f210",
+    "length_m": 101.96,
+    "cost": 101.96,
+    "reverse_cost": 101.96
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -71.527169,
+      -32.792341
+     ],
+     [
+      -71.52956,
+      -32.79327
+     ]
+    ]
+   },
+   "properties": {
+    "id": 247,
+    "source": 57,
+    "target": 267,
+    "source_code": "comm_unimarc_normandie",
+    "target_code": "poi_quintero_sur_multicancha_pinos",
+    "length_m": 246.22,
+    "cost": 246.22,
+    "reverse_cost": 246.22
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
       -71.526812,
       -32.798536
      ],
@@ -6370,7 +6448,7 @@
     ]
    },
    "properties": {
-    "id": 245,
+    "id": 248,
     "source": 58,
     "target": 72,
     "source_code": "comm_acuenta_quintero",
@@ -6396,7 +6474,7 @@
     ]
    },
    "properties": {
-    "id": 246,
+    "id": 249,
     "source": 58,
     "target": 75,
     "source_code": "comm_acuenta_quintero",
@@ -6422,7 +6500,7 @@
     ]
    },
    "properties": {
-    "id": 247,
+    "id": 250,
     "source": 58,
     "target": 76,
     "source_code": "comm_acuenta_quintero",
@@ -6448,7 +6526,7 @@
     ]
    },
    "properties": {
-    "id": 248,
+    "id": 251,
     "source": 58,
     "target": 184,
     "source_code": "comm_acuenta_quintero",
@@ -6474,7 +6552,7 @@
     ]
    },
    "properties": {
-    "id": 249,
+    "id": 252,
     "source": 58,
     "target": 196,
     "source_code": "comm_acuenta_quintero",
@@ -6500,7 +6578,7 @@
     ]
    },
    "properties": {
-    "id": 250,
+    "id": 253,
     "source": 59,
     "target": 84,
     "source_code": "comm_unimarc_puchuncavi",
@@ -6526,7 +6604,7 @@
     ]
    },
    "properties": {
-    "id": 251,
+    "id": 254,
     "source": 59,
     "target": 95,
     "source_code": "comm_unimarc_puchuncavi",
@@ -6552,7 +6630,7 @@
     ]
    },
    "properties": {
-    "id": 252,
+    "id": 255,
     "source": 59,
     "target": 182,
     "source_code": "comm_unimarc_puchuncavi",
@@ -6578,7 +6656,7 @@
     ]
    },
    "properties": {
-    "id": 253,
+    "id": 256,
     "source": 59,
     "target": 232,
     "source_code": "comm_unimarc_puchuncavi",
@@ -6598,85 +6676,7 @@
       -32.789344
      ],
      [
-      -71.50229,
-      -32.787705
-     ]
-    ]
-   },
-   "properties": {
-    "id": 254,
-    "source": 60,
-    "target": 70,
-    "source_code": "comm_el_descanso_loncura",
-    "target_code": "crowd_plaza_loncura",
-    "length_m": 188.45,
-    "cost": 188.45,
-    "reverse_cost": 188.45
-   }
-  },
-  {
-   "type": "Feature",
-   "geometry": {
-    "type": "LineString",
-    "coordinates": [
-     [
-      -71.502803,
-      -32.789344
-     ],
-     [
-      -71.504423,
-      -32.787931
-     ]
-    ]
-   },
-   "properties": {
-    "id": 255,
-    "source": 60,
-    "target": 189,
-    "source_code": "comm_el_descanso_loncura",
-    "target_code": "church_10776927881",
-    "length_m": 218.22,
-    "cost": 218.22,
-    "reverse_cost": 218.22
-   }
-  },
-  {
-   "type": "Feature",
-   "geometry": {
-    "type": "LineString",
-    "coordinates": [
-     [
-      -71.502803,
-      -32.789344
-     ],
-     [
-      -71.50896,
-      -32.79902
-     ]
-    ]
-   },
-   "properties": {
-    "id": 256,
-    "source": 60,
-    "target": 200,
-    "source_code": "comm_el_descanso_loncura",
-    "target_code": "infra_ruta_f210_quintero",
-    "length_m": 1220.17,
-    "cost": 1220.17,
-    "reverse_cost": 1220.17
-   }
-  },
-  {
-   "type": "Feature",
-   "geometry": {
-    "type": "LineString",
-    "coordinates": [
-     [
-      -71.502803,
-      -32.789344
-     ],
-     [
-      -71.496759,
+      -71.50349,
       -32.788246
      ]
     ]
@@ -6684,12 +6684,12 @@
    "properties": {
     "id": 257,
     "source": 60,
-    "target": 228,
+    "target": 229,
     "source_code": "comm_el_descanso_loncura",
-    "target_code": "ind_pfv_loncura",
-    "length_m": 578.03,
-    "cost": 578.03,
-    "reverse_cost": 578.03
+    "target_code": "civic_centro_civico_loncura",
+    "length_m": 137.95,
+    "cost": 137.95,
+    "reverse_cost": 137.95
    }
   },
   {
@@ -6702,20 +6702,72 @@
       -32.789344
      ],
      [
-      -71.50349,
-      -32.788246
+      -71.5018,
+      -32.78834
      ]
     ]
    },
    "properties": {
     "id": 258,
     "source": 60,
-    "target": 229,
+    "target": 248,
     "source_code": "comm_el_descanso_loncura",
-    "target_code": "civic_centro_civico_loncura",
-    "length_m": 137.95,
-    "cost": 137.95,
-    "reverse_cost": 137.95
+    "target_code": "poi_loncura_german_riesco",
+    "length_m": 145.79,
+    "cost": 145.79,
+    "reverse_cost": 145.79
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -71.502803,
+      -32.789344
+     ],
+     [
+      -71.50259,
+      -32.79041
+     ]
+    ]
+   },
+   "properties": {
+    "id": 259,
+    "source": 60,
+    "target": 249,
+    "source_code": "comm_el_descanso_loncura",
+    "target_code": "poi_loncura_los_alerces",
+    "length_m": 120.19,
+    "cost": 120.19,
+    "reverse_cost": 120.19
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -71.502803,
+      -32.789344
+     ],
+     [
+      -71.50373,
+      -32.78953
+     ]
+    ]
+   },
+   "properties": {
+    "id": 260,
+    "source": 60,
+    "target": 252,
+    "source_code": "comm_el_descanso_loncura",
+    "target_code": "poi_loncura_almacen_gaston",
+    "length_m": 89.09,
+    "cost": 89.09,
+    "reverse_cost": 89.09
    }
   },
   {
@@ -6734,7 +6786,7 @@
     ]
    },
    "properties": {
-    "id": 259,
+    "id": 261,
     "source": 61,
     "target": 69,
     "source_code": "comm_el_carolo_horcon",
@@ -6760,7 +6812,7 @@
     ]
    },
    "properties": {
-    "id": 260,
+    "id": 262,
     "source": 61,
     "target": 115,
     "source_code": "comm_el_carolo_horcon",
@@ -6786,7 +6838,7 @@
     ]
    },
    "properties": {
-    "id": 261,
+    "id": 263,
     "source": 61,
     "target": 155,
     "source_code": "comm_el_carolo_horcon",
@@ -6812,7 +6864,7 @@
     ]
    },
    "properties": {
-    "id": 262,
+    "id": 264,
     "source": 61,
     "target": 175,
     "source_code": "comm_el_carolo_horcon",
@@ -6838,7 +6890,7 @@
     ]
    },
    "properties": {
-    "id": 263,
+    "id": 265,
     "source": 62,
     "target": 83,
     "source_code": "comm_sdtodo_quintero",
@@ -6864,7 +6916,7 @@
     ]
    },
    "properties": {
-    "id": 264,
+    "id": 266,
     "source": 62,
     "target": 88,
     "source_code": "comm_sdtodo_quintero",
@@ -6890,7 +6942,7 @@
     ]
    },
    "properties": {
-    "id": 265,
+    "id": 267,
     "source": 62,
     "target": 89,
     "source_code": "comm_sdtodo_quintero",
@@ -6898,6 +6950,32 @@
     "length_m": 33.47,
     "cost": 33.47,
     "reverse_cost": 33.47
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -71.528224,
+      -32.786825
+     ],
+     [
+      -71.52705,
+      -32.78709
+     ]
+    ]
+   },
+   "properties": {
+    "id": 268,
+    "source": 62,
+    "target": 265,
+    "source_code": "comm_sdtodo_quintero",
+    "target_code": "poi_quintero_sur_shell_prat",
+    "length_m": 113.63,
+    "cost": 113.63,
+    "reverse_cost": 113.63
    }
   },
   {
@@ -6916,7 +6994,7 @@
     ]
    },
    "properties": {
-    "id": 266,
+    "id": 269,
     "source": 63,
     "target": 64,
     "source_code": "comm_feria_quintero",
@@ -6942,7 +7020,7 @@
     ]
    },
    "properties": {
-    "id": 267,
+    "id": 270,
     "source": 63,
     "target": 71,
     "source_code": "comm_feria_quintero",
@@ -6968,7 +7046,7 @@
     ]
    },
    "properties": {
-    "id": 268,
+    "id": 271,
     "source": 63,
     "target": 107,
     "source_code": "comm_feria_quintero",
@@ -6994,7 +7072,7 @@
     ]
    },
    "properties": {
-    "id": 269,
+    "id": 272,
     "source": 63,
     "target": 108,
     "source_code": "comm_feria_quintero",
@@ -7020,7 +7098,7 @@
     ]
    },
    "properties": {
-    "id": 270,
+    "id": 273,
     "source": 64,
     "target": 71,
     "source_code": "comm_caleta_mercado_quintero",
@@ -7046,7 +7124,7 @@
     ]
    },
    "properties": {
-    "id": 271,
+    "id": 274,
     "source": 64,
     "target": 92,
     "source_code": "comm_caleta_mercado_quintero",
@@ -7072,7 +7150,7 @@
     ]
    },
    "properties": {
-    "id": 272,
+    "id": 275,
     "source": 64,
     "target": 107,
     "source_code": "comm_caleta_mercado_quintero",
@@ -7098,7 +7176,7 @@
     ]
    },
    "properties": {
-    "id": 273,
+    "id": 276,
     "source": 64,
     "target": 108,
     "source_code": "comm_caleta_mercado_quintero",
@@ -7124,7 +7202,7 @@
     ]
    },
    "properties": {
-    "id": 274,
+    "id": 277,
     "source": 64,
     "target": 119,
     "source_code": "comm_caleta_mercado_quintero",
@@ -7150,7 +7228,7 @@
     ]
    },
    "properties": {
-    "id": 275,
+    "id": 278,
     "source": 64,
     "target": 141,
     "source_code": "comm_caleta_mercado_quintero",
@@ -7176,7 +7254,7 @@
     ]
    },
    "properties": {
-    "id": 276,
+    "id": 279,
     "source": 64,
     "target": 164,
     "source_code": "comm_caleta_mercado_quintero",
@@ -7202,7 +7280,7 @@
     ]
    },
    "properties": {
-    "id": 277,
+    "id": 280,
     "source": 65,
     "target": 113,
     "source_code": "comm_caleta_mercado_loncura",
@@ -7228,7 +7306,7 @@
     ]
    },
    "properties": {
-    "id": 278,
+    "id": 281,
     "source": 65,
     "target": 135,
     "source_code": "comm_caleta_mercado_loncura",
@@ -7254,7 +7332,7 @@
     ]
    },
    "properties": {
-    "id": 279,
+    "id": 282,
     "source": 65,
     "target": 180,
     "source_code": "comm_caleta_mercado_loncura",
@@ -7280,7 +7358,7 @@
     ]
    },
    "properties": {
-    "id": 280,
+    "id": 283,
     "source": 65,
     "target": 233,
     "source_code": "comm_caleta_mercado_loncura",
@@ -7288,6 +7366,32 @@
     "length_m": 409.21,
     "cost": 409.21,
     "reverse_cost": 409.21
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -71.507865,
+      -32.782724
+     ],
+     [
+      -71.5072,
+      -32.78455
+     ]
+    ]
+   },
+   "properties": {
+    "id": 284,
+    "source": 65,
+    "target": 256,
+    "source_code": "comm_caleta_mercado_loncura",
+    "target_code": "poi_loncura_los_mellizos",
+    "length_m": 212.35,
+    "cost": 212.35,
+    "reverse_cost": 212.35
    }
   },
   {
@@ -7306,7 +7410,7 @@
     ]
    },
    "properties": {
-    "id": 281,
+    "id": 285,
     "source": 66,
     "target": 134,
     "source_code": "crowd_plaza_quintero",
@@ -7332,7 +7436,7 @@
     ]
    },
    "properties": {
-    "id": 282,
+    "id": 286,
     "source": 66,
     "target": 183,
     "source_code": "crowd_plaza_quintero",
@@ -7358,7 +7462,7 @@
     ]
    },
    "properties": {
-    "id": 283,
+    "id": 287,
     "source": 66,
     "target": 190,
     "source_code": "crowd_plaza_quintero",
@@ -7384,7 +7488,7 @@
     ]
    },
    "properties": {
-    "id": 284,
+    "id": 288,
     "source": 66,
     "target": 201,
     "source_code": "crowd_plaza_quintero",
@@ -7410,7 +7514,7 @@
     ]
    },
    "properties": {
-    "id": 285,
+    "id": 289,
     "source": 67,
     "target": 82,
     "source_code": "crowd_plaza_puchuncavi",
@@ -7436,7 +7540,7 @@
     ]
    },
    "properties": {
-    "id": 286,
+    "id": 290,
     "source": 67,
     "target": 93,
     "source_code": "crowd_plaza_puchuncavi",
@@ -7462,7 +7566,7 @@
     ]
    },
    "properties": {
-    "id": 287,
+    "id": 291,
     "source": 67,
     "target": 95,
     "source_code": "crowd_plaza_puchuncavi",
@@ -7488,7 +7592,7 @@
     ]
    },
    "properties": {
-    "id": 288,
+    "id": 292,
     "source": 67,
     "target": 166,
     "source_code": "crowd_plaza_puchuncavi",
@@ -7514,7 +7618,7 @@
     ]
    },
    "properties": {
-    "id": 289,
+    "id": 293,
     "source": 67,
     "target": 199,
     "source_code": "crowd_plaza_puchuncavi",
@@ -7540,7 +7644,7 @@
     ]
    },
    "properties": {
-    "id": 290,
+    "id": 294,
     "source": 68,
     "target": 79,
     "source_code": "crowd_plaza_ventanas",
@@ -7560,39 +7664,13 @@
       -32.743039
      ],
      [
-      -71.468597,
-      -32.741347
-     ]
-    ]
-   },
-   "properties": {
-    "id": 291,
-    "source": 68,
-    "target": 198,
-    "source_code": "crowd_plaza_ventanas",
-    "target_code": "comm_copec_ventanas",
-    "length_m": 706.49,
-    "cost": 706.49,
-    "reverse_cost": 706.49
-   }
-  },
-  {
-   "type": "Feature",
-   "geometry": {
-    "type": "LineString",
-    "coordinates": [
-     [
-      -71.475878,
-      -32.743039
-     ],
-     [
       -71.47561,
       -32.74452
      ]
     ]
    },
    "properties": {
-    "id": 292,
+    "id": 295,
     "source": 68,
     "target": 202,
     "source_code": "crowd_plaza_ventanas",
@@ -7618,7 +7696,7 @@
     ]
    },
    "properties": {
-    "id": 293,
+    "id": 296,
     "source": 68,
     "target": 203,
     "source_code": "crowd_plaza_ventanas",
@@ -7638,39 +7716,13 @@
       -32.712876
      ],
      [
-      -71.487815,
-      -32.71079
-     ]
-    ]
-   },
-   "properties": {
-    "id": 294,
-    "source": 69,
-    "target": 115,
-    "source_code": "crowd_plaza_horcon",
-    "target_code": "beach_playa_el_clarón",
-    "length_m": 299.08,
-    "cost": 299.08,
-    "reverse_cost": 299.08
-   }
-  },
-  {
-   "type": "Feature",
-   "geometry": {
-    "type": "LineString",
-    "coordinates": [
-     [
-      -71.489833,
-      -32.712876
-     ],
-     [
       -71.493723,
       -32.716002
      ]
     ]
    },
    "properties": {
-    "id": 295,
+    "id": 297,
     "source": 69,
     "target": 144,
     "source_code": "crowd_plaza_horcon",
@@ -7686,24 +7738,24 @@
     "type": "LineString",
     "coordinates": [
      [
-      -71.50229,
-      -32.787705
+      -71.489833,
+      -32.712876
      ],
      [
-      -71.504423,
-      -32.787931
+      -71.4875,
+      -32.7125
      ]
     ]
    },
    "properties": {
-    "id": 296,
-    "source": 70,
-    "target": 189,
-    "source_code": "crowd_plaza_loncura",
-    "target_code": "church_10776927881",
-    "length_m": 200.97,
-    "cost": 200.97,
-    "reverse_cost": 200.97
+    "id": 298,
+    "source": 69,
+    "target": 243,
+    "source_code": "crowd_plaza_horcon",
+    "target_code": "poi_chocota_mirador_pelicanos",
+    "length_m": 222.24,
+    "cost": 222.24,
+    "reverse_cost": 222.24
    }
   },
   {
@@ -7722,7 +7774,7 @@
     ]
    },
    "properties": {
-    "id": 297,
+    "id": 299,
     "source": 70,
     "target": 228,
     "source_code": "crowd_plaza_loncura",
@@ -7748,7 +7800,7 @@
     ]
    },
    "properties": {
-    "id": 298,
+    "id": 300,
     "source": 70,
     "target": 229,
     "source_code": "crowd_plaza_loncura",
@@ -7768,20 +7820,46 @@
       -32.787705
      ],
      [
-      -71.5035,
-      -32.783
+      -71.5018,
+      -32.78834
      ]
     ]
    },
    "properties": {
-    "id": 299,
+    "id": 301,
     "source": 70,
-    "target": 233,
+    "target": 248,
     "source_code": "crowd_plaza_loncura",
-    "target_code": "hist_santuario_las_petras",
-    "length_m": 535.26,
-    "cost": 535.26,
-    "reverse_cost": 535.26
+    "target_code": "poi_loncura_german_riesco",
+    "length_m": 84.16,
+    "cost": 84.16,
+    "reverse_cost": 84.16
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -71.50229,
+      -32.787705
+     ],
+     [
+      -71.5035,
+      -32.7875
+     ]
+    ]
+   },
+   "properties": {
+    "id": 302,
+    "source": 70,
+    "target": 257,
+    "source_code": "crowd_plaza_loncura",
+    "target_code": "poi_loncura_chimbote_huaras",
+    "length_m": 115.38,
+    "cost": 115.38,
+    "reverse_cost": 115.38
    }
   },
   {
@@ -7800,7 +7878,7 @@
     ]
    },
    "properties": {
-    "id": 300,
+    "id": 303,
     "source": 71,
     "target": 108,
     "source_code": "crowd_plaza_fuerza_aerea",
@@ -7826,7 +7904,7 @@
     ]
    },
    "properties": {
-    "id": 301,
+    "id": 304,
     "source": 71,
     "target": 134,
     "source_code": "crowd_plaza_fuerza_aerea",
@@ -7852,7 +7930,7 @@
     ]
    },
    "properties": {
-    "id": 302,
+    "id": 305,
     "source": 72,
     "target": 75,
     "source_code": "crowd_plaza_bicentenario",
@@ -7878,7 +7956,7 @@
     ]
    },
    "properties": {
-    "id": 303,
+    "id": 306,
     "source": 72,
     "target": 184,
     "source_code": "crowd_plaza_bicentenario",
@@ -7898,20 +7976,20 @@
       -32.797636
      ],
      [
-      -71.527753,
-      -32.799943
+      -71.5278,
+      -32.796
      ]
     ]
    },
    "properties": {
-    "id": 304,
+    "id": 307,
     "source": 72,
-    "target": 196,
+    "target": 270,
     "source_code": "crowd_plaza_bicentenario",
-    "target_code": "crowd_quintero_padel",
-    "length_m": 260.15,
-    "cost": 260.15,
-    "reverse_cost": 260.15
+    "target_code": "poi_quintero_sur_las_brisas",
+    "length_m": 188.06,
+    "cost": 188.06,
+    "reverse_cost": 188.06
    }
   },
   {
@@ -7930,7 +8008,7 @@
     ]
    },
    "properties": {
-    "id": 305,
+    "id": 308,
     "source": 73,
     "target": 97,
     "source_code": "crowd_parque_cousino",
@@ -7956,7 +8034,7 @@
     ]
    },
    "properties": {
-    "id": 306,
+    "id": 309,
     "source": 73,
     "target": 111,
     "source_code": "crowd_parque_cousino",
@@ -7982,7 +8060,7 @@
     ]
    },
    "properties": {
-    "id": 307,
+    "id": 310,
     "source": 73,
     "target": 112,
     "source_code": "crowd_parque_cousino",
@@ -8008,7 +8086,7 @@
     ]
    },
    "properties": {
-    "id": 308,
+    "id": 311,
     "source": 73,
     "target": 124,
     "source_code": "crowd_parque_cousino",
@@ -8034,7 +8112,7 @@
     ]
    },
    "properties": {
-    "id": 309,
+    "id": 312,
     "source": 73,
     "target": 179,
     "source_code": "crowd_parque_cousino",
@@ -8060,7 +8138,7 @@
     ]
    },
    "properties": {
-    "id": 310,
+    "id": 313,
     "source": 74,
     "target": 87,
     "source_code": "crowd_terminal_buses_quintero",
@@ -8086,7 +8164,7 @@
     ]
    },
    "properties": {
-    "id": 311,
+    "id": 314,
     "source": 74,
     "target": 99,
     "source_code": "crowd_terminal_buses_quintero",
@@ -8112,7 +8190,7 @@
     ]
    },
    "properties": {
-    "id": 312,
+    "id": 315,
     "source": 74,
     "target": 140,
     "source_code": "crowd_terminal_buses_quintero",
@@ -8138,7 +8216,7 @@
     ]
    },
    "properties": {
-    "id": 313,
+    "id": 316,
     "source": 74,
     "target": 165,
     "source_code": "crowd_terminal_buses_quintero",
@@ -8164,7 +8242,7 @@
     ]
    },
    "properties": {
-    "id": 314,
+    "id": 317,
     "source": 74,
     "target": 191,
     "source_code": "crowd_terminal_buses_quintero",
@@ -8184,39 +8262,13 @@
       -32.797389
      ],
      [
-      -71.529555,
-      -32.799484
-     ]
-    ]
-   },
-   "properties": {
-    "id": 315,
-    "source": 75,
-    "target": 76,
-    "source_code": "crowd_terminal_buses_sur",
-    "target_code": "crowd_estadio_quintero",
-    "length_m": 283.95,
-    "cost": 283.95,
-    "reverse_cost": 283.95
-   }
-  },
-  {
-   "type": "Feature",
-   "geometry": {
-    "type": "LineString",
-    "coordinates": [
-     [
-      -71.527818,
-      -32.797389
-     ],
-     [
       -71.527383,
       -32.797734
      ]
     ]
    },
    "properties": {
-    "id": 316,
+    "id": 318,
     "source": 75,
     "target": 184,
     "source_code": "crowd_terminal_buses_sur",
@@ -8236,20 +8288,46 @@
       -32.797389
      ],
      [
-      -71.530014,
-      -32.794358
+      -71.52946,
+      -32.79889
      ]
     ]
    },
    "properties": {
-    "id": 317,
+    "id": 319,
     "source": 75,
-    "target": 192,
+    "target": 263,
     "source_code": "crowd_terminal_buses_sur",
-    "target_code": "church_654628986",
-    "length_m": 394.62,
-    "cost": 394.62,
-    "reverse_cost": 394.62
+    "target_code": "poi_quintero_sur_estadio_muni",
+    "length_m": 226.74,
+    "cost": 226.74,
+    "reverse_cost": 226.74
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -71.527818,
+      -32.797389
+     ],
+     [
+      -71.5278,
+      -32.796
+     ]
+    ]
+   },
+   "properties": {
+    "id": 320,
+    "source": 75,
+    "target": 270,
+    "source_code": "crowd_terminal_buses_sur",
+    "target_code": "poi_quintero_sur_las_brisas",
+    "length_m": 154.46,
+    "cost": 154.46,
+    "reverse_cost": 154.46
    }
   },
   {
@@ -8268,7 +8346,7 @@
     ]
    },
    "properties": {
-    "id": 318,
+    "id": 321,
     "source": 76,
     "target": 184,
     "source_code": "crowd_estadio_quintero",
@@ -8294,7 +8372,7 @@
     ]
    },
    "properties": {
-    "id": 319,
+    "id": 322,
     "source": 76,
     "target": 196,
     "source_code": "crowd_estadio_quintero",
@@ -8302,6 +8380,84 @@
     "length_m": 175.99,
     "cost": 175.99,
     "reverse_cost": 175.99
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -71.529555,
+      -32.799484
+     ],
+     [
+      -71.53292,
+      -32.79861
+     ]
+    ]
+   },
+   "properties": {
+    "id": 323,
+    "source": 76,
+    "target": 260,
+    "source_code": "crowd_estadio_quintero",
+    "target_code": "poi_quintero_sur_lomas",
+    "length_m": 329.19,
+    "cost": 329.19,
+    "reverse_cost": 329.19
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -71.529555,
+      -32.799484
+     ],
+     [
+      -71.53342,
+      -32.80106
+     ]
+    ]
+   },
+   "properties": {
+    "id": 324,
+    "source": 76,
+    "target": 262,
+    "source_code": "crowd_estadio_quintero",
+    "target_code": "poi_quintero_sur_colinas_mar",
+    "length_m": 401.51,
+    "cost": 401.51,
+    "reverse_cost": 401.51
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -71.529555,
+      -32.799484
+     ],
+     [
+      -71.52946,
+      -32.79889
+     ]
+    ]
+   },
+   "properties": {
+    "id": 325,
+    "source": 76,
+    "target": 263,
+    "source_code": "crowd_estadio_quintero",
+    "target_code": "poi_quintero_sur_estadio_muni",
+    "length_m": 66.64,
+    "cost": 66.64,
+    "reverse_cost": 66.64
    }
   },
   {
@@ -8320,7 +8476,7 @@
     ]
    },
    "properties": {
-    "id": 320,
+    "id": 326,
     "source": 77,
     "target": 81,
     "source_code": "crowd_gimnasio_quintero",
@@ -8346,7 +8502,7 @@
     ]
    },
    "properties": {
-    "id": 321,
+    "id": 327,
     "source": 77,
     "target": 89,
     "source_code": "crowd_gimnasio_quintero",
@@ -8372,7 +8528,7 @@
     ]
    },
    "properties": {
-    "id": 322,
+    "id": 328,
     "source": 77,
     "target": 183,
     "source_code": "crowd_gimnasio_quintero",
@@ -8398,7 +8554,7 @@
     ]
    },
    "properties": {
-    "id": 323,
+    "id": 329,
     "source": 77,
     "target": 201,
     "source_code": "crowd_gimnasio_quintero",
@@ -8406,6 +8562,32 @@
     "length_m": 84.5,
     "cost": 84.5,
     "reverse_cost": 84.5
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -71.52843,
+      -32.78557
+     ],
+     [
+      -71.5297,
+      -32.78568
+     ]
+    ]
+   },
+   "properties": {
+    "id": 330,
+    "source": 77,
+    "target": 266,
+    "source_code": "crowd_gimnasio_quintero",
+    "target_code": "poi_quintero_sur_ann_sullivan",
+    "length_m": 119.35,
+    "cost": 119.35,
+    "reverse_cost": 119.35
    }
   },
   {
@@ -8424,7 +8606,7 @@
     ]
    },
    "properties": {
-    "id": 324,
+    "id": 331,
     "source": 78,
     "target": 167,
     "source_code": "crowd_estadio_puchuncavi",
@@ -8450,7 +8632,7 @@
     ]
    },
    "properties": {
-    "id": 325,
+    "id": 332,
     "source": 78,
     "target": 182,
     "source_code": "crowd_estadio_puchuncavi",
@@ -8476,7 +8658,7 @@
     ]
    },
    "properties": {
-    "id": 326,
+    "id": 333,
     "source": 78,
     "target": 232,
     "source_code": "crowd_estadio_puchuncavi",
@@ -8502,7 +8684,7 @@
     ]
    },
    "properties": {
-    "id": 327,
+    "id": 334,
     "source": 79,
     "target": 202,
     "source_code": "crowd_estadio_ventanas",
@@ -8528,7 +8710,7 @@
     ]
    },
    "properties": {
-    "id": 328,
+    "id": 335,
     "source": 79,
     "target": 203,
     "source_code": "crowd_estadio_ventanas",
@@ -8554,7 +8736,7 @@
     ]
    },
    "properties": {
-    "id": 329,
+    "id": 336,
     "source": 79,
     "target": 223,
     "source_code": "crowd_estadio_ventanas",
@@ -8580,7 +8762,7 @@
     ]
    },
    "properties": {
-    "id": 330,
+    "id": 337,
     "source": 80,
     "target": 93,
     "source_code": "crowd_medialuna_puchuncavi",
@@ -8606,7 +8788,7 @@
     ]
    },
    "properties": {
-    "id": 331,
+    "id": 338,
     "source": 80,
     "target": 166,
     "source_code": "crowd_medialuna_puchuncavi",
@@ -8632,7 +8814,7 @@
     ]
    },
    "properties": {
-    "id": 332,
+    "id": 339,
     "source": 81,
     "target": 125,
     "source_code": "crowd_muni_quintero",
@@ -8658,7 +8840,7 @@
     ]
    },
    "properties": {
-    "id": 333,
+    "id": 340,
     "source": 81,
     "target": 183,
     "source_code": "crowd_muni_quintero",
@@ -8684,7 +8866,7 @@
     ]
    },
    "properties": {
-    "id": 334,
+    "id": 341,
     "source": 82,
     "target": 93,
     "source_code": "crowd_muni_puchuncavi",
@@ -8710,7 +8892,7 @@
     ]
    },
    "properties": {
-    "id": 335,
+    "id": 342,
     "source": 82,
     "target": 199,
     "source_code": "crowd_muni_puchuncavi",
@@ -8718,6 +8900,32 @@
     "length_m": 174.24,
     "cost": 174.24,
     "reverse_cost": 174.24
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -71.528055,
+      -32.787698
+     ],
+     [
+      -71.52705,
+      -32.78709
+     ]
+    ]
+   },
+   "properties": {
+    "id": 343,
+    "source": 83,
+    "target": 265,
+    "source_code": "crowd_subcomisaria_quintero",
+    "target_code": "poi_quintero_sur_shell_prat",
+    "length_m": 115.74,
+    "cost": 115.74,
+    "reverse_cost": 115.74
    }
   },
   {
@@ -8736,7 +8944,7 @@
     ]
    },
    "properties": {
-    "id": 336,
+    "id": 344,
     "source": 84,
     "target": 167,
     "source_code": "crowd_tenencia_puchuncavi",
@@ -8762,7 +8970,7 @@
     ]
    },
    "properties": {
-    "id": 337,
+    "id": 345,
     "source": 84,
     "target": 182,
     "source_code": "crowd_tenencia_puchuncavi",
@@ -8788,7 +8996,7 @@
     ]
    },
    "properties": {
-    "id": 338,
+    "id": 346,
     "source": 84,
     "target": 232,
     "source_code": "crowd_tenencia_puchuncavi",
@@ -8814,7 +9022,7 @@
     ]
    },
    "properties": {
-    "id": 339,
+    "id": 347,
     "source": 85,
     "target": 114,
     "source_code": "crowd_reten_ventanas",
@@ -8840,7 +9048,7 @@
     ]
    },
    "properties": {
-    "id": 340,
+    "id": 348,
     "source": 85,
     "target": 156,
     "source_code": "crowd_reten_ventanas",
@@ -8866,7 +9074,7 @@
     ]
    },
    "properties": {
-    "id": 341,
+    "id": 349,
     "source": 86,
     "target": 127,
     "source_code": "crowd_reten_horcon",
@@ -8892,7 +9100,7 @@
     ]
    },
    "properties": {
-    "id": 342,
+    "id": 350,
     "source": 86,
     "target": 128,
     "source_code": "crowd_reten_horcon",
@@ -8918,7 +9126,7 @@
     ]
    },
    "properties": {
-    "id": 343,
+    "id": 351,
     "source": 86,
     "target": 159,
     "source_code": "crowd_reten_horcon",
@@ -8944,7 +9152,7 @@
     ]
    },
    "properties": {
-    "id": 344,
+    "id": 352,
     "source": 86,
     "target": 160,
     "source_code": "crowd_reten_horcon",
@@ -8964,20 +9172,72 @@
       -32.715967
      ],
      [
-      -71.485529,
-      -32.713768
+      -71.48989,
+      -32.71623
      ]
     ]
    },
    "properties": {
-    "id": 345,
+    "id": 353,
     "source": 86,
-    "target": 177,
+    "target": 239,
     "source_code": "crowd_reten_horcon",
-    "target_code": "attr_4422257463",
-    "length_m": 261.6,
-    "cost": 261.6,
-    "reverse_cost": 261.6
+    "target_code": "poi_chocota_villa_horcomad",
+    "length_m": 316.35,
+    "cost": 316.35,
+    "reverse_cost": 316.35
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -71.486523,
+      -32.715967
+     ],
+     [
+      -71.4795,
+      -32.7168
+     ]
+    ]
+   },
+   "properties": {
+    "id": 354,
+    "source": 86,
+    "target": 244,
+    "source_code": "crowd_reten_horcon",
+    "target_code": "poi_chocota_alto_mar",
+    "length_m": 663.53,
+    "cost": 663.53,
+    "reverse_cost": 663.53
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -71.486523,
+      -32.715967
+     ],
+     [
+      -71.4881,
+      -32.7185
+     ]
+    ]
+   },
+   "properties": {
+    "id": 355,
+    "source": 86,
+    "target": 246,
+    "source_code": "crowd_reten_horcon",
+    "target_code": "poi_chocota_ponderosa",
+    "length_m": 317.96,
+    "cost": 317.96,
+    "reverse_cost": 317.96
    }
   },
   {
@@ -8996,7 +9256,7 @@
     ]
    },
    "properties": {
-    "id": 346,
+    "id": 356,
     "source": 87,
     "target": 99,
     "source_code": "crowd_capitania_puerto",
@@ -9022,7 +9282,7 @@
     ]
    },
    "properties": {
-    "id": 347,
+    "id": 357,
     "source": 87,
     "target": 101,
     "source_code": "crowd_capitania_puerto",
@@ -9048,7 +9308,7 @@
     ]
    },
    "properties": {
-    "id": 348,
+    "id": 358,
     "source": 87,
     "target": 140,
     "source_code": "crowd_capitania_puerto",
@@ -9074,7 +9334,7 @@
     ]
    },
    "properties": {
-    "id": 349,
+    "id": 359,
     "source": 87,
     "target": 146,
     "source_code": "crowd_capitania_puerto",
@@ -9100,7 +9360,7 @@
     ]
    },
    "properties": {
-    "id": 350,
+    "id": 360,
     "source": 87,
     "target": 165,
     "source_code": "crowd_capitania_puerto",
@@ -9126,7 +9386,7 @@
     ]
    },
    "properties": {
-    "id": 351,
+    "id": 361,
     "source": 88,
     "target": 89,
     "source_code": "crowd_bomberos_quintero",
@@ -9152,7 +9412,7 @@
     ]
    },
    "properties": {
-    "id": 352,
+    "id": 362,
     "source": 88,
     "target": 125,
     "source_code": "crowd_bomberos_quintero",
@@ -9160,6 +9420,58 @@
     "length_m": 46.69,
     "cost": 46.69,
     "reverse_cost": 46.69
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -71.52757,
+      -32.78624
+     ],
+     [
+      -71.52705,
+      -32.78709
+     ]
+    ]
+   },
+   "properties": {
+    "id": 363,
+    "source": 88,
+    "target": 265,
+    "source_code": "crowd_bomberos_quintero",
+    "target_code": "poi_quintero_sur_shell_prat",
+    "length_m": 106.28,
+    "cost": 106.28,
+    "reverse_cost": 106.28
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -71.528229,
+      -32.786524
+     ],
+     [
+      -71.5297,
+      -32.78568
+     ]
+    ]
+   },
+   "properties": {
+    "id": 364,
+    "source": 89,
+    "target": 266,
+    "source_code": "crowd_juzgado_quintero",
+    "target_code": "poi_quintero_sur_ann_sullivan",
+    "length_m": 166.48,
+    "cost": 166.48,
+    "reverse_cost": 166.48
    }
   },
   {
@@ -9178,7 +9490,7 @@
     ]
    },
    "properties": {
-    "id": 353,
+    "id": 365,
     "source": 90,
     "target": 130,
     "source_code": "crowd_caleta_ventanas",
@@ -9204,7 +9516,7 @@
     ]
    },
    "properties": {
-    "id": 354,
+    "id": 366,
     "source": 90,
     "target": 157,
     "source_code": "crowd_caleta_ventanas",
@@ -9230,7 +9542,7 @@
     ]
    },
    "properties": {
-    "id": 355,
+    "id": 367,
     "source": 90,
     "target": 161,
     "source_code": "crowd_caleta_ventanas",
@@ -9256,7 +9568,7 @@
     ]
    },
    "properties": {
-    "id": 356,
+    "id": 368,
     "source": 90,
     "target": 163,
     "source_code": "crowd_caleta_ventanas",
@@ -9282,7 +9594,7 @@
     ]
    },
    "properties": {
-    "id": 357,
+    "id": 369,
     "source": 91,
     "target": 152,
     "source_code": "crowd_caleta_horcon",
@@ -9308,7 +9620,7 @@
     ]
    },
    "properties": {
-    "id": 358,
+    "id": 370,
     "source": 91,
     "target": 153,
     "source_code": "crowd_caleta_horcon",
@@ -9334,7 +9646,7 @@
     ]
    },
    "properties": {
-    "id": 359,
+    "id": 371,
     "source": 91,
     "target": 174,
     "source_code": "crowd_caleta_horcon",
@@ -9360,7 +9672,7 @@
     ]
    },
    "properties": {
-    "id": 360,
+    "id": 372,
     "source": 91,
     "target": 185,
     "source_code": "crowd_caleta_horcon",
@@ -9386,7 +9698,7 @@
     ]
    },
    "properties": {
-    "id": 361,
+    "id": 373,
     "source": 92,
     "target": 107,
     "source_code": "crowd_parroquia_filomena",
@@ -9412,7 +9724,7 @@
     ]
    },
    "properties": {
-    "id": 362,
+    "id": 374,
     "source": 92,
     "target": 119,
     "source_code": "crowd_parroquia_filomena",
@@ -9438,7 +9750,7 @@
     ]
    },
    "properties": {
-    "id": 363,
+    "id": 375,
     "source": 92,
     "target": 141,
     "source_code": "crowd_parroquia_filomena",
@@ -9464,7 +9776,7 @@
     ]
    },
    "properties": {
-    "id": 364,
+    "id": 376,
     "source": 92,
     "target": 164,
     "source_code": "crowd_parroquia_filomena",
@@ -9490,7 +9802,7 @@
     ]
    },
    "properties": {
-    "id": 365,
+    "id": 377,
     "source": 93,
     "target": 166,
     "source_code": "crowd_parroquia_puchuncavi",
@@ -9516,7 +9828,7 @@
     ]
    },
    "properties": {
-    "id": 366,
+    "id": 378,
     "source": 93,
     "target": 187,
     "source_code": "crowd_parroquia_puchuncavi",
@@ -9542,7 +9854,7 @@
     ]
    },
    "properties": {
-    "id": 367,
+    "id": 379,
     "source": 94,
     "target": 117,
     "source_code": "crowd_capilla_santa_ana",
@@ -9568,7 +9880,7 @@
     ]
    },
    "properties": {
-    "id": 368,
+    "id": 380,
     "source": 94,
     "target": 143,
     "source_code": "crowd_capilla_santa_ana",
@@ -9594,7 +9906,7 @@
     ]
    },
    "properties": {
-    "id": 369,
+    "id": 381,
     "source": 94,
     "target": 147,
     "source_code": "crowd_capilla_santa_ana",
@@ -9620,7 +9932,7 @@
     ]
    },
    "properties": {
-    "id": 370,
+    "id": 382,
     "source": 94,
     "target": 150,
     "source_code": "crowd_capilla_santa_ana",
@@ -9646,7 +9958,7 @@
     ]
    },
    "properties": {
-    "id": 371,
+    "id": 383,
     "source": 94,
     "target": 176,
     "source_code": "crowd_capilla_santa_ana",
@@ -9672,7 +9984,7 @@
     ]
    },
    "properties": {
-    "id": 372,
+    "id": 384,
     "source": 95,
     "target": 199,
     "source_code": "hub_puchuncavi",
@@ -9698,7 +10010,7 @@
     ]
    },
    "properties": {
-    "id": 373,
+    "id": 385,
     "source": 96,
     "target": 214,
     "source_code": "hub_loncura",
@@ -9724,7 +10036,7 @@
     ]
    },
    "properties": {
-    "id": 374,
+    "id": 386,
     "source": 96,
     "target": 215,
     "source_code": "hub_loncura",
@@ -9750,7 +10062,7 @@
     ]
    },
    "properties": {
-    "id": 375,
+    "id": 387,
     "source": 96,
     "target": 227,
     "source_code": "hub_loncura",
@@ -9770,20 +10082,20 @@
       -32.793
      ],
      [
-      -71.496759,
-      -32.788246
+      -71.497,
+      -32.7895
      ]
     ]
    },
    "properties": {
-    "id": 376,
+    "id": 388,
     "source": 96,
-    "target": 228,
+    "target": 258,
     "source_code": "hub_loncura",
-    "target_code": "ind_pfv_loncura",
-    "length_m": 974.58,
-    "cost": 974.58,
-    "reverse_cost": 974.58
+    "target_code": "poi_loncura_parque_solar",
+    "length_m": 926.94,
+    "cost": 926.94,
+    "reverse_cost": 926.94
    }
   },
   {
@@ -9802,7 +10114,7 @@
     ]
    },
    "properties": {
-    "id": 377,
+    "id": 389,
     "source": 97,
     "target": 98,
     "source_code": "beach_playa_los_enamorados",
@@ -9828,7 +10140,7 @@
     ]
    },
    "properties": {
-    "id": 378,
+    "id": 390,
     "source": 97,
     "target": 111,
     "source_code": "beach_playa_los_enamorados",
@@ -9854,7 +10166,7 @@
     ]
    },
    "properties": {
-    "id": 379,
+    "id": 391,
     "source": 97,
     "target": 112,
     "source_code": "beach_playa_los_enamorados",
@@ -9880,7 +10192,7 @@
     ]
    },
    "properties": {
-    "id": 380,
+    "id": 392,
     "source": 97,
     "target": 179,
     "source_code": "beach_playa_los_enamorados",
@@ -9906,7 +10218,7 @@
     ]
    },
    "properties": {
-    "id": 381,
+    "id": 393,
     "source": 98,
     "target": 100,
     "source_code": "beach_playa_las_conchitas",
@@ -9932,7 +10244,7 @@
     ]
    },
    "properties": {
-    "id": 382,
+    "id": 394,
     "source": 98,
     "target": 112,
     "source_code": "beach_playa_las_conchitas",
@@ -9958,7 +10270,7 @@
     ]
    },
    "properties": {
-    "id": 383,
+    "id": 395,
     "source": 98,
     "target": 179,
     "source_code": "beach_playa_las_conchitas",
@@ -9984,7 +10296,7 @@
     ]
    },
    "properties": {
-    "id": 384,
+    "id": 396,
     "source": 99,
     "target": 100,
     "source_code": "beach_playa_el_durazno",
@@ -10010,7 +10322,7 @@
     ]
    },
    "properties": {
-    "id": 385,
+    "id": 397,
     "source": 99,
     "target": 101,
     "source_code": "beach_playa_el_durazno",
@@ -10036,7 +10348,7 @@
     ]
    },
    "properties": {
-    "id": 386,
+    "id": 398,
     "source": 99,
     "target": 146,
     "source_code": "beach_playa_el_durazno",
@@ -10062,7 +10374,7 @@
     ]
    },
    "properties": {
-    "id": 387,
+    "id": 399,
     "source": 99,
     "target": 165,
     "source_code": "beach_playa_el_durazno",
@@ -10088,7 +10400,7 @@
     ]
    },
    "properties": {
-    "id": 388,
+    "id": 400,
     "source": 100,
     "target": 101,
     "source_code": "beach_playa_el_caleuche",
@@ -10114,7 +10426,7 @@
     ]
    },
    "properties": {
-    "id": 389,
+    "id": 401,
     "source": 100,
     "target": 146,
     "source_code": "beach_playa_el_caleuche",
@@ -10140,7 +10452,7 @@
     ]
    },
    "properties": {
-    "id": 390,
+    "id": 402,
     "source": 101,
     "target": 146,
     "source_code": "beach_playa_waikiki",
@@ -10166,7 +10478,7 @@
     ]
    },
    "properties": {
-    "id": 391,
+    "id": 403,
     "source": 102,
     "target": 104,
     "source_code": "beach_playa_el_papagayo",
@@ -10192,7 +10504,7 @@
     ]
    },
    "properties": {
-    "id": 392,
+    "id": 404,
     "source": 102,
     "target": 126,
     "source_code": "beach_playa_el_papagayo",
@@ -10218,7 +10530,7 @@
     ]
    },
    "properties": {
-    "id": 393,
+    "id": 405,
     "source": 102,
     "target": 188,
     "source_code": "beach_playa_el_papagayo",
@@ -10244,7 +10556,7 @@
     ]
    },
    "properties": {
-    "id": 394,
+    "id": 406,
     "source": 103,
     "target": 110,
     "source_code": "beach_playa_el_libro",
@@ -10270,7 +10582,7 @@
     ]
    },
    "properties": {
-    "id": 395,
+    "id": 407,
     "source": 103,
     "target": 158,
     "source_code": "beach_playa_el_libro",
@@ -10296,7 +10608,7 @@
     ]
    },
    "properties": {
-    "id": 396,
+    "id": 408,
     "source": 103,
     "target": 237,
     "source_code": "beach_playa_el_libro",
@@ -10322,7 +10634,7 @@
     ]
    },
    "properties": {
-    "id": 397,
+    "id": 409,
     "source": 104,
     "target": 110,
     "source_code": "beach_playa_la_tortuga",
@@ -10348,7 +10660,7 @@
     ]
    },
    "properties": {
-    "id": 398,
+    "id": 410,
     "source": 104,
     "target": 126,
     "source_code": "beach_playa_la_tortuga",
@@ -10374,7 +10686,7 @@
     ]
    },
    "properties": {
-    "id": 399,
+    "id": 411,
     "source": 104,
     "target": 188,
     "source_code": "beach_playa_la_tortuga",
@@ -10400,7 +10712,7 @@
     ]
    },
    "properties": {
-    "id": 400,
+    "id": 412,
     "source": 105,
     "target": 106,
     "source_code": "beach_playa_las_cañitas",
@@ -10426,7 +10738,7 @@
     ]
    },
    "properties": {
-    "id": 401,
+    "id": 413,
     "source": 105,
     "target": 109,
     "source_code": "beach_playa_las_cañitas",
@@ -10452,7 +10764,7 @@
     ]
    },
    "properties": {
-    "id": 402,
+    "id": 414,
     "source": 105,
     "target": 132,
     "source_code": "beach_playa_las_cañitas",
@@ -10478,7 +10790,7 @@
     ]
    },
    "properties": {
-    "id": 403,
+    "id": 415,
     "source": 105,
     "target": 170,
     "source_code": "beach_playa_las_cañitas",
@@ -10504,7 +10816,7 @@
     ]
    },
    "properties": {
-    "id": 404,
+    "id": 416,
     "source": 105,
     "target": 172,
     "source_code": "beach_playa_las_cañitas",
@@ -10512,6 +10824,32 @@
     "length_m": 370.64,
     "cost": 370.64,
     "reverse_cost": 370.64
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -71.537937,
+      -32.784669
+     ],
+     [
+      -71.5368,
+      -32.7852
+     ]
+    ]
+   },
+   "properties": {
+    "id": 417,
+    "source": 105,
+    "target": 269,
+    "source_code": "beach_playa_las_cañitas",
+    "target_code": "poi_quintero_sur_sanfuentes",
+    "length_m": 121.59,
+    "cost": 121.59,
+    "reverse_cost": 121.59
    }
   },
   {
@@ -10530,7 +10868,7 @@
     ]
    },
    "properties": {
-    "id": 405,
+    "id": 418,
     "source": 106,
     "target": 109,
     "source_code": "beach_playa_la_caleta",
@@ -10550,39 +10888,13 @@
       -32.784541
      ],
      [
-      -71.533249,
-      -32.783293
-     ]
-    ]
-   },
-   "properties": {
-    "id": 406,
-    "source": 106,
-    "target": 137,
-    "source_code": "beach_playa_la_caleta",
-    "target_code": "hotel_801918061",
-    "length_m": 404.21,
-    "cost": 404.21,
-    "reverse_cost": 404.21
-   }
-  },
-  {
-   "type": "Feature",
-   "geometry": {
-    "type": "LineString",
-    "coordinates": [
-     [
-      -71.53731,
-      -32.784541
-     ],
-     [
       -71.542212,
       -32.785797
      ]
     ]
    },
    "properties": {
-    "id": 407,
+    "id": 419,
     "source": 106,
     "target": 170,
     "source_code": "beach_playa_la_caleta",
@@ -10608,7 +10920,7 @@
     ]
    },
    "properties": {
-    "id": 408,
+    "id": 420,
     "source": 106,
     "target": 172,
     "source_code": "beach_playa_la_caleta",
@@ -10616,6 +10928,32 @@
     "length_m": 424.06,
     "cost": 424.06,
     "reverse_cost": 424.06
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -71.53731,
+      -32.784541
+     ],
+     [
+      -71.5368,
+      -32.7852
+     ]
+    ]
+   },
+   "properties": {
+    "id": 421,
+    "source": 106,
+    "target": 269,
+    "source_code": "beach_playa_la_caleta",
+    "target_code": "poi_quintero_sur_sanfuentes",
+    "length_m": 87.42,
+    "cost": 87.42,
+    "reverse_cost": 87.42
    }
   },
   {
@@ -10634,7 +10972,7 @@
     ]
    },
    "properties": {
-    "id": 409,
+    "id": 422,
     "source": 107,
     "target": 108,
     "source_code": "beach_playa_el_manzano",
@@ -10660,7 +10998,7 @@
     ]
    },
    "properties": {
-    "id": 410,
+    "id": 423,
     "source": 107,
     "target": 119,
     "source_code": "beach_playa_el_manzano",
@@ -10686,7 +11024,7 @@
     ]
    },
    "properties": {
-    "id": 411,
+    "id": 424,
     "source": 107,
     "target": 141,
     "source_code": "beach_playa_el_manzano",
@@ -10712,7 +11050,7 @@
     ]
    },
    "properties": {
-    "id": 412,
+    "id": 425,
     "source": 109,
     "target": 137,
     "source_code": "beach_playa_el_burrito",
@@ -10732,20 +11070,20 @@
       -32.783419
      ],
      [
-      -71.541746,
-      -32.783744
+      -71.5368,
+      -32.7852
      ]
     ]
    },
    "properties": {
-    "id": 413,
+    "id": 426,
     "source": 109,
-    "target": 172,
+    "target": 269,
     "source_code": "beach_playa_el_burrito",
-    "target_code": "attr_2630728206",
-    "length_m": 617.96,
-    "cost": 617.96,
-    "reverse_cost": 617.96
+    "target_code": "poi_quintero_sur_sanfuentes",
+    "length_m": 251.19,
+    "cost": 251.19,
+    "reverse_cost": 251.19
    }
   },
   {
@@ -10764,7 +11102,7 @@
     ]
    },
    "properties": {
-    "id": 414,
+    "id": 427,
     "source": 110,
     "target": 126,
     "source_code": "beach_playa_giligan",
@@ -10790,7 +11128,7 @@
     ]
    },
    "properties": {
-    "id": 415,
+    "id": 428,
     "source": 110,
     "target": 188,
     "source_code": "beach_playa_giligan",
@@ -10816,7 +11154,7 @@
     ]
    },
    "properties": {
-    "id": 416,
+    "id": 429,
     "source": 110,
     "target": 237,
     "source_code": "beach_playa_giligan",
@@ -10842,7 +11180,7 @@
     ]
    },
    "properties": {
-    "id": 417,
+    "id": 430,
     "source": 111,
     "target": 112,
     "source_code": "beach_playa_los_bolones",
@@ -10868,7 +11206,7 @@
     ]
    },
    "properties": {
-    "id": 418,
+    "id": 431,
     "source": 111,
     "target": 124,
     "source_code": "beach_playa_los_bolones",
@@ -10894,7 +11232,7 @@
     ]
    },
    "properties": {
-    "id": 419,
+    "id": 432,
     "source": 111,
     "target": 142,
     "source_code": "beach_playa_los_bolones",
@@ -10920,7 +11258,7 @@
     ]
    },
    "properties": {
-    "id": 420,
+    "id": 433,
     "source": 111,
     "target": 179,
     "source_code": "beach_playa_los_bolones",
@@ -10946,7 +11284,7 @@
     ]
    },
    "properties": {
-    "id": 421,
+    "id": 434,
     "source": 112,
     "target": 179,
     "source_code": "beach_playa_el_coronel",
@@ -10972,7 +11310,7 @@
     ]
    },
    "properties": {
-    "id": 422,
+    "id": 435,
     "source": 113,
     "target": 135,
     "source_code": "beach_playa_loncura",
@@ -10992,20 +11330,20 @@
       -32.779644
      ],
      [
-      -71.510289,
-      -32.785856
+      -71.5035,
+      -32.783
      ]
     ]
    },
    "properties": {
-    "id": 423,
+    "id": 436,
     "source": 113,
-    "target": 180,
+    "target": 233,
     "source_code": "beach_playa_loncura",
-    "target_code": "attr_10776927882",
-    "length_m": 698.31,
-    "cost": 698.31,
-    "reverse_cost": 698.31
+    "target_code": "hist_santuario_las_petras",
+    "length_m": 649.93,
+    "cost": 649.93,
+    "reverse_cost": 649.93
    }
   },
   {
@@ -11018,20 +11356,20 @@
       -32.779644
      ],
      [
-      -71.5035,
-      -32.783
+      -71.5072,
+      -32.78455
      ]
     ]
    },
    "properties": {
-    "id": 424,
+    "id": 437,
     "source": 113,
-    "target": 233,
+    "target": 256,
     "source_code": "beach_playa_loncura",
-    "target_code": "hist_santuario_las_petras",
-    "length_m": 649.93,
-    "cost": 649.93,
-    "reverse_cost": 649.93
+    "target_code": "poi_loncura_los_mellizos",
+    "length_m": 576.43,
+    "cost": 576.43,
+    "reverse_cost": 576.43
    }
   },
   {
@@ -11050,7 +11388,7 @@
     ]
    },
    "properties": {
-    "id": 425,
+    "id": 438,
     "source": 114,
     "target": 130,
     "source_code": "beach_playa_ventanas",
@@ -11076,7 +11414,7 @@
     ]
    },
    "properties": {
-    "id": 426,
+    "id": 439,
     "source": 114,
     "target": 156,
     "source_code": "beach_playa_ventanas",
@@ -11102,7 +11440,7 @@
     ]
    },
    "properties": {
-    "id": 427,
+    "id": 440,
     "source": 114,
     "target": 161,
     "source_code": "beach_playa_ventanas",
@@ -11128,7 +11466,7 @@
     ]
    },
    "properties": {
-    "id": 428,
+    "id": 441,
     "source": 115,
     "target": 155,
     "source_code": "beach_playa_el_clarón",
@@ -11148,20 +11486,20 @@
       -32.71079
      ],
      [
-      -71.489226,
-      -32.709523
+      -71.4875,
+      -32.7125
      ]
     ]
    },
    "properties": {
-    "id": 429,
+    "id": 442,
     "source": 115,
-    "target": 175,
+    "target": 243,
     "source_code": "beach_playa_el_clarón",
-    "target_code": "attr_4419400739",
-    "length_m": 193.07,
-    "cost": 193.07,
-    "reverse_cost": 193.07
+    "target_code": "poi_chocota_mirador_pelicanos",
+    "length_m": 192.41,
+    "cost": 192.41,
+    "reverse_cost": 192.41
    }
   },
   {
@@ -11180,7 +11518,7 @@
     ]
    },
    "properties": {
-    "id": 430,
+    "id": 443,
     "source": 116,
     "target": 117,
     "source_code": "beach_playa_cau_cau",
@@ -11206,7 +11544,7 @@
     ]
    },
    "properties": {
-    "id": 431,
+    "id": 444,
     "source": 116,
     "target": 136,
     "source_code": "beach_playa_cau_cau",
@@ -11232,7 +11570,7 @@
     ]
    },
    "properties": {
-    "id": 432,
+    "id": 445,
     "source": 116,
     "target": 143,
     "source_code": "beach_playa_cau_cau",
@@ -11258,7 +11596,7 @@
     ]
    },
    "properties": {
-    "id": 433,
+    "id": 446,
     "source": 116,
     "target": 173,
     "source_code": "beach_playa_cau_cau",
@@ -11284,7 +11622,7 @@
     ]
    },
    "properties": {
-    "id": 434,
+    "id": 447,
     "source": 116,
     "target": 176,
     "source_code": "beach_playa_cau_cau",
@@ -11310,7 +11648,7 @@
     ]
    },
    "properties": {
-    "id": 435,
+    "id": 448,
     "source": 117,
     "target": 143,
     "source_code": "beach_playa_de_horcón",
@@ -11336,7 +11674,7 @@
     ]
    },
    "properties": {
-    "id": 436,
+    "id": 449,
     "source": 117,
     "target": 150,
     "source_code": "beach_playa_de_horcón",
@@ -11362,7 +11700,7 @@
     ]
    },
    "properties": {
-    "id": 437,
+    "id": 450,
     "source": 117,
     "target": 151,
     "source_code": "beach_playa_de_horcón",
@@ -11388,7 +11726,7 @@
     ]
    },
    "properties": {
-    "id": 438,
+    "id": 451,
     "source": 117,
     "target": 173,
     "source_code": "beach_playa_de_horcón",
@@ -11414,7 +11752,7 @@
     ]
    },
    "properties": {
-    "id": 439,
+    "id": 452,
     "source": 117,
     "target": 176,
     "source_code": "beach_playa_de_horcón",
@@ -11440,7 +11778,7 @@
     ]
    },
    "properties": {
-    "id": 440,
+    "id": 453,
     "source": 118,
     "target": 136,
     "source_code": "beach_playa_el_tebo",
@@ -11466,7 +11804,7 @@
     ]
    },
    "properties": {
-    "id": 441,
+    "id": 454,
     "source": 118,
     "target": 139,
     "source_code": "beach_playa_el_tebo",
@@ -11492,7 +11830,7 @@
     ]
    },
    "properties": {
-    "id": 442,
+    "id": 455,
     "source": 118,
     "target": 144,
     "source_code": "beach_playa_el_tebo",
@@ -11500,6 +11838,32 @@
     "length_m": 1375.86,
     "cost": 1375.86,
     "reverse_cost": 1375.86
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -71.502999,
+      -32.725604
+     ],
+     [
+      -71.50083,
+      -32.72519
+     ]
+    ]
+   },
+   "properties": {
+    "id": 456,
+    "source": 118,
+    "target": 241,
+    "source_code": "beach_playa_el_tebo",
+    "target_code": "poi_chocota_club_tebo",
+    "length_m": 208.06,
+    "cost": 208.06,
+    "reverse_cost": 208.06
    }
   },
   {
@@ -11518,7 +11882,7 @@
     ]
    },
    "properties": {
-    "id": 443,
+    "id": 457,
     "source": 119,
     "target": 141,
     "source_code": "hotel_1080551680",
@@ -11544,7 +11908,7 @@
     ]
    },
    "properties": {
-    "id": 444,
+    "id": 458,
     "source": 120,
     "target": 121,
     "source_code": "hotel_1080559333",
@@ -11570,7 +11934,7 @@
     ]
    },
    "properties": {
-    "id": 445,
+    "id": 459,
     "source": 120,
     "target": 129,
     "source_code": "hotel_1080559333",
@@ -11596,7 +11960,7 @@
     ]
    },
    "properties": {
-    "id": 446,
+    "id": 460,
     "source": 120,
     "target": 131,
     "source_code": "hotel_1080559333",
@@ -11622,7 +11986,7 @@
     ]
    },
    "properties": {
-    "id": 447,
+    "id": 461,
     "source": 120,
     "target": 142,
     "source_code": "hotel_1080559333",
@@ -11648,7 +12012,7 @@
     ]
    },
    "properties": {
-    "id": 448,
+    "id": 462,
     "source": 120,
     "target": 145,
     "source_code": "hotel_1080559333",
@@ -11674,7 +12038,7 @@
     ]
    },
    "properties": {
-    "id": 449,
+    "id": 463,
     "source": 120,
     "target": 168,
     "source_code": "hotel_1080559333",
@@ -11700,7 +12064,7 @@
     ]
    },
    "properties": {
-    "id": 450,
+    "id": 464,
     "source": 120,
     "target": 169,
     "source_code": "hotel_1080559333",
@@ -11726,7 +12090,7 @@
     ]
    },
    "properties": {
-    "id": 451,
+    "id": 465,
     "source": 120,
     "target": 178,
     "source_code": "hotel_1080559333",
@@ -11752,7 +12116,7 @@
     ]
    },
    "properties": {
-    "id": 452,
+    "id": 466,
     "source": 121,
     "target": 129,
     "source_code": "hotel_1080559335",
@@ -11778,7 +12142,7 @@
     ]
    },
    "properties": {
-    "id": 453,
+    "id": 467,
     "source": 121,
     "target": 131,
     "source_code": "hotel_1080559335",
@@ -11804,7 +12168,7 @@
     ]
    },
    "properties": {
-    "id": 454,
+    "id": 468,
     "source": 121,
     "target": 142,
     "source_code": "hotel_1080559335",
@@ -11830,7 +12194,7 @@
     ]
    },
    "properties": {
-    "id": 455,
+    "id": 469,
     "source": 121,
     "target": 169,
     "source_code": "hotel_1080559335",
@@ -11856,7 +12220,7 @@
     ]
    },
    "properties": {
-    "id": 456,
+    "id": 470,
     "source": 121,
     "target": 236,
     "source_code": "hotel_1080559335",
@@ -11882,7 +12246,7 @@
     ]
    },
    "properties": {
-    "id": 457,
+    "id": 471,
     "source": 122,
     "target": 138,
     "source_code": "hotel_1530433421",
@@ -11908,7 +12272,7 @@
     ]
    },
    "properties": {
-    "id": 458,
+    "id": 472,
     "source": 122,
     "target": 235,
     "source_code": "hotel_1530433421",
@@ -11916,6 +12280,32 @@
     "length_m": 447.63,
     "cost": 447.63,
     "reverse_cost": 447.63
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -71.456897,
+      -32.735259
+     ],
+     [
+      -71.463,
+      -32.7352
+     ]
+    ]
+   },
+   "properties": {
+    "id": 473,
+    "source": 122,
+    "target": 273,
+    "source_code": "hotel_1530433421",
+    "target_code": "poi_campiche_sede_social",
+    "length_m": 570.88,
+    "cost": 570.88,
+    "reverse_cost": 570.88
    }
   },
   {
@@ -11934,7 +12324,7 @@
     ]
    },
    "properties": {
-    "id": 459,
+    "id": 474,
     "source": 124,
     "target": 158,
     "source_code": "hotel_1638096722",
@@ -11960,7 +12350,7 @@
     ]
    },
    "properties": {
-    "id": 460,
+    "id": 475,
     "source": 126,
     "target": 188,
     "source_code": "hotel_4167933797",
@@ -11986,7 +12376,7 @@
     ]
    },
    "properties": {
-    "id": 461,
+    "id": 476,
     "source": 127,
     "target": 128,
     "source_code": "hotel_4301570292",
@@ -12006,65 +12396,13 @@
       -32.716308
      ],
      [
-      -71.493723,
-      -32.716002
-     ]
-    ]
-   },
-   "properties": {
-    "id": 462,
-    "source": 127,
-    "target": 144,
-    "source_code": "hotel_4301570292",
-    "target_code": "resto_2282613397",
-    "length_m": 631.66,
-    "cost": 631.66,
-    "reverse_cost": 631.66
-   }
-  },
-  {
-   "type": "Feature",
-   "geometry": {
-    "type": "LineString",
-    "coordinates": [
-     [
-      -71.486981,
-      -32.716308
-     ],
-     [
-      -71.485725,
-      -32.714157
-     ]
-    ]
-   },
-   "properties": {
-    "id": 463,
-    "source": 127,
-    "target": 159,
-    "source_code": "hotel_4301570292",
-    "target_code": "resto_9543540434",
-    "length_m": 266.49,
-    "cost": 266.49,
-    "reverse_cost": 266.49
-   }
-  },
-  {
-   "type": "Feature",
-   "geometry": {
-    "type": "LineString",
-    "coordinates": [
-     [
-      -71.486981,
-      -32.716308
-     ],
-     [
       -71.486514,
       -32.715574
      ]
     ]
    },
    "properties": {
-    "id": 464,
+    "id": 477,
     "source": 127,
     "target": 160,
     "source_code": "hotel_4301570292",
@@ -12072,6 +12410,84 @@
     "length_m": 92.58,
     "cost": 92.58,
     "reverse_cost": 92.58
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -71.486981,
+      -32.716308
+     ],
+     [
+      -71.48989,
+      -32.71623
+     ]
+    ]
+   },
+   "properties": {
+    "id": 478,
+    "source": 127,
+    "target": 239,
+    "source_code": "hotel_4301570292",
+    "target_code": "poi_chocota_villa_horcomad",
+    "length_m": 272.29,
+    "cost": 272.29,
+    "reverse_cost": 272.29
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -71.486981,
+      -32.716308
+     ],
+     [
+      -71.4862,
+      -32.7215
+     ]
+    ]
+   },
+   "properties": {
+    "id": 479,
+    "source": 127,
+    "target": 245,
+    "source_code": "hotel_4301570292",
+    "target_code": "poi_chocota_diagonal",
+    "length_m": 581.93,
+    "cost": 581.93,
+    "reverse_cost": 581.93
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -71.486981,
+      -32.716308
+     ],
+     [
+      -71.4881,
+      -32.7185
+     ]
+    ]
+   },
+   "properties": {
+    "id": 480,
+    "source": 127,
+    "target": 246,
+    "source_code": "hotel_4301570292",
+    "target_code": "poi_chocota_ponderosa",
+    "length_m": 265.27,
+    "cost": 265.27,
+    "reverse_cost": 265.27
    }
   },
   {
@@ -12090,7 +12506,7 @@
     ]
    },
    "properties": {
-    "id": 465,
+    "id": 481,
     "source": 128,
     "target": 144,
     "source_code": "hotel_5320975821",
@@ -12110,20 +12526,20 @@
       -32.716274
      ],
      [
-      -71.485725,
-      -32.714157
+      -71.486514,
+      -32.715574
      ]
     ]
    },
    "properties": {
-    "id": 466,
+    "id": 482,
     "source": 128,
-    "target": 159,
+    "target": 160,
     "source_code": "hotel_5320975821",
-    "target_code": "resto_9543540434",
-    "length_m": 310.67,
-    "cost": 310.67,
-    "reverse_cost": 310.67
+    "target_code": "resto_9543568543",
+    "length_m": 150.59,
+    "cost": 150.59,
+    "reverse_cost": 150.59
    }
   },
   {
@@ -12136,20 +12552,46 @@
       -32.716274
      ],
      [
-      -71.486514,
-      -32.715574
+      -71.48989,
+      -32.71623
      ]
     ]
    },
    "properties": {
-    "id": 467,
+    "id": 483,
     "source": 128,
-    "target": 160,
+    "target": 239,
     "source_code": "hotel_5320975821",
-    "target_code": "resto_9543568543",
-    "length_m": 150.59,
-    "cost": 150.59,
-    "reverse_cost": 150.59
+    "target_code": "poi_chocota_villa_horcomad",
+    "length_m": 186.99,
+    "cost": 186.99,
+    "reverse_cost": 186.99
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -71.487892,
+      -32.716274
+     ],
+     [
+      -71.4881,
+      -32.7185
+     ]
+    ]
+   },
+   "properties": {
+    "id": 484,
+    "source": 128,
+    "target": 246,
+    "source_code": "hotel_5320975821",
+    "target_code": "poi_chocota_ponderosa",
+    "length_m": 248.28,
+    "cost": 248.28,
+    "reverse_cost": 248.28
    }
   },
   {
@@ -12168,7 +12610,7 @@
     ]
    },
    "properties": {
-    "id": 468,
+    "id": 485,
     "source": 129,
     "target": 131,
     "source_code": "hotel_5487533889",
@@ -12194,7 +12636,7 @@
     ]
    },
    "properties": {
-    "id": 469,
+    "id": 486,
     "source": 129,
     "target": 169,
     "source_code": "hotel_5487533889",
@@ -12220,7 +12662,7 @@
     ]
    },
    "properties": {
-    "id": 470,
+    "id": 487,
     "source": 130,
     "target": 133,
     "source_code": "hotel_5491856580",
@@ -12246,7 +12688,7 @@
     ]
    },
    "properties": {
-    "id": 471,
+    "id": 488,
     "source": 130,
     "target": 156,
     "source_code": "hotel_5491856580",
@@ -12272,7 +12714,7 @@
     ]
    },
    "properties": {
-    "id": 472,
+    "id": 489,
     "source": 130,
     "target": 157,
     "source_code": "hotel_5491856580",
@@ -12298,7 +12740,7 @@
     ]
    },
    "properties": {
-    "id": 473,
+    "id": 490,
     "source": 130,
     "target": 161,
     "source_code": "hotel_5491856580",
@@ -12324,7 +12766,7 @@
     ]
    },
    "properties": {
-    "id": 474,
+    "id": 491,
     "source": 130,
     "target": 162,
     "source_code": "hotel_5491856580",
@@ -12350,7 +12792,7 @@
     ]
    },
    "properties": {
-    "id": 475,
+    "id": 492,
     "source": 130,
     "target": 194,
     "source_code": "hotel_5491856580",
@@ -12376,7 +12818,7 @@
     ]
    },
    "properties": {
-    "id": 476,
+    "id": 493,
     "source": 131,
     "target": 169,
     "source_code": "hotel_5586221761",
@@ -12402,7 +12844,7 @@
     ]
    },
    "properties": {
-    "id": 477,
+    "id": 494,
     "source": 132,
     "target": 170,
     "source_code": "hotel_6718345397",
@@ -12428,7 +12870,7 @@
     ]
    },
    "properties": {
-    "id": 478,
+    "id": 495,
     "source": 132,
     "target": 172,
     "source_code": "hotel_6718345397",
@@ -12436,6 +12878,32 @@
     "length_m": 808.18,
     "cost": 808.18,
     "reverse_cost": 808.18
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -71.542595,
+      -32.790977
+     ],
+     [
+      -71.5372,
+      -32.7925
+     ]
+    ]
+   },
+   "properties": {
+    "id": 496,
+    "source": 132,
+    "target": 268,
+    "source_code": "hotel_6718345397",
+    "target_code": "poi_quintero_sur_diego_portales",
+    "length_m": 531.98,
+    "cost": 531.98,
+    "reverse_cost": 531.98
    }
   },
   {
@@ -12454,7 +12922,7 @@
     ]
    },
    "properties": {
-    "id": 479,
+    "id": 497,
     "source": 133,
     "target": 156,
     "source_code": "hotel_10813080225",
@@ -12480,7 +12948,7 @@
     ]
    },
    "properties": {
-    "id": 480,
+    "id": 498,
     "source": 133,
     "target": 157,
     "source_code": "hotel_10813080225",
@@ -12506,7 +12974,7 @@
     ]
    },
    "properties": {
-    "id": 481,
+    "id": 499,
     "source": 133,
     "target": 161,
     "source_code": "hotel_10813080225",
@@ -12532,7 +13000,7 @@
     ]
    },
    "properties": {
-    "id": 482,
+    "id": 500,
     "source": 133,
     "target": 162,
     "source_code": "hotel_10813080225",
@@ -12558,7 +13026,7 @@
     ]
    },
    "properties": {
-    "id": 483,
+    "id": 501,
     "source": 133,
     "target": 163,
     "source_code": "hotel_10813080225",
@@ -12584,7 +13052,7 @@
     ]
    },
    "properties": {
-    "id": 484,
+    "id": 502,
     "source": 133,
     "target": 194,
     "source_code": "hotel_10813080225",
@@ -12610,7 +13078,7 @@
     ]
    },
    "properties": {
-    "id": 485,
+    "id": 503,
     "source": 133,
     "target": 195,
     "source_code": "hotel_10813080225",
@@ -12636,7 +13104,7 @@
     ]
    },
    "properties": {
-    "id": 486,
+    "id": 504,
     "source": 134,
     "target": 183,
     "source_code": "hotel_11608355667",
@@ -12662,7 +13130,7 @@
     ]
    },
    "properties": {
-    "id": 487,
+    "id": 505,
     "source": 134,
     "target": 201,
     "source_code": "hotel_11608355667",
@@ -12688,7 +13156,7 @@
     ]
    },
    "properties": {
-    "id": 488,
+    "id": 506,
     "source": 135,
     "target": 180,
     "source_code": "hotel_124186183",
@@ -12708,20 +13176,20 @@
       -32.784507
      ],
      [
-      -71.504423,
-      -32.787931
+      -71.5035,
+      -32.783
      ]
     ]
    },
    "properties": {
-    "id": 489,
+    "id": 507,
     "source": 135,
-    "target": 189,
+    "target": 233,
     "source_code": "hotel_124186183",
-    "target_code": "church_10776927881",
-    "length_m": 514.76,
-    "cost": 514.76,
-    "reverse_cost": 514.76
+    "target_code": "hist_santuario_las_petras",
+    "length_m": 464.05,
+    "cost": 464.05,
+    "reverse_cost": 464.05
    }
   },
   {
@@ -12734,20 +13202,20 @@
       -32.784507
      ],
      [
-      -71.5035,
-      -32.783
+      -71.5072,
+      -32.78455
      ]
     ]
    },
    "properties": {
-    "id": 490,
+    "id": 508,
     "source": 135,
-    "target": 233,
+    "target": 256,
     "source_code": "hotel_124186183",
-    "target_code": "hist_santuario_las_petras",
-    "length_m": 464.05,
-    "cost": 464.05,
-    "reverse_cost": 464.05
+    "target_code": "poi_loncura_los_mellizos",
+    "length_m": 86.98,
+    "cost": 86.98,
+    "reverse_cost": 86.98
    }
   },
   {
@@ -12766,7 +13234,7 @@
     ]
    },
    "properties": {
-    "id": 491,
+    "id": 509,
     "source": 136,
     "target": 144,
     "source_code": "hotel_492836839",
@@ -12786,20 +13254,20 @@
       -32.71581
      ],
      [
-      -71.493381,
-      -32.708465
+      -71.50083,
+      -32.72519
      ]
     ]
    },
    "properties": {
-    "id": 492,
+    "id": 510,
     "source": 136,
-    "target": 173,
+    "target": 241,
     "source_code": "hotel_492836839",
-    "target_code": "attr_4419376183",
-    "length_m": 1593.84,
-    "cost": 1593.84,
-    "reverse_cost": 1593.84
+    "target_code": "poi_chocota_club_tebo",
+    "length_m": 1240.58,
+    "cost": 1240.58,
+    "reverse_cost": 1240.58
    }
   },
   {
@@ -12818,7 +13286,7 @@
     ]
    },
    "properties": {
-    "id": 493,
+    "id": 511,
     "source": 137,
     "target": 193,
     "source_code": "hotel_801918061",
@@ -12838,20 +13306,20 @@
       -32.728147
      ],
      [
-      -71.451821,
-      -32.732211
+      -71.4655,
+      -32.736
      ]
     ]
    },
    "properties": {
-    "id": 494,
+    "id": 512,
     "source": 138,
-    "target": 230,
+    "target": 272,
     "source_code": "hotel_1005716613",
-    "target_code": "civic_terminal_buses_campiche",
-    "length_m": 1262.44,
-    "cost": 1262.44,
-    "reverse_cost": 1262.44
+    "target_code": "poi_campiche_plaza_comunitaria",
+    "length_m": 879.01,
+    "cost": 879.01,
+    "reverse_cost": 879.01
    }
   },
   {
@@ -12864,46 +13332,20 @@
       -32.728147
      ],
      [
-      -71.452159,
-      -32.734692
+      -71.463,
+      -32.7352
      ]
     ]
    },
    "properties": {
-    "id": 495,
+    "id": 513,
     "source": 138,
-    "target": 235,
+    "target": 273,
     "source_code": "hotel_1005716613",
-    "target_code": "hist_cruz_ermita_campiche",
-    "length_m": 1358.54,
-    "cost": 1358.54,
-    "reverse_cost": 1358.54
-   }
-  },
-  {
-   "type": "Feature",
-   "geometry": {
-    "type": "LineString",
-    "coordinates": [
-     [
-      -71.498283,
-      -32.734384
-     ],
-     [
-      -71.489704,
-      -32.740894
-     ]
-    ]
-   },
-   "properties": {
-    "id": 496,
-    "source": 139,
-    "target": 157,
-    "source_code": "hotel_1381832768",
-    "target_code": "resto_5491856583",
-    "length_m": 1080.68,
-    "cost": 1080.68,
-    "reverse_cost": 1080.68
+    "target_code": "poi_campiche_sede_social",
+    "length_m": 795.47,
+    "cost": 795.47,
+    "reverse_cost": 795.47
    }
   },
   {
@@ -12922,7 +13364,7 @@
     ]
    },
    "properties": {
-    "id": 497,
+    "id": 514,
     "source": 139,
     "target": 163,
     "source_code": "hotel_1381832768",
@@ -12948,7 +13390,7 @@
     ]
    },
    "properties": {
-    "id": 498,
+    "id": 515,
     "source": 139,
     "target": 195,
     "source_code": "hotel_1381832768",
@@ -12956,6 +13398,32 @@
     "length_m": 978.12,
     "cost": 978.12,
     "reverse_cost": 978.12
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -71.498283,
+      -32.734384
+     ],
+     [
+      -71.50083,
+      -32.72519
+     ]
+    ]
+   },
+   "properties": {
+    "id": 516,
+    "source": 139,
+    "target": 241,
+    "source_code": "hotel_1381832768",
+    "target_code": "poi_chocota_club_tebo",
+    "length_m": 1049.72,
+    "cost": 1049.72,
+    "reverse_cost": 1049.72
    }
   },
   {
@@ -12974,7 +13442,7 @@
     ]
    },
    "properties": {
-    "id": 499,
+    "id": 517,
     "source": 140,
     "target": 165,
     "source_code": "resto_1080551682",
@@ -13000,7 +13468,7 @@
     ]
    },
    "properties": {
-    "id": 500,
+    "id": 518,
     "source": 140,
     "target": 191,
     "source_code": "resto_1080551682",
@@ -13026,7 +13494,7 @@
     ]
    },
    "properties": {
-    "id": 501,
+    "id": 519,
     "source": 142,
     "target": 178,
     "source_code": "resto_1638107735",
@@ -13052,7 +13520,7 @@
     ]
    },
    "properties": {
-    "id": 502,
+    "id": 520,
     "source": 142,
     "target": 236,
     "source_code": "resto_1638107735",
@@ -13078,7 +13546,7 @@
     ]
    },
    "properties": {
-    "id": 503,
+    "id": 521,
     "source": 143,
     "target": 150,
     "source_code": "resto_2282613396",
@@ -13104,7 +13572,7 @@
     ]
    },
    "properties": {
-    "id": 504,
+    "id": 522,
     "source": 143,
     "target": 151,
     "source_code": "resto_2282613396",
@@ -13130,7 +13598,7 @@
     ]
    },
    "properties": {
-    "id": 505,
+    "id": 523,
     "source": 143,
     "target": 173,
     "source_code": "resto_2282613396",
@@ -13156,7 +13624,7 @@
     ]
    },
    "properties": {
-    "id": 506,
+    "id": 524,
     "source": 143,
     "target": 176,
     "source_code": "resto_2282613396",
@@ -13164,6 +13632,84 @@
     "length_m": 216.51,
     "cost": 216.51,
     "reverse_cost": 216.51
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -71.493723,
+      -32.716002
+     ],
+     [
+      -71.48989,
+      -32.71623
+     ]
+    ]
+   },
+   "properties": {
+    "id": 525,
+    "source": 144,
+    "target": 239,
+    "source_code": "resto_2282613397",
+    "target_code": "poi_chocota_villa_horcomad",
+    "length_m": 359.49,
+    "cost": 359.49,
+    "reverse_cost": 359.49
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -71.493723,
+      -32.716002
+     ],
+     [
+      -71.50083,
+      -32.72519
+     ]
+    ]
+   },
+   "properties": {
+    "id": 526,
+    "source": 144,
+    "target": 241,
+    "source_code": "resto_2282613397",
+    "target_code": "poi_chocota_club_tebo",
+    "length_m": 1218.95,
+    "cost": 1218.95,
+    "reverse_cost": 1218.95
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -71.493723,
+      -32.716002
+     ],
+     [
+      -71.4881,
+      -32.7185
+     ]
+    ]
+   },
+   "properties": {
+    "id": 527,
+    "source": 144,
+    "target": 246,
+    "source_code": "resto_2282613397",
+    "target_code": "poi_chocota_ponderosa",
+    "length_m": 594.88,
+    "cost": 594.88,
+    "reverse_cost": 594.88
    }
   },
   {
@@ -13182,7 +13728,7 @@
     ]
    },
    "properties": {
-    "id": 507,
+    "id": 528,
     "source": 145,
     "target": 168,
     "source_code": "resto_2630715201",
@@ -13208,7 +13754,7 @@
     ]
    },
    "properties": {
-    "id": 508,
+    "id": 529,
     "source": 145,
     "target": 169,
     "source_code": "resto_2630715201",
@@ -13234,7 +13780,7 @@
     ]
    },
    "properties": {
-    "id": 509,
+    "id": 530,
     "source": 145,
     "target": 178,
     "source_code": "resto_2630715201",
@@ -13260,7 +13806,7 @@
     ]
    },
    "properties": {
-    "id": 510,
+    "id": 531,
     "source": 147,
     "target": 150,
     "source_code": "resto_3292297653",
@@ -13286,7 +13832,7 @@
     ]
    },
    "properties": {
-    "id": 511,
+    "id": 532,
     "source": 147,
     "target": 154,
     "source_code": "resto_3292297653",
@@ -13312,7 +13858,7 @@
     ]
    },
    "properties": {
-    "id": 512,
+    "id": 533,
     "source": 147,
     "target": 155,
     "source_code": "resto_3292297653",
@@ -13338,7 +13884,7 @@
     ]
    },
    "properties": {
-    "id": 513,
+    "id": 534,
     "source": 147,
     "target": 175,
     "source_code": "resto_3292297653",
@@ -13364,7 +13910,7 @@
     ]
    },
    "properties": {
-    "id": 514,
+    "id": 535,
     "source": 148,
     "target": 149,
     "source_code": "resto_3292297656",
@@ -13390,7 +13936,7 @@
     ]
    },
    "properties": {
-    "id": 515,
+    "id": 536,
     "source": 148,
     "target": 150,
     "source_code": "resto_3292297656",
@@ -13416,7 +13962,7 @@
     ]
    },
    "properties": {
-    "id": 516,
+    "id": 537,
     "source": 148,
     "target": 151,
     "source_code": "resto_3292297656",
@@ -13442,7 +13988,7 @@
     ]
    },
    "properties": {
-    "id": 517,
+    "id": 538,
     "source": 148,
     "target": 152,
     "source_code": "resto_3292297656",
@@ -13468,7 +14014,7 @@
     ]
    },
    "properties": {
-    "id": 518,
+    "id": 539,
     "source": 148,
     "target": 153,
     "source_code": "resto_3292297656",
@@ -13494,7 +14040,7 @@
     ]
    },
    "properties": {
-    "id": 519,
+    "id": 540,
     "source": 148,
     "target": 154,
     "source_code": "resto_3292297656",
@@ -13520,7 +14066,7 @@
     ]
    },
    "properties": {
-    "id": 520,
+    "id": 541,
     "source": 148,
     "target": 175,
     "source_code": "resto_3292297656",
@@ -13546,7 +14092,7 @@
     ]
    },
    "properties": {
-    "id": 521,
+    "id": 542,
     "source": 149,
     "target": 151,
     "source_code": "resto_3292297659",
@@ -13572,7 +14118,7 @@
     ]
    },
    "properties": {
-    "id": 522,
+    "id": 543,
     "source": 149,
     "target": 154,
     "source_code": "resto_3292297659",
@@ -13598,7 +14144,7 @@
     ]
    },
    "properties": {
-    "id": 523,
+    "id": 544,
     "source": 149,
     "target": 155,
     "source_code": "resto_3292297659",
@@ -13624,7 +14170,7 @@
     ]
    },
    "properties": {
-    "id": 524,
+    "id": 545,
     "source": 149,
     "target": 175,
     "source_code": "resto_3292297659",
@@ -13650,7 +14196,7 @@
     ]
    },
    "properties": {
-    "id": 525,
+    "id": 546,
     "source": 150,
     "target": 151,
     "source_code": "resto_4421991212",
@@ -13676,7 +14222,7 @@
     ]
    },
    "properties": {
-    "id": 526,
+    "id": 547,
     "source": 150,
     "target": 154,
     "source_code": "resto_4421991212",
@@ -13702,7 +14248,7 @@
     ]
    },
    "properties": {
-    "id": 527,
+    "id": 548,
     "source": 151,
     "target": 152,
     "source_code": "resto_4422042629",
@@ -13728,7 +14274,7 @@
     ]
    },
    "properties": {
-    "id": 528,
+    "id": 549,
     "source": 151,
     "target": 154,
     "source_code": "resto_4422042629",
@@ -13754,7 +14300,7 @@
     ]
    },
    "properties": {
-    "id": 529,
+    "id": 550,
     "source": 152,
     "target": 153,
     "source_code": "resto_4422043642",
@@ -13780,7 +14326,7 @@
     ]
    },
    "properties": {
-    "id": 530,
+    "id": 551,
     "source": 152,
     "target": 174,
     "source_code": "resto_4422043642",
@@ -13806,7 +14352,7 @@
     ]
    },
    "properties": {
-    "id": 531,
+    "id": 552,
     "source": 152,
     "target": 185,
     "source_code": "resto_4422043642",
@@ -13832,7 +14378,7 @@
     ]
    },
    "properties": {
-    "id": 532,
+    "id": 553,
     "source": 153,
     "target": 174,
     "source_code": "resto_4422044107",
@@ -13858,7 +14404,7 @@
     ]
    },
    "properties": {
-    "id": 533,
+    "id": 554,
     "source": 153,
     "target": 185,
     "source_code": "resto_4422044107",
@@ -13884,7 +14430,7 @@
     ]
    },
    "properties": {
-    "id": 534,
+    "id": 555,
     "source": 154,
     "target": 175,
     "source_code": "resto_4422062857",
@@ -13910,7 +14456,7 @@
     ]
    },
    "properties": {
-    "id": 535,
+    "id": 556,
     "source": 155,
     "target": 175,
     "source_code": "resto_4422085101",
@@ -13936,7 +14482,7 @@
     ]
    },
    "properties": {
-    "id": 536,
+    "id": 557,
     "source": 156,
     "target": 161,
     "source_code": "resto_5491856582",
@@ -13962,7 +14508,7 @@
     ]
    },
    "properties": {
-    "id": 537,
+    "id": 558,
     "source": 157,
     "target": 161,
     "source_code": "resto_5491856583",
@@ -13988,7 +14534,7 @@
     ]
    },
    "properties": {
-    "id": 538,
+    "id": 559,
     "source": 157,
     "target": 162,
     "source_code": "resto_5491856583",
@@ -14014,7 +14560,7 @@
     ]
    },
    "properties": {
-    "id": 539,
+    "id": 560,
     "source": 157,
     "target": 163,
     "source_code": "resto_5491856583",
@@ -14040,7 +14586,7 @@
     ]
    },
    "properties": {
-    "id": 540,
+    "id": 561,
     "source": 157,
     "target": 195,
     "source_code": "resto_5491856583",
@@ -14066,7 +14612,7 @@
     ]
    },
    "properties": {
-    "id": 541,
+    "id": 562,
     "source": 158,
     "target": 237,
     "source_code": "resto_9066668997",
@@ -14092,7 +14638,7 @@
     ]
    },
    "properties": {
-    "id": 542,
+    "id": 563,
     "source": 159,
     "target": 160,
     "source_code": "resto_9543540434",
@@ -14118,7 +14664,7 @@
     ]
    },
    "properties": {
-    "id": 543,
+    "id": 564,
     "source": 159,
     "target": 177,
     "source_code": "resto_9543540434",
@@ -14126,6 +14672,32 @@
     "length_m": 46.98,
     "cost": 46.98,
     "reverse_cost": 46.98
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -71.485725,
+      -32.714157
+     ],
+     [
+      -71.4795,
+      -32.7168
+     ]
+    ]
+   },
+   "properties": {
+    "id": 565,
+    "source": 159,
+    "target": 244,
+    "source_code": "resto_9543540434",
+    "target_code": "poi_chocota_alto_mar",
+    "length_m": 652.33,
+    "cost": 652.33,
+    "reverse_cost": 652.33
    }
   },
   {
@@ -14144,7 +14716,7 @@
     ]
    },
    "properties": {
-    "id": 544,
+    "id": 566,
     "source": 160,
     "target": 177,
     "source_code": "resto_9543568543",
@@ -14152,6 +14724,32 @@
     "length_m": 220.95,
     "cost": 220.95,
     "reverse_cost": 220.95
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -71.486514,
+      -32.715574
+     ],
+     [
+      -71.4795,
+      -32.7168
+     ]
+    ]
+   },
+   "properties": {
+    "id": 567,
+    "source": 160,
+    "target": 244,
+    "source_code": "resto_9543568543",
+    "target_code": "poi_chocota_alto_mar",
+    "length_m": 670.2,
+    "cost": 670.2,
+    "reverse_cost": 670.2
    }
   },
   {
@@ -14170,7 +14768,7 @@
     ]
    },
    "properties": {
-    "id": 545,
+    "id": 568,
     "source": 161,
     "target": 162,
     "source_code": "resto_10813080224",
@@ -14196,7 +14794,7 @@
     ]
    },
    "properties": {
-    "id": 546,
+    "id": 569,
     "source": 161,
     "target": 194,
     "source_code": "resto_10813080224",
@@ -14222,7 +14820,7 @@
     ]
    },
    "properties": {
-    "id": 547,
+    "id": 570,
     "source": 162,
     "target": 163,
     "source_code": "resto_10813080226",
@@ -14248,7 +14846,7 @@
     ]
    },
    "properties": {
-    "id": 548,
+    "id": 571,
     "source": 162,
     "target": 194,
     "source_code": "resto_10813080226",
@@ -14274,7 +14872,7 @@
     ]
    },
    "properties": {
-    "id": 549,
+    "id": 572,
     "source": 162,
     "target": 195,
     "source_code": "resto_10813080226",
@@ -14300,7 +14898,7 @@
     ]
    },
    "properties": {
-    "id": 550,
+    "id": 573,
     "source": 166,
     "target": 187,
     "source_code": "resto_12348290795",
@@ -14326,7 +14924,7 @@
     ]
    },
    "properties": {
-    "id": 551,
+    "id": 574,
     "source": 167,
     "target": 182,
     "source_code": "resto_1288213250",
@@ -14352,7 +14950,7 @@
     ]
    },
    "properties": {
-    "id": 552,
+    "id": 575,
     "source": 167,
     "target": 232,
     "source_code": "resto_1288213250",
@@ -14378,7 +14976,7 @@
     ]
    },
    "properties": {
-    "id": 553,
+    "id": 576,
     "source": 168,
     "target": 169,
     "source_code": "attr_1072806893",
@@ -14404,7 +15002,7 @@
     ]
    },
    "properties": {
-    "id": 554,
+    "id": 577,
     "source": 168,
     "target": 171,
     "source_code": "attr_1072806893",
@@ -14430,7 +15028,7 @@
     ]
    },
    "properties": {
-    "id": 555,
+    "id": 578,
     "source": 168,
     "target": 178,
     "source_code": "attr_1072806893",
@@ -14456,7 +15054,7 @@
     ]
    },
    "properties": {
-    "id": 556,
+    "id": 579,
     "source": 168,
     "target": 236,
     "source_code": "attr_1072806893",
@@ -14482,7 +15080,7 @@
     ]
    },
    "properties": {
-    "id": 557,
+    "id": 580,
     "source": 169,
     "target": 171,
     "source_code": "attr_1080559334",
@@ -14508,7 +15106,7 @@
     ]
    },
    "properties": {
-    "id": 558,
+    "id": 581,
     "source": 169,
     "target": 178,
     "source_code": "attr_1080559334",
@@ -14534,7 +15132,7 @@
     ]
    },
    "properties": {
-    "id": 559,
+    "id": 582,
     "source": 169,
     "target": 236,
     "source_code": "attr_1080559334",
@@ -14560,7 +15158,7 @@
     ]
    },
    "properties": {
-    "id": 560,
+    "id": 583,
     "source": 170,
     "target": 172,
     "source_code": "attr_1347501721",
@@ -14568,6 +15166,32 @@
     "length_m": 232.4,
     "cost": 232.4,
     "reverse_cost": 232.4
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -71.542212,
+      -32.785797
+     ],
+     [
+      -71.5368,
+      -32.7852
+     ]
+    ]
+   },
+   "properties": {
+    "id": 584,
+    "source": 170,
+    "target": 269,
+    "source_code": "attr_1347501721",
+    "target_code": "poi_quintero_sur_sanfuentes",
+    "length_m": 510.26,
+    "cost": 510.26,
+    "reverse_cost": 510.26
    }
   },
   {
@@ -14586,7 +15210,7 @@
     ]
    },
    "properties": {
-    "id": 561,
+    "id": 585,
     "source": 171,
     "target": 178,
     "source_code": "attr_2630715199",
@@ -14612,7 +15236,7 @@
     ]
    },
    "properties": {
-    "id": 562,
+    "id": 586,
     "source": 171,
     "target": 236,
     "source_code": "attr_2630715199",
@@ -14620,6 +15244,32 @@
     "length_m": 53.93,
     "cost": 53.93,
     "reverse_cost": 53.93
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -71.541746,
+      -32.783744
+     ],
+     [
+      -71.5368,
+      -32.7852
+     ]
+    ]
+   },
+   "properties": {
+    "id": 587,
+    "source": 172,
+    "target": 269,
+    "source_code": "attr_2630728206",
+    "target_code": "poi_quintero_sur_sanfuentes",
+    "length_m": 489.89,
+    "cost": 489.89,
+    "reverse_cost": 489.89
    }
   },
   {
@@ -14638,7 +15288,7 @@
     ]
    },
    "properties": {
-    "id": 563,
+    "id": 588,
     "source": 173,
     "target": 176,
     "source_code": "attr_4419376183",
@@ -14664,7 +15314,7 @@
     ]
    },
    "properties": {
-    "id": 564,
+    "id": 589,
     "source": 174,
     "target": 185,
     "source_code": "attr_4419383238",
@@ -14672,6 +15322,58 @@
     "length_m": 42.1,
     "cost": 42.1,
     "reverse_cost": 42.1
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -71.485529,
+      -32.713768
+     ],
+     [
+      -71.4875,
+      -32.7125
+     ]
+    ]
+   },
+   "properties": {
+    "id": 590,
+    "source": 177,
+    "target": 243,
+    "source_code": "attr_4422257463",
+    "target_code": "poi_chocota_mirador_pelicanos",
+    "length_m": 232.13,
+    "cost": 232.13,
+    "reverse_cost": 232.13
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -71.485529,
+      -32.713768
+     ],
+     [
+      -71.4795,
+      -32.7168
+     ]
+    ]
+   },
+   "properties": {
+    "id": 591,
+    "source": 177,
+    "target": 244,
+    "source_code": "attr_4422257463",
+    "target_code": "poi_chocota_alto_mar",
+    "length_m": 657.13,
+    "cost": 657.13,
+    "reverse_cost": 657.13
    }
   },
   {
@@ -14690,7 +15392,7 @@
     ]
    },
    "properties": {
-    "id": 565,
+    "id": 592,
     "source": 178,
     "target": 236,
     "source_code": "attr_5487536002",
@@ -14716,7 +15418,7 @@
     ]
    },
    "properties": {
-    "id": 566,
+    "id": 593,
     "source": 180,
     "target": 189,
     "source_code": "attr_10776927882",
@@ -14742,7 +15444,7 @@
     ]
    },
    "properties": {
-    "id": 567,
+    "id": 594,
     "source": 180,
     "target": 234,
     "source_code": "attr_10776927882",
@@ -14750,6 +15452,110 @@
     "length_m": 709.7,
     "cost": 709.7,
     "reverse_cost": 709.7
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -71.510289,
+      -32.785856
+     ],
+     [
+      -71.5072,
+      -32.78455
+     ]
+    ]
+   },
+   "properties": {
+    "id": 595,
+    "source": 180,
+    "target": 256,
+    "source_code": "attr_10776927882",
+    "target_code": "poi_loncura_los_mellizos",
+    "length_m": 323.23,
+    "cost": 323.23,
+    "reverse_cost": 323.23
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -71.535055,
+      -32.797943
+     ],
+     [
+      -71.53292,
+      -32.79861
+     ]
+    ]
+   },
+   "properties": {
+    "id": 596,
+    "source": 181,
+    "target": 260,
+    "source_code": "attr_12136580404",
+    "target_code": "poi_quintero_sur_lomas",
+    "length_m": 212.89,
+    "cost": 212.89,
+    "reverse_cost": 212.89
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -71.535055,
+      -32.797943
+     ],
+     [
+      -71.53702,
+      -32.79876
+     ]
+    ]
+   },
+   "properties": {
+    "id": 597,
+    "source": 181,
+    "target": 261,
+    "source_code": "attr_12136580404",
+    "target_code": "poi_quintero_sur_independencia",
+    "length_m": 204.91,
+    "cost": 204.91,
+    "reverse_cost": 204.91
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -71.535055,
+      -32.797943
+     ],
+     [
+      -71.53342,
+      -32.80106
+     ]
+    ]
+   },
+   "properties": {
+    "id": 598,
+    "source": 181,
+    "target": 262,
+    "source_code": "attr_12136580404",
+    "target_code": "poi_quintero_sur_colinas_mar",
+    "length_m": 378.79,
+    "cost": 378.79,
+    "reverse_cost": 378.79
    }
   },
   {
@@ -14768,7 +15574,7 @@
     ]
    },
    "properties": {
-    "id": 568,
+    "id": 599,
     "source": 182,
     "target": 232,
     "source_code": "attr_12463695125",
@@ -14794,7 +15600,7 @@
     ]
    },
    "properties": {
-    "id": 569,
+    "id": 600,
     "source": 183,
     "target": 201,
     "source_code": "attr_13271144993",
@@ -14820,7 +15626,7 @@
     ]
    },
    "properties": {
-    "id": 570,
+    "id": 601,
     "source": 184,
     "target": 196,
     "source_code": "attr_13271160722",
@@ -14828,6 +15634,58 @@
     "length_m": 248.05,
     "cost": 248.05,
     "reverse_cost": 248.05
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -71.527383,
+      -32.797734
+     ],
+     [
+      -71.52946,
+      -32.79889
+     ]
+    ]
+   },
+   "properties": {
+    "id": 602,
+    "source": 184,
+    "target": 263,
+    "source_code": "attr_13271160722",
+    "target_code": "poi_quintero_sur_estadio_muni",
+    "length_m": 232.83,
+    "cost": 232.83,
+    "reverse_cost": 232.83
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -71.527383,
+      -32.797734
+     ],
+     [
+      -71.5278,
+      -32.796
+     ]
+    ]
+   },
+   "properties": {
+    "id": 603,
+    "source": 184,
+    "target": 270,
+    "source_code": "attr_13271160722",
+    "target_code": "poi_quintero_sur_las_brisas",
+    "length_m": 196.71,
+    "cost": 196.71,
+    "reverse_cost": 196.71
    }
   },
   {
@@ -14846,7 +15704,7 @@
     ]
    },
    "properties": {
-    "id": 571,
+    "id": 604,
     "source": 186,
     "target": 221,
     "source_code": "attr_13508076484",
@@ -14872,7 +15730,7 @@
     ]
    },
    "properties": {
-    "id": 572,
+    "id": 605,
     "source": 186,
     "target": 222,
     "source_code": "attr_13508076484",
@@ -14898,7 +15756,7 @@
     ]
    },
    "properties": {
-    "id": 573,
+    "id": 606,
     "source": 186,
     "target": 233,
     "source_code": "attr_13508076484",
@@ -14924,7 +15782,7 @@
     ]
    },
    "properties": {
-    "id": 574,
+    "id": 607,
     "source": 187,
     "target": 231,
     "source_code": "attr_980749157",
@@ -14950,7 +15808,7 @@
     ]
    },
    "properties": {
-    "id": 575,
+    "id": 608,
     "source": 189,
     "target": 229,
     "source_code": "church_10776927881",
@@ -14970,20 +15828,20 @@
       -32.787931
      ],
      [
-      -71.5035,
-      -32.783
+      -71.512628,
+      -32.791928
      ]
     ]
    },
    "properties": {
-    "id": 576,
+    "id": 609,
     "source": 189,
-    "target": 233,
+    "target": 234,
     "source_code": "church_10776927881",
-    "target_code": "hist_santuario_las_petras",
-    "length_m": 555.05,
-    "cost": 555.05,
-    "reverse_cost": 555.05
+    "target_code": "hist_conchal_bato_aconcagua",
+    "length_m": 886.45,
+    "cost": 886.45,
+    "reverse_cost": 886.45
    }
   },
   {
@@ -14996,20 +15854,46 @@
       -32.787931
      ],
      [
-      -71.512628,
-      -32.791928
+      -71.50421,
+      -32.78793
      ]
     ]
    },
    "properties": {
-    "id": 577,
+    "id": 610,
     "source": 189,
-    "target": 234,
+    "target": 253,
     "source_code": "church_10776927881",
-    "target_code": "hist_conchal_bato_aconcagua",
-    "length_m": 886.45,
-    "cost": 886.45,
-    "reverse_cost": 886.45
+    "target_code": "poi_loncura_union_progreso",
+    "length_m": 19.91,
+    "cost": 19.91,
+    "reverse_cost": 19.91
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -71.504423,
+      -32.787931
+     ],
+     [
+      -71.5035,
+      -32.7875
+     ]
+    ]
+   },
+   "properties": {
+    "id": 611,
+    "source": 189,
+    "target": 257,
+    "source_code": "church_10776927881",
+    "target_code": "poi_loncura_chimbote_huaras",
+    "length_m": 98.7,
+    "cost": 98.7,
+    "reverse_cost": 98.7
    }
   },
   {
@@ -15028,7 +15912,7 @@
     ]
    },
    "properties": {
-    "id": 578,
+    "id": 612,
     "source": 190,
     "target": 201,
     "source_code": "church_11610040021",
@@ -15036,6 +15920,84 @@
     "length_m": 168.49,
     "cost": 168.49,
     "reverse_cost": 168.49
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -71.530014,
+      -32.794358
+     ],
+     [
+      -71.53073,
+      -32.79148
+     ]
+    ]
+   },
+   "properties": {
+    "id": 613,
+    "source": 192,
+    "target": 259,
+    "source_code": "church_654628986",
+    "target_code": "poi_quintero_sur_porvenir",
+    "length_m": 326.94,
+    "cost": 326.94,
+    "reverse_cost": 326.94
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -71.530014,
+      -32.794358
+     ],
+     [
+      -71.52956,
+      -32.79327
+     ]
+    ]
+   },
+   "properties": {
+    "id": 614,
+    "source": 192,
+    "target": 267,
+    "source_code": "church_654628986",
+    "target_code": "poi_quintero_sur_multicancha_pinos",
+    "length_m": 128.21,
+    "cost": 128.21,
+    "reverse_cost": 128.21
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -71.530014,
+      -32.794358
+     ],
+     [
+      -71.5278,
+      -32.796
+     ]
+    ]
+   },
+   "properties": {
+    "id": 615,
+    "source": 192,
+    "target": 270,
+    "source_code": "church_654628986",
+    "target_code": "poi_quintero_sur_las_brisas",
+    "length_m": 275.98,
+    "cost": 275.98,
+    "reverse_cost": 275.98
    }
   },
   {
@@ -15054,7 +16016,7 @@
     ]
    },
    "properties": {
-    "id": 579,
+    "id": 616,
     "source": 194,
     "target": 195,
     "source_code": "edu_jardin_ventanas",
@@ -15062,6 +16024,58 @@
     "length_m": 353.55,
     "cost": 353.55,
     "reverse_cost": 353.55
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -71.488409,
+      -32.737281
+     ],
+     [
+      -71.48742,
+      -32.7302
+     ]
+    ]
+   },
+   "properties": {
+    "id": 617,
+    "source": 195,
+    "target": 240,
+    "source_code": "crowd_cancha_horcon",
+    "target_code": "poi_chocota_centro",
+    "length_m": 792.79,
+    "cost": 792.79,
+    "reverse_cost": 792.79
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -71.527753,
+      -32.799943
+     ],
+     [
+      -71.52946,
+      -32.79889
+     ]
+    ]
+   },
+   "properties": {
+    "id": 618,
+    "source": 196,
+    "target": 263,
+    "source_code": "crowd_quintero_padel",
+    "target_code": "poi_quintero_sur_estadio_muni",
+    "length_m": 197.9,
+    "cost": 197.9,
+    "reverse_cost": 197.9
    }
   },
   {
@@ -15080,7 +16094,7 @@
     ]
    },
    "properties": {
-    "id": 580,
+    "id": 619,
     "source": 197,
     "target": 213,
     "source_code": "crowd_banco_chile_ventanas",
@@ -15106,7 +16120,7 @@
     ]
    },
    "properties": {
-    "id": 581,
+    "id": 620,
     "source": 197,
     "target": 216,
     "source_code": "crowd_banco_chile_ventanas",
@@ -15132,7 +16146,7 @@
     ]
    },
    "properties": {
-    "id": 582,
+    "id": 621,
     "source": 197,
     "target": 218,
     "source_code": "crowd_banco_chile_ventanas",
@@ -15152,39 +16166,13 @@
       -32.741347
      ],
      [
-      -71.47561,
-      -32.74452
-     ]
-    ]
-   },
-   "properties": {
-    "id": 583,
-    "source": 198,
-    "target": 202,
-    "source_code": "comm_copec_ventanas",
-    "target_code": "crowd_plaza_la_greda",
-    "length_m": 744.78,
-    "cost": 744.78,
-    "reverse_cost": 744.78
-   }
-  },
-  {
-   "type": "Feature",
-   "geometry": {
-    "type": "LineString",
-    "coordinates": [
-     [
-      -71.468597,
-      -32.741347
-     ],
-     [
       -71.47277,
       -32.74518
      ]
     ]
    },
    "properties": {
-    "id": 584,
+    "id": 622,
     "source": 198,
     "target": 203,
     "source_code": "comm_copec_ventanas",
@@ -15210,7 +16198,7 @@
     ]
    },
    "properties": {
-    "id": 585,
+    "id": 623,
     "source": 198,
     "target": 223,
     "source_code": "comm_copec_ventanas",
@@ -15218,6 +16206,58 @@
     "length_m": 597.01,
     "cost": 597.01,
     "reverse_cost": 597.01
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -71.468597,
+      -32.741347
+     ],
+     [
+      -71.4682,
+      -32.7385
+     ]
+    ]
+   },
+   "properties": {
+    "id": 624,
+    "source": 198,
+    "target": 271,
+    "source_code": "comm_copec_ventanas",
+    "target_code": "poi_campiche_escuela_rural",
+    "length_m": 318.74,
+    "cost": 318.74,
+    "reverse_cost": 318.74
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -71.468597,
+      -32.741347
+     ],
+     [
+      -71.4655,
+      -32.736
+     ]
+    ]
+   },
+   "properties": {
+    "id": 625,
+    "source": 198,
+    "target": 272,
+    "source_code": "comm_copec_ventanas",
+    "target_code": "poi_campiche_plaza_comunitaria",
+    "length_m": 661.37,
+    "cost": 661.37,
+    "reverse_cost": 661.37
    }
   },
   {
@@ -15236,7 +16276,7 @@
     ]
    },
    "properties": {
-    "id": 586,
+    "id": 626,
     "source": 200,
     "target": 234,
     "source_code": "infra_ruta_f210_quintero",
@@ -15244,6 +16284,110 @@
     "length_m": 859.9,
     "cost": 859.9,
     "reverse_cost": 859.9
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -71.50896,
+      -32.79902
+     ],
+     [
+      -71.50088,
+      -32.79171
+     ]
+    ]
+   },
+   "properties": {
+    "id": 627,
+    "source": 200,
+    "target": 250,
+    "source_code": "infra_ruta_f210_quintero",
+    "target_code": "poi_loncura_manutara",
+    "length_m": 1109.55,
+    "cost": 1109.55,
+    "reverse_cost": 1109.55
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -71.50896,
+      -32.79902
+     ],
+     [
+      -71.5032,
+      -32.7935
+     ]
+    ]
+   },
+   "properties": {
+    "id": 628,
+    "source": 200,
+    "target": 251,
+    "source_code": "infra_ruta_f210_quintero",
+    "target_code": "poi_loncura_av_bosque",
+    "length_m": 816.46,
+    "cost": 816.46,
+    "reverse_cost": 816.46
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -71.50896,
+      -32.79902
+     ],
+     [
+      -71.5015,
+      -32.7958
+     ]
+    ]
+   },
+   "properties": {
+    "id": 629,
+    "source": 200,
+    "target": 254,
+    "source_code": "infra_ruta_f210_quintero",
+    "target_code": "poi_loncura_estadio",
+    "length_m": 783.84,
+    "cost": 783.84,
+    "reverse_cost": 783.84
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -71.528533,
+      -32.784815
+     ],
+     [
+      -71.5297,
+      -32.78568
+     ]
+    ]
+   },
+   "properties": {
+    "id": 630,
+    "source": 201,
+    "target": 266,
+    "source_code": "crowd_parque_infantil_quintero",
+    "target_code": "poi_quintero_sur_ann_sullivan",
+    "length_m": 145.44,
+    "cost": 145.44,
+    "reverse_cost": 145.44
    }
   },
   {
@@ -15262,7 +16406,7 @@
     ]
    },
    "properties": {
-    "id": 587,
+    "id": 631,
     "source": 202,
     "target": 203,
     "source_code": "crowd_plaza_la_greda",
@@ -15288,7 +16432,7 @@
     ]
    },
    "properties": {
-    "id": 588,
+    "id": 632,
     "source": 203,
     "target": 223,
     "source_code": "crowd_plaza_las_salinas",
@@ -15314,7 +16458,7 @@
     ]
    },
    "properties": {
-    "id": 589,
+    "id": 633,
     "source": 204,
     "target": 205,
     "source_code": "ind_termo_ventanas_1",
@@ -15340,7 +16484,7 @@
     ]
    },
    "properties": {
-    "id": 590,
+    "id": 634,
     "source": 204,
     "target": 209,
     "source_code": "ind_termo_ventanas_1",
@@ -15366,7 +16510,7 @@
     ]
    },
    "properties": {
-    "id": 591,
+    "id": 635,
     "source": 204,
     "target": 210,
     "source_code": "ind_termo_ventanas_1",
@@ -15392,7 +16536,7 @@
     ]
    },
    "properties": {
-    "id": 592,
+    "id": 636,
     "source": 204,
     "target": 226,
     "source_code": "ind_termo_ventanas_1",
@@ -15418,7 +16562,7 @@
     ]
    },
    "properties": {
-    "id": 593,
+    "id": 637,
     "source": 205,
     "target": 206,
     "source_code": "ind_termo_ventanas_2",
@@ -15444,7 +16588,7 @@
     ]
    },
    "properties": {
-    "id": 594,
+    "id": 638,
     "source": 205,
     "target": 209,
     "source_code": "ind_termo_ventanas_2",
@@ -15470,7 +16614,7 @@
     ]
    },
    "properties": {
-    "id": 595,
+    "id": 639,
     "source": 205,
     "target": 210,
     "source_code": "ind_termo_ventanas_2",
@@ -15496,7 +16640,7 @@
     ]
    },
    "properties": {
-    "id": 596,
+    "id": 640,
     "source": 205,
     "target": 226,
     "source_code": "ind_termo_ventanas_2",
@@ -15522,7 +16666,7 @@
     ]
    },
    "properties": {
-    "id": 597,
+    "id": 641,
     "source": 206,
     "target": 207,
     "source_code": "ind_termo_nueva_ventanas",
@@ -15548,7 +16692,7 @@
     ]
    },
    "properties": {
-    "id": 598,
+    "id": 642,
     "source": 206,
     "target": 208,
     "source_code": "ind_termo_nueva_ventanas",
@@ -15574,7 +16718,7 @@
     ]
    },
    "properties": {
-    "id": 599,
+    "id": 643,
     "source": 206,
     "target": 209,
     "source_code": "ind_termo_nueva_ventanas",
@@ -15600,7 +16744,7 @@
     ]
    },
    "properties": {
-    "id": 600,
+    "id": 644,
     "source": 206,
     "target": 211,
     "source_code": "ind_termo_nueva_ventanas",
@@ -15626,7 +16770,7 @@
     ]
    },
    "properties": {
-    "id": 601,
+    "id": 645,
     "source": 206,
     "target": 225,
     "source_code": "ind_termo_nueva_ventanas",
@@ -15652,7 +16796,7 @@
     ]
    },
    "properties": {
-    "id": 602,
+    "id": 646,
     "source": 207,
     "target": 208,
     "source_code": "ind_termo_campiche",
@@ -15678,7 +16822,7 @@
     ]
    },
    "properties": {
-    "id": 603,
+    "id": 647,
     "source": 207,
     "target": 211,
     "source_code": "ind_termo_campiche",
@@ -15704,7 +16848,7 @@
     ]
    },
    "properties": {
-    "id": 604,
+    "id": 648,
     "source": 207,
     "target": 225,
     "source_code": "ind_termo_campiche",
@@ -15730,7 +16874,7 @@
     ]
    },
    "properties": {
-    "id": 605,
+    "id": 649,
     "source": 208,
     "target": 209,
     "source_code": "ind_chimney_ventanas_1",
@@ -15756,7 +16900,7 @@
     ]
    },
    "properties": {
-    "id": 606,
+    "id": 650,
     "source": 208,
     "target": 211,
     "source_code": "ind_chimney_ventanas_1",
@@ -15782,7 +16926,7 @@
     ]
    },
    "properties": {
-    "id": 607,
+    "id": 651,
     "source": 208,
     "target": 224,
     "source_code": "ind_chimney_ventanas_1",
@@ -15808,7 +16952,7 @@
     ]
    },
    "properties": {
-    "id": 608,
+    "id": 652,
     "source": 208,
     "target": 225,
     "source_code": "ind_chimney_ventanas_1",
@@ -15834,7 +16978,7 @@
     ]
    },
    "properties": {
-    "id": 609,
+    "id": 653,
     "source": 209,
     "target": 210,
     "source_code": "ind_chimney_ventanas_2",
@@ -15860,7 +17004,7 @@
     ]
    },
    "properties": {
-    "id": 610,
+    "id": 654,
     "source": 209,
     "target": 225,
     "source_code": "ind_chimney_ventanas_2",
@@ -15886,7 +17030,7 @@
     ]
    },
    "properties": {
-    "id": 611,
+    "id": 655,
     "source": 209,
     "target": 226,
     "source_code": "ind_chimney_ventanas_2",
@@ -15912,7 +17056,7 @@
     ]
    },
    "properties": {
-    "id": 612,
+    "id": 656,
     "source": 210,
     "target": 212,
     "source_code": "ind_chimney_ventanas_3",
@@ -15938,7 +17082,7 @@
     ]
    },
    "properties": {
-    "id": 613,
+    "id": 657,
     "source": 210,
     "target": 224,
     "source_code": "ind_chimney_ventanas_3",
@@ -15964,7 +17108,7 @@
     ]
    },
    "properties": {
-    "id": 614,
+    "id": 658,
     "source": 210,
     "target": 226,
     "source_code": "ind_chimney_ventanas_3",
@@ -15990,7 +17134,7 @@
     ]
    },
    "properties": {
-    "id": 615,
+    "id": 659,
     "source": 211,
     "target": 225,
     "source_code": "ind_chimney_campiche",
@@ -16016,7 +17160,7 @@
     ]
    },
    "properties": {
-    "id": 616,
+    "id": 660,
     "source": 212,
     "target": 213,
     "source_code": "ind_codelco_refineria",
@@ -16042,7 +17186,7 @@
     ]
    },
    "properties": {
-    "id": 617,
+    "id": 661,
     "source": 212,
     "target": 224,
     "source_code": "ind_codelco_refineria",
@@ -16068,7 +17212,7 @@
     ]
    },
    "properties": {
-    "id": 618,
+    "id": 662,
     "source": 213,
     "target": 218,
     "source_code": "ind_chimney_codelco",
@@ -16094,7 +17238,7 @@
     ]
    },
    "properties": {
-    "id": 619,
+    "id": 663,
     "source": 214,
     "target": 215,
     "source_code": "ind_termo_quintero",
@@ -16120,7 +17264,7 @@
     ]
    },
    "properties": {
-    "id": 620,
+    "id": 664,
     "source": 214,
     "target": 227,
     "source_code": "ind_termo_quintero",
@@ -16146,7 +17290,7 @@
     ]
    },
    "properties": {
-    "id": 621,
+    "id": 665,
     "source": 215,
     "target": 227,
     "source_code": "ind_chimney_quintero_1",
@@ -16172,7 +17316,7 @@
     ]
    },
    "properties": {
-    "id": 622,
+    "id": 666,
     "source": 216,
     "target": 218,
     "source_code": "ind_oxiquim_terminal",
@@ -16198,7 +17342,7 @@
     ]
    },
    "properties": {
-    "id": 623,
+    "id": 667,
     "source": 216,
     "target": 219,
     "source_code": "ind_oxiquim_terminal",
@@ -16224,7 +17368,7 @@
     ]
    },
    "properties": {
-    "id": 624,
+    "id": 668,
     "source": 217,
     "target": 219,
     "source_code": "ind_gnl_quintero",
@@ -16250,7 +17394,7 @@
     ]
    },
    "properties": {
-    "id": 625,
+    "id": 669,
     "source": 217,
     "target": 220,
     "source_code": "ind_gnl_quintero",
@@ -16276,7 +17420,7 @@
     ]
    },
    "properties": {
-    "id": 626,
+    "id": 670,
     "source": 219,
     "target": 220,
     "source_code": "ind_enap_monoboya",
@@ -16302,7 +17446,7 @@
     ]
    },
    "properties": {
-    "id": 627,
+    "id": 671,
     "source": 220,
     "target": 222,
     "source_code": "ind_enap_estanques",
@@ -16328,7 +17472,7 @@
     ]
    },
    "properties": {
-    "id": 628,
+    "id": 672,
     "source": 221,
     "target": 222,
     "source_code": "ind_copec_lubricantes",
@@ -16354,7 +17498,7 @@
     ]
    },
    "properties": {
-    "id": 629,
+    "id": 673,
     "source": 221,
     "target": 233,
     "source_code": "ind_copec_lubricantes",
@@ -16374,20 +17518,150 @@
       -32.788246
      ],
      [
-      -71.50349,
-      -32.788246
+      -71.5018,
+      -32.78834
      ]
     ]
    },
    "properties": {
-    "id": 630,
+    "id": 674,
     "source": 228,
-    "target": 229,
+    "target": 248,
     "source_code": "ind_pfv_loncura",
-    "target_code": "civic_centro_civico_loncura",
-    "length_m": 629.21,
-    "cost": 629.21,
-    "reverse_cost": 629.21
+    "target_code": "poi_loncura_german_riesco",
+    "length_m": 471.34,
+    "cost": 471.34,
+    "reverse_cost": 471.34
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -71.496759,
+      -32.788246
+     ],
+     [
+      -71.497,
+      -32.7895
+     ]
+    ]
+   },
+   "properties": {
+    "id": 675,
+    "source": 228,
+    "target": 258,
+    "source_code": "ind_pfv_loncura",
+    "target_code": "poi_loncura_parque_solar",
+    "length_m": 141.25,
+    "cost": 141.25,
+    "reverse_cost": 141.25
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -71.50349,
+      -32.788246
+     ],
+     [
+      -71.5018,
+      -32.78834
+     ]
+    ]
+   },
+   "properties": {
+    "id": 676,
+    "source": 229,
+    "target": 248,
+    "source_code": "civic_centro_civico_loncura",
+    "target_code": "poi_loncura_german_riesco",
+    "length_m": 158.32,
+    "cost": 158.32,
+    "reverse_cost": 158.32
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -71.50349,
+      -32.788246
+     ],
+     [
+      -71.50373,
+      -32.78953
+     ]
+    ]
+   },
+   "properties": {
+    "id": 677,
+    "source": 229,
+    "target": 252,
+    "source_code": "civic_centro_civico_loncura",
+    "target_code": "poi_loncura_almacen_gaston",
+    "length_m": 144.53,
+    "cost": 144.53,
+    "reverse_cost": 144.53
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -71.50349,
+      -32.788246
+     ],
+     [
+      -71.50421,
+      -32.78793
+     ]
+    ]
+   },
+   "properties": {
+    "id": 678,
+    "source": 229,
+    "target": 253,
+    "source_code": "civic_centro_civico_loncura",
+    "target_code": "poi_loncura_union_progreso",
+    "length_m": 75.93,
+    "cost": 75.93,
+    "reverse_cost": 75.93
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -71.50349,
+      -32.788246
+     ],
+     [
+      -71.5035,
+      -32.7875
+     ]
+    ]
+   },
+   "properties": {
+    "id": 679,
+    "source": 229,
+    "target": 257,
+    "source_code": "civic_centro_civico_loncura",
+    "target_code": "poi_loncura_chimbote_huaras",
+    "length_m": 82.96,
+    "cost": 82.96,
+    "reverse_cost": 82.96
    }
   },
   {
@@ -16406,7 +17680,7 @@
     ]
    },
    "properties": {
-    "id": 631,
+    "id": 680,
     "source": 230,
     "target": 231,
     "source_code": "civic_terminal_buses_campiche",
@@ -16432,7 +17706,7 @@
     ]
    },
    "properties": {
-    "id": 632,
+    "id": 681,
     "source": 230,
     "target": 235,
     "source_code": "civic_terminal_buses_campiche",
@@ -16458,7 +17732,7 @@
     ]
    },
    "properties": {
-    "id": 633,
+    "id": 682,
     "source": 231,
     "target": 235,
     "source_code": "hist_fundo_ureta_222_campiche",
@@ -16466,6 +17740,942 @@
     "length_m": 493.07,
     "cost": 493.07,
     "reverse_cost": 493.07
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -71.5035,
+      -32.783
+     ],
+     [
+      -71.5072,
+      -32.78455
+     ]
+    ]
+   },
+   "properties": {
+    "id": 683,
+    "source": 233,
+    "target": 256,
+    "source_code": "hist_santuario_las_petras",
+    "target_code": "poi_loncura_los_mellizos",
+    "length_m": 386.45,
+    "cost": 386.45,
+    "reverse_cost": 386.45
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -71.5035,
+      -32.783
+     ],
+     [
+      -71.5035,
+      -32.7875
+     ]
+    ]
+   },
+   "properties": {
+    "id": 684,
+    "source": 233,
+    "target": 257,
+    "source_code": "hist_santuario_las_petras",
+    "target_code": "poi_loncura_chimbote_huaras",
+    "length_m": 500.38,
+    "cost": 500.38,
+    "reverse_cost": 500.38
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -71.512628,
+      -32.791928
+     ],
+     [
+      -71.50373,
+      -32.78953
+     ]
+    ]
+   },
+   "properties": {
+    "id": 685,
+    "source": 234,
+    "target": 252,
+    "source_code": "hist_conchal_bato_aconcagua",
+    "target_code": "poi_loncura_almacen_gaston",
+    "length_m": 873.45,
+    "cost": 873.45,
+    "reverse_cost": 873.45
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -71.48415,
+      -32.72538
+     ],
+     [
+      -71.48742,
+      -32.7302
+     ]
+    ]
+   },
+   "properties": {
+    "id": 686,
+    "source": 238,
+    "target": 240,
+    "source_code": "poi_chocota_junta_camelias",
+    "target_code": "poi_chocota_centro",
+    "length_m": 617.1,
+    "cost": 617.1,
+    "reverse_cost": 617.1
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -71.48415,
+      -32.72538
+     ],
+     [
+      -71.48462,
+      -32.72468
+     ]
+    ]
+   },
+   "properties": {
+    "id": 687,
+    "source": 238,
+    "target": 242,
+    "source_code": "poi_chocota_junta_camelias",
+    "target_code": "poi_chocota_villa_bosque",
+    "length_m": 89.4,
+    "cost": 89.4,
+    "reverse_cost": 89.4
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -71.48415,
+      -32.72538
+     ],
+     [
+      -71.4862,
+      -32.7215
+     ]
+    ]
+   },
+   "properties": {
+    "id": 688,
+    "source": 238,
+    "target": 245,
+    "source_code": "poi_chocota_junta_camelias",
+    "target_code": "poi_chocota_diagonal",
+    "length_m": 472.14,
+    "cost": 472.14,
+    "reverse_cost": 472.14
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -71.48415,
+      -32.72538
+     ],
+     [
+      -71.4772,
+      -32.723
+     ]
+    ]
+   },
+   "properties": {
+    "id": 689,
+    "source": 238,
+    "target": 247,
+    "source_code": "poi_chocota_junta_camelias",
+    "target_code": "poi_chocota_camino_viejo",
+    "length_m": 701.95,
+    "cost": 701.95,
+    "reverse_cost": 701.95
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -71.48989,
+      -32.71623
+     ],
+     [
+      -71.4881,
+      -32.7185
+     ]
+    ]
+   },
+   "properties": {
+    "id": 690,
+    "source": 239,
+    "target": 246,
+    "source_code": "poi_chocota_villa_horcomad",
+    "target_code": "poi_chocota_ponderosa",
+    "length_m": 302.91,
+    "cost": 302.91,
+    "reverse_cost": 302.91
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -71.48742,
+      -32.7302
+     ],
+     [
+      -71.48462,
+      -32.72468
+     ]
+    ]
+   },
+   "properties": {
+    "id": 691,
+    "source": 240,
+    "target": 242,
+    "source_code": "poi_chocota_centro",
+    "target_code": "poi_chocota_villa_bosque",
+    "length_m": 667.34,
+    "cost": 667.34,
+    "reverse_cost": 667.34
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -71.48462,
+      -32.72468
+     ],
+     [
+      -71.4862,
+      -32.7215
+     ]
+    ]
+   },
+   "properties": {
+    "id": 692,
+    "source": 242,
+    "target": 245,
+    "source_code": "poi_chocota_villa_bosque",
+    "target_code": "poi_chocota_diagonal",
+    "length_m": 383.25,
+    "cost": 383.25,
+    "reverse_cost": 383.25
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -71.48462,
+      -32.72468
+     ],
+     [
+      -71.4772,
+      -32.723
+     ]
+    ]
+   },
+   "properties": {
+    "id": 693,
+    "source": 242,
+    "target": 247,
+    "source_code": "poi_chocota_villa_bosque",
+    "target_code": "poi_chocota_camino_viejo",
+    "length_m": 718.82,
+    "cost": 718.82,
+    "reverse_cost": 718.82
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -71.4795,
+      -32.7168
+     ],
+     [
+      -71.4772,
+      -32.723
+     ]
+    ]
+   },
+   "properties": {
+    "id": 694,
+    "source": 244,
+    "target": 247,
+    "source_code": "poi_chocota_alto_mar",
+    "target_code": "poi_chocota_camino_viejo",
+    "length_m": 722.21,
+    "cost": 722.21,
+    "reverse_cost": 722.21
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -71.4862,
+      -32.7215
+     ],
+     [
+      -71.4881,
+      -32.7185
+     ]
+    ]
+   },
+   "properties": {
+    "id": 695,
+    "source": 245,
+    "target": 246,
+    "source_code": "poi_chocota_diagonal",
+    "target_code": "poi_chocota_ponderosa",
+    "length_m": 377.98,
+    "cost": 377.98,
+    "reverse_cost": 377.98
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -71.4862,
+      -32.7215
+     ],
+     [
+      -71.4772,
+      -32.723
+     ]
+    ]
+   },
+   "properties": {
+    "id": 696,
+    "source": 245,
+    "target": 247,
+    "source_code": "poi_chocota_diagonal",
+    "target_code": "poi_chocota_camino_viejo",
+    "length_m": 858.3,
+    "cost": 858.3,
+    "reverse_cost": 858.3
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -71.5018,
+      -32.78834
+     ],
+     [
+      -71.497,
+      -32.7895
+     ]
+    ]
+   },
+   "properties": {
+    "id": 697,
+    "source": 248,
+    "target": 258,
+    "source_code": "poi_loncura_german_riesco",
+    "target_code": "poi_loncura_parque_solar",
+    "length_m": 466.87,
+    "cost": 466.87,
+    "reverse_cost": 466.87
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -71.50259,
+      -32.79041
+     ],
+     [
+      -71.50088,
+      -32.79171
+     ]
+    ]
+   },
+   "properties": {
+    "id": 698,
+    "source": 249,
+    "target": 250,
+    "source_code": "poi_loncura_los_alerces",
+    "target_code": "poi_loncura_manutara",
+    "length_m": 215.51,
+    "cost": 215.51,
+    "reverse_cost": 215.51
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -71.50259,
+      -32.79041
+     ],
+     [
+      -71.5032,
+      -32.7935
+     ]
+    ]
+   },
+   "properties": {
+    "id": 699,
+    "source": 249,
+    "target": 251,
+    "source_code": "poi_loncura_los_alerces",
+    "target_code": "poi_loncura_av_bosque",
+    "length_m": 348.29,
+    "cost": 348.29,
+    "reverse_cost": 348.29
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -71.50259,
+      -32.79041
+     ],
+     [
+      -71.50373,
+      -32.78953
+     ]
+    ]
+   },
+   "properties": {
+    "id": 700,
+    "source": 249,
+    "target": 252,
+    "source_code": "poi_loncura_los_alerces",
+    "target_code": "poi_loncura_almacen_gaston",
+    "length_m": 144.67,
+    "cost": 144.67,
+    "reverse_cost": 144.67
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -71.50088,
+      -32.79171
+     ],
+     [
+      -71.5032,
+      -32.7935
+     ]
+    ]
+   },
+   "properties": {
+    "id": 701,
+    "source": 250,
+    "target": 251,
+    "source_code": "poi_loncura_manutara",
+    "target_code": "poi_loncura_av_bosque",
+    "length_m": 294.36,
+    "cost": 294.36,
+    "reverse_cost": 294.36
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -71.50088,
+      -32.79171
+     ],
+     [
+      -71.5015,
+      -32.7958
+     ]
+    ]
+   },
+   "properties": {
+    "id": 702,
+    "source": 250,
+    "target": 254,
+    "source_code": "poi_loncura_manutara",
+    "target_code": "poi_loncura_estadio",
+    "length_m": 458.46,
+    "cost": 458.46,
+    "reverse_cost": 458.46
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -71.50088,
+      -32.79171
+     ],
+     [
+      -71.4985,
+      -32.7932
+     ]
+    ]
+   },
+   "properties": {
+    "id": 703,
+    "source": 250,
+    "target": 255,
+    "source_code": "poi_loncura_manutara",
+    "target_code": "poi_loncura_las_jaibas",
+    "length_m": 277.39,
+    "cost": 277.39,
+    "reverse_cost": 277.39
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -71.50088,
+      -32.79171
+     ],
+     [
+      -71.497,
+      -32.7895
+     ]
+    ]
+   },
+   "properties": {
+    "id": 704,
+    "source": 250,
+    "target": 258,
+    "source_code": "poi_loncura_manutara",
+    "target_code": "poi_loncura_parque_solar",
+    "length_m": 438.1,
+    "cost": 438.1,
+    "reverse_cost": 438.1
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -71.5032,
+      -32.7935
+     ],
+     [
+      -71.5015,
+      -32.7958
+     ]
+    ]
+   },
+   "properties": {
+    "id": 705,
+    "source": 251,
+    "target": 254,
+    "source_code": "poi_loncura_av_bosque",
+    "target_code": "poi_loncura_estadio",
+    "length_m": 301.09,
+    "cost": 301.09,
+    "reverse_cost": 301.09
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -71.50421,
+      -32.78793
+     ],
+     [
+      -71.5035,
+      -32.7875
+     ]
+    ]
+   },
+   "properties": {
+    "id": 706,
+    "source": 253,
+    "target": 257,
+    "source_code": "poi_loncura_union_progreso",
+    "target_code": "poi_loncura_chimbote_huaras",
+    "length_m": 81.8,
+    "cost": 81.8,
+    "reverse_cost": 81.8
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -71.5015,
+      -32.7958
+     ],
+     [
+      -71.4985,
+      -32.7932
+     ]
+    ]
+   },
+   "properties": {
+    "id": 707,
+    "source": 254,
+    "target": 255,
+    "source_code": "poi_loncura_estadio",
+    "target_code": "poi_loncura_las_jaibas",
+    "length_m": 402.76,
+    "cost": 402.76,
+    "reverse_cost": 402.76
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -71.4985,
+      -32.7932
+     ],
+     [
+      -71.497,
+      -32.7895
+     ]
+    ]
+   },
+   "properties": {
+    "id": 708,
+    "source": 255,
+    "target": 258,
+    "source_code": "poi_loncura_las_jaibas",
+    "target_code": "poi_loncura_parque_solar",
+    "length_m": 434.66,
+    "cost": 434.66,
+    "reverse_cost": 434.66
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -71.53073,
+      -32.79148
+     ],
+     [
+      -71.52666,
+      -32.79153
+     ]
+    ]
+   },
+   "properties": {
+    "id": 709,
+    "source": 259,
+    "target": 264,
+    "source_code": "poi_quintero_sur_porvenir",
+    "target_code": "poi_quintero_sur_copec_f210",
+    "length_m": 380.49,
+    "cost": 380.49,
+    "reverse_cost": 380.49
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -71.53073,
+      -32.79148
+     ],
+     [
+      -71.52956,
+      -32.79327
+     ]
+    ]
+   },
+   "properties": {
+    "id": 710,
+    "source": 259,
+    "target": 267,
+    "source_code": "poi_quintero_sur_porvenir",
+    "target_code": "poi_quintero_sur_multicancha_pinos",
+    "length_m": 227.11,
+    "cost": 227.11,
+    "reverse_cost": 227.11
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -71.53292,
+      -32.79861
+     ],
+     [
+      -71.53702,
+      -32.79876
+     ]
+    ]
+   },
+   "properties": {
+    "id": 711,
+    "source": 260,
+    "target": 261,
+    "source_code": "poi_quintero_sur_lomas",
+    "target_code": "poi_quintero_sur_independencia",
+    "length_m": 383.58,
+    "cost": 383.58,
+    "reverse_cost": 383.58
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -71.53292,
+      -32.79861
+     ],
+     [
+      -71.53342,
+      -32.80106
+     ]
+    ]
+   },
+   "properties": {
+    "id": 712,
+    "source": 260,
+    "target": 262,
+    "source_code": "poi_quintero_sur_lomas",
+    "target_code": "poi_quintero_sur_colinas_mar",
+    "length_m": 276.41,
+    "cost": 276.41,
+    "reverse_cost": 276.41
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -71.53292,
+      -32.79861
+     ],
+     [
+      -71.52946,
+      -32.79889
+     ]
+    ]
+   },
+   "properties": {
+    "id": 713,
+    "source": 260,
+    "target": 263,
+    "source_code": "poi_quintero_sur_lomas",
+    "target_code": "poi_quintero_sur_estadio_muni",
+    "length_m": 324.89,
+    "cost": 324.89,
+    "reverse_cost": 324.89
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -71.53702,
+      -32.79876
+     ],
+     [
+      -71.53342,
+      -32.80106
+     ]
+    ]
+   },
+   "properties": {
+    "id": 714,
+    "source": 261,
+    "target": 262,
+    "source_code": "poi_quintero_sur_independencia",
+    "target_code": "poi_quintero_sur_colinas_mar",
+    "length_m": 422.64,
+    "cost": 422.64,
+    "reverse_cost": 422.64
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -71.52666,
+      -32.79153
+     ],
+     [
+      -71.52956,
+      -32.79327
+     ]
+    ]
+   },
+   "properties": {
+    "id": 715,
+    "source": 264,
+    "target": 267,
+    "source_code": "poi_quintero_sur_copec_f210",
+    "target_code": "poi_quintero_sur_multicancha_pinos",
+    "length_m": 333.04,
+    "cost": 333.04,
+    "reverse_cost": 333.04
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -71.4682,
+      -32.7385
+     ],
+     [
+      -71.4655,
+      -32.736
+     ]
+    ]
+   },
+   "properties": {
+    "id": 716,
+    "source": 271,
+    "target": 272,
+    "source_code": "poi_campiche_escuela_rural",
+    "target_code": "poi_campiche_plaza_comunitaria",
+    "length_m": 375.57,
+    "cost": 375.57,
+    "reverse_cost": 375.57
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -71.4682,
+      -32.7385
+     ],
+     [
+      -71.463,
+      -32.7352
+     ]
+    ]
+   },
+   "properties": {
+    "id": 717,
+    "source": 271,
+    "target": 273,
+    "source_code": "poi_campiche_escuela_rural",
+    "target_code": "poi_campiche_sede_social",
+    "length_m": 609.27,
+    "cost": 609.27,
+    "reverse_cost": 609.27
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -71.4655,
+      -32.736
+     ],
+     [
+      -71.463,
+      -32.7352
+     ]
+    ]
+   },
+   "properties": {
+    "id": 718,
+    "source": 272,
+    "target": 273,
+    "source_code": "poi_campiche_plaza_comunitaria",
+    "target_code": "poi_campiche_sede_social",
+    "length_m": 250.18,
+    "cost": 250.18,
+    "reverse_cost": 250.18
    }
   }
  ]

@@ -16,7 +16,7 @@
         <span class="badge-tag">Inspirado en Akgün et al. (2000)</span>
       </div>
       <div class="header-status">
-        <span class="status-badge"><span class="dot-live"></span> Red Conexa &middot; 237 Nodos &middot; 633 Aristas</span>
+        <span class="status-badge"><span class="dot-live"></span> Red Conexa &middot; 273 Nodos &middot; 718 Aristas</span>
       </div>
     </div>
     <p>Simulador y Auditoría de Ruteo Resiliente UAV · Bahía de Quintero y Puchuncaví</p>
@@ -79,19 +79,73 @@
           <select id="select-destino"></select>
         </div>
         <div class="control-group">
-          <label for="select-algoritmo">Algoritmo:</label>
-          <select id="select-algoritmo" disabled>
-            <option value="dijkstra" selected>Dijkstra (Costo: longitud en km)</option>
+          <label for="select-algoritmo">Algoritmo de Ruteo:</label>
+          <select id="select-algoritmo">
+            <option value="comparativo" selected>Comparación Dual (Dijkstra vs. Propuesto Akgün)</option>
+            <option value="dijkstra">Línea Base: Dijkstra k=2 (Longitud km pura)</option>
+            <option value="resiliente">Propuesto: Akgün k=2 + Buffers 200m (Multi-criterio W)</option>
           </select>
         </div>
         <button id="btn-ejecutar-mision" type="button" class="btn-primary mt-2">
           <svg class="ui-icon ui-icon-sm" viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>
           <span>Ejecutar Misión</span>
         </button>
+        <button id="btn-descargar-caminos" type="button" class="btn-export-excel mt-2" title="Descargar la secuencia detallada de saltos y waypoints de la ruta en Excel / CSV">
+          <svg class="ui-icon ui-icon-sm" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><line x1="9" y1="15" x2="15" y2="15"/></svg>
+          <span>Descargar Caminos (Excel / CSV)</span>
+        </button>
         <button id="btn-abrir-ventana-resultados" type="button" class="btn-outline-resultados mt-2" style="display: none;" title="Abrir ventana flotante con los resultados">
           <svg class="ui-icon ui-icon-sm" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
           <span>Ver Ventana de Resultados</span>
         </button>
+      </section>
+
+      
+      <!-- 1.1 Restricciones Blandas de Ruteo Resiliente (Vector w) -->
+      <section class="card card-accordion" id="card-restricciones-blandas">
+        <button type="button" class="accordion-header" id="btn-accordion-w" aria-expanded="true">
+          <div style="display:flex; align-items:center; gap:6px;">
+            <h2>Restricciones Blandas (w)</h2>
+            <span class="badge-tag-sm" id="badge-w-count">5 activas</span>
+          </div>
+          <span class="accordion-arrow" id="arrow-accordion-w">
+            <svg class="ui-icon ui-icon-sm" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+          </span>
+        </button>
+        <div class="accordion-body" id="body-accordion-w">
+          <p class="text-caption mb-2">Penalizaciones dinámicas del costo territorial compuesto $W(e) = L(e) + \beta \sum w_f \lambda_f L(e)$:</p>
+          <div class="checkbox-list">
+            <label class="check-item">
+              <input type="checkbox" id="check-w-incendio" checked data-w="incendio">
+              <span>Evitar Incendios Activos (w₁ · λ=5,0)</span>
+              <span class="help-btn" tabindex="0" role="tooltip" data-tooltip="Focos de calor y humo denso NASA FIRMS. Penalización máxima por pérdida de visibilidad y turbulencia térmica.">?</span>
+            </label>
+            <label class="check-item">
+              <input type="checkbox" id="check-w-poblacion" checked data-w="poblacion">
+              <span>Evitar Manzanas Densas (w₂ · λ=0,08)</span>
+              <span class="help-btn" tabindex="0" role="tooltip" data-tooltip="Bloques censales INE con densidad >2500 hab/km². Mitiga el Ground Risk Class (GRC) bajo metodología SORA y norma DAN 151.">?</span>
+            </label>
+            <label class="check-item">
+              <input type="checkbox" id="check-w-telecom" checked data-w="telecom">
+              <span>Evitar Sombra Telecom C2 (w₃ · λ=0,03)</span>
+              <span class="help-btn" tabindex="0" role="tooltip" data-tooltip="Tramos fuera del radio de 3 km de antenas celulares 4G/LTE. Reduce la probabilidad de pérdida de enlace de mando y telemetría.">?</span>
+            </label>
+            <label class="check-item">
+              <input type="checkbox" id="check-w-viento" checked data-w="viento">
+              <span>Evitar Viento Desfavorable (w₄ · λ=0,04)</span>
+              <span class="help-btn" tabindex="0" role="tooltip" data-tooltip="Tramos con componente de viento en contra que incrementan el gasto de batería del multirrotor.">?</span>
+            </label>
+            <label class="check-item">
+              <input type="checkbox" id="check-w-lluvia" checked data-w="lluvia">
+              <span>Evitar Precipitación Activa (w₅ · λ=0,03)</span>
+              <span class="help-btn" tabindex="0" role="tooltip" data-tooltip="Lluvia que genera lavado húmedo de contaminantes atmosféricos (scavenging) alterando la representatividad química.">?</span>
+            </label>
+          </div>
+          <button type="button" id="btn-reset-w" class="btn-subtle btn-block mt-2" title="Restablecer todos los pesos a 1 (estado nominal)">
+            <svg class="ui-icon ui-icon-xs" viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
+            <span>Restablecer por defecto (w = [1,1,1,1,1])</span>
+          </button>
+        </div>
       </section>
 
       <!-- 2. Capas de Metadata (Acordeón) -->
@@ -181,6 +235,113 @@
 
     <!-- MAPA A LA DERECHA -->
     <div class="mapa-viewport">
+      
+      <!-- HUD TÁCTICO DE TELEMETRÍA UAV (BARRA SUPERIOR DE CABINA) -->
+      <div class="uav-hud-bar" id="uav-hud-telemetria">
+        <div class="hud-item hud-gps">
+          <span class="hud-label">GNSS RTK:</span>
+          <span class="hud-value font-mono" id="hud-coords">-32.7801° S, -71.4935° W</span>
+        </div>
+        <div class="hud-sep"></div>
+        <div class="hud-item">
+          <span class="hud-label">Altitud Misión:</span>
+          <span class="hud-value" id="hud-altitud">100 m AGL <small>(Fija)</small></span>
+        </div>
+        <div class="hud-sep"></div>
+        <div class="hud-item">
+          <span class="hud-label">Velocidad:</span>
+          <span class="hud-value" id="hud-velocidad">15 m/s <small>(Crucero)</small></span>
+        </div>
+        <div class="hud-sep"></div>
+        <div class="hud-item hud-battery-group">
+          <span class="hud-label">Batería:</span>
+          <div class="hud-battery-meter" title="Presupuesto total 44 min útil (24 min traslado, 20 min muestreo)">
+            <div class="hud-battery-bar" id="hud-battery-fill" style="width: 100%;"></div>
+          </div>
+          <span class="hud-value font-mono" id="hud-battery-pct">100%</span>
+          <span class="hud-subval" id="hud-battery-time">(44 min útiles)</span>
+        </div>
+        <div class="hud-sep"></div>
+        <div class="hud-item">
+          <span class="hud-label">Régimen DGAC:</span>
+          <span class="hud-badge badge-vlos" id="hud-regimen-badge">VLOS (&le; 500m)</span>
+        </div>
+      </div>
+
+      <!-- WIDGET DE CLIMA Y LLUVIA EN VIVO (OPEN-METEO API) -->
+      <div class="widget-clima-vivo" id="widget-clima-vivo">
+        <div class="clima-header">
+          <div class="clima-header-left">
+            <span class="clima-live-dot"></span>
+            <span class="clima-titulo">Bahía de Quintero · Clima en Vivo</span>
+          </div>
+          <button type="button" id="btn-refresh-clima" class="clima-btn-refresh" title="Actualizar datos meteorológicos desde Open-Meteo">
+            <svg class="ui-icon ui-icon-xs" viewBox="0 0 24 24"><path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
+          </button>
+        </div>
+        <div class="clima-body">
+          <div class="clima-icono-col" id="clima-icono-container">
+            <span class="clima-icon-display" id="clima-icon-display">☀️</span>
+          </div>
+          <div class="clima-datos-col">
+            <div class="clima-lluvia-row">
+              <span class="clima-lluvia-val" id="clima-lluvia-txt">0.0 mm/h</span>
+              <span class="clima-estado-badge badge-seco" id="clima-estado-badge">Sin Lluvia · Muestreo Apto</span>
+            </div>
+            <div class="clima-meta-row">
+              <span id="clima-temp-txt">-- °C</span> · 
+              <span id="clima-hum-txt">HR --%</span> · 
+              <span id="clima-viento-txt">Viento -- m/s</span>
+            </div>
+          </div>
+        </div>
+        <div class="clima-scavenging-alert" id="clima-scavenging-alert" style="display: none;">
+          ⚠️ <strong>Lavado atmosférico activo (Scavenging):</strong> Lluvia detectada en la bahía. Muestras de SO₂ y MP pueden alterarse por absorción en gotas.
+        </div>
+      </div>
+
+      <!-- MODAL DE INADMISIBILIDAD ENERGÉTICA (CONTROL NEGATIVO PUCHUNCAVÍ) -->
+      <div id="modal-inadmisible-energia" class="modal-inadmisible" style="display: none;">
+        <div class="modal-inadmisible-backdrop"></div>
+        <div class="modal-inadmisible-card">
+          <div class="modal-inadmisible-header">
+            <div class="modal-inadmisible-icon">
+              <svg class="ui-icon ui-icon-md" viewBox="0 0 24 24" style="color:#dc2626;"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+            </div>
+            <h3>Misión Rechazada: Inadmisibilidad Energética</h3>
+          </div>
+          <div class="modal-inadmisible-body">
+            <p>El destino <strong>Puchuncaví Centro</strong> requiere una trayectoria de ida de <strong>14,41 km</strong>, superando el alcance máximo operacional seguro del UAV (<strong>L<sub>max</sub> = 10,5 km</strong> con reserva del 20%).</p>
+            <div class="inadmisible-stats-grid">
+              <div class="inadmisible-stat-item">
+                <span>Distancia de ida:</span>
+                <strong class="text-danger">14,41 km</strong>
+              </div>
+              <div class="inadmisible-stat-item">
+                <span>Límite máximo seguro:</span>
+                <strong class="text-good">10,50 km</strong>
+              </div>
+              <div class="inadmisible-stat-item">
+                <span>Tiempo ida/vuelta est.:</span>
+                <strong class="text-danger">52,8 min</strong>
+              </div>
+              <div class="inadmisible-stat-item">
+                <span>Autonomía útil total:</span>
+                <strong class="text-good">44,0 min</strong>
+              </div>
+            </div>
+            <p class="inadmisible-note">
+              <em>* Cumplimiento estricto del caso de Control Negativo (Roadmap Fase 3 y Paper §6) para garantizar el retorno seguro (RTH) a la Base Aérea SCER sin agotamiento de batería.</em>
+            </p>
+          </div>
+          <div class="modal-inadmisible-footer">
+            <button type="button" id="btn-cerrar-modal-inadmisible" class="btn-primary">
+              Comprendido (Cancelar Misión)
+            </button>
+          </div>
+        </div>
+      </div>
+
       <div id="mapa" aria-label="Mapa de la red y rutas"></div>
 
       <!-- VENTANA FLOTANTE ESTILO MATLAB: RESULTADOS DE MISIÓN -->
@@ -265,6 +426,78 @@
               <strong style="color:#b91c1c; display:block; margin-bottom:2px;">Vuelo BVLOS — Más Allá de la Línea de Vista (Norma DAN 151 DGAC)</strong>
               <span id="alerta-bvlos-desc" style="color:#7f1d1d;">Esta ruta supera el límite legal visual de 500 m. En Chile, <strong>requiere Autorización Especial de la DGAC</strong> con análisis de riesgo SORA aprobado y enlace C2 redundante.</span>
             </div>
+          </div>
+
+          
+          <!-- EVALUACIÓN DE RESILIENCIA COMPARATIVA (PAUTA ITEM 11.2 - MASTER ROADMAP) -->
+          <div class="ventana-comparativa-box" id="bloque-resiliencia-comparativa">
+            <div class="comparativa-header">
+              <span class="comparativa-title">Evaluación de Resiliencia Dual (k=2)</span>
+              <span class="badge-tag-sm badge-success" id="badge-comparativa-tipo">Akgün vs. Dijkstra</span>
+            </div>
+            
+            <div class="comparativa-tabla-wrapper">
+              <table class="tabla-comparativa-resiliencia">
+                <thead>
+                  <tr>
+                    <th>Métrica Operacional</th>
+                    <th class="th-dijkstra">Línea Base (Dijkstra)</th>
+                    <th class="th-propuesto">Propuesto (Akgün 200m)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Longitud Primaria (P₁)</td>
+                    <td id="comp-dijk-p1">—</td>
+                    <td id="comp-prop-p1" class="font-bold text-primary">—</td>
+                  </tr>
+                  <tr>
+                    <td>Longitud Secundaria (P₂)</td>
+                    <td id="comp-dijk-p2">—</td>
+                    <td id="comp-prop-p2">—</td>
+                  </tr>
+                  <tr>
+                    <td>Exposición Zona Densa (>2500 hab/km²)</td>
+                    <td id="comp-dijk-urbano" class="text-danger">—</td>
+                    <td id="comp-prop-urbano" class="text-good">—</td>
+                  </tr>
+                  <tr>
+                    <td>Sombra Cobertura C2 (sin señal)</td>
+                    <td id="comp-dijk-c2" class="text-danger">—</td>
+                    <td id="comp-prop-c2" class="text-good">—</td>
+                  </tr>
+                  <tr>
+                    <td>Disimilitud Espacial Buffers (D<sub>buf</sub>)</td>
+                    <td id="comp-dijk-dbuf">—</td>
+                    <td id="comp-prop-dbuf" class="font-bold text-good">—</td>
+                  </tr>
+                  <tr class="tr-resiliencia-highlight">
+                    <td><strong>Confiabilidad de Conjunto R(P₁, P₂)</strong></td>
+                    <td id="comp-dijk-r" class="font-bold text-danger">—</td>
+                    <td id="comp-prop-r" class="font-bold text-good">—</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <!-- BADGE DIFERENCIAL DE RESILIENCIA (DELTA R) -->
+            <div class="delta-resiliencia-banner" id="banner-delta-r">
+              <div class="delta-r-label">
+                <strong>Diferencial de Resiliencia:</strong>
+                <small>ΔR = R(Propuesto) − R(Dijkstra)</small>
+              </div>
+              <div class="delta-r-badge" id="val-delta-r">
+                +0.00
+              </div>
+            </div>
+          </div>
+
+          <!-- BOTÓN DESCARGAR CAMINOS DENTRO DE RESULTADOS -->
+          <div class="ventana-descarga-row mt-2">
+            <button type="button" id="btn-descargar-caminos-modal" class="btn-export-excel btn-block">
+              <svg class="ui-icon ui-icon-sm" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><line x1="9" y1="15" x2="15" y2="15"/></svg>
+              <span>Descargar Secuencia de Saltos y Coordenadas (.CSV)</span>
+            </button>
           </div>
 
           <!-- Barra de ayuda / MATLAB Hint -->
@@ -416,7 +649,7 @@
           </div>
           <div class="hero-meta-box">
             <span class="meta-label">Parámetros Topológicos</span>
-            <code class="meta-code">N=237 nodos &bull; M=633 aristas &bull; K=4 vecinos</code>
+            <code class="meta-code">N=273 nodos &bull; M=718 aristas &bull; K=4 vecinos</code>
             <span class="meta-sub">Coordenadas WGS84 3D &bull; Distancia esférica Haversine &bull; Costo = Longitud (m)</span>
           </div>
         </div>
@@ -428,7 +661,7 @@
           <div class="kpi-top">
             <span class="kpi-name">Vértices (Nodos)</span>
           </div>
-          <div class="kpi-number" id="kpi-grafo-nodos">237</div>
+          <div class="kpi-number" id="kpi-grafo-nodos">273</div>
           <div class="kpi-footnote">13 categorías operacionales (Base SCER, 8 SINCA, 32 fuentes emisoras, red sensible)</div>
         </div>
 
@@ -436,7 +669,7 @@
           <div class="kpi-top">
             <span class="kpi-name">Corredores Aéreos</span>
           </div>
-          <div class="kpi-number" id="kpi-grafo-aristas">633</div>
+          <div class="kpi-number" id="kpi-grafo-aristas">718</div>
           <div class="kpi-footnote">Enlaces bidireccionales construidos mediante K=4 vecinos más cercanos</div>
         </div>
 
@@ -474,7 +707,7 @@
               <div class="map-layer-toggles">
                 <label class="toggle-chip">
                   <input type="checkbox" id="toggle-grafo-nodos" checked>
-                  <span>Nodos (237)</span>
+                  <span>Nodos (273)</span>
                 </label>
                 <label class="toggle-chip">
                   <input type="checkbox" id="toggle-grafo-aristas" checked>
@@ -509,7 +742,7 @@
         <!-- PANEL DE DESGLOSE DE CATEGORÍAS -->
         <div class="infra-info-panel">
           <div class="card">
-            <h2>Categorías de Nodos en la Red (237 Vértices)</h2>
+            <h2>Categorías de Nodos en la Red (273 Vértices)</h2>
             <p style="font-size:0.82rem; color:var(--suave); margin-bottom:12px;">
               Cada nodo cumple un rol operativo específico en la misión de monitoreo ambiental y mitigación de riesgos:
             </p>
@@ -526,7 +759,7 @@
         <div class="card">
           <div class="grafo-step-header">
             <span class="step-num">1</span>
-            <h3>Mapeo y Cosecha Geoespacial de los 237 Nodos</h3>
+            <h3>Mapeo y Cosecha Geoespacial de los 273 Nodos</h3>
           </div>
           <p>
             Los vértices de la red fueron recolectados e integrados siguiendo un riguroso levantamiento territorial en la Bahía de Quintero y Puchuncaví:
@@ -573,7 +806,7 @@ R = 6.371.000 m &bull; φ = latitud (rad) &bull; λ = longitud (rad)</div>
             Por la geografía del borde costero (la ensenada de Quintero, los esteros de Campiche y Mantagua y los cerros de Valle Alegre), un K-NN puro genera componentes desconectadas (islas topológicas):
           </p>
           <ul class="grafo-details-list">
-            <li><strong>Estructura Disjoint-Set Union (DSU)</strong>: Se inicializan 237 conjuntos disjuntos con optimización de <em>compresión de caminos</em> y <em>unión por rango</em>.</li>
+            <li><strong>Estructura Disjoint-Set Union (DSU)</strong>: Se inicializan los conjuntos disjuntos de la red con optimización de <em>compresión de caminos</em> y <em>unión por rango</em>.</li>
             <li><strong>Detección de Particiones</strong>: Tras aplicar K=4, se identifican las componentes conexas independientes $\{C_1, C_2, \dots, C_m\}$.</li>
             <li><strong>Cálculo de Aristas Puente (Bridge Edges)</strong>: Entre cada par de componentes separadas, se encuentra el par de nodos de mínima distancia espacial:
               $$\min_{u \in C_i, v \in C_j} d_{\text{Haversine}}(u, v)$$
@@ -769,7 +1002,7 @@ R = 6.371.000 m &bull; φ = latitud (rad) &bull; λ = longitud (rad)</div>
                   <strong>Normalización de Vértices y Compatibilidad con pgRouting</strong>
                   <p>
                     A partir de <code>public/data/nodes.geojson</code>, el script normaliza las coordenadas WGS84 3D <code>[lon, lat, elevación]</code> 
-                    y genera un <code>id</code> entero secuencial único (1..237) requerido por la función <code>pgr_dijkstra()</code>. 
+                    y genera un <code>id</code> entero secuencial único (1..N) requerido por la función <code>pgr_dijkstra()</code>. 
                     Se preserva el <code>code</code> semántico inmutable (ej: <code>base_scer</code>, <code>sinca_ventanas</code>).
                   </p>
                 </div>
@@ -841,7 +1074,7 @@ R = 6.371.000 m &bull; φ = latitud (rad) &bull; λ = longitud (rad)</div>
         <div class="explorer-body">
           <div class="exp-panel active" id="exp-code-nodos">
             <div class="exp-meta-bar">
-              <span>GeoJSON FeatureCollection &bull; 237 Vértices &bull; RFC 7946 / EPSG:4326 &bull; Tabla BD: <code>infra_node</code></span>
+              <span>GeoJSON FeatureCollection &bull; 273 Vértices &bull; RFC 7946 / EPSG:4326 &bull; Tabla BD: <code>infra_node</code></span>
               <button class="btn-copy-code" type="button" data-copy="code-nodos-text">Copiar JSON</button>
             </div>
             <pre class="code-display"><code id="code-nodos-text">Cargando nodos.geojson…</code></pre>
@@ -1821,7 +2054,7 @@ R = 6.371.000 m &bull; φ = latitud (rad) &bull; λ = longitud (rad)</div>
       </div>
 
       <div class="modal-footer">
-        <span class="modal-counter" id="modal-destinos-contador">237 destinos disponibles</span>
+        <span class="modal-counter" id="modal-destinos-contador">273 destinos disponibles</span>
         <button type="button" class="btn-modal-cancel" id="btn-cancelar-modal-destino">Cerrar</button>
       </div>
     </div>

@@ -25,7 +25,7 @@ emisoras) y puntos de paso (salud, educación, comercio, playas, etc.).
 | `id` | int | Identificador numérico del vértice (lo usa pgRouting) |
 | `code` | string | Identificador textual estable del nodo (ej. `base_scer`, `sinca_ventanas`) |
 | `name` | string | Nombre del lugar |
-| `category` | string | `base`, `sinca`, `emission_source`, `health`, `education`, `commercial`, `crowded_area`, `beach`, `hospitality`, `restaurant`, `attraction`, `historic`, `auxiliary_hub` |
+| `category` | string | `base`, `sinca`, `emission_source`, `health`, `education`, `commercial`, `crowded_area`, `beach`, `hospitality`, `restaurant`, `attraction`, `historic`, `auxiliary_hub`, `transit` |
 | `type` | string | Subtipo dentro de la categoría |
 | `role` | string | Rol del nodo en la misión |
 | `priority` | int | Prioridad de monitoreo (0 = base) |

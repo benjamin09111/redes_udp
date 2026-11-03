@@ -5685,6 +5685,834 @@
           15
         ]
       }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.48415,
+          -32.72538
+        ]
+      },
+      "properties": {
+        "id": "poi_chocota_junta_camelias",
+        "name": "Comunidad Vecinal Las Camelias de Horcón",
+        "category": "crowded_area",
+        "type": "community_centre",
+        "role": "Organización Comunitaria y Zona Residencial Las Camelias",
+        "icon": "👥",
+        "color": "#ec4899",
+        "priority": 4,
+        "elevation_msnm": 42.0,
+        "pollutants": [],
+        "city": "Puchuncaví"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.48989,
+          -32.71623
+        ]
+      },
+      "properties": {
+        "id": "poi_chocota_villa_horcomad",
+        "name": "Villa Horcomad (Área Residencial)",
+        "category": "crowded_area",
+        "type": "residential",
+        "role": "Sector Residencial Consolidado Villa Horcomad",
+        "icon": "🏘️",
+        "color": "#ec4899",
+        "priority": 4,
+        "elevation_msnm": 38.0,
+        "pollutants": [],
+        "city": "Puchuncaví"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.48742,
+          -32.7302
+        ]
+      },
+      "properties": {
+        "id": "poi_chocota_centro",
+        "name": "Cruce Central La Chocota",
+        "category": "commercial",
+        "type": "junction",
+        "role": "Intersección y Eje de Servicios Locales La Chocota",
+        "icon": "🛒",
+        "color": "#eab308",
+        "priority": 4,
+        "elevation_msnm": 45.0,
+        "pollutants": [],
+        "city": "Puchuncaví"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.50083,
+          -32.72519
+        ]
+      },
+      "properties": {
+        "id": "poi_chocota_club_tebo",
+        "name": "Club El Tebo / Caleta El Tebo",
+        "category": "beach",
+        "type": "beach_resort",
+        "role": "Ensenada y Complejo Turístico El Tebo",
+        "icon": "🏖️",
+        "color": "#06b6d4",
+        "priority": 4,
+        "elevation_msnm": 12.0,
+        "pollutants": [],
+        "city": "Puchuncaví"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.48462,
+          -32.72468
+        ]
+      },
+      "properties": {
+        "id": "poi_chocota_villa_bosque",
+        "name": "Villa El Bosque de Horcón",
+        "category": "crowded_area",
+        "type": "residential",
+        "role": "Conjunto Residencial Villa El Bosque",
+        "icon": "🏘️",
+        "color": "#ec4899",
+        "priority": 4,
+        "elevation_msnm": 40.0,
+        "pollutants": [],
+        "city": "Puchuncaví"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.4875,
+          -32.7125
+        ]
+      },
+      "properties": {
+        "id": "poi_chocota_mirador_pelicanos",
+        "name": "Mirador Bahía Pelícanos",
+        "category": "attraction",
+        "type": "viewpoint",
+        "role": "Punto Panorámico y Atractivo Costero Pelícanos",
+        "icon": "📷",
+        "color": "#ec4899",
+        "priority": 3,
+        "elevation_msnm": 28.0,
+        "pollutants": [],
+        "city": "Puchuncaví"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.4795,
+          -32.7168
+        ]
+      },
+      "properties": {
+        "id": "poi_chocota_alto_mar",
+        "name": "Sector Alto Mar Horcón",
+        "category": "crowded_area",
+        "type": "residential",
+        "role": "Sector Residencial Alto Mar y Acceso Este",
+        "icon": "🏘️",
+        "color": "#ec4899",
+        "priority": 3,
+        "elevation_msnm": 52.0,
+        "pollutants": [],
+        "city": "Puchuncaví"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.4862,
+          -32.7215
+        ]
+      },
+      "properties": {
+        "id": "poi_chocota_diagonal",
+        "name": "Eje Diagonal Chocota / Los Corales",
+        "category": "crowded_area",
+        "type": "junction",
+        "role": "Corredor Conector Diagonal Chocota",
+        "icon": "🛣️",
+        "color": "#ec4899",
+        "priority": 3,
+        "elevation_msnm": 41.0,
+        "pollutants": [],
+        "city": "Puchuncaví"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.4881,
+          -32.7185
+        ]
+      },
+      "properties": {
+        "id": "poi_chocota_ponderosa",
+        "name": "Villa La Ponderosa / Los Jotes",
+        "category": "crowded_area",
+        "type": "residential",
+        "role": "Área Residencial La Ponderosa - Los Jotes",
+        "icon": "🏘️",
+        "color": "#ec4899",
+        "priority": 3,
+        "elevation_msnm": 36.0,
+        "pollutants": [],
+        "city": "Puchuncaví"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.4772,
+          -32.723
+        ]
+      },
+      "properties": {
+        "id": "poi_chocota_camino_viejo",
+        "name": "Acceso Norte / Camino Viejo Horcón",
+        "category": "crowded_area",
+        "type": "junction",
+        "role": "Interconexión Vial Camino Viejo a Horcón",
+        "icon": "🛣️",
+        "color": "#ec4899",
+        "priority": 3,
+        "elevation_msnm": 48.0,
+        "pollutants": [],
+        "city": "Puchuncaví"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.5018,
+          -32.78834
+        ]
+      },
+      "properties": {
+        "id": "poi_loncura_german_riesco",
+        "name": "Villa Germán Riesco",
+        "category": "crowded_area",
+        "type": "residential",
+        "role": "Sector Residencial Núcleo Villa Germán Riesco",
+        "icon": "🏘️",
+        "color": "#ec4899",
+        "priority": 4,
+        "elevation_msnm": 18.0,
+        "pollutants": [],
+        "city": "Quintero"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.50259,
+          -32.79041
+        ]
+      },
+      "properties": {
+        "id": "poi_loncura_los_alerces",
+        "name": "Villa Los Alerces",
+        "category": "crowded_area",
+        "type": "residential",
+        "role": "Población Los Alerces Loncura",
+        "icon": "🏘️",
+        "color": "#ec4899",
+        "priority": 4,
+        "elevation_msnm": 20.0,
+        "pollutants": [],
+        "city": "Quintero"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.50088,
+          -32.79171
+        ]
+      },
+      "properties": {
+        "id": "poi_loncura_manutara",
+        "name": "Villa Manutara Loncura",
+        "category": "crowded_area",
+        "type": "residential",
+        "role": "Zona Poblacional Villa Manutara",
+        "icon": "🏘️",
+        "color": "#ec4899",
+        "priority": 4,
+        "elevation_msnm": 22.0,
+        "pollutants": [],
+        "city": "Quintero"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.5032,
+          -32.7935
+        ]
+      },
+      "properties": {
+        "id": "poi_loncura_av_bosque",
+        "name": "Eje Comercial Av. El Bosque Loncura",
+        "category": "commercial",
+        "type": "commercial",
+        "role": "Arteria Comercial y Flujo Vecinal Av. El Bosque",
+        "icon": "🛒",
+        "color": "#eab308",
+        "priority": 4,
+        "elevation_msnm": 24.0,
+        "pollutants": [],
+        "city": "Quintero"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.50373,
+          -32.78953
+        ]
+      },
+      "properties": {
+        "id": "poi_loncura_almacen_gaston",
+        "name": "Almacén Donde el Gastón",
+        "category": "commercial",
+        "type": "shop",
+        "role": "Comercio de Barrio y Abasto Local Loncura",
+        "icon": "🛒",
+        "color": "#eab308",
+        "priority": 4,
+        "elevation_msnm": 19.0,
+        "pollutants": [],
+        "city": "Quintero"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.50421,
+          -32.78793
+        ]
+      },
+      "properties": {
+        "id": "poi_loncura_union_progreso",
+        "name": "Junta de Vecinos Unión y Progreso Loncura",
+        "category": "crowded_area",
+        "type": "community_centre",
+        "role": "Centro Comunitario y Sede Social Vecinal",
+        "icon": "👥",
+        "color": "#ec4899",
+        "priority": 4,
+        "elevation_msnm": 19.0,
+        "pollutants": [],
+        "city": "Quintero"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.5015,
+          -32.7958
+        ]
+      },
+      "properties": {
+        "id": "poi_loncura_estadio",
+        "name": "Estadio Comunitario Loncura",
+        "category": "crowded_area",
+        "type": "pitch",
+        "role": "Cancha de Fútbol y Actividad Deportiva Loncura",
+        "icon": "⚽",
+        "color": "#ec4899",
+        "priority": 4,
+        "elevation_msnm": 25.0,
+        "pollutants": [],
+        "city": "Quintero"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.4985,
+          -32.7932
+        ]
+      },
+      "properties": {
+        "id": "poi_loncura_las_jaibas",
+        "name": "Sector Residencial Las Jaibas / Las Arenas",
+        "category": "crowded_area",
+        "type": "residential",
+        "role": "Área Habitacional Las Jaibas y Pasajes Interiores",
+        "icon": "🏘️",
+        "color": "#ec4899",
+        "priority": 4,
+        "elevation_msnm": 21.0,
+        "pollutants": [],
+        "city": "Quintero"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.5072,
+          -32.78455
+        ]
+      },
+      "properties": {
+        "id": "poi_loncura_los_mellizos",
+        "name": "Villa Los Mellizos / Pomabamba",
+        "category": "crowded_area",
+        "type": "residential",
+        "role": "Sector Residencial Norte Loncura",
+        "icon": "🏘️",
+        "color": "#ec4899",
+        "priority": 4,
+        "elevation_msnm": 14.0,
+        "pollutants": [],
+        "city": "Quintero"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.5035,
+          -32.7875
+        ]
+      },
+      "properties": {
+        "id": "poi_loncura_chimbote_huaras",
+        "name": "Cruce Chimbote / Huaras",
+        "category": "crowded_area",
+        "type": "junction",
+        "role": "Intersección Central y Conexión Vial Loncura",
+        "icon": "🛣️",
+        "color": "#ec4899",
+        "priority": 3,
+        "elevation_msnm": 17.0,
+        "pollutants": [],
+        "city": "Quintero"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.497,
+          -32.7895
+        ]
+      },
+      "properties": {
+        "id": "poi_loncura_parque_solar",
+        "name": "Monitoreo Perimetral PFV Loncura",
+        "category": "crowded_area",
+        "type": "infrastructure",
+        "role": "Instalación de Generación Fotovoltaica y Monitoreo",
+        "icon": "⚡",
+        "color": "#ec4899",
+        "priority": 3,
+        "elevation_msnm": 23.0,
+        "pollutants": [],
+        "city": "Quintero"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.53073,
+          -32.79148
+        ]
+      },
+      "properties": {
+        "id": "poi_quintero_sur_porvenir",
+        "name": "Población Porvenir (Eje Cívico)",
+        "category": "crowded_area",
+        "type": "residential",
+        "role": "Área de Concentración Poblacional Porvenir",
+        "icon": "🏘️",
+        "color": "#ec4899",
+        "priority": 5,
+        "elevation_msnm": 32.0,
+        "pollutants": [],
+        "city": "Quintero"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.53292,
+          -32.79861
+        ]
+      },
+      "properties": {
+        "id": "poi_quintero_sur_lomas",
+        "name": "Población Lomas de Quintero",
+        "category": "crowded_area",
+        "type": "residential",
+        "role": "Sector Residencial en Altura Lomas de Quintero",
+        "icon": "🏘️",
+        "color": "#ec4899",
+        "priority": 4,
+        "elevation_msnm": 45.0,
+        "pollutants": [],
+        "city": "Quintero"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.53702,
+          -32.79876
+        ]
+      },
+      "properties": {
+        "id": "poi_quintero_sur_independencia",
+        "name": "Villa Independencia",
+        "category": "crowded_area",
+        "type": "residential",
+        "role": "Sector Residencial Villa Independencia",
+        "icon": "🏘️",
+        "color": "#ec4899",
+        "priority": 4,
+        "elevation_msnm": 42.0,
+        "pollutants": [],
+        "city": "Quintero"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.53342,
+          -32.80106
+        ]
+      },
+      "properties": {
+        "id": "poi_quintero_sur_colinas_mar",
+        "name": "Población Colinas del Mar",
+        "category": "crowded_area",
+        "type": "residential",
+        "role": "Barrio Habitacional Colinas del Mar",
+        "icon": "🏘️",
+        "color": "#ec4899",
+        "priority": 4,
+        "elevation_msnm": 48.0,
+        "pollutants": [],
+        "city": "Quintero"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.52946,
+          -32.79889
+        ]
+      },
+      "properties": {
+        "id": "poi_quintero_sur_estadio_muni",
+        "name": "Estadio Municipal de Quintero Raúl Vargas",
+        "category": "crowded_area",
+        "type": "stadium",
+        "role": "Principal Recinto Polideportivo Municipal de Quintero",
+        "icon": "⚽",
+        "color": "#ec4899",
+        "priority": 5,
+        "elevation_msnm": 35.0,
+        "pollutants": [],
+        "city": "Quintero"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.52666,
+          -32.79153
+        ]
+      },
+      "properties": {
+        "id": "poi_quintero_sur_copec_f210",
+        "name": "Estación Copec F-210 Acceso Sur",
+        "category": "commercial",
+        "type": "fuel",
+        "role": "Servicentro y Abastecimiento Ruta F-210",
+        "icon": "⛽",
+        "color": "#eab308",
+        "priority": 4,
+        "elevation_msnm": 30.0,
+        "pollutants": [],
+        "city": "Quintero"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.52705,
+          -32.78709
+        ]
+      },
+      "properties": {
+        "id": "poi_quintero_sur_shell_prat",
+        "name": "Estación Shell Arturo Prat",
+        "category": "commercial",
+        "type": "fuel",
+        "role": "Servicentro Arturo Prat Cruce Sur",
+        "icon": "⛽",
+        "color": "#eab308",
+        "priority": 4,
+        "elevation_msnm": 28.0,
+        "pollutants": [],
+        "city": "Quintero"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.5297,
+          -32.78568
+        ]
+      },
+      "properties": {
+        "id": "poi_quintero_sur_ann_sullivan",
+        "name": "Escuela Especial Ann Sullivan",
+        "category": "education",
+        "type": "school",
+        "role": "Establecimiento Educacional Especializado",
+        "icon": "🏫",
+        "color": "#f97316",
+        "priority": 5,
+        "elevation_msnm": 29.0,
+        "pollutants": [],
+        "city": "Quintero"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.52956,
+          -32.79327
+        ]
+      },
+      "properties": {
+        "id": "poi_quintero_sur_multicancha_pinos",
+        "name": "Multicancha Plaza Los Pinos",
+        "category": "crowded_area",
+        "type": "pitch",
+        "role": "Espacio Deportivo y Parque Vecinal Los Pinos",
+        "icon": "⚽",
+        "color": "#ec4899",
+        "priority": 4,
+        "elevation_msnm": 33.0,
+        "pollutants": [],
+        "city": "Quintero"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.5372,
+          -32.7925
+        ]
+      },
+      "properties": {
+        "id": "poi_quintero_sur_diego_portales",
+        "name": "Sector Residencial Diego Portales",
+        "category": "crowded_area",
+        "type": "residential",
+        "role": "Población Diego Portales y Calles Salas",
+        "icon": "🏘️",
+        "color": "#ec4899",
+        "priority": 4,
+        "elevation_msnm": 38.0,
+        "pollutants": [],
+        "city": "Quintero"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.5368,
+          -32.7852
+        ]
+      },
+      "properties": {
+        "id": "poi_quintero_sur_sanfuentes",
+        "name": "Plaza Sanfuentes Poniente",
+        "category": "crowded_area",
+        "type": "park",
+        "role": "Plaza Pública y Área Verde Sanfuentes",
+        "icon": "🌳",
+        "color": "#ec4899",
+        "priority": 4,
+        "elevation_msnm": 34.0,
+        "pollutants": [],
+        "city": "Quintero"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.5278,
+          -32.796
+        ]
+      },
+      "properties": {
+        "id": "poi_quintero_sur_las_brisas",
+        "name": "Sector Residencial Las Brisas",
+        "category": "crowded_area",
+        "type": "residential",
+        "role": "Condominio y Zona Residencial Las Brisas de Quintero",
+        "icon": "🏘️",
+        "color": "#ec4899",
+        "priority": 4,
+        "elevation_msnm": 31.0,
+        "pollutants": [],
+        "city": "Quintero"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.4682,
+          -32.7385
+        ]
+      },
+      "properties": {
+        "id": "poi_campiche_escuela_rural",
+        "name": "Escuela Rural Campiche",
+        "category": "education",
+        "type": "school",
+        "role": "Educación Rural Básica Campiche",
+        "icon": "🏫",
+        "color": "#f97316",
+        "priority": 5,
+        "elevation_msnm": 22.0,
+        "pollutants": [],
+        "city": "Puchuncaví"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.4655,
+          -32.736
+        ]
+      },
+      "properties": {
+        "id": "poi_campiche_plaza_comunitaria",
+        "name": "Plaza Comunitaria Campiche",
+        "category": "crowded_area",
+        "type": "park",
+        "role": "Espacio Público Central y Área de Recreación Campiche",
+        "icon": "🌳",
+        "color": "#ec4899",
+        "priority": 4,
+        "elevation_msnm": 20.0,
+        "pollutants": [],
+        "city": "Puchuncaví"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.463,
+          -32.7352
+        ]
+      },
+      "properties": {
+        "id": "poi_campiche_sede_social",
+        "name": "Sede Social y Club Campiche",
+        "category": "crowded_area",
+        "type": "community_centre",
+        "role": "Club Social, Cultural y Deportivo Campiche",
+        "icon": "👥",
+        "color": "#ec4899",
+        "priority": 4,
+        "elevation_msnm": 21.0,
+        "pollutants": [],
+        "city": "Puchuncaví"
+      }
     }
   ]
 }

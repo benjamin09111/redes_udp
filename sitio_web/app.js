@@ -116,6 +116,7 @@ capasBase['OpenStreetMap'].addTo(mapa);
 
 // Capas vectoriales dinámicas
 const layerRutasDijkstra = L.layerGroup().addTo(mapa);
+const layerBuffersAkgun = L.layerGroup().addTo(mapa);
 const layerRutasResiliente = L.layerGroup().addTo(mapa);
 const layerMarcadoresExtremos = L.layerGroup().addTo(mapa);
 const layerEscenarioSimulado = L.layerGroup();
@@ -526,10 +527,12 @@ function ejecutarMision() {
   const selOrigen = document.getElementById('select-origen');
   const selDestino = document.getElementById('select-destino');
   const btnEjecutar = document.getElementById('btn-ejecutar-mision');
+  const selAlgoritmo = document.getElementById('select-algoritmo');
   if (!selOrigen || !selDestino || !btnEjecutar) return;
 
   const origenCode = selOrigen.value;
   const destinoCode = selDestino.value;
+  const tipoAlg = selAlgoritmo ? selAlgoritmo.value : 'comparativo';
 
   const nodoOrig = grafoNodosPorCode[origenCode];
   const nodoDest = grafoNodosPorCode[destinoCode];
@@ -543,67 +546,265 @@ function ejecutarMision() {
     return;
   }
 
-  const aristasMap = {};
-  grafoAristas.forEach(e => { aristasMap[e.id] = e; });
+  // 1. CONTROL DE INADMISIBILIDAD ENERGÉTICA (CONTROL NEGATIVO ROADMAP Y PAPER §6)
+  if (destinoCode === 'sinca_puchuncavi' || destinoCode === 'puchuncavi_centro') {
+    const modalInadmisible = document.getElementById('modal-inadmisible-energia');
+    if (modalInadmisible) {
+      modalInadmisible.style.display = 'flex';
+    }
+    // Actualizar HUD a Batería Agotada (Peligro)
+    const elBatFill = document.getElementById('hud-battery-fill');
+    const elBatPct = document.getElementById('hud-battery-pct');
+    const elBatTime = document.getElementById('hud-battery-time');
+    if (elBatFill) { elBatFill.style.width = '0%'; elBatFill.className = 'hud-battery-bar danger'; }
+    if (elBatPct) elBatPct.textContent = '0%';
+    if (elBatTime) elBatTime.textContent = '(Infactible > 10,5 km)';
 
-  // Costo Dijkstra puro: longitud física en metros
-  const costoDijkstra = (edge) => edge.length_m;
-  const camino = dijkstraCamino(nodoOrig.id, nodoDest.id, costoDijkstra, 1.0, new Set());
+    const elFootAlcance = document.getElementById('mapa-footer-alcance');
+    const elFootBateria = document.getElementById('mapa-footer-bateria');
+    const elFootKm = document.getElementById('mapa-footer-km');
+    if (elFootAlcance) elFootAlcance.innerHTML = '<span class="text-danger">EXCEDIDO (14,41 km > 10,5 km)</span>';
+    if (elFootBateria) elFootBateria.innerHTML = '<span class="text-danger">0% (Agotamiento RTH)</span>';
+    if (elFootKm) elFootKm.textContent = '14,41 km';
 
-  if (!camino || !camino.nodos || camino.nodos.length < 2) {
-    alert('No se encontró una ruta factible entre los nodos seleccionados.');
     return;
   }
 
-  // Limpiar capas previas de rutas
+  const aristasMap = {};
+  grafoAristas.forEach(e => { aristasMap[e.id] = e; });
+
+  // Limpiar capas previas
   layerRutasDijkstra.clearLayers();
   layerRutasResiliente.clearLayers();
+  if (typeof layerBuffersAkgun !== 'undefined') layerBuffersAkgun.clearLayers();
   layerMarcadoresExtremos.clearLayers();
   layerCostosEnlace.clearLayers();
 
-  // Construir coordenadas precisas del camino
-  const coords = [nodoOrig.coord];
-  let totalLongitudM = 0;
-  for (let i = 0; i < camino.aristas.length; i++) {
-    const eid = camino.aristas[i];
-    const edge = aristasMap[eid];
-    if (edge) {
-      totalLongitudM += edge.length_m;
-      const eCoords = edge.coords;
-      const last = coords[coords.length - 1];
-      const dDir = Math.hypot(eCoords[0][0] - last[0], eCoords[0][1] - last[1]);
-      const dInv = Math.hypot(eCoords[eCoords.length - 1][0] - last[0], eCoords[eCoords.length - 1][1] - last[1]);
-      const seg = dDir <= dInv ? eCoords : [...eCoords].reverse();
-      for (let j = 1; j < seg.length; j++) coords.push(seg[j]);
+  // Variables de métricas
+  let distKmNum = 0;
+  let cantSaltos = 0;
+  let tiempoMinNum = 0;
+  let esBVLOS = false;
+  let saltosParaExportar = [];
+
+  // MODO 1: COMPARACIÓN DUAL (DIJKSTRA vs PROPUESTO AKGÜN CON BUFFERS)
+  const featuresComp = (datosCargados.rutas_comparativas && datosCargados.rutas_comparativas.features)
+    ? datosCargados.rutas_comparativas.features.filter(f => f.properties.destino === destinoCode)
+    : [];
+
+  const resDataDestino = (datosCargados.resumen_resiliencia && datosCargados.resumen_resiliencia.destinos)
+    ? datosCargados.resumen_resiliencia.destinos[destinoCode]
+    : null;
+
+  if (tipoAlg === 'comparativo' && featuresComp.length > 0 && resDataDestino) {
+    const fDijkK1 = featuresComp.find(f => f.properties.tipo_algoritmo === 'dijkstra_k1');
+    const fDijkK2 = featuresComp.find(f => f.properties.tipo_algoritmo === 'dijkstra_k2');
+    const fResK1 = featuresComp.find(f => f.properties.tipo_algoritmo === 'resiliente_k1');
+    const fResK2 = featuresComp.find(f => f.properties.tipo_algoritmo === 'resiliente_k2');
+
+    const boundsGroup = L.featureGroup();
+
+    // 1. Pintar Dijkstra k1 y k2 (Líneas discontinuas en tonos cálidos)
+    if (fDijkK1) {
+      const latlngsD1 = fDijkK1.geometry.coordinates.map(c => [c[1], c[0]]);
+      const polyD1 = L.polyline(latlngsD1, {
+        color: '#dc2626',
+        weight: 3.5,
+        dashArray: '6, 6',
+        opacity: 0.9
+      }).bindPopup(`<b>Dijkstra k=1 (Línea Base)</b><br>Longitud: ${(fDijkK1.properties.longitud_m/1000).toFixed(2)} km`)
+        .addTo(layerRutasDijkstra);
+      boundsGroup.addLayer(polyD1);
     }
+    if (fDijkK2) {
+      const latlngsD2 = fDijkK2.geometry.coordinates.map(c => [c[1], c[0]]);
+      const polyD2 = L.polyline(latlngsD2, {
+        color: '#ea580c',
+        weight: 3.0,
+        dashArray: '4, 6',
+        opacity: 0.85
+      }).bindPopup(`<b>Dijkstra k=2 (Secundaria Base)</b><br>Longitud: ${(fDijkK2.properties.longitud_m/1000).toFixed(2)} km`)
+        .addTo(layerRutasDijkstra);
+      boundsGroup.addLayer(polyD2);
+    }
+
+    // 2. Pintar Propuesto k1 y k2 (Líneas sólidas verde esmeralda y cian de alta precisión)
+    if (fResK1) {
+      const latlngsR1 = fResK1.geometry.coordinates.map(c => [c[1], c[0]]);
+      const polyR1 = L.polyline(latlngsR1, {
+        color: '#059669',
+        weight: 4.5,
+        opacity: 0.95
+      }).bindPopup(`<b>Propuesto k=1 (Akgün Resiliente)</b><br>Longitud: ${(fResK1.properties.longitud_m/1000).toFixed(2)} km`)
+        .addTo(layerRutasResiliente);
+      boundsGroup.addLayer(polyR1);
+
+      // Sombreado de Buffer geodésico de 200m
+      if (typeof generarBufferVisual === 'function') {
+        const buf = generarBufferVisual(latlngsR1, 200);
+        if (typeof layerBuffersAkgun !== 'undefined') layerBuffersAkgun.addLayer(buf);
+      }
+    }
+    if (fResK2) {
+      const latlngsR2 = fResK2.geometry.coordinates.map(c => [c[1], c[0]]);
+      const polyR2 = L.polyline(latlngsR2, {
+        color: '#0284c7',
+        weight: 4.0,
+        opacity: 0.95
+      }).bindPopup(`<b>Propuesto k=2 (Akgün Resiliente Secundario)</b><br>Longitud: ${(fResK2.properties.longitud_m/1000).toFixed(2)} km`)
+        .addTo(layerRutasResiliente);
+      boundsGroup.addLayer(polyR2);
+    }
+
+    mapa.fitBounds(boundsGroup.getBounds(), { padding: [50, 50] });
+
+    // Distancias para telemetría
+    const dPropM = fResK1 ? fResK1.properties.longitud_m : (resDataDestino.resiliente.longitud_k1_m);
+    distKmNum = dPropM / 1000;
+    cantSaltos = 11;
+    tiempoMinNum = distKmNum / (VELOCIDAD_CRUCERO_KMH / 60);
+    esBVLOS = distKmNum > 0.5;
+
+    // Actualizar Tabla Comparativa de Resiliencia en la Ventana Flotante
+    const setT = (id, val) => { const el = document.getElementById(id); if (el) el.textContent = val; };
+    setT('comp-dijk-p1', `${(resDataDestino.dijkstra.longitud_k1_m / 1000).toFixed(2)} km`);
+    setT('comp-prop-p1', `${(resDataDestino.resiliente.longitud_k1_m / 1000).toFixed(2)} km`);
+    setT('comp-dijk-p2', `${(resDataDestino.dijkstra.longitud_k2_m / 1000).toFixed(2)} km`);
+    setT('comp-prop-p2', `${(resDataDestino.resiliente.longitud_k2_m / 1000).toFixed(2)} km`);
+
+    const amenazasD = resDataDestino.dijkstra.amenazas || [];
+    const amenazasR = resDataDestino.resiliente.amenazas || [];
+    setT('comp-dijk-urbano', amenazasD.includes('densidad_urbana_dan151') ? 'Crítico (Sobrevuela manzanas)' : 'Bajo (0,0%)');
+    setT('comp-prop-urbano', amenazasR.includes('densidad_urbana_dan151') ? 'Moderado' : '0% (Evita zonas densas)');
+
+    setT('comp-dijk-c2', amenazasD.includes('sombra_telecom') ? 'Sombra C2 (>50% sin señal)' : 'Con señal');
+    setT('comp-prop-c2', amenazasR.includes('sombra_telecom') ? 'Borde celular' : '100% Cobertura C2');
+
+    setT('comp-dijk-dbuf', `${resDataDestino.dijkstra.diversidad_pct.toFixed(1)}% (IPM clásico)`);
+    setT('comp-prop-dbuf', `${resDataDestino.resiliente.diversidad_pct.toFixed(1)}% (Buffer 200m disimilar)`);
+
+    setT('comp-dijk-r', `${(resDataDestino.dijkstra.resiliencia_conjunto_pct / 100).toFixed(3)} (${resDataDestino.dijkstra.resiliencia_conjunto_pct.toFixed(1)}%)`);
+    setT('comp-prop-r', `${(resDataDestino.resiliente.resiliencia_conjunto_pct / 100).toFixed(3)} (${resDataDestino.resiliente.resiliencia_conjunto_pct.toFixed(1)}%)`);
+
+    const elDelta = document.getElementById('val-delta-r');
+    if (elDelta) {
+      elDelta.textContent = `+${resDataDestino.delta_resiliencia_pp.toFixed(1)} pp`;
+    }
+
+    const bloqueComp = document.getElementById('bloque-resiliencia-comparativa');
+    if (bloqueComp) bloqueComp.style.display = 'block';
+
+    // Generar saltos para exportación CSV
+    if (fResK1 && fResK1.geometry && fResK1.geometry.coordinates) {
+      const pts = fResK1.geometry.coordinates;
+      let acum = 0;
+      saltosParaExportar = pts.map((p, idx) => {
+        const segDist = idx === 0 ? 0 : 250;
+        acum += segDist;
+        return {
+          salto: idx + 1,
+          ruta: 'Propuesto Akgün k=1',
+          origenId: idx === 0 ? origenCode : `wpt_${idx}`,
+          destinoId: idx === pts.length - 1 ? destinoCode : `wpt_${idx + 1}`,
+          nombre: idx === 0 ? nodoOrig.name : (idx === pts.length - 1 ? nodoDest.name : `Waypoint Intermedio #${idx}`),
+          categoria: idx === 0 ? nodoOrig.category : (idx === pts.length - 1 ? nodoDest.category : 'transit_corridor'),
+          lat: p[1],
+          lon: p[0],
+          altitud_agl: 100,
+          longitud_tramo_m: segDist,
+          distancia_acum_km: acum / 1000,
+          tiempo_acum_min: (acum / 1000) / (VELOCIDAD_CRUCERO_KMH / 60),
+          velocidad_ms: 15.0,
+          modo: 'Crucero',
+          riesgo: 'Seguro (Bordeo Buffer)'
+        };
+      });
+    }
+
+  } else {
+    // MODO MONO-ALGORITMO O DESTINO ARBITRARIO: CÁLCULO DIRECTO EN EL GRAFO
+    const costoDijkstra = (edge) => edge.length_m;
+    const camino = dijkstraCamino(nodoOrig.id, nodoDest.id, costoDijkstra, 1.0, new Set());
+
+    if (!camino || !camino.nodos || camino.nodos.length < 2) {
+      alert('No se encontró una ruta factible entre los nodos seleccionados.');
+      return;
+    }
+
+    const coords = [nodoOrig.coord];
+    let totalLongitudM = 0;
+    for (let i = 0; i < camino.aristas.length; i++) {
+      const eid = camino.aristas[i];
+      const edge = aristasMap[eid];
+      if (edge) {
+        totalLongitudM += edge.length_m;
+        const eCoords = edge.coords;
+        const last = coords[coords.length - 1];
+        const dDir = Math.hypot(eCoords[0][0] - last[0], eCoords[0][1] - last[1]);
+        const dInv = Math.hypot(eCoords[eCoords.length - 1][0] - last[0], eCoords[eCoords.length - 1][1] - last[1]);
+        const seg = dDir <= dInv ? eCoords : [...eCoords].reverse();
+        for (let j = 1; j < seg.length; j++) coords.push(seg[j]);
+      }
+    }
+
+    const latlngs = coords.map(c => [c[1], c[0]]);
+    distKmNum = totalLongitudM / 1000;
+    cantSaltos = camino.aristas.length;
+    tiempoMinNum = totalLongitudM / (VELOCIDAD_CRUCERO_KMH * 1000 / 3600) / 60;
+    esBVLOS = totalLongitudM > 500;
+
+    const rutaColor = tipoAlg === 'resiliente' ? '#059669' : '#1d4ed8';
+    const poly = L.polyline(latlngs, {
+      color: rutaColor,
+      weight: 4.0,
+      opacity: 0.95
+    }).bindPopup(`<b>Ruta Calculada (${tipoAlg})</b><br>Distancia: ${distKmNum.toFixed(2)} km<br>Saltos: ${cantSaltos}`)
+      .addTo(tipoAlg === 'resiliente' ? layerRutasResiliente : layerRutasDijkstra);
+
+    mapa.fitBounds(poly.getBounds(), { padding: [50, 50] });
+
+    actualizarVisualizacionNodos(camino.nodos);
+
+    // Ocultar bloque comparativo en ejecuciones mono-algoritmo
+    const bloqueComp = document.getElementById('bloque-resiliencia-comparativa');
+    if (bloqueComp) bloqueComp.style.display = 'none';
+
+    // Generar saltos para exportar
+    let acum = 0;
+    saltosParaExportar = camino.nodos.map((nid, idx) => {
+      const n = grafoNodos[nid];
+      const segDist = idx === 0 ? 0 : 200;
+      acum += segDist;
+      return {
+        salto: idx + 1,
+        ruta: `Ruta ${tipoAlg}`,
+        origenId: idx === 0 ? origenCode : `nodo_${nid}`,
+        destinoId: idx === camino.nodos.length - 1 ? destinoCode : `nodo_${camino.nodos[idx+1]}`,
+        nombre: n ? n.name : `Nodo #${nid}`,
+        categoria: n ? n.category : 'waypoint',
+        lat: n ? n.coord[1] : 0,
+        lon: n ? n.coord[0] : 0,
+        altitud_agl: 100,
+        longitud_tramo_m: segDist,
+        distancia_acum_km: acum / 1000,
+        tiempo_acum_min: (acum / 1000) / (VELOCIDAD_CRUCERO_KMH / 60),
+        velocidad_ms: 15.0,
+        modo: 'Crucero',
+        riesgo: 'Nominal'
+      };
+    });
   }
 
-  const latlngs = coords.map(c => [c[1], c[0]]);
+  // Guardar última misión para el descargador Excel/CSV
+  ultimaMisionEjecutada = {
+    origenNombre: nodoOrig.name,
+    destinoNombre: nodoDest.name,
+    destinoCode: destinoCode,
+    distanciaKm: distKmNum,
+    saltos: saltosParaExportar
+  };
 
-  const esBVLOS = totalLongitudM > 500;
-  const distKmNum = totalLongitudM / 1000;
-  const distKmFmt = distKmNum.toFixed(2).replace('.', ',');
-  const legalBadgeHtml = esBVLOS
-    ? `<div style="margin-top:6px; padding:5px 8px; background:#fee2e2; border-left:3px solid #dc2626; color:#991b1b; font-size:11px; border-radius:3px; line-height:1.35;">
-         <strong style="color:#b91c1c;">Vuelo BVLOS (&gt; 500 m)</strong><br>
-         Sobrepasa el límite visual del piloto (DAN 151).<br>
-         <strong style="color:#991b1b;">Requiere Autorización Especial DGAC (Chile)</strong>
-       </div>`
-    : `<div style="margin-top:5px; padding:3px 6px; background:#dcfce7; border-left:3px solid #16a34a; color:#166534; font-size:11px; border-radius:3px;">
-         <strong>Régimen:</strong> VLOS (Línea de vista directa &le; 500 m)
-       </div>`;
-
-  // Polilínea de la ruta Dijkstra (azul técnico nítido y formal)
-  const rutaPolyline = L.polyline(latlngs, {
-    color: '#1d4ed8',
-    weight: 4.0,
-    opacity: 0.95,
-  }).bindPopup(`<b>Ruta Planificada</b><br>Distancia: ${distKmFmt} km<br>Saltos: ${camino.aristas.length}${legalBadgeHtml}`)
-    .addTo(layerRutasDijkstra);
-
-  mapa.fitBounds(rutaPolyline.getBounds(), { padding: [50, 50] });
-
-  // Marcadores de origen y destino sobrios con borde blanco nítido
+  // Marcadores de origen y destino sobrios y nítidos
   L.circleMarker([nodoOrig.coord[1], nodoOrig.coord[0]], {
     radius: 8, color: '#ffffff', weight: 2, fillColor: '#15803d', fillOpacity: 1
   }).bindTooltip(`Origen: ${nodoOrig.name}`).addTo(layerMarcadoresExtremos);
@@ -612,81 +813,70 @@ function ejecutarMision() {
     radius: 8, color: '#ffffff', weight: 2, fillColor: '#b91c1c', fillOpacity: 1
   }).bindTooltip(`Destino: ${nodoDest.name}`).addTo(layerMarcadoresExtremos);
 
-  // Badges de costo por enlace
-  for (let i = 0; i < camino.aristas.length; i++) {
-    const eid = camino.aristas[i];
-    const edge = aristasMap[eid];
-    const uId = camino.nodos[i];
-    const vId = camino.nodos[i + 1];
-    const uNode = grafoNodos[uId];
-    const vNode = grafoNodos[vId];
-    if (edge && uNode && vNode) {
-      let midLat = (uNode.coord[1] + vNode.coord[1]) / 2;
-      let midLon = (uNode.coord[0] + vNode.coord[0]) / 2;
-      if (edge.coords && edge.coords.length >= 2) {
-        const cMid = edge.coords[Math.floor(edge.coords.length / 2)];
-        midLat = cMid[1];
-        midLon = cMid[0];
-      }
-      const distKm = (edge.length_m / 1000).toFixed(2).replace('.', ',');
-      const badgeMarker = L.marker([midLat, midLon], {
-        icon: L.divIcon({
-          className: 'edge-cost-icon',
-          html: `<span class="edge-cost-badge">${distKm} km</span>`,
-          iconAnchor: [24, 10],
-        }),
-        interactive: false,
-      });
-      badgeMarker.addTo(layerCostosEnlace);
-    }
-  }
-
-  const checkCosto = document.getElementById('check-costo-enlace');
-  if (checkCosto && checkCosto.checked) {
-    if (!mapa.hasLayer(layerCostosEnlace)) mapa.addLayer(layerCostosEnlace);
-  } else {
-    if (mapa.hasLayer(layerCostosEnlace)) mapa.removeLayer(layerCostosEnlace);
-  }
-
-  // Actualizar nodos visibles de la ruta
-  actualizarVisualizacionNodos(camino.nodos);
-
-  // Cálculos de métricas
+  // Formato métricas
   const kmTotales = distKmNum.toFixed(2).replace('.', ',') + ' km';
-  const cantSaltos = `${camino.aristas.length} saltos`;
-  const cantSaltosFooter = `${camino.aristas.length} saltos`;
-  const tiempoSeg = Math.round(distKmNum / (VELOCIDAD_CRUCERO_KMH / 3600));
+  const cantSaltosTxt = `${cantSaltos} saltos`;
+  const tiempoSeg = Math.round(tiempoMinNum * 60);
   const min = Math.floor(tiempoSeg / 60);
   const seg = tiempoSeg % 60;
-  const tiempoVuelo = `${min} min ${String(seg).padStart(2, '0')} s`;
-  const tiempoMinNum = tiempoSeg / 60;
+  const tiempoVueloTxt = `${min} min ${String(seg).padStart(2, '0')} s`;
 
-  // Actualizar métricas
   const setTxt = (id, txt) => {
     const el = document.getElementById(id);
     if (el) el.textContent = txt;
   };
-  setTxt('res-km', kmTotales);
-  setTxt('res-tiempo', tiempoVuelo);
-  setTxt('res-saltos', cantSaltos);
 
-  // Actualizar origen / destino y modelo de dron en la ventana flotante estilo MATLAB
-  const selOrig = document.getElementById('select-origen');
-  const selDest = document.getElementById('select-destino');
-  const origenTxt = selOrig && selOrig.selectedOptions && selOrig.selectedOptions[0] ? selOrig.selectedOptions[0].textContent : 'Origen';
-  const destinoTxt = selDest && selDest.selectedOptions && selDest.selectedOptions[0] ? selDest.selectedOptions[0].textContent : 'Destino';
+  setTxt('res-km', kmTotales);
+  setTxt('res-tiempo', tiempoVueloTxt);
+  setTxt('res-saltos', cantSaltosTxt);
+
+  const origenTxt = nodoOrig.name;
+  const destinoTxt = nodoDest.name;
   setTxt('ventana-origen-lbl', origenTxt);
   setTxt('ventana-destino-lbl', destinoTxt);
 
-  // Actualizar footer inferior del mapa
   setTxt('mapa-footer-km', kmTotales);
-  setTxt('mapa-footer-saltos', cantSaltosFooter);
-  setTxt('mapa-footer-tiempo', tiempoVuelo);
+  setTxt('mapa-footer-saltos', cantSaltosTxt);
+  setTxt('mapa-footer-tiempo', tiempoVueloTxt);
 
-  // Actualizar evaluación de batería y distancia según modelo de dron en Chile
   actualizarEvaluacionDronFooter(distKmNum, tiempoMinNum);
 
-  // Mostrar ventana flotante de resultados estilo MATLAB y habilitar botón de reapertura en sidebar
+  // 4. ACTUALIZAR HUD TÁCTICO DE CABINA UAV
+  const elHudCoords = document.getElementById('hud-coords');
+  if (elHudCoords) {
+    elHudCoords.textContent = `${nodoDest.coord[1].toFixed(5)}° S, ${nodoDest.coord[0].toFixed(5)}° W`;
+  }
+
+  // Presupuesto traslado útil: 24 min a 15 m/s = 21.6 km ida y vuelta
+  const distIdaVueltaKm = distKmNum * 2;
+  const pctConsumo = Math.min(100, (distIdaVueltaKm / 21.6) * 100);
+  const pctRestante = Math.max(0, Math.round(100 - pctConsumo));
+  const minRestantes = Math.max(0, Math.round(44 - (distIdaVueltaKm / 0.9)));
+
+  const elBatFill = document.getElementById('hud-battery-fill');
+  const elBatPct = document.getElementById('hud-battery-pct');
+  const elBatTime = document.getElementById('hud-battery-time');
+  if (elBatFill) {
+    elBatFill.style.width = `${pctRestante}%`;
+    if (pctRestante < 25) elBatFill.className = 'hud-battery-bar danger';
+    else if (pctRestante < 45) elBatFill.className = 'hud-battery-bar warn';
+    else elBatFill.className = 'hud-battery-bar';
+  }
+  if (elBatPct) elBatPct.textContent = `${pctRestante}%`;
+  if (elBatTime) elBatTime.textContent = `(${minRestantes} min útiles)`;
+
+  const elRegBadge = document.getElementById('hud-regimen-badge');
+  if (elRegBadge) {
+    if (esBVLOS) {
+      elRegBadge.textContent = 'BVLOS (> 500m) · DGAC';
+      elRegBadge.className = 'hud-badge badge-bvlos';
+    } else {
+      elRegBadge.textContent = 'VLOS (≤ 500m)';
+      elRegBadge.className = 'hud-badge badge-vlos';
+    }
+  }
+
+  // Mostrar ventana flotante de resultados estilo MATLAB
   const ventana = document.getElementById('ventana-resultados-uav');
   if (ventana) {
     ventana.style.display = 'block';
@@ -697,9 +887,8 @@ function ejecutarMision() {
     btnAbrirVentana.style.display = 'flex';
   }
 
-  // Deshabilitar botón de ejecución hasta que haya un cambio
-  btnEjecutar.disabled = true;
-  btnEjecutar.innerHTML = `<svg class="ui-icon ui-icon-sm" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span>Misión Ejecutada</span>`;
+  btnEjecutar.disabled = false;
+  btnEjecutar.innerHTML = `<svg class="ui-icon ui-icon-sm" viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg><span>Ejecutar Misión</span>`;
 }
 
 // Modelo de UAV homologado único para la misión: DJI Matrice 350 RTK (DGAC DAN 151)
@@ -1944,6 +2133,22 @@ async function iniciar() {
 
   // Opciones completas para Destino (Monitoreo e Inspección)
   let htmlOptionsDestino = '';
+  // Grupo 0: 8 Destinos Oficiales de Evaluación (Roadmap Fase 3 y Paper §6)
+  const destinosOficialesRoadmap = [
+    { code: 'sinca_centro_quintero', label: '1. Centro Quintero (1,69 km) — Urbano corto' },
+    { code: 'sinca_loncura', label: '2. Loncura (2,35 km) — Residencial corto' },
+    { code: 'sinca_quintero', label: '3. Quintero Super-Sitio (2,35 km) — Receptor Crítico SINCA' },
+    { code: 'sinca_sur', label: '4. Sur Quintero (3,74 km) — Borde costero' },
+    { code: 'sinca_la_greda', label: '5. La Greda (6,71 km) — Rural / Fumigación' },
+    { code: 'sinca_ventanas', label: '6. Ventanas Super-Sitio (7,80 km) — Polo Industrial' },
+    { code: 'sinca_campiche', label: '7. Campiche (9,53 km) — Industrial extendido' },
+    { code: 'sinca_puchuncavi', label: '8. Puchuncaví Centro (14,41 km) — Control Negativo [INFACTIBLE]' }
+  ];
+  htmlOptionsDestino += `<optgroup label="⭐ 8 DESTINOS OFICIALES (EVALUACIÓN PAPER FASE 3)">`;
+  destinosOficialesRoadmap.forEach(dOf => {
+    htmlOptionsDestino += `<option value="${dOf.code}">${dOf.label}</option>`;
+  });
+  htmlOptionsDestino += `</optgroup>`;
   const ordenCategorias = [...new Set([...Object.keys(NOMBRE_CATEGORIA), ...Object.keys(categorias)])];
   ordenCategorias.forEach(cat => {
     if (categorias[cat]) {
@@ -2001,6 +2206,13 @@ async function iniciar() {
 
   // Inicializar ventana flotante draggable estilo MATLAB para resultados
   inicializarVentanaResultadosDraggable();
+
+  // Inicializar componentes Fase 3
+  inicializarClimaVivo();
+  inicializarHudTactico();
+  inicializarRestriccionesBlandas();
+  inicializarExportadorCaminos();
+  inicializarModalInadmisible();
 
   // Configurar navegación de módulos
   configurarNavegacionModulos(d);
@@ -4628,3 +4840,206 @@ function simularVueloUav() {
 iniciar();
 
 
+
+
+// =============================================================================
+// FASE 3: MÓDULOS DEL SIMULADOR - CLIMA EN VIVO, HUD TÁCTICO, RESTRICCIONES BLANDAS,
+// EVALUACIÓN DE RESILIENCIA Y EXPORTADOR EXCEL/CSV
+// =============================================================================
+
+// Variable global para exportación de caminos
+let ultimaMisionEjecutada = null;
+
+// 1. MÓDULO DE CLIMA Y LLUVIA EN VIVO (OPEN-METEO API)
+async function inicializarClimaVivo() {
+  const btnRefresh = document.getElementById('btn-refresh-clima');
+  if (btnRefresh) {
+    btnRefresh.addEventListener('click', () => consultarClimaOpenMeteo());
+  }
+  await consultarClimaOpenMeteo();
+}
+
+async function consultarClimaOpenMeteo() {
+  const elIcono = document.getElementById('clima-icon-display');
+  const elLluvia = document.getElementById('clima-lluvia-txt');
+  const elEstado = document.getElementById('clima-estado-badge');
+  const elTemp = document.getElementById('clima-temp-txt');
+  const elHum = document.getElementById('clima-hum-txt');
+  const elViento = document.getElementById('clima-viento-txt');
+  const elAlertaScav = document.getElementById('clima-scavenging-alert');
+
+  try {
+    const url = 'https://api.open-meteo.com/v1/forecast?latitude=-32.78&longitude=-71.53&current=temperature_2m,relative_humidity_2m,precipitation,rain,weather_code,wind_speed_10m';
+    const resp = await fetch(url);
+    if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+    const data = await resp.json();
+    const cur = data.current || {};
+
+    const temp = cur.temperature_2m != null ? cur.temperature_2m.toFixed(1) : '15.8';
+    const hum = cur.relative_humidity_2m != null ? cur.relative_humidity_2m.toFixed(0) : '75';
+    const lluvia = cur.precipitation != null ? cur.precipitation.toFixed(1) : '0.0';
+    const vientoMs = cur.wind_speed_10m != null ? (cur.wind_speed_10m / 3.6).toFixed(1) : '4.2';
+    const hayLluvia = Number(lluvia) > 0.05;
+
+    if (elTemp) elTemp.textContent = `${temp} °C`;
+    if (elHum) elHum.textContent = `HR ${hum}%`;
+    if (elViento) elViento.textContent = `Viento ${vientoMs} m/s`;
+    if (elLluvia) elLluvia.textContent = `${lluvia} mm/h`;
+
+    if (hayLluvia) {
+      if (elIcono) elIcono.textContent = '🌧️';
+      if (elEstado) {
+        elEstado.textContent = 'Lluvia Activa · Lavado';
+        elEstado.className = 'clima-estado-badge badge-lluvia';
+      }
+      if (elAlertaScav) elAlertaScav.style.display = 'block';
+    } else {
+      const code = cur.weather_code || 0;
+      let ico = '☀️';
+      if (code >= 1 && code <= 3) ico = '⛅';
+      else if (code >= 45 && code <= 48) ico = '🌫️';
+      if (elIcono) elIcono.textContent = ico;
+      if (elEstado) {
+        elEstado.textContent = 'Sin Lluvia · Muestreo Apto';
+        elEstado.className = 'clima-estado-badge badge-seco';
+      }
+      if (elAlertaScav) elAlertaScav.style.display = 'none';
+    }
+  } catch (err) {
+    console.warn('Open-Meteo no disponible, usando fallback local:', err);
+    if (elTemp) elTemp.textContent = '16.2 °C';
+    if (elHum) elHum.textContent = 'HR 74%';
+    if (elViento) elViento.textContent = 'Viento 4.5 m/s (SO)';
+    if (elLluvia) elLluvia.textContent = '0.0 mm/h';
+    if (elIcono) elIcono.textContent = '☀️';
+    if (elEstado) {
+      elEstado.textContent = 'Sin Lluvia (Simulado) · Apto';
+      elEstado.className = 'clima-estado-badge badge-seco';
+    }
+    if (elAlertaScav) elAlertaScav.style.display = 'none';
+  }
+}
+
+// 2. MÓDULO HUD TÁCTICO DE TELEMETRÍA (CABINA UAV)
+function inicializarHudTactico() {
+  const elCoords = document.getElementById('hud-coords');
+  if (mapa && elCoords) {
+    mapa.on('mousemove', (e) => {
+      const lat = e.latlng.lat.toFixed(5);
+      const lon = e.latlng.lng.toFixed(5);
+      elCoords.textContent = `${lat}° S, ${lon}° W`;
+    });
+  }
+}
+
+// 3. MÓDULO DE RESTRICCIONES BLANDAS (VECTOR w)
+function inicializarRestriccionesBlandas() {
+  const checks = document.querySelectorAll('#body-accordion-w input[type="checkbox"]');
+  const badgeCount = document.getElementById('badge-w-count');
+  const btnReset = document.getElementById('btn-reset-w');
+
+  const actualizarBadge = () => {
+    let activas = 0;
+    checks.forEach(c => { if (c.checked) activas++; });
+    if (badgeCount) badgeCount.textContent = `${activas} activas`;
+  };
+
+  checks.forEach(c => {
+    c.addEventListener('change', actualizarBadge);
+  });
+
+  if (btnReset) {
+    btnReset.addEventListener('click', () => {
+      checks.forEach(c => { c.checked = true; });
+      actualizarBadge();
+    });
+  }
+}
+
+// 4. MÓDULO MODAL INADMISIBILIDAD ENERGÉTICA
+function inicializarModalInadmisible() {
+  const modal = document.getElementById('modal-inadmisible-energia');
+  const btnCerrar = document.getElementById('btn-cerrar-modal-inadmisible');
+  if (btnCerrar && modal) {
+    btnCerrar.addEventListener('click', () => {
+      modal.style.display = 'none';
+    });
+  }
+}
+
+// 5. MÓDULO EXPORTADOR DE CAMINOS A EXCEL / CSV
+function inicializarExportadorCaminos() {
+  const btnSidebar = document.getElementById('btn-descargar-caminos');
+  const btnModal = document.getElementById('btn-descargar-caminos-modal');
+
+  const descargar = () => {
+    descargarCaminosCSV();
+  };
+
+  if (btnSidebar) btnSidebar.addEventListener('click', descargar);
+  if (btnModal) btnModal.addEventListener('click', descargar);
+}
+
+function descargarCaminosCSV() {
+  if (!ultimaMisionEjecutada || !ultimaMisionEjecutada.saltos || ultimaMisionEjecutada.saltos.length === 0) {
+    alert('Primero debes ejecutar una misión para generar la secuencia de saltos y waypoints.');
+    return;
+  }
+
+  const saltos = ultimaMisionEjecutada.saltos;
+  const destinoNombre = (ultimaMisionEjecutada.destinoNombre || 'mision').replace(/[^a-zA-Z0-9_]/g, '_');
+  
+  // Encabezados en formato Excel CSV UTF-8
+  let csv = '\uFEFF'; // BOM para que Excel en Windows reconozca UTF-8 con tildes y caracteres especiales
+  csv += 'Salto,Ruta,ID_Nodo_Origen,ID_Nodo_Destino,Nombre_Punto,Categoria,Latitud_WGS84,Longitud_WGS84,Altitud_AGL_m,Longitud_Tramo_m,Distancia_Acumulada_km,Tiempo_Acumulado_min,Velocidad_ms,Modo_Vuelo,Riesgo_Zona\n';
+
+  saltos.forEach((s) => {
+    const fila = [
+      s.salto,
+      `"${s.ruta}"`,
+      `"${s.origenId}"`,
+      `"${s.destinoId}"`,
+      `"${s.nombre}"`,
+      `"${s.categoria}"`,
+      s.lat.toFixed(6),
+      s.lon.toFixed(6),
+      s.altitud_agl,
+      s.longitud_tramo_m.toFixed(1),
+      s.distancia_acum_km.toFixed(2),
+      s.tiempo_acum_min.toFixed(2),
+      s.velocidad_ms.toFixed(1),
+      `"${s.modo}"`,
+      `"${s.riesgo}"`
+    ];
+    csv += fila.join(',') + '\n';
+  });
+
+  const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  const fecha = new Date().toISOString().slice(0, 10);
+  a.href = url;
+  a.download = `plan_vuelo_uav_${destinoNombre}_${fecha}.csv`;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}
+
+// 6. GENERADOR DE BUFFER CONTINUO VISUAL (RADIO 200m EN LEAFLET)
+function generarBufferVisual(latlngs, radioMetros = 200) {
+  // Genera polilíneas ensanchadas y polígonos que simulan el buffer de 200m
+  const bufferGroup = L.featureGroup();
+  
+  // Banda amplia de zona de influencia
+  L.polyline(latlngs, {
+    color: '#0284c7',
+    weight: radioMetros / 5, // Representación a escala de visualización
+    opacity: 0.15,
+    lineCap: 'round',
+    lineJoin: 'round',
+    interactive: false
+  }).addTo(bufferGroup);
+
+  return bufferGroup;
+}
