@@ -1,0 +1,10 @@
+{
+  "type": "FeatureCollection",
+  "metadata": {
+    "source": "DGAC Chile / AIS IFIS",
+    "purpose": "Capa visual de restricciones aeronáuticas; no participa en el ruteo automático.",
+    "refresh_policy": "La geometría, vigencia UTC y banda vertical deben extraerse de un NOTAM oficial y validarse por un operador antes de publicarse.",
+    "generated_at": "2026-10-23T00:00:00Z"
+  },
+  "features": []
+}
