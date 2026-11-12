@@ -92,17 +92,22 @@ Un elemento bloqueado por restricción dura queda con `p_falla = 1`.
 | `metaheuristica_akgun` | K caminos disimilares por penalización iterativa de aristas (Akgün et al., 2000). |
 
 El MILP prueba los solvers en cadena (Gurobi → CPLEX → HiGHS → CBC), valida la solución y reporta
-cuál lo resolvió; ese nombre aparece en la leyenda. **En la imagen Docker de este repositorio solo
-están disponibles HiGHS y CBC**, porque Gurobi y CPLEX requieren licencia y no se pueden
-distribuir. Para correrlo con Gurobi hay que instalar `gurobipy` con una licencia académica; el
-código lo prefiere automáticamente si lo encuentra.
+cuál lo resolvió; ese nombre aparece en la leyenda. **La imagen Docker incluye `gurobipy`, así que
+el modelo se resuelve con GUROBI**, como pide la pauta.
+
+No hace falta licencia académica: la licencia restringida que viene con el paquete admite 2000
+variables y 2000 restricciones, y el modelo usa **1275 × 1485**. Esa licencia sí tiene fecha de
+expiración (la de `gurobipy==12.0.3` vence el 23-11-2026); cuando caduque, basta actualizar el
+paquete o pedir la licencia académica gratuita de Gurobi. Si el solver no está disponible, la
+cadena cae sola a HiGHS y la leyenda lo informa, sin romper nada.
 
 La metaheurística devuelve dos caminos disimilares: si uno cae, el otro puede sostener la misión.
 Por eso su resiliencia se calcula sobre el par y no es directamente comparable con la de las
 técnicas de un solo camino, que casi siempre resulta menor por construcción.
 
-Las tres técnicas basadas en Dijkstra corren sobre `pgr_dijkstra` dentro de PostgreSQL o sobre una
-implementación equivalente en Python; el motor se elige en el panel y se informa en la leyenda.
+Las tres técnicas basadas en Dijkstra corren sobre **`pgr_dijkstra` dentro de PostgreSQL**, que es
+el motor por defecto del servicio. El panel permite cambiarlo a una implementación equivalente en
+Python (útil sin base de datos); la leyenda informa cuál resolvió cada ruta.
 
 ### La métrica de resiliencia
 

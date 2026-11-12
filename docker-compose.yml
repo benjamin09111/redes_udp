@@ -49,7 +49,7 @@ services:
       DB_NAME: uav
       DB_USER: uav
       DB_PASSWORD: uav
-      RUTEO_BACKEND: python     # "pgrouting" ejecuta pgr_dijkstra dentro de PostgreSQL
+      RUTEO_BACKEND: pgrouting  # pgr_dijkstra dentro de PostgreSQL; "python" usa el Dijkstra propio
     volumes:
       - ./:/app:ro
     ports:
