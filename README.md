@@ -57,20 +57,42 @@ prohibida: viento sobre 12 m/s, niebla densa, foco de incendio activo. Una arist
 obstáculo queda fuera del grafo navegable aunque sus extremos estén despejados, de modo que el
 planificador rodea en vez de atravesar.
 
-Sobre la geometría se superponen capas de contexto. Las que **entran al modelo de fallas y por lo
-tanto cambian las rutas** son ocho: incendios FIRMS, sismicidad CSN, viento, lluvia, niebla,
-humedad, densidad censal INE y cobertura celular C2. El relieve SRTM, los obstáculos verticales de
-OSM y el tráfico aéreo OpenSky se extraen, se cargan en la base y se visualizan, pero **todavía no
-ponderan el costo de las aristas**. La calidad del aire SINCA está conectada como recompensa de
-muestreo R(e), que vale cero mientras ninguna estación esté en alerta.
+Sobre la geometría se superponen **diez capas que entran al modelo de fallas** y por lo tanto
+cambian las rutas: incendios FIRMS, sismicidad CSN, viento, lluvia, niebla, humedad, densidad
+censal INE, cobertura celular C2, **obstáculos verticales** y **relieve**. La calidad del aire
+SINCA está conectada como recompensa de muestreo R(e), que vale cero mientras ninguna estación
+esté en alerta. El tráfico aéreo OpenSky se extrae y se visualiza, pero no pondera el costo.
 
-El muestreo de cinco puntos por arista es una aproximación: en los corredores más largos (hasta
-1,95 km) las muestras quedan separadas unos 490 m, así que una zona prohibida muy pequeña podría
-pasar entre dos muestras sin detectarse.
+### La restricción de altitud
+
+La DAN 151 limita la operación a 120 m sobre el terreno, y por seguridad se exige una separación
+mínima de 40 m sobre el suelo. Eso deja una ventana vertical de 80 m, y de ahí salen dos reglas:
+
+- **Relieve.** Un corredor solo es cruzable a cota constante si el terreno no varía más que esa
+  ventana. Si `relief_m` la supera, no existe altura legal que respete a la vez el mínimo sobre el
+  suelo y el techo: la arista queda bloqueada. El ascenso acumulado se penaliza aparte, por su
+  coste energético.
+- **Obstáculos verticales.** Una estructura más alta que el techo no se puede sobrevolar: si el
+  corredor pasa por encima de ella, la arista queda bloqueada. Dentro del radio de resguardo pero
+  con margen lateral se aplica penalización. Hay un matiz importante: varias chimeneas son a la vez
+  nodos de la red (son fuentes de emisión que hay que muestrear), así que cuando el obstáculo está
+  en un **extremo** del corredor el UAV está llegando a él, no sobrevolándolo, y eso se penaliza en
+  vez de bloquearse.
+
+Con los datos actuales el relieve de la bahía es suave (variación máxima de 82 m), así que la regla
+de terreno bloquea solo 2 aristas, y ningún corredor pasa literalmente por encima de una chimenea.
+Lo que sí ocurre es que **33 aristas quedan penalizadas** por pasar dentro del radio de resguardo
+de una estructura vertical, y eso cambia las rutas elegidas.
+
+El muestreo a lo largo de cada arista es adaptativo: un punto cada 100 m, entre 5 y 40 muestras.
+Antes eran 5 fijas, lo que en los corredores de 1,95 km dejaba huecos de ~490 m por los que una
+zona prohibida pequeña podía pasar sin detectarse.
 
 ### El modelo de fallas
 
-`ruteo/simulacion_fallas.py` convierte cada amenaza en una probabilidad de falla. Para cada nodo y
+`ruteo/simulacion_fallas.py` convierte cada amenaza en una probabilidad de falla. Con
+`--guardar` exporta el resultado completo a `sitio_web/data/probabilidades_falla.json`
+(322 nodos y 855 aristas, con el desglose de factores de cada uno). Para cada nodo y
 cada arista acumula las tasas λ de las capas activas y aplica supervivencia de Poisson:
 
 ```

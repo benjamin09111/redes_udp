@@ -224,6 +224,12 @@
       if (ok && t.cumple_autonomia === false) {
         avisos.push(`excede la autonomía (${num(t.longitud_km)} km)`);
       }
+      if (ok && t.advertencia) {
+        avisos.push({
+          sin_alternativa: 'no existe segundo camino disimilar: va un solo trazado',
+          alternativas_exceden_autonomia: 'las alternativas excedían la autonomía: va un solo trazado',
+        }[t.advertencia] || esc(t.advertencia));
+      }
       if (ok && t.bloqueos_en_ruta) {
         avisos.push(`cruza ${t.bloqueos_en_ruta} elemento${t.bloqueos_en_ruta > 1 ? 's' : ''} bloqueado${t.bloqueos_en_ruta > 1 ? 's' : ''}`);
       }

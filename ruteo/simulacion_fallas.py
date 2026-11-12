@@ -59,11 +59,31 @@ DEFAULTS_FASE3 = {
     "sin_c2": 0.05,
     "sismo": 0.05,
     "lluvia": 0.03,
+    # --- Altitud (DAN 151: techo de 120 m AGL) ---
+    "techo_agl_m": 120.0,          # altura maxima legal sobre el terreno
+    "holgura_terreno_m": 40.0,     # separacion minima que se exige sobre el suelo
+    "obstaculo": 0.20,             # lambda si la arista entra en el radio de resguardo
+    "obstaculo_radio_duro_m": 50.0,  # dentro de este radio se da por impasable (no se rodea)
+    "relieve": 0.06,               # lambda por cada 100 m de ascenso acumulado (coste energetico)
 }
 
-CAPAS_POR_DEFECTO = {"incendio", "sismo", "viento", "lluvia", "niebla", "humedad", "densidad", "c2"}
+CAPAS_POR_DEFECTO = {"incendio", "sismo", "viento", "lluvia", "niebla", "humedad", "densidad", "c2",
+                     "obstaculos", "relieve"}
 CAPAS_TODAS = CAPAS_POR_DEFECTO | {"contingencia"}
-NUM_MUESTRAS_ARISTA = 5
+
+# Separacion objetivo entre muestras a lo largo de una arista. Con un numero fijo de
+# muestras, las aristas largas (hasta 1,95 km) dejaban huecos de ~490 m por los que una
+# zona prohibida pequena podia pasar sin detectarse.
+PASO_MUESTREO_M = 100.0
+MIN_MUESTRAS_ARISTA = 5
+MAX_MUESTRAS_ARISTA = 40
+NUM_MUESTRAS_ARISTA = MIN_MUESTRAS_ARISTA   # se mantiene por compatibilidad
+
+
+def _n_muestras(largo_m):
+    """Muestras a lo largo de una arista: una cada PASO_MUESTREO_M, acotado."""
+    n = int(largo_m // PASO_MUESTREO_M) + 1
+    return max(MIN_MUESTRAS_ARISTA, min(MAX_MUESTRAS_ARISTA, n))
 
 
 # ==============================================================================
@@ -175,6 +195,11 @@ def cargar_infraestructura_y_capas():
         "manzanas": _preparar(_leer("metadata/ine_manzanas.geojson")),
         "antenas": _preparar(_leer("metadata/osm_antenas.geojson")),
     }
+    # El relieve viene indexado por arista (un perfil SRTM por corredor) y los obstaculos
+    # verticales son puntos con altura y radio de resguardo, asi que no pasan por _preparar.
+    capas["relieve"] = {f["properties"]["edge_id"]: f["properties"]
+                        for f in _leer("metadata/srtm_relieve.geojson")}
+    capas["obstaculos"] = [f["properties"] for f in _leer("metadata/osm_obstaculos.geojson")]
     return nodos, aristas, capas
 
 
@@ -216,6 +241,58 @@ def _factores_en_punto(x, y, capas, params, activas):
         lam["sin_c2"] = params["sin_c2"]
 
     return lam, sorted(set(bloqueos))
+
+
+def _factores_altitud(eid, p1, p2, capas, params, activas):
+    """Restricciones verticales de la arista: ¿se puede sobrevolar a cota constante?
+
+    La DAN 151 limita la operacion a `techo_agl_m` sobre el terreno, y por seguridad se
+    exige `holgura_terreno_m` de separacion sobre el suelo. Eso deja una ventana vertical:
+    el UAV solo puede cruzar el corredor a altura constante si el terreno no varia mas que
+    esa ventana. Un obstaculo mas alto que el techo no se puede sobrevolar en absoluto, asi
+    que la arista que entra en su radio de resguardo queda bloqueada.
+    """
+    lam, bloqueos = {}, []
+    techo = params["techo_agl_m"]
+    holgura = params["holgura_terreno_m"]
+
+    if "relieve" in activas:
+        perfil = capas["relieve"].get(eid)
+        if perfil:
+            # Ventana util = techo - holgura. Si el relieve la supera, no existe una cota
+            # constante que respete a la vez el minimo sobre el suelo y el techo legal.
+            if float(perfil.get("relief_m", 0.0)) > techo - holgura:
+                bloqueos.append("relieve_supera_techo_agl")
+            ascenso = float(perfil.get("ascent_m", 0.0))
+            if ascenso > 0:
+                lam["relieve"] = params["relieve"] * ascenso / 100.0
+
+    if "obstaculos" in activas:
+        for o in capas["obstaculos"]:
+            if o.get("operational_action") != "bloquear":
+                continue
+            radio = float(o.get("buffer_radius_m") or 0.0)
+            if radio <= 0:
+                continue
+            q = (o["lon"], o["lat"])
+            d = _dist_punto_segmento_m(p1, p2, q)
+            if d > radio:
+                continue
+            altura = float(o.get("height_m") or 0.0)
+            duro = params["obstaculo_radio_duro_m"]
+            # Muchas chimeneas son a la vez nodos de la red (fuentes de emision). Si el
+            # obstaculo esta en un extremo del corredor, el UAV esta llegando a el, no
+            # sobrevolandolo: eso se penaliza, no se bloquea.
+            en_extremo = min(_dist_m(p1, q), _dist_m(p2, q)) <= duro
+            if altura >= techo and d <= duro and not en_extremo:
+                # El corredor pasa por encima de una estructura mas alta que el techo
+                # legal y no hay cota a la que cruzarla: impasable.
+                bloqueos.append("obstaculo_vertical")
+            else:
+                # Dentro del radio de resguardo pero con margen lateral: se puede volar
+                # cerca, con penalizacion por turbulencia y riesgo de colision.
+                lam["obstaculo"] = params["obstaculo"]
+    return lam, bloqueos
 
 
 def construir_modelo_fallas(capas_activas=None, params=None, datos=None):
@@ -260,9 +337,10 @@ def construir_modelo_fallas(capas_activas=None, params=None, datos=None):
         largo_m = float(pr["length_m"])
         cu, cv = coord[u], coord[v]
         lam, bloq = {}, set()
+        n_m = _n_muestras(largo_m)
         # Una amenaza afecta a la arista si alguna muestra del segmento cae dentro.
-        for i in range(NUM_MUESTRAS_ARISTA):
-            t = i / (NUM_MUESTRAS_ARISTA - 1)
+        for i in range(n_m):
+            t = i / (n_m - 1)
             x, y = cu[0] + t * (cv[0] - cu[0]), cu[1] + t * (cv[1] - cu[1])
             l_i, b_i = _factores_en_punto(x, y, capas, params, activas)
             bloq.update(b_i)
@@ -273,12 +351,17 @@ def construir_modelo_fallas(capas_activas=None, params=None, datos=None):
             # ruteo_resiliente: la arista con alguna cobertura se considera cubierta).
         if "c2" in activas:
             cubierta = any(
-                _celdas_en(cu[0] + (i / (NUM_MUESTRAS_ARISTA - 1)) * (cv[0] - cu[0]),
-                           cu[1] + (i / (NUM_MUESTRAS_ARISTA - 1)) * (cv[1] - cu[1]),
+                _celdas_en(cu[0] + (i / (n_m - 1)) * (cv[0] - cu[0]),
+                           cu[1] + (i / (n_m - 1)) * (cv[1] - cu[1]),
                            capas["antenas"])
-                for i in range(NUM_MUESTRAS_ARISTA))
+                for i in range(n_m))
             if not cubierta:
                 lam["sin_c2"] = params["sin_c2"]
+
+        # Restricciones verticales: relieve y obstaculos (punto 2 de la pauta).
+        lam_alt, bloq_alt = _factores_altitud(eid, cu, cv, capas, params, activas)
+        lam.update(lam_alt)
+        bloq.update(bloq_alt)
         if foco_activo(cu, cv):
             lam["incendio_contingencia"] = params["incendio"]
 

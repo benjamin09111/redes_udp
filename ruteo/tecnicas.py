@@ -458,8 +458,10 @@ def tecnica_akgun(ctx, modelo, origen, destino, autonomia_m=AUTONOMIA_M, beta=BE
     validos = [c for c in candidatos.values() if red.longitud_m(c) <= autonomia_m]
 
     if not validos:
+        # Sin segundo camino viable se devuelve UNO solo. Antes se duplicaba c1, lo que
+        # hacia que la leyenda anunciara "2 caminos" siendo el mismo trazado.
         motivo = "sin_alternativa" if not candidatos else "alternativas_exceden_autonomia"
-        return _ok([c1, dict(c1)], usado, t0, advertencia=motivo, solape_pct=100.0,
+        return _ok([c1], usado, t0, advertencia=motivo, solape_pct=100.0,
                    diversidad_pct=0.0, costo=sum(costos[e] for e in c1["aristas"]))
 
     mejor, mejor_clave = None, None

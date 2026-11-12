@@ -41,6 +41,8 @@ DESCRIPCION_CAPAS = {
     "humedad": "Humedad relativa > 90 % (λ = 0,03)",
     "densidad": "Manzanas censales densas > 2500 hab/km² (λ = 0,08)",
     "c2": "Sombra de enlace C2 (λ = 0,05)",
+    "obstaculos": "Obstáculos verticales: chimeneas y torres (más altos que el techo de 120 m AGL bloquean)",
+    "relieve": "Relieve SRTM: bloquea si el terreno no cabe en la ventana de 120 m AGL; penaliza el ascenso",
     "contingencia": "Contingencia simulada: incendio Planta de Asfaltos Quintero",
 }
 
