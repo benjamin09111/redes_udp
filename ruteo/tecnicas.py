@@ -15,7 +15,8 @@ Notas de diseño (revisar con el equipo):
     fallas y se envía a pgRouting como una tabla VALUES dentro de la consulta de aristas.
   - Backend "python" (por defecto): Dijkstra propio. Backend "pgrouting": ejecuta pgr_dijkstra
     en PostgreSQL (requiere la BD levantada; si falla, se cae a Python y queda anotado).
-    El backend pgrouting NO se pudo probar en el entorno de desarrollo (sin Docker).
+    El backend pgrouting es el que usa el servicio por defecto (RUTEO_BACKEND=pgrouting)
+    y esta verificado contra la BD; "python" queda como respaldo si no hay base de datos.
   - El MILP prefiere GUROBI o CPLEX si están instalados y licenciados; si no, usa HiGHS.
   - Autonomía: es restricción dura solo en el MILP. En las demás técnicas se reporta
     `cumple_autonomia` (no se fuerza).

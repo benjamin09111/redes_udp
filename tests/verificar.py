@@ -160,7 +160,10 @@ def chequear_bd(datos):
     }
     with conn, conn.cursor() as cur:
         for tabla, n in esperado.items():
-            cur.execute(f"SELECT count(*) FROM {tabla}")
+            # threat_event incluye el foco de contingencia que cargar_firms_incendios.py
+            # inserta a proposito (simulated = true) y que no existe en ningun geojson.
+            filtro = " WHERE NOT simulated" if tabla == "threat_event" else ""
+            cur.execute(f"SELECT count(*) FROM {tabla}{filtro}")
             real = cur.fetchone()[0]
             check(f"BD · {tabla} = features del json", real == n, f"{real} de {n}")
 

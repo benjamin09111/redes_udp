@@ -224,6 +224,9 @@
       if (ok && t.cumple_autonomia === false) {
         avisos.push(`excede la autonomía (${num(t.longitud_km)} km)`);
       }
+      if (ok && t.resiliencia_R !== null && t.resiliencia_R !== undefined && t.resiliencia_R < 0.01) {
+        avisos.push('resiliencia casi nula: la misión no sobrevive a las amenazas activas');
+      }
       if (ok && t.advertencia) {
         avisos.push({
           sin_alternativa: 'no existe segundo camino disimilar: va un solo trazado',

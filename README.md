@@ -51,11 +51,11 @@ monitoreo, fuentes emisoras industriales, colegios, centros de salud, playas, á
 Cada **arista** es un corredor aéreo entre un nodo y uno de sus cuatro vecinos más cercanos, con
 las aristas puente que hagan falta para mantener el grafo conexo.
 
-Las rutas no son líneas rectas sobre cualquier cosa. El modelo de fallas **muestrea cinco puntos a
-lo largo de cada arista** y la marca como bloqueada si alguna muestra cae dentro de una zona
-prohibida: viento sobre 12 m/s, niebla densa, foco de incendio activo. Una arista que cruza un
-obstáculo queda fuera del grafo navegable aunque sus extremos estén despejados, de modo que el
-planificador rodea en vez de atravesar.
+Las rutas no son líneas rectas sobre cualquier cosa. El modelo de fallas **muestrea el corredor
+cada 100 m** y lo marca como bloqueado si alguna muestra cae dentro de una zona prohibida: viento
+sobre 12 m/s, niebla densa o foco de incendio activo. Una arista que cruza un obstáculo queda
+fuera del grafo navegable aunque sus extremos estén despejados, de modo que el planificador rodea
+en vez de atravesar.
 
 Sobre la geometría se superponen **diez capas que entran al modelo de fallas** y por lo tanto
 cambian las rutas: incendios FIRMS, sismicidad CSN, viento, lluvia, niebla, humedad, densidad
@@ -100,7 +100,11 @@ p_falla(arista) = 1 − exp(−λ_total · longitud_km)
 p_falla(nodo)   = 1 − exp(−λ_total)
 ```
 
-Un elemento bloqueado por restricción dura queda con `p_falla = 1`.
+Toda arista suma además una tasa base de 0,005 km⁻¹. Un elemento bloqueado por restricción dura
+queda con `p_falla = 1`.
+
+Los valores de λ son **supuestos del equipo**, no parámetros calibrados con datos históricos de
+falla. Están en `config/parametros.json` y en `ruteo/simulacion_fallas.py`.
 
 ### Las cuatro técnicas
 
@@ -111,14 +115,14 @@ Un elemento bloqueado por restricción dura queda con `p_falla = 1`.
 | `dijkstra_distancia` | `pgr_dijkstra` con el peso en metros. Ignora amenazas **y bloqueos**: es la línea base del peor caso y puede atravesar zonas prohibidas. La leyenda lo advierte. |
 | `milp_exacto` | Modelo de flujo entero. Autonomía como restricción dura. Ver la nota de solvers más abajo. |
 | `dijkstra_multicriterio` | `pgr_dijkstra` con el costo ponderado por riesgo: `W(e) = max(L(e) + β·H(e) − R(e), ε), con H(e) = λ(e)·L_km(e)`. |
-| `metaheuristica_akgun` | K caminos disimilares por penalización iterativa de aristas (Akgün et al., 2000). |
+| `metaheuristica_akgun` | Par de caminos disimilares (k = 2): se penalizan las aristas del primero con varios factores y se elige el candidato que maximiza la resiliencia del par (Akgün et al., 2000). |
 
 El MILP prueba los solvers en cadena (Gurobi → CPLEX → HiGHS → CBC), valida la solución y reporta
 cuál lo resolvió; ese nombre aparece en la leyenda. **La imagen Docker incluye `gurobipy`, así que
 el modelo se resuelve con GUROBI**, como pide la pauta.
 
 No hace falta licencia académica: la licencia restringida que viene con el paquete admite 2000
-variables y 2000 restricciones, y el modelo usa **1275 × 1485**. Esa licencia sí tiene fecha de
+variables y 2000 restricciones, y el modelo usa **1274 × 1484**. Esa licencia sí tiene fecha de
 expiración (la de `gurobipy==12.0.3` vence el 23-11-2026); cuando caduque, basta actualizar el
 paquete o pedir la licencia académica gratuita de Gurobi. Si el solver no está disponible, la
 cadena cae sola a HiGHS y la leyenda lo informa, sin romper nada.
@@ -170,16 +174,16 @@ Destino **La Greda**, casilla *Escenario de contingencia* activada:
 | Técnica | Longitud | R | Monte Carlo |
 |---|---|---|---|
 | Dijkstra por distancia | 6,71 km | **0,0000** | **0,0 %** |
-| MILP exacto | 8,69 km | 0,2330 | 23,1 % |
-| Dijkstra multicriterio | 8,69 km | 0,2330 | 23,1 % |
-| Metaheurística Akgün | 8,69 km | **0,2331** | 23,1 % |
+| MILP exacto | 8,69 km | 0,1676 | 16,7 % |
+| Dijkstra multicriterio | 8,69 km | 0,1676 | 16,7 % |
+| Metaheurística Akgün | 8,69 km | **0,1677** | 16,7 % |
 
 Dijkstra mantiene la ruta corta y la atraviesa a ciegas: cae a cero. Las otras tres pagan 1,98 km
 extra para rodear el foco y conservan la misión. Es la evidencia de que el sistema entrega una
 ruta alternativa frente a la amenaza.
 
-> **Nota sobre la capa de niebla.** Con los datos de referencia, la niebla bloquea 198 aristas y
-> 71 nodos, lo que deja a Campiche y Puchuncaví sin ruta factible en las tres técnicas que
+> **Nota sobre la capa de niebla.** Con los datos de referencia, la niebla bloquea 318 aristas y
+> 113 nodos, lo que deja a Campiche y Puchuncaví sin ruta factible en las tres técnicas que
 > respetan bloqueos. Desactivar esa casilla las habilita. Es una condición real del territorio,
 > no un error: el sistema está informando que ese día no se vuela hacia allá.
 
