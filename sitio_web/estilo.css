@@ -3472,3 +3472,174 @@ table.pop td {
   border-radius: 4px;
   border: 1px solid rgba(255, 255, 255, 0.4);
 }
+
+/* ============================================================================
+   FASE 3 · Panel de comparación de las 4 técnicas de ruteo
+   Usa los tokens ya definidos arriba para seguir el tema claro/oscuro del sitio.
+   ========================================================================== */
+#card-fase3 .f3-hint {
+  margin: 0 0 12px;
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--suave);
+}
+
+.f3-params {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+.f3-params .control-group { margin-bottom: 0; }
+.f3-params input[type="number"] {
+  width: 100%;
+  padding: 7px 9px;
+  border: 1px solid var(--borde-input);
+  border-radius: 6px;
+  background: var(--fondo-card);
+  color: var(--texto);
+  font: inherit;
+  font-variant-numeric: tabular-nums;
+}
+.f3-params input[type="number"]:focus-visible {
+  outline: 2px solid var(--borde-focus);
+  outline-offset: 1px;
+}
+
+.f3-group { margin-top: 14px; }
+.f3-group-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 7px;
+}
+.f3-group-title {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+  color: var(--suave);
+}
+.f3-modelo-ms {
+  font-size: 11px;
+  color: var(--suave);
+  font-variant-numeric: tabular-nums;
+}
+
+.f3-capas {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  max-height: 176px;
+  overflow-y: auto;
+  padding-right: 2px;
+}
+.f3-check {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 4px 6px;
+  border-radius: 5px;
+  font-size: 12.5px;
+  line-height: 1.35;
+  cursor: pointer;
+}
+.f3-check:hover { background: var(--fondo-subtle); }
+.f3-check input { margin-top: 2px; flex: 0 0 auto; }
+.f3-check-alert {
+  margin-top: 10px;
+  border: 1px solid var(--naranja-borde);
+  background: var(--naranja-bg);
+  color: var(--naranja);
+  font-weight: 600;
+}
+
+.f3-estado {
+  margin-top: 10px;
+  padding: 7px 9px;
+  border-radius: 6px;
+  font-size: 12px;
+  line-height: 1.45;
+  background: var(--fondo-subtle);
+  color: var(--texto-secundario);
+}
+.f3-estado-ok      { background: var(--verde-bg);   color: var(--verde);   border: 1px solid var(--verde-borde); }
+.f3-estado-aviso   { background: var(--naranja-bg); color: var(--naranja); border: 1px solid var(--naranja-borde); }
+.f3-estado-error   { background: var(--rojo-bg);    color: var(--rojo);    border: 1px solid var(--rojo-borde); }
+.f3-estado-cargando { background: var(--azul-subtle); color: var(--azul);  border: 1px solid var(--azul-borde); }
+
+.f3-leyenda { display: flex; flex-direction: column; gap: 7px; }
+.f3-ruta {
+  border: 1px solid var(--borde);
+  border-radius: 7px;
+  padding: 8px 9px;
+  background: var(--fondo-card);
+}
+.f3-ruta-win { border-color: var(--verde); box-shadow: inset 3px 0 0 var(--verde); }
+.f3-ruta-off { opacity: .6; }
+.f3-ruta-head {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  cursor: pointer;
+}
+.f3-ruta-off .f3-ruta-head { cursor: default; }
+.f3-swatch {
+  width: 14px; height: 4px;
+  border-radius: 2px;
+  flex: 0 0 auto;
+}
+.f3-ruta-nombre { font-size: 12.5px; font-weight: 600; flex: 1; }
+
+.f3-metricas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 11px;
+  margin-top: 5px;
+  padding-left: 21px;
+  font-size: 11.5px;
+  color: var(--texto-secundario);
+  font-variant-numeric: tabular-nums;
+}
+.f3-sub {
+  margin-top: 3px;
+  padding-left: 21px;
+  font-size: 11px;
+  color: var(--suave);
+}
+.f3-sub-malo { color: var(--rojo); font-weight: 600; }
+
+.f3-tag {
+  font-size: 9.5px;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  padding: 1px 5px;
+  border-radius: 3px;
+  background: var(--fondo-muted);
+  color: var(--texto-secundario);
+}
+.f3-tag-win { background: var(--verde); color: #fff; }
+
+.f3-sim { margin-top: 10px; display: flex; flex-direction: column; gap: 3px; }
+.f3-sim-head {
+  font-size: 11px;
+  color: var(--suave);
+  margin-bottom: 3px;
+  font-variant-numeric: tabular-nums;
+}
+.f3-sim-fila {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 4px 8px;
+  border-radius: 5px;
+  font-size: 12px;
+  background: var(--fondo-subtle);
+}
+.f3-sim-fila.f3-vive  { background: var(--verde-bg); color: var(--verde); }
+.f3-sim-fila.f3-muere { background: var(--rojo-bg);  color: var(--rojo); }
+.f3-sim-fila.f3-nulo  { color: var(--suave); }
+
+.f3-popup table { border-collapse: collapse; margin-top: 5px; font-size: 12px; }
+.f3-popup td { padding: 1px 10px 1px 0; }
+.f3-popup td:last-child { font-variant-numeric: tabular-nums; font-weight: 600; }

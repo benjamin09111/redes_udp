@@ -2,7 +2,7 @@
  "type": "FeatureCollection",
  "etl": {
   "fuente": "pgRouting pgr_dijkstra sobre infra_edge (k=1 y k=2 con costo = length_m)",
-  "generado": "2026-11-06T17:40:42+00:00",
+  "generado": "2026-11-12T22:12:06+00:00",
   "parametros": {
    "origen": "base_scer",
    "costo": "length_m",

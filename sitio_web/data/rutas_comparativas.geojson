@@ -2,7 +2,7 @@
   "type": "FeatureCollection",
   "etl": {
     "fuente": "Ruteo Resiliente Akgün et al. (2000) con función de costo W(e) = L + beta * H(e)",
-    "generado": "2026-11-06T17:40:45+00:00",
+    "generado": "2026-11-12T22:12:08+00:00",
     "algoritmo": "Akgün et al. (2000) K-caminos disimilares por penalización iterativa de aristas",
     "parametros": {
       "origen": "base_scer",

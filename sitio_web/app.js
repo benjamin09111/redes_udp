@@ -4021,8 +4021,8 @@ function inicializarModuloDocumentacion(d) {
       scriptGenerador: 'infraestructura/extraer_infraestructura.py',
       tablaBD: 'infra_edge',
       tipoGeom: 'LineString (3D)',
-      entidades: `${d.aristas?.features?.length || 633} aristas`,
-      resumen: '633 aristas de vuelo 3D entre K=4 vecinos más cercanos con distancia geodésica y azimut.',
+      entidades: `${d.aristas?.features?.length || 855} aristas`,
+      resumen: '855 aristas de vuelo 3D entre K=4 vecinos más cercanos con distancia geodésica y azimut.',
       datosRef: d.aristas,
     },
     zonas_urbanas: {
@@ -4063,8 +4063,8 @@ function inicializarModuloDocumentacion(d) {
       scriptGenerador: 'metadata/srtm_relieve.py',
       tablaBD: 'meta_edge_terrain',
       tipoGeom: 'LineString (3D)',
-      entidades: `${d.relieve?.features?.length || 633} perfiles`,
-      resumen: '633 perfiles altimétricos orográficos muestreados cada 100 m con DEM SRTM de 30 m.',
+      entidades: `${d.relieve?.features?.length || 855} perfiles`,
+      resumen: '855 perfiles altimétricos orográficos muestreados cada 100 m con DEM SRTM de 30 m.',
       datosRef: d.relieve,
     },
     ine_manzanas: {

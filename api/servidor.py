@@ -203,6 +203,11 @@ def raiz():
 
 app.mount("/sitio_web", StaticFiles(directory=str(RAIZ / "sitio_web"), html=True), name="sitio_web")
 
+# El sitio pide los GeoJSON y los scripts del ETL con rutas relativas (../infraestructura/...,
+# ../amenazas/..., ../config/...). Este montaje al final sirve el resto del repo; va después de
+# las rutas /api y de la raíz, así que no las tapa.
+app.mount("/", StaticFiles(directory=str(RAIZ)), name="repo")
+
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run(app, host="0.0.0.0", port=8000)
