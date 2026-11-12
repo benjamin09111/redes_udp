@@ -145,6 +145,14 @@
           </div>
         </div>
 
+        <div class="control-group" style="margin-top:10px">
+          <label for="f3-backend">Motor del camino mínimo:</label>
+          <select id="f3-backend">
+            <option value="pgrouting">pgr_dijkstra en PostgreSQL (pgRouting)</option>
+            <option value="python">Dijkstra en Python (sin base de datos)</option>
+          </select>
+        </div>
+
         <button id="f3-calcular" type="button" class="btn-primary mt-2">
           <svg class="ui-icon ui-icon-sm" viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
           <span>Calcular las 4 rutas</span>

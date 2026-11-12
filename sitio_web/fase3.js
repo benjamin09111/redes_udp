@@ -110,6 +110,7 @@
     p.set('autonomia_max', $('f3-autonomia').value || '10500');
     p.set('beta', $('f3-beta').value || '1000');
     p.set('capas', capasActivas().join(','));
+    p.set('backend', $('f3-backend').value);
     if ($('f3-contingencia').checked) p.set('contingencia', 'true');
     return p;
   }
@@ -216,6 +217,19 @@
       const gana = data.mejor_resiliencia === tid;
       const motivo = { sin_ruta: 'Sin ruta', infactible: 'Infactible', error: 'Error' }[t.estado] || t.estado;
 
+      // Una ruta puede venir "ok" y aun así violar lo que pidió el usuario: solo el
+      // MILP trata la autonomía como restricción dura, y el Dijkstra por distancia
+      // ignora los bloqueos por definición. Sin avisarlo, la comparación engaña.
+      const avisos = [];
+      if (ok && t.cumple_autonomia === false) {
+        avisos.push(`excede la autonomía (${num(t.longitud_km)} km)`);
+      }
+      if (ok && t.bloqueos_en_ruta) {
+        avisos.push(`cruza ${t.bloqueos_en_ruta} elemento${t.bloqueos_en_ruta > 1 ? 's' : ''} bloqueado${t.bloqueos_en_ruta > 1 ? 's' : ''}`);
+      }
+      const bloqueAvisos = avisos.length
+        ? `<div class="f3-aviso">⚠ ${avisos.map(esc).join(' · ')}</div>` : '';
+
       const metricas = ok ? `
         <div class="f3-metricas">
           <span><b>${num(t.longitud_km)}</b> km</span>
@@ -228,13 +242,13 @@
           ${esc(t.backend || 'python')}
           ${t.pct_densas !== undefined && t.pct_densas !== null ? ` · ${num(t.pct_densas, 1)}% denso` : ''}
           ${t.pct_sin_c2 !== undefined && t.pct_sin_c2 !== null ? ` · ${num(t.pct_sin_c2, 1)}% sin C2` : ''}
-          ${t.bloqueos_en_ruta ? ` · ${t.bloqueos_en_ruta} bloqueos` : ''}
           ${t.n_caminos > 1 ? ` · ${t.n_caminos} caminos` : ''}
-        </div>`
+        </div>
+        ${bloqueAvisos}`
       : `<div class="f3-sub f3-sub-malo">${esc(motivo)}${t.motivo ? ' · ' + esc(t.motivo) : ''}</div>`;
 
       return `
-        <div class="f3-ruta ${ok ? '' : 'f3-ruta-off'} ${gana ? 'f3-ruta-win' : ''}">
+        <div class="f3-ruta ${ok ? '' : 'f3-ruta-off'} ${gana ? 'f3-ruta-win' : ''} ${avisos.length ? 'f3-ruta-aviso' : ''}">
           <label class="f3-ruta-head" for="f3-ver-${tid}">
             <input type="checkbox" id="f3-ver-${tid}" data-tecnica="${tid}"
                    ${visibles.has(tid) ? 'checked' : ''} ${ok ? '' : 'disabled'}>

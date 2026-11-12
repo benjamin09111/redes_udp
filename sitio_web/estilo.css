@@ -3643,3 +3643,17 @@ table.pop td {
 .f3-popup table { border-collapse: collapse; margin-top: 5px; font-size: 12px; }
 .f3-popup td { padding: 1px 10px 1px 0; }
 .f3-popup td:last-child { font-variant-numeric: tabular-nums; font-weight: 600; }
+
+/* Ruta que viene "ok" de la API pero viola una condición del usuario */
+.f3-ruta-aviso { border-color: var(--naranja-borde); }
+.f3-aviso {
+  margin-top: 5px;
+  margin-left: 21px;
+  padding: 3px 7px;
+  border-radius: 4px;
+  background: var(--naranja-bg);
+  color: var(--naranja);
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1.4;
+}

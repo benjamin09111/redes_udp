@@ -57,9 +57,16 @@ prohibida: viento sobre 12 m/s, niebla densa, foco de incendio activo. Una arist
 obstáculo queda fuera del grafo navegable aunque sus extremos estén despejados, de modo que el
 planificador rodea en vez de atravesar.
 
-Sobre la geometría se superponen cinco capas de metadatos casi estáticos (calidad del aire,
-relieve SRTM, densidad censal, cobertura celular C2, obstáculos verticales) y cinco capas de
-amenazas dinámicas (incendios, sismicidad, viento, lluvia, niebla).
+Sobre la geometría se superponen capas de contexto. Las que **entran al modelo de fallas y por lo
+tanto cambian las rutas** son ocho: incendios FIRMS, sismicidad CSN, viento, lluvia, niebla,
+humedad, densidad censal INE y cobertura celular C2. El relieve SRTM, los obstáculos verticales de
+OSM y el tráfico aéreo OpenSky se extraen, se cargan en la base y se visualizan, pero **todavía no
+ponderan el costo de las aristas**. La calidad del aire SINCA está conectada como recompensa de
+muestreo R(e), que vale cero mientras ninguna estación esté en alerta.
+
+El muestreo de cinco puntos por arista es una aproximación: en los corredores más largos (hasta
+1,95 km) las muestras quedan separadas unos 490 m, así que una zona prohibida muy pequeña podría
+pasar entre dos muestras sin detectarse.
 
 ### El modelo de fallas
 
@@ -79,14 +86,23 @@ Un elemento bloqueado por restricción dura queda con `p_falla = 1`.
 
 | Técnica | Qué optimiza |
 |---|---|
-| `dijkstra_distancia` | `pgr_dijkstra` con el peso en metros, sin considerar amenazas. Línea base del peor caso. |
-| `milp_exacto` | Modelo de flujo entero resuelto con Gurobi, CPLEX o HiGHS. Autonomía como restricción dura. |
-| `dijkstra_multicriterio` | `pgr_dijkstra` con el costo ponderado por riesgo: `W(e) = L(e) · (1 + β · λ(e))`. |
+| `dijkstra_distancia` | `pgr_dijkstra` con el peso en metros. Ignora amenazas **y bloqueos**: es la línea base del peor caso y puede atravesar zonas prohibidas. La leyenda lo advierte. |
+| `milp_exacto` | Modelo de flujo entero. Autonomía como restricción dura. Ver la nota de solvers más abajo. |
+| `dijkstra_multicriterio` | `pgr_dijkstra` con el costo ponderado por riesgo: `W(e) = max(L(e) + β·H(e) − R(e), ε), con H(e) = λ(e)·L_km(e)`. |
 | `metaheuristica_akgun` | K caminos disimilares por penalización iterativa de aristas (Akgün et al., 2000). |
 
-El MILP prueba los solvers en cadena y valida la solución antes de aceptarla, así que informa cuál
-lo resolvió realmente. La metaheurística devuelve dos caminos: si uno cae, el otro puede sostener
-la misión.
+El MILP prueba los solvers en cadena (Gurobi → CPLEX → HiGHS → CBC), valida la solución y reporta
+cuál lo resolvió; ese nombre aparece en la leyenda. **En la imagen Docker de este repositorio solo
+están disponibles HiGHS y CBC**, porque Gurobi y CPLEX requieren licencia y no se pueden
+distribuir. Para correrlo con Gurobi hay que instalar `gurobipy` con una licencia académica; el
+código lo prefiere automáticamente si lo encuentra.
+
+La metaheurística devuelve dos caminos disimilares: si uno cae, el otro puede sostener la misión.
+Por eso su resiliencia se calcula sobre el par y no es directamente comparable con la de las
+técnicas de un solo camino, que casi siempre resulta menor por construcción.
+
+Las tres técnicas basadas en Dijkstra corren sobre `pgr_dijkstra` dentro de PostgreSQL o sobre una
+implementación equivalente en Python; el motor se elige en el panel y se informa en la leyenda.
 
 ### La métrica de resiliencia
 
@@ -108,12 +124,17 @@ En la pestaña **Simulador**, la tarjeta *Fase 3 · Comparación de técnicas*:
 1. Elige el destino entre las ocho estaciones SINCA.
 2. Fija tus restricciones: autonomía máxima en metros y β, la aversión al riesgo.
 3. Marca qué amenazas y metadatos entran al modelo. Cada casilla cambia las probabilidades de
-   falla y, por lo tanto, las rutas.
+   falla y, por lo tanto, las rutas. Elige también el motor del camino mínimo: `pgr_dijkstra` en
+   PostgreSQL o la implementación en Python.
 4. **Calcular las 4 rutas.** Se dibujan sobre el mapa y aparece la leyenda con longitud, tiempo de
    cómputo, resiliencia R y supervivencia Monte Carlo de cada una. La más resiliente queda marcada.
 5. Cada técnica tiene su casilla para mostrarla u ocultarla.
 6. **Simular fallas** sortea una realización concreta y pinta en rojo lo que cayó, indicando si
    cada técnica sobrevivió.
+
+La autonomía es restricción dura **solo en el MILP**: las otras tres técnicas pueden devolver una
+ruta más larga que el límite pedido. Cuando eso ocurre, la tarjeta de esa técnica lo advierte en
+naranja, igual que cuando la ruta cruza elementos bloqueados.
 
 ### Caso de ejemplo: incendio en Planta de Asfaltos
 
