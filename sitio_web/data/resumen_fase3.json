@@ -1,0 +1,1004 @@
+{
+  "generado": "2026-11-12T21:55:25+00:00",
+  "parametros": {
+    "autonomia_max_m": 10500.0,
+    "beta": 1000.0,
+    "mc_n": 2000,
+    "seed": 42,
+    "backend": "python",
+    "origen": "base_scer",
+    "capas_base": [
+      "c2",
+      "densidad",
+      "humedad",
+      "incendio",
+      "lluvia",
+      "niebla",
+      "sismo",
+      "viento"
+    ]
+  },
+  "destinos": [
+    {
+      "nombre": "Campiche",
+      "codigo": "sinca_campiche",
+      "node_id": 3,
+      "mejor_resiliencia": null,
+      "tecnicas": {
+        "dijkstra_distancia": {
+          "estado": "ok",
+          "motivo": null,
+          "backend": "python",
+          "longitud_km": 9.73,
+          "computo_ms": 0.6,
+          "pct_densas": 8.8,
+          "pct_sin_c2": 59.5,
+          "resiliencia_R": 0.0,
+          "supervivencia_mc_pct": 0.0,
+          "viable": false,
+          "cumple_autonomia": true,
+          "bloqueos_en_ruta": 12
+        },
+        "milp_exacto": {
+          "estado": "sin_ruta",
+          "motivo": "destino_bloqueado_o_inalcanzable",
+          "longitud_km": null,
+          "computo_ms": 0.4,
+          "pct_densas": null,
+          "pct_sin_c2": null,
+          "resiliencia_R": null,
+          "supervivencia_mc_pct": null
+        },
+        "dijkstra_multicriterio": {
+          "estado": "sin_ruta",
+          "motivo": "destino_bloqueado_o_inalcanzable",
+          "longitud_km": null,
+          "computo_ms": 0.5,
+          "pct_densas": null,
+          "pct_sin_c2": null,
+          "resiliencia_R": null,
+          "supervivencia_mc_pct": null
+        },
+        "metaheuristica_akgun": {
+          "estado": "sin_ruta",
+          "motivo": "destino_bloqueado_o_inalcanzable",
+          "longitud_km": null,
+          "computo_ms": 0.9,
+          "pct_densas": null,
+          "pct_sin_c2": null,
+          "resiliencia_R": null,
+          "supervivencia_mc_pct": null
+        }
+      }
+    },
+    {
+      "nombre": "Centro Quintero",
+      "codigo": "sinca_centro_quintero",
+      "node_id": 7,
+      "mejor_resiliencia": "metaheuristica_akgun",
+      "tecnicas": {
+        "dijkstra_distancia": {
+          "estado": "ok",
+          "motivo": null,
+          "backend": "python",
+          "longitud_km": 1.69,
+          "computo_ms": 0.7,
+          "pct_densas": 46.3,
+          "pct_sin_c2": 0.0,
+          "resiliencia_R": 0.662,
+          "supervivencia_mc_pct": 67.7,
+          "viable": true,
+          "cumple_autonomia": true,
+          "bloqueos_en_ruta": 0
+        },
+        "milp_exacto": {
+          "estado": "ok",
+          "motivo": null,
+          "backend": "HiGHS",
+          "longitud_km": 1.69,
+          "computo_ms": 123.0,
+          "pct_densas": 46.3,
+          "pct_sin_c2": 0.0,
+          "resiliencia_R": 0.662,
+          "supervivencia_mc_pct": 67.7,
+          "viable": true,
+          "cumple_autonomia": true,
+          "bloqueos_en_ruta": 0
+        },
+        "dijkstra_multicriterio": {
+          "estado": "ok",
+          "motivo": null,
+          "backend": "python",
+          "longitud_km": 1.69,
+          "computo_ms": 1.4,
+          "pct_densas": 46.3,
+          "pct_sin_c2": 0.0,
+          "resiliencia_R": 0.662,
+          "supervivencia_mc_pct": 67.7,
+          "viable": true,
+          "cumple_autonomia": true,
+          "bloqueos_en_ruta": 0
+        },
+        "metaheuristica_akgun": {
+          "estado": "ok",
+          "motivo": null,
+          "backend": "python",
+          "longitud_km": 1.69,
+          "computo_ms": 10.8,
+          "pct_densas": 46.3,
+          "pct_sin_c2": 0.0,
+          "resiliencia_R": 0.841,
+          "supervivencia_mc_pct": 85.5,
+          "viable": true,
+          "cumple_autonomia": true,
+          "bloqueos_en_ruta": 0
+        }
+      }
+    },
+    {
+      "nombre": "La Greda",
+      "codigo": "sinca_la_greda",
+      "node_id": 5,
+      "mejor_resiliencia": "metaheuristica_akgun",
+      "tecnicas": {
+        "dijkstra_distancia": {
+          "estado": "ok",
+          "motivo": null,
+          "backend": "python",
+          "longitud_km": 6.71,
+          "computo_ms": 1.2,
+          "pct_densas": 12.8,
+          "pct_sin_c2": 41.2,
+          "resiliencia_R": 0.332,
+          "supervivencia_mc_pct": 33.6,
+          "viable": true,
+          "cumple_autonomia": true,
+          "bloqueos_en_ruta": 0
+        },
+        "milp_exacto": {
+          "estado": "ok",
+          "motivo": null,
+          "backend": "HiGHS",
+          "longitud_km": 6.71,
+          "computo_ms": 57.7,
+          "pct_densas": 12.8,
+          "pct_sin_c2": 41.2,
+          "resiliencia_R": 0.332,
+          "supervivencia_mc_pct": 33.6,
+          "viable": true,
+          "cumple_autonomia": true,
+          "bloqueos_en_ruta": 0
+        },
+        "dijkstra_multicriterio": {
+          "estado": "ok",
+          "motivo": null,
+          "backend": "python",
+          "longitud_km": 6.71,
+          "computo_ms": 0.6,
+          "pct_densas": 12.8,
+          "pct_sin_c2": 41.2,
+          "resiliencia_R": 0.332,
+          "supervivencia_mc_pct": 33.6,
+          "viable": true,
+          "cumple_autonomia": true,
+          "bloqueos_en_ruta": 0
+        },
+        "metaheuristica_akgun": {
+          "estado": "ok",
+          "motivo": null,
+          "backend": "python",
+          "longitud_km": 6.71,
+          "computo_ms": 9.1,
+          "pct_densas": 12.8,
+          "pct_sin_c2": 41.2,
+          "resiliencia_R": 0.489,
+          "supervivencia_mc_pct": 48.5,
+          "viable": true,
+          "cumple_autonomia": true,
+          "bloqueos_en_ruta": 0
+        }
+      }
+    },
+    {
+      "nombre": "Loncura",
+      "codigo": "sinca_loncura",
+      "node_id": 8,
+      "mejor_resiliencia": "metaheuristica_akgun",
+      "tecnicas": {
+        "dijkstra_distancia": {
+          "estado": "ok",
+          "motivo": null,
+          "backend": "python",
+          "longitud_km": 2.38,
+          "computo_ms": 0.5,
+          "pct_densas": 9.1,
+          "pct_sin_c2": 0.0,
+          "resiliencia_R": 0.711,
+          "supervivencia_mc_pct": 72.8,
+          "viable": true,
+          "cumple_autonomia": true,
+          "bloqueos_en_ruta": 0
+        },
+        "milp_exacto": {
+          "estado": "ok",
+          "motivo": null,
+          "backend": "HiGHS",
+          "longitud_km": 2.38,
+          "computo_ms": 80.5,
+          "pct_densas": 9.1,
+          "pct_sin_c2": 0.0,
+          "resiliencia_R": 0.711,
+          "supervivencia_mc_pct": 72.8,
+          "viable": true,
+          "cumple_autonomia": true,
+          "bloqueos_en_ruta": 0
+        },
+        "dijkstra_multicriterio": {
+          "estado": "ok",
+          "motivo": null,
+          "backend": "python",
+          "longitud_km": 2.38,
+          "computo_ms": 1.4,
+          "pct_densas": 9.1,
+          "pct_sin_c2": 0.0,
+          "resiliencia_R": 0.711,
+          "supervivencia_mc_pct": 72.8,
+          "viable": true,
+          "cumple_autonomia": true,
+          "bloqueos_en_ruta": 0
+        },
+        "metaheuristica_akgun": {
+          "estado": "ok",
+          "motivo": null,
+          "backend": "python",
+          "longitud_km": 2.38,
+          "computo_ms": 6.5,
+          "pct_densas": 9.1,
+          "pct_sin_c2": 0.0,
+          "resiliencia_R": 0.859,
+          "supervivencia_mc_pct": 87.0,
+          "viable": true,
+          "cumple_autonomia": true,
+          "bloqueos_en_ruta": 0
+        }
+      }
+    },
+    {
+      "nombre": "Puchuncaví",
+      "codigo": "sinca_puchuncavi",
+      "node_id": 2,
+      "mejor_resiliencia": null,
+      "tecnicas": {
+        "dijkstra_distancia": {
+          "estado": "ok",
+          "motivo": null,
+          "backend": "python",
+          "longitud_km": 15.62,
+          "computo_ms": 0.6,
+          "pct_densas": 8.3,
+          "pct_sin_c2": 43.5,
+          "resiliencia_R": 0.0,
+          "supervivencia_mc_pct": 0.0,
+          "viable": false,
+          "cumple_autonomia": false,
+          "bloqueos_en_ruta": 36
+        },
+        "milp_exacto": {
+          "estado": "sin_ruta",
+          "motivo": "destino_bloqueado_o_inalcanzable",
+          "longitud_km": null,
+          "computo_ms": 0.3,
+          "pct_densas": null,
+          "pct_sin_c2": null,
+          "resiliencia_R": null,
+          "supervivencia_mc_pct": null
+        },
+        "dijkstra_multicriterio": {
+          "estado": "sin_ruta",
+          "motivo": "destino_bloqueado_o_inalcanzable",
+          "longitud_km": null,
+          "computo_ms": 0.5,
+          "pct_densas": null,
+          "pct_sin_c2": null,
+          "resiliencia_R": null,
+          "supervivencia_mc_pct": null
+        },
+        "metaheuristica_akgun": {
+          "estado": "sin_ruta",
+          "motivo": "destino_bloqueado_o_inalcanzable",
+          "longitud_km": null,
+          "computo_ms": 0.4,
+          "pct_densas": null,
+          "pct_sin_c2": null,
+          "resiliencia_R": null,
+          "supervivencia_mc_pct": null
+        }
+      }
+    },
+    {
+      "nombre": "Quintero",
+      "codigo": "sinca_quintero",
+      "node_id": 6,
+      "mejor_resiliencia": "metaheuristica_akgun",
+      "tecnicas": {
+        "dijkstra_distancia": {
+          "estado": "ok",
+          "motivo": null,
+          "backend": "python",
+          "longitud_km": 2.35,
+          "computo_ms": 0.3,
+          "pct_densas": 60.1,
+          "pct_sin_c2": 0.0,
+          "resiliencia_R": 0.408,
+          "supervivencia_mc_pct": 42.2,
+          "viable": true,
+          "cumple_autonomia": true,
+          "bloqueos_en_ruta": 0
+        },
+        "milp_exacto": {
+          "estado": "ok",
+          "motivo": null,
+          "backend": "HiGHS",
+          "longitud_km": 2.35,
+          "computo_ms": 52.6,
+          "pct_densas": 60.1,
+          "pct_sin_c2": 0.0,
+          "resiliencia_R": 0.408,
+          "supervivencia_mc_pct": 42.2,
+          "viable": true,
+          "cumple_autonomia": true,
+          "bloqueos_en_ruta": 0
+        },
+        "dijkstra_multicriterio": {
+          "estado": "ok",
+          "motivo": null,
+          "backend": "python",
+          "longitud_km": 2.35,
+          "computo_ms": 0.5,
+          "pct_densas": 60.1,
+          "pct_sin_c2": 0.0,
+          "resiliencia_R": 0.408,
+          "supervivencia_mc_pct": 42.2,
+          "viable": true,
+          "cumple_autonomia": true,
+          "bloqueos_en_ruta": 0
+        },
+        "metaheuristica_akgun": {
+          "estado": "ok",
+          "motivo": null,
+          "backend": "python",
+          "longitud_km": 2.35,
+          "computo_ms": 6.4,
+          "pct_densas": 60.1,
+          "pct_sin_c2": 0.0,
+          "resiliencia_R": 0.635,
+          "supervivencia_mc_pct": 64.2,
+          "viable": true,
+          "cumple_autonomia": true,
+          "bloqueos_en_ruta": 0
+        }
+      }
+    },
+    {
+      "nombre": "Sur",
+      "codigo": "sinca_sur",
+      "node_id": 9,
+      "mejor_resiliencia": "metaheuristica_akgun",
+      "tecnicas": {
+        "dijkstra_distancia": {
+          "estado": "ok",
+          "motivo": null,
+          "backend": "python",
+          "longitud_km": 3.77,
+          "computo_ms": 0.4,
+          "pct_densas": 5.7,
+          "pct_sin_c2": 0.0,
+          "resiliencia_R": 0.657,
+          "supervivencia_mc_pct": 67.7,
+          "viable": true,
+          "cumple_autonomia": true,
+          "bloqueos_en_ruta": 0
+        },
+        "milp_exacto": {
+          "estado": "ok",
+          "motivo": null,
+          "backend": "HiGHS",
+          "longitud_km": 3.77,
+          "computo_ms": 54.4,
+          "pct_densas": 5.7,
+          "pct_sin_c2": 0.0,
+          "resiliencia_R": 0.657,
+          "supervivencia_mc_pct": 67.7,
+          "viable": true,
+          "cumple_autonomia": true,
+          "bloqueos_en_ruta": 0
+        },
+        "dijkstra_multicriterio": {
+          "estado": "ok",
+          "motivo": null,
+          "backend": "python",
+          "longitud_km": 3.77,
+          "computo_ms": 0.5,
+          "pct_densas": 5.7,
+          "pct_sin_c2": 0.0,
+          "resiliencia_R": 0.657,
+          "supervivencia_mc_pct": 67.7,
+          "viable": true,
+          "cumple_autonomia": true,
+          "bloqueos_en_ruta": 0
+        },
+        "metaheuristica_akgun": {
+          "estado": "ok",
+          "motivo": null,
+          "backend": "python",
+          "longitud_km": 3.77,
+          "computo_ms": 3.8,
+          "pct_densas": 5.7,
+          "pct_sin_c2": 0.0,
+          "resiliencia_R": 0.838,
+          "supervivencia_mc_pct": 85.5,
+          "viable": true,
+          "cumple_autonomia": true,
+          "bloqueos_en_ruta": 0
+        }
+      }
+    },
+    {
+      "nombre": "Ventanas",
+      "codigo": "sinca_ventanas",
+      "node_id": 4,
+      "mejor_resiliencia": "metaheuristica_akgun",
+      "tecnicas": {
+        "dijkstra_distancia": {
+          "estado": "ok",
+          "motivo": null,
+          "backend": "python",
+          "longitud_km": 7.8,
+          "computo_ms": 0.5,
+          "pct_densas": 25.0,
+          "pct_sin_c2": 49.4,
+          "resiliencia_R": 0.202,
+          "supervivencia_mc_pct": 19.7,
+          "viable": true,
+          "cumple_autonomia": true,
+          "bloqueos_en_ruta": 0
+        },
+        "milp_exacto": {
+          "estado": "ok",
+          "motivo": null,
+          "backend": "HiGHS",
+          "longitud_km": 7.8,
+          "computo_ms": 98.3,
+          "pct_densas": 23.5,
+          "pct_sin_c2": 49.4,
+          "resiliencia_R": 0.203,
+          "supervivencia_mc_pct": 19.4,
+          "viable": true,
+          "cumple_autonomia": true,
+          "bloqueos_en_ruta": 0
+        },
+        "dijkstra_multicriterio": {
+          "estado": "ok",
+          "motivo": null,
+          "backend": "python",
+          "longitud_km": 7.8,
+          "computo_ms": 0.7,
+          "pct_densas": 23.5,
+          "pct_sin_c2": 49.4,
+          "resiliencia_R": 0.203,
+          "supervivencia_mc_pct": 19.4,
+          "viable": true,
+          "cumple_autonomia": true,
+          "bloqueos_en_ruta": 0
+        },
+        "metaheuristica_akgun": {
+          "estado": "ok",
+          "motivo": null,
+          "backend": "python",
+          "longitud_km": 7.8,
+          "computo_ms": 9.1,
+          "pct_densas": 23.5,
+          "pct_sin_c2": 49.4,
+          "resiliencia_R": 0.316,
+          "supervivencia_mc_pct": 30.5,
+          "viable": true,
+          "cumple_autonomia": true,
+          "bloqueos_en_ruta": 0
+        }
+      }
+    }
+  ],
+  "contingencia": {
+    "descripcion": "Incendio simulado en Planta de Asfaltos Quintero (foco de 180 m)",
+    "destinos": [
+      {
+        "nombre": "Campiche",
+        "codigo": "sinca_campiche",
+        "node_id": 3,
+        "mejor_resiliencia": null,
+        "tecnicas": {
+          "dijkstra_distancia": {
+            "estado": "ok",
+            "motivo": null,
+            "backend": "python",
+            "longitud_km": 9.73,
+            "computo_ms": 1.6,
+            "pct_densas": 8.8,
+            "pct_sin_c2": 59.5,
+            "resiliencia_R": 0.0,
+            "supervivencia_mc_pct": 0.0,
+            "viable": false,
+            "cumple_autonomia": true,
+            "bloqueos_en_ruta": 12
+          },
+          "milp_exacto": {
+            "estado": "sin_ruta",
+            "motivo": "destino_bloqueado_o_inalcanzable",
+            "longitud_km": null,
+            "computo_ms": 0.5,
+            "pct_densas": null,
+            "pct_sin_c2": null,
+            "resiliencia_R": null,
+            "supervivencia_mc_pct": null
+          },
+          "dijkstra_multicriterio": {
+            "estado": "sin_ruta",
+            "motivo": "destino_bloqueado_o_inalcanzable",
+            "longitud_km": null,
+            "computo_ms": 0.7,
+            "pct_densas": null,
+            "pct_sin_c2": null,
+            "resiliencia_R": null,
+            "supervivencia_mc_pct": null
+          },
+          "metaheuristica_akgun": {
+            "estado": "sin_ruta",
+            "motivo": "destino_bloqueado_o_inalcanzable",
+            "longitud_km": null,
+            "computo_ms": 0.6,
+            "pct_densas": null,
+            "pct_sin_c2": null,
+            "resiliencia_R": null,
+            "supervivencia_mc_pct": null
+          }
+        }
+      },
+      {
+        "nombre": "Centro Quintero",
+        "codigo": "sinca_centro_quintero",
+        "node_id": 7,
+        "mejor_resiliencia": "metaheuristica_akgun",
+        "tecnicas": {
+          "dijkstra_distancia": {
+            "estado": "ok",
+            "motivo": null,
+            "backend": "python",
+            "longitud_km": 1.69,
+            "computo_ms": 0.4,
+            "pct_densas": 46.3,
+            "pct_sin_c2": 0.0,
+            "resiliencia_R": 0.662,
+            "supervivencia_mc_pct": 67.7,
+            "viable": true,
+            "cumple_autonomia": true,
+            "bloqueos_en_ruta": 0
+          },
+          "milp_exacto": {
+            "estado": "ok",
+            "motivo": null,
+            "backend": "HiGHS",
+            "longitud_km": 1.69,
+            "computo_ms": 56.3,
+            "pct_densas": 46.3,
+            "pct_sin_c2": 0.0,
+            "resiliencia_R": 0.662,
+            "supervivencia_mc_pct": 67.7,
+            "viable": true,
+            "cumple_autonomia": true,
+            "bloqueos_en_ruta": 0
+          },
+          "dijkstra_multicriterio": {
+            "estado": "ok",
+            "motivo": null,
+            "backend": "python",
+            "longitud_km": 1.69,
+            "computo_ms": 0.4,
+            "pct_densas": 46.3,
+            "pct_sin_c2": 0.0,
+            "resiliencia_R": 0.662,
+            "supervivencia_mc_pct": 67.7,
+            "viable": true,
+            "cumple_autonomia": true,
+            "bloqueos_en_ruta": 0
+          },
+          "metaheuristica_akgun": {
+            "estado": "ok",
+            "motivo": null,
+            "backend": "python",
+            "longitud_km": 1.69,
+            "computo_ms": 4.3,
+            "pct_densas": 46.3,
+            "pct_sin_c2": 0.0,
+            "resiliencia_R": 0.841,
+            "supervivencia_mc_pct": 85.5,
+            "viable": true,
+            "cumple_autonomia": true,
+            "bloqueos_en_ruta": 0
+          }
+        }
+      },
+      {
+        "nombre": "La Greda",
+        "codigo": "sinca_la_greda",
+        "node_id": 5,
+        "mejor_resiliencia": "metaheuristica_akgun",
+        "tecnicas": {
+          "dijkstra_distancia": {
+            "estado": "ok",
+            "motivo": null,
+            "backend": "python",
+            "longitud_km": 6.71,
+            "computo_ms": 0.4,
+            "pct_densas": 12.8,
+            "pct_sin_c2": 41.2,
+            "resiliencia_R": 0.0,
+            "supervivencia_mc_pct": 0.0,
+            "viable": true,
+            "cumple_autonomia": true,
+            "bloqueos_en_ruta": 0
+          },
+          "milp_exacto": {
+            "estado": "ok",
+            "motivo": null,
+            "backend": "HiGHS",
+            "longitud_km": 8.69,
+            "computo_ms": 59.4,
+            "pct_densas": 17.9,
+            "pct_sin_c2": 31.8,
+            "resiliencia_R": 0.233,
+            "supervivencia_mc_pct": 23.1,
+            "viable": true,
+            "cumple_autonomia": true,
+            "bloqueos_en_ruta": 0
+          },
+          "dijkstra_multicriterio": {
+            "estado": "ok",
+            "motivo": null,
+            "backend": "python",
+            "longitud_km": 8.69,
+            "computo_ms": 0.5,
+            "pct_densas": 17.9,
+            "pct_sin_c2": 31.8,
+            "resiliencia_R": 0.233,
+            "supervivencia_mc_pct": 23.1,
+            "viable": true,
+            "cumple_autonomia": true,
+            "bloqueos_en_ruta": 0
+          },
+          "metaheuristica_akgun": {
+            "estado": "ok",
+            "motivo": null,
+            "backend": "python",
+            "longitud_km": 8.69,
+            "computo_ms": 6.7,
+            "pct_densas": 17.9,
+            "pct_sin_c2": 31.8,
+            "resiliencia_R": 0.233,
+            "supervivencia_mc_pct": 23.1,
+            "viable": true,
+            "cumple_autonomia": true,
+            "bloqueos_en_ruta": 0
+          }
+        }
+      },
+      {
+        "nombre": "Loncura",
+        "codigo": "sinca_loncura",
+        "node_id": 8,
+        "mejor_resiliencia": "metaheuristica_akgun",
+        "tecnicas": {
+          "dijkstra_distancia": {
+            "estado": "ok",
+            "motivo": null,
+            "backend": "python",
+            "longitud_km": 2.38,
+            "computo_ms": 0.4,
+            "pct_densas": 9.1,
+            "pct_sin_c2": 0.0,
+            "resiliencia_R": 0.711,
+            "supervivencia_mc_pct": 72.8,
+            "viable": true,
+            "cumple_autonomia": true,
+            "bloqueos_en_ruta": 0
+          },
+          "milp_exacto": {
+            "estado": "ok",
+            "motivo": null,
+            "backend": "HiGHS",
+            "longitud_km": 2.38,
+            "computo_ms": 58.0,
+            "pct_densas": 9.1,
+            "pct_sin_c2": 0.0,
+            "resiliencia_R": 0.711,
+            "supervivencia_mc_pct": 72.8,
+            "viable": true,
+            "cumple_autonomia": true,
+            "bloqueos_en_ruta": 0
+          },
+          "dijkstra_multicriterio": {
+            "estado": "ok",
+            "motivo": null,
+            "backend": "python",
+            "longitud_km": 2.38,
+            "computo_ms": 0.5,
+            "pct_densas": 9.1,
+            "pct_sin_c2": 0.0,
+            "resiliencia_R": 0.711,
+            "supervivencia_mc_pct": 72.8,
+            "viable": true,
+            "cumple_autonomia": true,
+            "bloqueos_en_ruta": 0
+          },
+          "metaheuristica_akgun": {
+            "estado": "ok",
+            "motivo": null,
+            "backend": "python",
+            "longitud_km": 2.38,
+            "computo_ms": 5.1,
+            "pct_densas": 9.1,
+            "pct_sin_c2": 0.0,
+            "resiliencia_R": 0.842,
+            "supervivencia_mc_pct": 86.0,
+            "viable": true,
+            "cumple_autonomia": true,
+            "bloqueos_en_ruta": 0
+          }
+        }
+      },
+      {
+        "nombre": "Puchuncaví",
+        "codigo": "sinca_puchuncavi",
+        "node_id": 2,
+        "mejor_resiliencia": null,
+        "tecnicas": {
+          "dijkstra_distancia": {
+            "estado": "ok",
+            "motivo": null,
+            "backend": "python",
+            "longitud_km": 15.62,
+            "computo_ms": 0.6,
+            "pct_densas": 8.3,
+            "pct_sin_c2": 43.5,
+            "resiliencia_R": 0.0,
+            "supervivencia_mc_pct": 0.0,
+            "viable": false,
+            "cumple_autonomia": false,
+            "bloqueos_en_ruta": 36
+          },
+          "milp_exacto": {
+            "estado": "sin_ruta",
+            "motivo": "destino_bloqueado_o_inalcanzable",
+            "longitud_km": null,
+            "computo_ms": 0.4,
+            "pct_densas": null,
+            "pct_sin_c2": null,
+            "resiliencia_R": null,
+            "supervivencia_mc_pct": null
+          },
+          "dijkstra_multicriterio": {
+            "estado": "sin_ruta",
+            "motivo": "destino_bloqueado_o_inalcanzable",
+            "longitud_km": null,
+            "computo_ms": 0.5,
+            "pct_densas": null,
+            "pct_sin_c2": null,
+            "resiliencia_R": null,
+            "supervivencia_mc_pct": null
+          },
+          "metaheuristica_akgun": {
+            "estado": "sin_ruta",
+            "motivo": "destino_bloqueado_o_inalcanzable",
+            "longitud_km": null,
+            "computo_ms": 0.5,
+            "pct_densas": null,
+            "pct_sin_c2": null,
+            "resiliencia_R": null,
+            "supervivencia_mc_pct": null
+          }
+        }
+      },
+      {
+        "nombre": "Quintero",
+        "codigo": "sinca_quintero",
+        "node_id": 6,
+        "mejor_resiliencia": "metaheuristica_akgun",
+        "tecnicas": {
+          "dijkstra_distancia": {
+            "estado": "ok",
+            "motivo": null,
+            "backend": "python",
+            "longitud_km": 2.35,
+            "computo_ms": 0.4,
+            "pct_densas": 60.1,
+            "pct_sin_c2": 0.0,
+            "resiliencia_R": 0.408,
+            "supervivencia_mc_pct": 42.2,
+            "viable": true,
+            "cumple_autonomia": true,
+            "bloqueos_en_ruta": 0
+          },
+          "milp_exacto": {
+            "estado": "ok",
+            "motivo": null,
+            "backend": "HiGHS",
+            "longitud_km": 2.35,
+            "computo_ms": 68.2,
+            "pct_densas": 60.1,
+            "pct_sin_c2": 0.0,
+            "resiliencia_R": 0.408,
+            "supervivencia_mc_pct": 42.2,
+            "viable": true,
+            "cumple_autonomia": true,
+            "bloqueos_en_ruta": 0
+          },
+          "dijkstra_multicriterio": {
+            "estado": "ok",
+            "motivo": null,
+            "backend": "python",
+            "longitud_km": 2.35,
+            "computo_ms": 0.5,
+            "pct_densas": 60.1,
+            "pct_sin_c2": 0.0,
+            "resiliencia_R": 0.408,
+            "supervivencia_mc_pct": 42.2,
+            "viable": true,
+            "cumple_autonomia": true,
+            "bloqueos_en_ruta": 0
+          },
+          "metaheuristica_akgun": {
+            "estado": "ok",
+            "motivo": null,
+            "backend": "python",
+            "longitud_km": 2.35,
+            "computo_ms": 6.7,
+            "pct_densas": 60.1,
+            "pct_sin_c2": 0.0,
+            "resiliencia_R": 0.635,
+            "supervivencia_mc_pct": 64.2,
+            "viable": true,
+            "cumple_autonomia": true,
+            "bloqueos_en_ruta": 0
+          }
+        }
+      },
+      {
+        "nombre": "Sur",
+        "codigo": "sinca_sur",
+        "node_id": 9,
+        "mejor_resiliencia": "metaheuristica_akgun",
+        "tecnicas": {
+          "dijkstra_distancia": {
+            "estado": "ok",
+            "motivo": null,
+            "backend": "python",
+            "longitud_km": 3.77,
+            "computo_ms": 0.4,
+            "pct_densas": 5.7,
+            "pct_sin_c2": 0.0,
+            "resiliencia_R": 0.657,
+            "supervivencia_mc_pct": 67.7,
+            "viable": true,
+            "cumple_autonomia": true,
+            "bloqueos_en_ruta": 0
+          },
+          "milp_exacto": {
+            "estado": "ok",
+            "motivo": null,
+            "backend": "HiGHS",
+            "longitud_km": 3.77,
+            "computo_ms": 53.5,
+            "pct_densas": 5.7,
+            "pct_sin_c2": 0.0,
+            "resiliencia_R": 0.657,
+            "supervivencia_mc_pct": 67.7,
+            "viable": true,
+            "cumple_autonomia": true,
+            "bloqueos_en_ruta": 0
+          },
+          "dijkstra_multicriterio": {
+            "estado": "ok",
+            "motivo": null,
+            "backend": "python",
+            "longitud_km": 3.77,
+            "computo_ms": 0.5,
+            "pct_densas": 5.7,
+            "pct_sin_c2": 0.0,
+            "resiliencia_R": 0.657,
+            "supervivencia_mc_pct": 67.7,
+            "viable": true,
+            "cumple_autonomia": true,
+            "bloqueos_en_ruta": 0
+          },
+          "metaheuristica_akgun": {
+            "estado": "ok",
+            "motivo": null,
+            "backend": "python",
+            "longitud_km": 3.77,
+            "computo_ms": 5.2,
+            "pct_densas": 5.7,
+            "pct_sin_c2": 0.0,
+            "resiliencia_R": 0.803,
+            "supervivencia_mc_pct": 82.4,
+            "viable": true,
+            "cumple_autonomia": true,
+            "bloqueos_en_ruta": 0
+          }
+        }
+      },
+      {
+        "nombre": "Ventanas",
+        "codigo": "sinca_ventanas",
+        "node_id": 4,
+        "mejor_resiliencia": "metaheuristica_akgun",
+        "tecnicas": {
+          "dijkstra_distancia": {
+            "estado": "ok",
+            "motivo": null,
+            "backend": "python",
+            "longitud_km": 7.8,
+            "computo_ms": 0.4,
+            "pct_densas": 25.0,
+            "pct_sin_c2": 49.4,
+            "resiliencia_R": 0.0,
+            "supervivencia_mc_pct": 0.0,
+            "viable": true,
+            "cumple_autonomia": true,
+            "bloqueos_en_ruta": 0
+          },
+          "milp_exacto": {
+            "estado": "ok",
+            "motivo": null,
+            "backend": "HiGHS",
+            "longitud_km": 9.78,
+            "computo_ms": 58.6,
+            "pct_densas": 25.9,
+            "pct_sin_c2": 39.4,
+            "resiliencia_R": 0.143,
+            "supervivencia_mc_pct": 14.3,
+            "viable": true,
+            "cumple_autonomia": true,
+            "bloqueos_en_ruta": 0
+          },
+          "dijkstra_multicriterio": {
+            "estado": "ok",
+            "motivo": null,
+            "backend": "python",
+            "longitud_km": 9.78,
+            "computo_ms": 0.5,
+            "pct_densas": 25.9,
+            "pct_sin_c2": 39.4,
+            "resiliencia_R": 0.143,
+            "supervivencia_mc_pct": 14.3,
+            "viable": true,
+            "cumple_autonomia": true,
+            "bloqueos_en_ruta": 0
+          },
+          "metaheuristica_akgun": {
+            "estado": "ok",
+            "motivo": null,
+            "backend": "python",
+            "longitud_km": 9.78,
+            "computo_ms": 9.9,
+            "pct_densas": 25.9,
+            "pct_sin_c2": 39.4,
+            "resiliencia_R": 0.143,
+            "supervivencia_mc_pct": 14.3,
+            "viable": true,
+            "cumple_autonomia": true,
+            "bloqueos_en_ruta": 0
+          }
+        }
+      }
+    ]
+  }
+}
