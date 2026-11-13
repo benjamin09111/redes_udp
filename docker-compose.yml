@@ -38,14 +38,25 @@ services:
         condition: service_healthy
 
   web:
-    # Sitio Leaflet. Sirve la raíz del repo para que el sitio lea los .geojson.
+    # Fase 3: API de ruteo (FastAPI) + sitio Leaflet en el mismo puerto.
+    # El sitio queda en /sitio_web/, los endpoints en /api/* y Swagger en /docs.
     image: uav-ruteo:local
     working_dir: /app
-    command: python -m http.server 8000 --bind 0.0.0.0 --directory /app
+    command: uvicorn api.servidor:app --host 0.0.0.0 --port 8000
+    environment:
+      DB_HOST: db
+      DB_PORT: "5432"
+      DB_NAME: uav
+      DB_USER: uav
+      DB_PASSWORD: uav
+      RUTEO_BACKEND: pgrouting  # pgr_dijkstra dentro de PostgreSQL; "python" usa el Dijkstra propio
     volumes:
       - ./:/app:ro
     ports:
       - "8000:8000"
+    depends_on:
+      db:
+        condition: service_healthy
 
 volumes:
   uav_pgdata:

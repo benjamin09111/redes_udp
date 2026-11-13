@@ -16,7 +16,7 @@
         <span class="badge-tag">Inspirado en Akgün et al. (2000)</span>
       </div>
       <div class="header-status">
-        <span class="status-badge"><span class="dot-live"></span> Red Conexa &middot; 273 Nodos &middot; 718 Aristas</span>
+        <span class="status-badge"><span class="dot-live"></span> Red Conexa &middot; 322 Nodos &middot; 855 Aristas</span>
       </div>
     </div>
     <p>Simulador y Auditoría de Ruteo Resiliente UAV · Bahía de Quintero y Puchuncaví</p>
@@ -100,7 +100,81 @@
         </button>
       </section>
 
-      
+      <!-- 1.0 FASE 3 · Comparación de las 4 técnicas de ruteo contra la API -->
+      <section class="card" id="card-fase3">
+        <h2>Fase 3 · Comparación de técnicas</h2>
+        <p class="f3-hint">Corre las cuatro técnicas sobre el mismo destino y compara longitud, tiempo de cómputo y resiliencia.</p>
+
+        <div class="control-group">
+          <label for="f3-destino">Destino de la misión:</label>
+          <select id="f3-destino"></select>
+        </div>
+
+        <div class="f3-params">
+          <div class="control-group">
+            <label for="f3-autonomia">Autonomía máx. (m)</label>
+            <input type="number" id="f3-autonomia" value="10500" min="500" max="100000" step="500">
+          </div>
+          <div class="control-group">
+            <label for="f3-beta">β aversión al riesgo</label>
+            <input type="number" id="f3-beta" value="1000" min="0" max="100000" step="100">
+          </div>
+        </div>
+
+        <div class="f3-group">
+          <div class="f3-group-head">
+            <span class="f3-group-title">Amenazas y metadatos considerados</span>
+            <button type="button" id="f3-capas-toggle" class="btn-subtle">Ninguna</button>
+          </div>
+          <div id="f3-capas" class="f3-capas"></div>
+        </div>
+
+        <label class="f3-check f3-check-alert" for="f3-contingencia">
+          <input type="checkbox" id="f3-contingencia">
+          <span>Escenario de contingencia: incendio en Planta de Asfaltos</span>
+        </label>
+
+        <div class="f3-params">
+          <div class="control-group">
+            <label for="f3-mcn">Monte Carlo (N)</label>
+            <input type="number" id="f3-mcn" value="2000" min="0" max="20000" step="500">
+          </div>
+          <div class="control-group">
+            <label for="f3-seed">Semilla</label>
+            <input type="number" id="f3-seed" value="42" min="0" max="999999">
+          </div>
+        </div>
+
+        <div class="control-group" style="margin-top:10px">
+          <label for="f3-backend">Motor del camino mínimo:</label>
+          <select id="f3-backend">
+            <option value="pgrouting">pgr_dijkstra en PostgreSQL (pgRouting)</option>
+            <option value="python">Dijkstra en Python (sin base de datos)</option>
+          </select>
+        </div>
+
+        <button id="f3-calcular" type="button" class="btn-primary mt-2">
+          <svg class="ui-icon ui-icon-sm" viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          <span>Calcular las 4 rutas</span>
+        </button>
+
+        <div id="f3-estado" class="f3-estado" role="status" aria-live="polite"></div>
+
+        <div class="f3-group" id="f3-leyenda-wrap" hidden>
+          <div class="f3-group-head">
+            <span class="f3-group-title">Rutas calculadas</span>
+            <span class="f3-modelo-ms" id="f3-modelo-ms"></span>
+          </div>
+          <div id="f3-leyenda" class="f3-leyenda"></div>
+        </div>
+
+        <button id="f3-simular" type="button" class="btn-outline-resultados mt-2" hidden>
+          <svg class="ui-icon ui-icon-sm" viewBox="0 0 24 24"><path d="M12 2v6m0 8v6M4.9 4.9l4.2 4.2m5.8 5.8 4.2 4.2M2 12h6m8 0h6M4.9 19.1l4.2-4.2m5.8-5.8 4.2-4.2"/></svg>
+          <span>Simular fallas (aleatorio 0–100)</span>
+        </button>
+        <div id="f3-sim" class="f3-sim" hidden></div>
+      </section>
+
       <!-- 1.1 Restricciones Blandas de Ruteo Resiliente (Vector w) -->
       <section class="card card-accordion" id="card-restricciones-blandas">
         <button type="button" class="accordion-header" id="btn-accordion-w" aria-expanded="true">
@@ -653,7 +727,7 @@
           </div>
           <div class="hero-meta-box">
             <span class="meta-label">Parámetros Topológicos</span>
-            <code class="meta-code">N=273 nodos &bull; M=718 aristas &bull; K=4 vecinos</code>
+            <code class="meta-code">N=322 nodos &bull; M=855 aristas &bull; K=4 vecinos</code>
             <span class="meta-sub">Coordenadas WGS84 3D &bull; Distancia esférica Haversine &bull; Costo = Longitud (m)</span>
           </div>
         </div>
@@ -665,7 +739,7 @@
           <div class="kpi-top">
             <span class="kpi-name">Vértices (Nodos)</span>
           </div>
-          <div class="kpi-number" id="kpi-grafo-nodos">273</div>
+          <div class="kpi-number" id="kpi-grafo-nodos">322</div>
           <div class="kpi-footnote">13 categorías operacionales (Base SCER, 8 SINCA, 32 fuentes emisoras, red sensible)</div>
         </div>
 
@@ -673,7 +747,7 @@
           <div class="kpi-top">
             <span class="kpi-name">Corredores Aéreos</span>
           </div>
-          <div class="kpi-number" id="kpi-grafo-aristas">718</div>
+          <div class="kpi-number" id="kpi-grafo-aristas">855</div>
           <div class="kpi-footnote">Enlaces bidireccionales construidos mediante K=4 vecinos más cercanos</div>
         </div>
 
@@ -711,11 +785,11 @@
               <div class="map-layer-toggles">
                 <label class="toggle-chip">
                   <input type="checkbox" id="toggle-grafo-nodos" checked>
-                  <span>Nodos (273)</span>
+                  <span>Nodos (322)</span>
                 </label>
                 <label class="toggle-chip">
                   <input type="checkbox" id="toggle-grafo-aristas" checked>
-                  <span>Corredores (633)</span>
+                  <span>Corredores (855)</span>
                 </label>
                 <label class="toggle-chip">
                   <input type="checkbox" id="toggle-grafo-zonas" checked>
@@ -746,7 +820,7 @@
         <!-- PANEL DE DESGLOSE DE CATEGORÍAS -->
         <div class="infra-info-panel">
           <div class="card">
-            <h2>Categorías de Nodos en la Red (273 Vértices)</h2>
+            <h2>Categorías de Nodos en la Red (322 Vértices)</h2>
             <p style="font-size:0.82rem; color:var(--suave); margin-bottom:12px;">
               Cada nodo cumple un rol operativo específico en la misión de monitoreo ambiental y mitigación de riesgos:
             </p>
@@ -763,7 +837,7 @@
         <div class="card">
           <div class="grafo-step-header">
             <span class="step-num">1</span>
-            <h3>Mapeo y Cosecha Geoespacial de los 273 Nodos</h3>
+            <h3>Mapeo y Cosecha Geoespacial de los 322 Nodos</h3>
           </div>
           <p>
             Los vértices de la red fueron recolectados e integrados siguiendo un riguroso levantamiento territorial en la Bahía de Quintero y Puchuncaví:
@@ -1078,7 +1152,7 @@ R = 6.371.000 m &bull; φ = latitud (rad) &bull; λ = longitud (rad)</div>
         <div class="explorer-body">
           <div class="exp-panel active" id="exp-code-nodos">
             <div class="exp-meta-bar">
-              <span>GeoJSON FeatureCollection &bull; 273 Vértices &bull; RFC 7946 / EPSG:4326 &bull; Tabla BD: <code>infra_node</code></span>
+              <span>GeoJSON FeatureCollection &bull; 322 Vértices &bull; RFC 7946 / EPSG:4326 &bull; Tabla BD: <code>infra_node</code></span>
               <button class="btn-copy-code" type="button" data-copy="code-nodos-text">Copiar JSON</button>
             </div>
             <pre class="code-display"><code id="code-nodos-text">Cargando nodos.geojson…</code></pre>
@@ -1086,7 +1160,7 @@ R = 6.371.000 m &bull; φ = latitud (rad) &bull; λ = longitud (rad)</div>
 
           <div class="exp-panel" id="exp-code-aristas" hidden>
             <div class="exp-meta-bar">
-              <span>GeoJSON FeatureCollection &bull; 633 Corredores &bull; K=4 vecinos &bull; Tabla BD: <code>infra_edge</code></span>
+              <span>GeoJSON FeatureCollection &bull; 855 Corredores &bull; K=4 vecinos &bull; Tabla BD: <code>infra_edge</code></span>
               <button class="btn-copy-code" type="button" data-copy="code-aristas-text">Copiar JSON</button>
             </div>
             <pre class="code-display"><code id="code-aristas-text">Cargando aristas.geojson…</code></pre>
@@ -2058,7 +2132,7 @@ R = 6.371.000 m &bull; φ = latitud (rad) &bull; λ = longitud (rad)</div>
       </div>
 
       <div class="modal-footer">
-        <span class="modal-counter" id="modal-destinos-contador">273 destinos disponibles</span>
+        <span class="modal-counter" id="modal-destinos-contador">322 destinos disponibles</span>
         <button type="button" class="btn-modal-cancel" id="btn-cancelar-modal-destino">Cerrar</button>
       </div>
     </div>
@@ -2067,5 +2141,6 @@ R = 6.371.000 m &bull; φ = latitud (rad) &bull; λ = longitud (rad)</div>
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
           integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
   <script src="app.js"></script>
+  <script src="fase3.js"></script>
 </body>
 </html>

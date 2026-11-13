@@ -1,2 +1,14 @@
-# Única dependencia externa. Los scripts de ETL usan solo la librería estándar.
-psycopg[binary]==3.2.13
+# Dependencias del proyecto (imagen Docker python:3.12). Versiones probadas en la Fase 3.
+psycopg[binary]==3.2.13   # conexión a PostgreSQL (ETL, ruteo con pgRouting)
+# --- Fase 3: backend de ruteo y API ---
+pulp==3.3.0               # MILP. NO subir a 4.x: cambió la API (LpVariable) y ya no trae CBC
+gurobipy==12.0.3          # solver GUROBI (requisito de la pauta). La licencia restringida
+                          # que trae el paquete basta: admite 2000 variables y 2000
+                          # restricciones, y el modelo usa 1274 x 1484. Esa licencia tiene
+                          # fecha de expiracion; cuando venza, actualizar gurobipy o pedir
+                          # la licencia academica gratuita. El codigo cae solo a HiGHS.
+highspy==1.16.0           # solver HiGHS (respaldo si GUROBI/CPLEX no estan disponibles)
+shapely==2.2.0            # buffers de 200 m de la metaheurística
+fastapi==0.162.4
+uvicorn[standard]==0.54.0
+httpx==0.28.1             # solo para las pruebas (TestClient)
