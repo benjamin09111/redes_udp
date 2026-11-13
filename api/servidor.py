@@ -34,15 +34,15 @@ app = FastAPI(title="Ruteo resiliente UAV - Fase 3", version="1.0")
 
 DESCRIPCION_CAPAS = {
     "incendio": "Incendios FIRMS (λ = 5,0)",
-    "sismo": "Alertas sísmicas CSN",
+    "sismo": "Alertas sísmicas CSN (λ = 0,05)",
     "viento": "Viento (> 12 m/s bloquea; ≥ 8 m/s λ = 0,04)",
-    "lluvia": "Lluvia intensa",
+    "lluvia": "Lluvia intensa (λ = 0,03)",
     "niebla": "Niebla (visibilidad < 1000 m bloquea)",
     "humedad": "Humedad relativa > 90 % (λ = 0,03)",
     "densidad": "Manzanas censales densas > 2500 hab/km² (λ = 0,08)",
     "c2": "Sombra de enlace C2 (λ = 0,05)",
-    "obstaculos": "Obstáculos verticales: chimeneas y torres (más altos que el techo de 120 m AGL bloquean)",
-    "relieve": "Relieve SRTM: bloquea si el terreno no cabe en la ventana de 120 m AGL; penaliza el ascenso",
+    "obstaculos": "Obstáculos verticales: chimeneas y torres (λ = 0,20 en el radio de resguardo; más altas que el techo de 120 m AGL bloquean)",
+    "relieve": "Relieve SRTM (λ = 0,06 por cada 100 m de ascenso; bloquea si el terreno no cabe en la ventana de 120 m AGL)",
     "contingencia": "Contingencia simulada: incendio Planta de Asfaltos Quintero",
 }
 

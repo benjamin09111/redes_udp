@@ -88,7 +88,10 @@
       sel.value = 'sinca_ventanas';
 
       const activas = new Set(capas.por_defecto);
-      $('f3-capas').innerHTML = capas.capas.map((c) => `
+      // "contingencia" no es una capa mas: tiene su propia casilla (#f3-contingencia) y su
+      // propio parametro en la API. Dibujarla aqui duplicaba el control, y el boton "Todas"
+      // encendia el incendio simulado sin que nadie lo pidiera.
+      $('f3-capas').innerHTML = capas.capas.filter((c) => c.id !== 'contingencia').map((c) => `
         <label class="f3-check" for="f3-capa-${esc(c.id)}" title="${esc(c.descripcion)}">
           <input type="checkbox" id="f3-capa-${esc(c.id)}" data-capa="${esc(c.id)}"
                  ${activas.has(c.id) ? 'checked' : ''}>
@@ -299,7 +302,10 @@
     try {
       const p = new URLSearchParams(ultimaConsulta);
       p.delete('mc_n');
-      p.set('seed', String(Math.floor(Math.random() * 999999)));
+      // La semilla sale del panel (#f3-seed) para que el sorteo sea reproducible: con la
+      // misma semilla caen los mismos nodos y aristas. Si el campo esta vacio se sortea una.
+      const sem = $('f3-seed').value.trim();
+      p.set('seed', sem !== '' ? sem : String(Math.floor(Math.random() * 999999)));
       const data = await pedir('/api/simulacion?' + p.toString());
 
       limpiarFallas();

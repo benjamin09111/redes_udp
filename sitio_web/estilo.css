@@ -3530,7 +3530,7 @@ table.pop td {
   display: flex;
   flex-direction: column;
   gap: 2px;
-  max-height: 176px;
+  max-height: 320px;        /* alcanza para las 10 capas sin cortar una fila a la mitad */
   overflow-y: auto;
   padding-right: 2px;
 }
